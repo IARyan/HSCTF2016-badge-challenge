@@ -1,0 +1,666 @@
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccsEhnVH.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 6
+  10              		.eabi_attribute 34, 0
+  11              		.eabi_attribute 18, 4
+  12              		.code	16
+  13              		.file	"main.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.global	show_flag
+  18              		.bss
+  19              		.type	show_flag, %object
+  20              		.size	show_flag, 1
+  21              	show_flag:
+  22 0000 00       		.space	1
+  23              		.section	.text.IR_Handler,"ax",%progbits
+  24              		.align	2
+  25              		.global	IR_Handler
+  26              		.code	16
+  27              		.thumb_func
+  28              		.type	IR_Handler, %function
+  29              	IR_Handler:
+  30              	.LFB33:
+  31              		.file 1 ".\\main.c"
+   1:.\main.c      **** /* ========================================
+   2:.\main.c      ****  *
+   3:.\main.c      ****  * Copyright YOUR COMPANY, THE YEAR
+   4:.\main.c      ****  * All Rights Reserved
+   5:.\main.c      ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:.\main.c      ****  *
+   7:.\main.c      ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:.\main.c      ****  * WHICH IS THE PROPERTY OF your company.
+   9:.\main.c      ****  *
+  10:.\main.c      ****  * ========================================
+  11:.\main.c      **** */
+  12:.\main.c      **** #include <project.h>
+  13:.\main.c      **** 
+  14:.\main.c      **** volatile uint8 show_flag = 0;
+  15:.\main.c      **** 
+  16:.\main.c      **** /* Signal handler for left toggle press */
+  17:.\main.c      **** CY_ISR( IR_Handler ) {
+  32              		.loc 1 17 0
+  33              		.cfi_startproc
+  34 0000 80B5     		push	{r7, lr}
+  35              		.cfi_def_cfa_offset 8
+  36              		.cfi_offset 7, -8
+  37              		.cfi_offset 14, -4
+  38 0002 00AF     		add	r7, sp, #0
+  39              		.cfi_def_cfa_register 7
+  18:.\main.c      ****     LED_Write(1); 
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccsEhnVH.s 			page 2
+
+
+  40              		.loc 1 18 0
+  41 0004 0120     		mov	r0, #1
+  42 0006 FFF7FEFF 		bl	LED_Write
+  19:.\main.c      ****     show_flag = 1;
+  43              		.loc 1 19 0
+  44 000a 034B     		ldr	r3, .L2
+  45 000c 0122     		mov	r2, #1
+  46 000e 1A70     		strb	r2, [r3]
+  20:.\main.c      ****     IR_REC_ClearInterrupt();
+  47              		.loc 1 20 0
+  48 0010 FFF7FEFF 		bl	IR_REC_ClearInterrupt
+  21:.\main.c      **** }
+  49              		.loc 1 21 0
+  50 0014 BD46     		mov	sp, r7
+  51              		@ sp needed
+  52 0016 80BD     		pop	{r7, pc}
+  53              	.L3:
+  54              		.align	2
+  55              	.L2:
+  56 0018 00000000 		.word	show_flag
+  57              		.cfi_endproc
+  58              	.LFE33:
+  59              		.size	IR_Handler, .-IR_Handler
+  60              		.section	.rodata
+  61              		.align	2
+  62              	.LC3:
+  63 0000 49522052 		.ascii	"IR Required For\000"
+  63      65717569 
+  63      72656420 
+  63      466F7200 
+  64              		.align	2
+  65              	.LC5:
+  66 0010 466C6167 		.ascii	"Flag\000"
+  66      00
+  67 0015 000000   		.align	2
+  68              	.LC7:
+  69 0018 466C6167 		.ascii	"Flag is:\000"
+  69      2069733A 
+  69      00
+  70 0021 000000   		.align	2
+  71              	.LC9:
+  72 0024 5859444B 		.ascii	"XYDKSOCKODHIDSO\000"
+  72      534F434B 
+  72      4F444849 
+  72      44534F00 
+  73              		.section	.text.main,"ax",%progbits
+  74              		.align	2
+  75              		.global	main
+  76              		.code	16
+  77              		.thumb_func
+  78              		.type	main, %function
+  79              	main:
+  80              	.LFB34:
+  22:.\main.c      **** 
+  23:.\main.c      **** 
+  24:.\main.c      **** int main()
+  25:.\main.c      **** {
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccsEhnVH.s 			page 3
+
+
+  81              		.loc 1 25 0
+  82              		.cfi_startproc
+  83 0000 80B5     		push	{r7, lr}
+  84              		.cfi_def_cfa_offset 8
+  85              		.cfi_offset 7, -8
+  86              		.cfi_offset 14, -4
+  87 0002 00AF     		add	r7, sp, #0
+  88              		.cfi_def_cfa_register 7
+  26:.\main.c      ****     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
+  27:.\main.c      ****     CyGlobalIntEnable;
+  89              		.loc 1 27 0
+  90              	@ 27 ".\main.c" 1
+  91 0004 62B6     		CPSIE   i
+  92              	@ 0 "" 2
+  28:.\main.c      **** 
+  29:.\main.c      ****     IR_Int_StartEx( IR_Handler );
+  93              		.loc 1 29 0
+  94              		.code	16
+  95 0006 244B     		ldr	r3, .L8
+  96 0008 181C     		mov	r0, r3
+  97 000a FFF7FEFF 		bl	IR_Int_StartEx
+  30:.\main.c      ****     LED_Write(0);
+  98              		.loc 1 30 0
+  99 000e 0020     		mov	r0, #0
+ 100 0010 FFF7FEFF 		bl	LED_Write
+  31:.\main.c      ****     
+  32:.\main.c      ****     
+  33:.\main.c      ****     //  Supply 5 Vdd to LCD display from MCU and power up Back Light  
+  34:.\main.c      ****     Power_Up_LCD_Pin_1_Write(1);
+ 101              		.loc 1 34 0
+ 102 0014 0120     		mov	r0, #1
+ 103 0016 FFF7FEFF 		bl	Power_Up_LCD_Pin_1_Write
+  35:.\main.c      ****     Back_Light_On_N_Write(0);
+ 104              		.loc 1 35 0
+ 105 001a 0020     		mov	r0, #0
+ 106 001c FFF7FEFF 		bl	Back_Light_On_N_Write
+  36:.\main.c      ****     Back_Light_On_P_Write(1);
+ 107              		.loc 1 36 0
+ 108 0020 0120     		mov	r0, #1
+ 109 0022 FFF7FEFF 		bl	Back_Light_On_P_Write
+  37:.\main.c      **** 
+  38:.\main.c      ****     // Start LCD display    
+  39:.\main.c      ****     LCD_Char_Start();
+ 110              		.loc 1 39 0
+ 111 0026 FFF7FEFF 		bl	LCD_Char_Start
+  40:.\main.c      ****     LCD_Char_DisplayOn();
+ 112              		.loc 1 40 0
+ 113 002a 0C20     		mov	r0, #12
+ 114 002c FFF7FEFF 		bl	LCD_Char_WriteControl
+ 115              	.L7:
+  41:.\main.c      ****     
+  42:.\main.c      ****     
+  43:.\main.c      ****     
+  44:.\main.c      ****     
+  45:.\main.c      ****     /* CyGlobalIntEnable; */ /* Uncomment this line to enable global interrupts. */
+  46:.\main.c      ****     for(;;)
+  47:.\main.c      ****     {
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccsEhnVH.s 			page 4
+
+
+  48:.\main.c      ****         if (!show_flag) {
+ 116              		.loc 1 48 0
+ 117 0030 1A4B     		ldr	r3, .L8+4
+ 118 0032 1B78     		ldrb	r3, [r3]
+ 119 0034 DBB2     		uxtb	r3, r3
+ 120 0036 002B     		cmp	r3, #0
+ 121 0038 10D1     		bne	.L5
+  49:.\main.c      ****           LCD_Char_Position(0,0);
+ 122              		.loc 1 49 0
+ 123 003a 0020     		mov	r0, #0
+ 124 003c 0021     		mov	r1, #0
+ 125 003e FFF7FEFF 		bl	LCD_Char_Position
+  50:.\main.c      ****           LCD_Char_PrintString("IR Required For");
+ 126              		.loc 1 50 0
+ 127 0042 174B     		ldr	r3, .L8+8
+ 128 0044 181C     		mov	r0, r3
+ 129 0046 FFF7FEFF 		bl	LCD_Char_PrintString
+  51:.\main.c      ****           LCD_Char_Position(1,6);
+ 130              		.loc 1 51 0
+ 131 004a 0120     		mov	r0, #1
+ 132 004c 0621     		mov	r1, #6
+ 133 004e FFF7FEFF 		bl	LCD_Char_Position
+  52:.\main.c      ****           LCD_Char_PrintString("Flag");    
+ 134              		.loc 1 52 0
+ 135 0052 144B     		ldr	r3, .L8+12
+ 136 0054 181C     		mov	r0, r3
+ 137 0056 FFF7FEFF 		bl	LCD_Char_PrintString
+  53:.\main.c      ****         } else {
+  54:.\main.c      ****           LCD_Char_ClearDisplay();
+  55:.\main.c      ****           LCD_Char_Position(0,0);
+  56:.\main.c      ****           LCD_Char_PrintString("Flag is:");
+  57:.\main.c      ****           LCD_Char_Position(1,0);
+  58:.\main.c      ****           LCD_Char_PrintString("XYDKSOCKODHIDSO");
+  59:.\main.c      ****           show_flag = 0;
+  60:.\main.c      ****           CyDelay(3000);
+  61:.\main.c      ****           LCD_Char_ClearDisplay();
+  62:.\main.c      ****         }
+  63:.\main.c      ****         
+  64:.\main.c      ****         /* Place your application code here. */
+  65:.\main.c      ****     }
+ 138              		.loc 1 65 0
+ 139 005a E9E7     		b	.L7
+ 140              	.L5:
+  54:.\main.c      ****           LCD_Char_ClearDisplay();
+ 141              		.loc 1 54 0
+ 142 005c 0120     		mov	r0, #1
+ 143 005e FFF7FEFF 		bl	LCD_Char_WriteControl
+  55:.\main.c      ****           LCD_Char_Position(0,0);
+ 144              		.loc 1 55 0
+ 145 0062 0020     		mov	r0, #0
+ 146 0064 0021     		mov	r1, #0
+ 147 0066 FFF7FEFF 		bl	LCD_Char_Position
+  56:.\main.c      ****           LCD_Char_PrintString("Flag is:");
+ 148              		.loc 1 56 0
+ 149 006a 0F4B     		ldr	r3, .L8+16
+ 150 006c 181C     		mov	r0, r3
+ 151 006e FFF7FEFF 		bl	LCD_Char_PrintString
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccsEhnVH.s 			page 5
+
+
+  57:.\main.c      ****           LCD_Char_Position(1,0);
+ 152              		.loc 1 57 0
+ 153 0072 0120     		mov	r0, #1
+ 154 0074 0021     		mov	r1, #0
+ 155 0076 FFF7FEFF 		bl	LCD_Char_Position
+  58:.\main.c      ****           LCD_Char_PrintString("XYDKSOCKODHIDSO");
+ 156              		.loc 1 58 0
+ 157 007a 0C4B     		ldr	r3, .L8+20
+ 158 007c 181C     		mov	r0, r3
+ 159 007e FFF7FEFF 		bl	LCD_Char_PrintString
+  59:.\main.c      ****           show_flag = 0;
+ 160              		.loc 1 59 0
+ 161 0082 064B     		ldr	r3, .L8+4
+ 162 0084 0022     		mov	r2, #0
+ 163 0086 1A70     		strb	r2, [r3]
+  60:.\main.c      ****           CyDelay(3000);
+ 164              		.loc 1 60 0
+ 165 0088 094B     		ldr	r3, .L8+24
+ 166 008a 181C     		mov	r0, r3
+ 167 008c FFF7FEFF 		bl	CyDelay
+  61:.\main.c      ****           LCD_Char_ClearDisplay();
+ 168              		.loc 1 61 0
+ 169 0090 0120     		mov	r0, #1
+ 170 0092 FFF7FEFF 		bl	LCD_Char_WriteControl
+ 171              		.loc 1 65 0
+ 172 0096 CBE7     		b	.L7
+ 173              	.L9:
+ 174              		.align	2
+ 175              	.L8:
+ 176 0098 00000000 		.word	IR_Handler
+ 177 009c 00000000 		.word	show_flag
+ 178 00a0 00000000 		.word	.LC3
+ 179 00a4 10000000 		.word	.LC5
+ 180 00a8 18000000 		.word	.LC7
+ 181 00ac 24000000 		.word	.LC9
+ 182 00b0 B80B0000 		.word	3000
+ 183              		.cfi_endproc
+ 184              	.LFE34:
+ 185              		.size	main, .-main
+ 186              		.text
+ 187              	.Letext0:
+ 188              		.file 2 ".\\Generated_Source\\PSoC4/cytypes.h"
+ 189              		.section	.debug_info,"",%progbits
+ 190              	.Ldebug_info0:
+ 191 0000 CB000000 		.4byte	0xcb
+ 192 0004 0400     		.2byte	0x4
+ 193 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 194 000a 04       		.byte	0x4
+ 195 000b 01       		.uleb128 0x1
+ 196 000c 8C000000 		.4byte	.LASF15
+ 197 0010 01       		.byte	0x1
+ 198 0011 5A010000 		.4byte	.LASF16
+ 199 0015 20000000 		.4byte	.LASF17
+ 200 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 201 001d 00000000 		.4byte	0
+ 202 0021 00000000 		.4byte	.Ldebug_line0
+ 203 0025 02       		.uleb128 0x2
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccsEhnVH.s 			page 6
+
+
+ 204 0026 01       		.byte	0x1
+ 205 0027 06       		.byte	0x6
+ 206 0028 48010000 		.4byte	.LASF0
+ 207 002c 02       		.uleb128 0x2
+ 208 002d 01       		.byte	0x1
+ 209 002e 08       		.byte	0x8
+ 210 002f 08010000 		.4byte	.LASF1
+ 211 0033 02       		.uleb128 0x2
+ 212 0034 02       		.byte	0x2
+ 213 0035 05       		.byte	0x5
+ 214 0036 24010000 		.4byte	.LASF2
+ 215 003a 02       		.uleb128 0x2
+ 216 003b 02       		.byte	0x2
+ 217 003c 07       		.byte	0x7
+ 218 003d 35010000 		.4byte	.LASF3
+ 219 0041 02       		.uleb128 0x2
+ 220 0042 04       		.byte	0x4
+ 221 0043 05       		.byte	0x5
+ 222 0044 1B010000 		.4byte	.LASF4
+ 223 0048 02       		.uleb128 0x2
+ 224 0049 04       		.byte	0x4
+ 225 004a 07       		.byte	0x7
+ 226 004b 58000000 		.4byte	.LASF5
+ 227 004f 02       		.uleb128 0x2
+ 228 0050 08       		.byte	0x8
+ 229 0051 05       		.byte	0x5
+ 230 0052 00000000 		.4byte	.LASF6
+ 231 0056 02       		.uleb128 0x2
+ 232 0057 08       		.byte	0x8
+ 233 0058 07       		.byte	0x7
+ 234 0059 6A000000 		.4byte	.LASF7
+ 235 005d 03       		.uleb128 0x3
+ 236 005e 04       		.byte	0x4
+ 237 005f 05       		.byte	0x5
+ 238 0060 696E7400 		.ascii	"int\000"
+ 239 0064 02       		.uleb128 0x2
+ 240 0065 04       		.byte	0x4
+ 241 0066 07       		.byte	0x7
+ 242 0067 0E000000 		.4byte	.LASF8
+ 243 006b 04       		.uleb128 0x4
+ 244 006c 52000000 		.4byte	.LASF18
+ 245 0070 02       		.byte	0x2
+ 246 0071 A1       		.byte	0xa1
+ 247 0072 2C000000 		.4byte	0x2c
+ 248 0076 02       		.uleb128 0x2
+ 249 0077 04       		.byte	0x4
+ 250 0078 04       		.byte	0x4
+ 251 0079 54010000 		.4byte	.LASF9
+ 252 007d 02       		.uleb128 0x2
+ 253 007e 08       		.byte	0x8
+ 254 007f 04       		.byte	0x4
+ 255 0080 2E010000 		.4byte	.LASF10
+ 256 0084 02       		.uleb128 0x2
+ 257 0085 01       		.byte	0x1
+ 258 0086 08       		.byte	0x8
+ 259 0087 16010000 		.4byte	.LASF11
+ 260 008b 05       		.uleb128 0x5
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccsEhnVH.s 			page 7
+
+
+ 261 008c 6B000000 		.4byte	0x6b
+ 262 0090 02       		.uleb128 0x2
+ 263 0091 04       		.byte	0x4
+ 264 0092 07       		.byte	0x7
+ 265 0093 6D010000 		.4byte	.LASF12
+ 266 0097 06       		.uleb128 0x6
+ 267 0098 81000000 		.4byte	.LASF13
+ 268 009c 01       		.byte	0x1
+ 269 009d 11       		.byte	0x11
+ 270 009e 00000000 		.4byte	.LFB33
+ 271 00a2 1C000000 		.4byte	.LFE33-.LFB33
+ 272 00a6 01       		.uleb128 0x1
+ 273 00a7 9C       		.byte	0x9c
+ 274 00a8 07       		.uleb128 0x7
+ 275 00a9 1B000000 		.4byte	.LASF14
+ 276 00ad 01       		.byte	0x1
+ 277 00ae 18       		.byte	0x18
+ 278 00af 5D000000 		.4byte	0x5d
+ 279 00b3 00000000 		.4byte	.LFB34
+ 280 00b7 B4000000 		.4byte	.LFE34-.LFB34
+ 281 00bb 01       		.uleb128 0x1
+ 282 00bc 9C       		.byte	0x9c
+ 283 00bd 08       		.uleb128 0x8
+ 284 00be 63010000 		.4byte	.LASF19
+ 285 00c2 01       		.byte	0x1
+ 286 00c3 0E       		.byte	0xe
+ 287 00c4 8B000000 		.4byte	0x8b
+ 288 00c8 05       		.uleb128 0x5
+ 289 00c9 03       		.byte	0x3
+ 290 00ca 00000000 		.4byte	show_flag
+ 291 00ce 00       		.byte	0
+ 292              		.section	.debug_abbrev,"",%progbits
+ 293              	.Ldebug_abbrev0:
+ 294 0000 01       		.uleb128 0x1
+ 295 0001 11       		.uleb128 0x11
+ 296 0002 01       		.byte	0x1
+ 297 0003 25       		.uleb128 0x25
+ 298 0004 0E       		.uleb128 0xe
+ 299 0005 13       		.uleb128 0x13
+ 300 0006 0B       		.uleb128 0xb
+ 301 0007 03       		.uleb128 0x3
+ 302 0008 0E       		.uleb128 0xe
+ 303 0009 1B       		.uleb128 0x1b
+ 304 000a 0E       		.uleb128 0xe
+ 305 000b 55       		.uleb128 0x55
+ 306 000c 17       		.uleb128 0x17
+ 307 000d 11       		.uleb128 0x11
+ 308 000e 01       		.uleb128 0x1
+ 309 000f 10       		.uleb128 0x10
+ 310 0010 17       		.uleb128 0x17
+ 311 0011 00       		.byte	0
+ 312 0012 00       		.byte	0
+ 313 0013 02       		.uleb128 0x2
+ 314 0014 24       		.uleb128 0x24
+ 315 0015 00       		.byte	0
+ 316 0016 0B       		.uleb128 0xb
+ 317 0017 0B       		.uleb128 0xb
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccsEhnVH.s 			page 8
+
+
+ 318 0018 3E       		.uleb128 0x3e
+ 319 0019 0B       		.uleb128 0xb
+ 320 001a 03       		.uleb128 0x3
+ 321 001b 0E       		.uleb128 0xe
+ 322 001c 00       		.byte	0
+ 323 001d 00       		.byte	0
+ 324 001e 03       		.uleb128 0x3
+ 325 001f 24       		.uleb128 0x24
+ 326 0020 00       		.byte	0
+ 327 0021 0B       		.uleb128 0xb
+ 328 0022 0B       		.uleb128 0xb
+ 329 0023 3E       		.uleb128 0x3e
+ 330 0024 0B       		.uleb128 0xb
+ 331 0025 03       		.uleb128 0x3
+ 332 0026 08       		.uleb128 0x8
+ 333 0027 00       		.byte	0
+ 334 0028 00       		.byte	0
+ 335 0029 04       		.uleb128 0x4
+ 336 002a 16       		.uleb128 0x16
+ 337 002b 00       		.byte	0
+ 338 002c 03       		.uleb128 0x3
+ 339 002d 0E       		.uleb128 0xe
+ 340 002e 3A       		.uleb128 0x3a
+ 341 002f 0B       		.uleb128 0xb
+ 342 0030 3B       		.uleb128 0x3b
+ 343 0031 0B       		.uleb128 0xb
+ 344 0032 49       		.uleb128 0x49
+ 345 0033 13       		.uleb128 0x13
+ 346 0034 00       		.byte	0
+ 347 0035 00       		.byte	0
+ 348 0036 05       		.uleb128 0x5
+ 349 0037 35       		.uleb128 0x35
+ 350 0038 00       		.byte	0
+ 351 0039 49       		.uleb128 0x49
+ 352 003a 13       		.uleb128 0x13
+ 353 003b 00       		.byte	0
+ 354 003c 00       		.byte	0
+ 355 003d 06       		.uleb128 0x6
+ 356 003e 2E       		.uleb128 0x2e
+ 357 003f 00       		.byte	0
+ 358 0040 3F       		.uleb128 0x3f
+ 359 0041 19       		.uleb128 0x19
+ 360 0042 03       		.uleb128 0x3
+ 361 0043 0E       		.uleb128 0xe
+ 362 0044 3A       		.uleb128 0x3a
+ 363 0045 0B       		.uleb128 0xb
+ 364 0046 3B       		.uleb128 0x3b
+ 365 0047 0B       		.uleb128 0xb
+ 366 0048 27       		.uleb128 0x27
+ 367 0049 19       		.uleb128 0x19
+ 368 004a 11       		.uleb128 0x11
+ 369 004b 01       		.uleb128 0x1
+ 370 004c 12       		.uleb128 0x12
+ 371 004d 06       		.uleb128 0x6
+ 372 004e 40       		.uleb128 0x40
+ 373 004f 18       		.uleb128 0x18
+ 374 0050 9642     		.uleb128 0x2116
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccsEhnVH.s 			page 9
+
+
+ 375 0052 19       		.uleb128 0x19
+ 376 0053 00       		.byte	0
+ 377 0054 00       		.byte	0
+ 378 0055 07       		.uleb128 0x7
+ 379 0056 2E       		.uleb128 0x2e
+ 380 0057 00       		.byte	0
+ 381 0058 3F       		.uleb128 0x3f
+ 382 0059 19       		.uleb128 0x19
+ 383 005a 03       		.uleb128 0x3
+ 384 005b 0E       		.uleb128 0xe
+ 385 005c 3A       		.uleb128 0x3a
+ 386 005d 0B       		.uleb128 0xb
+ 387 005e 3B       		.uleb128 0x3b
+ 388 005f 0B       		.uleb128 0xb
+ 389 0060 49       		.uleb128 0x49
+ 390 0061 13       		.uleb128 0x13
+ 391 0062 11       		.uleb128 0x11
+ 392 0063 01       		.uleb128 0x1
+ 393 0064 12       		.uleb128 0x12
+ 394 0065 06       		.uleb128 0x6
+ 395 0066 40       		.uleb128 0x40
+ 396 0067 18       		.uleb128 0x18
+ 397 0068 9642     		.uleb128 0x2116
+ 398 006a 19       		.uleb128 0x19
+ 399 006b 00       		.byte	0
+ 400 006c 00       		.byte	0
+ 401 006d 08       		.uleb128 0x8
+ 402 006e 34       		.uleb128 0x34
+ 403 006f 00       		.byte	0
+ 404 0070 03       		.uleb128 0x3
+ 405 0071 0E       		.uleb128 0xe
+ 406 0072 3A       		.uleb128 0x3a
+ 407 0073 0B       		.uleb128 0xb
+ 408 0074 3B       		.uleb128 0x3b
+ 409 0075 0B       		.uleb128 0xb
+ 410 0076 49       		.uleb128 0x49
+ 411 0077 13       		.uleb128 0x13
+ 412 0078 3F       		.uleb128 0x3f
+ 413 0079 19       		.uleb128 0x19
+ 414 007a 02       		.uleb128 0x2
+ 415 007b 18       		.uleb128 0x18
+ 416 007c 00       		.byte	0
+ 417 007d 00       		.byte	0
+ 418 007e 00       		.byte	0
+ 419              		.section	.debug_aranges,"",%progbits
+ 420 0000 24000000 		.4byte	0x24
+ 421 0004 0200     		.2byte	0x2
+ 422 0006 00000000 		.4byte	.Ldebug_info0
+ 423 000a 04       		.byte	0x4
+ 424 000b 00       		.byte	0
+ 425 000c 0000     		.2byte	0
+ 426 000e 0000     		.2byte	0
+ 427 0010 00000000 		.4byte	.LFB33
+ 428 0014 1C000000 		.4byte	.LFE33-.LFB33
+ 429 0018 00000000 		.4byte	.LFB34
+ 430 001c B4000000 		.4byte	.LFE34-.LFB34
+ 431 0020 00000000 		.4byte	0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccsEhnVH.s 			page 10
+
+
+ 432 0024 00000000 		.4byte	0
+ 433              		.section	.debug_ranges,"",%progbits
+ 434              	.Ldebug_ranges0:
+ 435 0000 00000000 		.4byte	.LFB33
+ 436 0004 1C000000 		.4byte	.LFE33
+ 437 0008 00000000 		.4byte	.LFB34
+ 438 000c B4000000 		.4byte	.LFE34
+ 439 0010 00000000 		.4byte	0
+ 440 0014 00000000 		.4byte	0
+ 441              		.section	.debug_line,"",%progbits
+ 442              	.Ldebug_line0:
+ 443 0000 88000000 		.section	.debug_str,"MS",%progbits,1
+ 443      02004500 
+ 443      00000201 
+ 443      FB0E0D00 
+ 443      01010101 
+ 444              	.LASF6:
+ 445 0000 6C6F6E67 		.ascii	"long long int\000"
+ 445      206C6F6E 
+ 445      6720696E 
+ 445      7400
+ 446              	.LASF8:
+ 447 000e 756E7369 		.ascii	"unsigned int\000"
+ 447      676E6564 
+ 447      20696E74 
+ 447      00
+ 448              	.LASF14:
+ 449 001b 6D61696E 		.ascii	"main\000"
+ 449      00
+ 450              	.LASF17:
+ 451 0020 433A5C55 		.ascii	"C:\\Users\\Admin\\Desktop\\IR LCD\\IR_LCD\\IR_LCD.c"
+ 451      73657273 
+ 451      5C41646D 
+ 451      696E5C44 
+ 451      65736B74 
+ 452 004d 7964736E 		.ascii	"ydsn\000"
+ 452      00
+ 453              	.LASF18:
+ 454 0052 75696E74 		.ascii	"uint8\000"
+ 454      3800
+ 455              	.LASF5:
+ 456 0058 6C6F6E67 		.ascii	"long unsigned int\000"
+ 456      20756E73 
+ 456      69676E65 
+ 456      6420696E 
+ 456      7400
+ 457              	.LASF7:
+ 458 006a 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 458      206C6F6E 
+ 458      6720756E 
+ 458      7369676E 
+ 458      65642069 
+ 459              	.LASF13:
+ 460 0081 49525F48 		.ascii	"IR_Handler\000"
+ 460      616E646C 
+ 460      657200
+ 461              	.LASF15:
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccsEhnVH.s 			page 11
+
+
+ 462 008c 474E5520 		.ascii	"GNU C 4.8.4 20140526 (release) [ARM/embedded-4_8-br"
+ 462      4320342E 
+ 462      382E3420 
+ 462      32303134 
+ 462      30353236 
+ 463 00bf 616E6368 		.ascii	"anch revision 211358] -mcpu=cortex-m0 -mthumb -g -O"
+ 463      20726576 
+ 463      6973696F 
+ 463      6E203231 
+ 463      31333538 
+ 464 00f2 30202D66 		.ascii	"0 -ffunction-sections\000"
+ 464      66756E63 
+ 464      74696F6E 
+ 464      2D736563 
+ 464      74696F6E 
+ 465              	.LASF1:
+ 466 0108 756E7369 		.ascii	"unsigned char\000"
+ 466      676E6564 
+ 466      20636861 
+ 466      7200
+ 467              	.LASF11:
+ 468 0116 63686172 		.ascii	"char\000"
+ 468      00
+ 469              	.LASF4:
+ 470 011b 6C6F6E67 		.ascii	"long int\000"
+ 470      20696E74 
+ 470      00
+ 471              	.LASF2:
+ 472 0124 73686F72 		.ascii	"short int\000"
+ 472      7420696E 
+ 472      7400
+ 473              	.LASF10:
+ 474 012e 646F7562 		.ascii	"double\000"
+ 474      6C6500
+ 475              	.LASF3:
+ 476 0135 73686F72 		.ascii	"short unsigned int\000"
+ 476      7420756E 
+ 476      7369676E 
+ 476      65642069 
+ 476      6E7400
+ 477              	.LASF0:
+ 478 0148 7369676E 		.ascii	"signed char\000"
+ 478      65642063 
+ 478      68617200 
+ 479              	.LASF9:
+ 480 0154 666C6F61 		.ascii	"float\000"
+ 480      7400
+ 481              	.LASF16:
+ 482 015a 2E5C6D61 		.ascii	".\\main.c\000"
+ 482      696E2E63 
+ 482      00
+ 483              	.LASF19:
+ 484 0163 73686F77 		.ascii	"show_flag\000"
+ 484      5F666C61 
+ 484      6700
+ 485              	.LASF12:
+ 486 016d 73697A65 		.ascii	"sizetype\000"
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccsEhnVH.s 			page 12
+
+
+ 486      74797065 
+ 486      00
+ 487              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.8.4 20140526 (release) [ARM/embedded-4_8-br

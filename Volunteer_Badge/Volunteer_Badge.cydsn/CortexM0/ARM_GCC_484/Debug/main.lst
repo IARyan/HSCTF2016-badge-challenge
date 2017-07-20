@@ -1,0 +1,641 @@
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc8RNVSv.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 6
+  10              		.eabi_attribute 34, 0
+  11              		.eabi_attribute 18, 4
+  12              		.code	16
+  13              		.file	"main.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.rodata
+  18              		.align	2
+  19              	.LC5:
+  20 0000 514C3545 		.ascii	"QL5EGTN5\000"
+  20      47544E35 
+  20      00
+  21 0009 000000   		.align	2
+  22              	.LC0:
+  23 000c 01       		.byte	1
+  24 000d 02       		.byte	2
+  25 000e 01       		.byte	1
+  26 000f 02       		.byte	2
+  27 0010 02       		.byte	2
+  28 0011 01       		.byte	1
+  29 0012 01       		.byte	1
+  30 0013 02       		.byte	2
+  31 0014 01       		.byte	1
+  32 0015 01       		.byte	1
+  33 0016 02       		.byte	2
+  34 0017 02       		.byte	2
+  35 0018 01       		.byte	1
+  36 0019 01       		.byte	1
+  37 001a 01       		.byte	1
+  38 001b 02       		.byte	2
+  39 001c 01       		.byte	1
+  40 001d 02       		.byte	2
+  41 001e 02       		.byte	2
+  42 001f 00       		.byte	0
+  43              		.align	2
+  44              	.LC1:
+  45 0020 02       		.byte	2
+  46 0021 02       		.byte	2
+  47 0022 02       		.byte	2
+  48 0023 01       		.byte	1
+  49 0024 01       		.byte	1
+  50 0025 02       		.byte	2
+  51 0026 02       		.byte	2
+  52 0027 01       		.byte	1
+  53 0028 01       		.byte	1
+  54 0029 02       		.byte	2
+  55 002a 02       		.byte	2
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc8RNVSv.s 			page 2
+
+
+  56 002b 02       		.byte	2
+  57 002c 01       		.byte	1
+  58 002d 02       		.byte	2
+  59 002e 02       		.byte	2
+  60 002f 02       		.byte	2
+  61 0030 02       		.byte	2
+  62 0031 02       		.byte	2
+  63 0032 01       		.byte	1
+  64 0033 00       		.byte	0
+  65              		.section	.text.main,"ax",%progbits
+  66              		.align	2
+  67              		.global	main
+  68              		.code	16
+  69              		.thumb_func
+  70              		.type	main, %function
+  71              	main:
+  72              	.LFB33:
+  73              		.file 1 ".\\main.c"
+   1:.\main.c      **** /* ========================================
+   2:.\main.c      ****  *
+   3:.\main.c      ****  * Red Badge source code. The volunteer badge
+   4:.\main.c      ****  * is used to send encoded morse code message.
+   5:.\main.c      ****  *
+   6:.\main.c      ****  * Author(s): Ryan Grandgenett <rmgrandgenett@unomaha.edu>
+   7:.\main.c      ****  *
+   8:.\main.c      ****  * Eye Color: Green
+   9:.\main.c      ****  * Serial: Print the morse code output
+  10:.\main.c      ****  *
+  11:.\main.c      ****  * Copyright Nullify, 2016
+  12:.\main.c      ****  * All Rights Reserved
+  13:.\main.c      ****  * UNPUBLISHED, LICENSED SOFTWARE.
+  14:.\main.c      ****  *
+  15:.\main.c      ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+  16:.\main.c      ****  * WHICH IS THE PROPERTY OF NULLIY.
+  17:.\main.c      ****  *
+  18:.\main.c      ****  * ========================================
+  19:.\main.c      **** */
+  20:.\main.c      **** #include <project.h>
+  21:.\main.c      **** #include <string.h>
+  22:.\main.c      **** #include <stdio.h>
+  23:.\main.c      **** #include "lightlib.h"
+  24:.\main.c      **** #include "togglelib.h"
+  25:.\main.c      **** #include "morse.h"
+  26:.\main.c      **** #include "state.h"
+  27:.\main.c      **** 
+  28:.\main.c      **** int main()
+  29:.\main.c      **** {
+  74              		.loc 1 29 0
+  75              		.cfi_startproc
+  76 0000 80B5     		push	{r7, lr}
+  77              		.cfi_def_cfa_offset 8
+  78              		.cfi_offset 7, -8
+  79              		.cfi_offset 14, -4
+  80 0002 8AB0     		sub	sp, sp, #40
+  81              		.cfi_def_cfa_offset 48
+  82 0004 00AF     		add	r7, sp, #0
+  83              		.cfi_def_cfa_register 7
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc8RNVSv.s 			page 3
+
+
+  30:.\main.c      ****     uint8 volunteer_sequance[MAX_SEQUENCE_SIZE] = {LEFT_TOGGLE, RIGHT_TOGGLE, LEFT_TOGGLE, RIGHT_TO
+  84              		.loc 1 30 0
+  85 0006 3A1C     		mov	r2, r7
+  86 0008 1432     		add	r2, r2, #20
+  87 000a 194B     		ldr	r3, .L4
+  88 000c 111C     		mov	r1, r2
+  89 000e 1A1C     		mov	r2, r3
+  90 0010 1423     		mov	r3, #20
+  91 0012 081C     		mov	r0, r1
+  92 0014 111C     		mov	r1, r2
+  93 0016 1A1C     		mov	r2, r3
+  94 0018 FFF7FEFF 		bl	memcpy
+  31:.\main.c      ****     uint8 organizer_sequance[MAX_SEQUENCE_SIZE] = {RIGHT_TOGGLE, RIGHT_TOGGLE, RIGHT_TOGGLE, LEFT_T
+  95              		.loc 1 31 0
+  96 001c 3A1C     		mov	r2, r7
+  97 001e 154B     		ldr	r3, .L4+4
+  98 0020 111C     		mov	r1, r2
+  99 0022 1A1C     		mov	r2, r3
+ 100 0024 1423     		mov	r3, #20
+ 101 0026 081C     		mov	r0, r1
+ 102 0028 111C     		mov	r1, r2
+ 103 002a 1A1C     		mov	r2, r3
+ 104 002c FFF7FEFF 		bl	memcpy
+  32:.\main.c      **** 
+  33:.\main.c      ****     /* Enable interrupts (needed for toggles and organizer PWRM) */
+  34:.\main.c      ****     CyGlobalIntEnable;
+ 105              		.loc 1 34 0
+ 106              	@ 34 ".\main.c" 1
+ 107 0030 62B6     		CPSIE   i
+ 108              	@ 0 "" 2
+  35:.\main.c      **** 
+  36:.\main.c      ****     /* Enable toggle buttons */
+  37:.\main.c      ****     enable_toggle_interrupts();
+ 109              		.loc 1 37 0
+ 110              		.code	16
+ 111 0032 FFF7FEFF 		bl	enable_toggle_interrupts
+  38:.\main.c      ****     
+  39:.\main.c      ****     /* Initialize LEDs to off and default color value */
+  40:.\main.c      ****     init_led(GREEN);
+ 112              		.loc 1 40 0
+ 113 0036 0420     		mov	r0, #4
+ 114 0038 FFF7FEFF 		bl	init_led
+  41:.\main.c      ****     
+  42:.\main.c      ****     /* Set the toggle button magic sequences */
+  43:.\main.c      ****     init_magic_toggle_sequance(VOLUNTEER, volunteer_sequance);
+ 115              		.loc 1 43 0
+ 116 003c 3B1C     		mov	r3, r7
+ 117 003e 1433     		add	r3, r3, #20
+ 118 0040 0120     		mov	r0, #1
+ 119 0042 191C     		mov	r1, r3
+ 120 0044 FFF7FEFF 		bl	init_magic_toggle_sequance
+  44:.\main.c      ****     init_magic_toggle_sequance(ORGANIZER, organizer_sequance);
+ 121              		.loc 1 44 0
+ 122 0048 3B1C     		mov	r3, r7
+ 123 004a 0220     		mov	r0, #2
+ 124 004c 191C     		mov	r1, r3
+ 125 004e FFF7FEFF 		bl	init_magic_toggle_sequance
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc8RNVSv.s 			page 4
+
+
+  45:.\main.c      ****     
+  46:.\main.c      ****     /* Set the default state to volunteer badge settings */
+  47:.\main.c      ****      badge_state = VOLUNTEER;
+ 126              		.loc 1 47 0
+ 127 0052 094B     		ldr	r3, .L4+8
+ 128 0054 0122     		mov	r2, #1
+ 129 0056 1A70     		strb	r2, [r3]
+ 130              	.L3:
+  48:.\main.c      ****     
+  49:.\main.c      ****     for(;;)
+  50:.\main.c      ****     {  
+  51:.\main.c      ****        if (badge_state == VOLUNTEER) {
+ 131              		.loc 1 51 0
+ 132 0058 074B     		ldr	r3, .L4+8
+ 133 005a 1B78     		ldrb	r3, [r3]
+ 134 005c DBB2     		uxtb	r3, r3
+ 135 005e 012B     		cmp	r3, #1
+ 136 0060 05D1     		bne	.L2
+  52:.\main.c      ****          morse_message(LEFT_LED|RIGHT_LED, "QL5EGTN5");
+ 137              		.loc 1 52 0
+ 138 0062 064B     		ldr	r3, .L4+12
+ 139 0064 0320     		mov	r0, #3
+ 140 0066 191C     		mov	r1, r3
+ 141 0068 FFF7FEFF 		bl	morse_message
+  53:.\main.c      ****        }
+  54:.\main.c      ****       
+  55:.\main.c      ****     }
+ 142              		.loc 1 55 0
+ 143 006c F4E7     		b	.L3
+ 144              	.L2:
+ 145 006e F3E7     		b	.L3
+ 146              	.L5:
+ 147              		.align	2
+ 148              	.L4:
+ 149 0070 0C000000 		.word	.LC0
+ 150 0074 20000000 		.word	.LC1
+ 151 0078 00000000 		.word	badge_state
+ 152 007c 00000000 		.word	.LC5
+ 153              		.cfi_endproc
+ 154              	.LFE33:
+ 155              		.size	main, .-main
+ 156              		.text
+ 157              	.Letext0:
+ 158              		.file 2 ".\\Generated_Source\\PSoC4/cytypes.h"
+ 159              		.file 3 ".\\state.h"
+ 160              		.section	.debug_info,"",%progbits
+ 161              	.Ldebug_info0:
+ 162 0000 E5000000 		.4byte	0xe5
+ 163 0004 0400     		.2byte	0x4
+ 164 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 165 000a 04       		.byte	0x4
+ 166 000b 01       		.uleb128 0x1
+ 167 000c 7B000000 		.4byte	.LASF15
+ 168 0010 01       		.byte	0x1
+ 169 0011 8C010000 		.4byte	.LASF16
+ 170 0015 F7000000 		.4byte	.LASF17
+ 171 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc8RNVSv.s 			page 5
+
+
+ 172 001d 00000000 		.4byte	0
+ 173 0021 00000000 		.4byte	.Ldebug_line0
+ 174 0025 02       		.uleb128 0x2
+ 175 0026 01       		.byte	0x1
+ 176 0027 06       		.byte	0x6
+ 177 0028 67010000 		.4byte	.LASF0
+ 178 002c 02       		.uleb128 0x2
+ 179 002d 01       		.byte	0x1
+ 180 002e 08       		.byte	0x8
+ 181 002f 34010000 		.4byte	.LASF1
+ 182 0033 02       		.uleb128 0x2
+ 183 0034 02       		.byte	0x2
+ 184 0035 05       		.byte	0x5
+ 185 0036 50010000 		.4byte	.LASF2
+ 186 003a 02       		.uleb128 0x2
+ 187 003b 02       		.byte	0x2
+ 188 003c 07       		.byte	0x7
+ 189 003d 0E000000 		.4byte	.LASF3
+ 190 0041 02       		.uleb128 0x2
+ 191 0042 04       		.byte	0x4
+ 192 0043 05       		.byte	0x5
+ 193 0044 47010000 		.4byte	.LASF4
+ 194 0048 02       		.uleb128 0x2
+ 195 0049 04       		.byte	0x4
+ 196 004a 07       		.byte	0x7
+ 197 004b 52000000 		.4byte	.LASF5
+ 198 004f 02       		.uleb128 0x2
+ 199 0050 08       		.byte	0x8
+ 200 0051 05       		.byte	0x5
+ 201 0052 00000000 		.4byte	.LASF6
+ 202 0056 02       		.uleb128 0x2
+ 203 0057 08       		.byte	0x8
+ 204 0058 07       		.byte	0x7
+ 205 0059 64000000 		.4byte	.LASF7
+ 206 005d 03       		.uleb128 0x3
+ 207 005e 04       		.byte	0x4
+ 208 005f 05       		.byte	0x5
+ 209 0060 696E7400 		.ascii	"int\000"
+ 210 0064 02       		.uleb128 0x2
+ 211 0065 04       		.byte	0x4
+ 212 0066 07       		.byte	0x7
+ 213 0067 21000000 		.4byte	.LASF8
+ 214 006b 04       		.uleb128 0x4
+ 215 006c 61010000 		.4byte	.LASF18
+ 216 0070 02       		.byte	0x2
+ 217 0071 A1       		.byte	0xa1
+ 218 0072 2C000000 		.4byte	0x2c
+ 219 0076 02       		.uleb128 0x2
+ 220 0077 04       		.byte	0x4
+ 221 0078 04       		.byte	0x4
+ 222 0079 86010000 		.4byte	.LASF9
+ 223 007d 02       		.uleb128 0x2
+ 224 007e 08       		.byte	0x8
+ 225 007f 04       		.byte	0x4
+ 226 0080 5A010000 		.4byte	.LASF10
+ 227 0084 02       		.uleb128 0x2
+ 228 0085 01       		.byte	0x1
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc8RNVSv.s 			page 6
+
+
+ 229 0086 08       		.byte	0x8
+ 230 0087 42010000 		.4byte	.LASF11
+ 231 008b 05       		.uleb128 0x5
+ 232 008c 6B000000 		.4byte	0x6b
+ 233 0090 02       		.uleb128 0x2
+ 234 0091 04       		.byte	0x4
+ 235 0092 07       		.byte	0x7
+ 236 0093 95010000 		.4byte	.LASF12
+ 237 0097 06       		.uleb128 0x6
+ 238 0098 6B000000 		.4byte	0x6b
+ 239 009c A7000000 		.4byte	0xa7
+ 240 00a0 07       		.uleb128 0x7
+ 241 00a1 90000000 		.4byte	0x90
+ 242 00a5 13       		.byte	0x13
+ 243 00a6 00       		.byte	0
+ 244 00a7 08       		.uleb128 0x8
+ 245 00a8 2E000000 		.4byte	.LASF19
+ 246 00ac 01       		.byte	0x1
+ 247 00ad 1C       		.byte	0x1c
+ 248 00ae 5D000000 		.4byte	0x5d
+ 249 00b2 00000000 		.4byte	.LFB33
+ 250 00b6 80000000 		.4byte	.LFE33-.LFB33
+ 251 00ba 01       		.uleb128 0x1
+ 252 00bb 9C       		.byte	0x9c
+ 253 00bc DD000000 		.4byte	0xdd
+ 254 00c0 09       		.uleb128 0x9
+ 255 00c1 3F000000 		.4byte	.LASF13
+ 256 00c5 01       		.byte	0x1
+ 257 00c6 1E       		.byte	0x1e
+ 258 00c7 97000000 		.4byte	0x97
+ 259 00cb 02       		.uleb128 0x2
+ 260 00cc 91       		.byte	0x91
+ 261 00cd 64       		.sleb128 -28
+ 262 00ce 09       		.uleb128 0x9
+ 263 00cf 73010000 		.4byte	.LASF14
+ 264 00d3 01       		.byte	0x1
+ 265 00d4 1F       		.byte	0x1f
+ 266 00d5 97000000 		.4byte	0x97
+ 267 00d9 02       		.uleb128 0x2
+ 268 00da 91       		.byte	0x91
+ 269 00db 50       		.sleb128 -48
+ 270 00dc 00       		.byte	0
+ 271 00dd 0A       		.uleb128 0xa
+ 272 00de 33000000 		.4byte	.LASF20
+ 273 00e2 03       		.byte	0x3
+ 274 00e3 15       		.byte	0x15
+ 275 00e4 8B000000 		.4byte	0x8b
+ 276 00e8 00       		.byte	0
+ 277              		.section	.debug_abbrev,"",%progbits
+ 278              	.Ldebug_abbrev0:
+ 279 0000 01       		.uleb128 0x1
+ 280 0001 11       		.uleb128 0x11
+ 281 0002 01       		.byte	0x1
+ 282 0003 25       		.uleb128 0x25
+ 283 0004 0E       		.uleb128 0xe
+ 284 0005 13       		.uleb128 0x13
+ 285 0006 0B       		.uleb128 0xb
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc8RNVSv.s 			page 7
+
+
+ 286 0007 03       		.uleb128 0x3
+ 287 0008 0E       		.uleb128 0xe
+ 288 0009 1B       		.uleb128 0x1b
+ 289 000a 0E       		.uleb128 0xe
+ 290 000b 55       		.uleb128 0x55
+ 291 000c 17       		.uleb128 0x17
+ 292 000d 11       		.uleb128 0x11
+ 293 000e 01       		.uleb128 0x1
+ 294 000f 10       		.uleb128 0x10
+ 295 0010 17       		.uleb128 0x17
+ 296 0011 00       		.byte	0
+ 297 0012 00       		.byte	0
+ 298 0013 02       		.uleb128 0x2
+ 299 0014 24       		.uleb128 0x24
+ 300 0015 00       		.byte	0
+ 301 0016 0B       		.uleb128 0xb
+ 302 0017 0B       		.uleb128 0xb
+ 303 0018 3E       		.uleb128 0x3e
+ 304 0019 0B       		.uleb128 0xb
+ 305 001a 03       		.uleb128 0x3
+ 306 001b 0E       		.uleb128 0xe
+ 307 001c 00       		.byte	0
+ 308 001d 00       		.byte	0
+ 309 001e 03       		.uleb128 0x3
+ 310 001f 24       		.uleb128 0x24
+ 311 0020 00       		.byte	0
+ 312 0021 0B       		.uleb128 0xb
+ 313 0022 0B       		.uleb128 0xb
+ 314 0023 3E       		.uleb128 0x3e
+ 315 0024 0B       		.uleb128 0xb
+ 316 0025 03       		.uleb128 0x3
+ 317 0026 08       		.uleb128 0x8
+ 318 0027 00       		.byte	0
+ 319 0028 00       		.byte	0
+ 320 0029 04       		.uleb128 0x4
+ 321 002a 16       		.uleb128 0x16
+ 322 002b 00       		.byte	0
+ 323 002c 03       		.uleb128 0x3
+ 324 002d 0E       		.uleb128 0xe
+ 325 002e 3A       		.uleb128 0x3a
+ 326 002f 0B       		.uleb128 0xb
+ 327 0030 3B       		.uleb128 0x3b
+ 328 0031 0B       		.uleb128 0xb
+ 329 0032 49       		.uleb128 0x49
+ 330 0033 13       		.uleb128 0x13
+ 331 0034 00       		.byte	0
+ 332 0035 00       		.byte	0
+ 333 0036 05       		.uleb128 0x5
+ 334 0037 35       		.uleb128 0x35
+ 335 0038 00       		.byte	0
+ 336 0039 49       		.uleb128 0x49
+ 337 003a 13       		.uleb128 0x13
+ 338 003b 00       		.byte	0
+ 339 003c 00       		.byte	0
+ 340 003d 06       		.uleb128 0x6
+ 341 003e 01       		.uleb128 0x1
+ 342 003f 01       		.byte	0x1
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc8RNVSv.s 			page 8
+
+
+ 343 0040 49       		.uleb128 0x49
+ 344 0041 13       		.uleb128 0x13
+ 345 0042 01       		.uleb128 0x1
+ 346 0043 13       		.uleb128 0x13
+ 347 0044 00       		.byte	0
+ 348 0045 00       		.byte	0
+ 349 0046 07       		.uleb128 0x7
+ 350 0047 21       		.uleb128 0x21
+ 351 0048 00       		.byte	0
+ 352 0049 49       		.uleb128 0x49
+ 353 004a 13       		.uleb128 0x13
+ 354 004b 2F       		.uleb128 0x2f
+ 355 004c 0B       		.uleb128 0xb
+ 356 004d 00       		.byte	0
+ 357 004e 00       		.byte	0
+ 358 004f 08       		.uleb128 0x8
+ 359 0050 2E       		.uleb128 0x2e
+ 360 0051 01       		.byte	0x1
+ 361 0052 3F       		.uleb128 0x3f
+ 362 0053 19       		.uleb128 0x19
+ 363 0054 03       		.uleb128 0x3
+ 364 0055 0E       		.uleb128 0xe
+ 365 0056 3A       		.uleb128 0x3a
+ 366 0057 0B       		.uleb128 0xb
+ 367 0058 3B       		.uleb128 0x3b
+ 368 0059 0B       		.uleb128 0xb
+ 369 005a 49       		.uleb128 0x49
+ 370 005b 13       		.uleb128 0x13
+ 371 005c 11       		.uleb128 0x11
+ 372 005d 01       		.uleb128 0x1
+ 373 005e 12       		.uleb128 0x12
+ 374 005f 06       		.uleb128 0x6
+ 375 0060 40       		.uleb128 0x40
+ 376 0061 18       		.uleb128 0x18
+ 377 0062 9642     		.uleb128 0x2116
+ 378 0064 19       		.uleb128 0x19
+ 379 0065 01       		.uleb128 0x1
+ 380 0066 13       		.uleb128 0x13
+ 381 0067 00       		.byte	0
+ 382 0068 00       		.byte	0
+ 383 0069 09       		.uleb128 0x9
+ 384 006a 34       		.uleb128 0x34
+ 385 006b 00       		.byte	0
+ 386 006c 03       		.uleb128 0x3
+ 387 006d 0E       		.uleb128 0xe
+ 388 006e 3A       		.uleb128 0x3a
+ 389 006f 0B       		.uleb128 0xb
+ 390 0070 3B       		.uleb128 0x3b
+ 391 0071 0B       		.uleb128 0xb
+ 392 0072 49       		.uleb128 0x49
+ 393 0073 13       		.uleb128 0x13
+ 394 0074 02       		.uleb128 0x2
+ 395 0075 18       		.uleb128 0x18
+ 396 0076 00       		.byte	0
+ 397 0077 00       		.byte	0
+ 398 0078 0A       		.uleb128 0xa
+ 399 0079 34       		.uleb128 0x34
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc8RNVSv.s 			page 9
+
+
+ 400 007a 00       		.byte	0
+ 401 007b 03       		.uleb128 0x3
+ 402 007c 0E       		.uleb128 0xe
+ 403 007d 3A       		.uleb128 0x3a
+ 404 007e 0B       		.uleb128 0xb
+ 405 007f 3B       		.uleb128 0x3b
+ 406 0080 0B       		.uleb128 0xb
+ 407 0081 49       		.uleb128 0x49
+ 408 0082 13       		.uleb128 0x13
+ 409 0083 3F       		.uleb128 0x3f
+ 410 0084 19       		.uleb128 0x19
+ 411 0085 3C       		.uleb128 0x3c
+ 412 0086 19       		.uleb128 0x19
+ 413 0087 00       		.byte	0
+ 414 0088 00       		.byte	0
+ 415 0089 00       		.byte	0
+ 416              		.section	.debug_aranges,"",%progbits
+ 417 0000 1C000000 		.4byte	0x1c
+ 418 0004 0200     		.2byte	0x2
+ 419 0006 00000000 		.4byte	.Ldebug_info0
+ 420 000a 04       		.byte	0x4
+ 421 000b 00       		.byte	0
+ 422 000c 0000     		.2byte	0
+ 423 000e 0000     		.2byte	0
+ 424 0010 00000000 		.4byte	.LFB33
+ 425 0014 80000000 		.4byte	.LFE33-.LFB33
+ 426 0018 00000000 		.4byte	0
+ 427 001c 00000000 		.4byte	0
+ 428              		.section	.debug_ranges,"",%progbits
+ 429              	.Ldebug_ranges0:
+ 430 0000 00000000 		.4byte	.LFB33
+ 431 0004 80000000 		.4byte	.LFE33
+ 432 0008 00000000 		.4byte	0
+ 433 000c 00000000 		.4byte	0
+ 434              		.section	.debug_line,"",%progbits
+ 435              	.Ldebug_line0:
+ 436 0000 72000000 		.section	.debug_str,"MS",%progbits,1
+ 436      02005200 
+ 436      00000201 
+ 436      FB0E0D00 
+ 436      01010101 
+ 437              	.LASF6:
+ 438 0000 6C6F6E67 		.ascii	"long long int\000"
+ 438      206C6F6E 
+ 438      6720696E 
+ 438      7400
+ 439              	.LASF3:
+ 440 000e 73686F72 		.ascii	"short unsigned int\000"
+ 440      7420756E 
+ 440      7369676E 
+ 440      65642069 
+ 440      6E7400
+ 441              	.LASF8:
+ 442 0021 756E7369 		.ascii	"unsigned int\000"
+ 442      676E6564 
+ 442      20696E74 
+ 442      00
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc8RNVSv.s 			page 10
+
+
+ 443              	.LASF19:
+ 444 002e 6D61696E 		.ascii	"main\000"
+ 444      00
+ 445              	.LASF20:
+ 446 0033 62616467 		.ascii	"badge_state\000"
+ 446      655F7374 
+ 446      61746500 
+ 447              	.LASF13:
+ 448 003f 766F6C75 		.ascii	"volunteer_sequance\000"
+ 448      6E746565 
+ 448      725F7365 
+ 448      7175616E 
+ 448      636500
+ 449              	.LASF5:
+ 450 0052 6C6F6E67 		.ascii	"long unsigned int\000"
+ 450      20756E73 
+ 450      69676E65 
+ 450      6420696E 
+ 450      7400
+ 451              	.LASF7:
+ 452 0064 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 452      206C6F6E 
+ 452      6720756E 
+ 452      7369676E 
+ 452      65642069 
+ 453              	.LASF15:
+ 454 007b 474E5520 		.ascii	"GNU C 4.8.4 20140526 (release) [ARM/embedded-4_8-br"
+ 454      4320342E 
+ 454      382E3420 
+ 454      32303134 
+ 454      30353236 
+ 455 00ae 616E6368 		.ascii	"anch revision 211358] -mcpu=cortex-m0 -mthumb -g -O"
+ 455      20726576 
+ 455      6973696F 
+ 455      6E203231 
+ 455      31333538 
+ 456 00e1 30202D66 		.ascii	"0 -ffunction-sections\000"
+ 456      66756E63 
+ 456      74696F6E 
+ 456      2D736563 
+ 456      74696F6E 
+ 457              	.LASF17:
+ 458 00f7 433A5C55 		.ascii	"C:\\Users\\Admin\\Desktop\\Volunteer Badge\\Volunte"
+ 458      73657273 
+ 458      5C41646D 
+ 458      696E5C44 
+ 458      65736B74 
+ 459 0125 65725F42 		.ascii	"er_Badge.cydsn\000"
+ 459      61646765 
+ 459      2E637964 
+ 459      736E00
+ 460              	.LASF1:
+ 461 0134 756E7369 		.ascii	"unsigned char\000"
+ 461      676E6564 
+ 461      20636861 
+ 461      7200
+ 462              	.LASF11:
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc8RNVSv.s 			page 11
+
+
+ 463 0142 63686172 		.ascii	"char\000"
+ 463      00
+ 464              	.LASF4:
+ 465 0147 6C6F6E67 		.ascii	"long int\000"
+ 465      20696E74 
+ 465      00
+ 466              	.LASF2:
+ 467 0150 73686F72 		.ascii	"short int\000"
+ 467      7420696E 
+ 467      7400
+ 468              	.LASF10:
+ 469 015a 646F7562 		.ascii	"double\000"
+ 469      6C6500
+ 470              	.LASF18:
+ 471 0161 75696E74 		.ascii	"uint8\000"
+ 471      3800
+ 472              	.LASF0:
+ 473 0167 7369676E 		.ascii	"signed char\000"
+ 473      65642063 
+ 473      68617200 
+ 474              	.LASF14:
+ 475 0173 6F726761 		.ascii	"organizer_sequance\000"
+ 475      6E697A65 
+ 475      725F7365 
+ 475      7175616E 
+ 475      636500
+ 476              	.LASF9:
+ 477 0186 666C6F61 		.ascii	"float\000"
+ 477      7400
+ 478              	.LASF16:
+ 479 018c 2E5C6D61 		.ascii	".\\main.c\000"
+ 479      696E2E63 
+ 479      00
+ 480              	.LASF12:
+ 481 0195 73697A65 		.ascii	"sizetype\000"
+ 481      74797065 
+ 481      00
+ 482              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.8.4 20140526 (release) [ARM/embedded-4_8-br

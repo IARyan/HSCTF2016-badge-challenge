@@ -1,0 +1,5 @@
+C:\Users\Admin\Desktop\Teacher Badge\Teacher_Badge\Teacher_Badge.cydsn\Teacher_Badge.cyprj|32fcbf68-99e7-4ec4-b08f-3bba2b31d6a3
+C:\Program Files\Cypress\PSoC Creator\3.1\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|8f8827d1-d704-44d2-8f5a-9324d85fd8c1
+C:\Program Files\Cypress\PSoC Creator\3.1\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|0d357f31-f3c2-4234-9596-129f12abb631
+C:\Program Files\Cypress\PSoC Creator\3.1\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|a7349299-48f5-4081-b9fc-cdb8ca39422d
+C:\Program Files\Cypress\PSoC Creator\3.1\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|5e847b47-ac9f-4b12-a1f4-7c5c46138140

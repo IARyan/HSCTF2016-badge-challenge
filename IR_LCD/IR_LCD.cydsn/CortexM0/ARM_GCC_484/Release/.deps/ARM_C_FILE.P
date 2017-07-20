@@ -1,0 +1,18 @@
+C:/Users/Admin/Desktop/IR\ LCD/IR_LCD/IR_LCD.cydsn/CortexM0/ARM_GCC_484/Release/PWM_Timer.o : C:/Users/Admin/Desktop/IR\ LCD/IR_LCD/IR_LCD.cydsn/Generated_Source/PSoC4/CyLib.h C:/Users/Admin/Desktop/IR\ LCD/IR_LCD/IR_LCD.cydsn/Generated_Source/PSoC4/PWM_Timer.h C:/Users/Admin/Desktop/IR\ LCD/IR_LCD/IR_LCD.cydsn/Generated_Source/PSoC4/cydevice_trm.h C:/Users/Admin/Desktop/IR\ LCD/IR_LCD/IR_LCD.cydsn/Generated_Source/PSoC4/cyfitter.h C:/Users/Admin/Desktop/IR\ LCD/IR_LCD/IR_LCD.cydsn/Generated_Source/PSoC4/cytypes.h C:/Users/Admin/Desktop/IR\ LCD/IR_LCD/IR_LCD.cydsn/Generated_Source/PSoC4/PWM_Timer.c 
+
+C:/Users/Admin/Desktop/IR\ LCD/IR_LCD/IR_LCD.cydsn/Generated_Source/PSoC4/CyLib.h : 
+
+C:/Users/Admin/Desktop/IR\ LCD/IR_LCD/IR_LCD.cydsn/Generated_Source/PSoC4/PWM_Timer.h : 
+
+C:/Users/Admin/Desktop/IR\ LCD/IR_LCD/IR_LCD.cydsn/Generated_Source/PSoC4/cydevice_trm.h : 
+
+C:/Users/Admin/Desktop/IR\ LCD/IR_LCD/IR_LCD.cydsn/Generated_Source/PSoC4/cyfitter.h : 
+
+C:/Users/Admin/Desktop/IR\ LCD/IR_LCD/IR_LCD.cydsn/Generated_Source/PSoC4/cytypes.h : 
+
+C:/Users/Admin/Desktop/IR\ LCD/IR_LCD/IR_LCD.cydsn/Generated_Source/PSoC4/PWM_Timer.c : 
+
+C:/Users/Admin/Desktop/IR\ LCD/IR_LCD/IR_LCD.cydsn/CortexM0/ARM_GCC_484/Release/PWM_Timer_PM.o : C:/Users/Admin/Desktop/IR\ LCD/IR_LCD/IR_LCD.cydsn/Generated_Source/PSoC4/CyLib.h C:/Users/Admin/Desktop/IR\ LCD/IR_LCD/IR_LCD.cydsn/Generated_Source/PSoC4/PWM_Timer.h C:/Users/Admin/Desktop/IR\ LCD/IR_LCD/IR_LCD.cydsn/Generated_Source/PSoC4/cydevice_trm.h C:/Users/Admin/Desktop/IR\ LCD/IR_LCD/IR_LCD.cydsn/Generated_Source/PSoC4/cyfitter.h C:/Users/Admin/Desktop/IR\ LCD/IR_LCD/IR_LCD.cydsn/Generated_Source/PSoC4/cytypes.h C:/Users/Admin/Desktop/IR\ LCD/IR_LCD/IR_LCD.cydsn/Generated_Source/PSoC4/PWM_Timer_PM.c 
+
+C:/Users/Admin/Desktop/IR\ LCD/IR_LCD/IR_LCD.cydsn/Generated_Source/PSoC4/PWM_Timer_PM.c : 
+

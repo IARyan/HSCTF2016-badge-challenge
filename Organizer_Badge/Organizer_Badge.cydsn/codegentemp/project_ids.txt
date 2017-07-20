@@ -1,0 +1,5 @@
+C:\Users\Admin\Desktop\Organizer Badge\Organizer_Badge\Organizer_Badge.cydsn\Organizer_Badge.cyprj|2714dd07-c1ce-45d1-9b1a-5e4ed09bd2c6
+C:\Program Files\Cypress\PSoC Creator\3.1\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|5cf661f4-fba9-4c71-9c16-2d92b1e5bd67
+C:\Program Files\Cypress\PSoC Creator\3.1\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|598c5f48-f812-4825-a048-b97b43d47441
+C:\Program Files\Cypress\PSoC Creator\3.1\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|5a893744-bca6-4e94-b370-1d23d4186b0a
+C:\Program Files\Cypress\PSoC Creator\3.1\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|331ca90d-37de-4d7a-9b8e-71d11e7f96f6

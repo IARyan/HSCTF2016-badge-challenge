@@ -1,0 +1,2969 @@
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczodve5.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 4
+  10              		.eabi_attribute 34, 0
+  11              		.eabi_attribute 18, 4
+  12              		.code	16
+  13              		.file	"morse.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.blinkdot,"ax",%progbits
+  18              		.align	1
+  19              		.global	blinkdot
+  20              		.code	16
+  21              		.thumb_func
+  22              		.type	blinkdot, %function
+  23              	blinkdot:
+  24              	.LFB33:
+  25              		.file 1 ".\\morse.c"
+   1:.\morse.c     **** /* ========================================
+   2:.\morse.c     ****  *
+   3:.\morse.c     ****  * Copyright Nullify, 2016
+   4:.\morse.c     ****  * All Rights Reserved
+   5:.\morse.c     ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:.\morse.c     ****  *
+   7:.\morse.c     ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:.\morse.c     ****  * WHICH IS THE PROPERTY OF NULLIY.
+   9:.\morse.c     ****  *
+  10:.\morse.c     ****  * ========================================
+  11:.\morse.c     **** */
+  12:.\morse.c     **** #include <project.h>
+  13:.\morse.c     **** #include <string.h>
+  14:.\morse.c     **** #include "lightlib.h"
+  15:.\morse.c     **** #include "morse.h"
+  16:.\morse.c     **** 
+  17:.\morse.c     **** void blinkdot(uint8 led_flag) {
+  26              		.loc 1 17 0
+  27              		.cfi_startproc
+  28              	.LVL0:
+  29 0000 10B5     		push	{r4, lr}
+  30              		.cfi_def_cfa_offset 8
+  31              		.cfi_offset 4, -8
+  32              		.cfi_offset 14, -4
+  33              		.loc 1 17 0
+  34 0002 041C     		mov	r4, r0
+  18:.\morse.c     ****     turn_on(led_flag);
+  35              		.loc 1 18 0
+  36 0004 FFF7FEFF 		bl	turn_on
+  37              	.LVL1:
+  19:.\morse.c     ****     CyDelay(DOT_ON_TIME);
+  38              		.loc 1 19 0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczodve5.s 			page 2
+
+
+  39 0008 FA20     		mov	r0, #250
+  40 000a 4000     		lsl	r0, r0, #1
+  41 000c FFF7FEFF 		bl	CyDelay
+  42              	.LVL2:
+  20:.\morse.c     ****     turn_off(led_flag);
+  43              		.loc 1 20 0
+  44 0010 201C     		mov	r0, r4
+  45 0012 FFF7FEFF 		bl	turn_off
+  46              	.LVL3:
+  21:.\morse.c     ****     CyDelay(DOT_OFF_TIME);
+  47              		.loc 1 21 0
+  48 0016 FA20     		mov	r0, #250
+  49 0018 FFF7FEFF 		bl	CyDelay
+  50              	.LVL4:
+  22:.\morse.c     **** }
+  51              		.loc 1 22 0
+  52              		@ sp needed
+  53 001c 10BD     		pop	{r4, pc}
+  54              		.cfi_endproc
+  55              	.LFE33:
+  56              		.size	blinkdot, .-blinkdot
+  57              		.section	.text.blinkdash,"ax",%progbits
+  58              		.align	1
+  59              		.global	blinkdash
+  60              		.code	16
+  61              		.thumb_func
+  62              		.type	blinkdash, %function
+  63              	blinkdash:
+  64              	.LFB34:
+  23:.\morse.c     **** 
+  24:.\morse.c     **** void blinkdash(uint8 led_flag) {
+  65              		.loc 1 24 0
+  66              		.cfi_startproc
+  67              	.LVL5:
+  68 0000 10B5     		push	{r4, lr}
+  69              		.cfi_def_cfa_offset 8
+  70              		.cfi_offset 4, -8
+  71              		.cfi_offset 14, -4
+  72              		.loc 1 24 0
+  73 0002 041C     		mov	r4, r0
+  25:.\morse.c     ****     turn_on(led_flag);
+  74              		.loc 1 25 0
+  75 0004 FFF7FEFF 		bl	turn_on
+  76              	.LVL6:
+  26:.\morse.c     ****     CyDelay(DASH_ON_TIME);
+  77              		.loc 1 26 0
+  78 0008 0448     		ldr	r0, .L3
+  79 000a FFF7FEFF 		bl	CyDelay
+  80              	.LVL7:
+  27:.\morse.c     ****     turn_off(led_flag);
+  81              		.loc 1 27 0
+  82 000e 201C     		mov	r0, r4
+  83 0010 FFF7FEFF 		bl	turn_off
+  84              	.LVL8:
+  28:.\morse.c     ****     CyDelay(DASH_OFF_TIME);
+  85              		.loc 1 28 0
+  86 0014 FA20     		mov	r0, #250
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczodve5.s 			page 3
+
+
+  87 0016 FFF7FEFF 		bl	CyDelay
+  88              	.LVL9:
+  29:.\morse.c     **** }
+  89              		.loc 1 29 0
+  90              		@ sp needed
+  91 001a 10BD     		pop	{r4, pc}
+  92              	.L4:
+  93              		.align	2
+  94              	.L3:
+  95 001c DC050000 		.word	1500
+  96              		.cfi_endproc
+  97              	.LFE34:
+  98              		.size	blinkdash, .-blinkdash
+  99              		.section	.text.new_message_morse,"ax",%progbits
+ 100              		.align	1
+ 101              		.global	new_message_morse
+ 102              		.code	16
+ 103              		.thumb_func
+ 104              		.type	new_message_morse, %function
+ 105              	new_message_morse:
+ 106              	.LFB35:
+  30:.\morse.c     **** 
+  31:.\morse.c     **** void new_message_morse(void) {
+ 107              		.loc 1 31 0
+ 108              		.cfi_startproc
+ 109 0000 38B5     		push	{r3, r4, r5, lr}
+ 110              		.cfi_def_cfa_offset 16
+ 111              		.cfi_offset 3, -16
+ 112              		.cfi_offset 4, -12
+ 113              		.cfi_offset 5, -8
+ 114              		.cfi_offset 14, -4
+  32:.\morse.c     ****     unsigned int i;
+  33:.\morse.c     ****     uint8 original_color;
+  34:.\morse.c     ****     original_color = get_color(LEFT_LED);
+ 115              		.loc 1 34 0
+ 116 0002 0120     		mov	r0, #1
+ 117 0004 FFF7FEFF 		bl	get_color
+ 118              	.LVL10:
+  35:.\morse.c     ****     set_color(LEFT_RIGHT_LED, WHITE);
+ 119              		.loc 1 35 0
+ 120 0008 0721     		mov	r1, #7
+  34:.\morse.c     ****     original_color = get_color(LEFT_LED);
+ 121              		.loc 1 34 0
+ 122 000a 051C     		mov	r5, r0
+ 123              	.LVL11:
+ 124              		.loc 1 35 0
+ 125 000c 0320     		mov	r0, #3
+ 126              	.LVL12:
+ 127 000e FFF7FEFF 		bl	set_color
+ 128              	.LVL13:
+ 129 0012 0524     		mov	r4, #5
+ 130              	.LVL14:
+ 131              	.L7:
+  36:.\morse.c     ****     for (i=0; i<NEW_MESSAGE_NUMBER; i++) {
+  37:.\morse.c     ****        turn_on(LEFT_RIGHT_LED);
+ 132              		.loc 1 37 0 discriminator 2
+ 133 0014 0320     		mov	r0, #3
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczodve5.s 			page 4
+
+
+ 134 0016 FFF7FEFF 		bl	turn_on
+ 135              	.LVL15:
+  38:.\morse.c     ****        CyDelay(RESET_DELAY);
+ 136              		.loc 1 38 0 discriminator 2
+ 137 001a FA20     		mov	r0, #250
+ 138 001c FFF7FEFF 		bl	CyDelay
+ 139              	.LVL16:
+  39:.\morse.c     ****        turn_off(LEFT_RIGHT_LED);
+ 140              		.loc 1 39 0 discriminator 2
+ 141 0020 0320     		mov	r0, #3
+ 142 0022 FFF7FEFF 		bl	turn_off
+ 143              	.LVL17:
+ 144 0026 013C     		sub	r4, r4, #1
+ 145              	.LVL18:
+  40:.\morse.c     ****        CyDelay(RESET_DELAY);
+ 146              		.loc 1 40 0 discriminator 2
+ 147 0028 FA20     		mov	r0, #250
+ 148 002a FFF7FEFF 		bl	CyDelay
+ 149              	.LVL19:
+  36:.\morse.c     ****     for (i=0; i<NEW_MESSAGE_NUMBER; i++) {
+ 150              		.loc 1 36 0 discriminator 2
+ 151 002e 002C     		cmp	r4, #0
+ 152 0030 F0D1     		bne	.L7
+  41:.\morse.c     ****     }
+  42:.\morse.c     ****     set_color(LEFT_RIGHT_LED, original_color);
+ 153              		.loc 1 42 0
+ 154 0032 291C     		mov	r1, r5
+ 155 0034 0320     		mov	r0, #3
+ 156 0036 FFF7FEFF 		bl	set_color
+ 157              	.LVL20:
+  43:.\morse.c     **** }
+ 158              		.loc 1 43 0
+ 159              		@ sp needed
+ 160              	.LVL21:
+ 161 003a 38BD     		pop	{r3, r4, r5, pc}
+ 162              		.cfi_endproc
+ 163              	.LFE35:
+ 164              		.size	new_message_morse, .-new_message_morse
+ 165              		.section	.text.char_separate,"ax",%progbits
+ 166              		.align	1
+ 167              		.global	char_separate
+ 168              		.code	16
+ 169              		.thumb_func
+ 170              		.type	char_separate, %function
+ 171              	char_separate:
+ 172              	.LFB36:
+  44:.\morse.c     **** 
+  45:.\morse.c     **** void char_separate(void) {
+ 173              		.loc 1 45 0
+ 174              		.cfi_startproc
+ 175 0000 08B5     		push	{r3, lr}
+ 176              		.cfi_def_cfa_offset 8
+ 177              		.cfi_offset 3, -8
+ 178              		.cfi_offset 14, -4
+  46:.\morse.c     ****     CyDelay(CHAR_SEPARATE_TIME);
+ 179              		.loc 1 46 0
+ 180 0002 FA20     		mov	r0, #250
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczodve5.s 			page 5
+
+
+ 181 0004 8000     		lsl	r0, r0, #2
+ 182 0006 FFF7FEFF 		bl	CyDelay
+ 183              	.LVL22:
+  47:.\morse.c     **** }
+ 184              		.loc 1 47 0
+ 185              		@ sp needed
+ 186 000a 08BD     		pop	{r3, pc}
+ 187              		.cfi_endproc
+ 188              	.LFE36:
+ 189              		.size	char_separate, .-char_separate
+ 190              		.section	.text.morse_encode,"ax",%progbits
+ 191              		.align	1
+ 192              		.global	morse_encode
+ 193              		.code	16
+ 194              		.thumb_func
+ 195              		.type	morse_encode, %function
+ 196              	morse_encode:
+ 197              	.LFB37:
+  48:.\morse.c     **** 
+  49:.\morse.c     **** void morse_encode(uint8 led_flag, char c){
+ 198              		.loc 1 49 0
+ 199              		.cfi_startproc
+ 200              	.LVL23:
+ 201 0000 10B5     		push	{r4, lr}
+ 202              		.cfi_def_cfa_offset 8
+ 203              		.cfi_offset 4, -8
+ 204              		.cfi_offset 14, -4
+ 205              		.loc 1 49 0
+ 206 0002 041C     		mov	r4, r0
+  50:.\morse.c     ****     switch(c) {
+ 207              		.loc 1 50 0
+ 208 0004 081C     		mov	r0, r1
+ 209              	.LVL24:
+ 210 0006 2038     		sub	r0, r0, #32
+ 211 0008 5A28     		cmp	r0, #90
+ 212 000a 00D9     		bls	.LCB150
+ 213 000c CCE0     		b	.L10	@long jump
+ 214              	.LCB150:
+ 215 000e FFF7FEFF 		bl	__gnu_thumb1_case_uqi
+ 216              	.L13:
+ 217 0012 C7       		.byte	(.L12-.L13)/2
+ 218 0013 CB       		.byte	(.L10-.L13)/2
+ 219 0014 CB       		.byte	(.L10-.L13)/2
+ 220 0015 CB       		.byte	(.L10-.L13)/2
+ 221 0016 CB       		.byte	(.L10-.L13)/2
+ 222 0017 CB       		.byte	(.L10-.L13)/2
+ 223 0018 CB       		.byte	(.L10-.L13)/2
+ 224 0019 CB       		.byte	(.L10-.L13)/2
+ 225 001a CB       		.byte	(.L10-.L13)/2
+ 226 001b CB       		.byte	(.L10-.L13)/2
+ 227 001c CB       		.byte	(.L10-.L13)/2
+ 228 001d CB       		.byte	(.L10-.L13)/2
+ 229 001e B2       		.byte	(.L14-.L13)/2
+ 230 001f CB       		.byte	(.L10-.L13)/2
+ 231 0020 A2       		.byte	(.L15-.L13)/2
+ 232 0021 CB       		.byte	(.L10-.L13)/2
+ 233 0022 4D       		.byte	(.L16-.L13)/2
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczodve5.s 			page 6
+
+
+ 234 0023 51       		.byte	(.L17-.L13)/2
+ 235 0024 58       		.byte	(.L18-.L13)/2
+ 236 0025 62       		.byte	(.L19-.L13)/2
+ 237 0026 66       		.byte	(.L20-.L13)/2
+ 238 0027 70       		.byte	(.L21-.L13)/2
+ 239 0028 74       		.byte	(.L22-.L13)/2
+ 240 0029 7B       		.byte	(.L23-.L13)/2
+ 241 002a 85       		.byte	(.L24-.L13)/2
+ 242 002b 92       		.byte	(.L25-.L13)/2
+ 243 002c CB       		.byte	(.L10-.L13)/2
+ 244 002d CB       		.byte	(.L10-.L13)/2
+ 245 002e CB       		.byte	(.L10-.L13)/2
+ 246 002f CB       		.byte	(.L10-.L13)/2
+ 247 0030 CB       		.byte	(.L10-.L13)/2
+ 248 0031 CB       		.byte	(.L10-.L13)/2
+ 249 0032 CB       		.byte	(.L10-.L13)/2
+ 250 0033 AE       		.byte	(.L59-.L13)/2
+ 251 0034 7E       		.byte	(.L71-.L13)/2
+ 252 0035 2E       		.byte	(.L28-.L13)/2
+ 253 0036 8B       		.byte	(.L68-.L13)/2
+ 254 0037 9E       		.byte	(.L61-.L13)/2
+ 255 0038 32       		.byte	(.L31-.L13)/2
+ 256 0039 98       		.byte	(.L63-.L13)/2
+ 257 003a 77       		.byte	(.L73-.L13)/2
+ 258 003b 8E       		.byte	(.L66-.L13)/2
+ 259 003c 5B       		.byte	(.L58-.L13)/2
+ 260 003d AB       		.byte	(.L60-.L13)/2
+ 261 003e 39       		.byte	(.L37-.L13)/2
+ 262 003f BE       		.byte	(.L55-.L13)/2
+ 263 0040 9B       		.byte	(.L62-.L13)/2
+ 264 0041 5E       		.byte	(.L57-.L13)/2
+ 265 0042 3D       		.byte	(.L41-.L13)/2
+ 266 0043 41       		.byte	(.L42-.L13)/2
+ 267 0044 35       		.byte	(.L65-.L13)/2
+ 268 0045 81       		.byte	(.L72-.L13)/2
+ 269 0046 C1       		.byte	(.L52-.L13)/2
+ 270 0047 6C       		.byte	(.L69-.L13)/2
+ 271 0048 69       		.byte	(.L70-.L13)/2
+ 272 0049 BB       		.byte	(.L56-.L13)/2
+ 273 004a 45       		.byte	(.L49-.L13)/2
+ 274 004b 49       		.byte	(.L50-.L13)/2
+ 275 004c 88       		.byte	(.L67-.L13)/2
+ 276 004d CB       		.byte	(.L10-.L13)/2
+ 277 004e CB       		.byte	(.L10-.L13)/2
+ 278 004f CB       		.byte	(.L10-.L13)/2
+ 279 0050 CB       		.byte	(.L10-.L13)/2
+ 280 0051 CB       		.byte	(.L10-.L13)/2
+ 281 0052 CB       		.byte	(.L10-.L13)/2
+ 282 0053 AE       		.byte	(.L59-.L13)/2
+ 283 0054 7E       		.byte	(.L71-.L13)/2
+ 284 0055 2E       		.byte	(.L28-.L13)/2
+ 285 0056 8B       		.byte	(.L68-.L13)/2
+ 286 0057 9E       		.byte	(.L61-.L13)/2
+ 287 0058 32       		.byte	(.L31-.L13)/2
+ 288 0059 98       		.byte	(.L63-.L13)/2
+ 289 005a 77       		.byte	(.L73-.L13)/2
+ 290 005b 8E       		.byte	(.L66-.L13)/2
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczodve5.s 			page 7
+
+
+ 291 005c 5B       		.byte	(.L58-.L13)/2
+ 292 005d AB       		.byte	(.L60-.L13)/2
+ 293 005e 39       		.byte	(.L37-.L13)/2
+ 294 005f BE       		.byte	(.L55-.L13)/2
+ 295 0060 9B       		.byte	(.L62-.L13)/2
+ 296 0061 5E       		.byte	(.L57-.L13)/2
+ 297 0062 3D       		.byte	(.L41-.L13)/2
+ 298 0063 41       		.byte	(.L42-.L13)/2
+ 299 0064 35       		.byte	(.L65-.L13)/2
+ 300 0065 81       		.byte	(.L72-.L13)/2
+ 301 0066 C1       		.byte	(.L52-.L13)/2
+ 302 0067 6C       		.byte	(.L69-.L13)/2
+ 303 0068 69       		.byte	(.L70-.L13)/2
+ 304 0069 BB       		.byte	(.L56-.L13)/2
+ 305 006a 45       		.byte	(.L49-.L13)/2
+ 306 006b 49       		.byte	(.L50-.L13)/2
+ 307 006c 88       		.byte	(.L67-.L13)/2
+ 308 006d 00       		.p2align 1
+ 309              	.L28:
+  51:.\morse.c     ****       case 'A':
+  52:.\morse.c     ****       case 'a':
+  53:.\morse.c     ****         blinkdot(led_flag);
+  54:.\morse.c     ****         blinkdash(led_flag);
+  55:.\morse.c     ****         char_separate();
+  56:.\morse.c     ****         break;
+  57:.\morse.c     ****       case 'B':
+  58:.\morse.c     ****       case 'b':
+  59:.\morse.c     ****         blinkdash(led_flag);
+  60:.\morse.c     ****         blinkdot(led_flag);
+  61:.\morse.c     ****         blinkdot(led_flag);
+  62:.\morse.c     ****         blinkdot(led_flag);
+  63:.\morse.c     ****         char_separate();
+  64:.\morse.c     ****         break;
+  65:.\morse.c     ****       case 'C':
+  66:.\morse.c     ****       case 'c':
+  67:.\morse.c     ****         blinkdash(led_flag);
+ 310              		.loc 1 67 0
+ 311 006e 201C     		mov	r0, r4
+ 312 0070 FFF7FEFF 		bl	blinkdash
+ 313              	.LVL25:
+ 314 0074 02E0     		b	.L65
+ 315              	.LVL26:
+ 316              	.L31:
+  68:.\morse.c     ****         blinkdot(led_flag);
+  69:.\morse.c     ****         blinkdash(led_flag);
+  70:.\morse.c     ****         blinkdot(led_flag);
+  71:.\morse.c     ****         char_separate();
+  72:.\morse.c     ****         break;
+  73:.\morse.c     ****       case 'D':
+  74:.\morse.c     ****       case 'd':
+  75:.\morse.c     ****         blinkdash(led_flag);
+  76:.\morse.c     ****         blinkdot(led_flag);
+  77:.\morse.c     ****         blinkdot(led_flag);
+  78:.\morse.c     ****         char_separate();
+  79:.\morse.c     ****         break;
+  80:.\morse.c     ****        case 'E':
+  81:.\morse.c     ****        case 'e':
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczodve5.s 			page 8
+
+
+  82:.\morse.c     ****         blinkdot(led_flag);
+  83:.\morse.c     ****         char_separate();
+  84:.\morse.c     ****         break;
+  85:.\morse.c     ****        case 'F':
+  86:.\morse.c     ****        case 'f':
+  87:.\morse.c     ****         blinkdot(led_flag);
+ 317              		.loc 1 87 0
+ 318 0076 201C     		mov	r0, r4
+ 319 0078 FFF7FEFF 		bl	blinkdot
+ 320              	.LVL27:
+ 321              	.L65:
+  88:.\morse.c     ****         blinkdot(led_flag);
+ 322              		.loc 1 88 0
+ 323 007c 201C     		mov	r0, r4
+ 324 007e FFF7FEFF 		bl	blinkdot
+ 325              	.LVL28:
+ 326 0082 61E0     		b	.L62
+ 327              	.LVL29:
+ 328              	.L37:
+  89:.\morse.c     ****         blinkdash(led_flag);
+  90:.\morse.c     ****         blinkdot(led_flag);
+  91:.\morse.c     ****         char_separate();
+  92:.\morse.c     ****         break;
+  93:.\morse.c     ****        case 'G':
+  94:.\morse.c     ****        case 'g':
+  95:.\morse.c     ****         blinkdash(led_flag);
+  96:.\morse.c     ****         blinkdash(led_flag);
+  97:.\morse.c     ****         blinkdot(led_flag);
+  98:.\morse.c     ****         char_separate();
+  99:.\morse.c     ****         break;
+ 100:.\morse.c     ****        case 'H':
+ 101:.\morse.c     ****        case 'h':
+ 102:.\morse.c     ****         blinkdot(led_flag);
+ 103:.\morse.c     ****         blinkdot(led_flag);
+ 104:.\morse.c     ****         blinkdot(led_flag);
+ 105:.\morse.c     ****         blinkdot(led_flag);
+ 106:.\morse.c     ****         char_separate();
+ 107:.\morse.c     ****         break;
+ 108:.\morse.c     ****        case 'I':
+ 109:.\morse.c     ****        case 'i':
+ 110:.\morse.c     ****         blinkdot(led_flag);
+ 111:.\morse.c     ****         blinkdot(led_flag);
+ 112:.\morse.c     ****         char_separate();
+ 113:.\morse.c     ****         break;
+ 114:.\morse.c     ****        case 'J':
+ 115:.\morse.c     ****        case 'j':
+ 116:.\morse.c     ****         blinkdot(led_flag);
+ 117:.\morse.c     ****         blinkdash(led_flag);
+ 118:.\morse.c     ****         blinkdash(led_flag);
+ 119:.\morse.c     ****         blinkdash(led_flag);
+ 120:.\morse.c     ****         char_separate();
+ 121:.\morse.c     ****         break;
+ 122:.\morse.c     ****        case 'K':
+ 123:.\morse.c     ****        case 'k':
+ 124:.\morse.c     ****         blinkdash(led_flag);
+ 125:.\morse.c     ****         blinkdot(led_flag);
+ 126:.\morse.c     ****         blinkdash(led_flag);
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczodve5.s 			page 9
+
+
+ 127:.\morse.c     ****         char_separate();
+ 128:.\morse.c     ****         break;
+ 129:.\morse.c     ****        case 'L':
+ 130:.\morse.c     ****        case 'l':
+ 131:.\morse.c     ****         blinkdot(led_flag);
+ 329              		.loc 1 131 0
+ 330 0084 201C     		mov	r0, r4
+ 331 0086 FFF7FEFF 		bl	blinkdot
+ 332              	.LVL30:
+ 333 008a 4DE0     		b	.L68
+ 334              	.LVL31:
+ 335              	.L41:
+ 132:.\morse.c     ****         blinkdash(led_flag);
+ 133:.\morse.c     ****         blinkdot(led_flag);
+ 134:.\morse.c     ****         blinkdot(led_flag);
+ 135:.\morse.c     ****         char_separate();
+ 136:.\morse.c     ****         break;
+ 137:.\morse.c     ****        case 'M':
+ 138:.\morse.c     ****        case 'm':
+ 139:.\morse.c     ****         blinkdash(led_flag);
+ 140:.\morse.c     ****         blinkdash(led_flag);
+ 141:.\morse.c     ****         char_separate();
+ 142:.\morse.c     ****         break;
+ 143:.\morse.c     ****        case 'N':
+ 144:.\morse.c     ****        case 'n':
+ 145:.\morse.c     ****         blinkdash(led_flag);
+ 146:.\morse.c     ****         blinkdot(led_flag);
+ 147:.\morse.c     ****         char_separate();
+ 148:.\morse.c     ****         break;
+ 149:.\morse.c     ****        case 'O':
+ 150:.\morse.c     ****        case 'o':
+ 151:.\morse.c     ****         blinkdash(led_flag);
+ 152:.\morse.c     ****         blinkdash(led_flag);
+ 153:.\morse.c     ****         blinkdash(led_flag);
+ 154:.\morse.c     ****         char_separate();
+ 155:.\morse.c     ****         break;
+ 156:.\morse.c     ****        case 'P':
+ 157:.\morse.c     ****        case 'p':
+ 158:.\morse.c     ****         blinkdot(led_flag);
+ 336              		.loc 1 158 0
+ 337 008c 201C     		mov	r0, r4
+ 338 008e FFF7FEFF 		bl	blinkdot
+ 339              	.LVL32:
+ 340 0092 56E0     		b	.L63
+ 341              	.LVL33:
+ 342              	.L42:
+ 159:.\morse.c     ****         blinkdash(led_flag);
+ 160:.\morse.c     ****         blinkdash(led_flag);
+ 161:.\morse.c     ****         blinkdot(led_flag);
+ 162:.\morse.c     ****         char_separate();
+ 163:.\morse.c     ****         break;
+ 164:.\morse.c     ****        case 'Q':
+ 165:.\morse.c     ****        case 'q':
+ 166:.\morse.c     ****         blinkdash(led_flag);
+ 343              		.loc 1 166 0
+ 344 0094 201C     		mov	r0, r4
+ 345 0096 FFF7FEFF 		bl	blinkdash
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczodve5.s 			page 10
+
+
+ 346              	.LVL34:
+ 347 009a 65E0     		b	.L60
+ 348              	.LVL35:
+ 349              	.L49:
+ 167:.\morse.c     ****         blinkdash(led_flag);
+ 168:.\morse.c     ****         blinkdot(led_flag);
+ 169:.\morse.c     ****         blinkdash(led_flag);
+ 170:.\morse.c     ****         char_separate();
+ 171:.\morse.c     ****         break;
+ 172:.\morse.c     ****        case 'R':
+ 173:.\morse.c     ****        case 'r':
+ 174:.\morse.c     ****         blinkdot(led_flag);
+ 175:.\morse.c     ****         blinkdash(led_flag);
+ 176:.\morse.c     ****         blinkdot(led_flag);
+ 177:.\morse.c     ****         char_separate();
+ 178:.\morse.c     ****         break;
+ 179:.\morse.c     ****        case 'S':
+ 180:.\morse.c     ****        case 's':
+ 181:.\morse.c     ****         blinkdot(led_flag);
+ 182:.\morse.c     ****         blinkdot(led_flag);
+ 183:.\morse.c     ****         blinkdot(led_flag);
+ 184:.\morse.c     ****         char_separate();
+ 185:.\morse.c     ****         break;
+ 186:.\morse.c     ****        case 'T':
+ 187:.\morse.c     ****        case 't':
+ 188:.\morse.c     ****         blinkdash(led_flag);
+ 189:.\morse.c     ****         char_separate();
+ 190:.\morse.c     ****         break;
+ 191:.\morse.c     ****        case 'U':
+ 192:.\morse.c     ****        case 'u':
+ 193:.\morse.c     ****         blinkdot(led_flag);
+ 194:.\morse.c     ****         blinkdot(led_flag);
+ 195:.\morse.c     ****         blinkdash(led_flag);
+ 196:.\morse.c     ****         char_separate();
+ 197:.\morse.c     ****         break;
+ 198:.\morse.c     ****        case 'V':
+ 199:.\morse.c     ****        case 'v':
+ 200:.\morse.c     ****         blinkdot(led_flag);
+ 201:.\morse.c     ****         blinkdot(led_flag);
+ 202:.\morse.c     ****         blinkdot(led_flag);
+ 203:.\morse.c     ****         blinkdash(led_flag);
+ 204:.\morse.c     ****         char_separate();
+ 205:.\morse.c     ****         break;
+ 206:.\morse.c     ****        case 'W':
+ 207:.\morse.c     ****        case 'w':
+ 208:.\morse.c     ****         blinkdot(led_flag);
+ 209:.\morse.c     ****         blinkdash(led_flag);
+ 210:.\morse.c     ****         blinkdash(led_flag);
+ 211:.\morse.c     ****         char_separate();
+ 212:.\morse.c     ****         break;
+ 213:.\morse.c     ****        case 'X':
+ 214:.\morse.c     ****        case 'x':
+ 215:.\morse.c     ****         blinkdash(led_flag);
+ 350              		.loc 1 215 0
+ 351 009c 201C     		mov	r0, r4
+ 352 009e FFF7FEFF 		bl	blinkdash
+ 353              	.LVL36:
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczodve5.s 			page 11
+
+
+ 354 00a2 22E0     		b	.L69
+ 355              	.LVL37:
+ 356              	.L50:
+ 216:.\morse.c     ****         blinkdot(led_flag);
+ 217:.\morse.c     ****         blinkdot(led_flag);
+ 218:.\morse.c     ****         blinkdash(led_flag);
+ 219:.\morse.c     ****         char_separate();
+ 220:.\morse.c     ****         break;
+ 221:.\morse.c     ****        case 'Y':
+ 222:.\morse.c     ****        case 'y':
+ 223:.\morse.c     ****         blinkdash(led_flag);
+ 357              		.loc 1 223 0
+ 358 00a4 201C     		mov	r0, r4
+ 359 00a6 FFF7FEFF 		bl	blinkdash
+ 360              	.LVL38:
+ 361 00aa 6DE0     		b	.L56
+ 362              	.LVL39:
+ 363              	.L16:
+ 224:.\morse.c     ****         blinkdot(led_flag);
+ 225:.\morse.c     ****         blinkdash(led_flag);
+ 226:.\morse.c     ****         blinkdash(led_flag);
+ 227:.\morse.c     ****         char_separate();
+ 228:.\morse.c     ****         break;
+ 229:.\morse.c     ****        case 'Z':
+ 230:.\morse.c     ****        case 'z':
+ 231:.\morse.c     ****         blinkdash(led_flag);
+ 232:.\morse.c     ****         blinkdash(led_flag);
+ 233:.\morse.c     ****         blinkdot(led_flag);
+ 234:.\morse.c     ****         blinkdot(led_flag);
+ 235:.\morse.c     ****         char_separate();
+ 236:.\morse.c     ****         break;
+ 237:.\morse.c     ****        case '0':
+ 238:.\morse.c     ****         blinkdash(led_flag);
+ 364              		.loc 1 238 0
+ 365 00ac 201C     		mov	r0, r4
+ 366 00ae FFF7FEFF 		bl	blinkdash
+ 367              	.LVL40:
+ 368 00b2 02E0     		b	.L64
+ 369              	.LVL41:
+ 370              	.L17:
+ 239:.\morse.c     ****         blinkdash(led_flag);
+ 240:.\morse.c     ****         blinkdash(led_flag);
+ 241:.\morse.c     ****         blinkdash(led_flag);
+ 242:.\morse.c     ****         blinkdash(led_flag);
+ 243:.\morse.c     ****         char_separate();
+ 244:.\morse.c     ****         break;
+ 245:.\morse.c     ****        case '1':
+ 246:.\morse.c     ****         blinkdot(led_flag);
+ 371              		.loc 1 246 0
+ 372 00b4 201C     		mov	r0, r4
+ 373 00b6 FFF7FEFF 		bl	blinkdot
+ 374              	.LVL42:
+ 375              	.L64:
+ 247:.\morse.c     ****         blinkdash(led_flag);
+ 376              		.loc 1 247 0
+ 377 00ba 201C     		mov	r0, r4
+ 378 00bc FFF7FEFF 		bl	blinkdash
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczodve5.s 			page 12
+
+
+ 379              	.LVL43:
+ 380 00c0 05E0     		b	.L57
+ 381              	.LVL44:
+ 382              	.L18:
+ 248:.\morse.c     ****         blinkdash(led_flag);
+ 249:.\morse.c     ****         blinkdash(led_flag);
+ 250:.\morse.c     ****         blinkdash(led_flag);
+ 251:.\morse.c     ****         char_separate();
+ 252:.\morse.c     ****         break;
+ 253:.\morse.c     ****        case '2':
+ 254:.\morse.c     ****         blinkdot(led_flag);
+ 383              		.loc 1 254 0
+ 384 00c2 201C     		mov	r0, r4
+ 385 00c4 FFF7FEFF 		bl	blinkdot
+ 386              	.LVL45:
+ 387              	.L58:
+ 255:.\morse.c     ****         blinkdot(led_flag);
+ 388              		.loc 1 255 0
+ 389 00c8 201C     		mov	r0, r4
+ 390 00ca FFF7FEFF 		bl	blinkdot
+ 391              	.LVL46:
+ 392              	.L57:
+ 256:.\morse.c     ****         blinkdash(led_flag);
+ 393              		.loc 1 256 0
+ 394 00ce 201C     		mov	r0, r4
+ 395 00d0 FFF7FEFF 		bl	blinkdash
+ 396              	.LVL47:
+ 397 00d4 5BE0     		b	.L55
+ 398              	.LVL48:
+ 399              	.L19:
+ 257:.\morse.c     ****         blinkdash(led_flag);
+ 258:.\morse.c     ****         blinkdash(led_flag);
+ 259:.\morse.c     ****         char_separate();
+ 260:.\morse.c     ****         break;
+ 261:.\morse.c     ****        case '3':
+ 262:.\morse.c     ****         blinkdot(led_flag);
+ 400              		.loc 1 262 0
+ 401 00d6 201C     		mov	r0, r4
+ 402 00d8 FFF7FEFF 		bl	blinkdot
+ 403              	.LVL49:
+ 404 00dc 51E0     		b	.L54
+ 405              	.LVL50:
+ 406              	.L20:
+ 263:.\morse.c     ****         blinkdot(led_flag);
+ 264:.\morse.c     ****         blinkdot(led_flag);
+ 265:.\morse.c     ****         blinkdash(led_flag);
+ 266:.\morse.c     ****         blinkdash(led_flag);
+ 267:.\morse.c     ****         char_separate();
+ 268:.\morse.c     ****         break;
+ 269:.\morse.c     ****        case '4':
+ 270:.\morse.c     ****         blinkdot(led_flag);
+ 407              		.loc 1 270 0
+ 408 00de 201C     		mov	r0, r4
+ 409 00e0 FFF7FEFF 		bl	blinkdot
+ 410              	.LVL51:
+ 411              	.L70:
+ 271:.\morse.c     ****         blinkdot(led_flag);
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczodve5.s 			page 13
+
+
+ 412              		.loc 1 271 0
+ 413 00e4 201C     		mov	r0, r4
+ 414 00e6 FFF7FEFF 		bl	blinkdot
+ 415              	.LVL52:
+ 416              	.L69:
+ 272:.\morse.c     ****         blinkdot(led_flag);
+ 417              		.loc 1 272 0
+ 418 00ea 201C     		mov	r0, r4
+ 419 00ec FFF7FEFF 		bl	blinkdot
+ 420              	.LVL53:
+ 421 00f0 3DE0     		b	.L59
+ 422              	.LVL54:
+ 423              	.L21:
+ 273:.\morse.c     ****         blinkdot(led_flag);
+ 274:.\morse.c     ****         blinkdash(led_flag);
+ 275:.\morse.c     ****         char_separate();
+ 276:.\morse.c     ****         break;
+ 277:.\morse.c     ****        case '5':
+ 278:.\morse.c     ****         blinkdot(led_flag);
+ 424              		.loc 1 278 0
+ 425 00f2 201C     		mov	r0, r4
+ 426 00f4 FFF7FEFF 		bl	blinkdot
+ 427              	.LVL55:
+ 428 00f8 02E0     		b	.L73
+ 429              	.LVL56:
+ 430              	.L22:
+ 279:.\morse.c     ****         blinkdot(led_flag);
+ 280:.\morse.c     ****         blinkdot(led_flag);
+ 281:.\morse.c     ****         blinkdot(led_flag);
+ 282:.\morse.c     ****         blinkdot(led_flag);
+ 283:.\morse.c     ****         char_separate();
+ 284:.\morse.c     ****         break;
+ 285:.\morse.c     ****        case '6':
+ 286:.\morse.c     ****         blinkdash(led_flag);
+ 431              		.loc 1 286 0
+ 432 00fa 201C     		mov	r0, r4
+ 433 00fc FFF7FEFF 		bl	blinkdash
+ 434              	.LVL57:
+ 435              	.L73:
+ 287:.\morse.c     ****         blinkdot(led_flag);
+ 436              		.loc 1 287 0
+ 437 0100 201C     		mov	r0, r4
+ 438 0102 FFF7FEFF 		bl	blinkdot
+ 439              	.LVL58:
+ 440 0106 05E0     		b	.L72
+ 441              	.LVL59:
+ 442              	.L23:
+ 288:.\morse.c     ****         blinkdot(led_flag);
+ 289:.\morse.c     ****         blinkdot(led_flag);
+ 290:.\morse.c     ****         blinkdot(led_flag);
+ 291:.\morse.c     ****         char_separate();
+ 292:.\morse.c     ****         break;
+ 293:.\morse.c     ****        case '7':
+ 294:.\morse.c     ****         blinkdash(led_flag);
+ 443              		.loc 1 294 0
+ 444 0108 201C     		mov	r0, r4
+ 445 010a FFF7FEFF 		bl	blinkdash
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczodve5.s 			page 14
+
+
+ 446              	.LVL60:
+ 447              	.L71:
+ 295:.\morse.c     ****         blinkdash(led_flag);
+ 448              		.loc 1 295 0
+ 449 010e 201C     		mov	r0, r4
+ 450 0110 FFF7FEFF 		bl	blinkdash
+ 451              	.LVL61:
+ 452              	.L72:
+ 296:.\morse.c     ****         blinkdot(led_flag);
+ 453              		.loc 1 296 0
+ 454 0114 201C     		mov	r0, r4
+ 455 0116 FFF7FEFF 		bl	blinkdot
+ 456              	.LVL62:
+ 457 011a 08E0     		b	.L66
+ 458              	.LVL63:
+ 459              	.L24:
+ 297:.\morse.c     ****         blinkdot(led_flag);
+ 298:.\morse.c     ****         blinkdot(led_flag);
+ 299:.\morse.c     ****         char_separate();
+ 300:.\morse.c     ****         break;
+ 301:.\morse.c     ****        case '8':
+ 302:.\morse.c     ****         blinkdash(led_flag);
+ 460              		.loc 1 302 0
+ 461 011c 201C     		mov	r0, r4
+ 462 011e FFF7FEFF 		bl	blinkdash
+ 463              	.LVL64:
+ 464              	.L67:
+ 303:.\morse.c     ****         blinkdash(led_flag);
+ 465              		.loc 1 303 0
+ 466 0122 201C     		mov	r0, r4
+ 467 0124 FFF7FEFF 		bl	blinkdash
+ 468              	.LVL65:
+ 469              	.L68:
+ 304:.\morse.c     ****         blinkdash(led_flag);
+ 470              		.loc 1 304 0
+ 471 0128 201C     		mov	r0, r4
+ 472 012a FFF7FEFF 		bl	blinkdash
+ 473              	.LVL66:
+ 474              	.L66:
+ 305:.\morse.c     ****         blinkdot(led_flag);
+ 475              		.loc 1 305 0
+ 476 012e 201C     		mov	r0, r4
+ 477 0130 FFF7FEFF 		bl	blinkdot
+ 478              	.LVL67:
+ 479 0134 0BE0     		b	.L61
+ 480              	.LVL68:
+ 481              	.L25:
+ 306:.\morse.c     ****         blinkdot(led_flag);
+ 307:.\morse.c     ****         char_separate();
+ 308:.\morse.c     ****         break;
+ 309:.\morse.c     ****        case '9':
+ 310:.\morse.c     ****         blinkdash(led_flag);
+ 482              		.loc 1 310 0
+ 483 0136 201C     		mov	r0, r4
+ 484 0138 FFF7FEFF 		bl	blinkdash
+ 485              	.LVL69:
+ 311:.\morse.c     ****         blinkdash(led_flag);
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczodve5.s 			page 15
+
+
+ 486              		.loc 1 311 0
+ 487 013c 201C     		mov	r0, r4
+ 488 013e FFF7FEFF 		bl	blinkdash
+ 489              	.LVL70:
+ 490              	.L63:
+ 312:.\morse.c     ****         blinkdash(led_flag);
+ 491              		.loc 1 312 0
+ 492 0142 201C     		mov	r0, r4
+ 493 0144 FFF7FEFF 		bl	blinkdash
+ 494              	.LVL71:
+ 495              	.L62:
+ 313:.\morse.c     ****         blinkdash(led_flag);
+ 496              		.loc 1 313 0
+ 497 0148 201C     		mov	r0, r4
+ 498 014a FFF7FEFF 		bl	blinkdash
+ 499              	.LVL72:
+ 500              	.L61:
+ 314:.\morse.c     ****         blinkdot(led_flag);
+ 501              		.loc 1 314 0
+ 502 014e 201C     		mov	r0, r4
+ 503 0150 FFF7FEFF 		bl	blinkdot
+ 504              	.LVL73:
+ 505 0154 21E0     		b	.L53
+ 506              	.LVL74:
+ 507              	.L15:
+ 315:.\morse.c     ****         char_separate();
+ 316:.\morse.c     ****         break;
+ 317:.\morse.c     ****        case '.':
+ 318:.\morse.c     ****         blinkdot(led_flag);
+ 508              		.loc 1 318 0
+ 509 0156 201C     		mov	r0, r4
+ 510 0158 FFF7FEFF 		bl	blinkdot
+ 511              	.LVL75:
+ 319:.\morse.c     ****         blinkdash(led_flag);
+ 512              		.loc 1 319 0
+ 513 015c 201C     		mov	r0, r4
+ 514 015e FFF7FEFF 		bl	blinkdash
+ 515              	.LVL76:
+ 320:.\morse.c     ****         blinkdot(led_flag);
+ 516              		.loc 1 320 0
+ 517 0162 201C     		mov	r0, r4
+ 518 0164 FFF7FEFF 		bl	blinkdot
+ 519              	.LVL77:
+ 520              	.L60:
+ 321:.\morse.c     ****         blinkdash(led_flag);
+ 521              		.loc 1 321 0
+ 522 0168 201C     		mov	r0, r4
+ 523 016a FFF7FEFF 		bl	blinkdash
+ 524              	.LVL78:
+ 525              	.L59:
+ 322:.\morse.c     ****         blinkdot(led_flag);
+ 526              		.loc 1 322 0
+ 527 016e 201C     		mov	r0, r4
+ 528 0170 FFF7FEFF 		bl	blinkdot
+ 529              	.LVL79:
+ 530 0174 0EE0     		b	.L52
+ 531              	.LVL80:
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczodve5.s 			page 16
+
+
+ 532              	.L14:
+ 323:.\morse.c     ****         blinkdash(led_flag);
+ 324:.\morse.c     ****         char_separate();
+ 325:.\morse.c     ****         break;
+ 326:.\morse.c     ****        case ',':
+ 327:.\morse.c     ****         blinkdash(led_flag);
+ 533              		.loc 1 327 0
+ 534 0176 201C     		mov	r0, r4
+ 535 0178 FFF7FEFF 		bl	blinkdash
+ 536              	.LVL81:
+ 328:.\morse.c     ****         blinkdash(led_flag);
+ 537              		.loc 1 328 0
+ 538 017c 201C     		mov	r0, r4
+ 539 017e FFF7FEFF 		bl	blinkdash
+ 540              	.LVL82:
+ 541              	.L54:
+ 329:.\morse.c     ****         blinkdot(led_flag);
+ 542              		.loc 1 329 0
+ 543 0182 201C     		mov	r0, r4
+ 544 0184 FFF7FEFF 		bl	blinkdot
+ 545              	.LVL83:
+ 546              	.L56:
+ 330:.\morse.c     ****         blinkdot(led_flag);
+ 547              		.loc 1 330 0
+ 548 0188 201C     		mov	r0, r4
+ 549 018a FFF7FEFF 		bl	blinkdot
+ 550              	.LVL84:
+ 551              	.L55:
+ 331:.\morse.c     ****         blinkdash(led_flag);
+ 552              		.loc 1 331 0
+ 553 018e 201C     		mov	r0, r4
+ 554 0190 FFF7FEFF 		bl	blinkdash
+ 555              	.LVL85:
+ 556              	.L52:
+ 332:.\morse.c     ****         blinkdash(led_flag);
+ 557              		.loc 1 332 0
+ 558 0194 201C     		mov	r0, r4
+ 559 0196 FFF7FEFF 		bl	blinkdash
+ 560              	.LVL86:
+ 561              	.L53:
+ 333:.\morse.c     ****         char_separate();
+ 562              		.loc 1 333 0
+ 563 019a FFF7FEFF 		bl	char_separate
+ 564              	.LVL87:
+ 334:.\morse.c     ****         break;
+ 565              		.loc 1 334 0
+ 566 019e 03E0     		b	.L10
+ 567              	.LVL88:
+ 568              	.L12:
+ 335:.\morse.c     ****        case ' ':
+ 336:.\morse.c     ****         CyDelay(WORD_SEPARATE_TIME);
+ 569              		.loc 1 336 0
+ 570 01a0 FA20     		mov	r0, #250
+ 571 01a2 8000     		lsl	r0, r0, #2
+ 572 01a4 FFF7FEFF 		bl	CyDelay
+ 573              	.LVL89:
+ 574              	.L10:
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczodve5.s 			page 17
+
+
+ 337:.\morse.c     ****         break;
+ 338:.\morse.c     ****        case '\n':
+ 339:.\morse.c     ****         break;
+ 340:.\morse.c     ****    }
+ 341:.\morse.c     **** }
+ 575              		.loc 1 341 0
+ 576              		@ sp needed
+ 577 01a8 10BD     		pop	{r4, pc}
+ 578              		.cfi_endproc
+ 579              	.LFE37:
+ 580              		.size	morse_encode, .-morse_encode
+ 581              		.section	.text.morse_message,"ax",%progbits
+ 582              		.align	1
+ 583              		.global	morse_message
+ 584              		.code	16
+ 585              		.thumb_func
+ 586              		.type	morse_message, %function
+ 587              	morse_message:
+ 588              	.LFB38:
+ 342:.\morse.c     **** 
+ 343:.\morse.c     **** void morse_message(uint8 led_flag, char* message) {
+ 589              		.loc 1 343 0
+ 590              		.cfi_startproc
+ 591              	.LVL90:
+ 592 0000 70B5     		push	{r4, r5, r6, lr}
+ 593              		.cfi_def_cfa_offset 16
+ 594              		.cfi_offset 4, -16
+ 595              		.cfi_offset 5, -12
+ 596              		.cfi_offset 6, -8
+ 597              		.cfi_offset 14, -4
+ 598              		.loc 1 343 0
+ 599 0002 061C     		mov	r6, r0
+ 600 0004 0D1C     		mov	r5, r1
+ 344:.\morse.c     ****     unsigned int i;
+ 345:.\morse.c     ****     
+ 346:.\morse.c     ****     new_message_morse();
+ 601              		.loc 1 346 0
+ 602 0006 FFF7FEFF 		bl	new_message_morse
+ 603              	.LVL91:
+ 347:.\morse.c     ****     
+ 348:.\morse.c     ****     for (i=0; i < strlen(message); i++) {
+ 604              		.loc 1 348 0
+ 605 000a 0024     		mov	r4, #0
+ 606              	.LVL92:
+ 607              	.L75:
+ 608              		.loc 1 348 0 is_stmt 0 discriminator 1
+ 609 000c 281C     		mov	r0, r5
+ 610 000e FFF7FEFF 		bl	strlen
+ 611              	.LVL93:
+ 612 0012 8442     		cmp	r4, r0
+ 613 0014 05D2     		bcs	.L77
+ 349:.\morse.c     ****         morse_encode(led_flag, message[i]);
+ 614              		.loc 1 349 0 is_stmt 1 discriminator 2
+ 615 0016 295D     		ldrb	r1, [r5, r4]
+ 616 0018 301C     		mov	r0, r6
+ 617 001a FFF7FEFF 		bl	morse_encode
+ 618              	.LVL94:
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczodve5.s 			page 18
+
+
+ 348:.\morse.c     ****     for (i=0; i < strlen(message); i++) {
+ 619              		.loc 1 348 0 discriminator 2
+ 620 001e 0134     		add	r4, r4, #1
+ 621              	.LVL95:
+ 622 0020 F4E7     		b	.L75
+ 623              	.L77:
+ 350:.\morse.c     ****     }
+ 351:.\morse.c     **** }
+ 624              		.loc 1 351 0
+ 625              		@ sp needed
+ 626              	.LVL96:
+ 627              	.LVL97:
+ 628 0022 70BD     		pop	{r4, r5, r6, pc}
+ 629              		.cfi_endproc
+ 630              	.LFE38:
+ 631              		.size	morse_message, .-morse_message
+ 632              		.text
+ 633              	.Letext0:
+ 634              		.file 2 ".\\Generated_Source\\PSoC4/cytypes.h"
+ 635              		.file 3 "c:\\program files\\cypress\\psoc creator\\3.1\\psoc creator\\import\\gnu_cs\\arm\\4.8.4\\
+ 636              		.file 4 ".\\lightlib.h"
+ 637              		.file 5 ".\\Generated_Source\\PSoC4/CyLib.h"
+ 638              		.file 6 "c:\\program files\\cypress\\psoc creator\\3.1\\psoc creator\\import\\gnu_cs\\arm\\4.8.4\\
+ 639              		.section	.debug_info,"",%progbits
+ 640              	.Ldebug_info0:
+ 641 0000 1E070000 		.4byte	0x71e
+ 642 0004 0400     		.2byte	0x4
+ 643 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 644 000a 04       		.byte	0x4
+ 645 000b 01       		.uleb128 0x1
+ 646 000c 5D000000 		.4byte	.LASF30
+ 647 0010 01       		.byte	0x1
+ 648 0011 D9000000 		.4byte	.LASF31
+ 649 0015 77010000 		.4byte	.LASF32
+ 650 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 651 001d 00000000 		.4byte	0
+ 652 0021 00000000 		.4byte	.Ldebug_line0
+ 653 0025 02       		.uleb128 0x2
+ 654 0026 01       		.byte	0x1
+ 655 0027 06       		.byte	0x6
+ 656 0028 08020000 		.4byte	.LASF0
+ 657 002c 02       		.uleb128 0x2
+ 658 002d 01       		.byte	0x1
+ 659 002e 08       		.byte	0x8
+ 660 002f EA000000 		.4byte	.LASF1
+ 661 0033 02       		.uleb128 0x2
+ 662 0034 02       		.byte	0x2
+ 663 0035 05       		.byte	0x5
+ 664 0036 DA010000 		.4byte	.LASF2
+ 665 003a 02       		.uleb128 0x2
+ 666 003b 02       		.byte	0x2
+ 667 003c 07       		.byte	0x7
+ 668 003d 35000000 		.4byte	.LASF3
+ 669 0041 02       		.uleb128 0x2
+ 670 0042 04       		.byte	0x4
+ 671 0043 05       		.byte	0x5
+ 672 0044 F6010000 		.4byte	.LASF4
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczodve5.s 			page 19
+
+
+ 673 0048 02       		.uleb128 0x2
+ 674 0049 04       		.byte	0x4
+ 675 004a 07       		.byte	0x7
+ 676 004b 02010000 		.4byte	.LASF5
+ 677 004f 02       		.uleb128 0x2
+ 678 0050 08       		.byte	0x8
+ 679 0051 05       		.byte	0x5
+ 680 0052 C7010000 		.4byte	.LASF6
+ 681 0056 02       		.uleb128 0x2
+ 682 0057 08       		.byte	0x8
+ 683 0058 07       		.byte	0x7
+ 684 0059 4E010000 		.4byte	.LASF7
+ 685 005d 03       		.uleb128 0x3
+ 686 005e 04       		.byte	0x4
+ 687 005f 05       		.byte	0x5
+ 688 0060 696E7400 		.ascii	"int\000"
+ 689 0064 02       		.uleb128 0x2
+ 690 0065 04       		.byte	0x4
+ 691 0066 07       		.byte	0x7
+ 692 0067 48000000 		.4byte	.LASF8
+ 693 006b 04       		.uleb128 0x4
+ 694 006c 14010000 		.4byte	.LASF9
+ 695 0070 02       		.byte	0x2
+ 696 0071 A1       		.byte	0xa1
+ 697 0072 2C000000 		.4byte	0x2c
+ 698 0076 04       		.uleb128 0x4
+ 699 0077 39010000 		.4byte	.LASF10
+ 700 007b 02       		.byte	0x2
+ 701 007c A3       		.byte	0xa3
+ 702 007d 48000000 		.4byte	0x48
+ 703 0081 02       		.uleb128 0x2
+ 704 0082 04       		.byte	0x4
+ 705 0083 04       		.byte	0x4
+ 706 0084 22000000 		.4byte	.LASF11
+ 707 0088 02       		.uleb128 0x2
+ 708 0089 08       		.byte	0x8
+ 709 008a 04       		.byte	0x4
+ 710 008b 32010000 		.4byte	.LASF12
+ 711 008f 02       		.uleb128 0x2
+ 712 0090 01       		.byte	0x1
+ 713 0091 08       		.byte	0x8
+ 714 0092 D5010000 		.4byte	.LASF13
+ 715 0096 04       		.uleb128 0x4
+ 716 0097 12000000 		.4byte	.LASF14
+ 717 009b 03       		.byte	0x3
+ 718 009c D4       		.byte	0xd4
+ 719 009d 64000000 		.4byte	0x64
+ 720 00a1 02       		.uleb128 0x2
+ 721 00a2 04       		.byte	0x4
+ 722 00a3 07       		.byte	0x7
+ 723 00a4 BE010000 		.4byte	.LASF15
+ 724 00a8 05       		.uleb128 0x5
+ 725 00a9 04       		.byte	0x4
+ 726 00aa 8F000000 		.4byte	0x8f
+ 727 00ae 05       		.uleb128 0x5
+ 728 00af 04       		.byte	0x4
+ 729 00b0 B4000000 		.4byte	0xb4
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczodve5.s 			page 20
+
+
+ 730 00b4 06       		.uleb128 0x6
+ 731 00b5 8F000000 		.4byte	0x8f
+ 732 00b9 07       		.uleb128 0x7
+ 733 00ba 1A010000 		.4byte	.LASF16
+ 734 00be 01       		.byte	0x1
+ 735 00bf 11       		.byte	0x11
+ 736 00c0 00000000 		.4byte	.LFB33
+ 737 00c4 1E000000 		.4byte	.LFE33-.LFB33
+ 738 00c8 01       		.uleb128 0x1
+ 739 00c9 9C       		.byte	0x9c
+ 740 00ca 2B010000 		.4byte	0x12b
+ 741 00ce 08       		.uleb128 0x8
+ 742 00cf FF010000 		.4byte	.LASF18
+ 743 00d3 01       		.byte	0x1
+ 744 00d4 11       		.byte	0x11
+ 745 00d5 6B000000 		.4byte	0x6b
+ 746 00d9 00000000 		.4byte	.LLST0
+ 747 00dd 09       		.uleb128 0x9
+ 748 00de 08000000 		.4byte	.LVL1
+ 749 00e2 B2060000 		.4byte	0x6b2
+ 750 00e6 F1000000 		.4byte	0xf1
+ 751 00ea 0A       		.uleb128 0xa
+ 752 00eb 01       		.uleb128 0x1
+ 753 00ec 50       		.byte	0x50
+ 754 00ed 02       		.uleb128 0x2
+ 755 00ee 74       		.byte	0x74
+ 756 00ef 00       		.sleb128 0
+ 757 00f0 00       		.byte	0
+ 758 00f1 09       		.uleb128 0x9
+ 759 00f2 10000000 		.4byte	.LVL2
+ 760 00f6 C3060000 		.4byte	0x6c3
+ 761 00fa 06010000 		.4byte	0x106
+ 762 00fe 0A       		.uleb128 0xa
+ 763 00ff 01       		.uleb128 0x1
+ 764 0100 50       		.byte	0x50
+ 765 0101 03       		.uleb128 0x3
+ 766 0102 0A       		.byte	0xa
+ 767 0103 F401     		.2byte	0x1f4
+ 768 0105 00       		.byte	0
+ 769 0106 09       		.uleb128 0x9
+ 770 0107 16000000 		.4byte	.LVL3
+ 771 010b D4060000 		.4byte	0x6d4
+ 772 010f 1A010000 		.4byte	0x11a
+ 773 0113 0A       		.uleb128 0xa
+ 774 0114 01       		.uleb128 0x1
+ 775 0115 50       		.byte	0x50
+ 776 0116 02       		.uleb128 0x2
+ 777 0117 74       		.byte	0x74
+ 778 0118 00       		.sleb128 0
+ 779 0119 00       		.byte	0
+ 780 011a 0B       		.uleb128 0xb
+ 781 011b 1C000000 		.4byte	.LVL4
+ 782 011f C3060000 		.4byte	0x6c3
+ 783 0123 0A       		.uleb128 0xa
+ 784 0124 01       		.uleb128 0x1
+ 785 0125 50       		.byte	0x50
+ 786 0126 02       		.uleb128 0x2
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczodve5.s 			page 21
+
+
+ 787 0127 08       		.byte	0x8
+ 788 0128 FA       		.byte	0xfa
+ 789 0129 00       		.byte	0
+ 790 012a 00       		.byte	0
+ 791 012b 07       		.uleb128 0x7
+ 792 012c E4010000 		.4byte	.LASF17
+ 793 0130 01       		.byte	0x1
+ 794 0131 18       		.byte	0x18
+ 795 0132 00000000 		.4byte	.LFB34
+ 796 0136 20000000 		.4byte	.LFE34-.LFB34
+ 797 013a 01       		.uleb128 0x1
+ 798 013b 9C       		.byte	0x9c
+ 799 013c 9D010000 		.4byte	0x19d
+ 800 0140 08       		.uleb128 0x8
+ 801 0141 FF010000 		.4byte	.LASF18
+ 802 0145 01       		.byte	0x1
+ 803 0146 18       		.byte	0x18
+ 804 0147 6B000000 		.4byte	0x6b
+ 805 014b 21000000 		.4byte	.LLST1
+ 806 014f 09       		.uleb128 0x9
+ 807 0150 08000000 		.4byte	.LVL6
+ 808 0154 B2060000 		.4byte	0x6b2
+ 809 0158 63010000 		.4byte	0x163
+ 810 015c 0A       		.uleb128 0xa
+ 811 015d 01       		.uleb128 0x1
+ 812 015e 50       		.byte	0x50
+ 813 015f 02       		.uleb128 0x2
+ 814 0160 74       		.byte	0x74
+ 815 0161 00       		.sleb128 0
+ 816 0162 00       		.byte	0
+ 817 0163 09       		.uleb128 0x9
+ 818 0164 0E000000 		.4byte	.LVL7
+ 819 0168 C3060000 		.4byte	0x6c3
+ 820 016c 78010000 		.4byte	0x178
+ 821 0170 0A       		.uleb128 0xa
+ 822 0171 01       		.uleb128 0x1
+ 823 0172 50       		.byte	0x50
+ 824 0173 03       		.uleb128 0x3
+ 825 0174 0A       		.byte	0xa
+ 826 0175 DC05     		.2byte	0x5dc
+ 827 0177 00       		.byte	0
+ 828 0178 09       		.uleb128 0x9
+ 829 0179 14000000 		.4byte	.LVL8
+ 830 017d D4060000 		.4byte	0x6d4
+ 831 0181 8C010000 		.4byte	0x18c
+ 832 0185 0A       		.uleb128 0xa
+ 833 0186 01       		.uleb128 0x1
+ 834 0187 50       		.byte	0x50
+ 835 0188 02       		.uleb128 0x2
+ 836 0189 74       		.byte	0x74
+ 837 018a 00       		.sleb128 0
+ 838 018b 00       		.byte	0
+ 839 018c 0B       		.uleb128 0xb
+ 840 018d 1A000000 		.4byte	.LVL9
+ 841 0191 C3060000 		.4byte	0x6c3
+ 842 0195 0A       		.uleb128 0xa
+ 843 0196 01       		.uleb128 0x1
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczodve5.s 			page 22
+
+
+ 844 0197 50       		.byte	0x50
+ 845 0198 02       		.uleb128 0x2
+ 846 0199 08       		.byte	0x8
+ 847 019a FA       		.byte	0xfa
+ 848 019b 00       		.byte	0
+ 849 019c 00       		.byte	0
+ 850 019d 07       		.uleb128 0x7
+ 851 019e 65010000 		.4byte	.LASF19
+ 852 01a2 01       		.byte	0x1
+ 853 01a3 1F       		.byte	0x1f
+ 854 01a4 00000000 		.4byte	.LFB35
+ 855 01a8 3C000000 		.4byte	.LFE35-.LFB35
+ 856 01ac 01       		.uleb128 0x1
+ 857 01ad 9C       		.byte	0x9c
+ 858 01ae 5D020000 		.4byte	0x25d
+ 859 01b2 0C       		.uleb128 0xc
+ 860 01b3 6900     		.ascii	"i\000"
+ 861 01b5 01       		.byte	0x1
+ 862 01b6 20       		.byte	0x20
+ 863 01b7 64000000 		.4byte	0x64
+ 864 01bb 42000000 		.4byte	.LLST2
+ 865 01bf 0D       		.uleb128 0xd
+ 866 01c0 23010000 		.4byte	.LASF20
+ 867 01c4 01       		.byte	0x1
+ 868 01c5 21       		.byte	0x21
+ 869 01c6 6B000000 		.4byte	0x6b
+ 870 01ca 74000000 		.4byte	.LLST3
+ 871 01ce 09       		.uleb128 0x9
+ 872 01cf 08000000 		.4byte	.LVL10
+ 873 01d3 E5060000 		.4byte	0x6e5
+ 874 01d7 E1010000 		.4byte	0x1e1
+ 875 01db 0A       		.uleb128 0xa
+ 876 01dc 01       		.uleb128 0x1
+ 877 01dd 50       		.byte	0x50
+ 878 01de 01       		.uleb128 0x1
+ 879 01df 31       		.byte	0x31
+ 880 01e0 00       		.byte	0
+ 881 01e1 09       		.uleb128 0x9
+ 882 01e2 12000000 		.4byte	.LVL13
+ 883 01e6 FA060000 		.4byte	0x6fa
+ 884 01ea F9010000 		.4byte	0x1f9
+ 885 01ee 0A       		.uleb128 0xa
+ 886 01ef 01       		.uleb128 0x1
+ 887 01f0 51       		.byte	0x51
+ 888 01f1 01       		.uleb128 0x1
+ 889 01f2 37       		.byte	0x37
+ 890 01f3 0A       		.uleb128 0xa
+ 891 01f4 01       		.uleb128 0x1
+ 892 01f5 50       		.byte	0x50
+ 893 01f6 01       		.uleb128 0x1
+ 894 01f7 33       		.byte	0x33
+ 895 01f8 00       		.byte	0
+ 896 01f9 09       		.uleb128 0x9
+ 897 01fa 1A000000 		.4byte	.LVL15
+ 898 01fe B2060000 		.4byte	0x6b2
+ 899 0202 0C020000 		.4byte	0x20c
+ 900 0206 0A       		.uleb128 0xa
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczodve5.s 			page 23
+
+
+ 901 0207 01       		.uleb128 0x1
+ 902 0208 50       		.byte	0x50
+ 903 0209 01       		.uleb128 0x1
+ 904 020a 33       		.byte	0x33
+ 905 020b 00       		.byte	0
+ 906 020c 09       		.uleb128 0x9
+ 907 020d 20000000 		.4byte	.LVL16
+ 908 0211 C3060000 		.4byte	0x6c3
+ 909 0215 20020000 		.4byte	0x220
+ 910 0219 0A       		.uleb128 0xa
+ 911 021a 01       		.uleb128 0x1
+ 912 021b 50       		.byte	0x50
+ 913 021c 02       		.uleb128 0x2
+ 914 021d 08       		.byte	0x8
+ 915 021e FA       		.byte	0xfa
+ 916 021f 00       		.byte	0
+ 917 0220 09       		.uleb128 0x9
+ 918 0221 26000000 		.4byte	.LVL17
+ 919 0225 D4060000 		.4byte	0x6d4
+ 920 0229 33020000 		.4byte	0x233
+ 921 022d 0A       		.uleb128 0xa
+ 922 022e 01       		.uleb128 0x1
+ 923 022f 50       		.byte	0x50
+ 924 0230 01       		.uleb128 0x1
+ 925 0231 33       		.byte	0x33
+ 926 0232 00       		.byte	0
+ 927 0233 09       		.uleb128 0x9
+ 928 0234 2E000000 		.4byte	.LVL19
+ 929 0238 C3060000 		.4byte	0x6c3
+ 930 023c 47020000 		.4byte	0x247
+ 931 0240 0A       		.uleb128 0xa
+ 932 0241 01       		.uleb128 0x1
+ 933 0242 50       		.byte	0x50
+ 934 0243 02       		.uleb128 0x2
+ 935 0244 08       		.byte	0x8
+ 936 0245 FA       		.byte	0xfa
+ 937 0246 00       		.byte	0
+ 938 0247 0B       		.uleb128 0xb
+ 939 0248 3A000000 		.4byte	.LVL20
+ 940 024c FA060000 		.4byte	0x6fa
+ 941 0250 0A       		.uleb128 0xa
+ 942 0251 01       		.uleb128 0x1
+ 943 0252 51       		.byte	0x51
+ 944 0253 02       		.uleb128 0x2
+ 945 0254 75       		.byte	0x75
+ 946 0255 00       		.sleb128 0
+ 947 0256 0A       		.uleb128 0xa
+ 948 0257 01       		.uleb128 0x1
+ 949 0258 50       		.byte	0x50
+ 950 0259 01       		.uleb128 0x1
+ 951 025a 33       		.byte	0x33
+ 952 025b 00       		.byte	0
+ 953 025c 00       		.byte	0
+ 954 025d 07       		.uleb128 0x7
+ 955 025e 14020000 		.4byte	.LASF21
+ 956 0262 01       		.byte	0x1
+ 957 0263 2D       		.byte	0x2d
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczodve5.s 			page 24
+
+
+ 958 0264 00000000 		.4byte	.LFB36
+ 959 0268 0C000000 		.4byte	.LFE36-.LFB36
+ 960 026c 01       		.uleb128 0x1
+ 961 026d 9C       		.byte	0x9c
+ 962 026e 84020000 		.4byte	0x284
+ 963 0272 0B       		.uleb128 0xb
+ 964 0273 0A000000 		.4byte	.LVL22
+ 965 0277 C3060000 		.4byte	0x6c3
+ 966 027b 0A       		.uleb128 0xa
+ 967 027c 01       		.uleb128 0x1
+ 968 027d 50       		.byte	0x50
+ 969 027e 03       		.uleb128 0x3
+ 970 027f 0A       		.byte	0xa
+ 971 0280 E803     		.2byte	0x3e8
+ 972 0282 00       		.byte	0
+ 973 0283 00       		.byte	0
+ 974 0284 07       		.uleb128 0x7
+ 975 0285 28000000 		.4byte	.LASF22
+ 976 0289 01       		.byte	0x1
+ 977 028a 31       		.byte	0x31
+ 978 028b 00000000 		.4byte	.LFB37
+ 979 028f AA010000 		.4byte	.LFE37-.LFB37
+ 980 0293 01       		.uleb128 0x1
+ 981 0294 9C       		.byte	0x9c
+ 982 0295 40060000 		.4byte	0x640
+ 983 0299 08       		.uleb128 0x8
+ 984 029a FF010000 		.4byte	.LASF18
+ 985 029e 01       		.byte	0x1
+ 986 029f 31       		.byte	0x31
+ 987 02a0 6B000000 		.4byte	0x6b
+ 988 02a4 92000000 		.4byte	.LLST4
+ 989 02a8 0E       		.uleb128 0xe
+ 990 02a9 6300     		.ascii	"c\000"
+ 991 02ab 01       		.byte	0x1
+ 992 02ac 31       		.byte	0x31
+ 993 02ad 8F000000 		.4byte	0x8f
+ 994 02b1 B3000000 		.4byte	.LLST5
+ 995 02b5 09       		.uleb128 0x9
+ 996 02b6 74000000 		.4byte	.LVL25
+ 997 02ba 2B010000 		.4byte	0x12b
+ 998 02be C9020000 		.4byte	0x2c9
+ 999 02c2 0A       		.uleb128 0xa
+ 1000 02c3 01       		.uleb128 0x1
+ 1001 02c4 50       		.byte	0x50
+ 1002 02c5 02       		.uleb128 0x2
+ 1003 02c6 74       		.byte	0x74
+ 1004 02c7 00       		.sleb128 0
+ 1005 02c8 00       		.byte	0
+ 1006 02c9 09       		.uleb128 0x9
+ 1007 02ca 7C000000 		.4byte	.LVL27
+ 1008 02ce B9000000 		.4byte	0xb9
+ 1009 02d2 DD020000 		.4byte	0x2dd
+ 1010 02d6 0A       		.uleb128 0xa
+ 1011 02d7 01       		.uleb128 0x1
+ 1012 02d8 50       		.byte	0x50
+ 1013 02d9 02       		.uleb128 0x2
+ 1014 02da 74       		.byte	0x74
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczodve5.s 			page 25
+
+
+ 1015 02db 00       		.sleb128 0
+ 1016 02dc 00       		.byte	0
+ 1017 02dd 09       		.uleb128 0x9
+ 1018 02de 82000000 		.4byte	.LVL28
+ 1019 02e2 B9000000 		.4byte	0xb9
+ 1020 02e6 F1020000 		.4byte	0x2f1
+ 1021 02ea 0A       		.uleb128 0xa
+ 1022 02eb 01       		.uleb128 0x1
+ 1023 02ec 50       		.byte	0x50
+ 1024 02ed 02       		.uleb128 0x2
+ 1025 02ee 74       		.byte	0x74
+ 1026 02ef 00       		.sleb128 0
+ 1027 02f0 00       		.byte	0
+ 1028 02f1 09       		.uleb128 0x9
+ 1029 02f2 8A000000 		.4byte	.LVL30
+ 1030 02f6 B9000000 		.4byte	0xb9
+ 1031 02fa 05030000 		.4byte	0x305
+ 1032 02fe 0A       		.uleb128 0xa
+ 1033 02ff 01       		.uleb128 0x1
+ 1034 0300 50       		.byte	0x50
+ 1035 0301 02       		.uleb128 0x2
+ 1036 0302 74       		.byte	0x74
+ 1037 0303 00       		.sleb128 0
+ 1038 0304 00       		.byte	0
+ 1039 0305 09       		.uleb128 0x9
+ 1040 0306 92000000 		.4byte	.LVL32
+ 1041 030a B9000000 		.4byte	0xb9
+ 1042 030e 19030000 		.4byte	0x319
+ 1043 0312 0A       		.uleb128 0xa
+ 1044 0313 01       		.uleb128 0x1
+ 1045 0314 50       		.byte	0x50
+ 1046 0315 02       		.uleb128 0x2
+ 1047 0316 74       		.byte	0x74
+ 1048 0317 00       		.sleb128 0
+ 1049 0318 00       		.byte	0
+ 1050 0319 09       		.uleb128 0x9
+ 1051 031a 9A000000 		.4byte	.LVL34
+ 1052 031e 2B010000 		.4byte	0x12b
+ 1053 0322 2D030000 		.4byte	0x32d
+ 1054 0326 0A       		.uleb128 0xa
+ 1055 0327 01       		.uleb128 0x1
+ 1056 0328 50       		.byte	0x50
+ 1057 0329 02       		.uleb128 0x2
+ 1058 032a 74       		.byte	0x74
+ 1059 032b 00       		.sleb128 0
+ 1060 032c 00       		.byte	0
+ 1061 032d 09       		.uleb128 0x9
+ 1062 032e A2000000 		.4byte	.LVL36
+ 1063 0332 2B010000 		.4byte	0x12b
+ 1064 0336 41030000 		.4byte	0x341
+ 1065 033a 0A       		.uleb128 0xa
+ 1066 033b 01       		.uleb128 0x1
+ 1067 033c 50       		.byte	0x50
+ 1068 033d 02       		.uleb128 0x2
+ 1069 033e 74       		.byte	0x74
+ 1070 033f 00       		.sleb128 0
+ 1071 0340 00       		.byte	0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczodve5.s 			page 26
+
+
+ 1072 0341 09       		.uleb128 0x9
+ 1073 0342 AA000000 		.4byte	.LVL38
+ 1074 0346 2B010000 		.4byte	0x12b
+ 1075 034a 55030000 		.4byte	0x355
+ 1076 034e 0A       		.uleb128 0xa
+ 1077 034f 01       		.uleb128 0x1
+ 1078 0350 50       		.byte	0x50
+ 1079 0351 02       		.uleb128 0x2
+ 1080 0352 74       		.byte	0x74
+ 1081 0353 00       		.sleb128 0
+ 1082 0354 00       		.byte	0
+ 1083 0355 09       		.uleb128 0x9
+ 1084 0356 B2000000 		.4byte	.LVL40
+ 1085 035a 2B010000 		.4byte	0x12b
+ 1086 035e 69030000 		.4byte	0x369
+ 1087 0362 0A       		.uleb128 0xa
+ 1088 0363 01       		.uleb128 0x1
+ 1089 0364 50       		.byte	0x50
+ 1090 0365 02       		.uleb128 0x2
+ 1091 0366 74       		.byte	0x74
+ 1092 0367 00       		.sleb128 0
+ 1093 0368 00       		.byte	0
+ 1094 0369 09       		.uleb128 0x9
+ 1095 036a BA000000 		.4byte	.LVL42
+ 1096 036e B9000000 		.4byte	0xb9
+ 1097 0372 7D030000 		.4byte	0x37d
+ 1098 0376 0A       		.uleb128 0xa
+ 1099 0377 01       		.uleb128 0x1
+ 1100 0378 50       		.byte	0x50
+ 1101 0379 02       		.uleb128 0x2
+ 1102 037a 74       		.byte	0x74
+ 1103 037b 00       		.sleb128 0
+ 1104 037c 00       		.byte	0
+ 1105 037d 09       		.uleb128 0x9
+ 1106 037e C0000000 		.4byte	.LVL43
+ 1107 0382 2B010000 		.4byte	0x12b
+ 1108 0386 91030000 		.4byte	0x391
+ 1109 038a 0A       		.uleb128 0xa
+ 1110 038b 01       		.uleb128 0x1
+ 1111 038c 50       		.byte	0x50
+ 1112 038d 02       		.uleb128 0x2
+ 1113 038e 74       		.byte	0x74
+ 1114 038f 00       		.sleb128 0
+ 1115 0390 00       		.byte	0
+ 1116 0391 09       		.uleb128 0x9
+ 1117 0392 C8000000 		.4byte	.LVL45
+ 1118 0396 B9000000 		.4byte	0xb9
+ 1119 039a A5030000 		.4byte	0x3a5
+ 1120 039e 0A       		.uleb128 0xa
+ 1121 039f 01       		.uleb128 0x1
+ 1122 03a0 50       		.byte	0x50
+ 1123 03a1 02       		.uleb128 0x2
+ 1124 03a2 74       		.byte	0x74
+ 1125 03a3 00       		.sleb128 0
+ 1126 03a4 00       		.byte	0
+ 1127 03a5 09       		.uleb128 0x9
+ 1128 03a6 CE000000 		.4byte	.LVL46
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczodve5.s 			page 27
+
+
+ 1129 03aa B9000000 		.4byte	0xb9
+ 1130 03ae B9030000 		.4byte	0x3b9
+ 1131 03b2 0A       		.uleb128 0xa
+ 1132 03b3 01       		.uleb128 0x1
+ 1133 03b4 50       		.byte	0x50
+ 1134 03b5 02       		.uleb128 0x2
+ 1135 03b6 74       		.byte	0x74
+ 1136 03b7 00       		.sleb128 0
+ 1137 03b8 00       		.byte	0
+ 1138 03b9 09       		.uleb128 0x9
+ 1139 03ba D4000000 		.4byte	.LVL47
+ 1140 03be 2B010000 		.4byte	0x12b
+ 1141 03c2 CD030000 		.4byte	0x3cd
+ 1142 03c6 0A       		.uleb128 0xa
+ 1143 03c7 01       		.uleb128 0x1
+ 1144 03c8 50       		.byte	0x50
+ 1145 03c9 02       		.uleb128 0x2
+ 1146 03ca 74       		.byte	0x74
+ 1147 03cb 00       		.sleb128 0
+ 1148 03cc 00       		.byte	0
+ 1149 03cd 09       		.uleb128 0x9
+ 1150 03ce DC000000 		.4byte	.LVL49
+ 1151 03d2 B9000000 		.4byte	0xb9
+ 1152 03d6 E1030000 		.4byte	0x3e1
+ 1153 03da 0A       		.uleb128 0xa
+ 1154 03db 01       		.uleb128 0x1
+ 1155 03dc 50       		.byte	0x50
+ 1156 03dd 02       		.uleb128 0x2
+ 1157 03de 74       		.byte	0x74
+ 1158 03df 00       		.sleb128 0
+ 1159 03e0 00       		.byte	0
+ 1160 03e1 09       		.uleb128 0x9
+ 1161 03e2 E4000000 		.4byte	.LVL51
+ 1162 03e6 B9000000 		.4byte	0xb9
+ 1163 03ea F5030000 		.4byte	0x3f5
+ 1164 03ee 0A       		.uleb128 0xa
+ 1165 03ef 01       		.uleb128 0x1
+ 1166 03f0 50       		.byte	0x50
+ 1167 03f1 02       		.uleb128 0x2
+ 1168 03f2 74       		.byte	0x74
+ 1169 03f3 00       		.sleb128 0
+ 1170 03f4 00       		.byte	0
+ 1171 03f5 09       		.uleb128 0x9
+ 1172 03f6 EA000000 		.4byte	.LVL52
+ 1173 03fa B9000000 		.4byte	0xb9
+ 1174 03fe 09040000 		.4byte	0x409
+ 1175 0402 0A       		.uleb128 0xa
+ 1176 0403 01       		.uleb128 0x1
+ 1177 0404 50       		.byte	0x50
+ 1178 0405 02       		.uleb128 0x2
+ 1179 0406 74       		.byte	0x74
+ 1180 0407 00       		.sleb128 0
+ 1181 0408 00       		.byte	0
+ 1182 0409 09       		.uleb128 0x9
+ 1183 040a F0000000 		.4byte	.LVL53
+ 1184 040e B9000000 		.4byte	0xb9
+ 1185 0412 1D040000 		.4byte	0x41d
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczodve5.s 			page 28
+
+
+ 1186 0416 0A       		.uleb128 0xa
+ 1187 0417 01       		.uleb128 0x1
+ 1188 0418 50       		.byte	0x50
+ 1189 0419 02       		.uleb128 0x2
+ 1190 041a 74       		.byte	0x74
+ 1191 041b 00       		.sleb128 0
+ 1192 041c 00       		.byte	0
+ 1193 041d 09       		.uleb128 0x9
+ 1194 041e F8000000 		.4byte	.LVL55
+ 1195 0422 B9000000 		.4byte	0xb9
+ 1196 0426 31040000 		.4byte	0x431
+ 1197 042a 0A       		.uleb128 0xa
+ 1198 042b 01       		.uleb128 0x1
+ 1199 042c 50       		.byte	0x50
+ 1200 042d 02       		.uleb128 0x2
+ 1201 042e 74       		.byte	0x74
+ 1202 042f 00       		.sleb128 0
+ 1203 0430 00       		.byte	0
+ 1204 0431 09       		.uleb128 0x9
+ 1205 0432 00010000 		.4byte	.LVL57
+ 1206 0436 2B010000 		.4byte	0x12b
+ 1207 043a 45040000 		.4byte	0x445
+ 1208 043e 0A       		.uleb128 0xa
+ 1209 043f 01       		.uleb128 0x1
+ 1210 0440 50       		.byte	0x50
+ 1211 0441 02       		.uleb128 0x2
+ 1212 0442 74       		.byte	0x74
+ 1213 0443 00       		.sleb128 0
+ 1214 0444 00       		.byte	0
+ 1215 0445 09       		.uleb128 0x9
+ 1216 0446 06010000 		.4byte	.LVL58
+ 1217 044a B9000000 		.4byte	0xb9
+ 1218 044e 59040000 		.4byte	0x459
+ 1219 0452 0A       		.uleb128 0xa
+ 1220 0453 01       		.uleb128 0x1
+ 1221 0454 50       		.byte	0x50
+ 1222 0455 02       		.uleb128 0x2
+ 1223 0456 74       		.byte	0x74
+ 1224 0457 00       		.sleb128 0
+ 1225 0458 00       		.byte	0
+ 1226 0459 09       		.uleb128 0x9
+ 1227 045a 0E010000 		.4byte	.LVL60
+ 1228 045e 2B010000 		.4byte	0x12b
+ 1229 0462 6D040000 		.4byte	0x46d
+ 1230 0466 0A       		.uleb128 0xa
+ 1231 0467 01       		.uleb128 0x1
+ 1232 0468 50       		.byte	0x50
+ 1233 0469 02       		.uleb128 0x2
+ 1234 046a 74       		.byte	0x74
+ 1235 046b 00       		.sleb128 0
+ 1236 046c 00       		.byte	0
+ 1237 046d 09       		.uleb128 0x9
+ 1238 046e 14010000 		.4byte	.LVL61
+ 1239 0472 2B010000 		.4byte	0x12b
+ 1240 0476 81040000 		.4byte	0x481
+ 1241 047a 0A       		.uleb128 0xa
+ 1242 047b 01       		.uleb128 0x1
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczodve5.s 			page 29
+
+
+ 1243 047c 50       		.byte	0x50
+ 1244 047d 02       		.uleb128 0x2
+ 1245 047e 74       		.byte	0x74
+ 1246 047f 00       		.sleb128 0
+ 1247 0480 00       		.byte	0
+ 1248 0481 09       		.uleb128 0x9
+ 1249 0482 1A010000 		.4byte	.LVL62
+ 1250 0486 B9000000 		.4byte	0xb9
+ 1251 048a 95040000 		.4byte	0x495
+ 1252 048e 0A       		.uleb128 0xa
+ 1253 048f 01       		.uleb128 0x1
+ 1254 0490 50       		.byte	0x50
+ 1255 0491 02       		.uleb128 0x2
+ 1256 0492 74       		.byte	0x74
+ 1257 0493 00       		.sleb128 0
+ 1258 0494 00       		.byte	0
+ 1259 0495 09       		.uleb128 0x9
+ 1260 0496 22010000 		.4byte	.LVL64
+ 1261 049a 2B010000 		.4byte	0x12b
+ 1262 049e A9040000 		.4byte	0x4a9
+ 1263 04a2 0A       		.uleb128 0xa
+ 1264 04a3 01       		.uleb128 0x1
+ 1265 04a4 50       		.byte	0x50
+ 1266 04a5 02       		.uleb128 0x2
+ 1267 04a6 74       		.byte	0x74
+ 1268 04a7 00       		.sleb128 0
+ 1269 04a8 00       		.byte	0
+ 1270 04a9 09       		.uleb128 0x9
+ 1271 04aa 28010000 		.4byte	.LVL65
+ 1272 04ae 2B010000 		.4byte	0x12b
+ 1273 04b2 BD040000 		.4byte	0x4bd
+ 1274 04b6 0A       		.uleb128 0xa
+ 1275 04b7 01       		.uleb128 0x1
+ 1276 04b8 50       		.byte	0x50
+ 1277 04b9 02       		.uleb128 0x2
+ 1278 04ba 74       		.byte	0x74
+ 1279 04bb 00       		.sleb128 0
+ 1280 04bc 00       		.byte	0
+ 1281 04bd 09       		.uleb128 0x9
+ 1282 04be 2E010000 		.4byte	.LVL66
+ 1283 04c2 2B010000 		.4byte	0x12b
+ 1284 04c6 D1040000 		.4byte	0x4d1
+ 1285 04ca 0A       		.uleb128 0xa
+ 1286 04cb 01       		.uleb128 0x1
+ 1287 04cc 50       		.byte	0x50
+ 1288 04cd 02       		.uleb128 0x2
+ 1289 04ce 74       		.byte	0x74
+ 1290 04cf 00       		.sleb128 0
+ 1291 04d0 00       		.byte	0
+ 1292 04d1 09       		.uleb128 0x9
+ 1293 04d2 34010000 		.4byte	.LVL67
+ 1294 04d6 B9000000 		.4byte	0xb9
+ 1295 04da E5040000 		.4byte	0x4e5
+ 1296 04de 0A       		.uleb128 0xa
+ 1297 04df 01       		.uleb128 0x1
+ 1298 04e0 50       		.byte	0x50
+ 1299 04e1 02       		.uleb128 0x2
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczodve5.s 			page 30
+
+
+ 1300 04e2 74       		.byte	0x74
+ 1301 04e3 00       		.sleb128 0
+ 1302 04e4 00       		.byte	0
+ 1303 04e5 09       		.uleb128 0x9
+ 1304 04e6 3C010000 		.4byte	.LVL69
+ 1305 04ea 2B010000 		.4byte	0x12b
+ 1306 04ee F9040000 		.4byte	0x4f9
+ 1307 04f2 0A       		.uleb128 0xa
+ 1308 04f3 01       		.uleb128 0x1
+ 1309 04f4 50       		.byte	0x50
+ 1310 04f5 02       		.uleb128 0x2
+ 1311 04f6 74       		.byte	0x74
+ 1312 04f7 00       		.sleb128 0
+ 1313 04f8 00       		.byte	0
+ 1314 04f9 09       		.uleb128 0x9
+ 1315 04fa 42010000 		.4byte	.LVL70
+ 1316 04fe 2B010000 		.4byte	0x12b
+ 1317 0502 0D050000 		.4byte	0x50d
+ 1318 0506 0A       		.uleb128 0xa
+ 1319 0507 01       		.uleb128 0x1
+ 1320 0508 50       		.byte	0x50
+ 1321 0509 02       		.uleb128 0x2
+ 1322 050a 74       		.byte	0x74
+ 1323 050b 00       		.sleb128 0
+ 1324 050c 00       		.byte	0
+ 1325 050d 09       		.uleb128 0x9
+ 1326 050e 48010000 		.4byte	.LVL71
+ 1327 0512 2B010000 		.4byte	0x12b
+ 1328 0516 21050000 		.4byte	0x521
+ 1329 051a 0A       		.uleb128 0xa
+ 1330 051b 01       		.uleb128 0x1
+ 1331 051c 50       		.byte	0x50
+ 1332 051d 02       		.uleb128 0x2
+ 1333 051e 74       		.byte	0x74
+ 1334 051f 00       		.sleb128 0
+ 1335 0520 00       		.byte	0
+ 1336 0521 09       		.uleb128 0x9
+ 1337 0522 4E010000 		.4byte	.LVL72
+ 1338 0526 2B010000 		.4byte	0x12b
+ 1339 052a 35050000 		.4byte	0x535
+ 1340 052e 0A       		.uleb128 0xa
+ 1341 052f 01       		.uleb128 0x1
+ 1342 0530 50       		.byte	0x50
+ 1343 0531 02       		.uleb128 0x2
+ 1344 0532 74       		.byte	0x74
+ 1345 0533 00       		.sleb128 0
+ 1346 0534 00       		.byte	0
+ 1347 0535 09       		.uleb128 0x9
+ 1348 0536 54010000 		.4byte	.LVL73
+ 1349 053a B9000000 		.4byte	0xb9
+ 1350 053e 49050000 		.4byte	0x549
+ 1351 0542 0A       		.uleb128 0xa
+ 1352 0543 01       		.uleb128 0x1
+ 1353 0544 50       		.byte	0x50
+ 1354 0545 02       		.uleb128 0x2
+ 1355 0546 74       		.byte	0x74
+ 1356 0547 00       		.sleb128 0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczodve5.s 			page 31
+
+
+ 1357 0548 00       		.byte	0
+ 1358 0549 09       		.uleb128 0x9
+ 1359 054a 5C010000 		.4byte	.LVL75
+ 1360 054e B9000000 		.4byte	0xb9
+ 1361 0552 5D050000 		.4byte	0x55d
+ 1362 0556 0A       		.uleb128 0xa
+ 1363 0557 01       		.uleb128 0x1
+ 1364 0558 50       		.byte	0x50
+ 1365 0559 02       		.uleb128 0x2
+ 1366 055a 74       		.byte	0x74
+ 1367 055b 00       		.sleb128 0
+ 1368 055c 00       		.byte	0
+ 1369 055d 09       		.uleb128 0x9
+ 1370 055e 62010000 		.4byte	.LVL76
+ 1371 0562 2B010000 		.4byte	0x12b
+ 1372 0566 71050000 		.4byte	0x571
+ 1373 056a 0A       		.uleb128 0xa
+ 1374 056b 01       		.uleb128 0x1
+ 1375 056c 50       		.byte	0x50
+ 1376 056d 02       		.uleb128 0x2
+ 1377 056e 74       		.byte	0x74
+ 1378 056f 00       		.sleb128 0
+ 1379 0570 00       		.byte	0
+ 1380 0571 09       		.uleb128 0x9
+ 1381 0572 68010000 		.4byte	.LVL77
+ 1382 0576 B9000000 		.4byte	0xb9
+ 1383 057a 85050000 		.4byte	0x585
+ 1384 057e 0A       		.uleb128 0xa
+ 1385 057f 01       		.uleb128 0x1
+ 1386 0580 50       		.byte	0x50
+ 1387 0581 02       		.uleb128 0x2
+ 1388 0582 74       		.byte	0x74
+ 1389 0583 00       		.sleb128 0
+ 1390 0584 00       		.byte	0
+ 1391 0585 09       		.uleb128 0x9
+ 1392 0586 6E010000 		.4byte	.LVL78
+ 1393 058a 2B010000 		.4byte	0x12b
+ 1394 058e 99050000 		.4byte	0x599
+ 1395 0592 0A       		.uleb128 0xa
+ 1396 0593 01       		.uleb128 0x1
+ 1397 0594 50       		.byte	0x50
+ 1398 0595 02       		.uleb128 0x2
+ 1399 0596 74       		.byte	0x74
+ 1400 0597 00       		.sleb128 0
+ 1401 0598 00       		.byte	0
+ 1402 0599 09       		.uleb128 0x9
+ 1403 059a 74010000 		.4byte	.LVL79
+ 1404 059e B9000000 		.4byte	0xb9
+ 1405 05a2 AD050000 		.4byte	0x5ad
+ 1406 05a6 0A       		.uleb128 0xa
+ 1407 05a7 01       		.uleb128 0x1
+ 1408 05a8 50       		.byte	0x50
+ 1409 05a9 02       		.uleb128 0x2
+ 1410 05aa 74       		.byte	0x74
+ 1411 05ab 00       		.sleb128 0
+ 1412 05ac 00       		.byte	0
+ 1413 05ad 09       		.uleb128 0x9
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczodve5.s 			page 32
+
+
+ 1414 05ae 7C010000 		.4byte	.LVL81
+ 1415 05b2 2B010000 		.4byte	0x12b
+ 1416 05b6 C1050000 		.4byte	0x5c1
+ 1417 05ba 0A       		.uleb128 0xa
+ 1418 05bb 01       		.uleb128 0x1
+ 1419 05bc 50       		.byte	0x50
+ 1420 05bd 02       		.uleb128 0x2
+ 1421 05be 74       		.byte	0x74
+ 1422 05bf 00       		.sleb128 0
+ 1423 05c0 00       		.byte	0
+ 1424 05c1 09       		.uleb128 0x9
+ 1425 05c2 82010000 		.4byte	.LVL82
+ 1426 05c6 2B010000 		.4byte	0x12b
+ 1427 05ca D5050000 		.4byte	0x5d5
+ 1428 05ce 0A       		.uleb128 0xa
+ 1429 05cf 01       		.uleb128 0x1
+ 1430 05d0 50       		.byte	0x50
+ 1431 05d1 02       		.uleb128 0x2
+ 1432 05d2 74       		.byte	0x74
+ 1433 05d3 00       		.sleb128 0
+ 1434 05d4 00       		.byte	0
+ 1435 05d5 09       		.uleb128 0x9
+ 1436 05d6 88010000 		.4byte	.LVL83
+ 1437 05da B9000000 		.4byte	0xb9
+ 1438 05de E9050000 		.4byte	0x5e9
+ 1439 05e2 0A       		.uleb128 0xa
+ 1440 05e3 01       		.uleb128 0x1
+ 1441 05e4 50       		.byte	0x50
+ 1442 05e5 02       		.uleb128 0x2
+ 1443 05e6 74       		.byte	0x74
+ 1444 05e7 00       		.sleb128 0
+ 1445 05e8 00       		.byte	0
+ 1446 05e9 09       		.uleb128 0x9
+ 1447 05ea 8E010000 		.4byte	.LVL84
+ 1448 05ee B9000000 		.4byte	0xb9
+ 1449 05f2 FD050000 		.4byte	0x5fd
+ 1450 05f6 0A       		.uleb128 0xa
+ 1451 05f7 01       		.uleb128 0x1
+ 1452 05f8 50       		.byte	0x50
+ 1453 05f9 02       		.uleb128 0x2
+ 1454 05fa 74       		.byte	0x74
+ 1455 05fb 00       		.sleb128 0
+ 1456 05fc 00       		.byte	0
+ 1457 05fd 09       		.uleb128 0x9
+ 1458 05fe 94010000 		.4byte	.LVL85
+ 1459 0602 2B010000 		.4byte	0x12b
+ 1460 0606 11060000 		.4byte	0x611
+ 1461 060a 0A       		.uleb128 0xa
+ 1462 060b 01       		.uleb128 0x1
+ 1463 060c 50       		.byte	0x50
+ 1464 060d 02       		.uleb128 0x2
+ 1465 060e 74       		.byte	0x74
+ 1466 060f 00       		.sleb128 0
+ 1467 0610 00       		.byte	0
+ 1468 0611 09       		.uleb128 0x9
+ 1469 0612 9A010000 		.4byte	.LVL86
+ 1470 0616 2B010000 		.4byte	0x12b
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczodve5.s 			page 33
+
+
+ 1471 061a 25060000 		.4byte	0x625
+ 1472 061e 0A       		.uleb128 0xa
+ 1473 061f 01       		.uleb128 0x1
+ 1474 0620 50       		.byte	0x50
+ 1475 0621 02       		.uleb128 0x2
+ 1476 0622 74       		.byte	0x74
+ 1477 0623 00       		.sleb128 0
+ 1478 0624 00       		.byte	0
+ 1479 0625 0F       		.uleb128 0xf
+ 1480 0626 9E010000 		.4byte	.LVL87
+ 1481 062a 5D020000 		.4byte	0x25d
+ 1482 062e 0B       		.uleb128 0xb
+ 1483 062f A8010000 		.4byte	.LVL89
+ 1484 0633 C3060000 		.4byte	0x6c3
+ 1485 0637 0A       		.uleb128 0xa
+ 1486 0638 01       		.uleb128 0x1
+ 1487 0639 50       		.byte	0x50
+ 1488 063a 03       		.uleb128 0x3
+ 1489 063b 0A       		.byte	0xa
+ 1490 063c E803     		.2byte	0x3e8
+ 1491 063e 00       		.byte	0
+ 1492 063f 00       		.byte	0
+ 1493 0640 10       		.uleb128 0x10
+ 1494 0641 40010000 		.4byte	.LASF23
+ 1495 0645 01       		.byte	0x1
+ 1496 0646 5701     		.2byte	0x157
+ 1497 0648 00000000 		.4byte	.LFB38
+ 1498 064c 24000000 		.4byte	.LFE38-.LFB38
+ 1499 0650 01       		.uleb128 0x1
+ 1500 0651 9C       		.byte	0x9c
+ 1501 0652 B2060000 		.4byte	0x6b2
+ 1502 0656 11       		.uleb128 0x11
+ 1503 0657 FF010000 		.4byte	.LASF18
+ 1504 065b 01       		.byte	0x1
+ 1505 065c 5701     		.2byte	0x157
+ 1506 065e 6B000000 		.4byte	0x6b
+ 1507 0662 AF020000 		.4byte	.LLST6
+ 1508 0666 11       		.uleb128 0x11
+ 1509 0667 00000000 		.4byte	.LASF24
+ 1510 066b 01       		.byte	0x1
+ 1511 066c 5701     		.2byte	0x157
+ 1512 066e A8000000 		.4byte	0xa8
+ 1513 0672 D0020000 		.4byte	.LLST7
+ 1514 0676 12       		.uleb128 0x12
+ 1515 0677 6900     		.ascii	"i\000"
+ 1516 0679 01       		.byte	0x1
+ 1517 067a 5801     		.2byte	0x158
+ 1518 067c 64000000 		.4byte	0x64
+ 1519 0680 FC020000 		.4byte	.LLST8
+ 1520 0684 0F       		.uleb128 0xf
+ 1521 0685 0A000000 		.4byte	.LVL91
+ 1522 0689 9D010000 		.4byte	0x19d
+ 1523 068d 09       		.uleb128 0x9
+ 1524 068e 12000000 		.4byte	.LVL93
+ 1525 0692 10070000 		.4byte	0x710
+ 1526 0696 A1060000 		.4byte	0x6a1
+ 1527 069a 0A       		.uleb128 0xa
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczodve5.s 			page 34
+
+
+ 1528 069b 01       		.uleb128 0x1
+ 1529 069c 50       		.byte	0x50
+ 1530 069d 02       		.uleb128 0x2
+ 1531 069e 75       		.byte	0x75
+ 1532 069f 00       		.sleb128 0
+ 1533 06a0 00       		.byte	0
+ 1534 06a1 0B       		.uleb128 0xb
+ 1535 06a2 1E000000 		.4byte	.LVL94
+ 1536 06a6 84020000 		.4byte	0x284
+ 1537 06aa 0A       		.uleb128 0xa
+ 1538 06ab 01       		.uleb128 0x1
+ 1539 06ac 50       		.byte	0x50
+ 1540 06ad 02       		.uleb128 0x2
+ 1541 06ae 76       		.byte	0x76
+ 1542 06af 00       		.sleb128 0
+ 1543 06b0 00       		.byte	0
+ 1544 06b1 00       		.byte	0
+ 1545 06b2 13       		.uleb128 0x13
+ 1546 06b3 EE010000 		.4byte	.LASF25
+ 1547 06b7 04       		.byte	0x4
+ 1548 06b8 3B       		.byte	0x3b
+ 1549 06b9 C3060000 		.4byte	0x6c3
+ 1550 06bd 14       		.uleb128 0x14
+ 1551 06be 6B000000 		.4byte	0x6b
+ 1552 06c2 00       		.byte	0
+ 1553 06c3 13       		.uleb128 0x13
+ 1554 06c4 55000000 		.4byte	.LASF26
+ 1555 06c8 05       		.byte	0x5
+ 1556 06c9 7B       		.byte	0x7b
+ 1557 06ca D4060000 		.4byte	0x6d4
+ 1558 06ce 14       		.uleb128 0x14
+ 1559 06cf 76000000 		.4byte	0x76
+ 1560 06d3 00       		.byte	0
+ 1561 06d4 13       		.uleb128 0x13
+ 1562 06d5 19000000 		.4byte	.LASF27
+ 1563 06d9 04       		.byte	0x4
+ 1564 06da 3C       		.byte	0x3c
+ 1565 06db E5060000 		.4byte	0x6e5
+ 1566 06df 14       		.uleb128 0x14
+ 1567 06e0 6B000000 		.4byte	0x6b
+ 1568 06e4 00       		.byte	0
+ 1569 06e5 15       		.uleb128 0x15
+ 1570 06e6 F8000000 		.4byte	.LASF33
+ 1571 06ea 04       		.byte	0x4
+ 1572 06eb 39       		.byte	0x39
+ 1573 06ec 6B000000 		.4byte	0x6b
+ 1574 06f0 FA060000 		.4byte	0x6fa
+ 1575 06f4 14       		.uleb128 0x14
+ 1576 06f5 6B000000 		.4byte	0x6b
+ 1577 06f9 00       		.byte	0
+ 1578 06fa 13       		.uleb128 0x13
+ 1579 06fb 08000000 		.4byte	.LASF28
+ 1580 06ff 04       		.byte	0x4
+ 1581 0700 37       		.byte	0x37
+ 1582 0701 10070000 		.4byte	0x710
+ 1583 0705 14       		.uleb128 0x14
+ 1584 0706 6B000000 		.4byte	0x6b
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczodve5.s 			page 35
+
+
+ 1585 070a 14       		.uleb128 0x14
+ 1586 070b 6B000000 		.4byte	0x6b
+ 1587 070f 00       		.byte	0
+ 1588 0710 16       		.uleb128 0x16
+ 1589 0711 E3000000 		.4byte	.LASF29
+ 1590 0715 06       		.byte	0x6
+ 1591 0716 21       		.byte	0x21
+ 1592 0717 96000000 		.4byte	0x96
+ 1593 071b 14       		.uleb128 0x14
+ 1594 071c AE000000 		.4byte	0xae
+ 1595 0720 00       		.byte	0
+ 1596 0721 00       		.byte	0
+ 1597              		.section	.debug_abbrev,"",%progbits
+ 1598              	.Ldebug_abbrev0:
+ 1599 0000 01       		.uleb128 0x1
+ 1600 0001 11       		.uleb128 0x11
+ 1601 0002 01       		.byte	0x1
+ 1602 0003 25       		.uleb128 0x25
+ 1603 0004 0E       		.uleb128 0xe
+ 1604 0005 13       		.uleb128 0x13
+ 1605 0006 0B       		.uleb128 0xb
+ 1606 0007 03       		.uleb128 0x3
+ 1607 0008 0E       		.uleb128 0xe
+ 1608 0009 1B       		.uleb128 0x1b
+ 1609 000a 0E       		.uleb128 0xe
+ 1610 000b 55       		.uleb128 0x55
+ 1611 000c 17       		.uleb128 0x17
+ 1612 000d 11       		.uleb128 0x11
+ 1613 000e 01       		.uleb128 0x1
+ 1614 000f 10       		.uleb128 0x10
+ 1615 0010 17       		.uleb128 0x17
+ 1616 0011 00       		.byte	0
+ 1617 0012 00       		.byte	0
+ 1618 0013 02       		.uleb128 0x2
+ 1619 0014 24       		.uleb128 0x24
+ 1620 0015 00       		.byte	0
+ 1621 0016 0B       		.uleb128 0xb
+ 1622 0017 0B       		.uleb128 0xb
+ 1623 0018 3E       		.uleb128 0x3e
+ 1624 0019 0B       		.uleb128 0xb
+ 1625 001a 03       		.uleb128 0x3
+ 1626 001b 0E       		.uleb128 0xe
+ 1627 001c 00       		.byte	0
+ 1628 001d 00       		.byte	0
+ 1629 001e 03       		.uleb128 0x3
+ 1630 001f 24       		.uleb128 0x24
+ 1631 0020 00       		.byte	0
+ 1632 0021 0B       		.uleb128 0xb
+ 1633 0022 0B       		.uleb128 0xb
+ 1634 0023 3E       		.uleb128 0x3e
+ 1635 0024 0B       		.uleb128 0xb
+ 1636 0025 03       		.uleb128 0x3
+ 1637 0026 08       		.uleb128 0x8
+ 1638 0027 00       		.byte	0
+ 1639 0028 00       		.byte	0
+ 1640 0029 04       		.uleb128 0x4
+ 1641 002a 16       		.uleb128 0x16
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczodve5.s 			page 36
+
+
+ 1642 002b 00       		.byte	0
+ 1643 002c 03       		.uleb128 0x3
+ 1644 002d 0E       		.uleb128 0xe
+ 1645 002e 3A       		.uleb128 0x3a
+ 1646 002f 0B       		.uleb128 0xb
+ 1647 0030 3B       		.uleb128 0x3b
+ 1648 0031 0B       		.uleb128 0xb
+ 1649 0032 49       		.uleb128 0x49
+ 1650 0033 13       		.uleb128 0x13
+ 1651 0034 00       		.byte	0
+ 1652 0035 00       		.byte	0
+ 1653 0036 05       		.uleb128 0x5
+ 1654 0037 0F       		.uleb128 0xf
+ 1655 0038 00       		.byte	0
+ 1656 0039 0B       		.uleb128 0xb
+ 1657 003a 0B       		.uleb128 0xb
+ 1658 003b 49       		.uleb128 0x49
+ 1659 003c 13       		.uleb128 0x13
+ 1660 003d 00       		.byte	0
+ 1661 003e 00       		.byte	0
+ 1662 003f 06       		.uleb128 0x6
+ 1663 0040 26       		.uleb128 0x26
+ 1664 0041 00       		.byte	0
+ 1665 0042 49       		.uleb128 0x49
+ 1666 0043 13       		.uleb128 0x13
+ 1667 0044 00       		.byte	0
+ 1668 0045 00       		.byte	0
+ 1669 0046 07       		.uleb128 0x7
+ 1670 0047 2E       		.uleb128 0x2e
+ 1671 0048 01       		.byte	0x1
+ 1672 0049 3F       		.uleb128 0x3f
+ 1673 004a 19       		.uleb128 0x19
+ 1674 004b 03       		.uleb128 0x3
+ 1675 004c 0E       		.uleb128 0xe
+ 1676 004d 3A       		.uleb128 0x3a
+ 1677 004e 0B       		.uleb128 0xb
+ 1678 004f 3B       		.uleb128 0x3b
+ 1679 0050 0B       		.uleb128 0xb
+ 1680 0051 27       		.uleb128 0x27
+ 1681 0052 19       		.uleb128 0x19
+ 1682 0053 11       		.uleb128 0x11
+ 1683 0054 01       		.uleb128 0x1
+ 1684 0055 12       		.uleb128 0x12
+ 1685 0056 06       		.uleb128 0x6
+ 1686 0057 40       		.uleb128 0x40
+ 1687 0058 18       		.uleb128 0x18
+ 1688 0059 9742     		.uleb128 0x2117
+ 1689 005b 19       		.uleb128 0x19
+ 1690 005c 01       		.uleb128 0x1
+ 1691 005d 13       		.uleb128 0x13
+ 1692 005e 00       		.byte	0
+ 1693 005f 00       		.byte	0
+ 1694 0060 08       		.uleb128 0x8
+ 1695 0061 05       		.uleb128 0x5
+ 1696 0062 00       		.byte	0
+ 1697 0063 03       		.uleb128 0x3
+ 1698 0064 0E       		.uleb128 0xe
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczodve5.s 			page 37
+
+
+ 1699 0065 3A       		.uleb128 0x3a
+ 1700 0066 0B       		.uleb128 0xb
+ 1701 0067 3B       		.uleb128 0x3b
+ 1702 0068 0B       		.uleb128 0xb
+ 1703 0069 49       		.uleb128 0x49
+ 1704 006a 13       		.uleb128 0x13
+ 1705 006b 02       		.uleb128 0x2
+ 1706 006c 17       		.uleb128 0x17
+ 1707 006d 00       		.byte	0
+ 1708 006e 00       		.byte	0
+ 1709 006f 09       		.uleb128 0x9
+ 1710 0070 898201   		.uleb128 0x4109
+ 1711 0073 01       		.byte	0x1
+ 1712 0074 11       		.uleb128 0x11
+ 1713 0075 01       		.uleb128 0x1
+ 1714 0076 31       		.uleb128 0x31
+ 1715 0077 13       		.uleb128 0x13
+ 1716 0078 01       		.uleb128 0x1
+ 1717 0079 13       		.uleb128 0x13
+ 1718 007a 00       		.byte	0
+ 1719 007b 00       		.byte	0
+ 1720 007c 0A       		.uleb128 0xa
+ 1721 007d 8A8201   		.uleb128 0x410a
+ 1722 0080 00       		.byte	0
+ 1723 0081 02       		.uleb128 0x2
+ 1724 0082 18       		.uleb128 0x18
+ 1725 0083 9142     		.uleb128 0x2111
+ 1726 0085 18       		.uleb128 0x18
+ 1727 0086 00       		.byte	0
+ 1728 0087 00       		.byte	0
+ 1729 0088 0B       		.uleb128 0xb
+ 1730 0089 898201   		.uleb128 0x4109
+ 1731 008c 01       		.byte	0x1
+ 1732 008d 11       		.uleb128 0x11
+ 1733 008e 01       		.uleb128 0x1
+ 1734 008f 31       		.uleb128 0x31
+ 1735 0090 13       		.uleb128 0x13
+ 1736 0091 00       		.byte	0
+ 1737 0092 00       		.byte	0
+ 1738 0093 0C       		.uleb128 0xc
+ 1739 0094 34       		.uleb128 0x34
+ 1740 0095 00       		.byte	0
+ 1741 0096 03       		.uleb128 0x3
+ 1742 0097 08       		.uleb128 0x8
+ 1743 0098 3A       		.uleb128 0x3a
+ 1744 0099 0B       		.uleb128 0xb
+ 1745 009a 3B       		.uleb128 0x3b
+ 1746 009b 0B       		.uleb128 0xb
+ 1747 009c 49       		.uleb128 0x49
+ 1748 009d 13       		.uleb128 0x13
+ 1749 009e 02       		.uleb128 0x2
+ 1750 009f 17       		.uleb128 0x17
+ 1751 00a0 00       		.byte	0
+ 1752 00a1 00       		.byte	0
+ 1753 00a2 0D       		.uleb128 0xd
+ 1754 00a3 34       		.uleb128 0x34
+ 1755 00a4 00       		.byte	0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczodve5.s 			page 38
+
+
+ 1756 00a5 03       		.uleb128 0x3
+ 1757 00a6 0E       		.uleb128 0xe
+ 1758 00a7 3A       		.uleb128 0x3a
+ 1759 00a8 0B       		.uleb128 0xb
+ 1760 00a9 3B       		.uleb128 0x3b
+ 1761 00aa 0B       		.uleb128 0xb
+ 1762 00ab 49       		.uleb128 0x49
+ 1763 00ac 13       		.uleb128 0x13
+ 1764 00ad 02       		.uleb128 0x2
+ 1765 00ae 17       		.uleb128 0x17
+ 1766 00af 00       		.byte	0
+ 1767 00b0 00       		.byte	0
+ 1768 00b1 0E       		.uleb128 0xe
+ 1769 00b2 05       		.uleb128 0x5
+ 1770 00b3 00       		.byte	0
+ 1771 00b4 03       		.uleb128 0x3
+ 1772 00b5 08       		.uleb128 0x8
+ 1773 00b6 3A       		.uleb128 0x3a
+ 1774 00b7 0B       		.uleb128 0xb
+ 1775 00b8 3B       		.uleb128 0x3b
+ 1776 00b9 0B       		.uleb128 0xb
+ 1777 00ba 49       		.uleb128 0x49
+ 1778 00bb 13       		.uleb128 0x13
+ 1779 00bc 02       		.uleb128 0x2
+ 1780 00bd 17       		.uleb128 0x17
+ 1781 00be 00       		.byte	0
+ 1782 00bf 00       		.byte	0
+ 1783 00c0 0F       		.uleb128 0xf
+ 1784 00c1 898201   		.uleb128 0x4109
+ 1785 00c4 00       		.byte	0
+ 1786 00c5 11       		.uleb128 0x11
+ 1787 00c6 01       		.uleb128 0x1
+ 1788 00c7 31       		.uleb128 0x31
+ 1789 00c8 13       		.uleb128 0x13
+ 1790 00c9 00       		.byte	0
+ 1791 00ca 00       		.byte	0
+ 1792 00cb 10       		.uleb128 0x10
+ 1793 00cc 2E       		.uleb128 0x2e
+ 1794 00cd 01       		.byte	0x1
+ 1795 00ce 3F       		.uleb128 0x3f
+ 1796 00cf 19       		.uleb128 0x19
+ 1797 00d0 03       		.uleb128 0x3
+ 1798 00d1 0E       		.uleb128 0xe
+ 1799 00d2 3A       		.uleb128 0x3a
+ 1800 00d3 0B       		.uleb128 0xb
+ 1801 00d4 3B       		.uleb128 0x3b
+ 1802 00d5 05       		.uleb128 0x5
+ 1803 00d6 27       		.uleb128 0x27
+ 1804 00d7 19       		.uleb128 0x19
+ 1805 00d8 11       		.uleb128 0x11
+ 1806 00d9 01       		.uleb128 0x1
+ 1807 00da 12       		.uleb128 0x12
+ 1808 00db 06       		.uleb128 0x6
+ 1809 00dc 40       		.uleb128 0x40
+ 1810 00dd 18       		.uleb128 0x18
+ 1811 00de 9742     		.uleb128 0x2117
+ 1812 00e0 19       		.uleb128 0x19
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczodve5.s 			page 39
+
+
+ 1813 00e1 01       		.uleb128 0x1
+ 1814 00e2 13       		.uleb128 0x13
+ 1815 00e3 00       		.byte	0
+ 1816 00e4 00       		.byte	0
+ 1817 00e5 11       		.uleb128 0x11
+ 1818 00e6 05       		.uleb128 0x5
+ 1819 00e7 00       		.byte	0
+ 1820 00e8 03       		.uleb128 0x3
+ 1821 00e9 0E       		.uleb128 0xe
+ 1822 00ea 3A       		.uleb128 0x3a
+ 1823 00eb 0B       		.uleb128 0xb
+ 1824 00ec 3B       		.uleb128 0x3b
+ 1825 00ed 05       		.uleb128 0x5
+ 1826 00ee 49       		.uleb128 0x49
+ 1827 00ef 13       		.uleb128 0x13
+ 1828 00f0 02       		.uleb128 0x2
+ 1829 00f1 17       		.uleb128 0x17
+ 1830 00f2 00       		.byte	0
+ 1831 00f3 00       		.byte	0
+ 1832 00f4 12       		.uleb128 0x12
+ 1833 00f5 34       		.uleb128 0x34
+ 1834 00f6 00       		.byte	0
+ 1835 00f7 03       		.uleb128 0x3
+ 1836 00f8 08       		.uleb128 0x8
+ 1837 00f9 3A       		.uleb128 0x3a
+ 1838 00fa 0B       		.uleb128 0xb
+ 1839 00fb 3B       		.uleb128 0x3b
+ 1840 00fc 05       		.uleb128 0x5
+ 1841 00fd 49       		.uleb128 0x49
+ 1842 00fe 13       		.uleb128 0x13
+ 1843 00ff 02       		.uleb128 0x2
+ 1844 0100 17       		.uleb128 0x17
+ 1845 0101 00       		.byte	0
+ 1846 0102 00       		.byte	0
+ 1847 0103 13       		.uleb128 0x13
+ 1848 0104 2E       		.uleb128 0x2e
+ 1849 0105 01       		.byte	0x1
+ 1850 0106 3F       		.uleb128 0x3f
+ 1851 0107 19       		.uleb128 0x19
+ 1852 0108 03       		.uleb128 0x3
+ 1853 0109 0E       		.uleb128 0xe
+ 1854 010a 3A       		.uleb128 0x3a
+ 1855 010b 0B       		.uleb128 0xb
+ 1856 010c 3B       		.uleb128 0x3b
+ 1857 010d 0B       		.uleb128 0xb
+ 1858 010e 27       		.uleb128 0x27
+ 1859 010f 19       		.uleb128 0x19
+ 1860 0110 3C       		.uleb128 0x3c
+ 1861 0111 19       		.uleb128 0x19
+ 1862 0112 01       		.uleb128 0x1
+ 1863 0113 13       		.uleb128 0x13
+ 1864 0114 00       		.byte	0
+ 1865 0115 00       		.byte	0
+ 1866 0116 14       		.uleb128 0x14
+ 1867 0117 05       		.uleb128 0x5
+ 1868 0118 00       		.byte	0
+ 1869 0119 49       		.uleb128 0x49
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczodve5.s 			page 40
+
+
+ 1870 011a 13       		.uleb128 0x13
+ 1871 011b 00       		.byte	0
+ 1872 011c 00       		.byte	0
+ 1873 011d 15       		.uleb128 0x15
+ 1874 011e 2E       		.uleb128 0x2e
+ 1875 011f 01       		.byte	0x1
+ 1876 0120 3F       		.uleb128 0x3f
+ 1877 0121 19       		.uleb128 0x19
+ 1878 0122 03       		.uleb128 0x3
+ 1879 0123 0E       		.uleb128 0xe
+ 1880 0124 3A       		.uleb128 0x3a
+ 1881 0125 0B       		.uleb128 0xb
+ 1882 0126 3B       		.uleb128 0x3b
+ 1883 0127 0B       		.uleb128 0xb
+ 1884 0128 27       		.uleb128 0x27
+ 1885 0129 19       		.uleb128 0x19
+ 1886 012a 49       		.uleb128 0x49
+ 1887 012b 13       		.uleb128 0x13
+ 1888 012c 3C       		.uleb128 0x3c
+ 1889 012d 19       		.uleb128 0x19
+ 1890 012e 01       		.uleb128 0x1
+ 1891 012f 13       		.uleb128 0x13
+ 1892 0130 00       		.byte	0
+ 1893 0131 00       		.byte	0
+ 1894 0132 16       		.uleb128 0x16
+ 1895 0133 2E       		.uleb128 0x2e
+ 1896 0134 01       		.byte	0x1
+ 1897 0135 3F       		.uleb128 0x3f
+ 1898 0136 19       		.uleb128 0x19
+ 1899 0137 03       		.uleb128 0x3
+ 1900 0138 0E       		.uleb128 0xe
+ 1901 0139 3A       		.uleb128 0x3a
+ 1902 013a 0B       		.uleb128 0xb
+ 1903 013b 3B       		.uleb128 0x3b
+ 1904 013c 0B       		.uleb128 0xb
+ 1905 013d 27       		.uleb128 0x27
+ 1906 013e 19       		.uleb128 0x19
+ 1907 013f 49       		.uleb128 0x49
+ 1908 0140 13       		.uleb128 0x13
+ 1909 0141 3C       		.uleb128 0x3c
+ 1910 0142 19       		.uleb128 0x19
+ 1911 0143 00       		.byte	0
+ 1912 0144 00       		.byte	0
+ 1913 0145 00       		.byte	0
+ 1914              		.section	.debug_loc,"",%progbits
+ 1915              	.Ldebug_loc0:
+ 1916              	.LLST0:
+ 1917 0000 00000000 		.4byte	.LVL0
+ 1918 0004 07000000 		.4byte	.LVL1-1
+ 1919 0008 0100     		.2byte	0x1
+ 1920 000a 50       		.byte	0x50
+ 1921 000b 07000000 		.4byte	.LVL1-1
+ 1922 000f 1E000000 		.4byte	.LFE33
+ 1923 0013 0400     		.2byte	0x4
+ 1924 0015 F3       		.byte	0xf3
+ 1925 0016 01       		.uleb128 0x1
+ 1926 0017 50       		.byte	0x50
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczodve5.s 			page 41
+
+
+ 1927 0018 9F       		.byte	0x9f
+ 1928 0019 00000000 		.4byte	0
+ 1929 001d 00000000 		.4byte	0
+ 1930              	.LLST1:
+ 1931 0021 00000000 		.4byte	.LVL5
+ 1932 0025 07000000 		.4byte	.LVL6-1
+ 1933 0029 0100     		.2byte	0x1
+ 1934 002b 50       		.byte	0x50
+ 1935 002c 07000000 		.4byte	.LVL6-1
+ 1936 0030 20000000 		.4byte	.LFE34
+ 1937 0034 0400     		.2byte	0x4
+ 1938 0036 F3       		.byte	0xf3
+ 1939 0037 01       		.uleb128 0x1
+ 1940 0038 50       		.byte	0x50
+ 1941 0039 9F       		.byte	0x9f
+ 1942 003a 00000000 		.4byte	0
+ 1943 003e 00000000 		.4byte	0
+ 1944              	.LLST2:
+ 1945 0042 12000000 		.4byte	.LVL13
+ 1946 0046 14000000 		.4byte	.LVL14
+ 1947 004a 0200     		.2byte	0x2
+ 1948 004c 30       		.byte	0x30
+ 1949 004d 9F       		.byte	0x9f
+ 1950 004e 14000000 		.4byte	.LVL14
+ 1951 0052 28000000 		.4byte	.LVL18
+ 1952 0056 0500     		.2byte	0x5
+ 1953 0058 35       		.byte	0x35
+ 1954 0059 74       		.byte	0x74
+ 1955 005a 00       		.sleb128 0
+ 1956 005b 1C       		.byte	0x1c
+ 1957 005c 9F       		.byte	0x9f
+ 1958 005d 28000000 		.4byte	.LVL18
+ 1959 0061 2E000000 		.4byte	.LVL19
+ 1960 0065 0500     		.2byte	0x5
+ 1961 0067 34       		.byte	0x34
+ 1962 0068 74       		.byte	0x74
+ 1963 0069 00       		.sleb128 0
+ 1964 006a 1C       		.byte	0x1c
+ 1965 006b 9F       		.byte	0x9f
+ 1966 006c 00000000 		.4byte	0
+ 1967 0070 00000000 		.4byte	0
+ 1968              	.LLST3:
+ 1969 0074 0C000000 		.4byte	.LVL11
+ 1970 0078 0E000000 		.4byte	.LVL12
+ 1971 007c 0100     		.2byte	0x1
+ 1972 007e 50       		.byte	0x50
+ 1973 007f 0E000000 		.4byte	.LVL12
+ 1974 0083 3A000000 		.4byte	.LVL21
+ 1975 0087 0100     		.2byte	0x1
+ 1976 0089 55       		.byte	0x55
+ 1977 008a 00000000 		.4byte	0
+ 1978 008e 00000000 		.4byte	0
+ 1979              	.LLST4:
+ 1980 0092 00000000 		.4byte	.LVL23
+ 1981 0096 06000000 		.4byte	.LVL24
+ 1982 009a 0100     		.2byte	0x1
+ 1983 009c 50       		.byte	0x50
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczodve5.s 			page 42
+
+
+ 1984 009d 06000000 		.4byte	.LVL24
+ 1985 00a1 AA010000 		.4byte	.LFE37
+ 1986 00a5 0400     		.2byte	0x4
+ 1987 00a7 F3       		.byte	0xf3
+ 1988 00a8 01       		.uleb128 0x1
+ 1989 00a9 50       		.byte	0x50
+ 1990 00aa 9F       		.byte	0x9f
+ 1991 00ab 00000000 		.4byte	0
+ 1992 00af 00000000 		.4byte	0
+ 1993              	.LLST5:
+ 1994 00b3 00000000 		.4byte	.LVL23
+ 1995 00b7 73000000 		.4byte	.LVL25-1
+ 1996 00bb 0100     		.2byte	0x1
+ 1997 00bd 51       		.byte	0x51
+ 1998 00be 73000000 		.4byte	.LVL25-1
+ 1999 00c2 76000000 		.4byte	.LVL26
+ 2000 00c6 0400     		.2byte	0x4
+ 2001 00c8 F3       		.byte	0xf3
+ 2002 00c9 01       		.uleb128 0x1
+ 2003 00ca 51       		.byte	0x51
+ 2004 00cb 9F       		.byte	0x9f
+ 2005 00cc 76000000 		.4byte	.LVL26
+ 2006 00d0 7B000000 		.4byte	.LVL27-1
+ 2007 00d4 0100     		.2byte	0x1
+ 2008 00d6 51       		.byte	0x51
+ 2009 00d7 7B000000 		.4byte	.LVL27-1
+ 2010 00db 84000000 		.4byte	.LVL29
+ 2011 00df 0400     		.2byte	0x4
+ 2012 00e1 F3       		.byte	0xf3
+ 2013 00e2 01       		.uleb128 0x1
+ 2014 00e3 51       		.byte	0x51
+ 2015 00e4 9F       		.byte	0x9f
+ 2016 00e5 84000000 		.4byte	.LVL29
+ 2017 00e9 89000000 		.4byte	.LVL30-1
+ 2018 00ed 0100     		.2byte	0x1
+ 2019 00ef 51       		.byte	0x51
+ 2020 00f0 89000000 		.4byte	.LVL30-1
+ 2021 00f4 8C000000 		.4byte	.LVL31
+ 2022 00f8 0400     		.2byte	0x4
+ 2023 00fa F3       		.byte	0xf3
+ 2024 00fb 01       		.uleb128 0x1
+ 2025 00fc 51       		.byte	0x51
+ 2026 00fd 9F       		.byte	0x9f
+ 2027 00fe 8C000000 		.4byte	.LVL31
+ 2028 0102 91000000 		.4byte	.LVL32-1
+ 2029 0106 0100     		.2byte	0x1
+ 2030 0108 51       		.byte	0x51
+ 2031 0109 91000000 		.4byte	.LVL32-1
+ 2032 010d 94000000 		.4byte	.LVL33
+ 2033 0111 0400     		.2byte	0x4
+ 2034 0113 F3       		.byte	0xf3
+ 2035 0114 01       		.uleb128 0x1
+ 2036 0115 51       		.byte	0x51
+ 2037 0116 9F       		.byte	0x9f
+ 2038 0117 94000000 		.4byte	.LVL33
+ 2039 011b 99000000 		.4byte	.LVL34-1
+ 2040 011f 0100     		.2byte	0x1
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczodve5.s 			page 43
+
+
+ 2041 0121 51       		.byte	0x51
+ 2042 0122 99000000 		.4byte	.LVL34-1
+ 2043 0126 9C000000 		.4byte	.LVL35
+ 2044 012a 0400     		.2byte	0x4
+ 2045 012c F3       		.byte	0xf3
+ 2046 012d 01       		.uleb128 0x1
+ 2047 012e 51       		.byte	0x51
+ 2048 012f 9F       		.byte	0x9f
+ 2049 0130 9C000000 		.4byte	.LVL35
+ 2050 0134 A1000000 		.4byte	.LVL36-1
+ 2051 0138 0100     		.2byte	0x1
+ 2052 013a 51       		.byte	0x51
+ 2053 013b A1000000 		.4byte	.LVL36-1
+ 2054 013f A4000000 		.4byte	.LVL37
+ 2055 0143 0400     		.2byte	0x4
+ 2056 0145 F3       		.byte	0xf3
+ 2057 0146 01       		.uleb128 0x1
+ 2058 0147 51       		.byte	0x51
+ 2059 0148 9F       		.byte	0x9f
+ 2060 0149 A4000000 		.4byte	.LVL37
+ 2061 014d A9000000 		.4byte	.LVL38-1
+ 2062 0151 0100     		.2byte	0x1
+ 2063 0153 51       		.byte	0x51
+ 2064 0154 A9000000 		.4byte	.LVL38-1
+ 2065 0158 AC000000 		.4byte	.LVL39
+ 2066 015c 0400     		.2byte	0x4
+ 2067 015e F3       		.byte	0xf3
+ 2068 015f 01       		.uleb128 0x1
+ 2069 0160 51       		.byte	0x51
+ 2070 0161 9F       		.byte	0x9f
+ 2071 0162 AC000000 		.4byte	.LVL39
+ 2072 0166 B1000000 		.4byte	.LVL40-1
+ 2073 016a 0100     		.2byte	0x1
+ 2074 016c 51       		.byte	0x51
+ 2075 016d B1000000 		.4byte	.LVL40-1
+ 2076 0171 B4000000 		.4byte	.LVL41
+ 2077 0175 0400     		.2byte	0x4
+ 2078 0177 F3       		.byte	0xf3
+ 2079 0178 01       		.uleb128 0x1
+ 2080 0179 51       		.byte	0x51
+ 2081 017a 9F       		.byte	0x9f
+ 2082 017b B4000000 		.4byte	.LVL41
+ 2083 017f B9000000 		.4byte	.LVL42-1
+ 2084 0183 0100     		.2byte	0x1
+ 2085 0185 51       		.byte	0x51
+ 2086 0186 B9000000 		.4byte	.LVL42-1
+ 2087 018a C2000000 		.4byte	.LVL44
+ 2088 018e 0400     		.2byte	0x4
+ 2089 0190 F3       		.byte	0xf3
+ 2090 0191 01       		.uleb128 0x1
+ 2091 0192 51       		.byte	0x51
+ 2092 0193 9F       		.byte	0x9f
+ 2093 0194 C2000000 		.4byte	.LVL44
+ 2094 0198 C7000000 		.4byte	.LVL45-1
+ 2095 019c 0100     		.2byte	0x1
+ 2096 019e 51       		.byte	0x51
+ 2097 019f C7000000 		.4byte	.LVL45-1
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczodve5.s 			page 44
+
+
+ 2098 01a3 D6000000 		.4byte	.LVL48
+ 2099 01a7 0400     		.2byte	0x4
+ 2100 01a9 F3       		.byte	0xf3
+ 2101 01aa 01       		.uleb128 0x1
+ 2102 01ab 51       		.byte	0x51
+ 2103 01ac 9F       		.byte	0x9f
+ 2104 01ad D6000000 		.4byte	.LVL48
+ 2105 01b1 DB000000 		.4byte	.LVL49-1
+ 2106 01b5 0100     		.2byte	0x1
+ 2107 01b7 51       		.byte	0x51
+ 2108 01b8 DB000000 		.4byte	.LVL49-1
+ 2109 01bc DE000000 		.4byte	.LVL50
+ 2110 01c0 0400     		.2byte	0x4
+ 2111 01c2 F3       		.byte	0xf3
+ 2112 01c3 01       		.uleb128 0x1
+ 2113 01c4 51       		.byte	0x51
+ 2114 01c5 9F       		.byte	0x9f
+ 2115 01c6 DE000000 		.4byte	.LVL50
+ 2116 01ca E3000000 		.4byte	.LVL51-1
+ 2117 01ce 0100     		.2byte	0x1
+ 2118 01d0 51       		.byte	0x51
+ 2119 01d1 E3000000 		.4byte	.LVL51-1
+ 2120 01d5 F2000000 		.4byte	.LVL54
+ 2121 01d9 0400     		.2byte	0x4
+ 2122 01db F3       		.byte	0xf3
+ 2123 01dc 01       		.uleb128 0x1
+ 2124 01dd 51       		.byte	0x51
+ 2125 01de 9F       		.byte	0x9f
+ 2126 01df F2000000 		.4byte	.LVL54
+ 2127 01e3 F7000000 		.4byte	.LVL55-1
+ 2128 01e7 0100     		.2byte	0x1
+ 2129 01e9 51       		.byte	0x51
+ 2130 01ea F7000000 		.4byte	.LVL55-1
+ 2131 01ee FA000000 		.4byte	.LVL56
+ 2132 01f2 0400     		.2byte	0x4
+ 2133 01f4 F3       		.byte	0xf3
+ 2134 01f5 01       		.uleb128 0x1
+ 2135 01f6 51       		.byte	0x51
+ 2136 01f7 9F       		.byte	0x9f
+ 2137 01f8 FA000000 		.4byte	.LVL56
+ 2138 01fc FF000000 		.4byte	.LVL57-1
+ 2139 0200 0100     		.2byte	0x1
+ 2140 0202 51       		.byte	0x51
+ 2141 0203 FF000000 		.4byte	.LVL57-1
+ 2142 0207 08010000 		.4byte	.LVL59
+ 2143 020b 0400     		.2byte	0x4
+ 2144 020d F3       		.byte	0xf3
+ 2145 020e 01       		.uleb128 0x1
+ 2146 020f 51       		.byte	0x51
+ 2147 0210 9F       		.byte	0x9f
+ 2148 0211 08010000 		.4byte	.LVL59
+ 2149 0215 0D010000 		.4byte	.LVL60-1
+ 2150 0219 0100     		.2byte	0x1
+ 2151 021b 51       		.byte	0x51
+ 2152 021c 0D010000 		.4byte	.LVL60-1
+ 2153 0220 1C010000 		.4byte	.LVL63
+ 2154 0224 0400     		.2byte	0x4
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczodve5.s 			page 45
+
+
+ 2155 0226 F3       		.byte	0xf3
+ 2156 0227 01       		.uleb128 0x1
+ 2157 0228 51       		.byte	0x51
+ 2158 0229 9F       		.byte	0x9f
+ 2159 022a 1C010000 		.4byte	.LVL63
+ 2160 022e 21010000 		.4byte	.LVL64-1
+ 2161 0232 0100     		.2byte	0x1
+ 2162 0234 51       		.byte	0x51
+ 2163 0235 21010000 		.4byte	.LVL64-1
+ 2164 0239 36010000 		.4byte	.LVL68
+ 2165 023d 0400     		.2byte	0x4
+ 2166 023f F3       		.byte	0xf3
+ 2167 0240 01       		.uleb128 0x1
+ 2168 0241 51       		.byte	0x51
+ 2169 0242 9F       		.byte	0x9f
+ 2170 0243 36010000 		.4byte	.LVL68
+ 2171 0247 3B010000 		.4byte	.LVL69-1
+ 2172 024b 0100     		.2byte	0x1
+ 2173 024d 51       		.byte	0x51
+ 2174 024e 3B010000 		.4byte	.LVL69-1
+ 2175 0252 56010000 		.4byte	.LVL74
+ 2176 0256 0400     		.2byte	0x4
+ 2177 0258 F3       		.byte	0xf3
+ 2178 0259 01       		.uleb128 0x1
+ 2179 025a 51       		.byte	0x51
+ 2180 025b 9F       		.byte	0x9f
+ 2181 025c 56010000 		.4byte	.LVL74
+ 2182 0260 5B010000 		.4byte	.LVL75-1
+ 2183 0264 0100     		.2byte	0x1
+ 2184 0266 51       		.byte	0x51
+ 2185 0267 5B010000 		.4byte	.LVL75-1
+ 2186 026b 76010000 		.4byte	.LVL80
+ 2187 026f 0400     		.2byte	0x4
+ 2188 0271 F3       		.byte	0xf3
+ 2189 0272 01       		.uleb128 0x1
+ 2190 0273 51       		.byte	0x51
+ 2191 0274 9F       		.byte	0x9f
+ 2192 0275 76010000 		.4byte	.LVL80
+ 2193 0279 7B010000 		.4byte	.LVL81-1
+ 2194 027d 0100     		.2byte	0x1
+ 2195 027f 51       		.byte	0x51
+ 2196 0280 7B010000 		.4byte	.LVL81-1
+ 2197 0284 A0010000 		.4byte	.LVL88
+ 2198 0288 0400     		.2byte	0x4
+ 2199 028a F3       		.byte	0xf3
+ 2200 028b 01       		.uleb128 0x1
+ 2201 028c 51       		.byte	0x51
+ 2202 028d 9F       		.byte	0x9f
+ 2203 028e A0010000 		.4byte	.LVL88
+ 2204 0292 A7010000 		.4byte	.LVL89-1
+ 2205 0296 0100     		.2byte	0x1
+ 2206 0298 51       		.byte	0x51
+ 2207 0299 A7010000 		.4byte	.LVL89-1
+ 2208 029d AA010000 		.4byte	.LFE37
+ 2209 02a1 0400     		.2byte	0x4
+ 2210 02a3 F3       		.byte	0xf3
+ 2211 02a4 01       		.uleb128 0x1
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczodve5.s 			page 46
+
+
+ 2212 02a5 51       		.byte	0x51
+ 2213 02a6 9F       		.byte	0x9f
+ 2214 02a7 00000000 		.4byte	0
+ 2215 02ab 00000000 		.4byte	0
+ 2216              	.LLST6:
+ 2217 02af 00000000 		.4byte	.LVL90
+ 2218 02b3 09000000 		.4byte	.LVL91-1
+ 2219 02b7 0100     		.2byte	0x1
+ 2220 02b9 50       		.byte	0x50
+ 2221 02ba 09000000 		.4byte	.LVL91-1
+ 2222 02be 24000000 		.4byte	.LFE38
+ 2223 02c2 0400     		.2byte	0x4
+ 2224 02c4 F3       		.byte	0xf3
+ 2225 02c5 01       		.uleb128 0x1
+ 2226 02c6 50       		.byte	0x50
+ 2227 02c7 9F       		.byte	0x9f
+ 2228 02c8 00000000 		.4byte	0
+ 2229 02cc 00000000 		.4byte	0
+ 2230              	.LLST7:
+ 2231 02d0 00000000 		.4byte	.LVL90
+ 2232 02d4 09000000 		.4byte	.LVL91-1
+ 2233 02d8 0100     		.2byte	0x1
+ 2234 02da 51       		.byte	0x51
+ 2235 02db 09000000 		.4byte	.LVL91-1
+ 2236 02df 22000000 		.4byte	.LVL97
+ 2237 02e3 0100     		.2byte	0x1
+ 2238 02e5 55       		.byte	0x55
+ 2239 02e6 22000000 		.4byte	.LVL97
+ 2240 02ea 24000000 		.4byte	.LFE38
+ 2241 02ee 0400     		.2byte	0x4
+ 2242 02f0 F3       		.byte	0xf3
+ 2243 02f1 01       		.uleb128 0x1
+ 2244 02f2 51       		.byte	0x51
+ 2245 02f3 9F       		.byte	0x9f
+ 2246 02f4 00000000 		.4byte	0
+ 2247 02f8 00000000 		.4byte	0
+ 2248              	.LLST8:
+ 2249 02fc 0A000000 		.4byte	.LVL91
+ 2250 0300 0C000000 		.4byte	.LVL92
+ 2251 0304 0200     		.2byte	0x2
+ 2252 0306 30       		.byte	0x30
+ 2253 0307 9F       		.byte	0x9f
+ 2254 0308 0C000000 		.4byte	.LVL92
+ 2255 030c 22000000 		.4byte	.LVL96
+ 2256 0310 0100     		.2byte	0x1
+ 2257 0312 54       		.byte	0x54
+ 2258 0313 00000000 		.4byte	0
+ 2259 0317 00000000 		.4byte	0
+ 2260              		.section	.debug_aranges,"",%progbits
+ 2261 0000 44000000 		.4byte	0x44
+ 2262 0004 0200     		.2byte	0x2
+ 2263 0006 00000000 		.4byte	.Ldebug_info0
+ 2264 000a 04       		.byte	0x4
+ 2265 000b 00       		.byte	0
+ 2266 000c 0000     		.2byte	0
+ 2267 000e 0000     		.2byte	0
+ 2268 0010 00000000 		.4byte	.LFB33
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczodve5.s 			page 47
+
+
+ 2269 0014 1E000000 		.4byte	.LFE33-.LFB33
+ 2270 0018 00000000 		.4byte	.LFB34
+ 2271 001c 20000000 		.4byte	.LFE34-.LFB34
+ 2272 0020 00000000 		.4byte	.LFB35
+ 2273 0024 3C000000 		.4byte	.LFE35-.LFB35
+ 2274 0028 00000000 		.4byte	.LFB36
+ 2275 002c 0C000000 		.4byte	.LFE36-.LFB36
+ 2276 0030 00000000 		.4byte	.LFB37
+ 2277 0034 AA010000 		.4byte	.LFE37-.LFB37
+ 2278 0038 00000000 		.4byte	.LFB38
+ 2279 003c 24000000 		.4byte	.LFE38-.LFB38
+ 2280 0040 00000000 		.4byte	0
+ 2281 0044 00000000 		.4byte	0
+ 2282              		.section	.debug_ranges,"",%progbits
+ 2283              	.Ldebug_ranges0:
+ 2284 0000 00000000 		.4byte	.LFB33
+ 2285 0004 1E000000 		.4byte	.LFE33
+ 2286 0008 00000000 		.4byte	.LFB34
+ 2287 000c 20000000 		.4byte	.LFE34
+ 2288 0010 00000000 		.4byte	.LFB35
+ 2289 0014 3C000000 		.4byte	.LFE35
+ 2290 0018 00000000 		.4byte	.LFB36
+ 2291 001c 0C000000 		.4byte	.LFE36
+ 2292 0020 00000000 		.4byte	.LFB37
+ 2293 0024 AA010000 		.4byte	.LFE37
+ 2294 0028 00000000 		.4byte	.LFB38
+ 2295 002c 24000000 		.4byte	.LFE38
+ 2296 0030 00000000 		.4byte	0
+ 2297 0034 00000000 		.4byte	0
+ 2298              		.section	.debug_line,"",%progbits
+ 2299              	.Ldebug_line0:
+ 2300 0000 34020000 		.section	.debug_str,"MS",%progbits,1
+ 2300      02005101 
+ 2300      00000201 
+ 2300      FB0E0D00 
+ 2300      01010101 
+ 2301              	.LASF24:
+ 2302 0000 6D657373 		.ascii	"message\000"
+ 2302      61676500 
+ 2303              	.LASF28:
+ 2304 0008 7365745F 		.ascii	"set_color\000"
+ 2304      636F6C6F 
+ 2304      7200
+ 2305              	.LASF14:
+ 2306 0012 73697A65 		.ascii	"size_t\000"
+ 2306      5F7400
+ 2307              	.LASF27:
+ 2308 0019 7475726E 		.ascii	"turn_off\000"
+ 2308      5F6F6666 
+ 2308      00
+ 2309              	.LASF11:
+ 2310 0022 666C6F61 		.ascii	"float\000"
+ 2310      7400
+ 2311              	.LASF22:
+ 2312 0028 6D6F7273 		.ascii	"morse_encode\000"
+ 2312      655F656E 
+ 2312      636F6465 
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczodve5.s 			page 48
+
+
+ 2312      00
+ 2313              	.LASF3:
+ 2314 0035 73686F72 		.ascii	"short unsigned int\000"
+ 2314      7420756E 
+ 2314      7369676E 
+ 2314      65642069 
+ 2314      6E7400
+ 2315              	.LASF8:
+ 2316 0048 756E7369 		.ascii	"unsigned int\000"
+ 2316      676E6564 
+ 2316      20696E74 
+ 2316      00
+ 2317              	.LASF26:
+ 2318 0055 43794465 		.ascii	"CyDelay\000"
+ 2318      6C617900 
+ 2319              	.LASF30:
+ 2320 005d 474E5520 		.ascii	"GNU C 4.8.4 20140526 (release) [ARM/embedded-4_8-br"
+ 2320      4320342E 
+ 2320      382E3420 
+ 2320      32303134 
+ 2320      30353236 
+ 2321 0090 616E6368 		.ascii	"anch revision 211358] -mcpu=cortex-m0 -mthumb -g -O"
+ 2321      20726576 
+ 2321      6973696F 
+ 2321      6E203231 
+ 2321      31333538 
+ 2322 00c3 73202D66 		.ascii	"s -ffunction-sections\000"
+ 2322      66756E63 
+ 2322      74696F6E 
+ 2322      2D736563 
+ 2322      74696F6E 
+ 2323              	.LASF31:
+ 2324 00d9 2E5C6D6F 		.ascii	".\\morse.c\000"
+ 2324      7273652E 
+ 2324      6300
+ 2325              	.LASF29:
+ 2326 00e3 7374726C 		.ascii	"strlen\000"
+ 2326      656E00
+ 2327              	.LASF1:
+ 2328 00ea 756E7369 		.ascii	"unsigned char\000"
+ 2328      676E6564 
+ 2328      20636861 
+ 2328      7200
+ 2329              	.LASF33:
+ 2330 00f8 6765745F 		.ascii	"get_color\000"
+ 2330      636F6C6F 
+ 2330      7200
+ 2331              	.LASF5:
+ 2332 0102 6C6F6E67 		.ascii	"long unsigned int\000"
+ 2332      20756E73 
+ 2332      69676E65 
+ 2332      6420696E 
+ 2332      7400
+ 2333              	.LASF9:
+ 2334 0114 75696E74 		.ascii	"uint8\000"
+ 2334      3800
+ 2335              	.LASF16:
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczodve5.s 			page 49
+
+
+ 2336 011a 626C696E 		.ascii	"blinkdot\000"
+ 2336      6B646F74 
+ 2336      00
+ 2337              	.LASF20:
+ 2338 0123 6F726967 		.ascii	"original_color\000"
+ 2338      696E616C 
+ 2338      5F636F6C 
+ 2338      6F7200
+ 2339              	.LASF12:
+ 2340 0132 646F7562 		.ascii	"double\000"
+ 2340      6C6500
+ 2341              	.LASF10:
+ 2342 0139 75696E74 		.ascii	"uint32\000"
+ 2342      333200
+ 2343              	.LASF23:
+ 2344 0140 6D6F7273 		.ascii	"morse_message\000"
+ 2344      655F6D65 
+ 2344      73736167 
+ 2344      6500
+ 2345              	.LASF7:
+ 2346 014e 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 2346      206C6F6E 
+ 2346      6720756E 
+ 2346      7369676E 
+ 2346      65642069 
+ 2347              	.LASF19:
+ 2348 0165 6E65775F 		.ascii	"new_message_morse\000"
+ 2348      6D657373 
+ 2348      6167655F 
+ 2348      6D6F7273 
+ 2348      6500
+ 2349              	.LASF32:
+ 2350 0177 433A5C55 		.ascii	"C:\\Users\\Admin\\Desktop\\Teacher Badge\\Teacher_B"
+ 2350      73657273 
+ 2350      5C41646D 
+ 2350      696E5C44 
+ 2350      65736B74 
+ 2351 01a5 61646765 		.ascii	"adge\\Teacher_Badge.cydsn\000"
+ 2351      5C546561 
+ 2351      63686572 
+ 2351      5F426164 
+ 2351      67652E63 
+ 2352              	.LASF15:
+ 2353 01be 73697A65 		.ascii	"sizetype\000"
+ 2353      74797065 
+ 2353      00
+ 2354              	.LASF6:
+ 2355 01c7 6C6F6E67 		.ascii	"long long int\000"
+ 2355      206C6F6E 
+ 2355      6720696E 
+ 2355      7400
+ 2356              	.LASF13:
+ 2357 01d5 63686172 		.ascii	"char\000"
+ 2357      00
+ 2358              	.LASF2:
+ 2359 01da 73686F72 		.ascii	"short int\000"
+ 2359      7420696E 
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczodve5.s 			page 50
+
+
+ 2359      7400
+ 2360              	.LASF17:
+ 2361 01e4 626C696E 		.ascii	"blinkdash\000"
+ 2361      6B646173 
+ 2361      6800
+ 2362              	.LASF25:
+ 2363 01ee 7475726E 		.ascii	"turn_on\000"
+ 2363      5F6F6E00 
+ 2364              	.LASF4:
+ 2365 01f6 6C6F6E67 		.ascii	"long int\000"
+ 2365      20696E74 
+ 2365      00
+ 2366              	.LASF18:
+ 2367 01ff 6C65645F 		.ascii	"led_flag\000"
+ 2367      666C6167 
+ 2367      00
+ 2368              	.LASF0:
+ 2369 0208 7369676E 		.ascii	"signed char\000"
+ 2369      65642063 
+ 2369      68617200 
+ 2370              	.LASF21:
+ 2371 0214 63686172 		.ascii	"char_separate\000"
+ 2371      5F736570 
+ 2371      61726174 
+ 2371      6500
+ 2372              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.8.4 20140526 (release) [ARM/embedded-4_8-br

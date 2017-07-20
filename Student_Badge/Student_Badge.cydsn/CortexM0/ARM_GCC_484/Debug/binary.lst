@@ -1,0 +1,2244 @@
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccW2el4U.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 6
+  10              		.eabi_attribute 34, 0
+  11              		.eabi_attribute 18, 4
+  12              		.code	16
+  13              		.file	"binary.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.blink_zero,"ax",%progbits
+  18              		.align	2
+  19              		.global	blink_zero
+  20              		.code	16
+  21              		.thumb_func
+  22              		.type	blink_zero, %function
+  23              	blink_zero:
+  24              	.LFB33:
+  25              		.file 1 ".\\binary.c"
+   1:.\binary.c    **** /* ========================================
+   2:.\binary.c    ****  *
+   3:.\binary.c    ****  * Copyright Nullify, 2016
+   4:.\binary.c    ****  * All Rights Reserved
+   5:.\binary.c    ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:.\binary.c    ****  *
+   7:.\binary.c    ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:.\binary.c    ****  * WHICH IS THE PROPERTY OF NULLIY.
+   9:.\binary.c    ****  *
+  10:.\binary.c    ****  * ========================================
+  11:.\binary.c    **** */
+  12:.\binary.c    **** #include <project.h>
+  13:.\binary.c    **** #include <string.h>
+  14:.\binary.c    **** #include "lightlib.h"
+  15:.\binary.c    **** #include "binary.h"
+  16:.\binary.c    **** #include "state.h"
+  17:.\binary.c    **** 
+  18:.\binary.c    **** void blink_zero(void) {
+  26              		.loc 1 18 0
+  27              		.cfi_startproc
+  28 0000 80B5     		push	{r7, lr}
+  29              		.cfi_def_cfa_offset 8
+  30              		.cfi_offset 7, -8
+  31              		.cfi_offset 14, -4
+  32 0002 00AF     		add	r7, sp, #0
+  33              		.cfi_def_cfa_register 7
+  19:.\binary.c    ****     /* Verify state */
+  20:.\binary.c    ****     if(!verify_state(BINARY)) {
+  34              		.loc 1 20 0
+  35 0004 0220     		mov	r0, #2
+  36 0006 FFF7FEFF 		bl	verify_state
+  37 000a 031C     		mov	r3, r0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccW2el4U.s 			page 2
+
+
+  38 000c 002B     		cmp	r3, #0
+  39 000e 00D1     		bne	.L2
+  21:.\binary.c    ****         return;
+  40              		.loc 1 21 0
+  41 0010 0DE0     		b	.L1
+  42              	.L2:
+  22:.\binary.c    ****     }
+  23:.\binary.c    ****     turn_on(LEFT_LED);
+  43              		.loc 1 23 0
+  44 0012 0120     		mov	r0, #1
+  45 0014 FFF7FEFF 		bl	turn_on
+  24:.\binary.c    ****     CyDelay(BLINK_DELAY_ON);
+  46              		.loc 1 24 0
+  47 0018 FA23     		mov	r3, #250
+  48 001a 5B00     		lsl	r3, r3, #1
+  49 001c 181C     		mov	r0, r3
+  50 001e FFF7FEFF 		bl	CyDelay
+  25:.\binary.c    ****     turn_off(LEFT_LED);
+  51              		.loc 1 25 0
+  52 0022 0120     		mov	r0, #1
+  53 0024 FFF7FEFF 		bl	turn_off
+  26:.\binary.c    ****     CyDelay(BLINK_DELAY_OFF);
+  54              		.loc 1 26 0
+  55 0028 FA20     		mov	r0, #250
+  56 002a FFF7FEFF 		bl	CyDelay
+  57              	.L1:
+  27:.\binary.c    **** }
+  58              		.loc 1 27 0
+  59 002e BD46     		mov	sp, r7
+  60              		@ sp needed
+  61 0030 80BD     		pop	{r7, pc}
+  62              		.cfi_endproc
+  63              	.LFE33:
+  64              		.size	blink_zero, .-blink_zero
+  65 0032 C046     		.section	.text.blink_one,"ax",%progbits
+  66              		.align	2
+  67              		.global	blink_one
+  68              		.code	16
+  69              		.thumb_func
+  70              		.type	blink_one, %function
+  71              	blink_one:
+  72              	.LFB34:
+  28:.\binary.c    **** 
+  29:.\binary.c    **** void blink_one(void) {
+  73              		.loc 1 29 0
+  74              		.cfi_startproc
+  75 0000 80B5     		push	{r7, lr}
+  76              		.cfi_def_cfa_offset 8
+  77              		.cfi_offset 7, -8
+  78              		.cfi_offset 14, -4
+  79 0002 00AF     		add	r7, sp, #0
+  80              		.cfi_def_cfa_register 7
+  30:.\binary.c    ****     /* Verify state */
+  31:.\binary.c    ****     if(!verify_state(BINARY)) {
+  81              		.loc 1 31 0
+  82 0004 0220     		mov	r0, #2
+  83 0006 FFF7FEFF 		bl	verify_state
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccW2el4U.s 			page 3
+
+
+  84 000a 031C     		mov	r3, r0
+  85 000c 002B     		cmp	r3, #0
+  86 000e 00D1     		bne	.L5
+  32:.\binary.c    ****         return;
+  87              		.loc 1 32 0
+  88 0010 0DE0     		b	.L4
+  89              	.L5:
+  33:.\binary.c    ****     }
+  34:.\binary.c    ****     turn_on(RIGHT_LED);
+  90              		.loc 1 34 0
+  91 0012 0220     		mov	r0, #2
+  92 0014 FFF7FEFF 		bl	turn_on
+  35:.\binary.c    ****     CyDelay(BLINK_DELAY_ON);
+  93              		.loc 1 35 0
+  94 0018 FA23     		mov	r3, #250
+  95 001a 5B00     		lsl	r3, r3, #1
+  96 001c 181C     		mov	r0, r3
+  97 001e FFF7FEFF 		bl	CyDelay
+  36:.\binary.c    ****     turn_off(RIGHT_LED);
+  98              		.loc 1 36 0
+  99 0022 0220     		mov	r0, #2
+ 100 0024 FFF7FEFF 		bl	turn_off
+  37:.\binary.c    ****     CyDelay(BLINK_DELAY_OFF);
+ 101              		.loc 1 37 0
+ 102 0028 FA20     		mov	r0, #250
+ 103 002a FFF7FEFF 		bl	CyDelay
+ 104              	.L4:
+  38:.\binary.c    **** }
+ 105              		.loc 1 38 0
+ 106 002e BD46     		mov	sp, r7
+ 107              		@ sp needed
+ 108 0030 80BD     		pop	{r7, pc}
+ 109              		.cfi_endproc
+ 110              	.LFE34:
+ 111              		.size	blink_one, .-blink_one
+ 112 0032 C046     		.section	.text.new_message_binary,"ax",%progbits
+ 113              		.align	2
+ 114              		.global	new_message_binary
+ 115              		.code	16
+ 116              		.thumb_func
+ 117              		.type	new_message_binary, %function
+ 118              	new_message_binary:
+ 119              	.LFB35:
+  39:.\binary.c    **** 
+  40:.\binary.c    **** void new_message_binary(void) {
+ 120              		.loc 1 40 0
+ 121              		.cfi_startproc
+ 122 0000 90B5     		push	{r4, r7, lr}
+ 123              		.cfi_def_cfa_offset 12
+ 124              		.cfi_offset 4, -12
+ 125              		.cfi_offset 7, -8
+ 126              		.cfi_offset 14, -4
+ 127 0002 83B0     		sub	sp, sp, #12
+ 128              		.cfi_def_cfa_offset 24
+ 129 0004 00AF     		add	r7, sp, #0
+ 130              		.cfi_def_cfa_register 7
+  41:.\binary.c    ****     unsigned int i;
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccW2el4U.s 			page 4
+
+
+  42:.\binary.c    ****     uint8 original_color;
+  43:.\binary.c    ****     original_color = get_color(LEFT_LED);
+ 131              		.loc 1 43 0
+ 132 0006 FC1C     		add	r4, r7, #3
+ 133 0008 0120     		mov	r0, #1
+ 134 000a FFF7FEFF 		bl	get_color
+ 135 000e 031C     		mov	r3, r0
+ 136 0010 2370     		strb	r3, [r4]
+  44:.\binary.c    ****     set_color(LEFT_RIGHT_LED, WHITE);
+ 137              		.loc 1 44 0
+ 138 0012 0320     		mov	r0, #3
+ 139 0014 0721     		mov	r1, #7
+ 140 0016 FFF7FEFF 		bl	set_color
+  45:.\binary.c    ****     for (i=0; i<NEW_MESSAGE_NUMBER; i++) {
+ 141              		.loc 1 45 0
+ 142 001a 0023     		mov	r3, #0
+ 143 001c 7B60     		str	r3, [r7, #4]
+ 144 001e 15E0     		b	.L8
+ 145              	.L11:
+  46:.\binary.c    ****         /* Verify state */
+  47:.\binary.c    ****     if(!verify_state(BINARY)) {
+ 146              		.loc 1 47 0
+ 147 0020 0220     		mov	r0, #2
+ 148 0022 FFF7FEFF 		bl	verify_state
+ 149 0026 031C     		mov	r3, r0
+ 150 0028 002B     		cmp	r3, #0
+ 151 002a 00D1     		bne	.L9
+  48:.\binary.c    ****         return;
+ 152              		.loc 1 48 0
+ 153 002c 17E0     		b	.L7
+ 154              	.L9:
+  49:.\binary.c    ****     }
+  50:.\binary.c    ****        turn_on(LEFT_RIGHT_LED);
+ 155              		.loc 1 50 0
+ 156 002e 0320     		mov	r0, #3
+ 157 0030 FFF7FEFF 		bl	turn_on
+  51:.\binary.c    ****        CyDelay(RESET_DELAY);
+ 158              		.loc 1 51 0
+ 159 0034 FA20     		mov	r0, #250
+ 160 0036 FFF7FEFF 		bl	CyDelay
+  52:.\binary.c    ****        turn_off(LEFT_RIGHT_LED);
+ 161              		.loc 1 52 0
+ 162 003a 0320     		mov	r0, #3
+ 163 003c FFF7FEFF 		bl	turn_off
+  53:.\binary.c    ****        CyDelay(RESET_DELAY);
+ 164              		.loc 1 53 0
+ 165 0040 FA20     		mov	r0, #250
+ 166 0042 FFF7FEFF 		bl	CyDelay
+  45:.\binary.c    ****     for (i=0; i<NEW_MESSAGE_NUMBER; i++) {
+ 167              		.loc 1 45 0
+ 168 0046 7B68     		ldr	r3, [r7, #4]
+ 169 0048 0133     		add	r3, r3, #1
+ 170 004a 7B60     		str	r3, [r7, #4]
+ 171              	.L8:
+  45:.\binary.c    ****     for (i=0; i<NEW_MESSAGE_NUMBER; i++) {
+ 172              		.loc 1 45 0 is_stmt 0 discriminator 1
+ 173 004c 7B68     		ldr	r3, [r7, #4]
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccW2el4U.s 			page 5
+
+
+ 174 004e 042B     		cmp	r3, #4
+ 175 0050 E6D9     		bls	.L11
+  54:.\binary.c    ****     }
+  55:.\binary.c    ****     set_color(LEFT_RIGHT_LED, original_color);
+ 176              		.loc 1 55 0 is_stmt 1
+ 177 0052 FB1C     		add	r3, r7, #3
+ 178 0054 1B78     		ldrb	r3, [r3]
+ 179 0056 0320     		mov	r0, #3
+ 180 0058 191C     		mov	r1, r3
+ 181 005a FFF7FEFF 		bl	set_color
+ 182              	.L7:
+  56:.\binary.c    **** }
+ 183              		.loc 1 56 0
+ 184 005e BD46     		mov	sp, r7
+ 185 0060 03B0     		add	sp, sp, #12
+ 186              		@ sp needed
+ 187 0062 90BD     		pop	{r4, r7, pc}
+ 188              		.cfi_endproc
+ 189              	.LFE35:
+ 190              		.size	new_message_binary, .-new_message_binary
+ 191              		.section	.text.binary_encode,"ax",%progbits
+ 192              		.align	2
+ 193              		.global	binary_encode
+ 194              		.code	16
+ 195              		.thumb_func
+ 196              		.type	binary_encode, %function
+ 197              	binary_encode:
+ 198              	.LFB36:
+  57:.\binary.c    **** 
+  58:.\binary.c    **** void binary_encode(char c){
+ 199              		.loc 1 58 0
+ 200              		.cfi_startproc
+ 201 0000 80B5     		push	{r7, lr}
+ 202              		.cfi_def_cfa_offset 8
+ 203              		.cfi_offset 7, -8
+ 204              		.cfi_offset 14, -4
+ 205 0002 82B0     		sub	sp, sp, #8
+ 206              		.cfi_def_cfa_offset 16
+ 207 0004 00AF     		add	r7, sp, #0
+ 208              		.cfi_def_cfa_register 7
+ 209 0006 021C     		mov	r2, r0
+ 210 0008 FB1D     		add	r3, r7, #7
+ 211 000a 1A70     		strb	r2, [r3]
+  59:.\binary.c    ****     /* Verify state */
+  60:.\binary.c    ****     if(!verify_state(BINARY)) {
+ 212              		.loc 1 60 0
+ 213 000c 0220     		mov	r0, #2
+ 214 000e FFF7FEFF 		bl	verify_state
+ 215 0012 031C     		mov	r3, r0
+ 216 0014 002B     		cmp	r3, #0
+ 217 0016 00D1     		bne	.L13
+  61:.\binary.c    ****        return;
+ 218              		.loc 1 61 0
+ 219 0018 70E2     		b	.L12
+ 220              	.L13:
+  62:.\binary.c    ****     }
+  63:.\binary.c    ****     switch(c) {
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccW2el4U.s 			page 6
+
+
+ 221              		.loc 1 63 0
+ 222 001a FB1D     		add	r3, r7, #7
+ 223 001c 1B78     		ldrb	r3, [r3]
+ 224 001e 0A3B     		sub	r3, r3, #10
+ 225 0020 702B     		cmp	r3, #112
+ 226 0022 00D9     		bls	.LCB173
+ 227 0024 6AE2     		b	.L12	@long jump
+ 228              	.LCB173:
+ 229 0026 9A00     		lsl	r2, r3, #2
+ 230 0028 EF4B     		ldr	r3, .L53
+ 231 002a D318     		add	r3, r2, r3
+ 232 002c 1B68     		ldr	r3, [r3]
+ 233 002e 9F46     		mov	pc, r3
+ 234              		.section	.rodata
+ 235              		.align	2
+ 236              	.L16:
+ 237 0000 FC040000 		.word	.L12
+ 238 0004 FC040000 		.word	.L12
+ 239 0008 FC040000 		.word	.L12
+ 240 000c FC040000 		.word	.L12
+ 241 0010 FC040000 		.word	.L12
+ 242 0014 FC040000 		.word	.L12
+ 243 0018 FC040000 		.word	.L12
+ 244 001c FC040000 		.word	.L12
+ 245 0020 FC040000 		.word	.L12
+ 246 0024 FC040000 		.word	.L12
+ 247 0028 FC040000 		.word	.L12
+ 248 002c FC040000 		.word	.L12
+ 249 0030 FC040000 		.word	.L12
+ 250 0034 FC040000 		.word	.L12
+ 251 0038 FC040000 		.word	.L12
+ 252 003c FC040000 		.word	.L12
+ 253 0040 FC040000 		.word	.L12
+ 254 0044 FC040000 		.word	.L12
+ 255 0048 FC040000 		.word	.L12
+ 256 004c FC040000 		.word	.L12
+ 257 0050 FC040000 		.word	.L12
+ 258 0054 FC040000 		.word	.L12
+ 259 0058 FC040000 		.word	.L12
+ 260 005c FC040000 		.word	.L12
+ 261 0060 FC040000 		.word	.L12
+ 262 0064 FC040000 		.word	.L12
+ 263 0068 FC040000 		.word	.L12
+ 264 006c FC040000 		.word	.L12
+ 265 0070 FC040000 		.word	.L12
+ 266 0074 FC040000 		.word	.L12
+ 267 0078 FC040000 		.word	.L12
+ 268 007c FC040000 		.word	.L12
+ 269 0080 FC040000 		.word	.L12
+ 270 0084 FC040000 		.word	.L12
+ 271 0088 FC040000 		.word	.L12
+ 272 008c FC040000 		.word	.L12
+ 273 0090 FC040000 		.word	.L12
+ 274 0094 FC040000 		.word	.L12
+ 275 0098 A4030000 		.word	.L17
+ 276 009c C6030000 		.word	.L18
+ 277 00a0 EC030000 		.word	.L19
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccW2el4U.s 			page 7
+
+
+ 278 00a4 0E040000 		.word	.L20
+ 279 00a8 30040000 		.word	.L21
+ 280 00ac 52040000 		.word	.L22
+ 281 00b0 74040000 		.word	.L23
+ 282 00b4 96040000 		.word	.L24
+ 283 00b8 B8040000 		.word	.L25
+ 284 00bc DA040000 		.word	.L26
+ 285 00c0 FC040000 		.word	.L12
+ 286 00c4 FC040000 		.word	.L12
+ 287 00c8 FC040000 		.word	.L12
+ 288 00cc FC040000 		.word	.L12
+ 289 00d0 FC040000 		.word	.L12
+ 290 00d4 FC040000 		.word	.L12
+ 291 00d8 FC040000 		.word	.L12
+ 292 00dc 30000000 		.word	.L27
+ 293 00e0 52000000 		.word	.L28
+ 294 00e4 74000000 		.word	.L29
+ 295 00e8 96000000 		.word	.L30
+ 296 00ec B8000000 		.word	.L31
+ 297 00f0 DA000000 		.word	.L32
+ 298 00f4 FC000000 		.word	.L33
+ 299 00f8 1E010000 		.word	.L34
+ 300 00fc 40010000 		.word	.L35
+ 301 0100 62010000 		.word	.L36
+ 302 0104 84010000 		.word	.L37
+ 303 0108 A6010000 		.word	.L38
+ 304 010c C8010000 		.word	.L39
+ 305 0110 EA010000 		.word	.L40
+ 306 0114 0C020000 		.word	.L41
+ 307 0118 2E020000 		.word	.L42
+ 308 011c 50020000 		.word	.L43
+ 309 0120 72020000 		.word	.L44
+ 310 0124 94020000 		.word	.L45
+ 311 0128 B6020000 		.word	.L46
+ 312 012c D8020000 		.word	.L47
+ 313 0130 FA020000 		.word	.L48
+ 314 0134 1C030000 		.word	.L49
+ 315 0138 3E030000 		.word	.L50
+ 316 013c 60030000 		.word	.L51
+ 317 0140 82030000 		.word	.L52
+ 318 0144 FC040000 		.word	.L12
+ 319 0148 FC040000 		.word	.L12
+ 320 014c FC040000 		.word	.L12
+ 321 0150 FC040000 		.word	.L12
+ 322 0154 FC040000 		.word	.L12
+ 323 0158 FC040000 		.word	.L12
+ 324 015c 30000000 		.word	.L27
+ 325 0160 52000000 		.word	.L28
+ 326 0164 74000000 		.word	.L29
+ 327 0168 96000000 		.word	.L30
+ 328 016c B8000000 		.word	.L31
+ 329 0170 DA000000 		.word	.L32
+ 330 0174 FC000000 		.word	.L33
+ 331 0178 1E010000 		.word	.L34
+ 332 017c 40010000 		.word	.L35
+ 333 0180 62010000 		.word	.L36
+ 334 0184 84010000 		.word	.L37
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccW2el4U.s 			page 8
+
+
+ 335 0188 A6010000 		.word	.L38
+ 336 018c C8010000 		.word	.L39
+ 337 0190 EA010000 		.word	.L40
+ 338 0194 0C020000 		.word	.L41
+ 339 0198 2E020000 		.word	.L42
+ 340 019c 50020000 		.word	.L43
+ 341 01a0 72020000 		.word	.L44
+ 342 01a4 94020000 		.word	.L45
+ 343 01a8 B6020000 		.word	.L46
+ 344 01ac D8020000 		.word	.L47
+ 345 01b0 FA020000 		.word	.L48
+ 346 01b4 1C030000 		.word	.L49
+ 347 01b8 3E030000 		.word	.L50
+ 348 01bc 60030000 		.word	.L51
+ 349 01c0 82030000 		.word	.L52
+ 350              		.section	.text.binary_encode
+ 351              	.L27:
+  64:.\binary.c    ****       case 'A':
+  65:.\binary.c    ****       case 'a':
+  66:.\binary.c    ****         blink_zero();
+ 352              		.loc 1 66 0
+ 353 0030 FFF7FEFF 		bl	blink_zero
+  67:.\binary.c    ****         blink_one();
+ 354              		.loc 1 67 0
+ 355 0034 FFF7FEFF 		bl	blink_one
+  68:.\binary.c    ****         blink_zero();
+ 356              		.loc 1 68 0
+ 357 0038 FFF7FEFF 		bl	blink_zero
+  69:.\binary.c    ****         blink_zero();
+ 358              		.loc 1 69 0
+ 359 003c FFF7FEFF 		bl	blink_zero
+  70:.\binary.c    ****         blink_zero();
+ 360              		.loc 1 70 0
+ 361 0040 FFF7FEFF 		bl	blink_zero
+  71:.\binary.c    ****         blink_zero();
+ 362              		.loc 1 71 0
+ 363 0044 FFF7FEFF 		bl	blink_zero
+  72:.\binary.c    ****         blink_zero();
+ 364              		.loc 1 72 0
+ 365 0048 FFF7FEFF 		bl	blink_zero
+  73:.\binary.c    ****         blink_one();
+ 366              		.loc 1 73 0
+ 367 004c FFF7FEFF 		bl	blink_one
+  74:.\binary.c    ****         break;
+ 368              		.loc 1 74 0
+ 369 0050 54E2     		b	.L12
+ 370              	.L28:
+  75:.\binary.c    ****       case 'B':
+  76:.\binary.c    ****       case 'b':
+  77:.\binary.c    ****         blink_zero();
+ 371              		.loc 1 77 0
+ 372 0052 FFF7FEFF 		bl	blink_zero
+  78:.\binary.c    ****         blink_one();
+ 373              		.loc 1 78 0
+ 374 0056 FFF7FEFF 		bl	blink_one
+  79:.\binary.c    ****         blink_zero();
+ 375              		.loc 1 79 0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccW2el4U.s 			page 9
+
+
+ 376 005a FFF7FEFF 		bl	blink_zero
+  80:.\binary.c    ****         blink_zero();
+ 377              		.loc 1 80 0
+ 378 005e FFF7FEFF 		bl	blink_zero
+  81:.\binary.c    ****         blink_zero();
+ 379              		.loc 1 81 0
+ 380 0062 FFF7FEFF 		bl	blink_zero
+  82:.\binary.c    ****         blink_zero();
+ 381              		.loc 1 82 0
+ 382 0066 FFF7FEFF 		bl	blink_zero
+  83:.\binary.c    ****         blink_one();
+ 383              		.loc 1 83 0
+ 384 006a FFF7FEFF 		bl	blink_one
+  84:.\binary.c    ****         blink_zero();
+ 385              		.loc 1 84 0
+ 386 006e FFF7FEFF 		bl	blink_zero
+  85:.\binary.c    ****         break;
+ 387              		.loc 1 85 0
+ 388 0072 43E2     		b	.L12
+ 389              	.L29:
+  86:.\binary.c    ****       case 'C':
+  87:.\binary.c    ****       case 'c':
+  88:.\binary.c    ****         blink_zero();
+ 390              		.loc 1 88 0
+ 391 0074 FFF7FEFF 		bl	blink_zero
+  89:.\binary.c    ****         blink_one();
+ 392              		.loc 1 89 0
+ 393 0078 FFF7FEFF 		bl	blink_one
+  90:.\binary.c    ****         blink_zero();
+ 394              		.loc 1 90 0
+ 395 007c FFF7FEFF 		bl	blink_zero
+  91:.\binary.c    ****         blink_zero();
+ 396              		.loc 1 91 0
+ 397 0080 FFF7FEFF 		bl	blink_zero
+  92:.\binary.c    ****         blink_zero();
+ 398              		.loc 1 92 0
+ 399 0084 FFF7FEFF 		bl	blink_zero
+  93:.\binary.c    ****         blink_zero();
+ 400              		.loc 1 93 0
+ 401 0088 FFF7FEFF 		bl	blink_zero
+  94:.\binary.c    ****         blink_one();
+ 402              		.loc 1 94 0
+ 403 008c FFF7FEFF 		bl	blink_one
+  95:.\binary.c    ****         blink_one();
+ 404              		.loc 1 95 0
+ 405 0090 FFF7FEFF 		bl	blink_one
+  96:.\binary.c    ****         break;
+ 406              		.loc 1 96 0
+ 407 0094 32E2     		b	.L12
+ 408              	.L30:
+  97:.\binary.c    ****       case 'D':
+  98:.\binary.c    ****       case 'd':
+  99:.\binary.c    ****         blink_zero();
+ 409              		.loc 1 99 0
+ 410 0096 FFF7FEFF 		bl	blink_zero
+ 100:.\binary.c    ****         blink_one();
+ 411              		.loc 1 100 0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccW2el4U.s 			page 10
+
+
+ 412 009a FFF7FEFF 		bl	blink_one
+ 101:.\binary.c    ****         blink_zero();
+ 413              		.loc 1 101 0
+ 414 009e FFF7FEFF 		bl	blink_zero
+ 102:.\binary.c    ****         blink_zero();
+ 415              		.loc 1 102 0
+ 416 00a2 FFF7FEFF 		bl	blink_zero
+ 103:.\binary.c    ****         blink_zero();
+ 417              		.loc 1 103 0
+ 418 00a6 FFF7FEFF 		bl	blink_zero
+ 104:.\binary.c    ****         blink_one();
+ 419              		.loc 1 104 0
+ 420 00aa FFF7FEFF 		bl	blink_one
+ 105:.\binary.c    ****         blink_zero();
+ 421              		.loc 1 105 0
+ 422 00ae FFF7FEFF 		bl	blink_zero
+ 106:.\binary.c    ****         blink_zero();
+ 423              		.loc 1 106 0
+ 424 00b2 FFF7FEFF 		bl	blink_zero
+ 107:.\binary.c    ****         break;
+ 425              		.loc 1 107 0
+ 426 00b6 21E2     		b	.L12
+ 427              	.L31:
+ 108:.\binary.c    ****        case 'E':
+ 109:.\binary.c    ****        case 'e':
+ 110:.\binary.c    ****         blink_zero();
+ 428              		.loc 1 110 0
+ 429 00b8 FFF7FEFF 		bl	blink_zero
+ 111:.\binary.c    ****         blink_one();
+ 430              		.loc 1 111 0
+ 431 00bc FFF7FEFF 		bl	blink_one
+ 112:.\binary.c    ****         blink_zero();
+ 432              		.loc 1 112 0
+ 433 00c0 FFF7FEFF 		bl	blink_zero
+ 113:.\binary.c    ****         blink_zero();
+ 434              		.loc 1 113 0
+ 435 00c4 FFF7FEFF 		bl	blink_zero
+ 114:.\binary.c    ****         blink_zero();
+ 436              		.loc 1 114 0
+ 437 00c8 FFF7FEFF 		bl	blink_zero
+ 115:.\binary.c    ****         blink_one();
+ 438              		.loc 1 115 0
+ 439 00cc FFF7FEFF 		bl	blink_one
+ 116:.\binary.c    ****         blink_zero();
+ 440              		.loc 1 116 0
+ 441 00d0 FFF7FEFF 		bl	blink_zero
+ 117:.\binary.c    ****         blink_one();
+ 442              		.loc 1 117 0
+ 443 00d4 FFF7FEFF 		bl	blink_one
+ 118:.\binary.c    ****         break;
+ 444              		.loc 1 118 0
+ 445 00d8 10E2     		b	.L12
+ 446              	.L32:
+ 119:.\binary.c    ****        case 'F':
+ 120:.\binary.c    ****        case 'f':
+ 121:.\binary.c    ****         blink_zero();
+ 447              		.loc 1 121 0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccW2el4U.s 			page 11
+
+
+ 448 00da FFF7FEFF 		bl	blink_zero
+ 122:.\binary.c    ****         blink_one();
+ 449              		.loc 1 122 0
+ 450 00de FFF7FEFF 		bl	blink_one
+ 123:.\binary.c    ****         blink_zero();
+ 451              		.loc 1 123 0
+ 452 00e2 FFF7FEFF 		bl	blink_zero
+ 124:.\binary.c    ****         blink_zero();
+ 453              		.loc 1 124 0
+ 454 00e6 FFF7FEFF 		bl	blink_zero
+ 125:.\binary.c    ****         blink_zero();
+ 455              		.loc 1 125 0
+ 456 00ea FFF7FEFF 		bl	blink_zero
+ 126:.\binary.c    ****         blink_one();
+ 457              		.loc 1 126 0
+ 458 00ee FFF7FEFF 		bl	blink_one
+ 127:.\binary.c    ****         blink_one();
+ 459              		.loc 1 127 0
+ 460 00f2 FFF7FEFF 		bl	blink_one
+ 128:.\binary.c    ****         blink_zero();
+ 461              		.loc 1 128 0
+ 462 00f6 FFF7FEFF 		bl	blink_zero
+ 129:.\binary.c    ****         break;
+ 463              		.loc 1 129 0
+ 464 00fa FFE1     		b	.L12
+ 465              	.L33:
+ 130:.\binary.c    ****        case 'G':
+ 131:.\binary.c    ****        case 'g':
+ 132:.\binary.c    ****         blink_zero();
+ 466              		.loc 1 132 0
+ 467 00fc FFF7FEFF 		bl	blink_zero
+ 133:.\binary.c    ****         blink_one();
+ 468              		.loc 1 133 0
+ 469 0100 FFF7FEFF 		bl	blink_one
+ 134:.\binary.c    ****         blink_zero();
+ 470              		.loc 1 134 0
+ 471 0104 FFF7FEFF 		bl	blink_zero
+ 135:.\binary.c    ****         blink_zero();
+ 472              		.loc 1 135 0
+ 473 0108 FFF7FEFF 		bl	blink_zero
+ 136:.\binary.c    ****         blink_zero();
+ 474              		.loc 1 136 0
+ 475 010c FFF7FEFF 		bl	blink_zero
+ 137:.\binary.c    ****         blink_one();
+ 476              		.loc 1 137 0
+ 477 0110 FFF7FEFF 		bl	blink_one
+ 138:.\binary.c    ****         blink_one();
+ 478              		.loc 1 138 0
+ 479 0114 FFF7FEFF 		bl	blink_one
+ 139:.\binary.c    ****         blink_one();
+ 480              		.loc 1 139 0
+ 481 0118 FFF7FEFF 		bl	blink_one
+ 140:.\binary.c    ****         break;
+ 482              		.loc 1 140 0
+ 483 011c EEE1     		b	.L12
+ 484              	.L34:
+ 141:.\binary.c    ****        case 'H':
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccW2el4U.s 			page 12
+
+
+ 142:.\binary.c    ****        case 'h':
+ 143:.\binary.c    ****         blink_zero();
+ 485              		.loc 1 143 0
+ 486 011e FFF7FEFF 		bl	blink_zero
+ 144:.\binary.c    ****         blink_one();
+ 487              		.loc 1 144 0
+ 488 0122 FFF7FEFF 		bl	blink_one
+ 145:.\binary.c    ****         blink_zero();
+ 489              		.loc 1 145 0
+ 490 0126 FFF7FEFF 		bl	blink_zero
+ 146:.\binary.c    ****         blink_zero();
+ 491              		.loc 1 146 0
+ 492 012a FFF7FEFF 		bl	blink_zero
+ 147:.\binary.c    ****         blink_one();
+ 493              		.loc 1 147 0
+ 494 012e FFF7FEFF 		bl	blink_one
+ 148:.\binary.c    ****         blink_zero();
+ 495              		.loc 1 148 0
+ 496 0132 FFF7FEFF 		bl	blink_zero
+ 149:.\binary.c    ****         blink_zero();
+ 497              		.loc 1 149 0
+ 498 0136 FFF7FEFF 		bl	blink_zero
+ 150:.\binary.c    ****         blink_zero();
+ 499              		.loc 1 150 0
+ 500 013a FFF7FEFF 		bl	blink_zero
+ 151:.\binary.c    ****         break;
+ 501              		.loc 1 151 0
+ 502 013e DDE1     		b	.L12
+ 503              	.L35:
+ 152:.\binary.c    ****        case 'I':
+ 153:.\binary.c    ****        case 'i':
+ 154:.\binary.c    ****         blink_zero();
+ 504              		.loc 1 154 0
+ 505 0140 FFF7FEFF 		bl	blink_zero
+ 155:.\binary.c    ****         blink_one();
+ 506              		.loc 1 155 0
+ 507 0144 FFF7FEFF 		bl	blink_one
+ 156:.\binary.c    ****         blink_zero();
+ 508              		.loc 1 156 0
+ 509 0148 FFF7FEFF 		bl	blink_zero
+ 157:.\binary.c    ****         blink_zero();
+ 510              		.loc 1 157 0
+ 511 014c FFF7FEFF 		bl	blink_zero
+ 158:.\binary.c    ****         blink_one();
+ 512              		.loc 1 158 0
+ 513 0150 FFF7FEFF 		bl	blink_one
+ 159:.\binary.c    ****         blink_zero();
+ 514              		.loc 1 159 0
+ 515 0154 FFF7FEFF 		bl	blink_zero
+ 160:.\binary.c    ****         blink_zero();
+ 516              		.loc 1 160 0
+ 517 0158 FFF7FEFF 		bl	blink_zero
+ 161:.\binary.c    ****         blink_one();
+ 518              		.loc 1 161 0
+ 519 015c FFF7FEFF 		bl	blink_one
+ 162:.\binary.c    ****         break;
+ 520              		.loc 1 162 0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccW2el4U.s 			page 13
+
+
+ 521 0160 CCE1     		b	.L12
+ 522              	.L36:
+ 163:.\binary.c    ****        case 'J':
+ 164:.\binary.c    ****        case 'j':
+ 165:.\binary.c    ****         blink_zero();
+ 523              		.loc 1 165 0
+ 524 0162 FFF7FEFF 		bl	blink_zero
+ 166:.\binary.c    ****         blink_one();
+ 525              		.loc 1 166 0
+ 526 0166 FFF7FEFF 		bl	blink_one
+ 167:.\binary.c    ****         blink_zero();
+ 527              		.loc 1 167 0
+ 528 016a FFF7FEFF 		bl	blink_zero
+ 168:.\binary.c    ****         blink_zero();
+ 529              		.loc 1 168 0
+ 530 016e FFF7FEFF 		bl	blink_zero
+ 169:.\binary.c    ****         blink_one();
+ 531              		.loc 1 169 0
+ 532 0172 FFF7FEFF 		bl	blink_one
+ 170:.\binary.c    ****         blink_zero();
+ 533              		.loc 1 170 0
+ 534 0176 FFF7FEFF 		bl	blink_zero
+ 171:.\binary.c    ****         blink_one();
+ 535              		.loc 1 171 0
+ 536 017a FFF7FEFF 		bl	blink_one
+ 172:.\binary.c    ****         blink_zero();
+ 537              		.loc 1 172 0
+ 538 017e FFF7FEFF 		bl	blink_zero
+ 173:.\binary.c    ****         break;
+ 539              		.loc 1 173 0
+ 540 0182 BBE1     		b	.L12
+ 541              	.L37:
+ 174:.\binary.c    ****        case 'K':
+ 175:.\binary.c    ****        case 'k':
+ 176:.\binary.c    ****         blink_zero();
+ 542              		.loc 1 176 0
+ 543 0184 FFF7FEFF 		bl	blink_zero
+ 177:.\binary.c    ****         blink_one();
+ 544              		.loc 1 177 0
+ 545 0188 FFF7FEFF 		bl	blink_one
+ 178:.\binary.c    ****         blink_zero();
+ 546              		.loc 1 178 0
+ 547 018c FFF7FEFF 		bl	blink_zero
+ 179:.\binary.c    ****         blink_zero();
+ 548              		.loc 1 179 0
+ 549 0190 FFF7FEFF 		bl	blink_zero
+ 180:.\binary.c    ****         blink_one();
+ 550              		.loc 1 180 0
+ 551 0194 FFF7FEFF 		bl	blink_one
+ 181:.\binary.c    ****         blink_zero();
+ 552              		.loc 1 181 0
+ 553 0198 FFF7FEFF 		bl	blink_zero
+ 182:.\binary.c    ****         blink_one();
+ 554              		.loc 1 182 0
+ 555 019c FFF7FEFF 		bl	blink_one
+ 183:.\binary.c    ****         blink_one();
+ 556              		.loc 1 183 0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccW2el4U.s 			page 14
+
+
+ 557 01a0 FFF7FEFF 		bl	blink_one
+ 184:.\binary.c    ****         break;
+ 558              		.loc 1 184 0
+ 559 01a4 AAE1     		b	.L12
+ 560              	.L38:
+ 185:.\binary.c    ****        case 'L':
+ 186:.\binary.c    ****        case 'l':
+ 187:.\binary.c    ****         blink_zero();
+ 561              		.loc 1 187 0
+ 562 01a6 FFF7FEFF 		bl	blink_zero
+ 188:.\binary.c    ****         blink_one();
+ 563              		.loc 1 188 0
+ 564 01aa FFF7FEFF 		bl	blink_one
+ 189:.\binary.c    ****         blink_zero();
+ 565              		.loc 1 189 0
+ 566 01ae FFF7FEFF 		bl	blink_zero
+ 190:.\binary.c    ****         blink_zero();
+ 567              		.loc 1 190 0
+ 568 01b2 FFF7FEFF 		bl	blink_zero
+ 191:.\binary.c    ****         blink_one();
+ 569              		.loc 1 191 0
+ 570 01b6 FFF7FEFF 		bl	blink_one
+ 192:.\binary.c    ****         blink_one();
+ 571              		.loc 1 192 0
+ 572 01ba FFF7FEFF 		bl	blink_one
+ 193:.\binary.c    ****         blink_zero();
+ 573              		.loc 1 193 0
+ 574 01be FFF7FEFF 		bl	blink_zero
+ 194:.\binary.c    ****         blink_zero();
+ 575              		.loc 1 194 0
+ 576 01c2 FFF7FEFF 		bl	blink_zero
+ 195:.\binary.c    ****         break;
+ 577              		.loc 1 195 0
+ 578 01c6 99E1     		b	.L12
+ 579              	.L39:
+ 196:.\binary.c    ****        case 'M':
+ 197:.\binary.c    ****        case 'm':
+ 198:.\binary.c    ****         blink_zero();
+ 580              		.loc 1 198 0
+ 581 01c8 FFF7FEFF 		bl	blink_zero
+ 199:.\binary.c    ****         blink_one();
+ 582              		.loc 1 199 0
+ 583 01cc FFF7FEFF 		bl	blink_one
+ 200:.\binary.c    ****         blink_zero();
+ 584              		.loc 1 200 0
+ 585 01d0 FFF7FEFF 		bl	blink_zero
+ 201:.\binary.c    ****         blink_zero();
+ 586              		.loc 1 201 0
+ 587 01d4 FFF7FEFF 		bl	blink_zero
+ 202:.\binary.c    ****         blink_one();
+ 588              		.loc 1 202 0
+ 589 01d8 FFF7FEFF 		bl	blink_one
+ 203:.\binary.c    ****         blink_one();
+ 590              		.loc 1 203 0
+ 591 01dc FFF7FEFF 		bl	blink_one
+ 204:.\binary.c    ****         blink_zero();
+ 592              		.loc 1 204 0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccW2el4U.s 			page 15
+
+
+ 593 01e0 FFF7FEFF 		bl	blink_zero
+ 205:.\binary.c    ****         blink_one();
+ 594              		.loc 1 205 0
+ 595 01e4 FFF7FEFF 		bl	blink_one
+ 206:.\binary.c    ****         break;
+ 596              		.loc 1 206 0
+ 597 01e8 88E1     		b	.L12
+ 598              	.L40:
+ 207:.\binary.c    ****        case 'N':
+ 208:.\binary.c    ****        case 'n':
+ 209:.\binary.c    ****         blink_zero();
+ 599              		.loc 1 209 0
+ 600 01ea FFF7FEFF 		bl	blink_zero
+ 210:.\binary.c    ****         blink_one();
+ 601              		.loc 1 210 0
+ 602 01ee FFF7FEFF 		bl	blink_one
+ 211:.\binary.c    ****         blink_zero();
+ 603              		.loc 1 211 0
+ 604 01f2 FFF7FEFF 		bl	blink_zero
+ 212:.\binary.c    ****         blink_zero();
+ 605              		.loc 1 212 0
+ 606 01f6 FFF7FEFF 		bl	blink_zero
+ 213:.\binary.c    ****         blink_one();
+ 607              		.loc 1 213 0
+ 608 01fa FFF7FEFF 		bl	blink_one
+ 214:.\binary.c    ****         blink_one();
+ 609              		.loc 1 214 0
+ 610 01fe FFF7FEFF 		bl	blink_one
+ 215:.\binary.c    ****         blink_one();
+ 611              		.loc 1 215 0
+ 612 0202 FFF7FEFF 		bl	blink_one
+ 216:.\binary.c    ****         blink_zero();
+ 613              		.loc 1 216 0
+ 614 0206 FFF7FEFF 		bl	blink_zero
+ 217:.\binary.c    ****         break;
+ 615              		.loc 1 217 0
+ 616 020a 77E1     		b	.L12
+ 617              	.L41:
+ 218:.\binary.c    ****        case 'O':
+ 219:.\binary.c    ****        case 'o':
+ 220:.\binary.c    ****         blink_zero();
+ 618              		.loc 1 220 0
+ 619 020c FFF7FEFF 		bl	blink_zero
+ 221:.\binary.c    ****         blink_one();
+ 620              		.loc 1 221 0
+ 621 0210 FFF7FEFF 		bl	blink_one
+ 222:.\binary.c    ****         blink_zero();
+ 622              		.loc 1 222 0
+ 623 0214 FFF7FEFF 		bl	blink_zero
+ 223:.\binary.c    ****         blink_zero();
+ 624              		.loc 1 223 0
+ 625 0218 FFF7FEFF 		bl	blink_zero
+ 224:.\binary.c    ****         blink_one();
+ 626              		.loc 1 224 0
+ 627 021c FFF7FEFF 		bl	blink_one
+ 225:.\binary.c    ****         blink_one();
+ 628              		.loc 1 225 0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccW2el4U.s 			page 16
+
+
+ 629 0220 FFF7FEFF 		bl	blink_one
+ 226:.\binary.c    ****         blink_one();
+ 630              		.loc 1 226 0
+ 631 0224 FFF7FEFF 		bl	blink_one
+ 227:.\binary.c    ****         blink_one();
+ 632              		.loc 1 227 0
+ 633 0228 FFF7FEFF 		bl	blink_one
+ 228:.\binary.c    ****         break;
+ 634              		.loc 1 228 0
+ 635 022c 66E1     		b	.L12
+ 636              	.L42:
+ 229:.\binary.c    ****        case 'P':
+ 230:.\binary.c    ****        case 'p':
+ 231:.\binary.c    ****         blink_zero();
+ 637              		.loc 1 231 0
+ 638 022e FFF7FEFF 		bl	blink_zero
+ 232:.\binary.c    ****         blink_one();
+ 639              		.loc 1 232 0
+ 640 0232 FFF7FEFF 		bl	blink_one
+ 233:.\binary.c    ****         blink_zero();
+ 641              		.loc 1 233 0
+ 642 0236 FFF7FEFF 		bl	blink_zero
+ 234:.\binary.c    ****         blink_one();
+ 643              		.loc 1 234 0
+ 644 023a FFF7FEFF 		bl	blink_one
+ 235:.\binary.c    ****         blink_zero();
+ 645              		.loc 1 235 0
+ 646 023e FFF7FEFF 		bl	blink_zero
+ 236:.\binary.c    ****         blink_zero();
+ 647              		.loc 1 236 0
+ 648 0242 FFF7FEFF 		bl	blink_zero
+ 237:.\binary.c    ****         blink_zero();
+ 649              		.loc 1 237 0
+ 650 0246 FFF7FEFF 		bl	blink_zero
+ 238:.\binary.c    ****         blink_zero();
+ 651              		.loc 1 238 0
+ 652 024a FFF7FEFF 		bl	blink_zero
+ 239:.\binary.c    ****         break;
+ 653              		.loc 1 239 0
+ 654 024e 55E1     		b	.L12
+ 655              	.L43:
+ 240:.\binary.c    ****        case 'Q':
+ 241:.\binary.c    ****        case 'q':
+ 242:.\binary.c    ****         blink_zero();
+ 656              		.loc 1 242 0
+ 657 0250 FFF7FEFF 		bl	blink_zero
+ 243:.\binary.c    ****         blink_one();
+ 658              		.loc 1 243 0
+ 659 0254 FFF7FEFF 		bl	blink_one
+ 244:.\binary.c    ****         blink_zero();
+ 660              		.loc 1 244 0
+ 661 0258 FFF7FEFF 		bl	blink_zero
+ 245:.\binary.c    ****         blink_one();
+ 662              		.loc 1 245 0
+ 663 025c FFF7FEFF 		bl	blink_one
+ 246:.\binary.c    ****         blink_zero();
+ 664              		.loc 1 246 0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccW2el4U.s 			page 17
+
+
+ 665 0260 FFF7FEFF 		bl	blink_zero
+ 247:.\binary.c    ****         blink_zero();
+ 666              		.loc 1 247 0
+ 667 0264 FFF7FEFF 		bl	blink_zero
+ 248:.\binary.c    ****         blink_zero();
+ 668              		.loc 1 248 0
+ 669 0268 FFF7FEFF 		bl	blink_zero
+ 249:.\binary.c    ****         blink_one();
+ 670              		.loc 1 249 0
+ 671 026c FFF7FEFF 		bl	blink_one
+ 250:.\binary.c    ****         break;
+ 672              		.loc 1 250 0
+ 673 0270 44E1     		b	.L12
+ 674              	.L44:
+ 251:.\binary.c    ****        case 'R':
+ 252:.\binary.c    ****        case 'r':
+ 253:.\binary.c    ****         blink_zero();
+ 675              		.loc 1 253 0
+ 676 0272 FFF7FEFF 		bl	blink_zero
+ 254:.\binary.c    ****         blink_one();
+ 677              		.loc 1 254 0
+ 678 0276 FFF7FEFF 		bl	blink_one
+ 255:.\binary.c    ****         blink_zero();
+ 679              		.loc 1 255 0
+ 680 027a FFF7FEFF 		bl	blink_zero
+ 256:.\binary.c    ****         blink_one();
+ 681              		.loc 1 256 0
+ 682 027e FFF7FEFF 		bl	blink_one
+ 257:.\binary.c    ****         blink_zero();
+ 683              		.loc 1 257 0
+ 684 0282 FFF7FEFF 		bl	blink_zero
+ 258:.\binary.c    ****         blink_zero();
+ 685              		.loc 1 258 0
+ 686 0286 FFF7FEFF 		bl	blink_zero
+ 259:.\binary.c    ****         blink_one();
+ 687              		.loc 1 259 0
+ 688 028a FFF7FEFF 		bl	blink_one
+ 260:.\binary.c    ****         blink_zero();
+ 689              		.loc 1 260 0
+ 690 028e FFF7FEFF 		bl	blink_zero
+ 261:.\binary.c    ****         break;
+ 691              		.loc 1 261 0
+ 692 0292 33E1     		b	.L12
+ 693              	.L45:
+ 262:.\binary.c    ****        case 'S':
+ 263:.\binary.c    ****        case 's':
+ 264:.\binary.c    ****         blink_zero();
+ 694              		.loc 1 264 0
+ 695 0294 FFF7FEFF 		bl	blink_zero
+ 265:.\binary.c    ****         blink_one();
+ 696              		.loc 1 265 0
+ 697 0298 FFF7FEFF 		bl	blink_one
+ 266:.\binary.c    ****         blink_zero();
+ 698              		.loc 1 266 0
+ 699 029c FFF7FEFF 		bl	blink_zero
+ 267:.\binary.c    ****         blink_one();
+ 700              		.loc 1 267 0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccW2el4U.s 			page 18
+
+
+ 701 02a0 FFF7FEFF 		bl	blink_one
+ 268:.\binary.c    ****         blink_zero();
+ 702              		.loc 1 268 0
+ 703 02a4 FFF7FEFF 		bl	blink_zero
+ 269:.\binary.c    ****         blink_zero();
+ 704              		.loc 1 269 0
+ 705 02a8 FFF7FEFF 		bl	blink_zero
+ 270:.\binary.c    ****         blink_one();
+ 706              		.loc 1 270 0
+ 707 02ac FFF7FEFF 		bl	blink_one
+ 271:.\binary.c    ****         blink_one();
+ 708              		.loc 1 271 0
+ 709 02b0 FFF7FEFF 		bl	blink_one
+ 272:.\binary.c    ****         break;
+ 710              		.loc 1 272 0
+ 711 02b4 22E1     		b	.L12
+ 712              	.L46:
+ 273:.\binary.c    ****        case 'T':
+ 274:.\binary.c    ****        case 't':
+ 275:.\binary.c    ****         blink_zero();
+ 713              		.loc 1 275 0
+ 714 02b6 FFF7FEFF 		bl	blink_zero
+ 276:.\binary.c    ****         blink_one();
+ 715              		.loc 1 276 0
+ 716 02ba FFF7FEFF 		bl	blink_one
+ 277:.\binary.c    ****         blink_zero();
+ 717              		.loc 1 277 0
+ 718 02be FFF7FEFF 		bl	blink_zero
+ 278:.\binary.c    ****         blink_one();
+ 719              		.loc 1 278 0
+ 720 02c2 FFF7FEFF 		bl	blink_one
+ 279:.\binary.c    ****         blink_zero();
+ 721              		.loc 1 279 0
+ 722 02c6 FFF7FEFF 		bl	blink_zero
+ 280:.\binary.c    ****         blink_one();
+ 723              		.loc 1 280 0
+ 724 02ca FFF7FEFF 		bl	blink_one
+ 281:.\binary.c    ****         blink_zero();
+ 725              		.loc 1 281 0
+ 726 02ce FFF7FEFF 		bl	blink_zero
+ 282:.\binary.c    ****         blink_zero();
+ 727              		.loc 1 282 0
+ 728 02d2 FFF7FEFF 		bl	blink_zero
+ 283:.\binary.c    ****         break;
+ 729              		.loc 1 283 0
+ 730 02d6 11E1     		b	.L12
+ 731              	.L47:
+ 284:.\binary.c    ****        case 'U':
+ 285:.\binary.c    ****        case 'u':
+ 286:.\binary.c    ****         blink_zero();
+ 732              		.loc 1 286 0
+ 733 02d8 FFF7FEFF 		bl	blink_zero
+ 287:.\binary.c    ****         blink_one();
+ 734              		.loc 1 287 0
+ 735 02dc FFF7FEFF 		bl	blink_one
+ 288:.\binary.c    ****         blink_zero();
+ 736              		.loc 1 288 0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccW2el4U.s 			page 19
+
+
+ 737 02e0 FFF7FEFF 		bl	blink_zero
+ 289:.\binary.c    ****         blink_one();
+ 738              		.loc 1 289 0
+ 739 02e4 FFF7FEFF 		bl	blink_one
+ 290:.\binary.c    ****         blink_zero();
+ 740              		.loc 1 290 0
+ 741 02e8 FFF7FEFF 		bl	blink_zero
+ 291:.\binary.c    ****         blink_one();
+ 742              		.loc 1 291 0
+ 743 02ec FFF7FEFF 		bl	blink_one
+ 292:.\binary.c    ****         blink_zero();
+ 744              		.loc 1 292 0
+ 745 02f0 FFF7FEFF 		bl	blink_zero
+ 293:.\binary.c    ****         blink_one();
+ 746              		.loc 1 293 0
+ 747 02f4 FFF7FEFF 		bl	blink_one
+ 294:.\binary.c    ****         break;
+ 748              		.loc 1 294 0
+ 749 02f8 00E1     		b	.L12
+ 750              	.L48:
+ 295:.\binary.c    ****        case 'V':
+ 296:.\binary.c    ****        case 'v':
+ 297:.\binary.c    ****         blink_zero();
+ 751              		.loc 1 297 0
+ 752 02fa FFF7FEFF 		bl	blink_zero
+ 298:.\binary.c    ****         blink_one();
+ 753              		.loc 1 298 0
+ 754 02fe FFF7FEFF 		bl	blink_one
+ 299:.\binary.c    ****         blink_zero();
+ 755              		.loc 1 299 0
+ 756 0302 FFF7FEFF 		bl	blink_zero
+ 300:.\binary.c    ****         blink_one();
+ 757              		.loc 1 300 0
+ 758 0306 FFF7FEFF 		bl	blink_one
+ 301:.\binary.c    ****         blink_zero();
+ 759              		.loc 1 301 0
+ 760 030a FFF7FEFF 		bl	blink_zero
+ 302:.\binary.c    ****         blink_one();
+ 761              		.loc 1 302 0
+ 762 030e FFF7FEFF 		bl	blink_one
+ 303:.\binary.c    ****         blink_one();
+ 763              		.loc 1 303 0
+ 764 0312 FFF7FEFF 		bl	blink_one
+ 304:.\binary.c    ****         blink_zero();
+ 765              		.loc 1 304 0
+ 766 0316 FFF7FEFF 		bl	blink_zero
+ 305:.\binary.c    ****         break;
+ 767              		.loc 1 305 0
+ 768 031a EFE0     		b	.L12
+ 769              	.L49:
+ 306:.\binary.c    ****        case 'W':
+ 307:.\binary.c    ****        case 'w':
+ 308:.\binary.c    ****         blink_zero();
+ 770              		.loc 1 308 0
+ 771 031c FFF7FEFF 		bl	blink_zero
+ 309:.\binary.c    ****         blink_one();
+ 772              		.loc 1 309 0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccW2el4U.s 			page 20
+
+
+ 773 0320 FFF7FEFF 		bl	blink_one
+ 310:.\binary.c    ****         blink_zero();
+ 774              		.loc 1 310 0
+ 775 0324 FFF7FEFF 		bl	blink_zero
+ 311:.\binary.c    ****         blink_one();
+ 776              		.loc 1 311 0
+ 777 0328 FFF7FEFF 		bl	blink_one
+ 312:.\binary.c    ****         blink_zero();
+ 778              		.loc 1 312 0
+ 779 032c FFF7FEFF 		bl	blink_zero
+ 313:.\binary.c    ****         blink_one();
+ 780              		.loc 1 313 0
+ 781 0330 FFF7FEFF 		bl	blink_one
+ 314:.\binary.c    ****         blink_one();
+ 782              		.loc 1 314 0
+ 783 0334 FFF7FEFF 		bl	blink_one
+ 315:.\binary.c    ****         blink_one();
+ 784              		.loc 1 315 0
+ 785 0338 FFF7FEFF 		bl	blink_one
+ 316:.\binary.c    ****         break;
+ 786              		.loc 1 316 0
+ 787 033c DEE0     		b	.L12
+ 788              	.L50:
+ 317:.\binary.c    ****        case 'X':
+ 318:.\binary.c    ****        case 'x':
+ 319:.\binary.c    ****         blink_zero();
+ 789              		.loc 1 319 0
+ 790 033e FFF7FEFF 		bl	blink_zero
+ 320:.\binary.c    ****         blink_one();
+ 791              		.loc 1 320 0
+ 792 0342 FFF7FEFF 		bl	blink_one
+ 321:.\binary.c    ****         blink_zero();
+ 793              		.loc 1 321 0
+ 794 0346 FFF7FEFF 		bl	blink_zero
+ 322:.\binary.c    ****         blink_one();
+ 795              		.loc 1 322 0
+ 796 034a FFF7FEFF 		bl	blink_one
+ 323:.\binary.c    ****         blink_one();
+ 797              		.loc 1 323 0
+ 798 034e FFF7FEFF 		bl	blink_one
+ 324:.\binary.c    ****         blink_zero();
+ 799              		.loc 1 324 0
+ 800 0352 FFF7FEFF 		bl	blink_zero
+ 325:.\binary.c    ****         blink_zero();
+ 801              		.loc 1 325 0
+ 802 0356 FFF7FEFF 		bl	blink_zero
+ 326:.\binary.c    ****         blink_zero();
+ 803              		.loc 1 326 0
+ 804 035a FFF7FEFF 		bl	blink_zero
+ 327:.\binary.c    ****         break;
+ 805              		.loc 1 327 0
+ 806 035e CDE0     		b	.L12
+ 807              	.L51:
+ 328:.\binary.c    ****        case 'Y':
+ 329:.\binary.c    ****        case 'y':
+ 330:.\binary.c    ****         blink_zero();
+ 808              		.loc 1 330 0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccW2el4U.s 			page 21
+
+
+ 809 0360 FFF7FEFF 		bl	blink_zero
+ 331:.\binary.c    ****         blink_one();
+ 810              		.loc 1 331 0
+ 811 0364 FFF7FEFF 		bl	blink_one
+ 332:.\binary.c    ****         blink_zero();
+ 812              		.loc 1 332 0
+ 813 0368 FFF7FEFF 		bl	blink_zero
+ 333:.\binary.c    ****         blink_one();
+ 814              		.loc 1 333 0
+ 815 036c FFF7FEFF 		bl	blink_one
+ 334:.\binary.c    ****         blink_one();
+ 816              		.loc 1 334 0
+ 817 0370 FFF7FEFF 		bl	blink_one
+ 335:.\binary.c    ****         blink_zero();
+ 818              		.loc 1 335 0
+ 819 0374 FFF7FEFF 		bl	blink_zero
+ 336:.\binary.c    ****         blink_zero();
+ 820              		.loc 1 336 0
+ 821 0378 FFF7FEFF 		bl	blink_zero
+ 337:.\binary.c    ****         blink_one();
+ 822              		.loc 1 337 0
+ 823 037c FFF7FEFF 		bl	blink_one
+ 338:.\binary.c    ****         break;
+ 824              		.loc 1 338 0
+ 825 0380 BCE0     		b	.L12
+ 826              	.L52:
+ 339:.\binary.c    ****        case 'Z':
+ 340:.\binary.c    ****        case 'z':
+ 341:.\binary.c    ****         blink_zero();
+ 827              		.loc 1 341 0
+ 828 0382 FFF7FEFF 		bl	blink_zero
+ 342:.\binary.c    ****         blink_one();
+ 829              		.loc 1 342 0
+ 830 0386 FFF7FEFF 		bl	blink_one
+ 343:.\binary.c    ****         blink_zero();
+ 831              		.loc 1 343 0
+ 832 038a FFF7FEFF 		bl	blink_zero
+ 344:.\binary.c    ****         blink_one();
+ 833              		.loc 1 344 0
+ 834 038e FFF7FEFF 		bl	blink_one
+ 345:.\binary.c    ****         blink_one();
+ 835              		.loc 1 345 0
+ 836 0392 FFF7FEFF 		bl	blink_one
+ 346:.\binary.c    ****         blink_zero();
+ 837              		.loc 1 346 0
+ 838 0396 FFF7FEFF 		bl	blink_zero
+ 347:.\binary.c    ****         blink_one();
+ 839              		.loc 1 347 0
+ 840 039a FFF7FEFF 		bl	blink_one
+ 348:.\binary.c    ****         blink_zero();
+ 841              		.loc 1 348 0
+ 842 039e FFF7FEFF 		bl	blink_zero
+ 349:.\binary.c    ****         break;
+ 843              		.loc 1 349 0
+ 844 03a2 ABE0     		b	.L12
+ 845              	.L17:
+ 350:.\binary.c    ****        case '0':
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccW2el4U.s 			page 22
+
+
+ 351:.\binary.c    ****         blink_zero();
+ 846              		.loc 1 351 0
+ 847 03a4 FFF7FEFF 		bl	blink_zero
+ 352:.\binary.c    ****         blink_zero();
+ 848              		.loc 1 352 0
+ 849 03a8 FFF7FEFF 		bl	blink_zero
+ 353:.\binary.c    ****         blink_one();
+ 850              		.loc 1 353 0
+ 851 03ac FFF7FEFF 		bl	blink_one
+ 354:.\binary.c    ****         blink_one();
+ 852              		.loc 1 354 0
+ 853 03b0 FFF7FEFF 		bl	blink_one
+ 355:.\binary.c    ****         blink_zero();
+ 854              		.loc 1 355 0
+ 855 03b4 FFF7FEFF 		bl	blink_zero
+ 356:.\binary.c    ****         blink_zero();
+ 856              		.loc 1 356 0
+ 857 03b8 FFF7FEFF 		bl	blink_zero
+ 357:.\binary.c    ****         blink_zero();
+ 858              		.loc 1 357 0
+ 859 03bc FFF7FEFF 		bl	blink_zero
+ 358:.\binary.c    ****         blink_zero();
+ 860              		.loc 1 358 0
+ 861 03c0 FFF7FEFF 		bl	blink_zero
+ 359:.\binary.c    ****         break;
+ 862              		.loc 1 359 0
+ 863 03c4 9AE0     		b	.L12
+ 864              	.L18:
+ 360:.\binary.c    ****        case '1':
+ 361:.\binary.c    ****         blink_zero();
+ 865              		.loc 1 361 0
+ 866 03c6 FFF7FEFF 		bl	blink_zero
+ 362:.\binary.c    ****         blink_zero();
+ 867              		.loc 1 362 0
+ 868 03ca FFF7FEFF 		bl	blink_zero
+ 363:.\binary.c    ****         blink_one();
+ 869              		.loc 1 363 0
+ 870 03ce FFF7FEFF 		bl	blink_one
+ 364:.\binary.c    ****         blink_one();
+ 871              		.loc 1 364 0
+ 872 03d2 FFF7FEFF 		bl	blink_one
+ 365:.\binary.c    ****         blink_zero();
+ 873              		.loc 1 365 0
+ 874 03d6 FFF7FEFF 		bl	blink_zero
+ 366:.\binary.c    ****         blink_zero();
+ 875              		.loc 1 366 0
+ 876 03da FFF7FEFF 		bl	blink_zero
+ 367:.\binary.c    ****         blink_zero();
+ 877              		.loc 1 367 0
+ 878 03de FFF7FEFF 		bl	blink_zero
+ 368:.\binary.c    ****         blink_one();
+ 879              		.loc 1 368 0
+ 880 03e2 FFF7FEFF 		bl	blink_one
+ 369:.\binary.c    ****         break;
+ 881              		.loc 1 369 0
+ 882 03e6 89E0     		b	.L12
+ 883              	.L54:
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccW2el4U.s 			page 23
+
+
+ 884              		.align	2
+ 885              	.L53:
+ 886 03e8 00000000 		.word	.L16
+ 887              	.L19:
+ 370:.\binary.c    ****        case '2':
+ 371:.\binary.c    ****         blink_zero();
+ 888              		.loc 1 371 0
+ 889 03ec FFF7FEFF 		bl	blink_zero
+ 372:.\binary.c    ****         blink_zero();
+ 890              		.loc 1 372 0
+ 891 03f0 FFF7FEFF 		bl	blink_zero
+ 373:.\binary.c    ****         blink_one();
+ 892              		.loc 1 373 0
+ 893 03f4 FFF7FEFF 		bl	blink_one
+ 374:.\binary.c    ****         blink_one();
+ 894              		.loc 1 374 0
+ 895 03f8 FFF7FEFF 		bl	blink_one
+ 375:.\binary.c    ****         blink_zero();
+ 896              		.loc 1 375 0
+ 897 03fc FFF7FEFF 		bl	blink_zero
+ 376:.\binary.c    ****         blink_zero();
+ 898              		.loc 1 376 0
+ 899 0400 FFF7FEFF 		bl	blink_zero
+ 377:.\binary.c    ****         blink_one();
+ 900              		.loc 1 377 0
+ 901 0404 FFF7FEFF 		bl	blink_one
+ 378:.\binary.c    ****         blink_zero();
+ 902              		.loc 1 378 0
+ 903 0408 FFF7FEFF 		bl	blink_zero
+ 379:.\binary.c    ****         break;
+ 904              		.loc 1 379 0
+ 905 040c 76E0     		b	.L12
+ 906              	.L20:
+ 380:.\binary.c    ****        case '3':
+ 381:.\binary.c    ****         blink_zero();
+ 907              		.loc 1 381 0
+ 908 040e FFF7FEFF 		bl	blink_zero
+ 382:.\binary.c    ****         blink_zero();
+ 909              		.loc 1 382 0
+ 910 0412 FFF7FEFF 		bl	blink_zero
+ 383:.\binary.c    ****         blink_one();
+ 911              		.loc 1 383 0
+ 912 0416 FFF7FEFF 		bl	blink_one
+ 384:.\binary.c    ****         blink_one();
+ 913              		.loc 1 384 0
+ 914 041a FFF7FEFF 		bl	blink_one
+ 385:.\binary.c    ****         blink_zero();
+ 915              		.loc 1 385 0
+ 916 041e FFF7FEFF 		bl	blink_zero
+ 386:.\binary.c    ****         blink_zero();
+ 917              		.loc 1 386 0
+ 918 0422 FFF7FEFF 		bl	blink_zero
+ 387:.\binary.c    ****         blink_one();
+ 919              		.loc 1 387 0
+ 920 0426 FFF7FEFF 		bl	blink_one
+ 388:.\binary.c    ****         blink_one();
+ 921              		.loc 1 388 0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccW2el4U.s 			page 24
+
+
+ 922 042a FFF7FEFF 		bl	blink_one
+ 389:.\binary.c    ****         break;
+ 923              		.loc 1 389 0
+ 924 042e 65E0     		b	.L12
+ 925              	.L21:
+ 390:.\binary.c    ****        case '4':
+ 391:.\binary.c    ****         blink_zero();
+ 926              		.loc 1 391 0
+ 927 0430 FFF7FEFF 		bl	blink_zero
+ 392:.\binary.c    ****         blink_zero();
+ 928              		.loc 1 392 0
+ 929 0434 FFF7FEFF 		bl	blink_zero
+ 393:.\binary.c    ****         blink_one();
+ 930              		.loc 1 393 0
+ 931 0438 FFF7FEFF 		bl	blink_one
+ 394:.\binary.c    ****         blink_one();
+ 932              		.loc 1 394 0
+ 933 043c FFF7FEFF 		bl	blink_one
+ 395:.\binary.c    ****         blink_zero();
+ 934              		.loc 1 395 0
+ 935 0440 FFF7FEFF 		bl	blink_zero
+ 396:.\binary.c    ****         blink_one();
+ 936              		.loc 1 396 0
+ 937 0444 FFF7FEFF 		bl	blink_one
+ 397:.\binary.c    ****         blink_zero();
+ 938              		.loc 1 397 0
+ 939 0448 FFF7FEFF 		bl	blink_zero
+ 398:.\binary.c    ****         blink_zero();
+ 940              		.loc 1 398 0
+ 941 044c FFF7FEFF 		bl	blink_zero
+ 399:.\binary.c    ****         break;
+ 942              		.loc 1 399 0
+ 943 0450 54E0     		b	.L12
+ 944              	.L22:
+ 400:.\binary.c    ****        case '5':
+ 401:.\binary.c    ****         blink_zero();
+ 945              		.loc 1 401 0
+ 946 0452 FFF7FEFF 		bl	blink_zero
+ 402:.\binary.c    ****         blink_zero();
+ 947              		.loc 1 402 0
+ 948 0456 FFF7FEFF 		bl	blink_zero
+ 403:.\binary.c    ****         blink_one();
+ 949              		.loc 1 403 0
+ 950 045a FFF7FEFF 		bl	blink_one
+ 404:.\binary.c    ****         blink_one();
+ 951              		.loc 1 404 0
+ 952 045e FFF7FEFF 		bl	blink_one
+ 405:.\binary.c    ****         blink_zero();
+ 953              		.loc 1 405 0
+ 954 0462 FFF7FEFF 		bl	blink_zero
+ 406:.\binary.c    ****         blink_one();
+ 955              		.loc 1 406 0
+ 956 0466 FFF7FEFF 		bl	blink_one
+ 407:.\binary.c    ****         blink_zero();
+ 957              		.loc 1 407 0
+ 958 046a FFF7FEFF 		bl	blink_zero
+ 408:.\binary.c    ****         blink_one();
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccW2el4U.s 			page 25
+
+
+ 959              		.loc 1 408 0
+ 960 046e FFF7FEFF 		bl	blink_one
+ 409:.\binary.c    ****         break;
+ 961              		.loc 1 409 0
+ 962 0472 43E0     		b	.L12
+ 963              	.L23:
+ 410:.\binary.c    ****        case '6':
+ 411:.\binary.c    ****         blink_zero();
+ 964              		.loc 1 411 0
+ 965 0474 FFF7FEFF 		bl	blink_zero
+ 412:.\binary.c    ****         blink_zero();
+ 966              		.loc 1 412 0
+ 967 0478 FFF7FEFF 		bl	blink_zero
+ 413:.\binary.c    ****         blink_one();
+ 968              		.loc 1 413 0
+ 969 047c FFF7FEFF 		bl	blink_one
+ 414:.\binary.c    ****         blink_one();
+ 970              		.loc 1 414 0
+ 971 0480 FFF7FEFF 		bl	blink_one
+ 415:.\binary.c    ****         blink_zero();
+ 972              		.loc 1 415 0
+ 973 0484 FFF7FEFF 		bl	blink_zero
+ 416:.\binary.c    ****         blink_one();
+ 974              		.loc 1 416 0
+ 975 0488 FFF7FEFF 		bl	blink_one
+ 417:.\binary.c    ****         blink_one();
+ 976              		.loc 1 417 0
+ 977 048c FFF7FEFF 		bl	blink_one
+ 418:.\binary.c    ****         blink_zero();
+ 978              		.loc 1 418 0
+ 979 0490 FFF7FEFF 		bl	blink_zero
+ 419:.\binary.c    ****         break;
+ 980              		.loc 1 419 0
+ 981 0494 32E0     		b	.L12
+ 982              	.L24:
+ 420:.\binary.c    ****        case '7':
+ 421:.\binary.c    ****         blink_zero();
+ 983              		.loc 1 421 0
+ 984 0496 FFF7FEFF 		bl	blink_zero
+ 422:.\binary.c    ****         blink_zero();
+ 985              		.loc 1 422 0
+ 986 049a FFF7FEFF 		bl	blink_zero
+ 423:.\binary.c    ****         blink_one();
+ 987              		.loc 1 423 0
+ 988 049e FFF7FEFF 		bl	blink_one
+ 424:.\binary.c    ****         blink_one();
+ 989              		.loc 1 424 0
+ 990 04a2 FFF7FEFF 		bl	blink_one
+ 425:.\binary.c    ****         blink_zero();
+ 991              		.loc 1 425 0
+ 992 04a6 FFF7FEFF 		bl	blink_zero
+ 426:.\binary.c    ****         blink_one();
+ 993              		.loc 1 426 0
+ 994 04aa FFF7FEFF 		bl	blink_one
+ 427:.\binary.c    ****         blink_one();
+ 995              		.loc 1 427 0
+ 996 04ae FFF7FEFF 		bl	blink_one
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccW2el4U.s 			page 26
+
+
+ 428:.\binary.c    ****         blink_one();
+ 997              		.loc 1 428 0
+ 998 04b2 FFF7FEFF 		bl	blink_one
+ 429:.\binary.c    ****         break;
+ 999              		.loc 1 429 0
+ 1000 04b6 21E0     		b	.L12
+ 1001              	.L25:
+ 430:.\binary.c    ****        case '8':
+ 431:.\binary.c    ****         blink_zero();
+ 1002              		.loc 1 431 0
+ 1003 04b8 FFF7FEFF 		bl	blink_zero
+ 432:.\binary.c    ****         blink_zero();
+ 1004              		.loc 1 432 0
+ 1005 04bc FFF7FEFF 		bl	blink_zero
+ 433:.\binary.c    ****         blink_one();
+ 1006              		.loc 1 433 0
+ 1007 04c0 FFF7FEFF 		bl	blink_one
+ 434:.\binary.c    ****         blink_one();
+ 1008              		.loc 1 434 0
+ 1009 04c4 FFF7FEFF 		bl	blink_one
+ 435:.\binary.c    ****         blink_one();
+ 1010              		.loc 1 435 0
+ 1011 04c8 FFF7FEFF 		bl	blink_one
+ 436:.\binary.c    ****         blink_zero();
+ 1012              		.loc 1 436 0
+ 1013 04cc FFF7FEFF 		bl	blink_zero
+ 437:.\binary.c    ****         blink_zero();
+ 1014              		.loc 1 437 0
+ 1015 04d0 FFF7FEFF 		bl	blink_zero
+ 438:.\binary.c    ****         blink_zero();
+ 1016              		.loc 1 438 0
+ 1017 04d4 FFF7FEFF 		bl	blink_zero
+ 439:.\binary.c    ****         break;
+ 1018              		.loc 1 439 0
+ 1019 04d8 10E0     		b	.L12
+ 1020              	.L26:
+ 440:.\binary.c    ****        case '9':
+ 441:.\binary.c    ****         blink_zero();
+ 1021              		.loc 1 441 0
+ 1022 04da FFF7FEFF 		bl	blink_zero
+ 442:.\binary.c    ****         blink_zero();
+ 1023              		.loc 1 442 0
+ 1024 04de FFF7FEFF 		bl	blink_zero
+ 443:.\binary.c    ****         blink_one();
+ 1025              		.loc 1 443 0
+ 1026 04e2 FFF7FEFF 		bl	blink_one
+ 444:.\binary.c    ****         blink_one();
+ 1027              		.loc 1 444 0
+ 1028 04e6 FFF7FEFF 		bl	blink_one
+ 445:.\binary.c    ****         blink_one();
+ 1029              		.loc 1 445 0
+ 1030 04ea FFF7FEFF 		bl	blink_one
+ 446:.\binary.c    ****         blink_zero();
+ 1031              		.loc 1 446 0
+ 1032 04ee FFF7FEFF 		bl	blink_zero
+ 447:.\binary.c    ****         blink_zero();
+ 1033              		.loc 1 447 0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccW2el4U.s 			page 27
+
+
+ 1034 04f2 FFF7FEFF 		bl	blink_zero
+ 448:.\binary.c    ****         blink_one();
+ 1035              		.loc 1 448 0
+ 1036 04f6 FFF7FEFF 		bl	blink_one
+ 449:.\binary.c    ****         break;
+ 1037              		.loc 1 449 0
+ 1038 04fa C046     		mov	r8, r8
+ 1039              	.L12:
+ 450:.\binary.c    ****        case '\n':
+ 451:.\binary.c    ****         /* Clear the screen on a new line */
+ 452:.\binary.c    ****         break;
+ 453:.\binary.c    ****    }
+ 454:.\binary.c    **** }
+ 1040              		.loc 1 454 0
+ 1041 04fc BD46     		mov	sp, r7
+ 1042 04fe 02B0     		add	sp, sp, #8
+ 1043              		@ sp needed
+ 1044 0500 80BD     		pop	{r7, pc}
+ 1045              		.cfi_endproc
+ 1046              	.LFE36:
+ 1047              		.size	binary_encode, .-binary_encode
+ 1048 0502 C046     		.section	.text.binary_message,"ax",%progbits
+ 1049              		.align	2
+ 1050              		.global	binary_message
+ 1051              		.code	16
+ 1052              		.thumb_func
+ 1053              		.type	binary_message, %function
+ 1054              	binary_message:
+ 1055              	.LFB37:
+ 455:.\binary.c    **** 
+ 456:.\binary.c    **** void binary_message(char* message) {
+ 1056              		.loc 1 456 0
+ 1057              		.cfi_startproc
+ 1058 0000 80B5     		push	{r7, lr}
+ 1059              		.cfi_def_cfa_offset 8
+ 1060              		.cfi_offset 7, -8
+ 1061              		.cfi_offset 14, -4
+ 1062 0002 84B0     		sub	sp, sp, #16
+ 1063              		.cfi_def_cfa_offset 24
+ 1064 0004 00AF     		add	r7, sp, #0
+ 1065              		.cfi_def_cfa_register 7
+ 1066 0006 7860     		str	r0, [r7, #4]
+ 457:.\binary.c    ****     unsigned int i;
+ 458:.\binary.c    ****     
+ 459:.\binary.c    ****     /* Signal new message to user */
+ 460:.\binary.c    ****     new_message_binary();
+ 1067              		.loc 1 460 0
+ 1068 0008 FFF7FEFF 		bl	new_message_binary
+ 461:.\binary.c    ****     
+ 462:.\binary.c    ****     /* Blink the encoded message */
+ 463:.\binary.c    ****     for (i=0; i < strlen(message); i++) {
+ 1069              		.loc 1 463 0
+ 1070 000c 0023     		mov	r3, #0
+ 1071 000e FB60     		str	r3, [r7, #12]
+ 1072 0010 10E0     		b	.L56
+ 1073              	.L59:
+ 464:.\binary.c    ****         /* Verify state */
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccW2el4U.s 			page 28
+
+
+ 465:.\binary.c    ****         if(!verify_state(BINARY)) {
+ 1074              		.loc 1 465 0
+ 1075 0012 0220     		mov	r0, #2
+ 1076 0014 FFF7FEFF 		bl	verify_state
+ 1077 0018 031C     		mov	r3, r0
+ 1078 001a 002B     		cmp	r3, #0
+ 1079 001c 00D1     		bne	.L57
+ 466:.\binary.c    ****             return;
+ 1080              		.loc 1 466 0
+ 1081 001e 11E0     		b	.L55
+ 1082              	.L57:
+ 467:.\binary.c    ****         }
+ 468:.\binary.c    ****         binary_encode(message[i]);
+ 1083              		.loc 1 468 0
+ 1084 0020 7A68     		ldr	r2, [r7, #4]
+ 1085 0022 FB68     		ldr	r3, [r7, #12]
+ 1086 0024 D318     		add	r3, r2, r3
+ 1087 0026 1B78     		ldrb	r3, [r3]
+ 1088 0028 181C     		mov	r0, r3
+ 1089 002a FFF7FEFF 		bl	binary_encode
+ 463:.\binary.c    ****     for (i=0; i < strlen(message); i++) {
+ 1090              		.loc 1 463 0
+ 1091 002e FB68     		ldr	r3, [r7, #12]
+ 1092 0030 0133     		add	r3, r3, #1
+ 1093 0032 FB60     		str	r3, [r7, #12]
+ 1094              	.L56:
+ 463:.\binary.c    ****     for (i=0; i < strlen(message); i++) {
+ 1095              		.loc 1 463 0 is_stmt 0 discriminator 1
+ 1096 0034 7B68     		ldr	r3, [r7, #4]
+ 1097 0036 181C     		mov	r0, r3
+ 1098 0038 FFF7FEFF 		bl	strlen
+ 1099 003c 021C     		mov	r2, r0
+ 1100 003e FB68     		ldr	r3, [r7, #12]
+ 1101 0040 9A42     		cmp	r2, r3
+ 1102 0042 E6D8     		bhi	.L59
+ 1103              	.L55:
+ 469:.\binary.c    ****     }
+ 470:.\binary.c    **** }
+ 1104              		.loc 1 470 0 is_stmt 1
+ 1105 0044 BD46     		mov	sp, r7
+ 1106 0046 04B0     		add	sp, sp, #16
+ 1107              		@ sp needed
+ 1108 0048 80BD     		pop	{r7, pc}
+ 1109              		.cfi_endproc
+ 1110              	.LFE37:
+ 1111              		.size	binary_message, .-binary_message
+ 1112 004a C046     		.text
+ 1113              	.Letext0:
+ 1114              		.file 2 ".\\Generated_Source\\PSoC4/cytypes.h"
+ 1115              		.section	.debug_info,"",%progbits
+ 1116              	.Ldebug_info0:
+ 1117 0000 38010000 		.4byte	0x138
+ 1118 0004 0400     		.2byte	0x4
+ 1119 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 1120 000a 04       		.byte	0x4
+ 1121 000b 01       		.uleb128 0x1
+ 1122 000c AC000000 		.4byte	.LASF19
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccW2el4U.s 			page 29
+
+
+ 1123 0010 01       		.byte	0x1
+ 1124 0011 67000000 		.4byte	.LASF20
+ 1125 0015 20000000 		.4byte	.LASF21
+ 1126 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 1127 001d 00000000 		.4byte	0
+ 1128 0021 00000000 		.4byte	.Ldebug_line0
+ 1129 0025 02       		.uleb128 0x2
+ 1130 0026 01       		.byte	0x1
+ 1131 0027 06       		.byte	0x6
+ 1132 0028 9D010000 		.4byte	.LASF0
+ 1133 002c 02       		.uleb128 0x2
+ 1134 002d 01       		.byte	0x1
+ 1135 002e 08       		.byte	0x8
+ 1136 002f 28010000 		.4byte	.LASF1
+ 1137 0033 02       		.uleb128 0x2
+ 1138 0034 02       		.byte	0x2
+ 1139 0035 05       		.byte	0x5
+ 1140 0036 AF010000 		.4byte	.LASF2
+ 1141 003a 02       		.uleb128 0x2
+ 1142 003b 02       		.byte	0x2
+ 1143 003c 07       		.byte	0x7
+ 1144 003d 8A010000 		.4byte	.LASF3
+ 1145 0041 02       		.uleb128 0x2
+ 1146 0042 04       		.byte	0x4
+ 1147 0043 05       		.byte	0x5
+ 1148 0044 4A010000 		.4byte	.LASF4
+ 1149 0048 02       		.uleb128 0x2
+ 1150 0049 04       		.byte	0x4
+ 1151 004a 07       		.byte	0x7
+ 1152 004b 78000000 		.4byte	.LASF5
+ 1153 004f 02       		.uleb128 0x2
+ 1154 0050 08       		.byte	0x8
+ 1155 0051 05       		.byte	0x5
+ 1156 0052 00000000 		.4byte	.LASF6
+ 1157 0056 02       		.uleb128 0x2
+ 1158 0057 08       		.byte	0x8
+ 1159 0058 07       		.byte	0x7
+ 1160 0059 8A000000 		.4byte	.LASF7
+ 1161 005d 03       		.uleb128 0x3
+ 1162 005e 04       		.byte	0x4
+ 1163 005f 05       		.byte	0x5
+ 1164 0060 696E7400 		.ascii	"int\000"
+ 1165 0064 02       		.uleb128 0x2
+ 1166 0065 04       		.byte	0x4
+ 1167 0066 07       		.byte	0x7
+ 1168 0067 B9010000 		.4byte	.LASF8
+ 1169 006b 04       		.uleb128 0x4
+ 1170 006c 72000000 		.4byte	.LASF22
+ 1171 0070 02       		.byte	0x2
+ 1172 0071 A1       		.byte	0xa1
+ 1173 0072 2C000000 		.4byte	0x2c
+ 1174 0076 02       		.uleb128 0x2
+ 1175 0077 04       		.byte	0x4
+ 1176 0078 04       		.byte	0x4
+ 1177 0079 A9010000 		.4byte	.LASF9
+ 1178 007d 02       		.uleb128 0x2
+ 1179 007e 08       		.byte	0x8
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccW2el4U.s 			page 30
+
+
+ 1180 007f 04       		.byte	0x4
+ 1181 0080 83010000 		.4byte	.LASF10
+ 1182 0084 02       		.uleb128 0x2
+ 1183 0085 01       		.byte	0x1
+ 1184 0086 08       		.byte	0x8
+ 1185 0087 36010000 		.4byte	.LASF11
+ 1186 008b 02       		.uleb128 0x2
+ 1187 008c 04       		.byte	0x4
+ 1188 008d 07       		.byte	0x7
+ 1189 008e C6010000 		.4byte	.LASF12
+ 1190 0092 05       		.uleb128 0x5
+ 1191 0093 04       		.byte	0x4
+ 1192 0094 84000000 		.4byte	0x84
+ 1193 0098 06       		.uleb128 0x6
+ 1194 0099 A1000000 		.4byte	.LASF13
+ 1195 009d 01       		.byte	0x1
+ 1196 009e 12       		.byte	0x12
+ 1197 009f 00000000 		.4byte	.LFB33
+ 1198 00a3 32000000 		.4byte	.LFE33-.LFB33
+ 1199 00a7 01       		.uleb128 0x1
+ 1200 00a8 9C       		.byte	0x9c
+ 1201 00a9 06       		.uleb128 0x6
+ 1202 00aa 0E000000 		.4byte	.LASF14
+ 1203 00ae 01       		.byte	0x1
+ 1204 00af 1D       		.byte	0x1d
+ 1205 00b0 00000000 		.4byte	.LFB34
+ 1206 00b4 32000000 		.4byte	.LFE34-.LFB34
+ 1207 00b8 01       		.uleb128 0x1
+ 1208 00b9 9C       		.byte	0x9c
+ 1209 00ba 07       		.uleb128 0x7
+ 1210 00bb 61010000 		.4byte	.LASF16
+ 1211 00bf 01       		.byte	0x1
+ 1212 00c0 28       		.byte	0x28
+ 1213 00c1 00000000 		.4byte	.LFB35
+ 1214 00c5 64000000 		.4byte	.LFE35-.LFB35
+ 1215 00c9 01       		.uleb128 0x1
+ 1216 00ca 9C       		.byte	0x9c
+ 1217 00cb EA000000 		.4byte	0xea
+ 1218 00cf 08       		.uleb128 0x8
+ 1219 00d0 6900     		.ascii	"i\000"
+ 1220 00d2 01       		.byte	0x1
+ 1221 00d3 29       		.byte	0x29
+ 1222 00d4 64000000 		.4byte	0x64
+ 1223 00d8 02       		.uleb128 0x2
+ 1224 00d9 91       		.byte	0x91
+ 1225 00da 6C       		.sleb128 -20
+ 1226 00db 09       		.uleb128 0x9
+ 1227 00dc 74010000 		.4byte	.LASF15
+ 1228 00e0 01       		.byte	0x1
+ 1229 00e1 2A       		.byte	0x2a
+ 1230 00e2 6B000000 		.4byte	0x6b
+ 1231 00e6 02       		.uleb128 0x2
+ 1232 00e7 91       		.byte	0x91
+ 1233 00e8 6B       		.sleb128 -21
+ 1234 00e9 00       		.byte	0
+ 1235 00ea 07       		.uleb128 0x7
+ 1236 00eb 53010000 		.4byte	.LASF17
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccW2el4U.s 			page 31
+
+
+ 1237 00ef 01       		.byte	0x1
+ 1238 00f0 3A       		.byte	0x3a
+ 1239 00f1 00000000 		.4byte	.LFB36
+ 1240 00f5 02050000 		.4byte	.LFE36-.LFB36
+ 1241 00f9 01       		.uleb128 0x1
+ 1242 00fa 9C       		.byte	0x9c
+ 1243 00fb 0C010000 		.4byte	0x10c
+ 1244 00ff 0A       		.uleb128 0xa
+ 1245 0100 6300     		.ascii	"c\000"
+ 1246 0102 01       		.byte	0x1
+ 1247 0103 3A       		.byte	0x3a
+ 1248 0104 84000000 		.4byte	0x84
+ 1249 0108 02       		.uleb128 0x2
+ 1250 0109 91       		.byte	0x91
+ 1251 010a 77       		.sleb128 -9
+ 1252 010b 00       		.byte	0
+ 1253 010c 0B       		.uleb128 0xb
+ 1254 010d 3B010000 		.4byte	.LASF23
+ 1255 0111 01       		.byte	0x1
+ 1256 0112 C801     		.2byte	0x1c8
+ 1257 0114 00000000 		.4byte	.LFB37
+ 1258 0118 4A000000 		.4byte	.LFE37-.LFB37
+ 1259 011c 01       		.uleb128 0x1
+ 1260 011d 9C       		.byte	0x9c
+ 1261 011e 0C       		.uleb128 0xc
+ 1262 011f 18000000 		.4byte	.LASF18
+ 1263 0123 01       		.byte	0x1
+ 1264 0124 C801     		.2byte	0x1c8
+ 1265 0126 92000000 		.4byte	0x92
+ 1266 012a 02       		.uleb128 0x2
+ 1267 012b 91       		.byte	0x91
+ 1268 012c 6C       		.sleb128 -20
+ 1269 012d 0D       		.uleb128 0xd
+ 1270 012e 6900     		.ascii	"i\000"
+ 1271 0130 01       		.byte	0x1
+ 1272 0131 C901     		.2byte	0x1c9
+ 1273 0133 64000000 		.4byte	0x64
+ 1274 0137 02       		.uleb128 0x2
+ 1275 0138 91       		.byte	0x91
+ 1276 0139 74       		.sleb128 -12
+ 1277 013a 00       		.byte	0
+ 1278 013b 00       		.byte	0
+ 1279              		.section	.debug_abbrev,"",%progbits
+ 1280              	.Ldebug_abbrev0:
+ 1281 0000 01       		.uleb128 0x1
+ 1282 0001 11       		.uleb128 0x11
+ 1283 0002 01       		.byte	0x1
+ 1284 0003 25       		.uleb128 0x25
+ 1285 0004 0E       		.uleb128 0xe
+ 1286 0005 13       		.uleb128 0x13
+ 1287 0006 0B       		.uleb128 0xb
+ 1288 0007 03       		.uleb128 0x3
+ 1289 0008 0E       		.uleb128 0xe
+ 1290 0009 1B       		.uleb128 0x1b
+ 1291 000a 0E       		.uleb128 0xe
+ 1292 000b 55       		.uleb128 0x55
+ 1293 000c 17       		.uleb128 0x17
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccW2el4U.s 			page 32
+
+
+ 1294 000d 11       		.uleb128 0x11
+ 1295 000e 01       		.uleb128 0x1
+ 1296 000f 10       		.uleb128 0x10
+ 1297 0010 17       		.uleb128 0x17
+ 1298 0011 00       		.byte	0
+ 1299 0012 00       		.byte	0
+ 1300 0013 02       		.uleb128 0x2
+ 1301 0014 24       		.uleb128 0x24
+ 1302 0015 00       		.byte	0
+ 1303 0016 0B       		.uleb128 0xb
+ 1304 0017 0B       		.uleb128 0xb
+ 1305 0018 3E       		.uleb128 0x3e
+ 1306 0019 0B       		.uleb128 0xb
+ 1307 001a 03       		.uleb128 0x3
+ 1308 001b 0E       		.uleb128 0xe
+ 1309 001c 00       		.byte	0
+ 1310 001d 00       		.byte	0
+ 1311 001e 03       		.uleb128 0x3
+ 1312 001f 24       		.uleb128 0x24
+ 1313 0020 00       		.byte	0
+ 1314 0021 0B       		.uleb128 0xb
+ 1315 0022 0B       		.uleb128 0xb
+ 1316 0023 3E       		.uleb128 0x3e
+ 1317 0024 0B       		.uleb128 0xb
+ 1318 0025 03       		.uleb128 0x3
+ 1319 0026 08       		.uleb128 0x8
+ 1320 0027 00       		.byte	0
+ 1321 0028 00       		.byte	0
+ 1322 0029 04       		.uleb128 0x4
+ 1323 002a 16       		.uleb128 0x16
+ 1324 002b 00       		.byte	0
+ 1325 002c 03       		.uleb128 0x3
+ 1326 002d 0E       		.uleb128 0xe
+ 1327 002e 3A       		.uleb128 0x3a
+ 1328 002f 0B       		.uleb128 0xb
+ 1329 0030 3B       		.uleb128 0x3b
+ 1330 0031 0B       		.uleb128 0xb
+ 1331 0032 49       		.uleb128 0x49
+ 1332 0033 13       		.uleb128 0x13
+ 1333 0034 00       		.byte	0
+ 1334 0035 00       		.byte	0
+ 1335 0036 05       		.uleb128 0x5
+ 1336 0037 0F       		.uleb128 0xf
+ 1337 0038 00       		.byte	0
+ 1338 0039 0B       		.uleb128 0xb
+ 1339 003a 0B       		.uleb128 0xb
+ 1340 003b 49       		.uleb128 0x49
+ 1341 003c 13       		.uleb128 0x13
+ 1342 003d 00       		.byte	0
+ 1343 003e 00       		.byte	0
+ 1344 003f 06       		.uleb128 0x6
+ 1345 0040 2E       		.uleb128 0x2e
+ 1346 0041 00       		.byte	0
+ 1347 0042 3F       		.uleb128 0x3f
+ 1348 0043 19       		.uleb128 0x19
+ 1349 0044 03       		.uleb128 0x3
+ 1350 0045 0E       		.uleb128 0xe
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccW2el4U.s 			page 33
+
+
+ 1351 0046 3A       		.uleb128 0x3a
+ 1352 0047 0B       		.uleb128 0xb
+ 1353 0048 3B       		.uleb128 0x3b
+ 1354 0049 0B       		.uleb128 0xb
+ 1355 004a 27       		.uleb128 0x27
+ 1356 004b 19       		.uleb128 0x19
+ 1357 004c 11       		.uleb128 0x11
+ 1358 004d 01       		.uleb128 0x1
+ 1359 004e 12       		.uleb128 0x12
+ 1360 004f 06       		.uleb128 0x6
+ 1361 0050 40       		.uleb128 0x40
+ 1362 0051 18       		.uleb128 0x18
+ 1363 0052 9642     		.uleb128 0x2116
+ 1364 0054 19       		.uleb128 0x19
+ 1365 0055 00       		.byte	0
+ 1366 0056 00       		.byte	0
+ 1367 0057 07       		.uleb128 0x7
+ 1368 0058 2E       		.uleb128 0x2e
+ 1369 0059 01       		.byte	0x1
+ 1370 005a 3F       		.uleb128 0x3f
+ 1371 005b 19       		.uleb128 0x19
+ 1372 005c 03       		.uleb128 0x3
+ 1373 005d 0E       		.uleb128 0xe
+ 1374 005e 3A       		.uleb128 0x3a
+ 1375 005f 0B       		.uleb128 0xb
+ 1376 0060 3B       		.uleb128 0x3b
+ 1377 0061 0B       		.uleb128 0xb
+ 1378 0062 27       		.uleb128 0x27
+ 1379 0063 19       		.uleb128 0x19
+ 1380 0064 11       		.uleb128 0x11
+ 1381 0065 01       		.uleb128 0x1
+ 1382 0066 12       		.uleb128 0x12
+ 1383 0067 06       		.uleb128 0x6
+ 1384 0068 40       		.uleb128 0x40
+ 1385 0069 18       		.uleb128 0x18
+ 1386 006a 9642     		.uleb128 0x2116
+ 1387 006c 19       		.uleb128 0x19
+ 1388 006d 01       		.uleb128 0x1
+ 1389 006e 13       		.uleb128 0x13
+ 1390 006f 00       		.byte	0
+ 1391 0070 00       		.byte	0
+ 1392 0071 08       		.uleb128 0x8
+ 1393 0072 34       		.uleb128 0x34
+ 1394 0073 00       		.byte	0
+ 1395 0074 03       		.uleb128 0x3
+ 1396 0075 08       		.uleb128 0x8
+ 1397 0076 3A       		.uleb128 0x3a
+ 1398 0077 0B       		.uleb128 0xb
+ 1399 0078 3B       		.uleb128 0x3b
+ 1400 0079 0B       		.uleb128 0xb
+ 1401 007a 49       		.uleb128 0x49
+ 1402 007b 13       		.uleb128 0x13
+ 1403 007c 02       		.uleb128 0x2
+ 1404 007d 18       		.uleb128 0x18
+ 1405 007e 00       		.byte	0
+ 1406 007f 00       		.byte	0
+ 1407 0080 09       		.uleb128 0x9
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccW2el4U.s 			page 34
+
+
+ 1408 0081 34       		.uleb128 0x34
+ 1409 0082 00       		.byte	0
+ 1410 0083 03       		.uleb128 0x3
+ 1411 0084 0E       		.uleb128 0xe
+ 1412 0085 3A       		.uleb128 0x3a
+ 1413 0086 0B       		.uleb128 0xb
+ 1414 0087 3B       		.uleb128 0x3b
+ 1415 0088 0B       		.uleb128 0xb
+ 1416 0089 49       		.uleb128 0x49
+ 1417 008a 13       		.uleb128 0x13
+ 1418 008b 02       		.uleb128 0x2
+ 1419 008c 18       		.uleb128 0x18
+ 1420 008d 00       		.byte	0
+ 1421 008e 00       		.byte	0
+ 1422 008f 0A       		.uleb128 0xa
+ 1423 0090 05       		.uleb128 0x5
+ 1424 0091 00       		.byte	0
+ 1425 0092 03       		.uleb128 0x3
+ 1426 0093 08       		.uleb128 0x8
+ 1427 0094 3A       		.uleb128 0x3a
+ 1428 0095 0B       		.uleb128 0xb
+ 1429 0096 3B       		.uleb128 0x3b
+ 1430 0097 0B       		.uleb128 0xb
+ 1431 0098 49       		.uleb128 0x49
+ 1432 0099 13       		.uleb128 0x13
+ 1433 009a 02       		.uleb128 0x2
+ 1434 009b 18       		.uleb128 0x18
+ 1435 009c 00       		.byte	0
+ 1436 009d 00       		.byte	0
+ 1437 009e 0B       		.uleb128 0xb
+ 1438 009f 2E       		.uleb128 0x2e
+ 1439 00a0 01       		.byte	0x1
+ 1440 00a1 3F       		.uleb128 0x3f
+ 1441 00a2 19       		.uleb128 0x19
+ 1442 00a3 03       		.uleb128 0x3
+ 1443 00a4 0E       		.uleb128 0xe
+ 1444 00a5 3A       		.uleb128 0x3a
+ 1445 00a6 0B       		.uleb128 0xb
+ 1446 00a7 3B       		.uleb128 0x3b
+ 1447 00a8 05       		.uleb128 0x5
+ 1448 00a9 27       		.uleb128 0x27
+ 1449 00aa 19       		.uleb128 0x19
+ 1450 00ab 11       		.uleb128 0x11
+ 1451 00ac 01       		.uleb128 0x1
+ 1452 00ad 12       		.uleb128 0x12
+ 1453 00ae 06       		.uleb128 0x6
+ 1454 00af 40       		.uleb128 0x40
+ 1455 00b0 18       		.uleb128 0x18
+ 1456 00b1 9642     		.uleb128 0x2116
+ 1457 00b3 19       		.uleb128 0x19
+ 1458 00b4 00       		.byte	0
+ 1459 00b5 00       		.byte	0
+ 1460 00b6 0C       		.uleb128 0xc
+ 1461 00b7 05       		.uleb128 0x5
+ 1462 00b8 00       		.byte	0
+ 1463 00b9 03       		.uleb128 0x3
+ 1464 00ba 0E       		.uleb128 0xe
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccW2el4U.s 			page 35
+
+
+ 1465 00bb 3A       		.uleb128 0x3a
+ 1466 00bc 0B       		.uleb128 0xb
+ 1467 00bd 3B       		.uleb128 0x3b
+ 1468 00be 05       		.uleb128 0x5
+ 1469 00bf 49       		.uleb128 0x49
+ 1470 00c0 13       		.uleb128 0x13
+ 1471 00c1 02       		.uleb128 0x2
+ 1472 00c2 18       		.uleb128 0x18
+ 1473 00c3 00       		.byte	0
+ 1474 00c4 00       		.byte	0
+ 1475 00c5 0D       		.uleb128 0xd
+ 1476 00c6 34       		.uleb128 0x34
+ 1477 00c7 00       		.byte	0
+ 1478 00c8 03       		.uleb128 0x3
+ 1479 00c9 08       		.uleb128 0x8
+ 1480 00ca 3A       		.uleb128 0x3a
+ 1481 00cb 0B       		.uleb128 0xb
+ 1482 00cc 3B       		.uleb128 0x3b
+ 1483 00cd 05       		.uleb128 0x5
+ 1484 00ce 49       		.uleb128 0x49
+ 1485 00cf 13       		.uleb128 0x13
+ 1486 00d0 02       		.uleb128 0x2
+ 1487 00d1 18       		.uleb128 0x18
+ 1488 00d2 00       		.byte	0
+ 1489 00d3 00       		.byte	0
+ 1490 00d4 00       		.byte	0
+ 1491              		.section	.debug_aranges,"",%progbits
+ 1492 0000 3C000000 		.4byte	0x3c
+ 1493 0004 0200     		.2byte	0x2
+ 1494 0006 00000000 		.4byte	.Ldebug_info0
+ 1495 000a 04       		.byte	0x4
+ 1496 000b 00       		.byte	0
+ 1497 000c 0000     		.2byte	0
+ 1498 000e 0000     		.2byte	0
+ 1499 0010 00000000 		.4byte	.LFB33
+ 1500 0014 32000000 		.4byte	.LFE33-.LFB33
+ 1501 0018 00000000 		.4byte	.LFB34
+ 1502 001c 32000000 		.4byte	.LFE34-.LFB34
+ 1503 0020 00000000 		.4byte	.LFB35
+ 1504 0024 64000000 		.4byte	.LFE35-.LFB35
+ 1505 0028 00000000 		.4byte	.LFB36
+ 1506 002c 02050000 		.4byte	.LFE36-.LFB36
+ 1507 0030 00000000 		.4byte	.LFB37
+ 1508 0034 4A000000 		.4byte	.LFE37-.LFB37
+ 1509 0038 00000000 		.4byte	0
+ 1510 003c 00000000 		.4byte	0
+ 1511              		.section	.debug_ranges,"",%progbits
+ 1512              	.Ldebug_ranges0:
+ 1513 0000 00000000 		.4byte	.LFB33
+ 1514 0004 32000000 		.4byte	.LFE33
+ 1515 0008 00000000 		.4byte	.LFB34
+ 1516 000c 32000000 		.4byte	.LFE34
+ 1517 0010 00000000 		.4byte	.LFB35
+ 1518 0014 64000000 		.4byte	.LFE35
+ 1519 0018 00000000 		.4byte	.LFB36
+ 1520 001c 02050000 		.4byte	.LFE36
+ 1521 0020 00000000 		.4byte	.LFB37
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccW2el4U.s 			page 36
+
+
+ 1522 0024 4A000000 		.4byte	.LFE37
+ 1523 0028 00000000 		.4byte	0
+ 1524 002c 00000000 		.4byte	0
+ 1525              		.section	.debug_line,"",%progbits
+ 1526              	.Ldebug_line0:
+ 1527 0000 14020000 		.section	.debug_str,"MS",%progbits,1
+ 1527      02004700 
+ 1527      00000201 
+ 1527      FB0E0D00 
+ 1527      01010101 
+ 1528              	.LASF6:
+ 1529 0000 6C6F6E67 		.ascii	"long long int\000"
+ 1529      206C6F6E 
+ 1529      6720696E 
+ 1529      7400
+ 1530              	.LASF14:
+ 1531 000e 626C696E 		.ascii	"blink_one\000"
+ 1531      6B5F6F6E 
+ 1531      6500
+ 1532              	.LASF18:
+ 1533 0018 6D657373 		.ascii	"message\000"
+ 1533      61676500 
+ 1534              	.LASF21:
+ 1535 0020 433A5C55 		.ascii	"C:\\Users\\Admin\\Desktop\\Student Badge\\Student_B"
+ 1535      73657273 
+ 1535      5C41646D 
+ 1535      696E5C44 
+ 1535      65736B74 
+ 1536 004e 61646765 		.ascii	"adge\\Student_Badge.cydsn\000"
+ 1536      5C537475 
+ 1536      64656E74 
+ 1536      5F426164 
+ 1536      67652E63 
+ 1537              	.LASF20:
+ 1538 0067 2E5C6269 		.ascii	".\\binary.c\000"
+ 1538      6E617279 
+ 1538      2E6300
+ 1539              	.LASF22:
+ 1540 0072 75696E74 		.ascii	"uint8\000"
+ 1540      3800
+ 1541              	.LASF5:
+ 1542 0078 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1542      20756E73 
+ 1542      69676E65 
+ 1542      6420696E 
+ 1542      7400
+ 1543              	.LASF7:
+ 1544 008a 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1544      206C6F6E 
+ 1544      6720756E 
+ 1544      7369676E 
+ 1544      65642069 
+ 1545              	.LASF13:
+ 1546 00a1 626C696E 		.ascii	"blink_zero\000"
+ 1546      6B5F7A65 
+ 1546      726F00
+ 1547              	.LASF19:
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccW2el4U.s 			page 37
+
+
+ 1548 00ac 474E5520 		.ascii	"GNU C 4.8.4 20140526 (release) [ARM/embedded-4_8-br"
+ 1548      4320342E 
+ 1548      382E3420 
+ 1548      32303134 
+ 1548      30353236 
+ 1549 00df 616E6368 		.ascii	"anch revision 211358] -mcpu=cortex-m0 -mthumb -g -O"
+ 1549      20726576 
+ 1549      6973696F 
+ 1549      6E203231 
+ 1549      31333538 
+ 1550 0112 30202D66 		.ascii	"0 -ffunction-sections\000"
+ 1550      66756E63 
+ 1550      74696F6E 
+ 1550      2D736563 
+ 1550      74696F6E 
+ 1551              	.LASF1:
+ 1552 0128 756E7369 		.ascii	"unsigned char\000"
+ 1552      676E6564 
+ 1552      20636861 
+ 1552      7200
+ 1553              	.LASF11:
+ 1554 0136 63686172 		.ascii	"char\000"
+ 1554      00
+ 1555              	.LASF23:
+ 1556 013b 62696E61 		.ascii	"binary_message\000"
+ 1556      72795F6D 
+ 1556      65737361 
+ 1556      676500
+ 1557              	.LASF4:
+ 1558 014a 6C6F6E67 		.ascii	"long int\000"
+ 1558      20696E74 
+ 1558      00
+ 1559              	.LASF17:
+ 1560 0153 62696E61 		.ascii	"binary_encode\000"
+ 1560      72795F65 
+ 1560      6E636F64 
+ 1560      6500
+ 1561              	.LASF16:
+ 1562 0161 6E65775F 		.ascii	"new_message_binary\000"
+ 1562      6D657373 
+ 1562      6167655F 
+ 1562      62696E61 
+ 1562      727900
+ 1563              	.LASF15:
+ 1564 0174 6F726967 		.ascii	"original_color\000"
+ 1564      696E616C 
+ 1564      5F636F6C 
+ 1564      6F7200
+ 1565              	.LASF10:
+ 1566 0183 646F7562 		.ascii	"double\000"
+ 1566      6C6500
+ 1567              	.LASF3:
+ 1568 018a 73686F72 		.ascii	"short unsigned int\000"
+ 1568      7420756E 
+ 1568      7369676E 
+ 1568      65642069 
+ 1568      6E7400
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccW2el4U.s 			page 38
+
+
+ 1569              	.LASF0:
+ 1570 019d 7369676E 		.ascii	"signed char\000"
+ 1570      65642063 
+ 1570      68617200 
+ 1571              	.LASF9:
+ 1572 01a9 666C6F61 		.ascii	"float\000"
+ 1572      7400
+ 1573              	.LASF2:
+ 1574 01af 73686F72 		.ascii	"short int\000"
+ 1574      7420696E 
+ 1574      7400
+ 1575              	.LASF8:
+ 1576 01b9 756E7369 		.ascii	"unsigned int\000"
+ 1576      676E6564 
+ 1576      20696E74 
+ 1576      00
+ 1577              	.LASF12:
+ 1578 01c6 73697A65 		.ascii	"sizetype\000"
+ 1578      74797065 
+ 1578      00
+ 1579              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.8.4 20140526 (release) [ARM/embedded-4_8-br

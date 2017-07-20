@@ -1,0 +1,2647 @@
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cceP5T5y.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 4
+  10              		.eabi_attribute 34, 0
+  11              		.eabi_attribute 18, 4
+  12              		.code	16
+  13              		.file	"lightlib.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.set_color,"ax",%progbits
+  18              		.align	1
+  19              		.global	set_color
+  20              		.code	16
+  21              		.thumb_func
+  22              		.type	set_color, %function
+  23              	set_color:
+  24              	.LFB33:
+  25              		.file 1 ".\\lightlib.c"
+   1:.\lightlib.c  **** /* ========================================
+   2:.\lightlib.c  ****  *
+   3:.\lightlib.c  ****  * Copyright Nullify, 2016
+   4:.\lightlib.c  ****  * All Rights Reserved
+   5:.\lightlib.c  ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:.\lightlib.c  ****  *
+   7:.\lightlib.c  ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:.\lightlib.c  ****  * WHICH IS THE PROPERTY OF NULLIY.
+   9:.\lightlib.c  ****  *
+  10:.\lightlib.c  ****  * ========================================
+  11:.\lightlib.c  **** */
+  12:.\lightlib.c  **** #include <project.h>
+  13:.\lightlib.c  **** #include "lightlib.h"
+  14:.\lightlib.c  **** 
+  15:.\lightlib.c  **** 
+  16:.\lightlib.c  **** /* Allocate a structure for each led in the project */
+  17:.\lightlib.c  **** volatile struct RGB_LED_State Left_LED_State;
+  18:.\lightlib.c  **** volatile struct RGB_LED_State Right_LED_State;
+  19:.\lightlib.c  **** volatile struct LED_State IR_LED_State;
+  20:.\lightlib.c  **** volatile struct LED_State Board_LED_State;
+  21:.\lightlib.c  **** 
+  22:.\lightlib.c  **** /*
+  23:.\lightlib.c  ****  * Sets the color of the of the passed in led_flag.
+  24:.\lightlib.c  ****  */
+  25:.\lightlib.c  **** void set_color(uint8 led_flag, uint8 color) {
+  26              		.loc 1 25 0
+  27              		.cfi_startproc
+  28              	.LVL0:
+  29 0000 10B5     		push	{r4, lr}
+  30              		.cfi_def_cfa_offset 8
+  31              		.cfi_offset 4, -8
+  32              		.cfi_offset 14, -4
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cceP5T5y.s 			page 2
+
+
+  33              		.loc 1 25 0
+  34 0002 0C1C     		mov	r4, r1
+  26:.\lightlib.c  ****     switch(led_flag) {
+  35              		.loc 1 26 0
+  36 0004 0228     		cmp	r0, #2
+  37 0006 08D0     		beq	.L3
+  38 0008 0328     		cmp	r0, #3
+  39 000a 03D0     		beq	.L4
+  40 000c 0128     		cmp	r0, #1
+  41 000e 06D1     		bne	.L1
+  27:.\lightlib.c  ****         case LEFT_LED:
+  28:.\lightlib.c  ****             Left_LED_State.color = color;
+  42              		.loc 1 28 0
+  43 0010 034B     		ldr	r3, .L11
+  44 0012 03E0     		b	.L9
+  45              	.L4:
+  29:.\lightlib.c  ****         break;
+  30:.\lightlib.c  ****         case RIGHT_LED:
+  31:.\lightlib.c  ****             Right_LED_State.color = color;
+  32:.\lightlib.c  ****         break;
+  33:.\lightlib.c  ****         case LEFT_RIGHT_LED:
+  34:.\lightlib.c  ****             set_color(LEFT_LED, color);
+  46              		.loc 1 34 0
+  47 0014 0120     		mov	r0, #1
+  48              	.LVL1:
+  49 0016 FFF7FEFF 		bl	set_color
+  50              	.LVL2:
+  51              	.L3:
+  31:.\lightlib.c  ****             Right_LED_State.color = color;
+  52              		.loc 1 31 0
+  53 001a 024B     		ldr	r3, .L11+4
+  54              	.L9:
+  55 001c 5C70     		strb	r4, [r3, #1]
+  56              	.L1:
+  35:.\lightlib.c  ****             set_color(RIGHT_LED, color);
+  36:.\lightlib.c  ****         break;
+  37:.\lightlib.c  ****     }    
+  38:.\lightlib.c  **** }
+  57              		.loc 1 38 0
+  58              		@ sp needed
+  59 001e 10BD     		pop	{r4, pc}
+  60              	.L12:
+  61              		.align	2
+  62              	.L11:
+  63 0020 00000000 		.word	Left_LED_State
+  64 0024 00000000 		.word	Right_LED_State
+  65              		.cfi_endproc
+  66              	.LFE33:
+  67              		.size	set_color, .-set_color
+  68              		.section	.text.set_status,"ax",%progbits
+  69              		.align	1
+  70              		.global	set_status
+  71              		.code	16
+  72              		.thumb_func
+  73              		.type	set_status, %function
+  74              	set_status:
+  75              	.LFB34:
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cceP5T5y.s 			page 3
+
+
+  39:.\lightlib.c  **** 
+  40:.\lightlib.c  **** void set_status(uint8 led_flag, uint8 status) {
+  76              		.loc 1 40 0
+  77              		.cfi_startproc
+  78              	.LVL3:
+  41:.\lightlib.c  ****     switch(led_flag) {
+  79              		.loc 1 41 0
+  80 0000 0138     		sub	r0, r0, #1
+  81              	.LVL4:
+  40:.\lightlib.c  **** void set_status(uint8 led_flag, uint8 status) {
+  82              		.loc 1 40 0
+  83 0002 10B5     		push	{r4, lr}
+  84              		.cfi_def_cfa_offset 8
+  85              		.cfi_offset 4, -8
+  86              		.cfi_offset 14, -4
+  40:.\lightlib.c  **** void set_status(uint8 led_flag, uint8 status) {
+  87              		.loc 1 40 0
+  88 0004 0C1C     		mov	r4, r1
+  89              		.loc 1 41 0
+  90 0006 0428     		cmp	r0, #4
+  91 0008 0FD8     		bhi	.L13
+  92 000a FFF7FEFF 		bl	__gnu_thumb1_case_uqi
+  93              	.L16:
+  94 000e 03       		.byte	(.L15-.L16)/2
+  95 000f 08       		.byte	(.L17-.L16)/2
+  96 0010 05       		.byte	(.L18-.L16)/2
+  97 0011 0A       		.byte	(.L19-.L16)/2
+  98 0012 0C       		.byte	(.L20-.L16)/2
+  99 0013 00       		.p2align 1
+ 100              	.L15:
+  42:.\lightlib.c  ****         case LEFT_LED:
+  43:.\lightlib.c  ****             Left_LED_State.status = status;
+ 101              		.loc 1 43 0
+ 102 0014 054B     		ldr	r3, .L22
+ 103 0016 07E0     		b	.L21
+ 104              	.L18:
+  44:.\lightlib.c  ****         break;
+  45:.\lightlib.c  ****         case RIGHT_LED:
+  46:.\lightlib.c  ****             Right_LED_State.status = status;
+  47:.\lightlib.c  ****         break;
+  48:.\lightlib.c  ****         case LEFT_RIGHT_LED:
+  49:.\lightlib.c  ****             set_status(LEFT_LED, status);
+ 105              		.loc 1 49 0
+ 106 0018 0120     		mov	r0, #1
+ 107 001a FFF7FEFF 		bl	set_status
+ 108              	.LVL5:
+ 109              	.L17:
+  46:.\lightlib.c  ****             Right_LED_State.status = status;
+ 110              		.loc 1 46 0
+ 111 001e 044B     		ldr	r3, .L22+4
+ 112 0020 02E0     		b	.L21
+ 113              	.LVL6:
+ 114              	.L19:
+  50:.\lightlib.c  ****             set_status(RIGHT_LED, status);
+  51:.\lightlib.c  ****         break;
+  52:.\lightlib.c  ****         case IR_LED:
+  53:.\lightlib.c  ****             IR_LED_State.status = status;
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cceP5T5y.s 			page 4
+
+
+ 115              		.loc 1 53 0
+ 116 0022 044B     		ldr	r3, .L22+8
+ 117 0024 00E0     		b	.L21
+ 118              	.L20:
+  54:.\lightlib.c  ****         break;
+  55:.\lightlib.c  ****         case BOARD_LED:
+  56:.\lightlib.c  ****            Board_LED_State.status = status;
+ 119              		.loc 1 56 0
+ 120 0026 044B     		ldr	r3, .L22+12
+ 121              	.LVL7:
+ 122              	.L21:
+ 123 0028 1C70     		strb	r4, [r3]
+ 124              	.L13:
+  57:.\lightlib.c  ****         break;
+  58:.\lightlib.c  ****     }    
+  59:.\lightlib.c  **** }
+ 125              		.loc 1 59 0
+ 126              		@ sp needed
+ 127 002a 10BD     		pop	{r4, pc}
+ 128              	.L23:
+ 129              		.align	2
+ 130              	.L22:
+ 131 002c 00000000 		.word	Left_LED_State
+ 132 0030 00000000 		.word	Right_LED_State
+ 133 0034 00000000 		.word	IR_LED_State
+ 134 0038 00000000 		.word	Board_LED_State
+ 135              		.cfi_endproc
+ 136              	.LFE34:
+ 137              		.size	set_status, .-set_status
+ 138              		.section	.text.get_color,"ax",%progbits
+ 139              		.align	1
+ 140              		.global	get_color
+ 141              		.code	16
+ 142              		.thumb_func
+ 143              		.type	get_color, %function
+ 144              	get_color:
+ 145              	.LFB35:
+  60:.\lightlib.c  **** 
+  61:.\lightlib.c  **** uint8 get_color(uint8 led_flag) {
+ 146              		.loc 1 61 0
+ 147              		.cfi_startproc
+ 148              	.LVL8:
+  62:.\lightlib.c  ****     switch(led_flag) {
+ 149              		.loc 1 62 0
+ 150 0000 0128     		cmp	r0, #1
+ 151 0002 03D0     		beq	.L26
+ 152 0004 0228     		cmp	r0, #2
+ 153 0006 05D1     		bne	.L31
+  63:.\lightlib.c  ****         case LEFT_LED:
+  64:.\lightlib.c  ****             return Left_LED_State.color;
+  65:.\lightlib.c  ****         break;
+  66:.\lightlib.c  ****         case RIGHT_LED:
+  67:.\lightlib.c  ****             return Right_LED_State.color;
+ 154              		.loc 1 67 0
+ 155 0008 034B     		ldr	r3, .L32
+ 156 000a 00E0     		b	.L30
+ 157              	.L26:
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cceP5T5y.s 			page 5
+
+
+  64:.\lightlib.c  ****             return Left_LED_State.color;
+ 158              		.loc 1 64 0
+ 159 000c 034B     		ldr	r3, .L32+4
+ 160              	.L30:
+ 161              		.loc 1 67 0
+ 162 000e 5878     		ldrb	r0, [r3, #1]
+ 163              	.LVL9:
+ 164 0010 C0B2     		uxtb	r0, r0
+ 165 0012 00E0     		b	.L25
+ 166              	.LVL10:
+ 167              	.L31:
+  68:.\lightlib.c  ****         break;
+  69:.\lightlib.c  ****     }
+  70:.\lightlib.c  ****     return -1;
+ 168              		.loc 1 70 0
+ 169 0014 FF20     		mov	r0, #255
+ 170              	.LVL11:
+ 171              	.L25:
+  71:.\lightlib.c  **** }
+ 172              		.loc 1 71 0
+ 173              		@ sp needed
+ 174 0016 7047     		bx	lr
+ 175              	.L33:
+ 176              		.align	2
+ 177              	.L32:
+ 178 0018 00000000 		.word	Right_LED_State
+ 179 001c 00000000 		.word	Left_LED_State
+ 180              		.cfi_endproc
+ 181              	.LFE35:
+ 182              		.size	get_color, .-get_color
+ 183              		.section	.text.get_status,"ax",%progbits
+ 184              		.align	1
+ 185              		.global	get_status
+ 186              		.code	16
+ 187              		.thumb_func
+ 188              		.type	get_status, %function
+ 189              	get_status:
+ 190              	.LFB36:
+  72:.\lightlib.c  **** 
+  73:.\lightlib.c  **** uint8 get_status(uint8 led_flag) {
+ 191              		.loc 1 73 0
+ 192              		.cfi_startproc
+ 193              	.LVL12:
+  74:.\lightlib.c  ****     switch(led_flag) {
+ 194              		.loc 1 74 0
+ 195 0000 0138     		sub	r0, r0, #1
+ 196              	.LVL13:
+  73:.\lightlib.c  **** uint8 get_status(uint8 led_flag) {
+ 197              		.loc 1 73 0
+ 198 0002 00B5     		push	{lr}
+ 199              		.cfi_def_cfa_offset 4
+ 200              		.cfi_offset 14, -4
+ 201              		.loc 1 74 0
+ 202 0004 0428     		cmp	r0, #4
+ 203 0006 0ED8     		bhi	.L41
+ 204 0008 FFF7FEFF 		bl	__gnu_thumb1_case_uqi
+ 205              	.L37:
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cceP5T5y.s 			page 6
+
+
+ 206 000c 03       		.byte	(.L36-.L37)/2
+ 207 000d 05       		.byte	(.L38-.L37)/2
+ 208 000e 0D       		.byte	(.L41-.L37)/2
+ 209 000f 07       		.byte	(.L39-.L37)/2
+ 210 0010 09       		.byte	(.L40-.L37)/2
+ 211 0011 00       		.p2align 1
+ 212              	.L36:
+  75:.\lightlib.c  ****         case LEFT_LED:
+  76:.\lightlib.c  ****             return Left_LED_State.status;
+ 213              		.loc 1 76 0
+ 214 0012 064B     		ldr	r3, .L43
+ 215 0014 04E0     		b	.L42
+ 216              	.L38:
+  77:.\lightlib.c  ****         break;
+  78:.\lightlib.c  ****         case RIGHT_LED:
+  79:.\lightlib.c  ****             return Right_LED_State.status;
+ 217              		.loc 1 79 0
+ 218 0016 064B     		ldr	r3, .L43+4
+ 219 0018 02E0     		b	.L42
+ 220              	.L39:
+  80:.\lightlib.c  ****         break;
+  81:.\lightlib.c  ****         case IR_LED:
+  82:.\lightlib.c  ****             return IR_LED_State.status;
+ 221              		.loc 1 82 0
+ 222 001a 064B     		ldr	r3, .L43+8
+ 223 001c 00E0     		b	.L42
+ 224              	.L40:
+  83:.\lightlib.c  ****         break;
+  84:.\lightlib.c  ****         case BOARD_LED:
+  85:.\lightlib.c  ****            return Board_LED_State.status;
+ 225              		.loc 1 85 0
+ 226 001e 064B     		ldr	r3, .L43+12
+ 227              	.L42:
+ 228 0020 1878     		ldrb	r0, [r3]
+ 229 0022 C0B2     		uxtb	r0, r0
+ 230 0024 00E0     		b	.L35
+ 231              	.L41:
+  86:.\lightlib.c  ****         break;
+  87:.\lightlib.c  ****     }  
+  88:.\lightlib.c  ****     return -1;
+ 232              		.loc 1 88 0
+ 233 0026 FF20     		mov	r0, #255
+ 234              	.L35:
+  89:.\lightlib.c  **** }
+ 235              		.loc 1 89 0
+ 236              		@ sp needed
+ 237 0028 00BD     		pop	{pc}
+ 238              	.L44:
+ 239 002a C046     		.align	2
+ 240              	.L43:
+ 241 002c 00000000 		.word	Left_LED_State
+ 242 0030 00000000 		.word	Right_LED_State
+ 243 0034 00000000 		.word	IR_LED_State
+ 244 0038 00000000 		.word	Board_LED_State
+ 245              		.cfi_endproc
+ 246              	.LFE36:
+ 247              		.size	get_status, .-get_status
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cceP5T5y.s 			page 7
+
+
+ 248              		.section	.text.turn_on,"ax",%progbits
+ 249              		.align	1
+ 250              		.global	turn_on
+ 251              		.code	16
+ 252              		.thumb_func
+ 253              		.type	turn_on, %function
+ 254              	turn_on:
+ 255              	.LFB37:
+  90:.\lightlib.c  **** 
+  91:.\lightlib.c  **** void turn_on(uint8 led_flag) {
+ 256              		.loc 1 91 0
+ 257              		.cfi_startproc
+ 258              	.LVL14:
+  92:.\lightlib.c  ****     switch(led_flag) {
+ 259              		.loc 1 92 0
+ 260 0000 0138     		sub	r0, r0, #1
+ 261              	.LVL15:
+  91:.\lightlib.c  **** void turn_on(uint8 led_flag) {
+ 262              		.loc 1 91 0
+ 263 0002 08B5     		push	{r3, lr}
+ 264              		.cfi_def_cfa_offset 8
+ 265              		.cfi_offset 3, -8
+ 266              		.cfi_offset 14, -4
+ 267              		.loc 1 92 0
+ 268 0004 0428     		cmp	r0, #4
+ 269 0006 5CD8     		bhi	.L45
+ 270 0008 FFF7FEFF 		bl	__gnu_thumb1_case_uqi
+ 271              	.L48:
+ 272 000c 03       		.byte	(.L47-.L48)/2
+ 273 000d 2B       		.byte	(.L49-.L48)/2
+ 274 000e 28       		.byte	(.L50-.L48)/2
+ 275 000f 4F       		.byte	(.L51-.L48)/2
+ 276 0010 54       		.byte	(.L52-.L48)/2
+ 277 0011 00       		.p2align 1
+ 278              	.L47:
+ 279              	.LVL16:
+ 280              	.LBB6:
+ 281              	.LBB7:
+  64:.\lightlib.c  ****             return Left_LED_State.color;
+ 282              		.loc 1 64 0
+ 283 0012 2C4B     		ldr	r3, .L79
+ 284 0014 5878     		ldrb	r0, [r3, #1]
+ 285              	.LBE7:
+ 286              	.LBE6:
+  93:.\lightlib.c  ****         case LEFT_LED:
+  94:.\lightlib.c  ****             switch(get_color(LEFT_LED)) {
+ 287              		.loc 1 94 0
+ 288 0016 0138     		sub	r0, r0, #1
+ 289 0018 0628     		cmp	r0, #6
+ 290 001a 1CD8     		bhi	.L53
+ 291 001c FFF7FEFF 		bl	__gnu_thumb1_case_uqi
+ 292              	.L55:
+ 293 0020 04       		.byte	(.L54-.L55)/2
+ 294 0021 0B       		.byte	(.L71-.L55)/2
+ 295 0022 08       		.byte	(.L57-.L55)/2
+ 296 0023 19       		.byte	(.L73-.L55)/2
+ 297 0024 0F       		.byte	(.L59-.L55)/2
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cceP5T5y.s 			page 8
+
+
+ 298 0025 16       		.byte	(.L72-.L55)/2
+ 299 0026 13       		.byte	(.L61-.L55)/2
+ 300 0027 00       		.p2align 1
+ 301              	.L54:
+  95:.\lightlib.c  ****                 case RED:
+  96:.\lightlib.c  ****                     Left_LED_Red_Write(1);
+ 302              		.loc 1 96 0
+ 303 0028 0120     		mov	r0, #1
+ 304 002a FFF7FEFF 		bl	Left_LED_Red_Write
+ 305              	.LVL17:
+  97:.\lightlib.c  ****                 break;
+ 306              		.loc 1 97 0
+ 307 002e 12E0     		b	.L53
+ 308              	.L57:
+  98:.\lightlib.c  ****                 case BLUE:
+  99:.\lightlib.c  ****                     Left_LED_Blue_Write(1);
+ 100:.\lightlib.c  ****                 break;
+ 101:.\lightlib.c  ****                 case MAGENTA:
+ 102:.\lightlib.c  ****                     Left_LED_Red_Write(1);
+ 309              		.loc 1 102 0
+ 310 0030 0120     		mov	r0, #1
+ 311 0032 FFF7FEFF 		bl	Left_LED_Red_Write
+ 312              	.LVL18:
+ 313              	.L71:
+ 103:.\lightlib.c  ****                     Left_LED_Blue_Write(1);
+ 314              		.loc 1 103 0
+ 315 0036 0120     		mov	r0, #1
+ 316 0038 FFF7FEFF 		bl	Left_LED_Blue_Write
+ 317              	.LVL19:
+ 104:.\lightlib.c  ****                 break;
+ 318              		.loc 1 104 0
+ 319 003c 0BE0     		b	.L53
+ 320              	.L59:
+ 105:.\lightlib.c  ****                 case GREEN:
+ 106:.\lightlib.c  ****                     PWM_Left_LED_Green_Start();
+ 107:.\lightlib.c  ****                 break;
+ 108:.\lightlib.c  ****                 case YELLOW:
+ 109:.\lightlib.c  ****                     Left_LED_Red_Write(1);
+ 321              		.loc 1 109 0
+ 322 003e 0120     		mov	r0, #1
+ 323 0040 FFF7FEFF 		bl	Left_LED_Red_Write
+ 324              	.LVL20:
+ 325 0044 05E0     		b	.L73
+ 326              	.L61:
+ 110:.\lightlib.c  ****                     PWM_Left_LED_Green_Start();
+ 111:.\lightlib.c  ****                 break;
+ 112:.\lightlib.c  ****                 case CYAN:
+ 113:.\lightlib.c  ****                     Left_LED_Blue_Write(1);
+ 114:.\lightlib.c  ****                     PWM_Left_LED_Green_Start();
+ 115:.\lightlib.c  ****                 break;
+ 116:.\lightlib.c  ****                 case WHITE:
+ 117:.\lightlib.c  ****                     Left_LED_Red_Write(1);
+ 327              		.loc 1 117 0
+ 328 0046 0120     		mov	r0, #1
+ 329 0048 FFF7FEFF 		bl	Left_LED_Red_Write
+ 330              	.LVL21:
+ 331              	.L72:
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cceP5T5y.s 			page 9
+
+
+ 118:.\lightlib.c  ****                     Left_LED_Blue_Write(1);
+ 332              		.loc 1 118 0
+ 333 004c 0120     		mov	r0, #1
+ 334 004e FFF7FEFF 		bl	Left_LED_Blue_Write
+ 335              	.LVL22:
+ 336              	.L73:
+ 119:.\lightlib.c  ****                     PWM_Left_LED_Green_Start();
+ 337              		.loc 1 119 0
+ 338 0052 FFF7FEFF 		bl	PWM_Left_LED_Green_Start
+ 339              	.LVL23:
+ 340              	.L53:
+ 120:.\lightlib.c  ****                 break;
+ 121:.\lightlib.c  ****             }
+ 122:.\lightlib.c  ****         set_status(LEFT_LED, ON);
+ 341              		.loc 1 122 0
+ 342 0056 0120     		mov	r0, #1
+ 343 0058 011C     		mov	r1, r0
+ 344 005a 30E0     		b	.L78
+ 345              	.LVL24:
+ 346              	.L50:
+ 123:.\lightlib.c  ****         break;
+ 124:.\lightlib.c  ****         case RIGHT_LED:
+ 125:.\lightlib.c  ****             switch(get_color(RIGHT_LED)) {
+ 126:.\lightlib.c  ****                 case RED:
+ 127:.\lightlib.c  ****                     Right_LED_Red_Write(1);
+ 128:.\lightlib.c  ****                 break;
+ 129:.\lightlib.c  ****                 case BLUE:
+ 130:.\lightlib.c  ****                     Right_LED_Blue_Write(1);
+ 131:.\lightlib.c  ****                 break;
+ 132:.\lightlib.c  ****                 case MAGENTA:
+ 133:.\lightlib.c  ****                     Right_LED_Red_Write(1);
+ 134:.\lightlib.c  ****                     Right_LED_Blue_Write(1);
+ 135:.\lightlib.c  ****                 break;
+ 136:.\lightlib.c  ****                 case GREEN:
+ 137:.\lightlib.c  ****                     PWM_Right_LED_Green_Start();
+ 138:.\lightlib.c  ****                 break;
+ 139:.\lightlib.c  ****                 case YELLOW:
+ 140:.\lightlib.c  ****                     Right_LED_Red_Write(1);
+ 141:.\lightlib.c  ****                     PWM_Right_LED_Green_Start();
+ 142:.\lightlib.c  ****                 break;
+ 143:.\lightlib.c  ****                 case CYAN:
+ 144:.\lightlib.c  ****                     Right_LED_Blue_Write(1);
+ 145:.\lightlib.c  ****                     PWM_Right_LED_Green_Start();
+ 146:.\lightlib.c  ****                 break;
+ 147:.\lightlib.c  ****                 case WHITE:
+ 148:.\lightlib.c  ****                     Right_LED_Red_Write(1);
+ 149:.\lightlib.c  ****                     Right_LED_Blue_Write(1);
+ 150:.\lightlib.c  ****                     PWM_Right_LED_Green_Start();
+ 151:.\lightlib.c  ****                 break;
+ 152:.\lightlib.c  ****             }
+ 153:.\lightlib.c  ****         set_status(RIGHT_LED, ON);
+ 154:.\lightlib.c  ****         break;
+ 155:.\lightlib.c  ****         case LEFT_RIGHT_LED:
+ 156:.\lightlib.c  ****             turn_on(LEFT_LED);
+ 347              		.loc 1 156 0
+ 348 005c 0120     		mov	r0, #1
+ 349 005e FFF7FEFF 		bl	turn_on
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cceP5T5y.s 			page 10
+
+
+ 350              	.LVL25:
+ 351              	.L49:
+ 352              	.LBB8:
+ 353              	.LBB9:
+  67:.\lightlib.c  ****             return Right_LED_State.color;
+ 354              		.loc 1 67 0
+ 355 0062 194B     		ldr	r3, .L79+4
+ 356 0064 5878     		ldrb	r0, [r3, #1]
+ 357              	.LBE9:
+ 358              	.LBE8:
+ 125:.\lightlib.c  ****             switch(get_color(RIGHT_LED)) {
+ 359              		.loc 1 125 0
+ 360 0066 0138     		sub	r0, r0, #1
+ 361 0068 0628     		cmp	r0, #6
+ 362 006a 1CD8     		bhi	.L62
+ 363 006c FFF7FEFF 		bl	__gnu_thumb1_case_uqi
+ 364              	.L64:
+ 365 0070 04       		.byte	(.L63-.L64)/2
+ 366 0071 0B       		.byte	(.L74-.L64)/2
+ 367 0072 08       		.byte	(.L66-.L64)/2
+ 368 0073 19       		.byte	(.L76-.L64)/2
+ 369 0074 0F       		.byte	(.L68-.L64)/2
+ 370 0075 16       		.byte	(.L75-.L64)/2
+ 371 0076 13       		.byte	(.L70-.L64)/2
+ 372 0077 00       		.p2align 1
+ 373              	.L63:
+ 127:.\lightlib.c  ****                     Right_LED_Red_Write(1);
+ 374              		.loc 1 127 0
+ 375 0078 0120     		mov	r0, #1
+ 376 007a FFF7FEFF 		bl	Right_LED_Red_Write
+ 377              	.LVL26:
+ 128:.\lightlib.c  ****                 break;
+ 378              		.loc 1 128 0
+ 379 007e 12E0     		b	.L62
+ 380              	.L66:
+ 133:.\lightlib.c  ****                     Right_LED_Red_Write(1);
+ 381              		.loc 1 133 0
+ 382 0080 0120     		mov	r0, #1
+ 383 0082 FFF7FEFF 		bl	Right_LED_Red_Write
+ 384              	.LVL27:
+ 385              	.L74:
+ 134:.\lightlib.c  ****                     Right_LED_Blue_Write(1);
+ 386              		.loc 1 134 0
+ 387 0086 0120     		mov	r0, #1
+ 388 0088 FFF7FEFF 		bl	Right_LED_Blue_Write
+ 389              	.LVL28:
+ 135:.\lightlib.c  ****                 break;
+ 390              		.loc 1 135 0
+ 391 008c 0BE0     		b	.L62
+ 392              	.L68:
+ 140:.\lightlib.c  ****                     Right_LED_Red_Write(1);
+ 393              		.loc 1 140 0
+ 394 008e 0120     		mov	r0, #1
+ 395 0090 FFF7FEFF 		bl	Right_LED_Red_Write
+ 396              	.LVL29:
+ 397 0094 05E0     		b	.L76
+ 398              	.L70:
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cceP5T5y.s 			page 11
+
+
+ 148:.\lightlib.c  ****                     Right_LED_Red_Write(1);
+ 399              		.loc 1 148 0
+ 400 0096 0120     		mov	r0, #1
+ 401 0098 FFF7FEFF 		bl	Right_LED_Red_Write
+ 402              	.LVL30:
+ 403              	.L75:
+ 149:.\lightlib.c  ****                     Right_LED_Blue_Write(1);
+ 404              		.loc 1 149 0
+ 405 009c 0120     		mov	r0, #1
+ 406 009e FFF7FEFF 		bl	Right_LED_Blue_Write
+ 407              	.LVL31:
+ 408              	.L76:
+ 150:.\lightlib.c  ****                     PWM_Right_LED_Green_Start();
+ 409              		.loc 1 150 0
+ 410 00a2 FFF7FEFF 		bl	PWM_Right_LED_Green_Start
+ 411              	.LVL32:
+ 412              	.L62:
+ 153:.\lightlib.c  ****         set_status(RIGHT_LED, ON);
+ 413              		.loc 1 153 0
+ 414 00a6 0220     		mov	r0, #2
+ 415 00a8 08E0     		b	.L77
+ 416              	.LVL33:
+ 417              	.L51:
+ 157:.\lightlib.c  ****             turn_on(RIGHT_LED);
+ 158:.\lightlib.c  ****         break;
+ 159:.\lightlib.c  ****         case IR_LED:
+ 160:.\lightlib.c  ****             IR_LED_Write(1);
+ 418              		.loc 1 160 0
+ 419 00aa 0120     		mov	r0, #1
+ 420 00ac FFF7FEFF 		bl	IR_LED_Write
+ 421              	.LVL34:
+ 161:.\lightlib.c  ****             set_status(IR_LED, ON);
+ 422              		.loc 1 161 0
+ 423 00b0 0420     		mov	r0, #4
+ 424 00b2 03E0     		b	.L77
+ 425              	.L52:
+ 162:.\lightlib.c  ****         break;
+ 163:.\lightlib.c  ****         case BOARD_LED:
+ 164:.\lightlib.c  ****             Board_LED_Write(1);
+ 426              		.loc 1 164 0
+ 427 00b4 0120     		mov	r0, #1
+ 428 00b6 FFF7FEFF 		bl	Board_LED_Write
+ 429              	.LVL35:
+ 165:.\lightlib.c  ****             set_status(BOARD_LED, ON);
+ 430              		.loc 1 165 0
+ 431 00ba 0520     		mov	r0, #5
+ 432              	.L77:
+ 433 00bc 0121     		mov	r1, #1
+ 434              	.L78:
+ 435 00be FFF7FEFF 		bl	set_status
+ 436              	.LVL36:
+ 437              	.L45:
+ 166:.\lightlib.c  **** 
+ 167:.\lightlib.c  ****         break;
+ 168:.\lightlib.c  ****     }    
+ 169:.\lightlib.c  **** }
+ 438              		.loc 1 169 0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cceP5T5y.s 			page 12
+
+
+ 439              		@ sp needed
+ 440 00c2 08BD     		pop	{r3, pc}
+ 441              	.L80:
+ 442              		.align	2
+ 443              	.L79:
+ 444 00c4 00000000 		.word	Left_LED_State
+ 445 00c8 00000000 		.word	Right_LED_State
+ 446              		.cfi_endproc
+ 447              	.LFE37:
+ 448              		.size	turn_on, .-turn_on
+ 449              		.section	.text.turn_off,"ax",%progbits
+ 450              		.align	1
+ 451              		.global	turn_off
+ 452              		.code	16
+ 453              		.thumb_func
+ 454              		.type	turn_off, %function
+ 455              	turn_off:
+ 456              	.LFB38:
+ 170:.\lightlib.c  **** 
+ 171:.\lightlib.c  **** void turn_off(uint8 led_flag) {
+ 457              		.loc 1 171 0
+ 458              		.cfi_startproc
+ 459              	.LVL37:
+ 172:.\lightlib.c  ****     switch(led_flag) {
+ 460              		.loc 1 172 0
+ 461 0000 0138     		sub	r0, r0, #1
+ 462              	.LVL38:
+ 171:.\lightlib.c  **** void turn_off(uint8 led_flag) {
+ 463              		.loc 1 171 0
+ 464 0002 08B5     		push	{r3, lr}
+ 465              		.cfi_def_cfa_offset 8
+ 466              		.cfi_offset 3, -8
+ 467              		.cfi_offset 14, -4
+ 468              		.loc 1 172 0
+ 469 0004 0428     		cmp	r0, #4
+ 470 0006 27D8     		bhi	.L81
+ 471 0008 FFF7FEFF 		bl	__gnu_thumb1_case_uqi
+ 472              	.L84:
+ 473 000c 03       		.byte	(.L83-.L84)/2
+ 474 000d 10       		.byte	(.L85-.L84)/2
+ 475 000e 0D       		.byte	(.L86-.L84)/2
+ 476 000f 1A       		.byte	(.L87-.L84)/2
+ 477 0010 1F       		.byte	(.L88-.L84)/2
+ 478 0011 00       		.p2align 1
+ 479              	.L83:
+ 480              	.LVL39:
+ 481              	.LBB12:
+ 482              	.LBB13:
+ 173:.\lightlib.c  ****         case LEFT_LED:
+ 174:.\lightlib.c  ****             Left_LED_Red_Write(0);
+ 483              		.loc 1 174 0
+ 484 0012 0020     		mov	r0, #0
+ 485 0014 FFF7FEFF 		bl	Left_LED_Red_Write
+ 486              	.LVL40:
+ 175:.\lightlib.c  ****             Left_LED_Blue_Write(0);
+ 487              		.loc 1 175 0
+ 488 0018 0020     		mov	r0, #0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cceP5T5y.s 			page 13
+
+
+ 489 001a FFF7FEFF 		bl	Left_LED_Blue_Write
+ 490              	.LVL41:
+ 176:.\lightlib.c  ****             PWM_Left_LED_Green_Stop();
+ 491              		.loc 1 176 0
+ 492 001e FFF7FEFF 		bl	PWM_Left_LED_Green_Stop
+ 493              	.LVL42:
+ 177:.\lightlib.c  ****             set_status(LEFT_LED, OFF);
+ 494              		.loc 1 177 0
+ 495 0022 0120     		mov	r0, #1
+ 496 0024 15E0     		b	.L89
+ 497              	.LVL43:
+ 498              	.L86:
+ 499              	.LBE13:
+ 500              	.LBE12:
+ 178:.\lightlib.c  ****         break;
+ 179:.\lightlib.c  ****         case RIGHT_LED:
+ 180:.\lightlib.c  ****             Right_LED_Red_Write(0);
+ 181:.\lightlib.c  ****             Right_LED_Blue_Write(0);
+ 182:.\lightlib.c  ****             PWM_Right_LED_Green_Stop();
+ 183:.\lightlib.c  ****             set_status(RIGHT_LED, OFF);
+ 184:.\lightlib.c  ****         break;
+ 185:.\lightlib.c  ****         case LEFT_RIGHT_LED:
+ 186:.\lightlib.c  ****             turn_off(LEFT_LED);
+ 501              		.loc 1 186 0
+ 502 0026 0120     		mov	r0, #1
+ 503 0028 FFF7FEFF 		bl	turn_off
+ 504              	.LVL44:
+ 505              	.L85:
+ 180:.\lightlib.c  ****             Right_LED_Red_Write(0);
+ 506              		.loc 1 180 0
+ 507 002c 0020     		mov	r0, #0
+ 508 002e FFF7FEFF 		bl	Right_LED_Red_Write
+ 509              	.LVL45:
+ 181:.\lightlib.c  ****             Right_LED_Blue_Write(0);
+ 510              		.loc 1 181 0
+ 511 0032 0020     		mov	r0, #0
+ 512 0034 FFF7FEFF 		bl	Right_LED_Blue_Write
+ 513              	.LVL46:
+ 182:.\lightlib.c  ****             PWM_Right_LED_Green_Stop();
+ 514              		.loc 1 182 0
+ 515 0038 FFF7FEFF 		bl	PWM_Right_LED_Green_Stop
+ 516              	.LVL47:
+ 183:.\lightlib.c  ****             set_status(RIGHT_LED, OFF);
+ 517              		.loc 1 183 0
+ 518 003c 0220     		mov	r0, #2
+ 519 003e 08E0     		b	.L89
+ 520              	.L87:
+ 187:.\lightlib.c  ****             turn_off(RIGHT_LED);
+ 188:.\lightlib.c  ****         break;
+ 189:.\lightlib.c  ****         case IR_LED:
+ 190:.\lightlib.c  ****             IR_LED_Write(0);
+ 521              		.loc 1 190 0
+ 522 0040 0020     		mov	r0, #0
+ 523 0042 FFF7FEFF 		bl	IR_LED_Write
+ 524              	.LVL48:
+ 191:.\lightlib.c  ****             set_status(IR_LED, OFF);
+ 525              		.loc 1 191 0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cceP5T5y.s 			page 14
+
+
+ 526 0046 0420     		mov	r0, #4
+ 527 0048 03E0     		b	.L89
+ 528              	.L88:
+ 192:.\lightlib.c  ****         break;
+ 193:.\lightlib.c  ****         case BOARD_LED:
+ 194:.\lightlib.c  ****             Board_LED_Write(0);
+ 529              		.loc 1 194 0
+ 530 004a 0020     		mov	r0, #0
+ 531 004c FFF7FEFF 		bl	Board_LED_Write
+ 532              	.LVL49:
+ 195:.\lightlib.c  ****            set_status(BOARD_LED, OFF);
+ 533              		.loc 1 195 0
+ 534 0050 0520     		mov	r0, #5
+ 535              	.L89:
+ 536 0052 0021     		mov	r1, #0
+ 537 0054 FFF7FEFF 		bl	set_status
+ 538              	.LVL50:
+ 539              	.L81:
+ 196:.\lightlib.c  ****         break;
+ 197:.\lightlib.c  ****     }    
+ 198:.\lightlib.c  **** }
+ 540              		.loc 1 198 0
+ 541              		@ sp needed
+ 542 0058 08BD     		pop	{r3, pc}
+ 543              		.cfi_endproc
+ 544              	.LFE38:
+ 545              		.size	turn_off, .-turn_off
+ 546              		.section	.text.turn_on_all_led,"ax",%progbits
+ 547              		.align	1
+ 548              		.global	turn_on_all_led
+ 549              		.code	16
+ 550              		.thumb_func
+ 551              		.type	turn_on_all_led, %function
+ 552              	turn_on_all_led:
+ 553              	.LFB39:
+ 199:.\lightlib.c  **** 
+ 200:.\lightlib.c  **** void turn_on_all_led(void) {
+ 554              		.loc 1 200 0
+ 555              		.cfi_startproc
+ 556 0000 08B5     		push	{r3, lr}
+ 557              		.cfi_def_cfa_offset 8
+ 558              		.cfi_offset 3, -8
+ 559              		.cfi_offset 14, -4
+ 201:.\lightlib.c  ****     turn_on(LEFT_LED);
+ 560              		.loc 1 201 0
+ 561 0002 0120     		mov	r0, #1
+ 562 0004 FFF7FEFF 		bl	turn_on
+ 563              	.LVL51:
+ 202:.\lightlib.c  ****     turn_on(RIGHT_LED); 
+ 564              		.loc 1 202 0
+ 565 0008 0220     		mov	r0, #2
+ 566 000a FFF7FEFF 		bl	turn_on
+ 567              	.LVL52:
+ 203:.\lightlib.c  ****     turn_on(IR_LED); 
+ 568              		.loc 1 203 0
+ 569 000e 0420     		mov	r0, #4
+ 570 0010 FFF7FEFF 		bl	turn_on
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cceP5T5y.s 			page 15
+
+
+ 571              	.LVL53:
+ 204:.\lightlib.c  ****     turn_on(BOARD_LED); 
+ 572              		.loc 1 204 0
+ 573 0014 0520     		mov	r0, #5
+ 574 0016 FFF7FEFF 		bl	turn_on
+ 575              	.LVL54:
+ 205:.\lightlib.c  **** }
+ 576              		.loc 1 205 0
+ 577              		@ sp needed
+ 578 001a 08BD     		pop	{r3, pc}
+ 579              		.cfi_endproc
+ 580              	.LFE39:
+ 581              		.size	turn_on_all_led, .-turn_on_all_led
+ 582              		.section	.text.turn_off_all_led,"ax",%progbits
+ 583              		.align	1
+ 584              		.global	turn_off_all_led
+ 585              		.code	16
+ 586              		.thumb_func
+ 587              		.type	turn_off_all_led, %function
+ 588              	turn_off_all_led:
+ 589              	.LFB40:
+ 206:.\lightlib.c  **** 
+ 207:.\lightlib.c  **** void turn_off_all_led(void) {
+ 590              		.loc 1 207 0
+ 591              		.cfi_startproc
+ 592 0000 08B5     		push	{r3, lr}
+ 593              		.cfi_def_cfa_offset 8
+ 594              		.cfi_offset 3, -8
+ 595              		.cfi_offset 14, -4
+ 208:.\lightlib.c  ****     turn_off(LEFT_LED);
+ 596              		.loc 1 208 0
+ 597 0002 0120     		mov	r0, #1
+ 598 0004 FFF7FEFF 		bl	turn_off
+ 599              	.LVL55:
+ 209:.\lightlib.c  ****     turn_off(RIGHT_LED); 
+ 600              		.loc 1 209 0
+ 601 0008 0220     		mov	r0, #2
+ 602 000a FFF7FEFF 		bl	turn_off
+ 603              	.LVL56:
+ 210:.\lightlib.c  ****     turn_off(IR_LED); 
+ 604              		.loc 1 210 0
+ 605 000e 0420     		mov	r0, #4
+ 606 0010 FFF7FEFF 		bl	turn_off
+ 607              	.LVL57:
+ 211:.\lightlib.c  ****     turn_off(BOARD_LED); 
+ 608              		.loc 1 211 0
+ 609 0014 0520     		mov	r0, #5
+ 610 0016 FFF7FEFF 		bl	turn_off
+ 611              	.LVL58:
+ 212:.\lightlib.c  **** }
+ 612              		.loc 1 212 0
+ 613              		@ sp needed
+ 614 001a 08BD     		pop	{r3, pc}
+ 615              		.cfi_endproc
+ 616              	.LFE40:
+ 617              		.size	turn_off_all_led, .-turn_off_all_led
+ 618              		.section	.text.init_led,"ax",%progbits
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cceP5T5y.s 			page 16
+
+
+ 619              		.align	1
+ 620              		.global	init_led
+ 621              		.code	16
+ 622              		.thumb_func
+ 623              		.type	init_led, %function
+ 624              	init_led:
+ 625              	.LFB41:
+ 213:.\lightlib.c  **** 
+ 214:.\lightlib.c  **** void init_led(uint8 color) {
+ 626              		.loc 1 214 0
+ 627              		.cfi_startproc
+ 628              	.LVL59:
+ 629 0000 10B5     		push	{r4, lr}
+ 630              		.cfi_def_cfa_offset 8
+ 631              		.cfi_offset 4, -8
+ 632              		.cfi_offset 14, -4
+ 633              		.loc 1 214 0
+ 634 0002 041C     		mov	r4, r0
+ 215:.\lightlib.c  ****     /* Turn off all leds */
+ 216:.\lightlib.c  ****     turn_off_all_led();
+ 635              		.loc 1 216 0
+ 636 0004 FFF7FEFF 		bl	turn_off_all_led
+ 637              	.LVL60:
+ 217:.\lightlib.c  ****     
+ 218:.\lightlib.c  ****     /* Set default led color */
+ 219:.\lightlib.c  ****     set_color(LEFT_LED, color);
+ 638              		.loc 1 219 0
+ 639 0008 211C     		mov	r1, r4
+ 640 000a 0120     		mov	r0, #1
+ 641 000c FFF7FEFF 		bl	set_color
+ 642              	.LVL61:
+ 220:.\lightlib.c  ****     set_color(RIGHT_LED, color);
+ 643              		.loc 1 220 0
+ 644 0010 0220     		mov	r0, #2
+ 645 0012 211C     		mov	r1, r4
+ 646 0014 FFF7FEFF 		bl	set_color
+ 647              	.LVL62:
+ 221:.\lightlib.c  **** }...
+ 648              		.loc 1 221 0
+ 649              		@ sp needed
+ 650 0018 10BD     		pop	{r4, pc}
+ 651              		.cfi_endproc
+ 652              	.LFE41:
+ 653              		.size	init_led, .-init_led
+ 654              		.comm	Board_LED_State,1,1
+ 655              		.comm	IR_LED_State,1,1
+ 656              		.comm	Right_LED_State,2,1
+ 657              		.comm	Left_LED_State,2,1
+ 658              		.text
+ 659              	.Letext0:
+ 660              		.file 2 ".\\lightlib.h"
+ 661              		.file 3 ".\\Generated_Source\\PSoC4/Left_LED_Red.h"
+ 662              		.file 4 ".\\Generated_Source\\PSoC4/Left_LED_Blue.h"
+ 663              		.file 5 ".\\Generated_Source\\PSoC4/Right_LED_Red.h"
+ 664              		.file 6 ".\\Generated_Source\\PSoC4/Right_LED_Blue.h"
+ 665              		.file 7 ".\\Generated_Source\\PSoC4/PWM_Left_LED_Green.h"
+ 666              		.file 8 ".\\Generated_Source\\PSoC4/PWM_Right_LED_Green.h"
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cceP5T5y.s 			page 17
+
+
+ 667              		.file 9 ".\\Generated_Source\\PSoC4/IR_LED.h"
+ 668              		.file 10 ".\\Generated_Source\\PSoC4/Board_LED.h"
+ 669              		.file 11 ".\\Generated_Source\\PSoC4/cytypes.h"
+ 670              		.section	.debug_info,"",%progbits
+ 671              	.Ldebug_info0:
+ 672 0000 26060000 		.4byte	0x626
+ 673 0004 0400     		.2byte	0x4
+ 674 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 675 000a 04       		.byte	0x4
+ 676 000b 01       		.uleb128 0x1
+ 677 000c 87000000 		.4byte	.LASF39
+ 678 0010 01       		.byte	0x1
+ 679 0011 D5020000 		.4byte	.LASF40
+ 680 0015 31020000 		.4byte	.LASF41
+ 681 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 682 001d 00000000 		.4byte	0
+ 683 0021 00000000 		.4byte	.Ldebug_line0
+ 684 0025 02       		.uleb128 0x2
+ 685 0026 01       		.byte	0x1
+ 686 0027 06       		.byte	0x6
+ 687 0028 C9020000 		.4byte	.LASF0
+ 688 002c 02       		.uleb128 0x2
+ 689 002d 01       		.byte	0x1
+ 690 002e 08       		.byte	0x8
+ 691 002f 76010000 		.4byte	.LASF1
+ 692 0033 02       		.uleb128 0x2
+ 693 0034 02       		.byte	0x2
+ 694 0035 05       		.byte	0x5
+ 695 0036 82020000 		.4byte	.LASF2
+ 696 003a 02       		.uleb128 0x2
+ 697 003b 02       		.byte	0x2
+ 698 003c 07       		.byte	0x7
+ 699 003d 52000000 		.4byte	.LASF3
+ 700 0041 02       		.uleb128 0x2
+ 701 0042 04       		.byte	0x4
+ 702 0043 05       		.byte	0x5
+ 703 0044 B2020000 		.4byte	.LASF4
+ 704 0048 02       		.uleb128 0x2
+ 705 0049 04       		.byte	0x4
+ 706 004a 07       		.byte	0x7
+ 707 004b 37010000 		.4byte	.LASF5
+ 708 004f 02       		.uleb128 0x2
+ 709 0050 08       		.byte	0x8
+ 710 0051 05       		.byte	0x5
+ 711 0052 19020000 		.4byte	.LASF6
+ 712 0056 02       		.uleb128 0x2
+ 713 0057 08       		.byte	0x8
+ 714 0058 07       		.byte	0x7
+ 715 0059 E9010000 		.4byte	.LASF7
+ 716 005d 03       		.uleb128 0x3
+ 717 005e 04       		.byte	0x4
+ 718 005f 05       		.byte	0x5
+ 719 0060 696E7400 		.ascii	"int\000"
+ 720 0064 02       		.uleb128 0x2
+ 721 0065 04       		.byte	0x4
+ 722 0066 07       		.byte	0x7
+ 723 0067 CB010000 		.4byte	.LASF8
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cceP5T5y.s 			page 18
+
+
+ 724 006b 04       		.uleb128 0x4
+ 725 006c 56010000 		.4byte	.LASF42
+ 726 0070 0B       		.byte	0xb
+ 727 0071 A1       		.byte	0xa1
+ 728 0072 2C000000 		.4byte	0x2c
+ 729 0076 02       		.uleb128 0x2
+ 730 0077 04       		.byte	0x4
+ 731 0078 04       		.byte	0x4
+ 732 0079 03010000 		.4byte	.LASF9
+ 733 007d 02       		.uleb128 0x2
+ 734 007e 08       		.byte	0x8
+ 735 007f 04       		.byte	0x4
+ 736 0080 9C010000 		.4byte	.LASF10
+ 737 0084 02       		.uleb128 0x2
+ 738 0085 01       		.byte	0x1
+ 739 0086 08       		.byte	0x8
+ 740 0087 BB020000 		.4byte	.LASF11
+ 741 008b 02       		.uleb128 0x2
+ 742 008c 04       		.byte	0x4
+ 743 008d 07       		.byte	0x7
+ 744 008e 10020000 		.4byte	.LASF12
+ 745 0092 05       		.uleb128 0x5
+ 746 0093 26000000 		.4byte	.LASF15
+ 747 0097 02       		.byte	0x2
+ 748 0098 02       		.byte	0x2
+ 749 0099 26       		.byte	0x26
+ 750 009a B7000000 		.4byte	0xb7
+ 751 009e 06       		.uleb128 0x6
+ 752 009f 70000000 		.4byte	.LASF13
+ 753 00a3 02       		.byte	0x2
+ 754 00a4 27       		.byte	0x27
+ 755 00a5 6B000000 		.4byte	0x6b
+ 756 00a9 00       		.byte	0
+ 757 00aa 06       		.uleb128 0x6
+ 758 00ab A3010000 		.4byte	.LASF14
+ 759 00af 02       		.byte	0x2
+ 760 00b0 28       		.byte	0x28
+ 761 00b1 6B000000 		.4byte	0x6b
+ 762 00b5 01       		.byte	0x1
+ 763 00b6 00       		.byte	0
+ 764 00b7 05       		.uleb128 0x5
+ 765 00b8 27020000 		.4byte	.LASF16
+ 766 00bc 01       		.byte	0x1
+ 767 00bd 02       		.byte	0x2
+ 768 00be 2C       		.byte	0x2c
+ 769 00bf D0000000 		.4byte	0xd0
+ 770 00c3 06       		.uleb128 0x6
+ 771 00c4 70000000 		.4byte	.LASF13
+ 772 00c8 02       		.byte	0x2
+ 773 00c9 2D       		.byte	0x2d
+ 774 00ca 6B000000 		.4byte	0x6b
+ 775 00ce 00       		.byte	0
+ 776 00cf 00       		.byte	0
+ 777 00d0 07       		.uleb128 0x7
+ 778 00d1 34000000 		.4byte	.LASF28
+ 779 00d5 01       		.byte	0x1
+ 780 00d6 AB       		.byte	0xab
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cceP5T5y.s 			page 19
+
+
+ 781 00d7 01       		.byte	0x1
+ 782 00d8 E8000000 		.4byte	0xe8
+ 783 00dc 08       		.uleb128 0x8
+ 784 00dd C0020000 		.4byte	.LASF17
+ 785 00e1 01       		.byte	0x1
+ 786 00e2 AB       		.byte	0xab
+ 787 00e3 6B000000 		.4byte	0x6b
+ 788 00e7 00       		.byte	0
+ 789 00e8 09       		.uleb128 0x9
+ 790 00e9 0F000000 		.4byte	.LASF18
+ 791 00ed 01       		.byte	0x1
+ 792 00ee 19       		.byte	0x19
+ 793 00ef 00000000 		.4byte	.LFB33
+ 794 00f3 28000000 		.4byte	.LFE33-.LFB33
+ 795 00f7 01       		.uleb128 0x1
+ 796 00f8 9C       		.byte	0x9c
+ 797 00f9 2B010000 		.4byte	0x12b
+ 798 00fd 0A       		.uleb128 0xa
+ 799 00fe C0020000 		.4byte	.LASF17
+ 800 0102 01       		.byte	0x1
+ 801 0103 19       		.byte	0x19
+ 802 0104 6B000000 		.4byte	0x6b
+ 803 0108 00000000 		.4byte	.LLST0
+ 804 010c 0A       		.uleb128 0xa
+ 805 010d A3010000 		.4byte	.LASF14
+ 806 0111 01       		.byte	0x1
+ 807 0112 19       		.byte	0x19
+ 808 0113 6B000000 		.4byte	0x6b
+ 809 0117 21000000 		.4byte	.LLST1
+ 810 011b 0B       		.uleb128 0xb
+ 811 011c 1A000000 		.4byte	.LVL2
+ 812 0120 E8000000 		.4byte	0xe8
+ 813 0124 0C       		.uleb128 0xc
+ 814 0125 01       		.uleb128 0x1
+ 815 0126 50       		.byte	0x50
+ 816 0127 01       		.uleb128 0x1
+ 817 0128 31       		.byte	0x31
+ 818 0129 00       		.byte	0
+ 819 012a 00       		.byte	0
+ 820 012b 09       		.uleb128 0x9
+ 821 012c 65000000 		.4byte	.LASF19
+ 822 0130 01       		.byte	0x1
+ 823 0131 28       		.byte	0x28
+ 824 0132 00000000 		.4byte	.LFB34
+ 825 0136 3C000000 		.4byte	.LFE34-.LFB34
+ 826 013a 01       		.uleb128 0x1
+ 827 013b 9C       		.byte	0x9c
+ 828 013c 6E010000 		.4byte	0x16e
+ 829 0140 0A       		.uleb128 0xa
+ 830 0141 C0020000 		.4byte	.LASF17
+ 831 0145 01       		.byte	0x1
+ 832 0146 28       		.byte	0x28
+ 833 0147 6B000000 		.4byte	0x6b
+ 834 014b 42000000 		.4byte	.LLST2
+ 835 014f 0A       		.uleb128 0xa
+ 836 0150 70000000 		.4byte	.LASF13
+ 837 0154 01       		.byte	0x1
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cceP5T5y.s 			page 20
+
+
+ 838 0155 28       		.byte	0x28
+ 839 0156 6B000000 		.4byte	0x6b
+ 840 015a 63000000 		.4byte	.LLST3
+ 841 015e 0B       		.uleb128 0xb
+ 842 015f 1E000000 		.4byte	.LVL5
+ 843 0163 2B010000 		.4byte	0x12b
+ 844 0167 0C       		.uleb128 0xc
+ 845 0168 01       		.uleb128 0x1
+ 846 0169 50       		.byte	0x50
+ 847 016a 01       		.uleb128 0x1
+ 848 016b 31       		.byte	0x31
+ 849 016c 00       		.byte	0
+ 850 016d 00       		.byte	0
+ 851 016e 0D       		.uleb128 0xd
+ 852 016f 5C010000 		.4byte	.LASF43
+ 853 0173 01       		.byte	0x1
+ 854 0174 3D       		.byte	0x3d
+ 855 0175 6B000000 		.4byte	0x6b
+ 856 0179 01       		.byte	0x1
+ 857 017a 8A010000 		.4byte	0x18a
+ 858 017e 08       		.uleb128 0x8
+ 859 017f C0020000 		.4byte	.LASF17
+ 860 0183 01       		.byte	0x1
+ 861 0184 3D       		.byte	0x3d
+ 862 0185 6B000000 		.4byte	0x6b
+ 863 0189 00       		.byte	0
+ 864 018a 0E       		.uleb128 0xe
+ 865 018b 6E010000 		.4byte	0x16e
+ 866 018f 00000000 		.4byte	.LFB35
+ 867 0193 20000000 		.4byte	.LFE35-.LFB35
+ 868 0197 01       		.uleb128 0x1
+ 869 0198 9C       		.byte	0x9c
+ 870 0199 A7010000 		.4byte	0x1a7
+ 871 019d 0F       		.uleb128 0xf
+ 872 019e 7E010000 		.4byte	0x17e
+ 873 01a2 9D000000 		.4byte	.LLST4
+ 874 01a6 00       		.byte	0
+ 875 01a7 10       		.uleb128 0x10
+ 876 01a8 9F020000 		.4byte	.LASF44
+ 877 01ac 01       		.byte	0x1
+ 878 01ad 49       		.byte	0x49
+ 879 01ae 6B000000 		.4byte	0x6b
+ 880 01b2 00000000 		.4byte	.LFB36
+ 881 01b6 3C000000 		.4byte	.LFE36-.LFB36
+ 882 01ba 01       		.uleb128 0x1
+ 883 01bb 9C       		.byte	0x9c
+ 884 01bc D0010000 		.4byte	0x1d0
+ 885 01c0 0A       		.uleb128 0xa
+ 886 01c1 C0020000 		.4byte	.LASF17
+ 887 01c5 01       		.byte	0x1
+ 888 01c6 49       		.byte	0x49
+ 889 01c7 6B000000 		.4byte	0x6b
+ 890 01cb D7000000 		.4byte	.LLST5
+ 891 01cf 00       		.byte	0
+ 892 01d0 09       		.uleb128 0x9
+ 893 01d1 AA020000 		.4byte	.LASF20
+ 894 01d5 01       		.byte	0x1
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cceP5T5y.s 			page 21
+
+
+ 895 01d6 5B       		.byte	0x5b
+ 896 01d7 00000000 		.4byte	.LFB37
+ 897 01db CC000000 		.4byte	.LFE37-.LFB37
+ 898 01df 01       		.uleb128 0x1
+ 899 01e0 9C       		.byte	0x9c
+ 900 01e1 67030000 		.4byte	0x367
+ 901 01e5 0A       		.uleb128 0xa
+ 902 01e6 C0020000 		.4byte	.LASF17
+ 903 01ea 01       		.byte	0x1
+ 904 01eb 5B       		.byte	0x5b
+ 905 01ec 6B000000 		.4byte	0x6b
+ 906 01f0 F8000000 		.4byte	.LLST6
+ 907 01f4 11       		.uleb128 0x11
+ 908 01f5 6E010000 		.4byte	0x16e
+ 909 01f9 12000000 		.4byte	.LBB6
+ 910 01fd 04000000 		.4byte	.LBE6-.LBB6
+ 911 0201 01       		.byte	0x1
+ 912 0202 5E       		.byte	0x5e
+ 913 0203 11020000 		.4byte	0x211
+ 914 0207 0F       		.uleb128 0xf
+ 915 0208 7E010000 		.4byte	0x17e
+ 916 020c 19010000 		.4byte	.LLST7
+ 917 0210 00       		.byte	0
+ 918 0211 11       		.uleb128 0x11
+ 919 0212 6E010000 		.4byte	0x16e
+ 920 0216 62000000 		.4byte	.LBB8
+ 921 021a 04000000 		.4byte	.LBE8-.LBB8
+ 922 021e 01       		.byte	0x1
+ 923 021f 7D       		.byte	0x7d
+ 924 0220 2E020000 		.4byte	0x22e
+ 925 0224 0F       		.uleb128 0xf
+ 926 0225 7E010000 		.4byte	0x17e
+ 927 0229 2D010000 		.4byte	.LLST8
+ 928 022d 00       		.byte	0
+ 929 022e 12       		.uleb128 0x12
+ 930 022f 2E000000 		.4byte	.LVL17
+ 931 0233 A7050000 		.4byte	0x5a7
+ 932 0237 41020000 		.4byte	0x241
+ 933 023b 0C       		.uleb128 0xc
+ 934 023c 01       		.uleb128 0x1
+ 935 023d 50       		.byte	0x50
+ 936 023e 01       		.uleb128 0x1
+ 937 023f 31       		.byte	0x31
+ 938 0240 00       		.byte	0
+ 939 0241 12       		.uleb128 0x12
+ 940 0242 36000000 		.4byte	.LVL18
+ 941 0246 A7050000 		.4byte	0x5a7
+ 942 024a 54020000 		.4byte	0x254
+ 943 024e 0C       		.uleb128 0xc
+ 944 024f 01       		.uleb128 0x1
+ 945 0250 50       		.byte	0x50
+ 946 0251 01       		.uleb128 0x1
+ 947 0252 31       		.byte	0x31
+ 948 0253 00       		.byte	0
+ 949 0254 12       		.uleb128 0x12
+ 950 0255 3C000000 		.4byte	.LVL19
+ 951 0259 B8050000 		.4byte	0x5b8
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cceP5T5y.s 			page 22
+
+
+ 952 025d 67020000 		.4byte	0x267
+ 953 0261 0C       		.uleb128 0xc
+ 954 0262 01       		.uleb128 0x1
+ 955 0263 50       		.byte	0x50
+ 956 0264 01       		.uleb128 0x1
+ 957 0265 31       		.byte	0x31
+ 958 0266 00       		.byte	0
+ 959 0267 12       		.uleb128 0x12
+ 960 0268 44000000 		.4byte	.LVL20
+ 961 026c A7050000 		.4byte	0x5a7
+ 962 0270 7A020000 		.4byte	0x27a
+ 963 0274 0C       		.uleb128 0xc
+ 964 0275 01       		.uleb128 0x1
+ 965 0276 50       		.byte	0x50
+ 966 0277 01       		.uleb128 0x1
+ 967 0278 31       		.byte	0x31
+ 968 0279 00       		.byte	0
+ 969 027a 12       		.uleb128 0x12
+ 970 027b 4C000000 		.4byte	.LVL21
+ 971 027f A7050000 		.4byte	0x5a7
+ 972 0283 8D020000 		.4byte	0x28d
+ 973 0287 0C       		.uleb128 0xc
+ 974 0288 01       		.uleb128 0x1
+ 975 0289 50       		.byte	0x50
+ 976 028a 01       		.uleb128 0x1
+ 977 028b 31       		.byte	0x31
+ 978 028c 00       		.byte	0
+ 979 028d 12       		.uleb128 0x12
+ 980 028e 52000000 		.4byte	.LVL22
+ 981 0292 B8050000 		.4byte	0x5b8
+ 982 0296 A0020000 		.4byte	0x2a0
+ 983 029a 0C       		.uleb128 0xc
+ 984 029b 01       		.uleb128 0x1
+ 985 029c 50       		.byte	0x50
+ 986 029d 01       		.uleb128 0x1
+ 987 029e 31       		.byte	0x31
+ 988 029f 00       		.byte	0
+ 989 02a0 13       		.uleb128 0x13
+ 990 02a1 56000000 		.4byte	.LVL23
+ 991 02a5 C9050000 		.4byte	0x5c9
+ 992 02a9 12       		.uleb128 0x12
+ 993 02aa 62000000 		.4byte	.LVL25
+ 994 02ae D0010000 		.4byte	0x1d0
+ 995 02b2 BC020000 		.4byte	0x2bc
+ 996 02b6 0C       		.uleb128 0xc
+ 997 02b7 01       		.uleb128 0x1
+ 998 02b8 50       		.byte	0x50
+ 999 02b9 01       		.uleb128 0x1
+ 1000 02ba 31       		.byte	0x31
+ 1001 02bb 00       		.byte	0
+ 1002 02bc 12       		.uleb128 0x12
+ 1003 02bd 7E000000 		.4byte	.LVL26
+ 1004 02c1 D0050000 		.4byte	0x5d0
+ 1005 02c5 CF020000 		.4byte	0x2cf
+ 1006 02c9 0C       		.uleb128 0xc
+ 1007 02ca 01       		.uleb128 0x1
+ 1008 02cb 50       		.byte	0x50
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cceP5T5y.s 			page 23
+
+
+ 1009 02cc 01       		.uleb128 0x1
+ 1010 02cd 31       		.byte	0x31
+ 1011 02ce 00       		.byte	0
+ 1012 02cf 12       		.uleb128 0x12
+ 1013 02d0 86000000 		.4byte	.LVL27
+ 1014 02d4 D0050000 		.4byte	0x5d0
+ 1015 02d8 E2020000 		.4byte	0x2e2
+ 1016 02dc 0C       		.uleb128 0xc
+ 1017 02dd 01       		.uleb128 0x1
+ 1018 02de 50       		.byte	0x50
+ 1019 02df 01       		.uleb128 0x1
+ 1020 02e0 31       		.byte	0x31
+ 1021 02e1 00       		.byte	0
+ 1022 02e2 12       		.uleb128 0x12
+ 1023 02e3 8C000000 		.4byte	.LVL28
+ 1024 02e7 E1050000 		.4byte	0x5e1
+ 1025 02eb F5020000 		.4byte	0x2f5
+ 1026 02ef 0C       		.uleb128 0xc
+ 1027 02f0 01       		.uleb128 0x1
+ 1028 02f1 50       		.byte	0x50
+ 1029 02f2 01       		.uleb128 0x1
+ 1030 02f3 31       		.byte	0x31
+ 1031 02f4 00       		.byte	0
+ 1032 02f5 12       		.uleb128 0x12
+ 1033 02f6 94000000 		.4byte	.LVL29
+ 1034 02fa D0050000 		.4byte	0x5d0
+ 1035 02fe 08030000 		.4byte	0x308
+ 1036 0302 0C       		.uleb128 0xc
+ 1037 0303 01       		.uleb128 0x1
+ 1038 0304 50       		.byte	0x50
+ 1039 0305 01       		.uleb128 0x1
+ 1040 0306 31       		.byte	0x31
+ 1041 0307 00       		.byte	0
+ 1042 0308 12       		.uleb128 0x12
+ 1043 0309 9C000000 		.4byte	.LVL30
+ 1044 030d D0050000 		.4byte	0x5d0
+ 1045 0311 1B030000 		.4byte	0x31b
+ 1046 0315 0C       		.uleb128 0xc
+ 1047 0316 01       		.uleb128 0x1
+ 1048 0317 50       		.byte	0x50
+ 1049 0318 01       		.uleb128 0x1
+ 1050 0319 31       		.byte	0x31
+ 1051 031a 00       		.byte	0
+ 1052 031b 12       		.uleb128 0x12
+ 1053 031c A2000000 		.4byte	.LVL31
+ 1054 0320 E1050000 		.4byte	0x5e1
+ 1055 0324 2E030000 		.4byte	0x32e
+ 1056 0328 0C       		.uleb128 0xc
+ 1057 0329 01       		.uleb128 0x1
+ 1058 032a 50       		.byte	0x50
+ 1059 032b 01       		.uleb128 0x1
+ 1060 032c 31       		.byte	0x31
+ 1061 032d 00       		.byte	0
+ 1062 032e 13       		.uleb128 0x13
+ 1063 032f A6000000 		.4byte	.LVL32
+ 1064 0333 F2050000 		.4byte	0x5f2
+ 1065 0337 12       		.uleb128 0x12
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cceP5T5y.s 			page 24
+
+
+ 1066 0338 B0000000 		.4byte	.LVL34
+ 1067 033c F9050000 		.4byte	0x5f9
+ 1068 0340 4A030000 		.4byte	0x34a
+ 1069 0344 0C       		.uleb128 0xc
+ 1070 0345 01       		.uleb128 0x1
+ 1071 0346 50       		.byte	0x50
+ 1072 0347 01       		.uleb128 0x1
+ 1073 0348 31       		.byte	0x31
+ 1074 0349 00       		.byte	0
+ 1075 034a 12       		.uleb128 0x12
+ 1076 034b BA000000 		.4byte	.LVL35
+ 1077 034f 0A060000 		.4byte	0x60a
+ 1078 0353 5D030000 		.4byte	0x35d
+ 1079 0357 0C       		.uleb128 0xc
+ 1080 0358 01       		.uleb128 0x1
+ 1081 0359 50       		.byte	0x50
+ 1082 035a 01       		.uleb128 0x1
+ 1083 035b 31       		.byte	0x31
+ 1084 035c 00       		.byte	0
+ 1085 035d 13       		.uleb128 0x13
+ 1086 035e C2000000 		.4byte	.LVL36
+ 1087 0362 2B010000 		.4byte	0x12b
+ 1088 0366 00       		.byte	0
+ 1089 0367 0E       		.uleb128 0xe
+ 1090 0368 D0000000 		.4byte	0xd0
+ 1091 036c 00000000 		.4byte	.LFB38
+ 1092 0370 5A000000 		.4byte	.LFE38-.LFB38
+ 1093 0374 01       		.uleb128 0x1
+ 1094 0375 9C       		.byte	0x9c
+ 1095 0376 41040000 		.4byte	0x441
+ 1096 037a 0F       		.uleb128 0xf
+ 1097 037b DC000000 		.4byte	0xdc
+ 1098 037f 41010000 		.4byte	.LLST9
+ 1099 0383 14       		.uleb128 0x14
+ 1100 0384 12000000 		.4byte	.LBB12
+ 1101 0388 14000000 		.4byte	.LBE12-.LBB12
+ 1102 038c C9030000 		.4byte	0x3c9
+ 1103 0390 0F       		.uleb128 0xf
+ 1104 0391 DC000000 		.4byte	0xdc
+ 1105 0395 62010000 		.4byte	.LLST10
+ 1106 0399 12       		.uleb128 0x12
+ 1107 039a 18000000 		.4byte	.LVL40
+ 1108 039e A7050000 		.4byte	0x5a7
+ 1109 03a2 AC030000 		.4byte	0x3ac
+ 1110 03a6 0C       		.uleb128 0xc
+ 1111 03a7 01       		.uleb128 0x1
+ 1112 03a8 50       		.byte	0x50
+ 1113 03a9 01       		.uleb128 0x1
+ 1114 03aa 30       		.byte	0x30
+ 1115 03ab 00       		.byte	0
+ 1116 03ac 12       		.uleb128 0x12
+ 1117 03ad 1E000000 		.4byte	.LVL41
+ 1118 03b1 B8050000 		.4byte	0x5b8
+ 1119 03b5 BF030000 		.4byte	0x3bf
+ 1120 03b9 0C       		.uleb128 0xc
+ 1121 03ba 01       		.uleb128 0x1
+ 1122 03bb 50       		.byte	0x50
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cceP5T5y.s 			page 25
+
+
+ 1123 03bc 01       		.uleb128 0x1
+ 1124 03bd 30       		.byte	0x30
+ 1125 03be 00       		.byte	0
+ 1126 03bf 13       		.uleb128 0x13
+ 1127 03c0 22000000 		.4byte	.LVL42
+ 1128 03c4 1B060000 		.4byte	0x61b
+ 1129 03c8 00       		.byte	0
+ 1130 03c9 12       		.uleb128 0x12
+ 1131 03ca 2C000000 		.4byte	.LVL44
+ 1132 03ce D0000000 		.4byte	0xd0
+ 1133 03d2 DC030000 		.4byte	0x3dc
+ 1134 03d6 0C       		.uleb128 0xc
+ 1135 03d7 01       		.uleb128 0x1
+ 1136 03d8 50       		.byte	0x50
+ 1137 03d9 01       		.uleb128 0x1
+ 1138 03da 31       		.byte	0x31
+ 1139 03db 00       		.byte	0
+ 1140 03dc 12       		.uleb128 0x12
+ 1141 03dd 32000000 		.4byte	.LVL45
+ 1142 03e1 D0050000 		.4byte	0x5d0
+ 1143 03e5 EF030000 		.4byte	0x3ef
+ 1144 03e9 0C       		.uleb128 0xc
+ 1145 03ea 01       		.uleb128 0x1
+ 1146 03eb 50       		.byte	0x50
+ 1147 03ec 01       		.uleb128 0x1
+ 1148 03ed 30       		.byte	0x30
+ 1149 03ee 00       		.byte	0
+ 1150 03ef 12       		.uleb128 0x12
+ 1151 03f0 38000000 		.4byte	.LVL46
+ 1152 03f4 E1050000 		.4byte	0x5e1
+ 1153 03f8 02040000 		.4byte	0x402
+ 1154 03fc 0C       		.uleb128 0xc
+ 1155 03fd 01       		.uleb128 0x1
+ 1156 03fe 50       		.byte	0x50
+ 1157 03ff 01       		.uleb128 0x1
+ 1158 0400 30       		.byte	0x30
+ 1159 0401 00       		.byte	0
+ 1160 0402 13       		.uleb128 0x13
+ 1161 0403 3C000000 		.4byte	.LVL47
+ 1162 0407 22060000 		.4byte	0x622
+ 1163 040b 12       		.uleb128 0x12
+ 1164 040c 46000000 		.4byte	.LVL48
+ 1165 0410 F9050000 		.4byte	0x5f9
+ 1166 0414 1E040000 		.4byte	0x41e
+ 1167 0418 0C       		.uleb128 0xc
+ 1168 0419 01       		.uleb128 0x1
+ 1169 041a 50       		.byte	0x50
+ 1170 041b 01       		.uleb128 0x1
+ 1171 041c 30       		.byte	0x30
+ 1172 041d 00       		.byte	0
+ 1173 041e 12       		.uleb128 0x12
+ 1174 041f 50000000 		.4byte	.LVL49
+ 1175 0423 0A060000 		.4byte	0x60a
+ 1176 0427 31040000 		.4byte	0x431
+ 1177 042b 0C       		.uleb128 0xc
+ 1178 042c 01       		.uleb128 0x1
+ 1179 042d 50       		.byte	0x50
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cceP5T5y.s 			page 26
+
+
+ 1180 042e 01       		.uleb128 0x1
+ 1181 042f 30       		.byte	0x30
+ 1182 0430 00       		.byte	0
+ 1183 0431 0B       		.uleb128 0xb
+ 1184 0432 58000000 		.4byte	.LVL50
+ 1185 0436 2B010000 		.4byte	0x12b
+ 1186 043a 0C       		.uleb128 0xc
+ 1187 043b 01       		.uleb128 0x1
+ 1188 043c 51       		.byte	0x51
+ 1189 043d 01       		.uleb128 0x1
+ 1190 043e 30       		.byte	0x30
+ 1191 043f 00       		.byte	0
+ 1192 0440 00       		.byte	0
+ 1193 0441 09       		.uleb128 0x9
+ 1194 0442 66010000 		.4byte	.LASF21
+ 1195 0446 01       		.byte	0x1
+ 1196 0447 C8       		.byte	0xc8
+ 1197 0448 00000000 		.4byte	.LFB39
+ 1198 044c 1C000000 		.4byte	.LFE39-.LFB39
+ 1199 0450 01       		.uleb128 0x1
+ 1200 0451 9C       		.byte	0x9c
+ 1201 0452 9F040000 		.4byte	0x49f
+ 1202 0456 12       		.uleb128 0x12
+ 1203 0457 08000000 		.4byte	.LVL51
+ 1204 045b D0010000 		.4byte	0x1d0
+ 1205 045f 69040000 		.4byte	0x469
+ 1206 0463 0C       		.uleb128 0xc
+ 1207 0464 01       		.uleb128 0x1
+ 1208 0465 50       		.byte	0x50
+ 1209 0466 01       		.uleb128 0x1
+ 1210 0467 31       		.byte	0x31
+ 1211 0468 00       		.byte	0
+ 1212 0469 12       		.uleb128 0x12
+ 1213 046a 0E000000 		.4byte	.LVL52
+ 1214 046e D0010000 		.4byte	0x1d0
+ 1215 0472 7C040000 		.4byte	0x47c
+ 1216 0476 0C       		.uleb128 0xc
+ 1217 0477 01       		.uleb128 0x1
+ 1218 0478 50       		.byte	0x50
+ 1219 0479 01       		.uleb128 0x1
+ 1220 047a 32       		.byte	0x32
+ 1221 047b 00       		.byte	0
+ 1222 047c 12       		.uleb128 0x12
+ 1223 047d 14000000 		.4byte	.LVL53
+ 1224 0481 D0010000 		.4byte	0x1d0
+ 1225 0485 8F040000 		.4byte	0x48f
+ 1226 0489 0C       		.uleb128 0xc
+ 1227 048a 01       		.uleb128 0x1
+ 1228 048b 50       		.byte	0x50
+ 1229 048c 01       		.uleb128 0x1
+ 1230 048d 34       		.byte	0x34
+ 1231 048e 00       		.byte	0
+ 1232 048f 0B       		.uleb128 0xb
+ 1233 0490 1A000000 		.4byte	.LVL54
+ 1234 0494 D0010000 		.4byte	0x1d0
+ 1235 0498 0C       		.uleb128 0xc
+ 1236 0499 01       		.uleb128 0x1
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cceP5T5y.s 			page 27
+
+
+ 1237 049a 50       		.byte	0x50
+ 1238 049b 01       		.uleb128 0x1
+ 1239 049c 35       		.byte	0x35
+ 1240 049d 00       		.byte	0
+ 1241 049e 00       		.byte	0
+ 1242 049f 09       		.uleb128 0x9
+ 1243 04a0 D8010000 		.4byte	.LASF22
+ 1244 04a4 01       		.byte	0x1
+ 1245 04a5 CF       		.byte	0xcf
+ 1246 04a6 00000000 		.4byte	.LFB40
+ 1247 04aa 1C000000 		.4byte	.LFE40-.LFB40
+ 1248 04ae 01       		.uleb128 0x1
+ 1249 04af 9C       		.byte	0x9c
+ 1250 04b0 FD040000 		.4byte	0x4fd
+ 1251 04b4 12       		.uleb128 0x12
+ 1252 04b5 08000000 		.4byte	.LVL55
+ 1253 04b9 D0000000 		.4byte	0xd0
+ 1254 04bd C7040000 		.4byte	0x4c7
+ 1255 04c1 0C       		.uleb128 0xc
+ 1256 04c2 01       		.uleb128 0x1
+ 1257 04c3 50       		.byte	0x50
+ 1258 04c4 01       		.uleb128 0x1
+ 1259 04c5 31       		.byte	0x31
+ 1260 04c6 00       		.byte	0
+ 1261 04c7 12       		.uleb128 0x12
+ 1262 04c8 0E000000 		.4byte	.LVL56
+ 1263 04cc D0000000 		.4byte	0xd0
+ 1264 04d0 DA040000 		.4byte	0x4da
+ 1265 04d4 0C       		.uleb128 0xc
+ 1266 04d5 01       		.uleb128 0x1
+ 1267 04d6 50       		.byte	0x50
+ 1268 04d7 01       		.uleb128 0x1
+ 1269 04d8 32       		.byte	0x32
+ 1270 04d9 00       		.byte	0
+ 1271 04da 12       		.uleb128 0x12
+ 1272 04db 14000000 		.4byte	.LVL57
+ 1273 04df D0000000 		.4byte	0xd0
+ 1274 04e3 ED040000 		.4byte	0x4ed
+ 1275 04e7 0C       		.uleb128 0xc
+ 1276 04e8 01       		.uleb128 0x1
+ 1277 04e9 50       		.byte	0x50
+ 1278 04ea 01       		.uleb128 0x1
+ 1279 04eb 34       		.byte	0x34
+ 1280 04ec 00       		.byte	0
+ 1281 04ed 0B       		.uleb128 0xb
+ 1282 04ee 1A000000 		.4byte	.LVL58
+ 1283 04f2 D0000000 		.4byte	0xd0
+ 1284 04f6 0C       		.uleb128 0xc
+ 1285 04f7 01       		.uleb128 0x1
+ 1286 04f8 50       		.byte	0x50
+ 1287 04f9 01       		.uleb128 0x1
+ 1288 04fa 35       		.byte	0x35
+ 1289 04fb 00       		.byte	0
+ 1290 04fc 00       		.byte	0
+ 1291 04fd 09       		.uleb128 0x9
+ 1292 04fe A9010000 		.4byte	.LASF23
+ 1293 0502 01       		.byte	0x1
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cceP5T5y.s 			page 28
+
+
+ 1294 0503 D6       		.byte	0xd6
+ 1295 0504 00000000 		.4byte	.LFB41
+ 1296 0508 1A000000 		.4byte	.LFE41-.LFB41
+ 1297 050c 01       		.uleb128 0x1
+ 1298 050d 9C       		.byte	0x9c
+ 1299 050e 59050000 		.4byte	0x559
+ 1300 0512 0A       		.uleb128 0xa
+ 1301 0513 A3010000 		.4byte	.LASF14
+ 1302 0517 01       		.byte	0x1
+ 1303 0518 D6       		.byte	0xd6
+ 1304 0519 6B000000 		.4byte	0x6b
+ 1305 051d 76010000 		.4byte	.LLST11
+ 1306 0521 13       		.uleb128 0x13
+ 1307 0522 08000000 		.4byte	.LVL60
+ 1308 0526 9F040000 		.4byte	0x49f
+ 1309 052a 12       		.uleb128 0x12
+ 1310 052b 10000000 		.4byte	.LVL61
+ 1311 052f E8000000 		.4byte	0xe8
+ 1312 0533 43050000 		.4byte	0x543
+ 1313 0537 0C       		.uleb128 0xc
+ 1314 0538 01       		.uleb128 0x1
+ 1315 0539 51       		.byte	0x51
+ 1316 053a 02       		.uleb128 0x2
+ 1317 053b 74       		.byte	0x74
+ 1318 053c 00       		.sleb128 0
+ 1319 053d 0C       		.uleb128 0xc
+ 1320 053e 01       		.uleb128 0x1
+ 1321 053f 50       		.byte	0x50
+ 1322 0540 01       		.uleb128 0x1
+ 1323 0541 31       		.byte	0x31
+ 1324 0542 00       		.byte	0
+ 1325 0543 0B       		.uleb128 0xb
+ 1326 0544 18000000 		.4byte	.LVL62
+ 1327 0548 E8000000 		.4byte	0xe8
+ 1328 054c 0C       		.uleb128 0xc
+ 1329 054d 01       		.uleb128 0x1
+ 1330 054e 51       		.byte	0x51
+ 1331 054f 02       		.uleb128 0x2
+ 1332 0550 74       		.byte	0x74
+ 1333 0551 00       		.sleb128 0
+ 1334 0552 0C       		.uleb128 0xc
+ 1335 0553 01       		.uleb128 0x1
+ 1336 0554 50       		.byte	0x50
+ 1337 0555 01       		.uleb128 0x1
+ 1338 0556 32       		.byte	0x32
+ 1339 0557 00       		.byte	0
+ 1340 0558 00       		.byte	0
+ 1341 0559 15       		.uleb128 0x15
+ 1342 055a 00000000 		.4byte	.LASF24
+ 1343 055e 01       		.byte	0x1
+ 1344 055f 11       		.byte	0x11
+ 1345 0560 6A050000 		.4byte	0x56a
+ 1346 0564 05       		.uleb128 0x5
+ 1347 0565 03       		.byte	0x3
+ 1348 0566 00000000 		.4byte	Left_LED_State
+ 1349 056a 16       		.uleb128 0x16
+ 1350 056b 92000000 		.4byte	0x92
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cceP5T5y.s 			page 29
+
+
+ 1351 056f 15       		.uleb128 0x15
+ 1352 0570 77000000 		.4byte	.LASF25
+ 1353 0574 01       		.byte	0x1
+ 1354 0575 12       		.byte	0x12
+ 1355 0576 6A050000 		.4byte	0x56a
+ 1356 057a 05       		.uleb128 0x5
+ 1357 057b 03       		.byte	0x3
+ 1358 057c 00000000 		.4byte	Right_LED_State
+ 1359 0580 15       		.uleb128 0x15
+ 1360 0581 19000000 		.4byte	.LASF26
+ 1361 0585 01       		.byte	0x1
+ 1362 0586 13       		.byte	0x13
+ 1363 0587 91050000 		.4byte	0x591
+ 1364 058b 05       		.uleb128 0x5
+ 1365 058c 03       		.byte	0x3
+ 1366 058d 00000000 		.4byte	IR_LED_State
+ 1367 0591 16       		.uleb128 0x16
+ 1368 0592 B7000000 		.4byte	0xb7
+ 1369 0596 15       		.uleb128 0x15
+ 1370 0597 00020000 		.4byte	.LASF27
+ 1371 059b 01       		.byte	0x1
+ 1372 059c 14       		.byte	0x14
+ 1373 059d 91050000 		.4byte	0x591
+ 1374 05a1 05       		.uleb128 0x5
+ 1375 05a2 03       		.byte	0x3
+ 1376 05a3 00000000 		.4byte	Board_LED_State
+ 1377 05a7 17       		.uleb128 0x17
+ 1378 05a8 8C020000 		.4byte	.LASF29
+ 1379 05ac 03       		.byte	0x3
+ 1380 05ad 1D       		.byte	0x1d
+ 1381 05ae B8050000 		.4byte	0x5b8
+ 1382 05b2 18       		.uleb128 0x18
+ 1383 05b3 6B000000 		.4byte	0x6b
+ 1384 05b7 00       		.byte	0
+ 1385 05b8 17       		.uleb128 0x17
+ 1386 05b9 23010000 		.4byte	.LASF30
+ 1387 05bd 04       		.byte	0x4
+ 1388 05be 1D       		.byte	0x1d
+ 1389 05bf C9050000 		.4byte	0x5c9
+ 1390 05c3 18       		.uleb128 0x18
+ 1391 05c4 6B000000 		.4byte	0x6b
+ 1392 05c8 00       		.byte	0
+ 1393 05c9 19       		.uleb128 0x19
+ 1394 05ca E2020000 		.4byte	.LASF33
+ 1395 05ce 07       		.byte	0x7
+ 1396 05cf 92       		.byte	0x92
+ 1397 05d0 17       		.uleb128 0x17
+ 1398 05d1 6E020000 		.4byte	.LASF31
+ 1399 05d5 05       		.byte	0x5
+ 1400 05d6 1D       		.byte	0x1d
+ 1401 05d7 E1050000 		.4byte	0x5e1
+ 1402 05db 18       		.uleb128 0x18
+ 1403 05dc 6B000000 		.4byte	0x6b
+ 1404 05e0 00       		.byte	0
+ 1405 05e1 17       		.uleb128 0x17
+ 1406 05e2 3D000000 		.4byte	.LASF32
+ 1407 05e6 06       		.byte	0x6
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cceP5T5y.s 			page 30
+
+
+ 1408 05e7 1D       		.byte	0x1d
+ 1409 05e8 F2050000 		.4byte	0x5f2
+ 1410 05ec 18       		.uleb128 0x18
+ 1411 05ed 6B000000 		.4byte	0x6b
+ 1412 05f1 00       		.byte	0
+ 1413 05f2 19       		.uleb128 0x19
+ 1414 05f3 09010000 		.4byte	.LASF34
+ 1415 05f7 08       		.byte	0x8
+ 1416 05f8 92       		.byte	0x92
+ 1417 05f9 17       		.uleb128 0x17
+ 1418 05fa 49010000 		.4byte	.LASF35
+ 1419 05fe 09       		.byte	0x9
+ 1420 05ff 1D       		.byte	0x1d
+ 1421 0600 0A060000 		.4byte	0x60a
+ 1422 0604 18       		.uleb128 0x18
+ 1423 0605 6B000000 		.4byte	0x6b
+ 1424 0609 00       		.byte	0
+ 1425 060a 17       		.uleb128 0x17
+ 1426 060b FB020000 		.4byte	.LASF36
+ 1427 060f 0A       		.byte	0xa
+ 1428 0610 1D       		.byte	0x1d
+ 1429 0611 1B060000 		.4byte	0x61b
+ 1430 0615 18       		.uleb128 0x18
+ 1431 0616 6B000000 		.4byte	0x6b
+ 1432 061a 00       		.byte	0
+ 1433 061b 19       		.uleb128 0x19
+ 1434 061c 84010000 		.4byte	.LASF37
+ 1435 0620 07       		.byte	0x7
+ 1436 0621 93       		.byte	0x93
+ 1437 0622 19       		.uleb128 0x19
+ 1438 0623 B2010000 		.4byte	.LASF38
+ 1439 0627 08       		.byte	0x8
+ 1440 0628 93       		.byte	0x93
+ 1441 0629 00       		.byte	0
+ 1442              		.section	.debug_abbrev,"",%progbits
+ 1443              	.Ldebug_abbrev0:
+ 1444 0000 01       		.uleb128 0x1
+ 1445 0001 11       		.uleb128 0x11
+ 1446 0002 01       		.byte	0x1
+ 1447 0003 25       		.uleb128 0x25
+ 1448 0004 0E       		.uleb128 0xe
+ 1449 0005 13       		.uleb128 0x13
+ 1450 0006 0B       		.uleb128 0xb
+ 1451 0007 03       		.uleb128 0x3
+ 1452 0008 0E       		.uleb128 0xe
+ 1453 0009 1B       		.uleb128 0x1b
+ 1454 000a 0E       		.uleb128 0xe
+ 1455 000b 55       		.uleb128 0x55
+ 1456 000c 17       		.uleb128 0x17
+ 1457 000d 11       		.uleb128 0x11
+ 1458 000e 01       		.uleb128 0x1
+ 1459 000f 10       		.uleb128 0x10
+ 1460 0010 17       		.uleb128 0x17
+ 1461 0011 00       		.byte	0
+ 1462 0012 00       		.byte	0
+ 1463 0013 02       		.uleb128 0x2
+ 1464 0014 24       		.uleb128 0x24
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cceP5T5y.s 			page 31
+
+
+ 1465 0015 00       		.byte	0
+ 1466 0016 0B       		.uleb128 0xb
+ 1467 0017 0B       		.uleb128 0xb
+ 1468 0018 3E       		.uleb128 0x3e
+ 1469 0019 0B       		.uleb128 0xb
+ 1470 001a 03       		.uleb128 0x3
+ 1471 001b 0E       		.uleb128 0xe
+ 1472 001c 00       		.byte	0
+ 1473 001d 00       		.byte	0
+ 1474 001e 03       		.uleb128 0x3
+ 1475 001f 24       		.uleb128 0x24
+ 1476 0020 00       		.byte	0
+ 1477 0021 0B       		.uleb128 0xb
+ 1478 0022 0B       		.uleb128 0xb
+ 1479 0023 3E       		.uleb128 0x3e
+ 1480 0024 0B       		.uleb128 0xb
+ 1481 0025 03       		.uleb128 0x3
+ 1482 0026 08       		.uleb128 0x8
+ 1483 0027 00       		.byte	0
+ 1484 0028 00       		.byte	0
+ 1485 0029 04       		.uleb128 0x4
+ 1486 002a 16       		.uleb128 0x16
+ 1487 002b 00       		.byte	0
+ 1488 002c 03       		.uleb128 0x3
+ 1489 002d 0E       		.uleb128 0xe
+ 1490 002e 3A       		.uleb128 0x3a
+ 1491 002f 0B       		.uleb128 0xb
+ 1492 0030 3B       		.uleb128 0x3b
+ 1493 0031 0B       		.uleb128 0xb
+ 1494 0032 49       		.uleb128 0x49
+ 1495 0033 13       		.uleb128 0x13
+ 1496 0034 00       		.byte	0
+ 1497 0035 00       		.byte	0
+ 1498 0036 05       		.uleb128 0x5
+ 1499 0037 13       		.uleb128 0x13
+ 1500 0038 01       		.byte	0x1
+ 1501 0039 03       		.uleb128 0x3
+ 1502 003a 0E       		.uleb128 0xe
+ 1503 003b 0B       		.uleb128 0xb
+ 1504 003c 0B       		.uleb128 0xb
+ 1505 003d 3A       		.uleb128 0x3a
+ 1506 003e 0B       		.uleb128 0xb
+ 1507 003f 3B       		.uleb128 0x3b
+ 1508 0040 0B       		.uleb128 0xb
+ 1509 0041 01       		.uleb128 0x1
+ 1510 0042 13       		.uleb128 0x13
+ 1511 0043 00       		.byte	0
+ 1512 0044 00       		.byte	0
+ 1513 0045 06       		.uleb128 0x6
+ 1514 0046 0D       		.uleb128 0xd
+ 1515 0047 00       		.byte	0
+ 1516 0048 03       		.uleb128 0x3
+ 1517 0049 0E       		.uleb128 0xe
+ 1518 004a 3A       		.uleb128 0x3a
+ 1519 004b 0B       		.uleb128 0xb
+ 1520 004c 3B       		.uleb128 0x3b
+ 1521 004d 0B       		.uleb128 0xb
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cceP5T5y.s 			page 32
+
+
+ 1522 004e 49       		.uleb128 0x49
+ 1523 004f 13       		.uleb128 0x13
+ 1524 0050 38       		.uleb128 0x38
+ 1525 0051 0B       		.uleb128 0xb
+ 1526 0052 00       		.byte	0
+ 1527 0053 00       		.byte	0
+ 1528 0054 07       		.uleb128 0x7
+ 1529 0055 2E       		.uleb128 0x2e
+ 1530 0056 01       		.byte	0x1
+ 1531 0057 3F       		.uleb128 0x3f
+ 1532 0058 19       		.uleb128 0x19
+ 1533 0059 03       		.uleb128 0x3
+ 1534 005a 0E       		.uleb128 0xe
+ 1535 005b 3A       		.uleb128 0x3a
+ 1536 005c 0B       		.uleb128 0xb
+ 1537 005d 3B       		.uleb128 0x3b
+ 1538 005e 0B       		.uleb128 0xb
+ 1539 005f 27       		.uleb128 0x27
+ 1540 0060 19       		.uleb128 0x19
+ 1541 0061 20       		.uleb128 0x20
+ 1542 0062 0B       		.uleb128 0xb
+ 1543 0063 01       		.uleb128 0x1
+ 1544 0064 13       		.uleb128 0x13
+ 1545 0065 00       		.byte	0
+ 1546 0066 00       		.byte	0
+ 1547 0067 08       		.uleb128 0x8
+ 1548 0068 05       		.uleb128 0x5
+ 1549 0069 00       		.byte	0
+ 1550 006a 03       		.uleb128 0x3
+ 1551 006b 0E       		.uleb128 0xe
+ 1552 006c 3A       		.uleb128 0x3a
+ 1553 006d 0B       		.uleb128 0xb
+ 1554 006e 3B       		.uleb128 0x3b
+ 1555 006f 0B       		.uleb128 0xb
+ 1556 0070 49       		.uleb128 0x49
+ 1557 0071 13       		.uleb128 0x13
+ 1558 0072 00       		.byte	0
+ 1559 0073 00       		.byte	0
+ 1560 0074 09       		.uleb128 0x9
+ 1561 0075 2E       		.uleb128 0x2e
+ 1562 0076 01       		.byte	0x1
+ 1563 0077 3F       		.uleb128 0x3f
+ 1564 0078 19       		.uleb128 0x19
+ 1565 0079 03       		.uleb128 0x3
+ 1566 007a 0E       		.uleb128 0xe
+ 1567 007b 3A       		.uleb128 0x3a
+ 1568 007c 0B       		.uleb128 0xb
+ 1569 007d 3B       		.uleb128 0x3b
+ 1570 007e 0B       		.uleb128 0xb
+ 1571 007f 27       		.uleb128 0x27
+ 1572 0080 19       		.uleb128 0x19
+ 1573 0081 11       		.uleb128 0x11
+ 1574 0082 01       		.uleb128 0x1
+ 1575 0083 12       		.uleb128 0x12
+ 1576 0084 06       		.uleb128 0x6
+ 1577 0085 40       		.uleb128 0x40
+ 1578 0086 18       		.uleb128 0x18
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cceP5T5y.s 			page 33
+
+
+ 1579 0087 9742     		.uleb128 0x2117
+ 1580 0089 19       		.uleb128 0x19
+ 1581 008a 01       		.uleb128 0x1
+ 1582 008b 13       		.uleb128 0x13
+ 1583 008c 00       		.byte	0
+ 1584 008d 00       		.byte	0
+ 1585 008e 0A       		.uleb128 0xa
+ 1586 008f 05       		.uleb128 0x5
+ 1587 0090 00       		.byte	0
+ 1588 0091 03       		.uleb128 0x3
+ 1589 0092 0E       		.uleb128 0xe
+ 1590 0093 3A       		.uleb128 0x3a
+ 1591 0094 0B       		.uleb128 0xb
+ 1592 0095 3B       		.uleb128 0x3b
+ 1593 0096 0B       		.uleb128 0xb
+ 1594 0097 49       		.uleb128 0x49
+ 1595 0098 13       		.uleb128 0x13
+ 1596 0099 02       		.uleb128 0x2
+ 1597 009a 17       		.uleb128 0x17
+ 1598 009b 00       		.byte	0
+ 1599 009c 00       		.byte	0
+ 1600 009d 0B       		.uleb128 0xb
+ 1601 009e 898201   		.uleb128 0x4109
+ 1602 00a1 01       		.byte	0x1
+ 1603 00a2 11       		.uleb128 0x11
+ 1604 00a3 01       		.uleb128 0x1
+ 1605 00a4 31       		.uleb128 0x31
+ 1606 00a5 13       		.uleb128 0x13
+ 1607 00a6 00       		.byte	0
+ 1608 00a7 00       		.byte	0
+ 1609 00a8 0C       		.uleb128 0xc
+ 1610 00a9 8A8201   		.uleb128 0x410a
+ 1611 00ac 00       		.byte	0
+ 1612 00ad 02       		.uleb128 0x2
+ 1613 00ae 18       		.uleb128 0x18
+ 1614 00af 9142     		.uleb128 0x2111
+ 1615 00b1 18       		.uleb128 0x18
+ 1616 00b2 00       		.byte	0
+ 1617 00b3 00       		.byte	0
+ 1618 00b4 0D       		.uleb128 0xd
+ 1619 00b5 2E       		.uleb128 0x2e
+ 1620 00b6 01       		.byte	0x1
+ 1621 00b7 3F       		.uleb128 0x3f
+ 1622 00b8 19       		.uleb128 0x19
+ 1623 00b9 03       		.uleb128 0x3
+ 1624 00ba 0E       		.uleb128 0xe
+ 1625 00bb 3A       		.uleb128 0x3a
+ 1626 00bc 0B       		.uleb128 0xb
+ 1627 00bd 3B       		.uleb128 0x3b
+ 1628 00be 0B       		.uleb128 0xb
+ 1629 00bf 27       		.uleb128 0x27
+ 1630 00c0 19       		.uleb128 0x19
+ 1631 00c1 49       		.uleb128 0x49
+ 1632 00c2 13       		.uleb128 0x13
+ 1633 00c3 20       		.uleb128 0x20
+ 1634 00c4 0B       		.uleb128 0xb
+ 1635 00c5 01       		.uleb128 0x1
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cceP5T5y.s 			page 34
+
+
+ 1636 00c6 13       		.uleb128 0x13
+ 1637 00c7 00       		.byte	0
+ 1638 00c8 00       		.byte	0
+ 1639 00c9 0E       		.uleb128 0xe
+ 1640 00ca 2E       		.uleb128 0x2e
+ 1641 00cb 01       		.byte	0x1
+ 1642 00cc 31       		.uleb128 0x31
+ 1643 00cd 13       		.uleb128 0x13
+ 1644 00ce 11       		.uleb128 0x11
+ 1645 00cf 01       		.uleb128 0x1
+ 1646 00d0 12       		.uleb128 0x12
+ 1647 00d1 06       		.uleb128 0x6
+ 1648 00d2 40       		.uleb128 0x40
+ 1649 00d3 18       		.uleb128 0x18
+ 1650 00d4 9742     		.uleb128 0x2117
+ 1651 00d6 19       		.uleb128 0x19
+ 1652 00d7 01       		.uleb128 0x1
+ 1653 00d8 13       		.uleb128 0x13
+ 1654 00d9 00       		.byte	0
+ 1655 00da 00       		.byte	0
+ 1656 00db 0F       		.uleb128 0xf
+ 1657 00dc 05       		.uleb128 0x5
+ 1658 00dd 00       		.byte	0
+ 1659 00de 31       		.uleb128 0x31
+ 1660 00df 13       		.uleb128 0x13
+ 1661 00e0 02       		.uleb128 0x2
+ 1662 00e1 17       		.uleb128 0x17
+ 1663 00e2 00       		.byte	0
+ 1664 00e3 00       		.byte	0
+ 1665 00e4 10       		.uleb128 0x10
+ 1666 00e5 2E       		.uleb128 0x2e
+ 1667 00e6 01       		.byte	0x1
+ 1668 00e7 3F       		.uleb128 0x3f
+ 1669 00e8 19       		.uleb128 0x19
+ 1670 00e9 03       		.uleb128 0x3
+ 1671 00ea 0E       		.uleb128 0xe
+ 1672 00eb 3A       		.uleb128 0x3a
+ 1673 00ec 0B       		.uleb128 0xb
+ 1674 00ed 3B       		.uleb128 0x3b
+ 1675 00ee 0B       		.uleb128 0xb
+ 1676 00ef 27       		.uleb128 0x27
+ 1677 00f0 19       		.uleb128 0x19
+ 1678 00f1 49       		.uleb128 0x49
+ 1679 00f2 13       		.uleb128 0x13
+ 1680 00f3 11       		.uleb128 0x11
+ 1681 00f4 01       		.uleb128 0x1
+ 1682 00f5 12       		.uleb128 0x12
+ 1683 00f6 06       		.uleb128 0x6
+ 1684 00f7 40       		.uleb128 0x40
+ 1685 00f8 18       		.uleb128 0x18
+ 1686 00f9 9742     		.uleb128 0x2117
+ 1687 00fb 19       		.uleb128 0x19
+ 1688 00fc 01       		.uleb128 0x1
+ 1689 00fd 13       		.uleb128 0x13
+ 1690 00fe 00       		.byte	0
+ 1691 00ff 00       		.byte	0
+ 1692 0100 11       		.uleb128 0x11
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cceP5T5y.s 			page 35
+
+
+ 1693 0101 1D       		.uleb128 0x1d
+ 1694 0102 01       		.byte	0x1
+ 1695 0103 31       		.uleb128 0x31
+ 1696 0104 13       		.uleb128 0x13
+ 1697 0105 11       		.uleb128 0x11
+ 1698 0106 01       		.uleb128 0x1
+ 1699 0107 12       		.uleb128 0x12
+ 1700 0108 06       		.uleb128 0x6
+ 1701 0109 58       		.uleb128 0x58
+ 1702 010a 0B       		.uleb128 0xb
+ 1703 010b 59       		.uleb128 0x59
+ 1704 010c 0B       		.uleb128 0xb
+ 1705 010d 01       		.uleb128 0x1
+ 1706 010e 13       		.uleb128 0x13
+ 1707 010f 00       		.byte	0
+ 1708 0110 00       		.byte	0
+ 1709 0111 12       		.uleb128 0x12
+ 1710 0112 898201   		.uleb128 0x4109
+ 1711 0115 01       		.byte	0x1
+ 1712 0116 11       		.uleb128 0x11
+ 1713 0117 01       		.uleb128 0x1
+ 1714 0118 31       		.uleb128 0x31
+ 1715 0119 13       		.uleb128 0x13
+ 1716 011a 01       		.uleb128 0x1
+ 1717 011b 13       		.uleb128 0x13
+ 1718 011c 00       		.byte	0
+ 1719 011d 00       		.byte	0
+ 1720 011e 13       		.uleb128 0x13
+ 1721 011f 898201   		.uleb128 0x4109
+ 1722 0122 00       		.byte	0
+ 1723 0123 11       		.uleb128 0x11
+ 1724 0124 01       		.uleb128 0x1
+ 1725 0125 31       		.uleb128 0x31
+ 1726 0126 13       		.uleb128 0x13
+ 1727 0127 00       		.byte	0
+ 1728 0128 00       		.byte	0
+ 1729 0129 14       		.uleb128 0x14
+ 1730 012a 0B       		.uleb128 0xb
+ 1731 012b 01       		.byte	0x1
+ 1732 012c 11       		.uleb128 0x11
+ 1733 012d 01       		.uleb128 0x1
+ 1734 012e 12       		.uleb128 0x12
+ 1735 012f 06       		.uleb128 0x6
+ 1736 0130 01       		.uleb128 0x1
+ 1737 0131 13       		.uleb128 0x13
+ 1738 0132 00       		.byte	0
+ 1739 0133 00       		.byte	0
+ 1740 0134 15       		.uleb128 0x15
+ 1741 0135 34       		.uleb128 0x34
+ 1742 0136 00       		.byte	0
+ 1743 0137 03       		.uleb128 0x3
+ 1744 0138 0E       		.uleb128 0xe
+ 1745 0139 3A       		.uleb128 0x3a
+ 1746 013a 0B       		.uleb128 0xb
+ 1747 013b 3B       		.uleb128 0x3b
+ 1748 013c 0B       		.uleb128 0xb
+ 1749 013d 49       		.uleb128 0x49
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cceP5T5y.s 			page 36
+
+
+ 1750 013e 13       		.uleb128 0x13
+ 1751 013f 3F       		.uleb128 0x3f
+ 1752 0140 19       		.uleb128 0x19
+ 1753 0141 02       		.uleb128 0x2
+ 1754 0142 18       		.uleb128 0x18
+ 1755 0143 00       		.byte	0
+ 1756 0144 00       		.byte	0
+ 1757 0145 16       		.uleb128 0x16
+ 1758 0146 35       		.uleb128 0x35
+ 1759 0147 00       		.byte	0
+ 1760 0148 49       		.uleb128 0x49
+ 1761 0149 13       		.uleb128 0x13
+ 1762 014a 00       		.byte	0
+ 1763 014b 00       		.byte	0
+ 1764 014c 17       		.uleb128 0x17
+ 1765 014d 2E       		.uleb128 0x2e
+ 1766 014e 01       		.byte	0x1
+ 1767 014f 3F       		.uleb128 0x3f
+ 1768 0150 19       		.uleb128 0x19
+ 1769 0151 03       		.uleb128 0x3
+ 1770 0152 0E       		.uleb128 0xe
+ 1771 0153 3A       		.uleb128 0x3a
+ 1772 0154 0B       		.uleb128 0xb
+ 1773 0155 3B       		.uleb128 0x3b
+ 1774 0156 0B       		.uleb128 0xb
+ 1775 0157 27       		.uleb128 0x27
+ 1776 0158 19       		.uleb128 0x19
+ 1777 0159 3C       		.uleb128 0x3c
+ 1778 015a 19       		.uleb128 0x19
+ 1779 015b 01       		.uleb128 0x1
+ 1780 015c 13       		.uleb128 0x13
+ 1781 015d 00       		.byte	0
+ 1782 015e 00       		.byte	0
+ 1783 015f 18       		.uleb128 0x18
+ 1784 0160 05       		.uleb128 0x5
+ 1785 0161 00       		.byte	0
+ 1786 0162 49       		.uleb128 0x49
+ 1787 0163 13       		.uleb128 0x13
+ 1788 0164 00       		.byte	0
+ 1789 0165 00       		.byte	0
+ 1790 0166 19       		.uleb128 0x19
+ 1791 0167 2E       		.uleb128 0x2e
+ 1792 0168 00       		.byte	0
+ 1793 0169 3F       		.uleb128 0x3f
+ 1794 016a 19       		.uleb128 0x19
+ 1795 016b 03       		.uleb128 0x3
+ 1796 016c 0E       		.uleb128 0xe
+ 1797 016d 3A       		.uleb128 0x3a
+ 1798 016e 0B       		.uleb128 0xb
+ 1799 016f 3B       		.uleb128 0x3b
+ 1800 0170 0B       		.uleb128 0xb
+ 1801 0171 27       		.uleb128 0x27
+ 1802 0172 19       		.uleb128 0x19
+ 1803 0173 3C       		.uleb128 0x3c
+ 1804 0174 19       		.uleb128 0x19
+ 1805 0175 00       		.byte	0
+ 1806 0176 00       		.byte	0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cceP5T5y.s 			page 37
+
+
+ 1807 0177 00       		.byte	0
+ 1808              		.section	.debug_loc,"",%progbits
+ 1809              	.Ldebug_loc0:
+ 1810              	.LLST0:
+ 1811 0000 00000000 		.4byte	.LVL0
+ 1812 0004 16000000 		.4byte	.LVL1
+ 1813 0008 0100     		.2byte	0x1
+ 1814 000a 50       		.byte	0x50
+ 1815 000b 16000000 		.4byte	.LVL1
+ 1816 000f 28000000 		.4byte	.LFE33
+ 1817 0013 0400     		.2byte	0x4
+ 1818 0015 F3       		.byte	0xf3
+ 1819 0016 01       		.uleb128 0x1
+ 1820 0017 50       		.byte	0x50
+ 1821 0018 9F       		.byte	0x9f
+ 1822 0019 00000000 		.4byte	0
+ 1823 001d 00000000 		.4byte	0
+ 1824              	.LLST1:
+ 1825 0021 00000000 		.4byte	.LVL0
+ 1826 0025 19000000 		.4byte	.LVL2-1
+ 1827 0029 0100     		.2byte	0x1
+ 1828 002b 51       		.byte	0x51
+ 1829 002c 19000000 		.4byte	.LVL2-1
+ 1830 0030 28000000 		.4byte	.LFE33
+ 1831 0034 0400     		.2byte	0x4
+ 1832 0036 F3       		.byte	0xf3
+ 1833 0037 01       		.uleb128 0x1
+ 1834 0038 51       		.byte	0x51
+ 1835 0039 9F       		.byte	0x9f
+ 1836 003a 00000000 		.4byte	0
+ 1837 003e 00000000 		.4byte	0
+ 1838              	.LLST2:
+ 1839 0042 00000000 		.4byte	.LVL3
+ 1840 0046 02000000 		.4byte	.LVL4
+ 1841 004a 0100     		.2byte	0x1
+ 1842 004c 50       		.byte	0x50
+ 1843 004d 02000000 		.4byte	.LVL4
+ 1844 0051 3C000000 		.4byte	.LFE34
+ 1845 0055 0400     		.2byte	0x4
+ 1846 0057 F3       		.byte	0xf3
+ 1847 0058 01       		.uleb128 0x1
+ 1848 0059 50       		.byte	0x50
+ 1849 005a 9F       		.byte	0x9f
+ 1850 005b 00000000 		.4byte	0
+ 1851 005f 00000000 		.4byte	0
+ 1852              	.LLST3:
+ 1853 0063 00000000 		.4byte	.LVL3
+ 1854 0067 1D000000 		.4byte	.LVL5-1
+ 1855 006b 0100     		.2byte	0x1
+ 1856 006d 51       		.byte	0x51
+ 1857 006e 1D000000 		.4byte	.LVL5-1
+ 1858 0072 22000000 		.4byte	.LVL6
+ 1859 0076 0400     		.2byte	0x4
+ 1860 0078 F3       		.byte	0xf3
+ 1861 0079 01       		.uleb128 0x1
+ 1862 007a 51       		.byte	0x51
+ 1863 007b 9F       		.byte	0x9f
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cceP5T5y.s 			page 38
+
+
+ 1864 007c 22000000 		.4byte	.LVL6
+ 1865 0080 28000000 		.4byte	.LVL7
+ 1866 0084 0100     		.2byte	0x1
+ 1867 0086 51       		.byte	0x51
+ 1868 0087 28000000 		.4byte	.LVL7
+ 1869 008b 3C000000 		.4byte	.LFE34
+ 1870 008f 0400     		.2byte	0x4
+ 1871 0091 F3       		.byte	0xf3
+ 1872 0092 01       		.uleb128 0x1
+ 1873 0093 51       		.byte	0x51
+ 1874 0094 9F       		.byte	0x9f
+ 1875 0095 00000000 		.4byte	0
+ 1876 0099 00000000 		.4byte	0
+ 1877              	.LLST4:
+ 1878 009d 00000000 		.4byte	.LVL8
+ 1879 00a1 10000000 		.4byte	.LVL9
+ 1880 00a5 0100     		.2byte	0x1
+ 1881 00a7 50       		.byte	0x50
+ 1882 00a8 10000000 		.4byte	.LVL9
+ 1883 00ac 14000000 		.4byte	.LVL10
+ 1884 00b0 0400     		.2byte	0x4
+ 1885 00b2 F3       		.byte	0xf3
+ 1886 00b3 01       		.uleb128 0x1
+ 1887 00b4 50       		.byte	0x50
+ 1888 00b5 9F       		.byte	0x9f
+ 1889 00b6 14000000 		.4byte	.LVL10
+ 1890 00ba 16000000 		.4byte	.LVL11
+ 1891 00be 0100     		.2byte	0x1
+ 1892 00c0 50       		.byte	0x50
+ 1893 00c1 16000000 		.4byte	.LVL11
+ 1894 00c5 20000000 		.4byte	.LFE35
+ 1895 00c9 0400     		.2byte	0x4
+ 1896 00cb F3       		.byte	0xf3
+ 1897 00cc 01       		.uleb128 0x1
+ 1898 00cd 50       		.byte	0x50
+ 1899 00ce 9F       		.byte	0x9f
+ 1900 00cf 00000000 		.4byte	0
+ 1901 00d3 00000000 		.4byte	0
+ 1902              	.LLST5:
+ 1903 00d7 00000000 		.4byte	.LVL12
+ 1904 00db 02000000 		.4byte	.LVL13
+ 1905 00df 0100     		.2byte	0x1
+ 1906 00e1 50       		.byte	0x50
+ 1907 00e2 02000000 		.4byte	.LVL13
+ 1908 00e6 3C000000 		.4byte	.LFE36
+ 1909 00ea 0400     		.2byte	0x4
+ 1910 00ec F3       		.byte	0xf3
+ 1911 00ed 01       		.uleb128 0x1
+ 1912 00ee 50       		.byte	0x50
+ 1913 00ef 9F       		.byte	0x9f
+ 1914 00f0 00000000 		.4byte	0
+ 1915 00f4 00000000 		.4byte	0
+ 1916              	.LLST6:
+ 1917 00f8 00000000 		.4byte	.LVL14
+ 1918 00fc 02000000 		.4byte	.LVL15
+ 1919 0100 0100     		.2byte	0x1
+ 1920 0102 50       		.byte	0x50
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cceP5T5y.s 			page 39
+
+
+ 1921 0103 02000000 		.4byte	.LVL15
+ 1922 0107 CC000000 		.4byte	.LFE37
+ 1923 010b 0400     		.2byte	0x4
+ 1924 010d F3       		.byte	0xf3
+ 1925 010e 01       		.uleb128 0x1
+ 1926 010f 50       		.byte	0x50
+ 1927 0110 9F       		.byte	0x9f
+ 1928 0111 00000000 		.4byte	0
+ 1929 0115 00000000 		.4byte	0
+ 1930              	.LLST7:
+ 1931 0119 12000000 		.4byte	.LVL16
+ 1932 011d 5C000000 		.4byte	.LVL24
+ 1933 0121 0200     		.2byte	0x2
+ 1934 0123 31       		.byte	0x31
+ 1935 0124 9F       		.byte	0x9f
+ 1936 0125 00000000 		.4byte	0
+ 1937 0129 00000000 		.4byte	0
+ 1938              	.LLST8:
+ 1939 012d 62000000 		.4byte	.LVL25
+ 1940 0131 AA000000 		.4byte	.LVL33
+ 1941 0135 0200     		.2byte	0x2
+ 1942 0137 32       		.byte	0x32
+ 1943 0138 9F       		.byte	0x9f
+ 1944 0139 00000000 		.4byte	0
+ 1945 013d 00000000 		.4byte	0
+ 1946              	.LLST9:
+ 1947 0141 00000000 		.4byte	.LVL37
+ 1948 0145 02000000 		.4byte	.LVL38
+ 1949 0149 0100     		.2byte	0x1
+ 1950 014b 50       		.byte	0x50
+ 1951 014c 02000000 		.4byte	.LVL38
+ 1952 0150 5A000000 		.4byte	.LFE38
+ 1953 0154 0400     		.2byte	0x4
+ 1954 0156 F3       		.byte	0xf3
+ 1955 0157 01       		.uleb128 0x1
+ 1956 0158 50       		.byte	0x50
+ 1957 0159 9F       		.byte	0x9f
+ 1958 015a 00000000 		.4byte	0
+ 1959 015e 00000000 		.4byte	0
+ 1960              	.LLST10:
+ 1961 0162 12000000 		.4byte	.LVL39
+ 1962 0166 26000000 		.4byte	.LVL43
+ 1963 016a 0200     		.2byte	0x2
+ 1964 016c 31       		.byte	0x31
+ 1965 016d 9F       		.byte	0x9f
+ 1966 016e 00000000 		.4byte	0
+ 1967 0172 00000000 		.4byte	0
+ 1968              	.LLST11:
+ 1969 0176 00000000 		.4byte	.LVL59
+ 1970 017a 07000000 		.4byte	.LVL60-1
+ 1971 017e 0100     		.2byte	0x1
+ 1972 0180 50       		.byte	0x50
+ 1973 0181 07000000 		.4byte	.LVL60-1
+ 1974 0185 1A000000 		.4byte	.LFE41
+ 1975 0189 0400     		.2byte	0x4
+ 1976 018b F3       		.byte	0xf3
+ 1977 018c 01       		.uleb128 0x1
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cceP5T5y.s 			page 40
+
+
+ 1978 018d 50       		.byte	0x50
+ 1979 018e 9F       		.byte	0x9f
+ 1980 018f 00000000 		.4byte	0
+ 1981 0193 00000000 		.4byte	0
+ 1982              		.section	.debug_aranges,"",%progbits
+ 1983 0000 5C000000 		.4byte	0x5c
+ 1984 0004 0200     		.2byte	0x2
+ 1985 0006 00000000 		.4byte	.Ldebug_info0
+ 1986 000a 04       		.byte	0x4
+ 1987 000b 00       		.byte	0
+ 1988 000c 0000     		.2byte	0
+ 1989 000e 0000     		.2byte	0
+ 1990 0010 00000000 		.4byte	.LFB33
+ 1991 0014 28000000 		.4byte	.LFE33-.LFB33
+ 1992 0018 00000000 		.4byte	.LFB34
+ 1993 001c 3C000000 		.4byte	.LFE34-.LFB34
+ 1994 0020 00000000 		.4byte	.LFB35
+ 1995 0024 20000000 		.4byte	.LFE35-.LFB35
+ 1996 0028 00000000 		.4byte	.LFB36
+ 1997 002c 3C000000 		.4byte	.LFE36-.LFB36
+ 1998 0030 00000000 		.4byte	.LFB37
+ 1999 0034 CC000000 		.4byte	.LFE37-.LFB37
+ 2000 0038 00000000 		.4byte	.LFB38
+ 2001 003c 5A000000 		.4byte	.LFE38-.LFB38
+ 2002 0040 00000000 		.4byte	.LFB39
+ 2003 0044 1C000000 		.4byte	.LFE39-.LFB39
+ 2004 0048 00000000 		.4byte	.LFB40
+ 2005 004c 1C000000 		.4byte	.LFE40-.LFB40
+ 2006 0050 00000000 		.4byte	.LFB41
+ 2007 0054 1A000000 		.4byte	.LFE41-.LFB41
+ 2008 0058 00000000 		.4byte	0
+ 2009 005c 00000000 		.4byte	0
+ 2010              		.section	.debug_ranges,"",%progbits
+ 2011              	.Ldebug_ranges0:
+ 2012 0000 00000000 		.4byte	.LFB33
+ 2013 0004 28000000 		.4byte	.LFE33
+ 2014 0008 00000000 		.4byte	.LFB34
+ 2015 000c 3C000000 		.4byte	.LFE34
+ 2016 0010 00000000 		.4byte	.LFB35
+ 2017 0014 20000000 		.4byte	.LFE35
+ 2018 0018 00000000 		.4byte	.LFB36
+ 2019 001c 3C000000 		.4byte	.LFE36
+ 2020 0020 00000000 		.4byte	.LFB37
+ 2021 0024 CC000000 		.4byte	.LFE37
+ 2022 0028 00000000 		.4byte	.LFB38
+ 2023 002c 5A000000 		.4byte	.LFE38
+ 2024 0030 00000000 		.4byte	.LFB39
+ 2025 0034 1C000000 		.4byte	.LFE39
+ 2026 0038 00000000 		.4byte	.LFB40
+ 2027 003c 1C000000 		.4byte	.LFE40
+ 2028 0040 00000000 		.4byte	.LFB41
+ 2029 0044 1A000000 		.4byte	.LFE41
+ 2030 0048 00000000 		.4byte	0
+ 2031 004c 00000000 		.4byte	0
+ 2032              		.section	.debug_line,"",%progbits
+ 2033              	.Ldebug_line0:
+ 2034 0000 F3010000 		.section	.debug_str,"MS",%progbits,1
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cceP5T5y.s 			page 41
+
+
+ 2034      0200F100 
+ 2034      00000201 
+ 2034      FB0E0D00 
+ 2034      01010101 
+ 2035              	.LASF24:
+ 2036 0000 4C656674 		.ascii	"Left_LED_State\000"
+ 2036      5F4C4544 
+ 2036      5F537461 
+ 2036      746500
+ 2037              	.LASF18:
+ 2038 000f 7365745F 		.ascii	"set_color\000"
+ 2038      636F6C6F 
+ 2038      7200
+ 2039              	.LASF26:
+ 2040 0019 49525F4C 		.ascii	"IR_LED_State\000"
+ 2040      45445F53 
+ 2040      74617465 
+ 2040      00
+ 2041              	.LASF15:
+ 2042 0026 5247425F 		.ascii	"RGB_LED_State\000"
+ 2042      4C45445F 
+ 2042      53746174 
+ 2042      6500
+ 2043              	.LASF28:
+ 2044 0034 7475726E 		.ascii	"turn_off\000"
+ 2044      5F6F6666 
+ 2044      00
+ 2045              	.LASF32:
+ 2046 003d 52696768 		.ascii	"Right_LED_Blue_Write\000"
+ 2046      745F4C45 
+ 2046      445F426C 
+ 2046      75655F57 
+ 2046      72697465 
+ 2047              	.LASF3:
+ 2048 0052 73686F72 		.ascii	"short unsigned int\000"
+ 2048      7420756E 
+ 2048      7369676E 
+ 2048      65642069 
+ 2048      6E7400
+ 2049              	.LASF19:
+ 2050 0065 7365745F 		.ascii	"set_status\000"
+ 2050      73746174 
+ 2050      757300
+ 2051              	.LASF13:
+ 2052 0070 73746174 		.ascii	"status\000"
+ 2052      757300
+ 2053              	.LASF25:
+ 2054 0077 52696768 		.ascii	"Right_LED_State\000"
+ 2054      745F4C45 
+ 2054      445F5374 
+ 2054      61746500 
+ 2055              	.LASF39:
+ 2056 0087 474E5520 		.ascii	"GNU C 4.8.4 20140526 (release) [ARM/embedded-4_8-br"
+ 2056      4320342E 
+ 2056      382E3420 
+ 2056      32303134 
+ 2056      30353236 
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cceP5T5y.s 			page 42
+
+
+ 2057 00ba 616E6368 		.ascii	"anch revision 211358] -mcpu=cortex-m0 -mthumb -g -O"
+ 2057      20726576 
+ 2057      6973696F 
+ 2057      6E203231 
+ 2057      31333538 
+ 2058 00ed 73202D66 		.ascii	"s -ffunction-sections\000"
+ 2058      66756E63 
+ 2058      74696F6E 
+ 2058      2D736563 
+ 2058      74696F6E 
+ 2059              	.LASF9:
+ 2060 0103 666C6F61 		.ascii	"float\000"
+ 2060      7400
+ 2061              	.LASF34:
+ 2062 0109 50574D5F 		.ascii	"PWM_Right_LED_Green_Start\000"
+ 2062      52696768 
+ 2062      745F4C45 
+ 2062      445F4772 
+ 2062      65656E5F 
+ 2063              	.LASF30:
+ 2064 0123 4C656674 		.ascii	"Left_LED_Blue_Write\000"
+ 2064      5F4C4544 
+ 2064      5F426C75 
+ 2064      655F5772 
+ 2064      69746500 
+ 2065              	.LASF5:
+ 2066 0137 6C6F6E67 		.ascii	"long unsigned int\000"
+ 2066      20756E73 
+ 2066      69676E65 
+ 2066      6420696E 
+ 2066      7400
+ 2067              	.LASF35:
+ 2068 0149 49525F4C 		.ascii	"IR_LED_Write\000"
+ 2068      45445F57 
+ 2068      72697465 
+ 2068      00
+ 2069              	.LASF42:
+ 2070 0156 75696E74 		.ascii	"uint8\000"
+ 2070      3800
+ 2071              	.LASF43:
+ 2072 015c 6765745F 		.ascii	"get_color\000"
+ 2072      636F6C6F 
+ 2072      7200
+ 2073              	.LASF21:
+ 2074 0166 7475726E 		.ascii	"turn_on_all_led\000"
+ 2074      5F6F6E5F 
+ 2074      616C6C5F 
+ 2074      6C656400 
+ 2075              	.LASF1:
+ 2076 0176 756E7369 		.ascii	"unsigned char\000"
+ 2076      676E6564 
+ 2076      20636861 
+ 2076      7200
+ 2077              	.LASF37:
+ 2078 0184 50574D5F 		.ascii	"PWM_Left_LED_Green_Stop\000"
+ 2078      4C656674 
+ 2078      5F4C4544 
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cceP5T5y.s 			page 43
+
+
+ 2078      5F477265 
+ 2078      656E5F53 
+ 2079              	.LASF10:
+ 2080 019c 646F7562 		.ascii	"double\000"
+ 2080      6C6500
+ 2081              	.LASF14:
+ 2082 01a3 636F6C6F 		.ascii	"color\000"
+ 2082      7200
+ 2083              	.LASF23:
+ 2084 01a9 696E6974 		.ascii	"init_led\000"
+ 2084      5F6C6564 
+ 2084      00
+ 2085              	.LASF38:
+ 2086 01b2 50574D5F 		.ascii	"PWM_Right_LED_Green_Stop\000"
+ 2086      52696768 
+ 2086      745F4C45 
+ 2086      445F4772 
+ 2086      65656E5F 
+ 2087              	.LASF8:
+ 2088 01cb 756E7369 		.ascii	"unsigned int\000"
+ 2088      676E6564 
+ 2088      20696E74 
+ 2088      00
+ 2089              	.LASF22:
+ 2090 01d8 7475726E 		.ascii	"turn_off_all_led\000"
+ 2090      5F6F6666 
+ 2090      5F616C6C 
+ 2090      5F6C6564 
+ 2090      00
+ 2091              	.LASF7:
+ 2092 01e9 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 2092      206C6F6E 
+ 2092      6720756E 
+ 2092      7369676E 
+ 2092      65642069 
+ 2093              	.LASF27:
+ 2094 0200 426F6172 		.ascii	"Board_LED_State\000"
+ 2094      645F4C45 
+ 2094      445F5374 
+ 2094      61746500 
+ 2095              	.LASF12:
+ 2096 0210 73697A65 		.ascii	"sizetype\000"
+ 2096      74797065 
+ 2096      00
+ 2097              	.LASF6:
+ 2098 0219 6C6F6E67 		.ascii	"long long int\000"
+ 2098      206C6F6E 
+ 2098      6720696E 
+ 2098      7400
+ 2099              	.LASF16:
+ 2100 0227 4C45445F 		.ascii	"LED_State\000"
+ 2100      53746174 
+ 2100      6500
+ 2101              	.LASF41:
+ 2102 0231 433A5C55 		.ascii	"C:\\Users\\Admin\\Desktop\\Volunteer Badge\\Volunte"
+ 2102      73657273 
+ 2102      5C41646D 
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cceP5T5y.s 			page 44
+
+
+ 2102      696E5C44 
+ 2102      65736B74 
+ 2103 025f 65725F42 		.ascii	"er_Badge.cydsn\000"
+ 2103      61646765 
+ 2103      2E637964 
+ 2103      736E00
+ 2104              	.LASF31:
+ 2105 026e 52696768 		.ascii	"Right_LED_Red_Write\000"
+ 2105      745F4C45 
+ 2105      445F5265 
+ 2105      645F5772 
+ 2105      69746500 
+ 2106              	.LASF2:
+ 2107 0282 73686F72 		.ascii	"short int\000"
+ 2107      7420696E 
+ 2107      7400
+ 2108              	.LASF29:
+ 2109 028c 4C656674 		.ascii	"Left_LED_Red_Write\000"
+ 2109      5F4C4544 
+ 2109      5F526564 
+ 2109      5F577269 
+ 2109      746500
+ 2110              	.LASF44:
+ 2111 029f 6765745F 		.ascii	"get_status\000"
+ 2111      73746174 
+ 2111      757300
+ 2112              	.LASF20:
+ 2113 02aa 7475726E 		.ascii	"turn_on\000"
+ 2113      5F6F6E00 
+ 2114              	.LASF4:
+ 2115 02b2 6C6F6E67 		.ascii	"long int\000"
+ 2115      20696E74 
+ 2115      00
+ 2116              	.LASF11:
+ 2117 02bb 63686172 		.ascii	"char\000"
+ 2117      00
+ 2118              	.LASF17:
+ 2119 02c0 6C65645F 		.ascii	"led_flag\000"
+ 2119      666C6167 
+ 2119      00
+ 2120              	.LASF0:
+ 2121 02c9 7369676E 		.ascii	"signed char\000"
+ 2121      65642063 
+ 2121      68617200 
+ 2122              	.LASF40:
+ 2123 02d5 2E5C6C69 		.ascii	".\\lightlib.c\000"
+ 2123      6768746C 
+ 2123      69622E63 
+ 2123      00
+ 2124              	.LASF33:
+ 2125 02e2 50574D5F 		.ascii	"PWM_Left_LED_Green_Start\000"
+ 2125      4C656674 
+ 2125      5F4C4544 
+ 2125      5F477265 
+ 2125      656E5F53 
+ 2126              	.LASF36:
+ 2127 02fb 426F6172 		.ascii	"Board_LED_Write\000"
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cceP5T5y.s 			page 45
+
+
+ 2127      645F4C45 
+ 2127      445F5772 
+ 2127      69746500 
+ 2128              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.8.4 20140526 (release) [ARM/embedded-4_8-br

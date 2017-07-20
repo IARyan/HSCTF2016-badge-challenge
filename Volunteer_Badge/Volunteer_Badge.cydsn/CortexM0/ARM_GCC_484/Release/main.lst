@@ -1,0 +1,1034 @@
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccVocxSu.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 4
+  10              		.eabi_attribute 34, 0
+  11              		.eabi_attribute 18, 4
+  12              		.code	16
+  13              		.file	"main.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.startup.main,"ax",%progbits
+  18              		.align	1
+  19              		.global	main
+  20              		.code	16
+  21              		.thumb_func
+  22              		.type	main, %function
+  23              	main:
+  24              	.LFB33:
+  25              		.file 1 ".\\main.c"
+   1:.\main.c      **** /* ========================================
+   2:.\main.c      ****  *
+   3:.\main.c      ****  * Red Badge source code. The volunteer badge
+   4:.\main.c      ****  * is used to send encoded morse code message.
+   5:.\main.c      ****  *
+   6:.\main.c      ****  * Author(s): Ryan Grandgenett <rmgrandgenett@unomaha.edu>
+   7:.\main.c      ****  *
+   8:.\main.c      ****  * Eye Color: Green
+   9:.\main.c      ****  * Serial: Print the morse code output
+  10:.\main.c      ****  *
+  11:.\main.c      ****  * Copyright Nullify, 2016
+  12:.\main.c      ****  * All Rights Reserved
+  13:.\main.c      ****  * UNPUBLISHED, LICENSED SOFTWARE.
+  14:.\main.c      ****  *
+  15:.\main.c      ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+  16:.\main.c      ****  * WHICH IS THE PROPERTY OF NULLIY.
+  17:.\main.c      ****  *
+  18:.\main.c      ****  * ========================================
+  19:.\main.c      **** */
+  20:.\main.c      **** #include <project.h>
+  21:.\main.c      **** #include <string.h>
+  22:.\main.c      **** #include <stdio.h>
+  23:.\main.c      **** #include "lightlib.h"
+  24:.\main.c      **** #include "togglelib.h"
+  25:.\main.c      **** #include "binary.h"
+  26:.\main.c      **** #include "state.h"
+  27:.\main.c      **** 
+  28:.\main.c      **** int main()
+  29:.\main.c      **** {
+  26              		.loc 1 29 0
+  27              		.cfi_startproc
+  28 0000 10B5     		push	{r4, lr}
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccVocxSu.s 			page 2
+
+
+  29              		.cfi_def_cfa_offset 8
+  30              		.cfi_offset 4, -8
+  31              		.cfi_offset 14, -4
+  30:.\main.c      ****     uint8 volunteer_sequance[MAX_SEQUENCE_SIZE] = {LEFT_TOGGLE, RIGHT_TOGGLE, LEFT_TOGGLE, RIGHT_TO
+  32              		.loc 1 30 0
+  33 0002 174C     		ldr	r4, .L9
+  29:.\main.c      **** {
+  34              		.loc 1 29 0
+  35 0004 8AB0     		sub	sp, sp, #40
+  36              		.cfi_def_cfa_offset 48
+  37              		.loc 1 30 0
+  38 0006 211C     		mov	r1, r4
+  39 0008 6846     		mov	r0, sp
+  40 000a 1422     		mov	r2, #20
+  41 000c FFF7FEFF 		bl	memcpy
+  42              	.LVL0:
+  31:.\main.c      ****     uint8 organizer_sequance[MAX_SEQUENCE_SIZE] = {RIGHT_TOGGLE, RIGHT_TOGGLE, RIGHT_TOGGLE, LEFT_T
+  43              		.loc 1 31 0
+  44 0010 211C     		mov	r1, r4
+  45 0012 1431     		add	r1, r1, #20
+  46 0014 05A8     		add	r0, sp, #20
+  47 0016 1422     		mov	r2, #20
+  48 0018 FFF7FEFF 		bl	memcpy
+  49              	.LVL1:
+  32:.\main.c      **** 
+  33:.\main.c      ****     /* Enable interrupts (needed for toggles and organizer PWRM) */
+  34:.\main.c      ****     CyGlobalIntEnable;
+  50              		.loc 1 34 0
+  51              	@ 34 ".\main.c" 1
+  52 001c 62B6     		CPSIE   i
+  53              	@ 0 "" 2
+  35:.\main.c      **** 
+  36:.\main.c      ****     /* Enable toggle buttons */
+  37:.\main.c      ****     enable_toggle_interrupts();
+  54              		.loc 1 37 0
+  55              		.code	16
+  56 001e FFF7FEFF 		bl	enable_toggle_interrupts
+  57              	.LVL2:
+  38:.\main.c      ****     
+  39:.\main.c      ****     /* Initialize LEDs to off and default color value */
+  40:.\main.c      ****     init_led(GREEN);
+  58              		.loc 1 40 0
+  59 0022 0420     		mov	r0, #4
+  60 0024 FFF7FEFF 		bl	init_led
+  61              	.LVL3:
+  41:.\main.c      ****     
+  42:.\main.c      ****     /* Set the toggle button magic sequences */
+  43:.\main.c      ****     init_magic_toggle_sequance(VOLUNTEER, volunteer_sequance);
+  62              		.loc 1 43 0
+  63 0028 0120     		mov	r0, #1
+  64 002a 6946     		mov	r1, sp
+  65 002c FFF7FEFF 		bl	init_magic_toggle_sequance
+  66              	.LVL4:
+  44:.\main.c      ****     init_magic_toggle_sequance(ORGANIZER, organizer_sequance);
+  67              		.loc 1 44 0
+  68 0030 0220     		mov	r0, #2
+  69 0032 05A9     		add	r1, sp, #20
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccVocxSu.s 			page 3
+
+
+  70 0034 FFF7FEFF 		bl	init_magic_toggle_sequance
+  71              	.LVL5:
+  45:.\main.c      ****     
+  46:.\main.c      ****     /* Set the default state to volunteer badge settings */
+  47:.\main.c      ****      badge_state = VOLUNTEER;
+  72              		.loc 1 47 0
+  73 0038 0A4B     		ldr	r3, .L9+4
+  74 003a 0122     		mov	r2, #1
+  75 003c 1A70     		strb	r2, [r3]
+  76 003e 1C1C     		mov	r4, r3
+  77              	.L6:
+  48:.\main.c      ****     
+  49:.\main.c      ****     for(;;)
+  50:.\main.c      ****     {  
+  51:.\main.c      ****         switch(badge_state) {
+  78              		.loc 1 51 0
+  79 0040 2378     		ldrb	r3, [r4]
+  80 0042 DBB2     		uxtb	r3, r3
+  81 0044 012B     		cmp	r3, #1
+  82 0046 04D0     		beq	.L4
+  83 0048 022B     		cmp	r3, #2
+  84 004a F9D1     		bne	.L6
+  52:.\main.c      ****         case VOLUNTEER:
+  53:.\main.c      ****             init_led(GREEN);
+  54:.\main.c      ****             binary_message("QL5EGTN5");   
+  55:.\main.c      ****         break;
+  56:.\main.c      ****         case ORGANIZER:
+  57:.\main.c      ****             CySysPmSleep();
+  85              		.loc 1 57 0
+  86 004c FFF7FEFF 		bl	CySysPmSleep
+  87              	.LVL6:
+  58:.\main.c      ****         break;
+  88              		.loc 1 58 0
+  89 0050 F6E7     		b	.L6
+  90              	.L4:
+  53:.\main.c      ****             init_led(GREEN);
+  91              		.loc 1 53 0
+  92 0052 0420     		mov	r0, #4
+  93 0054 FFF7FEFF 		bl	init_led
+  94              	.LVL7:
+  54:.\main.c      ****             binary_message("QL5EGTN5");   
+  95              		.loc 1 54 0
+  96 0058 0348     		ldr	r0, .L9+8
+  97 005a FFF7FEFF 		bl	binary_message
+  98              	.LVL8:
+  55:.\main.c      ****         break;
+  99              		.loc 1 55 0
+ 100 005e EFE7     		b	.L6
+ 101              	.L10:
+ 102              		.align	2
+ 103              	.L9:
+ 104 0060 00000000 		.word	.LANCHOR0
+ 105 0064 00000000 		.word	badge_state
+ 106 0068 00000000 		.word	.LC4
+ 107              		.cfi_endproc
+ 108              	.LFE33:
+ 109              		.size	main, .-main
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccVocxSu.s 			page 4
+
+
+ 110              		.section	.rodata
+ 111              		.set	.LANCHOR0,. + 0
+ 112              	.LC0:
+ 113 0000 01       		.byte	1
+ 114 0001 02       		.byte	2
+ 115 0002 01       		.byte	1
+ 116 0003 02       		.byte	2
+ 117 0004 02       		.byte	2
+ 118 0005 01       		.byte	1
+ 119 0006 01       		.byte	1
+ 120 0007 02       		.byte	2
+ 121 0008 01       		.byte	1
+ 122 0009 01       		.byte	1
+ 123 000a 02       		.byte	2
+ 124 000b 02       		.byte	2
+ 125 000c 01       		.byte	1
+ 126 000d 01       		.byte	1
+ 127 000e 01       		.byte	1
+ 128 000f 02       		.byte	2
+ 129 0010 01       		.byte	1
+ 130 0011 02       		.byte	2
+ 131 0012 02       		.byte	2
+ 132 0013 00       		.byte	0
+ 133              	.LC1:
+ 134 0014 02       		.byte	2
+ 135 0015 02       		.byte	2
+ 136 0016 02       		.byte	2
+ 137 0017 01       		.byte	1
+ 138 0018 01       		.byte	1
+ 139 0019 02       		.byte	2
+ 140 001a 02       		.byte	2
+ 141 001b 01       		.byte	1
+ 142 001c 01       		.byte	1
+ 143 001d 02       		.byte	2
+ 144 001e 02       		.byte	2
+ 145 001f 02       		.byte	2
+ 146 0020 01       		.byte	1
+ 147 0021 02       		.byte	2
+ 148 0022 02       		.byte	2
+ 149 0023 02       		.byte	2
+ 150 0024 02       		.byte	2
+ 151 0025 02       		.byte	2
+ 152 0026 01       		.byte	1
+ 153 0027 00       		.byte	0
+ 154              		.section	.rodata.str1.1,"aMS",%progbits,1
+ 155              	.LC4:
+ 156 0000 514C3545 		.ascii	"QL5EGTN5\000"
+ 156      47544E35 
+ 156      00
+ 157              		.text
+ 158              	.Letext0:
+ 159              		.file 2 ".\\lightlib.h"
+ 160              		.file 3 ".\\togglelib.h"
+ 161              		.file 4 ".\\binary.h"
+ 162              		.file 5 ".\\Generated_Source\\PSoC4/cytypes.h"
+ 163              		.file 6 ".\\state.h"
+ 164              		.file 7 ".\\Generated_Source\\PSoC4/cyPm.h"
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccVocxSu.s 			page 5
+
+
+ 165              		.section	.debug_info,"",%progbits
+ 166              	.Ldebug_info0:
+ 167 0000 1A020000 		.4byte	0x21a
+ 168 0004 0400     		.2byte	0x4
+ 169 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 170 000a 04       		.byte	0x4
+ 171 000b 01       		.uleb128 0x1
+ 172 000c 41010000 		.4byte	.LASF20
+ 173 0010 01       		.byte	0x1
+ 174 0011 D1010000 		.4byte	.LASF21
+ 175 0015 99000000 		.4byte	.LASF22
+ 176 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 177 001d 00000000 		.4byte	0
+ 178 0021 00000000 		.4byte	.Ldebug_line0
+ 179 0025 02       		.uleb128 0x2
+ 180 0026 01       		.byte	0x1
+ 181 0027 06       		.byte	0x6
+ 182 0028 15010000 		.4byte	.LASF0
+ 183 002c 02       		.uleb128 0x2
+ 184 002d 01       		.byte	0x1
+ 185 002e 08       		.byte	0x8
+ 186 002f D6000000 		.4byte	.LASF1
+ 187 0033 02       		.uleb128 0x2
+ 188 0034 02       		.byte	0x2
+ 189 0035 05       		.byte	0x5
+ 190 0036 78000000 		.4byte	.LASF2
+ 191 003a 02       		.uleb128 0x2
+ 192 003b 02       		.byte	0x2
+ 193 003c 07       		.byte	0x7
+ 194 003d 0E000000 		.4byte	.LASF3
+ 195 0041 02       		.uleb128 0x2
+ 196 0042 04       		.byte	0x4
+ 197 0043 05       		.byte	0x5
+ 198 0044 F8000000 		.4byte	.LASF4
+ 199 0048 02       		.uleb128 0x2
+ 200 0049 04       		.byte	0x4
+ 201 004a 07       		.byte	0x7
+ 202 004b 66000000 		.4byte	.LASF5
+ 203 004f 02       		.uleb128 0x2
+ 204 0050 08       		.byte	0x8
+ 205 0051 05       		.byte	0x5
+ 206 0052 00000000 		.4byte	.LASF6
+ 207 0056 02       		.uleb128 0x2
+ 208 0057 08       		.byte	0x8
+ 209 0058 07       		.byte	0x7
+ 210 0059 82000000 		.4byte	.LASF7
+ 211 005d 03       		.uleb128 0x3
+ 212 005e 04       		.byte	0x4
+ 213 005f 05       		.byte	0x5
+ 214 0060 696E7400 		.ascii	"int\000"
+ 215 0064 02       		.uleb128 0x2
+ 216 0065 04       		.byte	0x4
+ 217 0066 07       		.byte	0x7
+ 218 0067 21000000 		.4byte	.LASF8
+ 219 006b 04       		.uleb128 0x4
+ 220 006c 0F010000 		.4byte	.LASF23
+ 221 0070 05       		.byte	0x5
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccVocxSu.s 			page 6
+
+
+ 222 0071 A1       		.byte	0xa1
+ 223 0072 2C000000 		.4byte	0x2c
+ 224 0076 02       		.uleb128 0x2
+ 225 0077 04       		.byte	0x4
+ 226 0078 04       		.byte	0x4
+ 227 0079 CB010000 		.4byte	.LASF9
+ 228 007d 02       		.uleb128 0x2
+ 229 007e 08       		.byte	0x8
+ 230 007f 04       		.byte	0x4
+ 231 0080 01010000 		.4byte	.LASF10
+ 232 0084 02       		.uleb128 0x2
+ 233 0085 01       		.byte	0x1
+ 234 0086 08       		.byte	0x8
+ 235 0087 E4000000 		.4byte	.LASF11
+ 236 008b 05       		.uleb128 0x5
+ 237 008c 6B000000 		.4byte	0x6b
+ 238 0090 02       		.uleb128 0x2
+ 239 0091 04       		.byte	0x4
+ 240 0092 07       		.byte	0x7
+ 241 0093 F5010000 		.4byte	.LASF12
+ 242 0097 06       		.uleb128 0x6
+ 243 0098 04       		.byte	0x4
+ 244 0099 07       		.uleb128 0x7
+ 245 009a 04       		.byte	0x4
+ 246 009b 84000000 		.4byte	0x84
+ 247 009f 08       		.uleb128 0x8
+ 248 00a0 6B000000 		.4byte	0x6b
+ 249 00a4 AF000000 		.4byte	0xaf
+ 250 00a8 09       		.uleb128 0x9
+ 251 00a9 90000000 		.4byte	0x90
+ 252 00ad 13       		.byte	0x13
+ 253 00ae 00       		.byte	0
+ 254 00af 0A       		.uleb128 0xa
+ 255 00b0 C6010000 		.4byte	.LASF24
+ 256 00b4 01       		.byte	0x1
+ 257 00b5 1C       		.byte	0x1c
+ 258 00b6 5D000000 		.4byte	0x5d
+ 259 00ba 00000000 		.4byte	.LFB33
+ 260 00be 6C000000 		.4byte	.LFE33-.LFB33
+ 261 00c2 01       		.uleb128 0x1
+ 262 00c3 9C       		.byte	0x9c
+ 263 00c4 A0010000 		.4byte	0x1a0
+ 264 00c8 0B       		.uleb128 0xb
+ 265 00c9 53000000 		.4byte	.LASF13
+ 266 00cd 01       		.byte	0x1
+ 267 00ce 1E       		.byte	0x1e
+ 268 00cf 9F000000 		.4byte	0x9f
+ 269 00d3 02       		.uleb128 0x2
+ 270 00d4 91       		.byte	0x91
+ 271 00d5 50       		.sleb128 -48
+ 272 00d6 0B       		.uleb128 0xb
+ 273 00d7 21010000 		.4byte	.LASF14
+ 274 00db 01       		.byte	0x1
+ 275 00dc 1F       		.byte	0x1f
+ 276 00dd 9F000000 		.4byte	0x9f
+ 277 00e1 02       		.uleb128 0x2
+ 278 00e2 91       		.byte	0x91
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccVocxSu.s 			page 7
+
+
+ 279 00e3 64       		.sleb128 -28
+ 280 00e4 0C       		.uleb128 0xc
+ 281 00e5 10000000 		.4byte	.LVL0
+ 282 00e9 AB010000 		.4byte	0x1ab
+ 283 00ed 03010000 		.4byte	0x103
+ 284 00f1 0D       		.uleb128 0xd
+ 285 00f2 01       		.uleb128 0x1
+ 286 00f3 52       		.byte	0x52
+ 287 00f4 01       		.uleb128 0x1
+ 288 00f5 44       		.byte	0x44
+ 289 00f6 0D       		.uleb128 0xd
+ 290 00f7 01       		.uleb128 0x1
+ 291 00f8 51       		.byte	0x51
+ 292 00f9 02       		.uleb128 0x2
+ 293 00fa 74       		.byte	0x74
+ 294 00fb 00       		.sleb128 0
+ 295 00fc 0D       		.uleb128 0xd
+ 296 00fd 01       		.uleb128 0x1
+ 297 00fe 50       		.byte	0x50
+ 298 00ff 02       		.uleb128 0x2
+ 299 0100 7D       		.byte	0x7d
+ 300 0101 00       		.sleb128 0
+ 301 0102 00       		.byte	0
+ 302 0103 0C       		.uleb128 0xc
+ 303 0104 1C000000 		.4byte	.LVL1
+ 304 0108 AB010000 		.4byte	0x1ab
+ 305 010c 22010000 		.4byte	0x122
+ 306 0110 0D       		.uleb128 0xd
+ 307 0111 01       		.uleb128 0x1
+ 308 0112 52       		.byte	0x52
+ 309 0113 01       		.uleb128 0x1
+ 310 0114 44       		.byte	0x44
+ 311 0115 0D       		.uleb128 0xd
+ 312 0116 01       		.uleb128 0x1
+ 313 0117 51       		.byte	0x51
+ 314 0118 02       		.uleb128 0x2
+ 315 0119 74       		.byte	0x74
+ 316 011a 14       		.sleb128 20
+ 317 011b 0D       		.uleb128 0xd
+ 318 011c 01       		.uleb128 0x1
+ 319 011d 50       		.byte	0x50
+ 320 011e 02       		.uleb128 0x2
+ 321 011f 91       		.byte	0x91
+ 322 0120 64       		.sleb128 -28
+ 323 0121 00       		.byte	0
+ 324 0122 0E       		.uleb128 0xe
+ 325 0123 22000000 		.4byte	.LVL2
+ 326 0127 CF010000 		.4byte	0x1cf
+ 327 012b 0C       		.uleb128 0xc
+ 328 012c 28000000 		.4byte	.LVL3
+ 329 0130 DC010000 		.4byte	0x1dc
+ 330 0134 3E010000 		.4byte	0x13e
+ 331 0138 0D       		.uleb128 0xd
+ 332 0139 01       		.uleb128 0x1
+ 333 013a 50       		.byte	0x50
+ 334 013b 01       		.uleb128 0x1
+ 335 013c 34       		.byte	0x34
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccVocxSu.s 			page 8
+
+
+ 336 013d 00       		.byte	0
+ 337 013e 0C       		.uleb128 0xc
+ 338 013f 30000000 		.4byte	.LVL4
+ 339 0143 ED010000 		.4byte	0x1ed
+ 340 0147 57010000 		.4byte	0x157
+ 341 014b 0D       		.uleb128 0xd
+ 342 014c 01       		.uleb128 0x1
+ 343 014d 51       		.byte	0x51
+ 344 014e 02       		.uleb128 0x2
+ 345 014f 7D       		.byte	0x7d
+ 346 0150 00       		.sleb128 0
+ 347 0151 0D       		.uleb128 0xd
+ 348 0152 01       		.uleb128 0x1
+ 349 0153 50       		.byte	0x50
+ 350 0154 01       		.uleb128 0x1
+ 351 0155 31       		.byte	0x31
+ 352 0156 00       		.byte	0
+ 353 0157 0C       		.uleb128 0xc
+ 354 0158 38000000 		.4byte	.LVL5
+ 355 015c ED010000 		.4byte	0x1ed
+ 356 0160 70010000 		.4byte	0x170
+ 357 0164 0D       		.uleb128 0xd
+ 358 0165 01       		.uleb128 0x1
+ 359 0166 51       		.byte	0x51
+ 360 0167 02       		.uleb128 0x2
+ 361 0168 91       		.byte	0x91
+ 362 0169 64       		.sleb128 -28
+ 363 016a 0D       		.uleb128 0xd
+ 364 016b 01       		.uleb128 0x1
+ 365 016c 50       		.byte	0x50
+ 366 016d 01       		.uleb128 0x1
+ 367 016e 32       		.byte	0x32
+ 368 016f 00       		.byte	0
+ 369 0170 0E       		.uleb128 0xe
+ 370 0171 50000000 		.4byte	.LVL6
+ 371 0175 09020000 		.4byte	0x209
+ 372 0179 0C       		.uleb128 0xc
+ 373 017a 58000000 		.4byte	.LVL7
+ 374 017e DC010000 		.4byte	0x1dc
+ 375 0182 8C010000 		.4byte	0x18c
+ 376 0186 0D       		.uleb128 0xd
+ 377 0187 01       		.uleb128 0x1
+ 378 0188 50       		.byte	0x50
+ 379 0189 01       		.uleb128 0x1
+ 380 018a 34       		.byte	0x34
+ 381 018b 00       		.byte	0
+ 382 018c 0F       		.uleb128 0xf
+ 383 018d 5E000000 		.4byte	.LVL8
+ 384 0191 10020000 		.4byte	0x210
+ 385 0195 0D       		.uleb128 0xd
+ 386 0196 01       		.uleb128 0x1
+ 387 0197 50       		.byte	0x50
+ 388 0198 05       		.uleb128 0x5
+ 389 0199 03       		.byte	0x3
+ 390 019a 00000000 		.4byte	.LC4
+ 391 019e 00       		.byte	0
+ 392 019f 00       		.byte	0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccVocxSu.s 			page 9
+
+
+ 393 01a0 10       		.uleb128 0x10
+ 394 01a1 47000000 		.4byte	.LASF25
+ 395 01a5 06       		.byte	0x6
+ 396 01a6 15       		.byte	0x15
+ 397 01a7 8B000000 		.4byte	0x8b
+ 398 01ab 11       		.uleb128 0x11
+ 399 01ac 08010000 		.4byte	.LASF15
+ 400 01b0 97000000 		.4byte	0x97
+ 401 01b4 C8010000 		.4byte	0x1c8
+ 402 01b8 12       		.uleb128 0x12
+ 403 01b9 97000000 		.4byte	0x97
+ 404 01bd 12       		.uleb128 0x12
+ 405 01be C8010000 		.4byte	0x1c8
+ 406 01c2 12       		.uleb128 0x12
+ 407 01c3 90000000 		.4byte	0x90
+ 408 01c7 00       		.byte	0
+ 409 01c8 07       		.uleb128 0x7
+ 410 01c9 04       		.byte	0x4
+ 411 01ca CE010000 		.4byte	0x1ce
+ 412 01ce 13       		.uleb128 0x13
+ 413 01cf 14       		.uleb128 0x14
+ 414 01d0 2E000000 		.4byte	.LASF18
+ 415 01d4 03       		.byte	0x3
+ 416 01d5 28       		.byte	0x28
+ 417 01d6 DC010000 		.4byte	0x1dc
+ 418 01da 15       		.uleb128 0x15
+ 419 01db 00       		.byte	0
+ 420 01dc 16       		.uleb128 0x16
+ 421 01dd BD010000 		.4byte	.LASF16
+ 422 01e1 02       		.byte	0x2
+ 423 01e2 3F       		.byte	0x3f
+ 424 01e3 ED010000 		.4byte	0x1ed
+ 425 01e7 12       		.uleb128 0x12
+ 426 01e8 6B000000 		.4byte	0x6b
+ 427 01ec 00       		.byte	0
+ 428 01ed 16       		.uleb128 0x16
+ 429 01ee DA010000 		.4byte	.LASF17
+ 430 01f2 03       		.byte	0x3
+ 431 01f3 23       		.byte	0x23
+ 432 01f4 03020000 		.4byte	0x203
+ 433 01f8 12       		.uleb128 0x12
+ 434 01f9 6B000000 		.4byte	0x6b
+ 435 01fd 12       		.uleb128 0x12
+ 436 01fe 03020000 		.4byte	0x203
+ 437 0202 00       		.byte	0
+ 438 0203 07       		.uleb128 0x7
+ 439 0204 04       		.byte	0x4
+ 440 0205 6B000000 		.4byte	0x6b
+ 441 0209 17       		.uleb128 0x17
+ 442 020a 34010000 		.4byte	.LASF26
+ 443 020e 07       		.byte	0x7
+ 444 020f 1C       		.byte	0x1c
+ 445 0210 18       		.uleb128 0x18
+ 446 0211 E9000000 		.4byte	.LASF19
+ 447 0215 04       		.byte	0x4
+ 448 0216 1B       		.byte	0x1b
+ 449 0217 12       		.uleb128 0x12
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccVocxSu.s 			page 10
+
+
+ 450 0218 99000000 		.4byte	0x99
+ 451 021c 00       		.byte	0
+ 452 021d 00       		.byte	0
+ 453              		.section	.debug_abbrev,"",%progbits
+ 454              	.Ldebug_abbrev0:
+ 455 0000 01       		.uleb128 0x1
+ 456 0001 11       		.uleb128 0x11
+ 457 0002 01       		.byte	0x1
+ 458 0003 25       		.uleb128 0x25
+ 459 0004 0E       		.uleb128 0xe
+ 460 0005 13       		.uleb128 0x13
+ 461 0006 0B       		.uleb128 0xb
+ 462 0007 03       		.uleb128 0x3
+ 463 0008 0E       		.uleb128 0xe
+ 464 0009 1B       		.uleb128 0x1b
+ 465 000a 0E       		.uleb128 0xe
+ 466 000b 55       		.uleb128 0x55
+ 467 000c 17       		.uleb128 0x17
+ 468 000d 11       		.uleb128 0x11
+ 469 000e 01       		.uleb128 0x1
+ 470 000f 10       		.uleb128 0x10
+ 471 0010 17       		.uleb128 0x17
+ 472 0011 00       		.byte	0
+ 473 0012 00       		.byte	0
+ 474 0013 02       		.uleb128 0x2
+ 475 0014 24       		.uleb128 0x24
+ 476 0015 00       		.byte	0
+ 477 0016 0B       		.uleb128 0xb
+ 478 0017 0B       		.uleb128 0xb
+ 479 0018 3E       		.uleb128 0x3e
+ 480 0019 0B       		.uleb128 0xb
+ 481 001a 03       		.uleb128 0x3
+ 482 001b 0E       		.uleb128 0xe
+ 483 001c 00       		.byte	0
+ 484 001d 00       		.byte	0
+ 485 001e 03       		.uleb128 0x3
+ 486 001f 24       		.uleb128 0x24
+ 487 0020 00       		.byte	0
+ 488 0021 0B       		.uleb128 0xb
+ 489 0022 0B       		.uleb128 0xb
+ 490 0023 3E       		.uleb128 0x3e
+ 491 0024 0B       		.uleb128 0xb
+ 492 0025 03       		.uleb128 0x3
+ 493 0026 08       		.uleb128 0x8
+ 494 0027 00       		.byte	0
+ 495 0028 00       		.byte	0
+ 496 0029 04       		.uleb128 0x4
+ 497 002a 16       		.uleb128 0x16
+ 498 002b 00       		.byte	0
+ 499 002c 03       		.uleb128 0x3
+ 500 002d 0E       		.uleb128 0xe
+ 501 002e 3A       		.uleb128 0x3a
+ 502 002f 0B       		.uleb128 0xb
+ 503 0030 3B       		.uleb128 0x3b
+ 504 0031 0B       		.uleb128 0xb
+ 505 0032 49       		.uleb128 0x49
+ 506 0033 13       		.uleb128 0x13
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccVocxSu.s 			page 11
+
+
+ 507 0034 00       		.byte	0
+ 508 0035 00       		.byte	0
+ 509 0036 05       		.uleb128 0x5
+ 510 0037 35       		.uleb128 0x35
+ 511 0038 00       		.byte	0
+ 512 0039 49       		.uleb128 0x49
+ 513 003a 13       		.uleb128 0x13
+ 514 003b 00       		.byte	0
+ 515 003c 00       		.byte	0
+ 516 003d 06       		.uleb128 0x6
+ 517 003e 0F       		.uleb128 0xf
+ 518 003f 00       		.byte	0
+ 519 0040 0B       		.uleb128 0xb
+ 520 0041 0B       		.uleb128 0xb
+ 521 0042 00       		.byte	0
+ 522 0043 00       		.byte	0
+ 523 0044 07       		.uleb128 0x7
+ 524 0045 0F       		.uleb128 0xf
+ 525 0046 00       		.byte	0
+ 526 0047 0B       		.uleb128 0xb
+ 527 0048 0B       		.uleb128 0xb
+ 528 0049 49       		.uleb128 0x49
+ 529 004a 13       		.uleb128 0x13
+ 530 004b 00       		.byte	0
+ 531 004c 00       		.byte	0
+ 532 004d 08       		.uleb128 0x8
+ 533 004e 01       		.uleb128 0x1
+ 534 004f 01       		.byte	0x1
+ 535 0050 49       		.uleb128 0x49
+ 536 0051 13       		.uleb128 0x13
+ 537 0052 01       		.uleb128 0x1
+ 538 0053 13       		.uleb128 0x13
+ 539 0054 00       		.byte	0
+ 540 0055 00       		.byte	0
+ 541 0056 09       		.uleb128 0x9
+ 542 0057 21       		.uleb128 0x21
+ 543 0058 00       		.byte	0
+ 544 0059 49       		.uleb128 0x49
+ 545 005a 13       		.uleb128 0x13
+ 546 005b 2F       		.uleb128 0x2f
+ 547 005c 0B       		.uleb128 0xb
+ 548 005d 00       		.byte	0
+ 549 005e 00       		.byte	0
+ 550 005f 0A       		.uleb128 0xa
+ 551 0060 2E       		.uleb128 0x2e
+ 552 0061 01       		.byte	0x1
+ 553 0062 3F       		.uleb128 0x3f
+ 554 0063 19       		.uleb128 0x19
+ 555 0064 03       		.uleb128 0x3
+ 556 0065 0E       		.uleb128 0xe
+ 557 0066 3A       		.uleb128 0x3a
+ 558 0067 0B       		.uleb128 0xb
+ 559 0068 3B       		.uleb128 0x3b
+ 560 0069 0B       		.uleb128 0xb
+ 561 006a 49       		.uleb128 0x49
+ 562 006b 13       		.uleb128 0x13
+ 563 006c 11       		.uleb128 0x11
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccVocxSu.s 			page 12
+
+
+ 564 006d 01       		.uleb128 0x1
+ 565 006e 12       		.uleb128 0x12
+ 566 006f 06       		.uleb128 0x6
+ 567 0070 40       		.uleb128 0x40
+ 568 0071 18       		.uleb128 0x18
+ 569 0072 9742     		.uleb128 0x2117
+ 570 0074 19       		.uleb128 0x19
+ 571 0075 01       		.uleb128 0x1
+ 572 0076 13       		.uleb128 0x13
+ 573 0077 00       		.byte	0
+ 574 0078 00       		.byte	0
+ 575 0079 0B       		.uleb128 0xb
+ 576 007a 34       		.uleb128 0x34
+ 577 007b 00       		.byte	0
+ 578 007c 03       		.uleb128 0x3
+ 579 007d 0E       		.uleb128 0xe
+ 580 007e 3A       		.uleb128 0x3a
+ 581 007f 0B       		.uleb128 0xb
+ 582 0080 3B       		.uleb128 0x3b
+ 583 0081 0B       		.uleb128 0xb
+ 584 0082 49       		.uleb128 0x49
+ 585 0083 13       		.uleb128 0x13
+ 586 0084 02       		.uleb128 0x2
+ 587 0085 18       		.uleb128 0x18
+ 588 0086 00       		.byte	0
+ 589 0087 00       		.byte	0
+ 590 0088 0C       		.uleb128 0xc
+ 591 0089 898201   		.uleb128 0x4109
+ 592 008c 01       		.byte	0x1
+ 593 008d 11       		.uleb128 0x11
+ 594 008e 01       		.uleb128 0x1
+ 595 008f 31       		.uleb128 0x31
+ 596 0090 13       		.uleb128 0x13
+ 597 0091 01       		.uleb128 0x1
+ 598 0092 13       		.uleb128 0x13
+ 599 0093 00       		.byte	0
+ 600 0094 00       		.byte	0
+ 601 0095 0D       		.uleb128 0xd
+ 602 0096 8A8201   		.uleb128 0x410a
+ 603 0099 00       		.byte	0
+ 604 009a 02       		.uleb128 0x2
+ 605 009b 18       		.uleb128 0x18
+ 606 009c 9142     		.uleb128 0x2111
+ 607 009e 18       		.uleb128 0x18
+ 608 009f 00       		.byte	0
+ 609 00a0 00       		.byte	0
+ 610 00a1 0E       		.uleb128 0xe
+ 611 00a2 898201   		.uleb128 0x4109
+ 612 00a5 00       		.byte	0
+ 613 00a6 11       		.uleb128 0x11
+ 614 00a7 01       		.uleb128 0x1
+ 615 00a8 31       		.uleb128 0x31
+ 616 00a9 13       		.uleb128 0x13
+ 617 00aa 00       		.byte	0
+ 618 00ab 00       		.byte	0
+ 619 00ac 0F       		.uleb128 0xf
+ 620 00ad 898201   		.uleb128 0x4109
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccVocxSu.s 			page 13
+
+
+ 621 00b0 01       		.byte	0x1
+ 622 00b1 11       		.uleb128 0x11
+ 623 00b2 01       		.uleb128 0x1
+ 624 00b3 31       		.uleb128 0x31
+ 625 00b4 13       		.uleb128 0x13
+ 626 00b5 00       		.byte	0
+ 627 00b6 00       		.byte	0
+ 628 00b7 10       		.uleb128 0x10
+ 629 00b8 34       		.uleb128 0x34
+ 630 00b9 00       		.byte	0
+ 631 00ba 03       		.uleb128 0x3
+ 632 00bb 0E       		.uleb128 0xe
+ 633 00bc 3A       		.uleb128 0x3a
+ 634 00bd 0B       		.uleb128 0xb
+ 635 00be 3B       		.uleb128 0x3b
+ 636 00bf 0B       		.uleb128 0xb
+ 637 00c0 49       		.uleb128 0x49
+ 638 00c1 13       		.uleb128 0x13
+ 639 00c2 3F       		.uleb128 0x3f
+ 640 00c3 19       		.uleb128 0x19
+ 641 00c4 3C       		.uleb128 0x3c
+ 642 00c5 19       		.uleb128 0x19
+ 643 00c6 00       		.byte	0
+ 644 00c7 00       		.byte	0
+ 645 00c8 11       		.uleb128 0x11
+ 646 00c9 2E       		.uleb128 0x2e
+ 647 00ca 01       		.byte	0x1
+ 648 00cb 3F       		.uleb128 0x3f
+ 649 00cc 19       		.uleb128 0x19
+ 650 00cd 03       		.uleb128 0x3
+ 651 00ce 0E       		.uleb128 0xe
+ 652 00cf 27       		.uleb128 0x27
+ 653 00d0 19       		.uleb128 0x19
+ 654 00d1 49       		.uleb128 0x49
+ 655 00d2 13       		.uleb128 0x13
+ 656 00d3 34       		.uleb128 0x34
+ 657 00d4 19       		.uleb128 0x19
+ 658 00d5 3C       		.uleb128 0x3c
+ 659 00d6 19       		.uleb128 0x19
+ 660 00d7 01       		.uleb128 0x1
+ 661 00d8 13       		.uleb128 0x13
+ 662 00d9 00       		.byte	0
+ 663 00da 00       		.byte	0
+ 664 00db 12       		.uleb128 0x12
+ 665 00dc 05       		.uleb128 0x5
+ 666 00dd 00       		.byte	0
+ 667 00de 49       		.uleb128 0x49
+ 668 00df 13       		.uleb128 0x13
+ 669 00e0 00       		.byte	0
+ 670 00e1 00       		.byte	0
+ 671 00e2 13       		.uleb128 0x13
+ 672 00e3 26       		.uleb128 0x26
+ 673 00e4 00       		.byte	0
+ 674 00e5 00       		.byte	0
+ 675 00e6 00       		.byte	0
+ 676 00e7 14       		.uleb128 0x14
+ 677 00e8 2E       		.uleb128 0x2e
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccVocxSu.s 			page 14
+
+
+ 678 00e9 01       		.byte	0x1
+ 679 00ea 3F       		.uleb128 0x3f
+ 680 00eb 19       		.uleb128 0x19
+ 681 00ec 03       		.uleb128 0x3
+ 682 00ed 0E       		.uleb128 0xe
+ 683 00ee 3A       		.uleb128 0x3a
+ 684 00ef 0B       		.uleb128 0xb
+ 685 00f0 3B       		.uleb128 0x3b
+ 686 00f1 0B       		.uleb128 0xb
+ 687 00f2 3C       		.uleb128 0x3c
+ 688 00f3 19       		.uleb128 0x19
+ 689 00f4 01       		.uleb128 0x1
+ 690 00f5 13       		.uleb128 0x13
+ 691 00f6 00       		.byte	0
+ 692 00f7 00       		.byte	0
+ 693 00f8 15       		.uleb128 0x15
+ 694 00f9 18       		.uleb128 0x18
+ 695 00fa 00       		.byte	0
+ 696 00fb 00       		.byte	0
+ 697 00fc 00       		.byte	0
+ 698 00fd 16       		.uleb128 0x16
+ 699 00fe 2E       		.uleb128 0x2e
+ 700 00ff 01       		.byte	0x1
+ 701 0100 3F       		.uleb128 0x3f
+ 702 0101 19       		.uleb128 0x19
+ 703 0102 03       		.uleb128 0x3
+ 704 0103 0E       		.uleb128 0xe
+ 705 0104 3A       		.uleb128 0x3a
+ 706 0105 0B       		.uleb128 0xb
+ 707 0106 3B       		.uleb128 0x3b
+ 708 0107 0B       		.uleb128 0xb
+ 709 0108 27       		.uleb128 0x27
+ 710 0109 19       		.uleb128 0x19
+ 711 010a 3C       		.uleb128 0x3c
+ 712 010b 19       		.uleb128 0x19
+ 713 010c 01       		.uleb128 0x1
+ 714 010d 13       		.uleb128 0x13
+ 715 010e 00       		.byte	0
+ 716 010f 00       		.byte	0
+ 717 0110 17       		.uleb128 0x17
+ 718 0111 2E       		.uleb128 0x2e
+ 719 0112 00       		.byte	0
+ 720 0113 3F       		.uleb128 0x3f
+ 721 0114 19       		.uleb128 0x19
+ 722 0115 03       		.uleb128 0x3
+ 723 0116 0E       		.uleb128 0xe
+ 724 0117 3A       		.uleb128 0x3a
+ 725 0118 0B       		.uleb128 0xb
+ 726 0119 3B       		.uleb128 0x3b
+ 727 011a 0B       		.uleb128 0xb
+ 728 011b 27       		.uleb128 0x27
+ 729 011c 19       		.uleb128 0x19
+ 730 011d 3C       		.uleb128 0x3c
+ 731 011e 19       		.uleb128 0x19
+ 732 011f 00       		.byte	0
+ 733 0120 00       		.byte	0
+ 734 0121 18       		.uleb128 0x18
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccVocxSu.s 			page 15
+
+
+ 735 0122 2E       		.uleb128 0x2e
+ 736 0123 01       		.byte	0x1
+ 737 0124 3F       		.uleb128 0x3f
+ 738 0125 19       		.uleb128 0x19
+ 739 0126 03       		.uleb128 0x3
+ 740 0127 0E       		.uleb128 0xe
+ 741 0128 3A       		.uleb128 0x3a
+ 742 0129 0B       		.uleb128 0xb
+ 743 012a 3B       		.uleb128 0x3b
+ 744 012b 0B       		.uleb128 0xb
+ 745 012c 27       		.uleb128 0x27
+ 746 012d 19       		.uleb128 0x19
+ 747 012e 3C       		.uleb128 0x3c
+ 748 012f 19       		.uleb128 0x19
+ 749 0130 00       		.byte	0
+ 750 0131 00       		.byte	0
+ 751 0132 00       		.byte	0
+ 752              		.section	.debug_aranges,"",%progbits
+ 753 0000 1C000000 		.4byte	0x1c
+ 754 0004 0200     		.2byte	0x2
+ 755 0006 00000000 		.4byte	.Ldebug_info0
+ 756 000a 04       		.byte	0x4
+ 757 000b 00       		.byte	0
+ 758 000c 0000     		.2byte	0
+ 759 000e 0000     		.2byte	0
+ 760 0010 00000000 		.4byte	.LFB33
+ 761 0014 6C000000 		.4byte	.LFE33-.LFB33
+ 762 0018 00000000 		.4byte	0
+ 763 001c 00000000 		.4byte	0
+ 764              		.section	.debug_ranges,"",%progbits
+ 765              	.Ldebug_ranges0:
+ 766 0000 00000000 		.4byte	.LFB33
+ 767 0004 6C000000 		.4byte	.LFE33
+ 768 0008 00000000 		.4byte	0
+ 769 000c 00000000 		.4byte	0
+ 770              		.section	.debug_line,"",%progbits
+ 771              	.Ldebug_line0:
+ 772 0000 B0000000 		.section	.debug_str,"MS",%progbits,1
+ 772      02008B00 
+ 772      00000201 
+ 772      FB0E0D00 
+ 772      01010101 
+ 773              	.LASF6:
+ 774 0000 6C6F6E67 		.ascii	"long long int\000"
+ 774      206C6F6E 
+ 774      6720696E 
+ 774      7400
+ 775              	.LASF3:
+ 776 000e 73686F72 		.ascii	"short unsigned int\000"
+ 776      7420756E 
+ 776      7369676E 
+ 776      65642069 
+ 776      6E7400
+ 777              	.LASF8:
+ 778 0021 756E7369 		.ascii	"unsigned int\000"
+ 778      676E6564 
+ 778      20696E74 
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccVocxSu.s 			page 16
+
+
+ 778      00
+ 779              	.LASF18:
+ 780 002e 656E6162 		.ascii	"enable_toggle_interrupts\000"
+ 780      6C655F74 
+ 780      6F67676C 
+ 780      655F696E 
+ 780      74657272 
+ 781              	.LASF25:
+ 782 0047 62616467 		.ascii	"badge_state\000"
+ 782      655F7374 
+ 782      61746500 
+ 783              	.LASF13:
+ 784 0053 766F6C75 		.ascii	"volunteer_sequance\000"
+ 784      6E746565 
+ 784      725F7365 
+ 784      7175616E 
+ 784      636500
+ 785              	.LASF5:
+ 786 0066 6C6F6E67 		.ascii	"long unsigned int\000"
+ 786      20756E73 
+ 786      69676E65 
+ 786      6420696E 
+ 786      7400
+ 787              	.LASF2:
+ 788 0078 73686F72 		.ascii	"short int\000"
+ 788      7420696E 
+ 788      7400
+ 789              	.LASF7:
+ 790 0082 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 790      206C6F6E 
+ 790      6720756E 
+ 790      7369676E 
+ 790      65642069 
+ 791              	.LASF22:
+ 792 0099 433A5C55 		.ascii	"C:\\Users\\Admin\\Desktop\\Volunteer Badge\\Volunte"
+ 792      73657273 
+ 792      5C41646D 
+ 792      696E5C44 
+ 792      65736B74 
+ 793 00c7 65725F42 		.ascii	"er_Badge.cydsn\000"
+ 793      61646765 
+ 793      2E637964 
+ 793      736E00
+ 794              	.LASF1:
+ 795 00d6 756E7369 		.ascii	"unsigned char\000"
+ 795      676E6564 
+ 795      20636861 
+ 795      7200
+ 796              	.LASF11:
+ 797 00e4 63686172 		.ascii	"char\000"
+ 797      00
+ 798              	.LASF19:
+ 799 00e9 62696E61 		.ascii	"binary_message\000"
+ 799      72795F6D 
+ 799      65737361 
+ 799      676500
+ 800              	.LASF4:
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccVocxSu.s 			page 17
+
+
+ 801 00f8 6C6F6E67 		.ascii	"long int\000"
+ 801      20696E74 
+ 801      00
+ 802              	.LASF10:
+ 803 0101 646F7562 		.ascii	"double\000"
+ 803      6C6500
+ 804              	.LASF15:
+ 805 0108 6D656D63 		.ascii	"memcpy\000"
+ 805      707900
+ 806              	.LASF23:
+ 807 010f 75696E74 		.ascii	"uint8\000"
+ 807      3800
+ 808              	.LASF0:
+ 809 0115 7369676E 		.ascii	"signed char\000"
+ 809      65642063 
+ 809      68617200 
+ 810              	.LASF14:
+ 811 0121 6F726761 		.ascii	"organizer_sequance\000"
+ 811      6E697A65 
+ 811      725F7365 
+ 811      7175616E 
+ 811      636500
+ 812              	.LASF26:
+ 813 0134 43795379 		.ascii	"CySysPmSleep\000"
+ 813      73506D53 
+ 813      6C656570 
+ 813      00
+ 814              	.LASF20:
+ 815 0141 474E5520 		.ascii	"GNU C 4.8.4 20140526 (release) [ARM/embedded-4_8-br"
+ 815      4320342E 
+ 815      382E3420 
+ 815      32303134 
+ 815      30353236 
+ 816 0174 616E6368 		.ascii	"anch revision 211358] -mcpu=cortex-m0 -mthumb -g -O"
+ 816      20726576 
+ 816      6973696F 
+ 816      6E203231 
+ 816      31333538 
+ 817 01a7 73202D66 		.ascii	"s -ffunction-sections\000"
+ 817      66756E63 
+ 817      74696F6E 
+ 817      2D736563 
+ 817      74696F6E 
+ 818              	.LASF16:
+ 819 01bd 696E6974 		.ascii	"init_led\000"
+ 819      5F6C6564 
+ 819      00
+ 820              	.LASF24:
+ 821 01c6 6D61696E 		.ascii	"main\000"
+ 821      00
+ 822              	.LASF9:
+ 823 01cb 666C6F61 		.ascii	"float\000"
+ 823      7400
+ 824              	.LASF21:
+ 825 01d1 2E5C6D61 		.ascii	".\\main.c\000"
+ 825      696E2E63 
+ 825      00
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccVocxSu.s 			page 18
+
+
+ 826              	.LASF17:
+ 827 01da 696E6974 		.ascii	"init_magic_toggle_sequance\000"
+ 827      5F6D6167 
+ 827      69635F74 
+ 827      6F67676C 
+ 827      655F7365 
+ 828              	.LASF12:
+ 829 01f5 73697A65 		.ascii	"sizetype\000"
+ 829      74797065 
+ 829      00
+ 830              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.8.4 20140526 (release) [ARM/embedded-4_8-br

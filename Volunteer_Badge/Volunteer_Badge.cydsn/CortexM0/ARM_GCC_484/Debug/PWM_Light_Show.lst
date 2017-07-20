@@ -1,0 +1,2644 @@
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccLEIwe8.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 6
+  10              		.eabi_attribute 34, 0
+  11              		.eabi_attribute 18, 4
+  12              		.code	16
+  13              		.file	"PWM_Light_Show.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.global	PWM_Light_Show_initVar
+  18              		.bss
+  19              		.type	PWM_Light_Show_initVar, %object
+  20              		.size	PWM_Light_Show_initVar, 1
+  21              	PWM_Light_Show_initVar:
+  22 0000 00       		.space	1
+  23              		.section	.text.PWM_Light_Show_Start,"ax",%progbits
+  24              		.align	2
+  25              		.global	PWM_Light_Show_Start
+  26              		.code	16
+  27              		.thumb_func
+  28              		.type	PWM_Light_Show_Start, %function
+  29              	PWM_Light_Show_Start:
+  30              	.LFB0:
+  31              		.file 1 ".\\Generated_Source\\PSoC4\\PWM_Light_Show.c"
+   1:.\Generated_Source\PSoC4/PWM_Light_Show.c **** /*******************************************************************************
+   2:.\Generated_Source\PSoC4/PWM_Light_Show.c **** * File Name: PWM_Light_Show.c
+   3:.\Generated_Source\PSoC4/PWM_Light_Show.c **** * Version 3.10
+   4:.\Generated_Source\PSoC4/PWM_Light_Show.c **** *
+   5:.\Generated_Source\PSoC4/PWM_Light_Show.c **** * Description:
+   6:.\Generated_Source\PSoC4/PWM_Light_Show.c **** *  The PWM User Module consist of an 8 or 16-bit counter with two 8 or 16-bit
+   7:.\Generated_Source\PSoC4/PWM_Light_Show.c **** *  comparitors. Each instance of this user module is capable of generating
+   8:.\Generated_Source\PSoC4/PWM_Light_Show.c **** *  two PWM outputs with the same period. The pulse width is selectable between
+   9:.\Generated_Source\PSoC4/PWM_Light_Show.c **** *  1 and 255/65535. The period is selectable between 2 and 255/65536 clocks.
+  10:.\Generated_Source\PSoC4/PWM_Light_Show.c **** *  The compare value output may be configured to be active when the present
+  11:.\Generated_Source\PSoC4/PWM_Light_Show.c **** *  counter is less than or less than/equal to the compare value.
+  12:.\Generated_Source\PSoC4/PWM_Light_Show.c **** *  A terminal count output is also provided. It generates a pulse one clock
+  13:.\Generated_Source\PSoC4/PWM_Light_Show.c **** *  width wide when the counter is equal to zero.
+  14:.\Generated_Source\PSoC4/PWM_Light_Show.c **** *
+  15:.\Generated_Source\PSoC4/PWM_Light_Show.c **** * Note:
+  16:.\Generated_Source\PSoC4/PWM_Light_Show.c **** *
+  17:.\Generated_Source\PSoC4/PWM_Light_Show.c **** *******************************************************************************
+  18:.\Generated_Source\PSoC4/PWM_Light_Show.c **** * Copyright 2008-2014, Cypress Semiconductor Corporation.  All rights reserved.
+  19:.\Generated_Source\PSoC4/PWM_Light_Show.c **** * You may use this file only in accordance with the license, terms, conditions,
+  20:.\Generated_Source\PSoC4/PWM_Light_Show.c **** * disclaimers, and limitations in the end user license agreement accompanying
+  21:.\Generated_Source\PSoC4/PWM_Light_Show.c **** * the software package with which this file was provided.
+  22:.\Generated_Source\PSoC4/PWM_Light_Show.c **** ********************************************************************************/
+  23:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+  24:.\Generated_Source\PSoC4/PWM_Light_Show.c **** #include "PWM_Light_Show.h"
+  25:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+  26:.\Generated_Source\PSoC4/PWM_Light_Show.c **** /* Error message for removed <resource> through optimization */
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccLEIwe8.s 			page 2
+
+
+  27:.\Generated_Source\PSoC4/PWM_Light_Show.c **** #ifdef PWM_Light_Show_PWMUDB_genblk1_ctrlreg__REMOVED
+  28:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     #error PWM_v3_10 detected with a constant 0 for the enable or \
+  29:.\Generated_Source\PSoC4/PWM_Light_Show.c ****          constant 1 for reset. This will prevent the component from operating.
+  30:.\Generated_Source\PSoC4/PWM_Light_Show.c **** #endif /* PWM_Light_Show_PWMUDB_genblk1_ctrlreg__REMOVED */
+  31:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+  32:.\Generated_Source\PSoC4/PWM_Light_Show.c **** uint8 PWM_Light_Show_initVar = 0u;
+  33:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+  34:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+  35:.\Generated_Source\PSoC4/PWM_Light_Show.c **** /*******************************************************************************
+  36:.\Generated_Source\PSoC4/PWM_Light_Show.c **** * Function Name: PWM_Light_Show_Start
+  37:.\Generated_Source\PSoC4/PWM_Light_Show.c **** ********************************************************************************
+  38:.\Generated_Source\PSoC4/PWM_Light_Show.c **** *
+  39:.\Generated_Source\PSoC4/PWM_Light_Show.c **** * Summary:
+  40:.\Generated_Source\PSoC4/PWM_Light_Show.c **** *  The start function initializes the pwm with the default values, the
+  41:.\Generated_Source\PSoC4/PWM_Light_Show.c **** *  enables the counter to begin counting.  It does not enable interrupts,
+  42:.\Generated_Source\PSoC4/PWM_Light_Show.c **** *  the EnableInt command should be called if interrupt generation is required.
+  43:.\Generated_Source\PSoC4/PWM_Light_Show.c **** *
+  44:.\Generated_Source\PSoC4/PWM_Light_Show.c **** * Parameters:
+  45:.\Generated_Source\PSoC4/PWM_Light_Show.c **** *  None
+  46:.\Generated_Source\PSoC4/PWM_Light_Show.c **** *
+  47:.\Generated_Source\PSoC4/PWM_Light_Show.c **** * Return:
+  48:.\Generated_Source\PSoC4/PWM_Light_Show.c **** *  None
+  49:.\Generated_Source\PSoC4/PWM_Light_Show.c **** *
+  50:.\Generated_Source\PSoC4/PWM_Light_Show.c **** * Global variables:
+  51:.\Generated_Source\PSoC4/PWM_Light_Show.c **** *  PWM_Light_Show_initVar: Is modified when this function is called for the
+  52:.\Generated_Source\PSoC4/PWM_Light_Show.c **** *   first time. Is used to ensure that initialization happens only once.
+  53:.\Generated_Source\PSoC4/PWM_Light_Show.c **** *
+  54:.\Generated_Source\PSoC4/PWM_Light_Show.c **** *******************************************************************************/
+  55:.\Generated_Source\PSoC4/PWM_Light_Show.c **** void PWM_Light_Show_Start(void) 
+  56:.\Generated_Source\PSoC4/PWM_Light_Show.c **** {
+  32              		.loc 1 56 0
+  33              		.cfi_startproc
+  34 0000 80B5     		push	{r7, lr}
+  35              		.cfi_def_cfa_offset 8
+  36              		.cfi_offset 7, -8
+  37              		.cfi_offset 14, -4
+  38 0002 00AF     		add	r7, sp, #0
+  39              		.cfi_def_cfa_register 7
+  57:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     /* If not Initialized then initialize all required hardware and software */
+  58:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     if(PWM_Light_Show_initVar == 0u)
+  40              		.loc 1 58 0
+  41 0004 064B     		ldr	r3, .L3
+  42 0006 1B78     		ldrb	r3, [r3]
+  43 0008 002B     		cmp	r3, #0
+  44 000a 04D1     		bne	.L2
+  59:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     {
+  60:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         PWM_Light_Show_Init();
+  45              		.loc 1 60 0
+  46 000c FFF7FEFF 		bl	PWM_Light_Show_Init
+  61:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         PWM_Light_Show_initVar = 1u;
+  47              		.loc 1 61 0
+  48 0010 034B     		ldr	r3, .L3
+  49 0012 0122     		mov	r2, #1
+  50 0014 1A70     		strb	r2, [r3]
+  51              	.L2:
+  62:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     }
+  63:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     PWM_Light_Show_Enable();
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccLEIwe8.s 			page 3
+
+
+  52              		.loc 1 63 0
+  53 0016 FFF7FEFF 		bl	PWM_Light_Show_Enable
+  64:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+  65:.\Generated_Source\PSoC4/PWM_Light_Show.c **** }
+  54              		.loc 1 65 0
+  55 001a BD46     		mov	sp, r7
+  56              		@ sp needed
+  57 001c 80BD     		pop	{r7, pc}
+  58              	.L4:
+  59 001e C046     		.align	2
+  60              	.L3:
+  61 0020 00000000 		.word	PWM_Light_Show_initVar
+  62              		.cfi_endproc
+  63              	.LFE0:
+  64              		.size	PWM_Light_Show_Start, .-PWM_Light_Show_Start
+  65              		.section	.text.PWM_Light_Show_Init,"ax",%progbits
+  66              		.align	2
+  67              		.global	PWM_Light_Show_Init
+  68              		.code	16
+  69              		.thumb_func
+  70              		.type	PWM_Light_Show_Init, %function
+  71              	PWM_Light_Show_Init:
+  72              	.LFB1:
+  66:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+  67:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+  68:.\Generated_Source\PSoC4/PWM_Light_Show.c **** /*******************************************************************************
+  69:.\Generated_Source\PSoC4/PWM_Light_Show.c **** * Function Name: PWM_Light_Show_Init
+  70:.\Generated_Source\PSoC4/PWM_Light_Show.c **** ********************************************************************************
+  71:.\Generated_Source\PSoC4/PWM_Light_Show.c **** *
+  72:.\Generated_Source\PSoC4/PWM_Light_Show.c **** * Summary:
+  73:.\Generated_Source\PSoC4/PWM_Light_Show.c **** *  Initialize component's parameters to the parameters set by user in the
+  74:.\Generated_Source\PSoC4/PWM_Light_Show.c **** *  customizer of the component placed onto schematic. Usually called in
+  75:.\Generated_Source\PSoC4/PWM_Light_Show.c **** *  PWM_Light_Show_Start().
+  76:.\Generated_Source\PSoC4/PWM_Light_Show.c **** *
+  77:.\Generated_Source\PSoC4/PWM_Light_Show.c **** * Parameters:
+  78:.\Generated_Source\PSoC4/PWM_Light_Show.c **** *  None
+  79:.\Generated_Source\PSoC4/PWM_Light_Show.c **** *
+  80:.\Generated_Source\PSoC4/PWM_Light_Show.c **** * Return:
+  81:.\Generated_Source\PSoC4/PWM_Light_Show.c **** *  None
+  82:.\Generated_Source\PSoC4/PWM_Light_Show.c **** *
+  83:.\Generated_Source\PSoC4/PWM_Light_Show.c **** *******************************************************************************/
+  84:.\Generated_Source\PSoC4/PWM_Light_Show.c **** void PWM_Light_Show_Init(void) 
+  85:.\Generated_Source\PSoC4/PWM_Light_Show.c **** {
+  73              		.loc 1 85 0
+  74              		.cfi_startproc
+  75 0000 90B5     		push	{r4, r7, lr}
+  76              		.cfi_def_cfa_offset 12
+  77              		.cfi_offset 4, -12
+  78              		.cfi_offset 7, -8
+  79              		.cfi_offset 14, -4
+  80 0002 83B0     		sub	sp, sp, #12
+  81              		.cfi_def_cfa_offset 24
+  82 0004 00AF     		add	r7, sp, #0
+  83              		.cfi_def_cfa_register 7
+  86:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     #if (PWM_Light_Show_UsingFixedFunction || PWM_Light_Show_UseControl)
+  87:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         uint8 ctrl;
+  88:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     #endif /* (PWM_Light_Show_UsingFixedFunction || PWM_Light_Show_UseControl) */
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccLEIwe8.s 			page 4
+
+
+  89:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+  90:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     #if(!PWM_Light_Show_UsingFixedFunction)
+  91:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         #if(PWM_Light_Show_UseStatus)
+  92:.\Generated_Source\PSoC4/PWM_Light_Show.c ****             /* Interrupt State Backup for Critical Region*/
+  93:.\Generated_Source\PSoC4/PWM_Light_Show.c ****             uint8 PWM_Light_Show_interruptState;
+  94:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         #endif /* (PWM_Light_Show_UseStatus) */
+  95:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     #endif /* (!PWM_Light_Show_UsingFixedFunction) */
+  96:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+  97:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     #if (PWM_Light_Show_UsingFixedFunction)
+  98:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         /* You are allowed to write the compare value (FF only) */
+  99:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         PWM_Light_Show_CONTROL |= PWM_Light_Show_CFG0_MODE;
+ 100:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         #if (PWM_Light_Show_DeadBand2_4)
+ 101:.\Generated_Source\PSoC4/PWM_Light_Show.c ****             PWM_Light_Show_CONTROL |= PWM_Light_Show_CFG0_DB;
+ 102:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         #endif /* (PWM_Light_Show_DeadBand2_4) */
+ 103:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 104:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         ctrl = PWM_Light_Show_CONTROL3 & ((uint8 )(~PWM_Light_Show_CTRL_CMPMODE1_MASK));
+ 105:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         PWM_Light_Show_CONTROL3 = ctrl | PWM_Light_Show_DEFAULT_COMPARE1_MODE;
+ 106:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 107:.\Generated_Source\PSoC4/PWM_Light_Show.c ****          /* Clear and Set SYNCTC and SYNCCMP bits of RT1 register */
+ 108:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         PWM_Light_Show_RT1 &= ((uint8)(~PWM_Light_Show_RT1_MASK));
+ 109:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         PWM_Light_Show_RT1 |= PWM_Light_Show_SYNC;
+ 110:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 111:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         /*Enable DSI Sync all all inputs of the PWM*/
+ 112:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         PWM_Light_Show_RT1 &= ((uint8)(~PWM_Light_Show_SYNCDSI_MASK));
+ 113:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         PWM_Light_Show_RT1 |= PWM_Light_Show_SYNCDSI_EN;
+ 114:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 115:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     #elif (PWM_Light_Show_UseControl)
+ 116:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         /* Set the default compare mode defined in the parameter */
+ 117:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         ctrl = PWM_Light_Show_CONTROL & ((uint8)(~PWM_Light_Show_CTRL_CMPMODE2_MASK)) &
+  84              		.loc 1 117 0
+  85 0006 224B     		ldr	r3, .L6
+  86 0008 1B78     		ldrb	r3, [r3]
+  87 000a DAB2     		uxtb	r2, r3
+  88 000c FB1D     		add	r3, r7, #7
+  89 000e 3F21     		mov	r1, #63
+  90 0010 8A43     		bic	r2, r1
+  91 0012 1A70     		strb	r2, [r3]
+ 118:.\Generated_Source\PSoC4/PWM_Light_Show.c ****                 ((uint8)(~PWM_Light_Show_CTRL_CMPMODE1_MASK));
+ 119:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         PWM_Light_Show_CONTROL = ctrl | PWM_Light_Show_DEFAULT_COMPARE2_MODE |
+  92              		.loc 1 119 0
+  93 0014 1E4B     		ldr	r3, .L6
+  94 0016 FA1D     		add	r2, r7, #7
+  95 0018 1278     		ldrb	r2, [r2]
+  96 001a 0921     		mov	r1, #9
+  97 001c 0A43     		orr	r2, r1
+  98 001e D2B2     		uxtb	r2, r2
+  99 0020 1A70     		strb	r2, [r3]
+ 120:.\Generated_Source\PSoC4/PWM_Light_Show.c ****                                    PWM_Light_Show_DEFAULT_COMPARE1_MODE;
+ 121:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     #endif /* (PWM_Light_Show_UsingFixedFunction) */
+ 122:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 123:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     #if (!PWM_Light_Show_UsingFixedFunction)
+ 124:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         #if (PWM_Light_Show_Resolution == 8)
+ 125:.\Generated_Source\PSoC4/PWM_Light_Show.c ****             /* Set FIFO 0 to 1 byte register for period*/
+ 126:.\Generated_Source\PSoC4/PWM_Light_Show.c ****             PWM_Light_Show_AUX_CONTROLDP0 |= (PWM_Light_Show_AUX_CTRL_FIFO0_CLR);
+ 127:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         #else /* (PWM_Light_Show_Resolution == 16)*/
+ 128:.\Generated_Source\PSoC4/PWM_Light_Show.c ****             /* Set FIFO 0 to 1 byte register for period */
+ 129:.\Generated_Source\PSoC4/PWM_Light_Show.c ****             PWM_Light_Show_AUX_CONTROLDP0 |= (PWM_Light_Show_AUX_CTRL_FIFO0_CLR);
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccLEIwe8.s 			page 5
+
+
+ 100              		.loc 1 129 0
+ 101 0022 1C4B     		ldr	r3, .L6+4
+ 102 0024 1B4A     		ldr	r2, .L6+4
+ 103 0026 1278     		ldrb	r2, [r2]
+ 104 0028 D2B2     		uxtb	r2, r2
+ 105 002a 0121     		mov	r1, #1
+ 106 002c 0A43     		orr	r2, r1
+ 107 002e D2B2     		uxtb	r2, r2
+ 108 0030 1A70     		strb	r2, [r3]
+ 130:.\Generated_Source\PSoC4/PWM_Light_Show.c ****             PWM_Light_Show_AUX_CONTROLDP1 |= (PWM_Light_Show_AUX_CTRL_FIFO0_CLR);
+ 109              		.loc 1 130 0
+ 110 0032 194B     		ldr	r3, .L6+8
+ 111 0034 184A     		ldr	r2, .L6+8
+ 112 0036 1278     		ldrb	r2, [r2]
+ 113 0038 D2B2     		uxtb	r2, r2
+ 114 003a 0121     		mov	r1, #1
+ 115 003c 0A43     		orr	r2, r1
+ 116 003e D2B2     		uxtb	r2, r2
+ 117 0040 1A70     		strb	r2, [r3]
+ 131:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         #endif /* (PWM_Light_Show_Resolution == 8) */
+ 132:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 133:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         PWM_Light_Show_WriteCounter(PWM_Light_Show_INIT_PERIOD_VALUE);
+ 118              		.loc 1 133 0
+ 119 0042 164B     		ldr	r3, .L6+12
+ 120 0044 181C     		mov	r0, r3
+ 121 0046 FFF7FEFF 		bl	PWM_Light_Show_WriteCounter
+ 134:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     #endif /* (!PWM_Light_Show_UsingFixedFunction) */
+ 135:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 136:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     PWM_Light_Show_WritePeriod(PWM_Light_Show_INIT_PERIOD_VALUE);
+ 122              		.loc 1 136 0
+ 123 004a 144B     		ldr	r3, .L6+12
+ 124 004c 181C     		mov	r0, r3
+ 125 004e FFF7FEFF 		bl	PWM_Light_Show_WritePeriod
+ 137:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 138:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         #if (PWM_Light_Show_UseOneCompareMode)
+ 139:.\Generated_Source\PSoC4/PWM_Light_Show.c ****             PWM_Light_Show_WriteCompare(PWM_Light_Show_INIT_COMPARE_VALUE1);
+ 126              		.loc 1 139 0
+ 127 0052 124B     		ldr	r3, .L6+12
+ 128 0054 181C     		mov	r0, r3
+ 129 0056 FFF7FEFF 		bl	PWM_Light_Show_WriteCompare
+ 140:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         #else
+ 141:.\Generated_Source\PSoC4/PWM_Light_Show.c ****             PWM_Light_Show_WriteCompare1(PWM_Light_Show_INIT_COMPARE_VALUE1);
+ 142:.\Generated_Source\PSoC4/PWM_Light_Show.c ****             PWM_Light_Show_WriteCompare2(PWM_Light_Show_INIT_COMPARE_VALUE2);
+ 143:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         #endif /* (PWM_Light_Show_UseOneCompareMode) */
+ 144:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 145:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         #if (PWM_Light_Show_KillModeMinTime)
+ 146:.\Generated_Source\PSoC4/PWM_Light_Show.c ****             PWM_Light_Show_WriteKillTime(PWM_Light_Show_MinimumKillTime);
+ 147:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         #endif /* (PWM_Light_Show_KillModeMinTime) */
+ 148:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 149:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         #if (PWM_Light_Show_DeadBandUsed)
+ 150:.\Generated_Source\PSoC4/PWM_Light_Show.c ****             PWM_Light_Show_WriteDeadTime(PWM_Light_Show_INIT_DEAD_TIME);
+ 151:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         #endif /* (PWM_Light_Show_DeadBandUsed) */
+ 152:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 153:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     #if (PWM_Light_Show_UseStatus || PWM_Light_Show_UsingFixedFunction)
+ 154:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         PWM_Light_Show_SetInterruptMode(PWM_Light_Show_INIT_INTERRUPTS_MODE);
+ 130              		.loc 1 154 0
+ 131 005a 0120     		mov	r0, #1
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccLEIwe8.s 			page 6
+
+
+ 132 005c FFF7FEFF 		bl	PWM_Light_Show_SetInterruptMode
+ 155:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     #endif /* (PWM_Light_Show_UseStatus || PWM_Light_Show_UsingFixedFunction) */
+ 156:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 157:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     #if (PWM_Light_Show_UsingFixedFunction)
+ 158:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         /* Globally Enable the Fixed Function Block chosen */
+ 159:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         PWM_Light_Show_GLOBAL_ENABLE |= PWM_Light_Show_BLOCK_EN_MASK;
+ 160:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         /* Set the Interrupt source to come from the status register */
+ 161:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         PWM_Light_Show_CONTROL2 |= PWM_Light_Show_CTRL2_IRQ_SEL;
+ 162:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     #else
+ 163:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         #if(PWM_Light_Show_UseStatus)
+ 164:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 165:.\Generated_Source\PSoC4/PWM_Light_Show.c ****             /* CyEnterCriticalRegion and CyExitCriticalRegion are used to mark following region cri
+ 166:.\Generated_Source\PSoC4/PWM_Light_Show.c ****             /* Enter Critical Region*/
+ 167:.\Generated_Source\PSoC4/PWM_Light_Show.c ****             PWM_Light_Show_interruptState = CyEnterCriticalSection();
+ 133              		.loc 1 167 0
+ 134 0060 BC1D     		add	r4, r7, #6
+ 135 0062 FFF7FEFF 		bl	CyEnterCriticalSection
+ 136 0066 031C     		mov	r3, r0
+ 137 0068 2370     		strb	r3, [r4]
+ 168:.\Generated_Source\PSoC4/PWM_Light_Show.c ****             /* Use the interrupt output of the status register for IRQ output */
+ 169:.\Generated_Source\PSoC4/PWM_Light_Show.c ****             PWM_Light_Show_STATUS_AUX_CTRL |= PWM_Light_Show_STATUS_ACTL_INT_EN_MASK;
+ 138              		.loc 1 169 0
+ 139 006a 0B4B     		ldr	r3, .L6+8
+ 140 006c 0A4A     		ldr	r2, .L6+8
+ 141 006e 1278     		ldrb	r2, [r2]
+ 142 0070 D2B2     		uxtb	r2, r2
+ 143 0072 1021     		mov	r1, #16
+ 144 0074 0A43     		orr	r2, r1
+ 145 0076 D2B2     		uxtb	r2, r2
+ 146 0078 1A70     		strb	r2, [r3]
+ 170:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 171:.\Generated_Source\PSoC4/PWM_Light_Show.c ****              /* Exit Critical Region*/
+ 172:.\Generated_Source\PSoC4/PWM_Light_Show.c ****             CyExitCriticalSection(PWM_Light_Show_interruptState);
+ 147              		.loc 1 172 0
+ 148 007a BB1D     		add	r3, r7, #6
+ 149 007c 1B78     		ldrb	r3, [r3]
+ 150 007e 181C     		mov	r0, r3
+ 151 0080 FFF7FEFF 		bl	CyExitCriticalSection
+ 173:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 174:.\Generated_Source\PSoC4/PWM_Light_Show.c ****             /* Clear the FIFO to enable the PWM_Light_Show_STATUS_FIFOFULL
+ 175:.\Generated_Source\PSoC4/PWM_Light_Show.c ****                    bit to be set on FIFO full. */
+ 176:.\Generated_Source\PSoC4/PWM_Light_Show.c ****             PWM_Light_Show_ClearFIFO();
+ 152              		.loc 1 176 0
+ 153 0084 FFF7FEFF 		bl	PWM_Light_Show_ClearFIFO
+ 177:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         #endif /* (PWM_Light_Show_UseStatus) */
+ 178:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     #endif /* (PWM_Light_Show_UsingFixedFunction) */
+ 179:.\Generated_Source\PSoC4/PWM_Light_Show.c **** }
+ 154              		.loc 1 179 0
+ 155 0088 BD46     		mov	sp, r7
+ 156 008a 03B0     		add	sp, sp, #12
+ 157              		@ sp needed
+ 158 008c 90BD     		pop	{r4, r7, pc}
+ 159              	.L7:
+ 160 008e C046     		.align	2
+ 161              	.L6:
+ 162 0090 70000F40 		.word	1074724976
+ 163 0094 90000F40 		.word	1074725008
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccLEIwe8.s 			page 7
+
+
+ 164 0098 91000F40 		.word	1074725009
+ 165 009c 26020000 		.word	550
+ 166              		.cfi_endproc
+ 167              	.LFE1:
+ 168              		.size	PWM_Light_Show_Init, .-PWM_Light_Show_Init
+ 169              		.section	.text.PWM_Light_Show_Enable,"ax",%progbits
+ 170              		.align	2
+ 171              		.global	PWM_Light_Show_Enable
+ 172              		.code	16
+ 173              		.thumb_func
+ 174              		.type	PWM_Light_Show_Enable, %function
+ 175              	PWM_Light_Show_Enable:
+ 176              	.LFB2:
+ 180:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 181:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 182:.\Generated_Source\PSoC4/PWM_Light_Show.c **** /*******************************************************************************
+ 183:.\Generated_Source\PSoC4/PWM_Light_Show.c **** * Function Name: PWM_Light_Show_Enable
+ 184:.\Generated_Source\PSoC4/PWM_Light_Show.c **** ********************************************************************************
+ 185:.\Generated_Source\PSoC4/PWM_Light_Show.c **** *
+ 186:.\Generated_Source\PSoC4/PWM_Light_Show.c **** * Summary:
+ 187:.\Generated_Source\PSoC4/PWM_Light_Show.c **** *  Enables the PWM block operation
+ 188:.\Generated_Source\PSoC4/PWM_Light_Show.c **** *
+ 189:.\Generated_Source\PSoC4/PWM_Light_Show.c **** * Parameters:
+ 190:.\Generated_Source\PSoC4/PWM_Light_Show.c **** *  None
+ 191:.\Generated_Source\PSoC4/PWM_Light_Show.c **** *
+ 192:.\Generated_Source\PSoC4/PWM_Light_Show.c **** * Return:
+ 193:.\Generated_Source\PSoC4/PWM_Light_Show.c **** *  None
+ 194:.\Generated_Source\PSoC4/PWM_Light_Show.c **** *
+ 195:.\Generated_Source\PSoC4/PWM_Light_Show.c **** * Side Effects:
+ 196:.\Generated_Source\PSoC4/PWM_Light_Show.c **** *  This works only if software enable mode is chosen
+ 197:.\Generated_Source\PSoC4/PWM_Light_Show.c **** *
+ 198:.\Generated_Source\PSoC4/PWM_Light_Show.c **** *******************************************************************************/
+ 199:.\Generated_Source\PSoC4/PWM_Light_Show.c **** void PWM_Light_Show_Enable(void) 
+ 200:.\Generated_Source\PSoC4/PWM_Light_Show.c **** {
+ 177              		.loc 1 200 0
+ 178              		.cfi_startproc
+ 179 0000 80B5     		push	{r7, lr}
+ 180              		.cfi_def_cfa_offset 8
+ 181              		.cfi_offset 7, -8
+ 182              		.cfi_offset 14, -4
+ 183 0002 00AF     		add	r7, sp, #0
+ 184              		.cfi_def_cfa_register 7
+ 201:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     /* Globally Enable the Fixed Function Block chosen */
+ 202:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     #if (PWM_Light_Show_UsingFixedFunction)
+ 203:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         PWM_Light_Show_GLOBAL_ENABLE |= PWM_Light_Show_BLOCK_EN_MASK;
+ 204:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         PWM_Light_Show_GLOBAL_STBY_ENABLE |= PWM_Light_Show_BLOCK_STBY_EN_MASK;
+ 205:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     #endif /* (PWM_Light_Show_UsingFixedFunction) */
+ 206:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 207:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     /* Enable the PWM from the control register  */
+ 208:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     #if (PWM_Light_Show_UseControl || PWM_Light_Show_UsingFixedFunction)
+ 209:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         PWM_Light_Show_CONTROL |= PWM_Light_Show_CTRL_ENABLE;
+ 185              		.loc 1 209 0
+ 186 0004 054B     		ldr	r3, .L9
+ 187 0006 054A     		ldr	r2, .L9
+ 188 0008 1278     		ldrb	r2, [r2]
+ 189 000a D2B2     		uxtb	r2, r2
+ 190 000c 8021     		mov	r1, #128
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccLEIwe8.s 			page 8
+
+
+ 191 000e 4942     		neg	r1, r1
+ 192 0010 0A43     		orr	r2, r1
+ 193 0012 D2B2     		uxtb	r2, r2
+ 194 0014 1A70     		strb	r2, [r3]
+ 210:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     #endif /* (PWM_Light_Show_UseControl || PWM_Light_Show_UsingFixedFunction) */
+ 211:.\Generated_Source\PSoC4/PWM_Light_Show.c **** }
+ 195              		.loc 1 211 0
+ 196 0016 BD46     		mov	sp, r7
+ 197              		@ sp needed
+ 198 0018 80BD     		pop	{r7, pc}
+ 199              	.L10:
+ 200 001a C046     		.align	2
+ 201              	.L9:
+ 202 001c 70000F40 		.word	1074724976
+ 203              		.cfi_endproc
+ 204              	.LFE2:
+ 205              		.size	PWM_Light_Show_Enable, .-PWM_Light_Show_Enable
+ 206              		.section	.text.PWM_Light_Show_Stop,"ax",%progbits
+ 207              		.align	2
+ 208              		.global	PWM_Light_Show_Stop
+ 209              		.code	16
+ 210              		.thumb_func
+ 211              		.type	PWM_Light_Show_Stop, %function
+ 212              	PWM_Light_Show_Stop:
+ 213              	.LFB3:
+ 212:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 213:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 214:.\Generated_Source\PSoC4/PWM_Light_Show.c **** /*******************************************************************************
+ 215:.\Generated_Source\PSoC4/PWM_Light_Show.c **** * Function Name: PWM_Light_Show_Stop
+ 216:.\Generated_Source\PSoC4/PWM_Light_Show.c **** ********************************************************************************
+ 217:.\Generated_Source\PSoC4/PWM_Light_Show.c **** *
+ 218:.\Generated_Source\PSoC4/PWM_Light_Show.c **** * Summary:
+ 219:.\Generated_Source\PSoC4/PWM_Light_Show.c **** *  The stop function halts the PWM, but does not change any modes or disable
+ 220:.\Generated_Source\PSoC4/PWM_Light_Show.c **** *  interrupts.
+ 221:.\Generated_Source\PSoC4/PWM_Light_Show.c **** *
+ 222:.\Generated_Source\PSoC4/PWM_Light_Show.c **** * Parameters:
+ 223:.\Generated_Source\PSoC4/PWM_Light_Show.c **** *  None
+ 224:.\Generated_Source\PSoC4/PWM_Light_Show.c **** *
+ 225:.\Generated_Source\PSoC4/PWM_Light_Show.c **** * Return:
+ 226:.\Generated_Source\PSoC4/PWM_Light_Show.c **** *  None
+ 227:.\Generated_Source\PSoC4/PWM_Light_Show.c **** *
+ 228:.\Generated_Source\PSoC4/PWM_Light_Show.c **** * Side Effects:
+ 229:.\Generated_Source\PSoC4/PWM_Light_Show.c **** *  If the Enable mode is set to Hardware only then this function
+ 230:.\Generated_Source\PSoC4/PWM_Light_Show.c **** *  has no effect on the operation of the PWM
+ 231:.\Generated_Source\PSoC4/PWM_Light_Show.c **** *
+ 232:.\Generated_Source\PSoC4/PWM_Light_Show.c **** *******************************************************************************/
+ 233:.\Generated_Source\PSoC4/PWM_Light_Show.c **** void PWM_Light_Show_Stop(void) 
+ 234:.\Generated_Source\PSoC4/PWM_Light_Show.c **** {
+ 214              		.loc 1 234 0
+ 215              		.cfi_startproc
+ 216 0000 80B5     		push	{r7, lr}
+ 217              		.cfi_def_cfa_offset 8
+ 218              		.cfi_offset 7, -8
+ 219              		.cfi_offset 14, -4
+ 220 0002 00AF     		add	r7, sp, #0
+ 221              		.cfi_def_cfa_register 7
+ 235:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     #if (PWM_Light_Show_UseControl || PWM_Light_Show_UsingFixedFunction)
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccLEIwe8.s 			page 9
+
+
+ 236:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         PWM_Light_Show_CONTROL &= ((uint8)(~PWM_Light_Show_CTRL_ENABLE));
+ 222              		.loc 1 236 0
+ 223 0004 044B     		ldr	r3, .L12
+ 224 0006 044A     		ldr	r2, .L12
+ 225 0008 1278     		ldrb	r2, [r2]
+ 226 000a D1B2     		uxtb	r1, r2
+ 227 000c 7F22     		mov	r2, #127
+ 228 000e 0A40     		and	r2, r1
+ 229 0010 D2B2     		uxtb	r2, r2
+ 230 0012 1A70     		strb	r2, [r3]
+ 237:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     #endif /* (PWM_Light_Show_UseControl || PWM_Light_Show_UsingFixedFunction) */
+ 238:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 239:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     /* Globally disable the Fixed Function Block chosen */
+ 240:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     #if (PWM_Light_Show_UsingFixedFunction)
+ 241:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         PWM_Light_Show_GLOBAL_ENABLE &= ((uint8)(~PWM_Light_Show_BLOCK_EN_MASK));
+ 242:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         PWM_Light_Show_GLOBAL_STBY_ENABLE &= ((uint8)(~PWM_Light_Show_BLOCK_STBY_EN_MASK));
+ 243:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     #endif /* (PWM_Light_Show_UsingFixedFunction) */
+ 244:.\Generated_Source\PSoC4/PWM_Light_Show.c **** }
+ 231              		.loc 1 244 0
+ 232 0014 BD46     		mov	sp, r7
+ 233              		@ sp needed
+ 234 0016 80BD     		pop	{r7, pc}
+ 235              	.L13:
+ 236              		.align	2
+ 237              	.L12:
+ 238 0018 70000F40 		.word	1074724976
+ 239              		.cfi_endproc
+ 240              	.LFE3:
+ 241              		.size	PWM_Light_Show_Stop, .-PWM_Light_Show_Stop
+ 242              		.section	.text.PWM_Light_Show_WriteCounter,"ax",%progbits
+ 243              		.align	2
+ 244              		.global	PWM_Light_Show_WriteCounter
+ 245              		.code	16
+ 246              		.thumb_func
+ 247              		.type	PWM_Light_Show_WriteCounter, %function
+ 248              	PWM_Light_Show_WriteCounter:
+ 249              	.LFB4:
+ 245:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 246:.\Generated_Source\PSoC4/PWM_Light_Show.c **** #if (PWM_Light_Show_UseOneCompareMode)
+ 247:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     #if (PWM_Light_Show_CompareMode1SW)
+ 248:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 249:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 250:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         /*******************************************************************************
+ 251:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         * Function Name: PWM_Light_Show_SetCompareMode
+ 252:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         ********************************************************************************
+ 253:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         *
+ 254:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         * Summary:
+ 255:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         *  This function writes the Compare Mode for the pwm output when in Dither mode,
+ 256:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         *  Center Align Mode or One Output Mode.
+ 257:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         *
+ 258:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         * Parameters:
+ 259:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         *  comparemode:  The new compare mode for the PWM output. Use the compare types
+ 260:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         *                defined in the H file as input arguments.
+ 261:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         *
+ 262:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         * Return:
+ 263:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         *  None
+ 264:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         *
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccLEIwe8.s 			page 10
+
+
+ 265:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         *******************************************************************************/
+ 266:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         void PWM_Light_Show_SetCompareMode(uint8 comparemode) 
+ 267:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         {
+ 268:.\Generated_Source\PSoC4/PWM_Light_Show.c ****             #if(PWM_Light_Show_UsingFixedFunction)
+ 269:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 270:.\Generated_Source\PSoC4/PWM_Light_Show.c ****                 #if(0 != PWM_Light_Show_CTRL_CMPMODE1_SHIFT)
+ 271:.\Generated_Source\PSoC4/PWM_Light_Show.c ****                     uint8 comparemodemasked = ((uint8)((uint8)comparemode << PWM_Light_Show_CTRL_CM
+ 272:.\Generated_Source\PSoC4/PWM_Light_Show.c ****                 #else
+ 273:.\Generated_Source\PSoC4/PWM_Light_Show.c ****                     uint8 comparemodemasked = comparemode;
+ 274:.\Generated_Source\PSoC4/PWM_Light_Show.c ****                 #endif /* (0 != PWM_Light_Show_CTRL_CMPMODE1_SHIFT) */
+ 275:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 276:.\Generated_Source\PSoC4/PWM_Light_Show.c ****                 PWM_Light_Show_CONTROL3 &= ((uint8)(~PWM_Light_Show_CTRL_CMPMODE1_MASK)); /*Clear E
+ 277:.\Generated_Source\PSoC4/PWM_Light_Show.c ****                 PWM_Light_Show_CONTROL3 |= comparemodemasked;
+ 278:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 279:.\Generated_Source\PSoC4/PWM_Light_Show.c ****             #elif (PWM_Light_Show_UseControl)
+ 280:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 281:.\Generated_Source\PSoC4/PWM_Light_Show.c ****                 #if(0 != PWM_Light_Show_CTRL_CMPMODE1_SHIFT)
+ 282:.\Generated_Source\PSoC4/PWM_Light_Show.c ****                     uint8 comparemode1masked = ((uint8)((uint8)comparemode << PWM_Light_Show_CTRL_C
+ 283:.\Generated_Source\PSoC4/PWM_Light_Show.c ****                                                 PWM_Light_Show_CTRL_CMPMODE1_MASK;
+ 284:.\Generated_Source\PSoC4/PWM_Light_Show.c ****                 #else
+ 285:.\Generated_Source\PSoC4/PWM_Light_Show.c ****                     uint8 comparemode1masked = comparemode & PWM_Light_Show_CTRL_CMPMODE1_MASK;
+ 286:.\Generated_Source\PSoC4/PWM_Light_Show.c ****                 #endif /* (0 != PWM_Light_Show_CTRL_CMPMODE1_SHIFT) */
+ 287:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 288:.\Generated_Source\PSoC4/PWM_Light_Show.c ****                 #if(0 != PWM_Light_Show_CTRL_CMPMODE2_SHIFT)
+ 289:.\Generated_Source\PSoC4/PWM_Light_Show.c ****                     uint8 comparemode2masked = ((uint8)((uint8)comparemode << PWM_Light_Show_CTRL_C
+ 290:.\Generated_Source\PSoC4/PWM_Light_Show.c ****                                                PWM_Light_Show_CTRL_CMPMODE2_MASK;
+ 291:.\Generated_Source\PSoC4/PWM_Light_Show.c ****                 #else
+ 292:.\Generated_Source\PSoC4/PWM_Light_Show.c ****                     uint8 comparemode2masked = comparemode & PWM_Light_Show_CTRL_CMPMODE2_MASK;
+ 293:.\Generated_Source\PSoC4/PWM_Light_Show.c ****                 #endif /* (0 != PWM_Light_Show_CTRL_CMPMODE2_SHIFT) */
+ 294:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 295:.\Generated_Source\PSoC4/PWM_Light_Show.c ****                 /*Clear existing mode */
+ 296:.\Generated_Source\PSoC4/PWM_Light_Show.c ****                 PWM_Light_Show_CONTROL &= ((uint8)(~(PWM_Light_Show_CTRL_CMPMODE1_MASK |
+ 297:.\Generated_Source\PSoC4/PWM_Light_Show.c ****                                             PWM_Light_Show_CTRL_CMPMODE2_MASK)));
+ 298:.\Generated_Source\PSoC4/PWM_Light_Show.c ****                 PWM_Light_Show_CONTROL |= (comparemode1masked | comparemode2masked);
+ 299:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 300:.\Generated_Source\PSoC4/PWM_Light_Show.c ****             #else
+ 301:.\Generated_Source\PSoC4/PWM_Light_Show.c ****                 uint8 temp = comparemode;
+ 302:.\Generated_Source\PSoC4/PWM_Light_Show.c ****             #endif /* (PWM_Light_Show_UsingFixedFunction) */
+ 303:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         }
+ 304:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     #endif /* PWM_Light_Show_CompareMode1SW */
+ 305:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 306:.\Generated_Source\PSoC4/PWM_Light_Show.c **** #else /* UseOneCompareMode */
+ 307:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 308:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     #if (PWM_Light_Show_CompareMode1SW)
+ 309:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 310:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 311:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         /*******************************************************************************
+ 312:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         * Function Name: PWM_Light_Show_SetCompareMode1
+ 313:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         ********************************************************************************
+ 314:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         *
+ 315:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         * Summary:
+ 316:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         *  This function writes the Compare Mode for the pwm or pwm1 output
+ 317:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         *
+ 318:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         * Parameters:
+ 319:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         *  comparemode:  The new compare mode for the PWM output. Use the compare types
+ 320:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         *                defined in the H file as input arguments.
+ 321:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         *
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccLEIwe8.s 			page 11
+
+
+ 322:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         * Return:
+ 323:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         *  None
+ 324:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         *
+ 325:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         *******************************************************************************/
+ 326:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         void PWM_Light_Show_SetCompareMode1(uint8 comparemode) 
+ 327:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         {
+ 328:.\Generated_Source\PSoC4/PWM_Light_Show.c ****             #if(0 != PWM_Light_Show_CTRL_CMPMODE1_SHIFT)
+ 329:.\Generated_Source\PSoC4/PWM_Light_Show.c ****                 uint8 comparemodemasked = ((uint8)((uint8)comparemode << PWM_Light_Show_CTRL_CMPMOD
+ 330:.\Generated_Source\PSoC4/PWM_Light_Show.c ****                                            PWM_Light_Show_CTRL_CMPMODE1_MASK;
+ 331:.\Generated_Source\PSoC4/PWM_Light_Show.c ****             #else
+ 332:.\Generated_Source\PSoC4/PWM_Light_Show.c ****                 uint8 comparemodemasked = comparemode & PWM_Light_Show_CTRL_CMPMODE1_MASK;
+ 333:.\Generated_Source\PSoC4/PWM_Light_Show.c ****             #endif /* (0 != PWM_Light_Show_CTRL_CMPMODE1_SHIFT) */
+ 334:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 335:.\Generated_Source\PSoC4/PWM_Light_Show.c ****             #if (PWM_Light_Show_UseControl)
+ 336:.\Generated_Source\PSoC4/PWM_Light_Show.c ****                 PWM_Light_Show_CONTROL &= ((uint8)(~PWM_Light_Show_CTRL_CMPMODE1_MASK)); /*Clear ex
+ 337:.\Generated_Source\PSoC4/PWM_Light_Show.c ****                 PWM_Light_Show_CONTROL |= comparemodemasked;
+ 338:.\Generated_Source\PSoC4/PWM_Light_Show.c ****             #endif /* (PWM_Light_Show_UseControl) */
+ 339:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         }
+ 340:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     #endif /* PWM_Light_Show_CompareMode1SW */
+ 341:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 342:.\Generated_Source\PSoC4/PWM_Light_Show.c **** #if (PWM_Light_Show_CompareMode2SW)
+ 343:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 344:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 345:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     /*******************************************************************************
+ 346:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     * Function Name: PWM_Light_Show_SetCompareMode2
+ 347:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     ********************************************************************************
+ 348:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *
+ 349:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     * Summary:
+ 350:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *  This function writes the Compare Mode for the pwm or pwm2 output
+ 351:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *
+ 352:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     * Parameters:
+ 353:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *  comparemode:  The new compare mode for the PWM output. Use the compare types
+ 354:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *                defined in the H file as input arguments.
+ 355:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *
+ 356:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     * Return:
+ 357:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *  None
+ 358:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *
+ 359:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *******************************************************************************/
+ 360:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     void PWM_Light_Show_SetCompareMode2(uint8 comparemode) 
+ 361:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     {
+ 362:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 363:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         #if(0 != PWM_Light_Show_CTRL_CMPMODE2_SHIFT)
+ 364:.\Generated_Source\PSoC4/PWM_Light_Show.c ****             uint8 comparemodemasked = ((uint8)((uint8)comparemode << PWM_Light_Show_CTRL_CMPMODE2_S
+ 365:.\Generated_Source\PSoC4/PWM_Light_Show.c ****                                                  PWM_Light_Show_CTRL_CMPMODE2_MASK;
+ 366:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         #else
+ 367:.\Generated_Source\PSoC4/PWM_Light_Show.c ****             uint8 comparemodemasked = comparemode & PWM_Light_Show_CTRL_CMPMODE2_MASK;
+ 368:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         #endif /* (0 != PWM_Light_Show_CTRL_CMPMODE2_SHIFT) */
+ 369:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 370:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         #if (PWM_Light_Show_UseControl)
+ 371:.\Generated_Source\PSoC4/PWM_Light_Show.c ****             PWM_Light_Show_CONTROL &= ((uint8)(~PWM_Light_Show_CTRL_CMPMODE2_MASK)); /*Clear existi
+ 372:.\Generated_Source\PSoC4/PWM_Light_Show.c ****             PWM_Light_Show_CONTROL |= comparemodemasked;
+ 373:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         #endif /* (PWM_Light_Show_UseControl) */
+ 374:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     }
+ 375:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     #endif /*PWM_Light_Show_CompareMode2SW */
+ 376:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 377:.\Generated_Source\PSoC4/PWM_Light_Show.c **** #endif /* UseOneCompareMode */
+ 378:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccLEIwe8.s 			page 12
+
+
+ 379:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 380:.\Generated_Source\PSoC4/PWM_Light_Show.c **** #if (!PWM_Light_Show_UsingFixedFunction)
+ 381:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 382:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 383:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     /*******************************************************************************
+ 384:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     * Function Name: PWM_Light_Show_WriteCounter
+ 385:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     ********************************************************************************
+ 386:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *
+ 387:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     * Summary:
+ 388:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *  Writes a new counter value directly to the counter register. This will be
+ 389:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *  implemented for that currently running period and only that period. This API
+ 390:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *  is valid only for UDB implementation and not available for fixed function
+ 391:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *  PWM implementation.
+ 392:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *
+ 393:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     * Parameters:
+ 394:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *  counter:  The period new period counter value.
+ 395:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *
+ 396:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     * Return:
+ 397:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *  None
+ 398:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *
+ 399:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     * Side Effects:
+ 400:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *  The PWM Period will be reloaded when a counter value will be a zero
+ 401:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *
+ 402:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *******************************************************************************/
+ 403:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     void PWM_Light_Show_WriteCounter(uint16 counter) \
+ 404:.\Generated_Source\PSoC4/PWM_Light_Show.c ****                                        
+ 405:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     {
+ 250              		.loc 1 405 0
+ 251              		.cfi_startproc
+ 252 0000 80B5     		push	{r7, lr}
+ 253              		.cfi_def_cfa_offset 8
+ 254              		.cfi_offset 7, -8
+ 255              		.cfi_offset 14, -4
+ 256 0002 82B0     		sub	sp, sp, #8
+ 257              		.cfi_def_cfa_offset 16
+ 258 0004 00AF     		add	r7, sp, #0
+ 259              		.cfi_def_cfa_register 7
+ 260 0006 021C     		mov	r2, r0
+ 261 0008 BB1D     		add	r3, r7, #6
+ 262 000a 1A80     		strh	r2, [r3]
+ 406:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         CY_SET_REG16(PWM_Light_Show_COUNTER_LSB_PTR, counter);
+ 263              		.loc 1 406 0
+ 264 000c 034B     		ldr	r3, .L15
+ 265 000e BA1D     		add	r2, r7, #6
+ 266 0010 1288     		ldrh	r2, [r2]
+ 267 0012 1A80     		strh	r2, [r3]
+ 407:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     }
+ 268              		.loc 1 407 0
+ 269 0014 BD46     		mov	sp, r7
+ 270 0016 02B0     		add	sp, sp, #8
+ 271              		@ sp needed
+ 272 0018 80BD     		pop	{r7, pc}
+ 273              	.L16:
+ 274 001a C046     		.align	2
+ 275              	.L15:
+ 276 001c 00100F40 		.word	1074728960
+ 277              		.cfi_endproc
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccLEIwe8.s 			page 13
+
+
+ 278              	.LFE4:
+ 279              		.size	PWM_Light_Show_WriteCounter, .-PWM_Light_Show_WriteCounter
+ 280              		.section	.text.PWM_Light_Show_ReadCounter,"ax",%progbits
+ 281              		.align	2
+ 282              		.global	PWM_Light_Show_ReadCounter
+ 283              		.code	16
+ 284              		.thumb_func
+ 285              		.type	PWM_Light_Show_ReadCounter, %function
+ 286              	PWM_Light_Show_ReadCounter:
+ 287              	.LFB5:
+ 408:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 409:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 410:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     /*******************************************************************************
+ 411:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     * Function Name: PWM_Light_Show_ReadCounter
+ 412:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     ********************************************************************************
+ 413:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *
+ 414:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     * Summary:
+ 415:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *  This function returns the current value of the counter.  It doesn't matter
+ 416:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *  if the counter is enabled or running.
+ 417:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *
+ 418:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     * Parameters:
+ 419:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *  None
+ 420:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *
+ 421:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     * Return:
+ 422:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *  The current value of the counter.
+ 423:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *
+ 424:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *******************************************************************************/
+ 425:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     uint16 PWM_Light_Show_ReadCounter(void) 
+ 426:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     {
+ 288              		.loc 1 426 0
+ 289              		.cfi_startproc
+ 290 0000 80B5     		push	{r7, lr}
+ 291              		.cfi_def_cfa_offset 8
+ 292              		.cfi_offset 7, -8
+ 293              		.cfi_offset 14, -4
+ 294 0002 00AF     		add	r7, sp, #0
+ 295              		.cfi_def_cfa_register 7
+ 427:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         /* Force capture by reading Accumulator */
+ 428:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         /* Must first do a software capture to be able to read the counter */
+ 429:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         /* It is up to the user code to make sure there isn't already captured data in the FIFO */
+ 430:.\Generated_Source\PSoC4/PWM_Light_Show.c ****           (void)CY_GET_REG8(PWM_Light_Show_COUNTERCAP_LSB_PTR_8BIT);
+ 296              		.loc 1 430 0
+ 297 0004 034B     		ldr	r3, .L19
+ 298 0006 1B78     		ldrb	r3, [r3]
+ 431:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 432:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         /* Read the data from the FIFO */
+ 433:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         return (CY_GET_REG16(PWM_Light_Show_CAPTURE_LSB_PTR));
+ 299              		.loc 1 433 0
+ 300 0008 034B     		ldr	r3, .L19+4
+ 301 000a 1B88     		ldrh	r3, [r3]
+ 302 000c 9BB2     		uxth	r3, r3
+ 434:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     }
+ 303              		.loc 1 434 0
+ 304 000e 181C     		mov	r0, r3
+ 305 0010 BD46     		mov	sp, r7
+ 306              		@ sp needed
+ 307 0012 80BD     		pop	{r7, pc}
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccLEIwe8.s 			page 14
+
+
+ 308              	.L20:
+ 309              		.align	2
+ 310              	.L19:
+ 311 0014 10000F40 		.word	1074724880
+ 312 0018 A0100F40 		.word	1074729120
+ 313              		.cfi_endproc
+ 314              	.LFE5:
+ 315              		.size	PWM_Light_Show_ReadCounter, .-PWM_Light_Show_ReadCounter
+ 316              		.section	.text.PWM_Light_Show_ClearFIFO,"ax",%progbits
+ 317              		.align	2
+ 318              		.global	PWM_Light_Show_ClearFIFO
+ 319              		.code	16
+ 320              		.thumb_func
+ 321              		.type	PWM_Light_Show_ClearFIFO, %function
+ 322              	PWM_Light_Show_ClearFIFO:
+ 323              	.LFB6:
+ 435:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 436:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     #if (PWM_Light_Show_UseStatus)
+ 437:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 438:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 439:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         /*******************************************************************************
+ 440:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         * Function Name: PWM_Light_Show_ClearFIFO
+ 441:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         ********************************************************************************
+ 442:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         *
+ 443:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         * Summary:
+ 444:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         *  This function clears all capture data from the capture FIFO
+ 445:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         *
+ 446:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         * Parameters:
+ 447:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         *  None
+ 448:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         *
+ 449:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         * Return:
+ 450:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         *  None
+ 451:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         *
+ 452:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         *******************************************************************************/
+ 453:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         void PWM_Light_Show_ClearFIFO(void) 
+ 454:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         {
+ 324              		.loc 1 454 0
+ 325              		.cfi_startproc
+ 326 0000 80B5     		push	{r7, lr}
+ 327              		.cfi_def_cfa_offset 8
+ 328              		.cfi_offset 7, -8
+ 329              		.cfi_offset 14, -4
+ 330 0002 00AF     		add	r7, sp, #0
+ 331              		.cfi_def_cfa_register 7
+ 455:.\Generated_Source\PSoC4/PWM_Light_Show.c ****             while(0u != (PWM_Light_Show_ReadStatusRegister() & PWM_Light_Show_STATUS_FIFONEMPTY))
+ 332              		.loc 1 455 0
+ 333 0004 01E0     		b	.L22
+ 334              	.L23:
+ 456:.\Generated_Source\PSoC4/PWM_Light_Show.c ****             {
+ 457:.\Generated_Source\PSoC4/PWM_Light_Show.c ****                 (void)PWM_Light_Show_ReadCapture();
+ 335              		.loc 1 457 0
+ 336 0006 FFF7FEFF 		bl	PWM_Light_Show_ReadCapture
+ 337              	.L22:
+ 455:.\Generated_Source\PSoC4/PWM_Light_Show.c ****             while(0u != (PWM_Light_Show_ReadStatusRegister() & PWM_Light_Show_STATUS_FIFONEMPTY))
+ 338              		.loc 1 455 0 discriminator 1
+ 339 000a FFF7FEFF 		bl	PWM_Light_Show_ReadStatusRegister
+ 340 000e 031C     		mov	r3, r0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccLEIwe8.s 			page 15
+
+
+ 341 0010 1A1C     		mov	r2, r3
+ 342 0012 1023     		mov	r3, #16
+ 343 0014 1340     		and	r3, r2
+ 344 0016 F6D1     		bne	.L23
+ 458:.\Generated_Source\PSoC4/PWM_Light_Show.c ****             }
+ 459:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         }
+ 345              		.loc 1 459 0
+ 346 0018 BD46     		mov	sp, r7
+ 347              		@ sp needed
+ 348 001a 80BD     		pop	{r7, pc}
+ 349              		.cfi_endproc
+ 350              	.LFE6:
+ 351              		.size	PWM_Light_Show_ClearFIFO, .-PWM_Light_Show_ClearFIFO
+ 352              		.section	.text.PWM_Light_Show_WritePeriod,"ax",%progbits
+ 353              		.align	2
+ 354              		.global	PWM_Light_Show_WritePeriod
+ 355              		.code	16
+ 356              		.thumb_func
+ 357              		.type	PWM_Light_Show_WritePeriod, %function
+ 358              	PWM_Light_Show_WritePeriod:
+ 359              	.LFB7:
+ 460:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 461:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     #endif /* PWM_Light_Show_UseStatus */
+ 462:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 463:.\Generated_Source\PSoC4/PWM_Light_Show.c **** #endif /* !PWM_Light_Show_UsingFixedFunction */
+ 464:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 465:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 466:.\Generated_Source\PSoC4/PWM_Light_Show.c **** /*******************************************************************************
+ 467:.\Generated_Source\PSoC4/PWM_Light_Show.c **** * Function Name: PWM_Light_Show_WritePeriod
+ 468:.\Generated_Source\PSoC4/PWM_Light_Show.c **** ********************************************************************************
+ 469:.\Generated_Source\PSoC4/PWM_Light_Show.c **** *
+ 470:.\Generated_Source\PSoC4/PWM_Light_Show.c **** * Summary:
+ 471:.\Generated_Source\PSoC4/PWM_Light_Show.c **** *  This function is used to change the period of the counter.  The new period
+ 472:.\Generated_Source\PSoC4/PWM_Light_Show.c **** *  will be loaded the next time terminal count is detected.
+ 473:.\Generated_Source\PSoC4/PWM_Light_Show.c **** *
+ 474:.\Generated_Source\PSoC4/PWM_Light_Show.c **** * Parameters:
+ 475:.\Generated_Source\PSoC4/PWM_Light_Show.c **** *  period:  Period value. May be between 1 and (2^Resolution)-1.  A value of 0
+ 476:.\Generated_Source\PSoC4/PWM_Light_Show.c **** *           will result in the counter remaining at zero.
+ 477:.\Generated_Source\PSoC4/PWM_Light_Show.c **** *
+ 478:.\Generated_Source\PSoC4/PWM_Light_Show.c **** * Return:
+ 479:.\Generated_Source\PSoC4/PWM_Light_Show.c **** *  None
+ 480:.\Generated_Source\PSoC4/PWM_Light_Show.c **** *
+ 481:.\Generated_Source\PSoC4/PWM_Light_Show.c **** *******************************************************************************/
+ 482:.\Generated_Source\PSoC4/PWM_Light_Show.c **** void PWM_Light_Show_WritePeriod(uint16 period) 
+ 483:.\Generated_Source\PSoC4/PWM_Light_Show.c **** {
+ 360              		.loc 1 483 0
+ 361              		.cfi_startproc
+ 362 0000 80B5     		push	{r7, lr}
+ 363              		.cfi_def_cfa_offset 8
+ 364              		.cfi_offset 7, -8
+ 365              		.cfi_offset 14, -4
+ 366 0002 82B0     		sub	sp, sp, #8
+ 367              		.cfi_def_cfa_offset 16
+ 368 0004 00AF     		add	r7, sp, #0
+ 369              		.cfi_def_cfa_register 7
+ 370 0006 021C     		mov	r2, r0
+ 371 0008 BB1D     		add	r3, r7, #6
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccLEIwe8.s 			page 16
+
+
+ 372 000a 1A80     		strh	r2, [r3]
+ 484:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     #if(PWM_Light_Show_UsingFixedFunction)
+ 485:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         CY_SET_REG16(PWM_Light_Show_PERIOD_LSB_PTR, (uint16)period);
+ 486:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     #else
+ 487:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         CY_SET_REG16(PWM_Light_Show_PERIOD_LSB_PTR, period);
+ 373              		.loc 1 487 0
+ 374 000c 034B     		ldr	r3, .L25
+ 375 000e BA1D     		add	r2, r7, #6
+ 376 0010 1288     		ldrh	r2, [r2]
+ 377 0012 1A80     		strh	r2, [r3]
+ 488:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     #endif /* (PWM_Light_Show_UsingFixedFunction) */
+ 489:.\Generated_Source\PSoC4/PWM_Light_Show.c **** }
+ 378              		.loc 1 489 0
+ 379 0014 BD46     		mov	sp, r7
+ 380 0016 02B0     		add	sp, sp, #8
+ 381              		@ sp needed
+ 382 0018 80BD     		pop	{r7, pc}
+ 383              	.L26:
+ 384 001a C046     		.align	2
+ 385              	.L25:
+ 386 001c 80100F40 		.word	1074729088
+ 387              		.cfi_endproc
+ 388              	.LFE7:
+ 389              		.size	PWM_Light_Show_WritePeriod, .-PWM_Light_Show_WritePeriod
+ 390              		.section	.text.PWM_Light_Show_WriteCompare,"ax",%progbits
+ 391              		.align	2
+ 392              		.global	PWM_Light_Show_WriteCompare
+ 393              		.code	16
+ 394              		.thumb_func
+ 395              		.type	PWM_Light_Show_WriteCompare, %function
+ 396              	PWM_Light_Show_WriteCompare:
+ 397              	.LFB8:
+ 490:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 491:.\Generated_Source\PSoC4/PWM_Light_Show.c **** #if (PWM_Light_Show_UseOneCompareMode)
+ 492:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 493:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 494:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     /*******************************************************************************
+ 495:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     * Function Name: PWM_Light_Show_WriteCompare
+ 496:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     ********************************************************************************
+ 497:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *
+ 498:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     * Summary:
+ 499:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *  This funtion is used to change the compare1 value when the PWM is in Dither
+ 500:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *  mode. The compare output will reflect the new value on the next UDB clock.
+ 501:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *  The compare output will be driven high when the present counter value is
+ 502:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *  compared to the compare value based on the compare mode defined in
+ 503:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *  Dither Mode.
+ 504:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *
+ 505:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     * Parameters:
+ 506:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *  compare:  New compare value.
+ 507:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *
+ 508:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     * Return:
+ 509:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *  None
+ 510:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *
+ 511:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     * Side Effects:
+ 512:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *  This function is only available if the PWM mode parameter is set to
+ 513:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *  Dither Mode, Center Aligned Mode or One Output Mode
+ 514:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccLEIwe8.s 			page 17
+
+
+ 515:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *******************************************************************************/
+ 516:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     void PWM_Light_Show_WriteCompare(uint16 compare) \
+ 517:.\Generated_Source\PSoC4/PWM_Light_Show.c ****                                        
+ 518:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     {
+ 398              		.loc 1 518 0
+ 399              		.cfi_startproc
+ 400 0000 80B5     		push	{r7, lr}
+ 401              		.cfi_def_cfa_offset 8
+ 402              		.cfi_offset 7, -8
+ 403              		.cfi_offset 14, -4
+ 404 0002 82B0     		sub	sp, sp, #8
+ 405              		.cfi_def_cfa_offset 16
+ 406 0004 00AF     		add	r7, sp, #0
+ 407              		.cfi_def_cfa_register 7
+ 408 0006 021C     		mov	r2, r0
+ 409 0008 BB1D     		add	r3, r7, #6
+ 410 000a 1A80     		strh	r2, [r3]
+ 519:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         #if(PWM_Light_Show_UsingFixedFunction)
+ 520:.\Generated_Source\PSoC4/PWM_Light_Show.c ****             CY_SET_REG16(PWM_Light_Show_COMPARE1_LSB_PTR, (uint16)compare);
+ 521:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         #else
+ 522:.\Generated_Source\PSoC4/PWM_Light_Show.c ****             CY_SET_REG16(PWM_Light_Show_COMPARE1_LSB_PTR, compare);
+ 411              		.loc 1 522 0
+ 412 000c 034B     		ldr	r3, .L28
+ 413 000e BA1D     		add	r2, r7, #6
+ 414 0010 1288     		ldrh	r2, [r2]
+ 415 0012 1A80     		strh	r2, [r3]
+ 523:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         #endif /* (PWM_Light_Show_UsingFixedFunction) */
+ 524:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 525:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         #if (PWM_Light_Show_PWMMode == PWM_Light_Show__B_PWM__DITHER)
+ 526:.\Generated_Source\PSoC4/PWM_Light_Show.c ****             #if(PWM_Light_Show_UsingFixedFunction)
+ 527:.\Generated_Source\PSoC4/PWM_Light_Show.c ****                 CY_SET_REG16(PWM_Light_Show_COMPARE2_LSB_PTR, (uint16)(compare + 1u));
+ 528:.\Generated_Source\PSoC4/PWM_Light_Show.c ****             #else
+ 529:.\Generated_Source\PSoC4/PWM_Light_Show.c ****                 CY_SET_REG16(PWM_Light_Show_COMPARE2_LSB_PTR, (compare + 1u));
+ 530:.\Generated_Source\PSoC4/PWM_Light_Show.c ****             #endif /* (PWM_Light_Show_UsingFixedFunction) */
+ 531:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         #endif /* (PWM_Light_Show_PWMMode == PWM_Light_Show__B_PWM__DITHER) */
+ 532:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     }
+ 416              		.loc 1 532 0
+ 417 0014 BD46     		mov	sp, r7
+ 418 0016 02B0     		add	sp, sp, #8
+ 419              		@ sp needed
+ 420 0018 80BD     		pop	{r7, pc}
+ 421              	.L29:
+ 422 001a C046     		.align	2
+ 423              	.L28:
+ 424 001c 40100F40 		.word	1074729024
+ 425              		.cfi_endproc
+ 426              	.LFE8:
+ 427              		.size	PWM_Light_Show_WriteCompare, .-PWM_Light_Show_WriteCompare
+ 428              		.section	.text.PWM_Light_Show_SetInterruptMode,"ax",%progbits
+ 429              		.align	2
+ 430              		.global	PWM_Light_Show_SetInterruptMode
+ 431              		.code	16
+ 432              		.thumb_func
+ 433              		.type	PWM_Light_Show_SetInterruptMode, %function
+ 434              	PWM_Light_Show_SetInterruptMode:
+ 435              	.LFB9:
+ 533:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccLEIwe8.s 			page 18
+
+
+ 534:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 535:.\Generated_Source\PSoC4/PWM_Light_Show.c **** #else
+ 536:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 537:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 538:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     /*******************************************************************************
+ 539:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     * Function Name: PWM_Light_Show_WriteCompare1
+ 540:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     ********************************************************************************
+ 541:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *
+ 542:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     * Summary:
+ 543:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *  This funtion is used to change the compare1 value.  The compare output will
+ 544:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *  reflect the new value on the next UDB clock.  The compare output will be
+ 545:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *  driven high when the present counter value is less than or less than or
+ 546:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *  equal to the compare register, depending on the mode.
+ 547:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *
+ 548:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     * Parameters:
+ 549:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *  compare:  New compare value.
+ 550:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *
+ 551:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     * Return:
+ 552:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *  None
+ 553:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *
+ 554:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *******************************************************************************/
+ 555:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     void PWM_Light_Show_WriteCompare1(uint16 compare) \
+ 556:.\Generated_Source\PSoC4/PWM_Light_Show.c ****                                         
+ 557:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     {
+ 558:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         #if(PWM_Light_Show_UsingFixedFunction)
+ 559:.\Generated_Source\PSoC4/PWM_Light_Show.c ****             CY_SET_REG16(PWM_Light_Show_COMPARE1_LSB_PTR, (uint16)compare);
+ 560:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         #else
+ 561:.\Generated_Source\PSoC4/PWM_Light_Show.c ****             CY_SET_REG16(PWM_Light_Show_COMPARE1_LSB_PTR, compare);
+ 562:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         #endif /* (PWM_Light_Show_UsingFixedFunction) */
+ 563:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     }
+ 564:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 565:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 566:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     /*******************************************************************************
+ 567:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     * Function Name: PWM_Light_Show_WriteCompare2
+ 568:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     ********************************************************************************
+ 569:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *
+ 570:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     * Summary:
+ 571:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *  This funtion is used to change the compare value, for compare1 output.
+ 572:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *  The compare output will reflect the new value on the next UDB clock.
+ 573:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *  The compare output will be driven high when the present counter value is
+ 574:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *  less than or less than or equal to the compare register, depending on the
+ 575:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *  mode.
+ 576:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *
+ 577:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     * Parameters:
+ 578:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *  compare:  New compare value.
+ 579:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *
+ 580:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     * Return:
+ 581:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *  None
+ 582:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *
+ 583:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *******************************************************************************/
+ 584:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     void PWM_Light_Show_WriteCompare2(uint16 compare) \
+ 585:.\Generated_Source\PSoC4/PWM_Light_Show.c ****                                         
+ 586:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     {
+ 587:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         #if(PWM_Light_Show_UsingFixedFunction)
+ 588:.\Generated_Source\PSoC4/PWM_Light_Show.c ****             CY_SET_REG16(PWM_Light_Show_COMPARE2_LSB_PTR, compare);
+ 589:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         #else
+ 590:.\Generated_Source\PSoC4/PWM_Light_Show.c ****             CY_SET_REG16(PWM_Light_Show_COMPARE2_LSB_PTR, compare);
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccLEIwe8.s 			page 19
+
+
+ 591:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         #endif /* (PWM_Light_Show_UsingFixedFunction) */
+ 592:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     }
+ 593:.\Generated_Source\PSoC4/PWM_Light_Show.c **** #endif /* UseOneCompareMode */
+ 594:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 595:.\Generated_Source\PSoC4/PWM_Light_Show.c **** #if (PWM_Light_Show_DeadBandUsed)
+ 596:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 597:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 598:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     /*******************************************************************************
+ 599:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     * Function Name: PWM_Light_Show_WriteDeadTime
+ 600:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     ********************************************************************************
+ 601:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *
+ 602:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     * Summary:
+ 603:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *  This function writes the dead-band counts to the corresponding register
+ 604:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *
+ 605:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     * Parameters:
+ 606:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *  deadtime:  Number of counts for dead time
+ 607:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *
+ 608:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     * Return:
+ 609:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *  None
+ 610:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *
+ 611:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *******************************************************************************/
+ 612:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     void PWM_Light_Show_WriteDeadTime(uint8 deadtime) 
+ 613:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     {
+ 614:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         /* If using the Dead Band 1-255 mode then just write the register */
+ 615:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         #if(!PWM_Light_Show_DeadBand2_4)
+ 616:.\Generated_Source\PSoC4/PWM_Light_Show.c ****             CY_SET_REG8(PWM_Light_Show_DEADBAND_COUNT_PTR, deadtime);
+ 617:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         #else
+ 618:.\Generated_Source\PSoC4/PWM_Light_Show.c ****             /* Otherwise the data has to be masked and offset */
+ 619:.\Generated_Source\PSoC4/PWM_Light_Show.c ****             /* Clear existing data */
+ 620:.\Generated_Source\PSoC4/PWM_Light_Show.c ****             PWM_Light_Show_DEADBAND_COUNT &= ((uint8)(~PWM_Light_Show_DEADBAND_COUNT_MASK));
+ 621:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 622:.\Generated_Source\PSoC4/PWM_Light_Show.c ****             /* Set new dead time */
+ 623:.\Generated_Source\PSoC4/PWM_Light_Show.c ****             #if(PWM_Light_Show_DEADBAND_COUNT_SHIFT)
+ 624:.\Generated_Source\PSoC4/PWM_Light_Show.c ****                 PWM_Light_Show_DEADBAND_COUNT |= ((uint8)((uint8)deadtime << PWM_Light_Show_DEADBAN
+ 625:.\Generated_Source\PSoC4/PWM_Light_Show.c ****                                                     PWM_Light_Show_DEADBAND_COUNT_MASK;
+ 626:.\Generated_Source\PSoC4/PWM_Light_Show.c ****             #else
+ 627:.\Generated_Source\PSoC4/PWM_Light_Show.c ****                 PWM_Light_Show_DEADBAND_COUNT |= deadtime & PWM_Light_Show_DEADBAND_COUNT_MASK;
+ 628:.\Generated_Source\PSoC4/PWM_Light_Show.c ****             #endif /* (PWM_Light_Show_DEADBAND_COUNT_SHIFT) */
+ 629:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 630:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         #endif /* (!PWM_Light_Show_DeadBand2_4) */
+ 631:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     }
+ 632:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 633:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 634:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     /*******************************************************************************
+ 635:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     * Function Name: PWM_Light_Show_ReadDeadTime
+ 636:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     ********************************************************************************
+ 637:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *
+ 638:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     * Summary:
+ 639:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *  This function reads the dead-band counts from the corresponding register
+ 640:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *
+ 641:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     * Parameters:
+ 642:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *  None
+ 643:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *
+ 644:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     * Return:
+ 645:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *  Dead Band Counts
+ 646:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *
+ 647:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *******************************************************************************/
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccLEIwe8.s 			page 20
+
+
+ 648:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     uint8 PWM_Light_Show_ReadDeadTime(void) 
+ 649:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     {
+ 650:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         /* If using the Dead Band 1-255 mode then just read the register */
+ 651:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         #if(!PWM_Light_Show_DeadBand2_4)
+ 652:.\Generated_Source\PSoC4/PWM_Light_Show.c ****             return (CY_GET_REG8(PWM_Light_Show_DEADBAND_COUNT_PTR));
+ 653:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         #else
+ 654:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 655:.\Generated_Source\PSoC4/PWM_Light_Show.c ****             /* Otherwise the data has to be masked and offset */
+ 656:.\Generated_Source\PSoC4/PWM_Light_Show.c ****             #if(PWM_Light_Show_DEADBAND_COUNT_SHIFT)
+ 657:.\Generated_Source\PSoC4/PWM_Light_Show.c ****                 return ((uint8)(((uint8)(PWM_Light_Show_DEADBAND_COUNT & PWM_Light_Show_DEADBAND_CO
+ 658:.\Generated_Source\PSoC4/PWM_Light_Show.c ****                                                                            PWM_Light_Show_DEADBAND_
+ 659:.\Generated_Source\PSoC4/PWM_Light_Show.c ****             #else
+ 660:.\Generated_Source\PSoC4/PWM_Light_Show.c ****                 return (PWM_Light_Show_DEADBAND_COUNT & PWM_Light_Show_DEADBAND_COUNT_MASK);
+ 661:.\Generated_Source\PSoC4/PWM_Light_Show.c ****             #endif /* (PWM_Light_Show_DEADBAND_COUNT_SHIFT) */
+ 662:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         #endif /* (!PWM_Light_Show_DeadBand2_4) */
+ 663:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     }
+ 664:.\Generated_Source\PSoC4/PWM_Light_Show.c **** #endif /* DeadBandUsed */
+ 665:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 666:.\Generated_Source\PSoC4/PWM_Light_Show.c **** #if (PWM_Light_Show_UseStatus || PWM_Light_Show_UsingFixedFunction)
+ 667:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 668:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 669:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     /*******************************************************************************
+ 670:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     * Function Name: PWM_Light_Show_SetInterruptMode
+ 671:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     ********************************************************************************
+ 672:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *
+ 673:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     * Summary:
+ 674:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *  This function configures the interrupts mask control of theinterrupt
+ 675:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *  source status register.
+ 676:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *
+ 677:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     * Parameters:
+ 678:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *  uint8 interruptMode: Bit field containing the interrupt sources enabled
+ 679:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *
+ 680:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     * Return:
+ 681:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *  None
+ 682:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *
+ 683:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *******************************************************************************/
+ 684:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     void PWM_Light_Show_SetInterruptMode(uint8 interruptMode) 
+ 685:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     {
+ 436              		.loc 1 685 0
+ 437              		.cfi_startproc
+ 438 0000 80B5     		push	{r7, lr}
+ 439              		.cfi_def_cfa_offset 8
+ 440              		.cfi_offset 7, -8
+ 441              		.cfi_offset 14, -4
+ 442 0002 82B0     		sub	sp, sp, #8
+ 443              		.cfi_def_cfa_offset 16
+ 444 0004 00AF     		add	r7, sp, #0
+ 445              		.cfi_def_cfa_register 7
+ 446 0006 021C     		mov	r2, r0
+ 447 0008 FB1D     		add	r3, r7, #7
+ 448 000a 1A70     		strb	r2, [r3]
+ 686:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         CY_SET_REG8(PWM_Light_Show_STATUS_MASK_PTR, interruptMode);
+ 449              		.loc 1 686 0
+ 450 000c 034B     		ldr	r3, .L31
+ 451 000e FA1D     		add	r2, r7, #7
+ 452 0010 1278     		ldrb	r2, [r2]
+ 453 0012 1A70     		strb	r2, [r3]
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccLEIwe8.s 			page 21
+
+
+ 687:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     }
+ 454              		.loc 1 687 0
+ 455 0014 BD46     		mov	sp, r7
+ 456 0016 02B0     		add	sp, sp, #8
+ 457              		@ sp needed
+ 458 0018 80BD     		pop	{r7, pc}
+ 459              	.L32:
+ 460 001a C046     		.align	2
+ 461              	.L31:
+ 462 001c 81000F40 		.word	1074724993
+ 463              		.cfi_endproc
+ 464              	.LFE9:
+ 465              		.size	PWM_Light_Show_SetInterruptMode, .-PWM_Light_Show_SetInterruptMode
+ 466              		.section	.text.PWM_Light_Show_ReadStatusRegister,"ax",%progbits
+ 467              		.align	2
+ 468              		.global	PWM_Light_Show_ReadStatusRegister
+ 469              		.code	16
+ 470              		.thumb_func
+ 471              		.type	PWM_Light_Show_ReadStatusRegister, %function
+ 472              	PWM_Light_Show_ReadStatusRegister:
+ 473              	.LFB10:
+ 688:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 689:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 690:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     /*******************************************************************************
+ 691:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     * Function Name: PWM_Light_Show_ReadStatusRegister
+ 692:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     ********************************************************************************
+ 693:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *
+ 694:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     * Summary:
+ 695:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *  This function returns the current state of the status register.
+ 696:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *
+ 697:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     * Parameters:
+ 698:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *  None
+ 699:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *
+ 700:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     * Return:
+ 701:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *  uint8 : Current status register value. The status register bits are:
+ 702:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *  [7:6] : Unused(0)
+ 703:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *  [5]   : Kill event output
+ 704:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *  [4]   : FIFO not empty
+ 705:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *  [3]   : FIFO full
+ 706:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *  [2]   : Terminal count
+ 707:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *  [1]   : Compare output 2
+ 708:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *  [0]   : Compare output 1
+ 709:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *
+ 710:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *******************************************************************************/
+ 711:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     uint8 PWM_Light_Show_ReadStatusRegister(void) 
+ 712:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     {
+ 474              		.loc 1 712 0
+ 475              		.cfi_startproc
+ 476 0000 80B5     		push	{r7, lr}
+ 477              		.cfi_def_cfa_offset 8
+ 478              		.cfi_offset 7, -8
+ 479              		.cfi_offset 14, -4
+ 480 0002 00AF     		add	r7, sp, #0
+ 481              		.cfi_def_cfa_register 7
+ 713:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         return (CY_GET_REG8(PWM_Light_Show_STATUS_PTR));
+ 482              		.loc 1 713 0
+ 483 0004 024B     		ldr	r3, .L35
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccLEIwe8.s 			page 22
+
+
+ 484 0006 1B78     		ldrb	r3, [r3]
+ 485 0008 DBB2     		uxtb	r3, r3
+ 714:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     }
+ 486              		.loc 1 714 0
+ 487 000a 181C     		mov	r0, r3
+ 488 000c BD46     		mov	sp, r7
+ 489              		@ sp needed
+ 490 000e 80BD     		pop	{r7, pc}
+ 491              	.L36:
+ 492              		.align	2
+ 493              	.L35:
+ 494 0010 61000F40 		.word	1074724961
+ 495              		.cfi_endproc
+ 496              	.LFE10:
+ 497              		.size	PWM_Light_Show_ReadStatusRegister, .-PWM_Light_Show_ReadStatusRegister
+ 498              		.section	.text.PWM_Light_Show_ReadControlRegister,"ax",%progbits
+ 499              		.align	2
+ 500              		.global	PWM_Light_Show_ReadControlRegister
+ 501              		.code	16
+ 502              		.thumb_func
+ 503              		.type	PWM_Light_Show_ReadControlRegister, %function
+ 504              	PWM_Light_Show_ReadControlRegister:
+ 505              	.LFB11:
+ 715:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 716:.\Generated_Source\PSoC4/PWM_Light_Show.c **** #endif /* (PWM_Light_Show_UseStatus || PWM_Light_Show_UsingFixedFunction) */
+ 717:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 718:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 719:.\Generated_Source\PSoC4/PWM_Light_Show.c **** #if (PWM_Light_Show_UseControl)
+ 720:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 721:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 722:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     /*******************************************************************************
+ 723:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     * Function Name: PWM_Light_Show_ReadControlRegister
+ 724:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     ********************************************************************************
+ 725:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *
+ 726:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     * Summary:
+ 727:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *  Returns the current state of the control register. This API is available
+ 728:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *  only if the control register is not removed.
+ 729:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *
+ 730:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     * Parameters:
+ 731:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *  None
+ 732:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *
+ 733:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     * Return:
+ 734:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *  uint8 : Current control register value
+ 735:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *
+ 736:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *******************************************************************************/
+ 737:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     uint8 PWM_Light_Show_ReadControlRegister(void) 
+ 738:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     {
+ 506              		.loc 1 738 0
+ 507              		.cfi_startproc
+ 508 0000 80B5     		push	{r7, lr}
+ 509              		.cfi_def_cfa_offset 8
+ 510              		.cfi_offset 7, -8
+ 511              		.cfi_offset 14, -4
+ 512 0002 82B0     		sub	sp, sp, #8
+ 513              		.cfi_def_cfa_offset 16
+ 514 0004 00AF     		add	r7, sp, #0
+ 515              		.cfi_def_cfa_register 7
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccLEIwe8.s 			page 23
+
+
+ 739:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         uint8 result;
+ 740:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 741:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         result = CY_GET_REG8(PWM_Light_Show_CONTROL_PTR);
+ 516              		.loc 1 741 0
+ 517 0006 054A     		ldr	r2, .L39
+ 518 0008 FB1D     		add	r3, r7, #7
+ 519 000a 1278     		ldrb	r2, [r2]
+ 520 000c 1A70     		strb	r2, [r3]
+ 742:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         return (result);
+ 521              		.loc 1 742 0
+ 522 000e FB1D     		add	r3, r7, #7
+ 523 0010 1B78     		ldrb	r3, [r3]
+ 743:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     }
+ 524              		.loc 1 743 0
+ 525 0012 181C     		mov	r0, r3
+ 526 0014 BD46     		mov	sp, r7
+ 527 0016 02B0     		add	sp, sp, #8
+ 528              		@ sp needed
+ 529 0018 80BD     		pop	{r7, pc}
+ 530              	.L40:
+ 531 001a C046     		.align	2
+ 532              	.L39:
+ 533 001c 70000F40 		.word	1074724976
+ 534              		.cfi_endproc
+ 535              	.LFE11:
+ 536              		.size	PWM_Light_Show_ReadControlRegister, .-PWM_Light_Show_ReadControlRegister
+ 537              		.section	.text.PWM_Light_Show_WriteControlRegister,"ax",%progbits
+ 538              		.align	2
+ 539              		.global	PWM_Light_Show_WriteControlRegister
+ 540              		.code	16
+ 541              		.thumb_func
+ 542              		.type	PWM_Light_Show_WriteControlRegister, %function
+ 543              	PWM_Light_Show_WriteControlRegister:
+ 544              	.LFB12:
+ 744:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 745:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 746:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     /*******************************************************************************
+ 747:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     * Function Name: PWM_Light_Show_WriteControlRegister
+ 748:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     ********************************************************************************
+ 749:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *
+ 750:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     * Summary:
+ 751:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *  Sets the bit field of the control register. This API is available only if
+ 752:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *  the control register is not removed.
+ 753:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *
+ 754:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     * Parameters:
+ 755:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *  uint8 control: Control register bit field, The status register bits are:
+ 756:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *  [7]   : PWM Enable
+ 757:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *  [6]   : Reset
+ 758:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *  [5:3] : Compare Mode2
+ 759:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *  [2:0] : Compare Mode2
+ 760:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *
+ 761:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     * Return:
+ 762:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *  None
+ 763:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *
+ 764:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *******************************************************************************/
+ 765:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     void PWM_Light_Show_WriteControlRegister(uint8 control) 
+ 766:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     {
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccLEIwe8.s 			page 24
+
+
+ 545              		.loc 1 766 0
+ 546              		.cfi_startproc
+ 547 0000 80B5     		push	{r7, lr}
+ 548              		.cfi_def_cfa_offset 8
+ 549              		.cfi_offset 7, -8
+ 550              		.cfi_offset 14, -4
+ 551 0002 82B0     		sub	sp, sp, #8
+ 552              		.cfi_def_cfa_offset 16
+ 553 0004 00AF     		add	r7, sp, #0
+ 554              		.cfi_def_cfa_register 7
+ 555 0006 021C     		mov	r2, r0
+ 556 0008 FB1D     		add	r3, r7, #7
+ 557 000a 1A70     		strb	r2, [r3]
+ 767:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         CY_SET_REG8(PWM_Light_Show_CONTROL_PTR, control);
+ 558              		.loc 1 767 0
+ 559 000c 034B     		ldr	r3, .L42
+ 560 000e FA1D     		add	r2, r7, #7
+ 561 0010 1278     		ldrb	r2, [r2]
+ 562 0012 1A70     		strb	r2, [r3]
+ 768:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     }
+ 563              		.loc 1 768 0
+ 564 0014 BD46     		mov	sp, r7
+ 565 0016 02B0     		add	sp, sp, #8
+ 566              		@ sp needed
+ 567 0018 80BD     		pop	{r7, pc}
+ 568              	.L43:
+ 569 001a C046     		.align	2
+ 570              	.L42:
+ 571 001c 70000F40 		.word	1074724976
+ 572              		.cfi_endproc
+ 573              	.LFE12:
+ 574              		.size	PWM_Light_Show_WriteControlRegister, .-PWM_Light_Show_WriteControlRegister
+ 575              		.section	.text.PWM_Light_Show_ReadCapture,"ax",%progbits
+ 576              		.align	2
+ 577              		.global	PWM_Light_Show_ReadCapture
+ 578              		.code	16
+ 579              		.thumb_func
+ 580              		.type	PWM_Light_Show_ReadCapture, %function
+ 581              	PWM_Light_Show_ReadCapture:
+ 582              	.LFB13:
+ 769:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 770:.\Generated_Source\PSoC4/PWM_Light_Show.c **** #endif /* (PWM_Light_Show_UseControl) */
+ 771:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 772:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 773:.\Generated_Source\PSoC4/PWM_Light_Show.c **** #if (!PWM_Light_Show_UsingFixedFunction)
+ 774:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 775:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 776:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     /*******************************************************************************
+ 777:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     * Function Name: PWM_Light_Show_ReadCapture
+ 778:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     ********************************************************************************
+ 779:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *
+ 780:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     * Summary:
+ 781:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *  Reads the capture value from the capture FIFO.
+ 782:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *
+ 783:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     * Parameters:
+ 784:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *  None
+ 785:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccLEIwe8.s 			page 25
+
+
+ 786:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     * Return:
+ 787:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *  uint8/uint16: The current capture value
+ 788:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *
+ 789:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *******************************************************************************/
+ 790:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     uint16 PWM_Light_Show_ReadCapture(void) 
+ 791:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     {
+ 583              		.loc 1 791 0
+ 584              		.cfi_startproc
+ 585 0000 80B5     		push	{r7, lr}
+ 586              		.cfi_def_cfa_offset 8
+ 587              		.cfi_offset 7, -8
+ 588              		.cfi_offset 14, -4
+ 589 0002 00AF     		add	r7, sp, #0
+ 590              		.cfi_def_cfa_register 7
+ 792:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         return (CY_GET_REG16(PWM_Light_Show_CAPTURE_LSB_PTR));
+ 591              		.loc 1 792 0
+ 592 0004 024B     		ldr	r3, .L46
+ 593 0006 1B88     		ldrh	r3, [r3]
+ 594 0008 9BB2     		uxth	r3, r3
+ 793:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     }
+ 595              		.loc 1 793 0
+ 596 000a 181C     		mov	r0, r3
+ 597 000c BD46     		mov	sp, r7
+ 598              		@ sp needed
+ 599 000e 80BD     		pop	{r7, pc}
+ 600              	.L47:
+ 601              		.align	2
+ 602              	.L46:
+ 603 0010 A0100F40 		.word	1074729120
+ 604              		.cfi_endproc
+ 605              	.LFE13:
+ 606              		.size	PWM_Light_Show_ReadCapture, .-PWM_Light_Show_ReadCapture
+ 607              		.section	.text.PWM_Light_Show_ReadCompare,"ax",%progbits
+ 608              		.align	2
+ 609              		.global	PWM_Light_Show_ReadCompare
+ 610              		.code	16
+ 611              		.thumb_func
+ 612              		.type	PWM_Light_Show_ReadCompare, %function
+ 613              	PWM_Light_Show_ReadCompare:
+ 614              	.LFB14:
+ 794:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 795:.\Generated_Source\PSoC4/PWM_Light_Show.c **** #endif /* (!PWM_Light_Show_UsingFixedFunction) */
+ 796:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 797:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 798:.\Generated_Source\PSoC4/PWM_Light_Show.c **** #if (PWM_Light_Show_UseOneCompareMode)
+ 799:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 800:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 801:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     /*******************************************************************************
+ 802:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     * Function Name: PWM_Light_Show_ReadCompare
+ 803:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     ********************************************************************************
+ 804:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *
+ 805:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     * Summary:
+ 806:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *  Reads the compare value for the compare output when the PWM Mode parameter is
+ 807:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *  set to Dither mode, Center Aligned mode, or One Output mode.
+ 808:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *
+ 809:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     * Parameters:
+ 810:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *  None
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccLEIwe8.s 			page 26
+
+
+ 811:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *
+ 812:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     * Return:
+ 813:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *  uint8/uint16: Current compare value
+ 814:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *
+ 815:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *******************************************************************************/
+ 816:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     uint16 PWM_Light_Show_ReadCompare(void) 
+ 817:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     {
+ 615              		.loc 1 817 0
+ 616              		.cfi_startproc
+ 617 0000 80B5     		push	{r7, lr}
+ 618              		.cfi_def_cfa_offset 8
+ 619              		.cfi_offset 7, -8
+ 620              		.cfi_offset 14, -4
+ 621 0002 00AF     		add	r7, sp, #0
+ 622              		.cfi_def_cfa_register 7
+ 818:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         #if(PWM_Light_Show_UsingFixedFunction)
+ 819:.\Generated_Source\PSoC4/PWM_Light_Show.c ****             return ((uint16)CY_GET_REG16(PWM_Light_Show_COMPARE1_LSB_PTR));
+ 820:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         #else
+ 821:.\Generated_Source\PSoC4/PWM_Light_Show.c ****             return (CY_GET_REG16(PWM_Light_Show_COMPARE1_LSB_PTR));
+ 623              		.loc 1 821 0
+ 624 0004 024B     		ldr	r3, .L50
+ 625 0006 1B88     		ldrh	r3, [r3]
+ 626 0008 9BB2     		uxth	r3, r3
+ 822:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         #endif /* (PWM_Light_Show_UsingFixedFunction) */
+ 823:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     }
+ 627              		.loc 1 823 0
+ 628 000a 181C     		mov	r0, r3
+ 629 000c BD46     		mov	sp, r7
+ 630              		@ sp needed
+ 631 000e 80BD     		pop	{r7, pc}
+ 632              	.L51:
+ 633              		.align	2
+ 634              	.L50:
+ 635 0010 40100F40 		.word	1074729024
+ 636              		.cfi_endproc
+ 637              	.LFE14:
+ 638              		.size	PWM_Light_Show_ReadCompare, .-PWM_Light_Show_ReadCompare
+ 639              		.section	.text.PWM_Light_Show_ReadPeriod,"ax",%progbits
+ 640              		.align	2
+ 641              		.global	PWM_Light_Show_ReadPeriod
+ 642              		.code	16
+ 643              		.thumb_func
+ 644              		.type	PWM_Light_Show_ReadPeriod, %function
+ 645              	PWM_Light_Show_ReadPeriod:
+ 646              	.LFB15:
+ 824:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 825:.\Generated_Source\PSoC4/PWM_Light_Show.c **** #else
+ 826:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 827:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 828:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     /*******************************************************************************
+ 829:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     * Function Name: PWM_Light_Show_ReadCompare1
+ 830:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     ********************************************************************************
+ 831:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *
+ 832:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     * Summary:
+ 833:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *  Reads the compare value for the compare1 output.
+ 834:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *
+ 835:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     * Parameters:
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccLEIwe8.s 			page 27
+
+
+ 836:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *  None
+ 837:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *
+ 838:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     * Return:
+ 839:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *  uint8/uint16: Current compare value.
+ 840:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *
+ 841:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *******************************************************************************/
+ 842:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     uint16 PWM_Light_Show_ReadCompare1(void) 
+ 843:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     {
+ 844:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         return (CY_GET_REG16(PWM_Light_Show_COMPARE1_LSB_PTR));
+ 845:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     }
+ 846:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 847:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 848:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     /*******************************************************************************
+ 849:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     * Function Name: PWM_Light_Show_ReadCompare2
+ 850:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     ********************************************************************************
+ 851:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *
+ 852:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     * Summary:
+ 853:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *  Reads the compare value for the compare2 output.
+ 854:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *
+ 855:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     * Parameters:
+ 856:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *  None
+ 857:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *
+ 858:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     * Return:
+ 859:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *  uint8/uint16: Current compare value.
+ 860:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *
+ 861:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     *******************************************************************************/
+ 862:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     uint16 PWM_Light_Show_ReadCompare2(void) 
+ 863:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     {
+ 864:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         return (CY_GET_REG16(PWM_Light_Show_COMPARE2_LSB_PTR));
+ 865:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     }
+ 866:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 867:.\Generated_Source\PSoC4/PWM_Light_Show.c **** #endif /* (PWM_Light_Show_UseOneCompareMode) */
+ 868:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 869:.\Generated_Source\PSoC4/PWM_Light_Show.c **** 
+ 870:.\Generated_Source\PSoC4/PWM_Light_Show.c **** /*******************************************************************************
+ 871:.\Generated_Source\PSoC4/PWM_Light_Show.c **** * Function Name: PWM_Light_Show_ReadPeriod
+ 872:.\Generated_Source\PSoC4/PWM_Light_Show.c **** ********************************************************************************
+ 873:.\Generated_Source\PSoC4/PWM_Light_Show.c **** *
+ 874:.\Generated_Source\PSoC4/PWM_Light_Show.c **** * Summary:
+ 875:.\Generated_Source\PSoC4/PWM_Light_Show.c **** *  Reads the period value used by the PWM hardware.
+ 876:.\Generated_Source\PSoC4/PWM_Light_Show.c **** *
+ 877:.\Generated_Source\PSoC4/PWM_Light_Show.c **** * Parameters:
+ 878:.\Generated_Source\PSoC4/PWM_Light_Show.c **** *  None
+ 879:.\Generated_Source\PSoC4/PWM_Light_Show.c **** *
+ 880:.\Generated_Source\PSoC4/PWM_Light_Show.c **** * Return:
+ 881:.\Generated_Source\PSoC4/PWM_Light_Show.c **** *  uint8/16: Period value
+ 882:.\Generated_Source\PSoC4/PWM_Light_Show.c **** *
+ 883:.\Generated_Source\PSoC4/PWM_Light_Show.c **** *******************************************************************************/
+ 884:.\Generated_Source\PSoC4/PWM_Light_Show.c **** uint16 PWM_Light_Show_ReadPeriod(void) 
+ 885:.\Generated_Source\PSoC4/PWM_Light_Show.c **** {
+ 647              		.loc 1 885 0
+ 648              		.cfi_startproc
+ 649 0000 80B5     		push	{r7, lr}
+ 650              		.cfi_def_cfa_offset 8
+ 651              		.cfi_offset 7, -8
+ 652              		.cfi_offset 14, -4
+ 653 0002 00AF     		add	r7, sp, #0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccLEIwe8.s 			page 28
+
+
+ 654              		.cfi_def_cfa_register 7
+ 886:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     #if(PWM_Light_Show_UsingFixedFunction)
+ 887:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         return ((uint16)CY_GET_REG16(PWM_Light_Show_PERIOD_LSB_PTR));
+ 888:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     #else
+ 889:.\Generated_Source\PSoC4/PWM_Light_Show.c ****         return (CY_GET_REG16(PWM_Light_Show_PERIOD_LSB_PTR));
+ 655              		.loc 1 889 0
+ 656 0004 024B     		ldr	r3, .L54
+ 657 0006 1B88     		ldrh	r3, [r3]
+ 658 0008 9BB2     		uxth	r3, r3
+ 890:.\Generated_Source\PSoC4/PWM_Light_Show.c ****     #endif /* (PWM_Light_Show_UsingFixedFunction) */
+ 891:.\Generated_Source\PSoC4/PWM_Light_Show.c **** }
+ 659              		.loc 1 891 0
+ 660 000a 181C     		mov	r0, r3
+ 661 000c BD46     		mov	sp, r7
+ 662              		@ sp needed
+ 663 000e 80BD     		pop	{r7, pc}
+ 664              	.L55:
+ 665              		.align	2
+ 666              	.L54:
+ 667 0010 80100F40 		.word	1074729088
+ 668              		.cfi_endproc
+ 669              	.LFE15:
+ 670              		.size	PWM_Light_Show_ReadPeriod, .-PWM_Light_Show_ReadPeriod
+ 671              		.text
+ 672              	.Letext0:
+ 673              		.file 2 ".\\Generated_Source\\PSoC4\\cytypes.h"
+ 674              		.section	.debug_info,"",%progbits
+ 675              	.Ldebug_info0:
+ 676 0000 9A020000 		.4byte	0x29a
+ 677 0004 0400     		.2byte	0x4
+ 678 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 679 000a 04       		.byte	0x4
+ 680 000b 01       		.uleb128 0x1
+ 681 000c 05010000 		.4byte	.LASF40
+ 682 0010 01       		.byte	0x1
+ 683 0011 A5000000 		.4byte	.LASF41
+ 684 0015 A8020000 		.4byte	.LASF42
+ 685 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 686 001d 00000000 		.4byte	0
+ 687 0021 00000000 		.4byte	.Ldebug_line0
+ 688 0025 02       		.uleb128 0x2
+ 689 0026 01       		.byte	0x1
+ 690 0027 06       		.byte	0x6
+ 691 0028 87030000 		.4byte	.LASF0
+ 692 002c 02       		.uleb128 0x2
+ 693 002d 01       		.byte	0x1
+ 694 002e 08       		.byte	0x8
+ 695 002f 81010000 		.4byte	.LASF1
+ 696 0033 02       		.uleb128 0x2
+ 697 0034 02       		.byte	0x2
+ 698 0035 05       		.byte	0x5
+ 699 0036 F9010000 		.4byte	.LASF2
+ 700 003a 02       		.uleb128 0x2
+ 701 003b 02       		.byte	0x2
+ 702 003c 07       		.byte	0x7
+ 703 003d 92000000 		.4byte	.LASF3
+ 704 0041 02       		.uleb128 0x2
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccLEIwe8.s 			page 29
+
+
+ 705 0042 04       		.byte	0x4
+ 706 0043 05       		.byte	0x5
+ 707 0044 5E030000 		.4byte	.LASF4
+ 708 0048 02       		.uleb128 0x2
+ 709 0049 04       		.byte	0x4
+ 710 004a 07       		.byte	0x7
+ 711 004b 94010000 		.4byte	.LASF5
+ 712 004f 02       		.uleb128 0x2
+ 713 0050 08       		.byte	0x8
+ 714 0051 05       		.byte	0x5
+ 715 0052 8C020000 		.4byte	.LASF6
+ 716 0056 02       		.uleb128 0x2
+ 717 0057 08       		.byte	0x8
+ 718 0058 07       		.byte	0x7
+ 719 0059 58020000 		.4byte	.LASF7
+ 720 005d 03       		.uleb128 0x3
+ 721 005e 04       		.byte	0x4
+ 722 005f 05       		.byte	0x5
+ 723 0060 696E7400 		.ascii	"int\000"
+ 724 0064 02       		.uleb128 0x2
+ 725 0065 04       		.byte	0x4
+ 726 0066 07       		.byte	0x7
+ 727 0067 28020000 		.4byte	.LASF8
+ 728 006b 04       		.uleb128 0x4
+ 729 006c A6010000 		.4byte	.LASF9
+ 730 0070 02       		.byte	0x2
+ 731 0071 A1       		.byte	0xa1
+ 732 0072 2C000000 		.4byte	0x2c
+ 733 0076 04       		.uleb128 0x4
+ 734 0077 03020000 		.4byte	.LASF10
+ 735 007b 02       		.byte	0x2
+ 736 007c A2       		.byte	0xa2
+ 737 007d 3A000000 		.4byte	0x3a
+ 738 0081 02       		.uleb128 0x2
+ 739 0082 04       		.byte	0x4
+ 740 0083 04       		.byte	0x4
+ 741 0084 FF000000 		.4byte	.LASF11
+ 742 0088 02       		.uleb128 0x2
+ 743 0089 08       		.byte	0x8
+ 744 008a 04       		.byte	0x4
+ 745 008b F2010000 		.4byte	.LASF12
+ 746 008f 02       		.uleb128 0x2
+ 747 0090 01       		.byte	0x1
+ 748 0091 08       		.byte	0x8
+ 749 0092 67030000 		.4byte	.LASF13
+ 750 0096 05       		.uleb128 0x5
+ 751 0097 8F010000 		.4byte	.LASF14
+ 752 009b 02       		.byte	0x2
+ 753 009c 4B01     		.2byte	0x14b
+ 754 009e A2000000 		.4byte	0xa2
+ 755 00a2 06       		.uleb128 0x6
+ 756 00a3 6B000000 		.4byte	0x6b
+ 757 00a7 05       		.uleb128 0x5
+ 758 00a8 00000000 		.4byte	.LASF15
+ 759 00ac 02       		.byte	0x2
+ 760 00ad 4C01     		.2byte	0x14c
+ 761 00af B3000000 		.4byte	0xb3
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccLEIwe8.s 			page 30
+
+
+ 762 00b3 06       		.uleb128 0x6
+ 763 00b4 76000000 		.4byte	0x76
+ 764 00b8 02       		.uleb128 0x2
+ 765 00b9 04       		.byte	0x4
+ 766 00ba 07       		.byte	0x7
+ 767 00bb 83020000 		.4byte	.LASF16
+ 768 00bf 07       		.uleb128 0x7
+ 769 00c0 CF000000 		.4byte	.LASF19
+ 770 00c4 01       		.byte	0x1
+ 771 00c5 37       		.byte	0x37
+ 772 00c6 00000000 		.4byte	.LFB0
+ 773 00ca 24000000 		.4byte	.LFE0-.LFB0
+ 774 00ce 01       		.uleb128 0x1
+ 775 00cf 9C       		.byte	0x9c
+ 776 00d0 08       		.uleb128 0x8
+ 777 00d1 17030000 		.4byte	.LASF22
+ 778 00d5 01       		.byte	0x1
+ 779 00d6 54       		.byte	0x54
+ 780 00d7 00000000 		.4byte	.LFB1
+ 781 00db A0000000 		.4byte	.LFE1-.LFB1
+ 782 00df 01       		.uleb128 0x1
+ 783 00e0 9C       		.byte	0x9c
+ 784 00e1 02010000 		.4byte	0x102
+ 785 00e5 09       		.uleb128 0x9
+ 786 00e6 7E020000 		.4byte	.LASF17
+ 787 00ea 01       		.byte	0x1
+ 788 00eb 57       		.byte	0x57
+ 789 00ec 6B000000 		.4byte	0x6b
+ 790 00f0 02       		.uleb128 0x2
+ 791 00f1 91       		.byte	0x91
+ 792 00f2 6F       		.sleb128 -17
+ 793 00f3 09       		.uleb128 0x9
+ 794 00f4 0A020000 		.4byte	.LASF18
+ 795 00f8 01       		.byte	0x1
+ 796 00f9 5D       		.byte	0x5d
+ 797 00fa 6B000000 		.4byte	0x6b
+ 798 00fe 02       		.uleb128 0x2
+ 799 00ff 91       		.byte	0x91
+ 800 0100 6E       		.sleb128 -18
+ 801 0101 00       		.byte	0
+ 802 0102 0A       		.uleb128 0xa
+ 803 0103 E5020000 		.4byte	.LASF20
+ 804 0107 01       		.byte	0x1
+ 805 0108 C7       		.byte	0xc7
+ 806 0109 00000000 		.4byte	.LFB2
+ 807 010d 20000000 		.4byte	.LFE2-.LFB2
+ 808 0111 01       		.uleb128 0x1
+ 809 0112 9C       		.byte	0x9c
+ 810 0113 0A       		.uleb128 0xa
+ 811 0114 7E000000 		.4byte	.LASF21
+ 812 0118 01       		.byte	0x1
+ 813 0119 E9       		.byte	0xe9
+ 814 011a 00000000 		.4byte	.LFB3
+ 815 011e 1C000000 		.4byte	.LFE3-.LFB3
+ 816 0122 01       		.uleb128 0x1
+ 817 0123 9C       		.byte	0x9c
+ 818 0124 0B       		.uleb128 0xb
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccLEIwe8.s 			page 31
+
+
+ 819 0125 FB020000 		.4byte	.LASF23
+ 820 0129 01       		.byte	0x1
+ 821 012a 9301     		.2byte	0x193
+ 822 012c 00000000 		.4byte	.LFB4
+ 823 0130 20000000 		.4byte	.LFE4-.LFB4
+ 824 0134 01       		.uleb128 0x1
+ 825 0135 9C       		.byte	0x9c
+ 826 0136 4A010000 		.4byte	0x14a
+ 827 013a 0C       		.uleb128 0xc
+ 828 013b 6F020000 		.4byte	.LASF26
+ 829 013f 01       		.byte	0x1
+ 830 0140 9301     		.2byte	0x193
+ 831 0142 76000000 		.4byte	0x76
+ 832 0146 02       		.uleb128 0x2
+ 833 0147 91       		.byte	0x91
+ 834 0148 76       		.sleb128 -10
+ 835 0149 00       		.byte	0
+ 836 014a 0D       		.uleb128 0xd
+ 837 014b E4000000 		.4byte	.LASF32
+ 838 014f 01       		.byte	0x1
+ 839 0150 A901     		.2byte	0x1a9
+ 840 0152 76000000 		.4byte	0x76
+ 841 0156 00000000 		.4byte	.LFB5
+ 842 015a 1C000000 		.4byte	.LFE5-.LFB5
+ 843 015e 01       		.uleb128 0x1
+ 844 015f 9C       		.byte	0x9c
+ 845 0160 0E       		.uleb128 0xe
+ 846 0161 2B030000 		.4byte	.LASF24
+ 847 0165 01       		.byte	0x1
+ 848 0166 C501     		.2byte	0x1c5
+ 849 0168 00000000 		.4byte	.LFB6
+ 850 016c 1C000000 		.4byte	.LFE6-.LFB6
+ 851 0170 01       		.uleb128 0x1
+ 852 0171 9C       		.byte	0x9c
+ 853 0172 0B       		.uleb128 0xb
+ 854 0173 41000000 		.4byte	.LASF25
+ 855 0177 01       		.byte	0x1
+ 856 0178 E201     		.2byte	0x1e2
+ 857 017a 00000000 		.4byte	.LFB7
+ 858 017e 20000000 		.4byte	.LFE7-.LFB7
+ 859 0182 01       		.uleb128 0x1
+ 860 0183 9C       		.byte	0x9c
+ 861 0184 98010000 		.4byte	0x198
+ 862 0188 0C       		.uleb128 0xc
+ 863 0189 77000000 		.4byte	.LASF27
+ 864 018d 01       		.byte	0x1
+ 865 018e E201     		.2byte	0x1e2
+ 866 0190 76000000 		.4byte	0x76
+ 867 0194 02       		.uleb128 0x2
+ 868 0195 91       		.byte	0x91
+ 869 0196 76       		.sleb128 -10
+ 870 0197 00       		.byte	0
+ 871 0198 0B       		.uleb128 0xb
+ 872 0199 D6010000 		.4byte	.LASF28
+ 873 019d 01       		.byte	0x1
+ 874 019e 0402     		.2byte	0x204
+ 875 01a0 00000000 		.4byte	.LFB8
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccLEIwe8.s 			page 32
+
+
+ 876 01a4 20000000 		.4byte	.LFE8-.LFB8
+ 877 01a8 01       		.uleb128 0x1
+ 878 01a9 9C       		.byte	0x9c
+ 879 01aa BE010000 		.4byte	0x1be
+ 880 01ae 0C       		.uleb128 0xc
+ 881 01af 93030000 		.4byte	.LASF29
+ 882 01b3 01       		.byte	0x1
+ 883 01b4 0402     		.2byte	0x204
+ 884 01b6 76000000 		.4byte	0x76
+ 885 01ba 02       		.uleb128 0x2
+ 886 01bb 91       		.byte	0x91
+ 887 01bc 76       		.sleb128 -10
+ 888 01bd 00       		.byte	0
+ 889 01be 0B       		.uleb128 0xb
+ 890 01bf 9B030000 		.4byte	.LASF30
+ 891 01c3 01       		.byte	0x1
+ 892 01c4 AC02     		.2byte	0x2ac
+ 893 01c6 00000000 		.4byte	.LFB9
+ 894 01ca 20000000 		.4byte	.LFE9-.LFB9
+ 895 01ce 01       		.uleb128 0x1
+ 896 01cf 9C       		.byte	0x9c
+ 897 01d0 E4010000 		.4byte	0x1e4
+ 898 01d4 0C       		.uleb128 0xc
+ 899 01d5 9A020000 		.4byte	.LASF31
+ 900 01d9 01       		.byte	0x1
+ 901 01da AC02     		.2byte	0x2ac
+ 902 01dc 6B000000 		.4byte	0x6b
+ 903 01e0 02       		.uleb128 0x2
+ 904 01e1 91       		.byte	0x91
+ 905 01e2 77       		.sleb128 -9
+ 906 01e3 00       		.byte	0
+ 907 01e4 0D       		.uleb128 0xd
+ 908 01e5 B4010000 		.4byte	.LASF33
+ 909 01e9 01       		.byte	0x1
+ 910 01ea C702     		.2byte	0x2c7
+ 911 01ec 6B000000 		.4byte	0x6b
+ 912 01f0 00000000 		.4byte	.LFB10
+ 913 01f4 14000000 		.4byte	.LFE10-.LFB10
+ 914 01f8 01       		.uleb128 0x1
+ 915 01f9 9C       		.byte	0x9c
+ 916 01fa 0F       		.uleb128 0xf
+ 917 01fb 35020000 		.4byte	.LASF43
+ 918 01ff 01       		.byte	0x1
+ 919 0200 E102     		.2byte	0x2e1
+ 920 0202 6B000000 		.4byte	0x6b
+ 921 0206 00000000 		.4byte	.LFB11
+ 922 020a 20000000 		.4byte	.LFE11-.LFB11
+ 923 020e 01       		.uleb128 0x1
+ 924 020f 9C       		.byte	0x9c
+ 925 0210 24020000 		.4byte	0x224
+ 926 0214 10       		.uleb128 0x10
+ 927 0215 77020000 		.4byte	.LASF34
+ 928 0219 01       		.byte	0x1
+ 929 021a E302     		.2byte	0x2e3
+ 930 021c 6B000000 		.4byte	0x6b
+ 931 0220 02       		.uleb128 0x2
+ 932 0221 91       		.byte	0x91
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccLEIwe8.s 			page 33
+
+
+ 933 0222 77       		.sleb128 -9
+ 934 0223 00       		.byte	0
+ 935 0224 0B       		.uleb128 0xb
+ 936 0225 1D000000 		.4byte	.LASF35
+ 937 0229 01       		.byte	0x1
+ 938 022a FD02     		.2byte	0x2fd
+ 939 022c 00000000 		.4byte	.LFB12
+ 940 0230 20000000 		.4byte	.LFE12-.LFB12
+ 941 0234 01       		.uleb128 0x1
+ 942 0235 9C       		.byte	0x9c
+ 943 0236 4A020000 		.4byte	0x24a
+ 944 023a 0C       		.uleb128 0xc
+ 945 023b AC010000 		.4byte	.LASF36
+ 946 023f 01       		.byte	0x1
+ 947 0240 FD02     		.2byte	0x2fd
+ 948 0242 6B000000 		.4byte	0x6b
+ 949 0246 02       		.uleb128 0x2
+ 950 0247 91       		.byte	0x91
+ 951 0248 77       		.sleb128 -9
+ 952 0249 00       		.byte	0
+ 953 024a 0D       		.uleb128 0xd
+ 954 024b 5C000000 		.4byte	.LASF37
+ 955 024f 01       		.byte	0x1
+ 956 0250 1603     		.2byte	0x316
+ 957 0252 76000000 		.4byte	0x76
+ 958 0256 00000000 		.4byte	.LFB13
+ 959 025a 14000000 		.4byte	.LFE13-.LFB13
+ 960 025e 01       		.uleb128 0x1
+ 961 025f 9C       		.byte	0x9c
+ 962 0260 0D       		.uleb128 0xd
+ 963 0261 6C030000 		.4byte	.LASF38
+ 964 0265 01       		.byte	0x1
+ 965 0266 3003     		.2byte	0x330
+ 966 0268 76000000 		.4byte	0x76
+ 967 026c 00000000 		.4byte	.LFB14
+ 968 0270 14000000 		.4byte	.LFE14-.LFB14
+ 969 0274 01       		.uleb128 0x1
+ 970 0275 9C       		.byte	0x9c
+ 971 0276 0D       		.uleb128 0xd
+ 972 0277 44030000 		.4byte	.LASF39
+ 973 027b 01       		.byte	0x1
+ 974 027c 7403     		.2byte	0x374
+ 975 027e 76000000 		.4byte	0x76
+ 976 0282 00000000 		.4byte	.LFB15
+ 977 0286 14000000 		.4byte	.LFE15-.LFB15
+ 978 028a 01       		.uleb128 0x1
+ 979 028b 9C       		.byte	0x9c
+ 980 028c 11       		.uleb128 0x11
+ 981 028d 06000000 		.4byte	.LASF44
+ 982 0291 01       		.byte	0x1
+ 983 0292 20       		.byte	0x20
+ 984 0293 6B000000 		.4byte	0x6b
+ 985 0297 05       		.uleb128 0x5
+ 986 0298 03       		.byte	0x3
+ 987 0299 00000000 		.4byte	PWM_Light_Show_initVar
+ 988 029d 00       		.byte	0
+ 989              		.section	.debug_abbrev,"",%progbits
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccLEIwe8.s 			page 34
+
+
+ 990              	.Ldebug_abbrev0:
+ 991 0000 01       		.uleb128 0x1
+ 992 0001 11       		.uleb128 0x11
+ 993 0002 01       		.byte	0x1
+ 994 0003 25       		.uleb128 0x25
+ 995 0004 0E       		.uleb128 0xe
+ 996 0005 13       		.uleb128 0x13
+ 997 0006 0B       		.uleb128 0xb
+ 998 0007 03       		.uleb128 0x3
+ 999 0008 0E       		.uleb128 0xe
+ 1000 0009 1B       		.uleb128 0x1b
+ 1001 000a 0E       		.uleb128 0xe
+ 1002 000b 55       		.uleb128 0x55
+ 1003 000c 17       		.uleb128 0x17
+ 1004 000d 11       		.uleb128 0x11
+ 1005 000e 01       		.uleb128 0x1
+ 1006 000f 10       		.uleb128 0x10
+ 1007 0010 17       		.uleb128 0x17
+ 1008 0011 00       		.byte	0
+ 1009 0012 00       		.byte	0
+ 1010 0013 02       		.uleb128 0x2
+ 1011 0014 24       		.uleb128 0x24
+ 1012 0015 00       		.byte	0
+ 1013 0016 0B       		.uleb128 0xb
+ 1014 0017 0B       		.uleb128 0xb
+ 1015 0018 3E       		.uleb128 0x3e
+ 1016 0019 0B       		.uleb128 0xb
+ 1017 001a 03       		.uleb128 0x3
+ 1018 001b 0E       		.uleb128 0xe
+ 1019 001c 00       		.byte	0
+ 1020 001d 00       		.byte	0
+ 1021 001e 03       		.uleb128 0x3
+ 1022 001f 24       		.uleb128 0x24
+ 1023 0020 00       		.byte	0
+ 1024 0021 0B       		.uleb128 0xb
+ 1025 0022 0B       		.uleb128 0xb
+ 1026 0023 3E       		.uleb128 0x3e
+ 1027 0024 0B       		.uleb128 0xb
+ 1028 0025 03       		.uleb128 0x3
+ 1029 0026 08       		.uleb128 0x8
+ 1030 0027 00       		.byte	0
+ 1031 0028 00       		.byte	0
+ 1032 0029 04       		.uleb128 0x4
+ 1033 002a 16       		.uleb128 0x16
+ 1034 002b 00       		.byte	0
+ 1035 002c 03       		.uleb128 0x3
+ 1036 002d 0E       		.uleb128 0xe
+ 1037 002e 3A       		.uleb128 0x3a
+ 1038 002f 0B       		.uleb128 0xb
+ 1039 0030 3B       		.uleb128 0x3b
+ 1040 0031 0B       		.uleb128 0xb
+ 1041 0032 49       		.uleb128 0x49
+ 1042 0033 13       		.uleb128 0x13
+ 1043 0034 00       		.byte	0
+ 1044 0035 00       		.byte	0
+ 1045 0036 05       		.uleb128 0x5
+ 1046 0037 16       		.uleb128 0x16
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccLEIwe8.s 			page 35
+
+
+ 1047 0038 00       		.byte	0
+ 1048 0039 03       		.uleb128 0x3
+ 1049 003a 0E       		.uleb128 0xe
+ 1050 003b 3A       		.uleb128 0x3a
+ 1051 003c 0B       		.uleb128 0xb
+ 1052 003d 3B       		.uleb128 0x3b
+ 1053 003e 05       		.uleb128 0x5
+ 1054 003f 49       		.uleb128 0x49
+ 1055 0040 13       		.uleb128 0x13
+ 1056 0041 00       		.byte	0
+ 1057 0042 00       		.byte	0
+ 1058 0043 06       		.uleb128 0x6
+ 1059 0044 35       		.uleb128 0x35
+ 1060 0045 00       		.byte	0
+ 1061 0046 49       		.uleb128 0x49
+ 1062 0047 13       		.uleb128 0x13
+ 1063 0048 00       		.byte	0
+ 1064 0049 00       		.byte	0
+ 1065 004a 07       		.uleb128 0x7
+ 1066 004b 2E       		.uleb128 0x2e
+ 1067 004c 00       		.byte	0
+ 1068 004d 3F       		.uleb128 0x3f
+ 1069 004e 19       		.uleb128 0x19
+ 1070 004f 03       		.uleb128 0x3
+ 1071 0050 0E       		.uleb128 0xe
+ 1072 0051 3A       		.uleb128 0x3a
+ 1073 0052 0B       		.uleb128 0xb
+ 1074 0053 3B       		.uleb128 0x3b
+ 1075 0054 0B       		.uleb128 0xb
+ 1076 0055 27       		.uleb128 0x27
+ 1077 0056 19       		.uleb128 0x19
+ 1078 0057 11       		.uleb128 0x11
+ 1079 0058 01       		.uleb128 0x1
+ 1080 0059 12       		.uleb128 0x12
+ 1081 005a 06       		.uleb128 0x6
+ 1082 005b 40       		.uleb128 0x40
+ 1083 005c 18       		.uleb128 0x18
+ 1084 005d 9642     		.uleb128 0x2116
+ 1085 005f 19       		.uleb128 0x19
+ 1086 0060 00       		.byte	0
+ 1087 0061 00       		.byte	0
+ 1088 0062 08       		.uleb128 0x8
+ 1089 0063 2E       		.uleb128 0x2e
+ 1090 0064 01       		.byte	0x1
+ 1091 0065 3F       		.uleb128 0x3f
+ 1092 0066 19       		.uleb128 0x19
+ 1093 0067 03       		.uleb128 0x3
+ 1094 0068 0E       		.uleb128 0xe
+ 1095 0069 3A       		.uleb128 0x3a
+ 1096 006a 0B       		.uleb128 0xb
+ 1097 006b 3B       		.uleb128 0x3b
+ 1098 006c 0B       		.uleb128 0xb
+ 1099 006d 27       		.uleb128 0x27
+ 1100 006e 19       		.uleb128 0x19
+ 1101 006f 11       		.uleb128 0x11
+ 1102 0070 01       		.uleb128 0x1
+ 1103 0071 12       		.uleb128 0x12
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccLEIwe8.s 			page 36
+
+
+ 1104 0072 06       		.uleb128 0x6
+ 1105 0073 40       		.uleb128 0x40
+ 1106 0074 18       		.uleb128 0x18
+ 1107 0075 9642     		.uleb128 0x2116
+ 1108 0077 19       		.uleb128 0x19
+ 1109 0078 01       		.uleb128 0x1
+ 1110 0079 13       		.uleb128 0x13
+ 1111 007a 00       		.byte	0
+ 1112 007b 00       		.byte	0
+ 1113 007c 09       		.uleb128 0x9
+ 1114 007d 34       		.uleb128 0x34
+ 1115 007e 00       		.byte	0
+ 1116 007f 03       		.uleb128 0x3
+ 1117 0080 0E       		.uleb128 0xe
+ 1118 0081 3A       		.uleb128 0x3a
+ 1119 0082 0B       		.uleb128 0xb
+ 1120 0083 3B       		.uleb128 0x3b
+ 1121 0084 0B       		.uleb128 0xb
+ 1122 0085 49       		.uleb128 0x49
+ 1123 0086 13       		.uleb128 0x13
+ 1124 0087 02       		.uleb128 0x2
+ 1125 0088 18       		.uleb128 0x18
+ 1126 0089 00       		.byte	0
+ 1127 008a 00       		.byte	0
+ 1128 008b 0A       		.uleb128 0xa
+ 1129 008c 2E       		.uleb128 0x2e
+ 1130 008d 00       		.byte	0
+ 1131 008e 3F       		.uleb128 0x3f
+ 1132 008f 19       		.uleb128 0x19
+ 1133 0090 03       		.uleb128 0x3
+ 1134 0091 0E       		.uleb128 0xe
+ 1135 0092 3A       		.uleb128 0x3a
+ 1136 0093 0B       		.uleb128 0xb
+ 1137 0094 3B       		.uleb128 0x3b
+ 1138 0095 0B       		.uleb128 0xb
+ 1139 0096 27       		.uleb128 0x27
+ 1140 0097 19       		.uleb128 0x19
+ 1141 0098 11       		.uleb128 0x11
+ 1142 0099 01       		.uleb128 0x1
+ 1143 009a 12       		.uleb128 0x12
+ 1144 009b 06       		.uleb128 0x6
+ 1145 009c 40       		.uleb128 0x40
+ 1146 009d 18       		.uleb128 0x18
+ 1147 009e 9742     		.uleb128 0x2117
+ 1148 00a0 19       		.uleb128 0x19
+ 1149 00a1 00       		.byte	0
+ 1150 00a2 00       		.byte	0
+ 1151 00a3 0B       		.uleb128 0xb
+ 1152 00a4 2E       		.uleb128 0x2e
+ 1153 00a5 01       		.byte	0x1
+ 1154 00a6 3F       		.uleb128 0x3f
+ 1155 00a7 19       		.uleb128 0x19
+ 1156 00a8 03       		.uleb128 0x3
+ 1157 00a9 0E       		.uleb128 0xe
+ 1158 00aa 3A       		.uleb128 0x3a
+ 1159 00ab 0B       		.uleb128 0xb
+ 1160 00ac 3B       		.uleb128 0x3b
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccLEIwe8.s 			page 37
+
+
+ 1161 00ad 05       		.uleb128 0x5
+ 1162 00ae 27       		.uleb128 0x27
+ 1163 00af 19       		.uleb128 0x19
+ 1164 00b0 11       		.uleb128 0x11
+ 1165 00b1 01       		.uleb128 0x1
+ 1166 00b2 12       		.uleb128 0x12
+ 1167 00b3 06       		.uleb128 0x6
+ 1168 00b4 40       		.uleb128 0x40
+ 1169 00b5 18       		.uleb128 0x18
+ 1170 00b6 9742     		.uleb128 0x2117
+ 1171 00b8 19       		.uleb128 0x19
+ 1172 00b9 01       		.uleb128 0x1
+ 1173 00ba 13       		.uleb128 0x13
+ 1174 00bb 00       		.byte	0
+ 1175 00bc 00       		.byte	0
+ 1176 00bd 0C       		.uleb128 0xc
+ 1177 00be 05       		.uleb128 0x5
+ 1178 00bf 00       		.byte	0
+ 1179 00c0 03       		.uleb128 0x3
+ 1180 00c1 0E       		.uleb128 0xe
+ 1181 00c2 3A       		.uleb128 0x3a
+ 1182 00c3 0B       		.uleb128 0xb
+ 1183 00c4 3B       		.uleb128 0x3b
+ 1184 00c5 05       		.uleb128 0x5
+ 1185 00c6 49       		.uleb128 0x49
+ 1186 00c7 13       		.uleb128 0x13
+ 1187 00c8 02       		.uleb128 0x2
+ 1188 00c9 18       		.uleb128 0x18
+ 1189 00ca 00       		.byte	0
+ 1190 00cb 00       		.byte	0
+ 1191 00cc 0D       		.uleb128 0xd
+ 1192 00cd 2E       		.uleb128 0x2e
+ 1193 00ce 00       		.byte	0
+ 1194 00cf 3F       		.uleb128 0x3f
+ 1195 00d0 19       		.uleb128 0x19
+ 1196 00d1 03       		.uleb128 0x3
+ 1197 00d2 0E       		.uleb128 0xe
+ 1198 00d3 3A       		.uleb128 0x3a
+ 1199 00d4 0B       		.uleb128 0xb
+ 1200 00d5 3B       		.uleb128 0x3b
+ 1201 00d6 05       		.uleb128 0x5
+ 1202 00d7 27       		.uleb128 0x27
+ 1203 00d8 19       		.uleb128 0x19
+ 1204 00d9 49       		.uleb128 0x49
+ 1205 00da 13       		.uleb128 0x13
+ 1206 00db 11       		.uleb128 0x11
+ 1207 00dc 01       		.uleb128 0x1
+ 1208 00dd 12       		.uleb128 0x12
+ 1209 00de 06       		.uleb128 0x6
+ 1210 00df 40       		.uleb128 0x40
+ 1211 00e0 18       		.uleb128 0x18
+ 1212 00e1 9742     		.uleb128 0x2117
+ 1213 00e3 19       		.uleb128 0x19
+ 1214 00e4 00       		.byte	0
+ 1215 00e5 00       		.byte	0
+ 1216 00e6 0E       		.uleb128 0xe
+ 1217 00e7 2E       		.uleb128 0x2e
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccLEIwe8.s 			page 38
+
+
+ 1218 00e8 00       		.byte	0
+ 1219 00e9 3F       		.uleb128 0x3f
+ 1220 00ea 19       		.uleb128 0x19
+ 1221 00eb 03       		.uleb128 0x3
+ 1222 00ec 0E       		.uleb128 0xe
+ 1223 00ed 3A       		.uleb128 0x3a
+ 1224 00ee 0B       		.uleb128 0xb
+ 1225 00ef 3B       		.uleb128 0x3b
+ 1226 00f0 05       		.uleb128 0x5
+ 1227 00f1 27       		.uleb128 0x27
+ 1228 00f2 19       		.uleb128 0x19
+ 1229 00f3 11       		.uleb128 0x11
+ 1230 00f4 01       		.uleb128 0x1
+ 1231 00f5 12       		.uleb128 0x12
+ 1232 00f6 06       		.uleb128 0x6
+ 1233 00f7 40       		.uleb128 0x40
+ 1234 00f8 18       		.uleb128 0x18
+ 1235 00f9 9642     		.uleb128 0x2116
+ 1236 00fb 19       		.uleb128 0x19
+ 1237 00fc 00       		.byte	0
+ 1238 00fd 00       		.byte	0
+ 1239 00fe 0F       		.uleb128 0xf
+ 1240 00ff 2E       		.uleb128 0x2e
+ 1241 0100 01       		.byte	0x1
+ 1242 0101 3F       		.uleb128 0x3f
+ 1243 0102 19       		.uleb128 0x19
+ 1244 0103 03       		.uleb128 0x3
+ 1245 0104 0E       		.uleb128 0xe
+ 1246 0105 3A       		.uleb128 0x3a
+ 1247 0106 0B       		.uleb128 0xb
+ 1248 0107 3B       		.uleb128 0x3b
+ 1249 0108 05       		.uleb128 0x5
+ 1250 0109 27       		.uleb128 0x27
+ 1251 010a 19       		.uleb128 0x19
+ 1252 010b 49       		.uleb128 0x49
+ 1253 010c 13       		.uleb128 0x13
+ 1254 010d 11       		.uleb128 0x11
+ 1255 010e 01       		.uleb128 0x1
+ 1256 010f 12       		.uleb128 0x12
+ 1257 0110 06       		.uleb128 0x6
+ 1258 0111 40       		.uleb128 0x40
+ 1259 0112 18       		.uleb128 0x18
+ 1260 0113 9742     		.uleb128 0x2117
+ 1261 0115 19       		.uleb128 0x19
+ 1262 0116 01       		.uleb128 0x1
+ 1263 0117 13       		.uleb128 0x13
+ 1264 0118 00       		.byte	0
+ 1265 0119 00       		.byte	0
+ 1266 011a 10       		.uleb128 0x10
+ 1267 011b 34       		.uleb128 0x34
+ 1268 011c 00       		.byte	0
+ 1269 011d 03       		.uleb128 0x3
+ 1270 011e 0E       		.uleb128 0xe
+ 1271 011f 3A       		.uleb128 0x3a
+ 1272 0120 0B       		.uleb128 0xb
+ 1273 0121 3B       		.uleb128 0x3b
+ 1274 0122 05       		.uleb128 0x5
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccLEIwe8.s 			page 39
+
+
+ 1275 0123 49       		.uleb128 0x49
+ 1276 0124 13       		.uleb128 0x13
+ 1277 0125 02       		.uleb128 0x2
+ 1278 0126 18       		.uleb128 0x18
+ 1279 0127 00       		.byte	0
+ 1280 0128 00       		.byte	0
+ 1281 0129 11       		.uleb128 0x11
+ 1282 012a 34       		.uleb128 0x34
+ 1283 012b 00       		.byte	0
+ 1284 012c 03       		.uleb128 0x3
+ 1285 012d 0E       		.uleb128 0xe
+ 1286 012e 3A       		.uleb128 0x3a
+ 1287 012f 0B       		.uleb128 0xb
+ 1288 0130 3B       		.uleb128 0x3b
+ 1289 0131 0B       		.uleb128 0xb
+ 1290 0132 49       		.uleb128 0x49
+ 1291 0133 13       		.uleb128 0x13
+ 1292 0134 3F       		.uleb128 0x3f
+ 1293 0135 19       		.uleb128 0x19
+ 1294 0136 02       		.uleb128 0x2
+ 1295 0137 18       		.uleb128 0x18
+ 1296 0138 00       		.byte	0
+ 1297 0139 00       		.byte	0
+ 1298 013a 00       		.byte	0
+ 1299              		.section	.debug_aranges,"",%progbits
+ 1300 0000 94000000 		.4byte	0x94
+ 1301 0004 0200     		.2byte	0x2
+ 1302 0006 00000000 		.4byte	.Ldebug_info0
+ 1303 000a 04       		.byte	0x4
+ 1304 000b 00       		.byte	0
+ 1305 000c 0000     		.2byte	0
+ 1306 000e 0000     		.2byte	0
+ 1307 0010 00000000 		.4byte	.LFB0
+ 1308 0014 24000000 		.4byte	.LFE0-.LFB0
+ 1309 0018 00000000 		.4byte	.LFB1
+ 1310 001c A0000000 		.4byte	.LFE1-.LFB1
+ 1311 0020 00000000 		.4byte	.LFB2
+ 1312 0024 20000000 		.4byte	.LFE2-.LFB2
+ 1313 0028 00000000 		.4byte	.LFB3
+ 1314 002c 1C000000 		.4byte	.LFE3-.LFB3
+ 1315 0030 00000000 		.4byte	.LFB4
+ 1316 0034 20000000 		.4byte	.LFE4-.LFB4
+ 1317 0038 00000000 		.4byte	.LFB5
+ 1318 003c 1C000000 		.4byte	.LFE5-.LFB5
+ 1319 0040 00000000 		.4byte	.LFB6
+ 1320 0044 1C000000 		.4byte	.LFE6-.LFB6
+ 1321 0048 00000000 		.4byte	.LFB7
+ 1322 004c 20000000 		.4byte	.LFE7-.LFB7
+ 1323 0050 00000000 		.4byte	.LFB8
+ 1324 0054 20000000 		.4byte	.LFE8-.LFB8
+ 1325 0058 00000000 		.4byte	.LFB9
+ 1326 005c 20000000 		.4byte	.LFE9-.LFB9
+ 1327 0060 00000000 		.4byte	.LFB10
+ 1328 0064 14000000 		.4byte	.LFE10-.LFB10
+ 1329 0068 00000000 		.4byte	.LFB11
+ 1330 006c 20000000 		.4byte	.LFE11-.LFB11
+ 1331 0070 00000000 		.4byte	.LFB12
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccLEIwe8.s 			page 40
+
+
+ 1332 0074 20000000 		.4byte	.LFE12-.LFB12
+ 1333 0078 00000000 		.4byte	.LFB13
+ 1334 007c 14000000 		.4byte	.LFE13-.LFB13
+ 1335 0080 00000000 		.4byte	.LFB14
+ 1336 0084 14000000 		.4byte	.LFE14-.LFB14
+ 1337 0088 00000000 		.4byte	.LFB15
+ 1338 008c 14000000 		.4byte	.LFE15-.LFB15
+ 1339 0090 00000000 		.4byte	0
+ 1340 0094 00000000 		.4byte	0
+ 1341              		.section	.debug_ranges,"",%progbits
+ 1342              	.Ldebug_ranges0:
+ 1343 0000 00000000 		.4byte	.LFB0
+ 1344 0004 24000000 		.4byte	.LFE0
+ 1345 0008 00000000 		.4byte	.LFB1
+ 1346 000c A0000000 		.4byte	.LFE1
+ 1347 0010 00000000 		.4byte	.LFB2
+ 1348 0014 20000000 		.4byte	.LFE2
+ 1349 0018 00000000 		.4byte	.LFB3
+ 1350 001c 1C000000 		.4byte	.LFE3
+ 1351 0020 00000000 		.4byte	.LFB4
+ 1352 0024 20000000 		.4byte	.LFE4
+ 1353 0028 00000000 		.4byte	.LFB5
+ 1354 002c 1C000000 		.4byte	.LFE5
+ 1355 0030 00000000 		.4byte	.LFB6
+ 1356 0034 1C000000 		.4byte	.LFE6
+ 1357 0038 00000000 		.4byte	.LFB7
+ 1358 003c 20000000 		.4byte	.LFE7
+ 1359 0040 00000000 		.4byte	.LFB8
+ 1360 0044 20000000 		.4byte	.LFE8
+ 1361 0048 00000000 		.4byte	.LFB9
+ 1362 004c 20000000 		.4byte	.LFE9
+ 1363 0050 00000000 		.4byte	.LFB10
+ 1364 0054 14000000 		.4byte	.LFE10
+ 1365 0058 00000000 		.4byte	.LFB11
+ 1366 005c 20000000 		.4byte	.LFE11
+ 1367 0060 00000000 		.4byte	.LFB12
+ 1368 0064 20000000 		.4byte	.LFE12
+ 1369 0068 00000000 		.4byte	.LFB13
+ 1370 006c 14000000 		.4byte	.LFE13
+ 1371 0070 00000000 		.4byte	.LFB14
+ 1372 0074 14000000 		.4byte	.LFE14
+ 1373 0078 00000000 		.4byte	.LFB15
+ 1374 007c 14000000 		.4byte	.LFE15
+ 1375 0080 00000000 		.4byte	0
+ 1376 0084 00000000 		.4byte	0
+ 1377              		.section	.debug_line,"",%progbits
+ 1378              	.Ldebug_line0:
+ 1379 0000 94010000 		.section	.debug_str,"MS",%progbits,1
+ 1379      02004D00 
+ 1379      00000201 
+ 1379      FB0E0D00 
+ 1379      01010101 
+ 1380              	.LASF15:
+ 1381 0000 72656731 		.ascii	"reg16\000"
+ 1381      3600
+ 1382              	.LASF44:
+ 1383 0006 50574D5F 		.ascii	"PWM_Light_Show_initVar\000"
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccLEIwe8.s 			page 41
+
+
+ 1383      4C696768 
+ 1383      745F5368 
+ 1383      6F775F69 
+ 1383      6E697456 
+ 1384              	.LASF35:
+ 1385 001d 50574D5F 		.ascii	"PWM_Light_Show_WriteControlRegister\000"
+ 1385      4C696768 
+ 1385      745F5368 
+ 1385      6F775F57 
+ 1385      72697465 
+ 1386              	.LASF25:
+ 1387 0041 50574D5F 		.ascii	"PWM_Light_Show_WritePeriod\000"
+ 1387      4C696768 
+ 1387      745F5368 
+ 1387      6F775F57 
+ 1387      72697465 
+ 1388              	.LASF37:
+ 1389 005c 50574D5F 		.ascii	"PWM_Light_Show_ReadCapture\000"
+ 1389      4C696768 
+ 1389      745F5368 
+ 1389      6F775F52 
+ 1389      65616443 
+ 1390              	.LASF27:
+ 1391 0077 70657269 		.ascii	"period\000"
+ 1391      6F6400
+ 1392              	.LASF21:
+ 1393 007e 50574D5F 		.ascii	"PWM_Light_Show_Stop\000"
+ 1393      4C696768 
+ 1393      745F5368 
+ 1393      6F775F53 
+ 1393      746F7000 
+ 1394              	.LASF3:
+ 1395 0092 73686F72 		.ascii	"short unsigned int\000"
+ 1395      7420756E 
+ 1395      7369676E 
+ 1395      65642069 
+ 1395      6E7400
+ 1396              	.LASF41:
+ 1397 00a5 2E5C4765 		.ascii	".\\Generated_Source\\PSoC4\\PWM_Light_Show.c\000"
+ 1397      6E657261 
+ 1397      7465645F 
+ 1397      536F7572 
+ 1397      63655C50 
+ 1398              	.LASF19:
+ 1399 00cf 50574D5F 		.ascii	"PWM_Light_Show_Start\000"
+ 1399      4C696768 
+ 1399      745F5368 
+ 1399      6F775F53 
+ 1399      74617274 
+ 1400              	.LASF32:
+ 1401 00e4 50574D5F 		.ascii	"PWM_Light_Show_ReadCounter\000"
+ 1401      4C696768 
+ 1401      745F5368 
+ 1401      6F775F52 
+ 1401      65616443 
+ 1402              	.LASF11:
+ 1403 00ff 666C6F61 		.ascii	"float\000"
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccLEIwe8.s 			page 42
+
+
+ 1403      7400
+ 1404              	.LASF40:
+ 1405 0105 474E5520 		.ascii	"GNU C 4.8.4 20140526 (release) [ARM/embedded-4_8-br"
+ 1405      4320342E 
+ 1405      382E3420 
+ 1405      32303134 
+ 1405      30353236 
+ 1406 0138 616E6368 		.ascii	"anch revision 211358] -mcpu=cortex-m0 -mthumb -g -O"
+ 1406      20726576 
+ 1406      6973696F 
+ 1406      6E203231 
+ 1406      31333538 
+ 1407 016b 30202D66 		.ascii	"0 -ffunction-sections\000"
+ 1407      66756E63 
+ 1407      74696F6E 
+ 1407      2D736563 
+ 1407      74696F6E 
+ 1408              	.LASF1:
+ 1409 0181 756E7369 		.ascii	"unsigned char\000"
+ 1409      676E6564 
+ 1409      20636861 
+ 1409      7200
+ 1410              	.LASF14:
+ 1411 018f 72656738 		.ascii	"reg8\000"
+ 1411      00
+ 1412              	.LASF5:
+ 1413 0194 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1413      20756E73 
+ 1413      69676E65 
+ 1413      6420696E 
+ 1413      7400
+ 1414              	.LASF9:
+ 1415 01a6 75696E74 		.ascii	"uint8\000"
+ 1415      3800
+ 1416              	.LASF36:
+ 1417 01ac 636F6E74 		.ascii	"control\000"
+ 1417      726F6C00 
+ 1418              	.LASF33:
+ 1419 01b4 50574D5F 		.ascii	"PWM_Light_Show_ReadStatusRegister\000"
+ 1419      4C696768 
+ 1419      745F5368 
+ 1419      6F775F52 
+ 1419      65616453 
+ 1420              	.LASF28:
+ 1421 01d6 50574D5F 		.ascii	"PWM_Light_Show_WriteCompare\000"
+ 1421      4C696768 
+ 1421      745F5368 
+ 1421      6F775F57 
+ 1421      72697465 
+ 1422              	.LASF12:
+ 1423 01f2 646F7562 		.ascii	"double\000"
+ 1423      6C6500
+ 1424              	.LASF2:
+ 1425 01f9 73686F72 		.ascii	"short int\000"
+ 1425      7420696E 
+ 1425      7400
+ 1426              	.LASF10:
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccLEIwe8.s 			page 43
+
+
+ 1427 0203 75696E74 		.ascii	"uint16\000"
+ 1427      313600
+ 1428              	.LASF18:
+ 1429 020a 50574D5F 		.ascii	"PWM_Light_Show_interruptState\000"
+ 1429      4C696768 
+ 1429      745F5368 
+ 1429      6F775F69 
+ 1429      6E746572 
+ 1430              	.LASF8:
+ 1431 0228 756E7369 		.ascii	"unsigned int\000"
+ 1431      676E6564 
+ 1431      20696E74 
+ 1431      00
+ 1432              	.LASF43:
+ 1433 0235 50574D5F 		.ascii	"PWM_Light_Show_ReadControlRegister\000"
+ 1433      4C696768 
+ 1433      745F5368 
+ 1433      6F775F52 
+ 1433      65616443 
+ 1434              	.LASF7:
+ 1435 0258 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1435      206C6F6E 
+ 1435      6720756E 
+ 1435      7369676E 
+ 1435      65642069 
+ 1436              	.LASF26:
+ 1437 026f 636F756E 		.ascii	"counter\000"
+ 1437      74657200 
+ 1438              	.LASF34:
+ 1439 0277 72657375 		.ascii	"result\000"
+ 1439      6C7400
+ 1440              	.LASF17:
+ 1441 027e 6374726C 		.ascii	"ctrl\000"
+ 1441      00
+ 1442              	.LASF16:
+ 1443 0283 73697A65 		.ascii	"sizetype\000"
+ 1443      74797065 
+ 1443      00
+ 1444              	.LASF6:
+ 1445 028c 6C6F6E67 		.ascii	"long long int\000"
+ 1445      206C6F6E 
+ 1445      6720696E 
+ 1445      7400
+ 1446              	.LASF31:
+ 1447 029a 696E7465 		.ascii	"interruptMode\000"
+ 1447      72727570 
+ 1447      744D6F64 
+ 1447      6500
+ 1448              	.LASF42:
+ 1449 02a8 433A5C55 		.ascii	"C:\\Users\\Admin\\Desktop\\Volunteer Badge\\Volunte"
+ 1449      73657273 
+ 1449      5C41646D 
+ 1449      696E5C44 
+ 1449      65736B74 
+ 1450 02d6 65725F42 		.ascii	"er_Badge.cydsn\000"
+ 1450      61646765 
+ 1450      2E637964 
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccLEIwe8.s 			page 44
+
+
+ 1450      736E00
+ 1451              	.LASF20:
+ 1452 02e5 50574D5F 		.ascii	"PWM_Light_Show_Enable\000"
+ 1452      4C696768 
+ 1452      745F5368 
+ 1452      6F775F45 
+ 1452      6E61626C 
+ 1453              	.LASF23:
+ 1454 02fb 50574D5F 		.ascii	"PWM_Light_Show_WriteCounter\000"
+ 1454      4C696768 
+ 1454      745F5368 
+ 1454      6F775F57 
+ 1454      72697465 
+ 1455              	.LASF22:
+ 1456 0317 50574D5F 		.ascii	"PWM_Light_Show_Init\000"
+ 1456      4C696768 
+ 1456      745F5368 
+ 1456      6F775F49 
+ 1456      6E697400 
+ 1457              	.LASF24:
+ 1458 032b 50574D5F 		.ascii	"PWM_Light_Show_ClearFIFO\000"
+ 1458      4C696768 
+ 1458      745F5368 
+ 1458      6F775F43 
+ 1458      6C656172 
+ 1459              	.LASF39:
+ 1460 0344 50574D5F 		.ascii	"PWM_Light_Show_ReadPeriod\000"
+ 1460      4C696768 
+ 1460      745F5368 
+ 1460      6F775F52 
+ 1460      65616450 
+ 1461              	.LASF4:
+ 1462 035e 6C6F6E67 		.ascii	"long int\000"
+ 1462      20696E74 
+ 1462      00
+ 1463              	.LASF13:
+ 1464 0367 63686172 		.ascii	"char\000"
+ 1464      00
+ 1465              	.LASF38:
+ 1466 036c 50574D5F 		.ascii	"PWM_Light_Show_ReadCompare\000"
+ 1466      4C696768 
+ 1466      745F5368 
+ 1466      6F775F52 
+ 1466      65616443 
+ 1467              	.LASF0:
+ 1468 0387 7369676E 		.ascii	"signed char\000"
+ 1468      65642063 
+ 1468      68617200 
+ 1469              	.LASF29:
+ 1470 0393 636F6D70 		.ascii	"compare\000"
+ 1470      61726500 
+ 1471              	.LASF30:
+ 1472 039b 50574D5F 		.ascii	"PWM_Light_Show_SetInterruptMode\000"
+ 1472      4C696768 
+ 1472      745F5368 
+ 1472      6F775F53 
+ 1472      6574496E 
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccLEIwe8.s 			page 45
+
+
+ 1473              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.8.4 20140526 (release) [ARM/embedded-4_8-br

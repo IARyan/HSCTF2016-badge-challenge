@@ -1,0 +1,2193 @@
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczF04ft.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 6
+  10              		.eabi_attribute 34, 0
+  11              		.eabi_attribute 18, 4
+  12              		.code	16
+  13              		.file	"togglelib.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.comm	Volunteer_Sequence,21,4
+  18              		.comm	Organizer_Sequence,21,4
+  19              		.section	.text.SWL_Handler,"ax",%progbits
+  20              		.align	2
+  21              		.global	SWL_Handler
+  22              		.code	16
+  23              		.thumb_func
+  24              		.type	SWL_Handler, %function
+  25              	SWL_Handler:
+  26              	.LFB33:
+  27              		.file 1 ".\\togglelib.c"
+   1:.\togglelib.c **** /* ========================================
+   2:.\togglelib.c ****  *
+   3:.\togglelib.c ****  * Copyright Nullify, 2016
+   4:.\togglelib.c ****  * All Rights Reserved
+   5:.\togglelib.c ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:.\togglelib.c ****  *
+   7:.\togglelib.c ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:.\togglelib.c ****  * WHICH IS THE PROPERTY OF NULLIY.
+   9:.\togglelib.c ****  *
+  10:.\togglelib.c ****  * ========================================
+  11:.\togglelib.c **** */
+  12:.\togglelib.c **** #include <project.h>
+  13:.\togglelib.c **** #include <stdio.h>
+  14:.\togglelib.c **** #include <time.h>
+  15:.\togglelib.c **** #include <stdlib.h>
+  16:.\togglelib.c **** #include "lightlib.h"
+  17:.\togglelib.c **** #include "togglelib.h"
+  18:.\togglelib.c **** #include "state.h"
+  19:.\togglelib.c **** 
+  20:.\togglelib.c **** /* Global Structures used to signal state change for badge  */
+  21:.\togglelib.c **** volatile struct Magic_Toggle_Sequence Volunteer_Sequence;
+  22:.\togglelib.c **** volatile struct Magic_Toggle_Sequence Organizer_Sequence;
+  23:.\togglelib.c **** 
+  24:.\togglelib.c **** /* Signal handler for left toggle press */
+  25:.\togglelib.c **** CY_ISR( SWL_Handler ) {
+  28              		.loc 1 25 0
+  29              		.cfi_startproc
+  30 0000 90B5     		push	{r4, r7, lr}
+  31              		.cfi_def_cfa_offset 12
+  32              		.cfi_offset 4, -12
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczF04ft.s 			page 2
+
+
+  33              		.cfi_offset 7, -8
+  34              		.cfi_offset 14, -4
+  35 0002 83B0     		sub	sp, sp, #12
+  36              		.cfi_def_cfa_offset 24
+  37 0004 00AF     		add	r7, sp, #0
+  38              		.cfi_def_cfa_register 7
+  26:.\togglelib.c ****     uint8* sequance; 
+  27:.\togglelib.c ****     uint8 index;
+  28:.\togglelib.c ****     
+  29:.\togglelib.c ****     /* Determine what state the badge is currently in */
+  30:.\togglelib.c ****     switch(badge_state) {
+  39              		.loc 1 30 0
+  40 0006 404B     		ldr	r3, .L11
+  41 0008 1B78     		ldrb	r3, [r3]
+  42 000a DBB2     		uxtb	r3, r3
+  43 000c 012B     		cmp	r3, #1
+  44 000e 02D0     		beq	.L3
+  45 0010 022B     		cmp	r3, #2
+  46 0012 33D0     		beq	.L4
+  47 0014 6FE0     		b	.L2
+  48              	.L3:
+  31:.\togglelib.c ****         case VOLUNTEER:
+  32:.\togglelib.c ****             sequance = get_magic_toggle_sequance(ORGANIZER);
+  49              		.loc 1 32 0
+  50 0016 0220     		mov	r0, #2
+  51 0018 FFF7FEFF 		bl	get_magic_toggle_sequance
+  52 001c 031C     		mov	r3, r0
+  53 001e 3B60     		str	r3, [r7]
+  33:.\togglelib.c ****             index = get_magic_toggle_index(ORGANIZER);
+  54              		.loc 1 33 0
+  55 0020 FC1D     		add	r4, r7, #7
+  56 0022 0220     		mov	r0, #2
+  57 0024 FFF7FEFF 		bl	get_magic_toggle_index
+  58 0028 031C     		mov	r3, r0
+  59 002a 2370     		strb	r3, [r4]
+  34:.\togglelib.c ****             
+  35:.\togglelib.c ****             /* Check if the toggle is the next value in the sequance */
+  36:.\togglelib.c ****             if (sequance[index] == LEFT_TOGGLE) {
+  60              		.loc 1 36 0
+  61 002c FB1D     		add	r3, r7, #7
+  62 002e 1B78     		ldrb	r3, [r3]
+  63 0030 3A68     		ldr	r2, [r7]
+  64 0032 D318     		add	r3, r2, r3
+  65 0034 1B78     		ldrb	r3, [r3]
+  66 0036 012B     		cmp	r3, #1
+  67 0038 05D1     		bne	.L5
+  37:.\togglelib.c ****                 index += 1;
+  68              		.loc 1 37 0
+  69 003a FB1D     		add	r3, r7, #7
+  70 003c FA1D     		add	r2, r7, #7
+  71 003e 1278     		ldrb	r2, [r2]
+  72 0040 0132     		add	r2, r2, #1
+  73 0042 1A70     		strb	r2, [r3]
+  74 0044 02E0     		b	.L6
+  75              	.L5:
+  38:.\togglelib.c ****             }
+  39:.\togglelib.c ****             else {
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczF04ft.s 			page 3
+
+
+  40:.\togglelib.c ****                 index = 0;
+  76              		.loc 1 40 0
+  77 0046 FB1D     		add	r3, r7, #7
+  78 0048 0022     		mov	r2, #0
+  79 004a 1A70     		strb	r2, [r3]
+  80              	.L6:
+  41:.\togglelib.c ****             }
+  42:.\togglelib.c ****                    
+  43:.\togglelib.c ****            /* If the sequance is found change the state of the badge */
+  44:.\togglelib.c ****            if (index == strlen(sequance)){
+  81              		.loc 1 44 0
+  82 004c FB1D     		add	r3, r7, #7
+  83 004e 1C78     		ldrb	r4, [r3]
+  84 0050 3B68     		ldr	r3, [r7]
+  85 0052 181C     		mov	r0, r3
+  86 0054 FFF7FEFF 		bl	strlen
+  87 0058 031C     		mov	r3, r0
+  88 005a 9C42     		cmp	r4, r3
+  89 005c 07D1     		bne	.L7
+  45:.\togglelib.c ****             badge_state = ORGANIZER;
+  90              		.loc 1 45 0
+  91 005e 2A4B     		ldr	r3, .L11
+  92 0060 0222     		mov	r2, #2
+  93 0062 1A70     		strb	r2, [r3]
+  46:.\togglelib.c ****             PWM_Organizer_Start();
+  94              		.loc 1 46 0
+  95 0064 FFF7FEFF 		bl	PWM_Organizer_Start
+  47:.\togglelib.c ****             index = 0;
+  96              		.loc 1 47 0
+  97 0068 FB1D     		add	r3, r7, #7
+  98 006a 0022     		mov	r2, #0
+  99 006c 1A70     		strb	r2, [r3]
+ 100              	.L7:
+  48:.\togglelib.c ****            }
+  49:.\togglelib.c ****         
+  50:.\togglelib.c ****            /* Update the value in the toggle struct */
+  51:.\togglelib.c ****             set_magic_toggle_index(ORGANIZER, index);
+ 101              		.loc 1 51 0
+ 102 006e FB1D     		add	r3, r7, #7
+ 103 0070 1B78     		ldrb	r3, [r3]
+ 104 0072 0220     		mov	r0, #2
+ 105 0074 191C     		mov	r1, r3
+ 106 0076 FFF7FEFF 		bl	set_magic_toggle_index
+  52:.\togglelib.c ****         break;
+ 107              		.loc 1 52 0
+ 108 007a 3CE0     		b	.L2
+ 109              	.L4:
+  53:.\togglelib.c ****         case ORGANIZER:
+  54:.\togglelib.c ****             sequance = get_magic_toggle_sequance(VOLUNTEER);
+ 110              		.loc 1 54 0
+ 111 007c 0120     		mov	r0, #1
+ 112 007e FFF7FEFF 		bl	get_magic_toggle_sequance
+ 113 0082 031C     		mov	r3, r0
+ 114 0084 3B60     		str	r3, [r7]
+  55:.\togglelib.c ****             index = get_magic_toggle_index(VOLUNTEER);
+ 115              		.loc 1 55 0
+ 116 0086 FC1D     		add	r4, r7, #7
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczF04ft.s 			page 4
+
+
+ 117 0088 0120     		mov	r0, #1
+ 118 008a FFF7FEFF 		bl	get_magic_toggle_index
+ 119 008e 031C     		mov	r3, r0
+ 120 0090 2370     		strb	r3, [r4]
+  56:.\togglelib.c ****             
+  57:.\togglelib.c ****             /* Check if the toggle is the next value in the sequance */
+  58:.\togglelib.c ****             if (sequance[index] == LEFT_TOGGLE) {
+ 121              		.loc 1 58 0
+ 122 0092 FB1D     		add	r3, r7, #7
+ 123 0094 1B78     		ldrb	r3, [r3]
+ 124 0096 3A68     		ldr	r2, [r7]
+ 125 0098 D318     		add	r3, r2, r3
+ 126 009a 1B78     		ldrb	r3, [r3]
+ 127 009c 012B     		cmp	r3, #1
+ 128 009e 05D1     		bne	.L8
+  59:.\togglelib.c ****                 index += 1;
+ 129              		.loc 1 59 0
+ 130 00a0 FB1D     		add	r3, r7, #7
+ 131 00a2 FA1D     		add	r2, r7, #7
+ 132 00a4 1278     		ldrb	r2, [r2]
+ 133 00a6 0132     		add	r2, r2, #1
+ 134 00a8 1A70     		strb	r2, [r3]
+ 135 00aa 02E0     		b	.L9
+ 136              	.L8:
+  60:.\togglelib.c ****             }
+  61:.\togglelib.c ****             else {
+  62:.\togglelib.c ****                 index = 0;
+ 137              		.loc 1 62 0
+ 138 00ac FB1D     		add	r3, r7, #7
+ 139 00ae 0022     		mov	r2, #0
+ 140 00b0 1A70     		strb	r2, [r3]
+ 141              	.L9:
+  63:.\togglelib.c ****             }
+  64:.\togglelib.c ****                    
+  65:.\togglelib.c ****            /* If the sequance is found change the state of the badge */
+  66:.\togglelib.c ****            if (index == strlen(sequance)){
+ 142              		.loc 1 66 0
+ 143 00b2 FB1D     		add	r3, r7, #7
+ 144 00b4 1C78     		ldrb	r4, [r3]
+ 145 00b6 3B68     		ldr	r3, [r7]
+ 146 00b8 181C     		mov	r0, r3
+ 147 00ba FFF7FEFF 		bl	strlen
+ 148 00be 031C     		mov	r3, r0
+ 149 00c0 9C42     		cmp	r4, r3
+ 150 00c2 11D1     		bne	.L10
+  67:.\togglelib.c ****             badge_state = VOLUNTEER;
+ 151              		.loc 1 67 0
+ 152 00c4 104B     		ldr	r3, .L11
+ 153 00c6 0122     		mov	r2, #1
+ 154 00c8 1A70     		strb	r2, [r3]
+  68:.\togglelib.c ****             PWM_Organizer_Stop();
+ 155              		.loc 1 68 0
+ 156 00ca FFF7FEFF 		bl	PWM_Organizer_Stop
+  69:.\togglelib.c ****             turn_off(LEFT_RIGHT_LED);
+ 157              		.loc 1 69 0
+ 158 00ce 0320     		mov	r0, #3
+ 159 00d0 FFF7FEFF 		bl	turn_off
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczF04ft.s 			page 5
+
+
+  70:.\togglelib.c ****             set_color(LEFT_RIGHT_LED, GREEN);
+ 160              		.loc 1 70 0
+ 161 00d4 0320     		mov	r0, #3
+ 162 00d6 0421     		mov	r1, #4
+ 163 00d8 FFF7FEFF 		bl	set_color
+  71:.\togglelib.c ****             turn_on(LEFT_RIGHT_LED);
+ 164              		.loc 1 71 0
+ 165 00dc 0320     		mov	r0, #3
+ 166 00de FFF7FEFF 		bl	turn_on
+  72:.\togglelib.c ****             index = 0;
+ 167              		.loc 1 72 0
+ 168 00e2 FB1D     		add	r3, r7, #7
+ 169 00e4 0022     		mov	r2, #0
+ 170 00e6 1A70     		strb	r2, [r3]
+ 171              	.L10:
+  73:.\togglelib.c ****            }
+  74:.\togglelib.c ****         
+  75:.\togglelib.c ****            /* Update the value in the VOLUNTEER toggle struct */
+  76:.\togglelib.c ****             set_magic_toggle_index(VOLUNTEER, index);
+ 172              		.loc 1 76 0
+ 173 00e8 FB1D     		add	r3, r7, #7
+ 174 00ea 1B78     		ldrb	r3, [r3]
+ 175 00ec 0120     		mov	r0, #1
+ 176 00ee 191C     		mov	r1, r3
+ 177 00f0 FFF7FEFF 		bl	set_magic_toggle_index
+  77:.\togglelib.c ****         break;
+ 178              		.loc 1 77 0
+ 179 00f4 C046     		mov	r8, r8
+ 180              	.L2:
+  78:.\togglelib.c ****     }
+  79:.\togglelib.c ****     
+  80:.\togglelib.c ****     /* Delay for a long press and clear interrupt */
+  81:.\togglelib.c ****     CyDelay(TOGGLE_DELAY);
+ 181              		.loc 1 81 0
+ 182 00f6 9620     		mov	r0, #150
+ 183 00f8 FFF7FEFF 		bl	CyDelay
+  82:.\togglelib.c ****     SWL_ClearInterrupt();
+ 184              		.loc 1 82 0
+ 185 00fc FFF7FEFF 		bl	SWL_ClearInterrupt
+  83:.\togglelib.c **** }
+ 186              		.loc 1 83 0
+ 187 0100 BD46     		mov	sp, r7
+ 188 0102 03B0     		add	sp, sp, #12
+ 189              		@ sp needed
+ 190 0104 90BD     		pop	{r4, r7, pc}
+ 191              	.L12:
+ 192 0106 C046     		.align	2
+ 193              	.L11:
+ 194 0108 00000000 		.word	badge_state
+ 195              		.cfi_endproc
+ 196              	.LFE33:
+ 197              		.size	SWL_Handler, .-SWL_Handler
+ 198              		.section	.text.SWR_Handler,"ax",%progbits
+ 199              		.align	2
+ 200              		.global	SWR_Handler
+ 201              		.code	16
+ 202              		.thumb_func
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczF04ft.s 			page 6
+
+
+ 203              		.type	SWR_Handler, %function
+ 204              	SWR_Handler:
+ 205              	.LFB34:
+  84:.\togglelib.c **** 
+  85:.\togglelib.c **** /* Signal handler for right toggle press */
+  86:.\togglelib.c **** CY_ISR( SWR_Handler ) {
+ 206              		.loc 1 86 0
+ 207              		.cfi_startproc
+ 208 0000 90B5     		push	{r4, r7, lr}
+ 209              		.cfi_def_cfa_offset 12
+ 210              		.cfi_offset 4, -12
+ 211              		.cfi_offset 7, -8
+ 212              		.cfi_offset 14, -4
+ 213 0002 83B0     		sub	sp, sp, #12
+ 214              		.cfi_def_cfa_offset 24
+ 215 0004 00AF     		add	r7, sp, #0
+ 216              		.cfi_def_cfa_register 7
+  87:.\togglelib.c ****     uint8* sequance; 
+  88:.\togglelib.c ****     uint8 index;
+  89:.\togglelib.c ****     
+  90:.\togglelib.c ****     /* Determine what state the badge is currently in */
+  91:.\togglelib.c ****     switch(badge_state) {
+ 217              		.loc 1 91 0
+ 218 0006 404B     		ldr	r3, .L23
+ 219 0008 1B78     		ldrb	r3, [r3]
+ 220 000a DBB2     		uxtb	r3, r3
+ 221 000c 012B     		cmp	r3, #1
+ 222 000e 02D0     		beq	.L15
+ 223 0010 022B     		cmp	r3, #2
+ 224 0012 33D0     		beq	.L16
+ 225 0014 6FE0     		b	.L14
+ 226              	.L15:
+  92:.\togglelib.c ****         case VOLUNTEER:
+  93:.\togglelib.c ****             sequance = get_magic_toggle_sequance(ORGANIZER);
+ 227              		.loc 1 93 0
+ 228 0016 0220     		mov	r0, #2
+ 229 0018 FFF7FEFF 		bl	get_magic_toggle_sequance
+ 230 001c 031C     		mov	r3, r0
+ 231 001e 3B60     		str	r3, [r7]
+  94:.\togglelib.c ****             index = get_magic_toggle_index(ORGANIZER);
+ 232              		.loc 1 94 0
+ 233 0020 FC1D     		add	r4, r7, #7
+ 234 0022 0220     		mov	r0, #2
+ 235 0024 FFF7FEFF 		bl	get_magic_toggle_index
+ 236 0028 031C     		mov	r3, r0
+ 237 002a 2370     		strb	r3, [r4]
+  95:.\togglelib.c ****             
+  96:.\togglelib.c ****             /* Check if the toggle is the next value in the sequance */
+  97:.\togglelib.c ****             if (sequance[index] == RIGHT_TOGGLE) {
+ 238              		.loc 1 97 0
+ 239 002c FB1D     		add	r3, r7, #7
+ 240 002e 1B78     		ldrb	r3, [r3]
+ 241 0030 3A68     		ldr	r2, [r7]
+ 242 0032 D318     		add	r3, r2, r3
+ 243 0034 1B78     		ldrb	r3, [r3]
+ 244 0036 022B     		cmp	r3, #2
+ 245 0038 05D1     		bne	.L17
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczF04ft.s 			page 7
+
+
+  98:.\togglelib.c ****                 index += 1;
+ 246              		.loc 1 98 0
+ 247 003a FB1D     		add	r3, r7, #7
+ 248 003c FA1D     		add	r2, r7, #7
+ 249 003e 1278     		ldrb	r2, [r2]
+ 250 0040 0132     		add	r2, r2, #1
+ 251 0042 1A70     		strb	r2, [r3]
+ 252 0044 02E0     		b	.L18
+ 253              	.L17:
+  99:.\togglelib.c ****             }
+ 100:.\togglelib.c ****             else {
+ 101:.\togglelib.c ****                 index = 0;
+ 254              		.loc 1 101 0
+ 255 0046 FB1D     		add	r3, r7, #7
+ 256 0048 0022     		mov	r2, #0
+ 257 004a 1A70     		strb	r2, [r3]
+ 258              	.L18:
+ 102:.\togglelib.c ****             }
+ 103:.\togglelib.c ****                    
+ 104:.\togglelib.c ****            /* If the sequance is found change the state of the badge */
+ 105:.\togglelib.c ****            if (index == strlen(sequance)){
+ 259              		.loc 1 105 0
+ 260 004c FB1D     		add	r3, r7, #7
+ 261 004e 1C78     		ldrb	r4, [r3]
+ 262 0050 3B68     		ldr	r3, [r7]
+ 263 0052 181C     		mov	r0, r3
+ 264 0054 FFF7FEFF 		bl	strlen
+ 265 0058 031C     		mov	r3, r0
+ 266 005a 9C42     		cmp	r4, r3
+ 267 005c 07D1     		bne	.L19
+ 106:.\togglelib.c ****             badge_state = ORGANIZER;
+ 268              		.loc 1 106 0
+ 269 005e 2A4B     		ldr	r3, .L23
+ 270 0060 0222     		mov	r2, #2
+ 271 0062 1A70     		strb	r2, [r3]
+ 107:.\togglelib.c ****             PWM_Organizer_Start();
+ 272              		.loc 1 107 0
+ 273 0064 FFF7FEFF 		bl	PWM_Organizer_Start
+ 108:.\togglelib.c ****             index = 0;
+ 274              		.loc 1 108 0
+ 275 0068 FB1D     		add	r3, r7, #7
+ 276 006a 0022     		mov	r2, #0
+ 277 006c 1A70     		strb	r2, [r3]
+ 278              	.L19:
+ 109:.\togglelib.c ****            }
+ 110:.\togglelib.c ****         
+ 111:.\togglelib.c ****            /* Update the value in the toggle struct */
+ 112:.\togglelib.c ****             set_magic_toggle_index(ORGANIZER, index);
+ 279              		.loc 1 112 0
+ 280 006e FB1D     		add	r3, r7, #7
+ 281 0070 1B78     		ldrb	r3, [r3]
+ 282 0072 0220     		mov	r0, #2
+ 283 0074 191C     		mov	r1, r3
+ 284 0076 FFF7FEFF 		bl	set_magic_toggle_index
+ 113:.\togglelib.c ****         break;
+ 285              		.loc 1 113 0
+ 286 007a 3CE0     		b	.L14
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczF04ft.s 			page 8
+
+
+ 287              	.L16:
+ 114:.\togglelib.c ****         case ORGANIZER:
+ 115:.\togglelib.c ****             sequance = get_magic_toggle_sequance(VOLUNTEER);
+ 288              		.loc 1 115 0
+ 289 007c 0120     		mov	r0, #1
+ 290 007e FFF7FEFF 		bl	get_magic_toggle_sequance
+ 291 0082 031C     		mov	r3, r0
+ 292 0084 3B60     		str	r3, [r7]
+ 116:.\togglelib.c ****             index = get_magic_toggle_index(VOLUNTEER);
+ 293              		.loc 1 116 0
+ 294 0086 FC1D     		add	r4, r7, #7
+ 295 0088 0120     		mov	r0, #1
+ 296 008a FFF7FEFF 		bl	get_magic_toggle_index
+ 297 008e 031C     		mov	r3, r0
+ 298 0090 2370     		strb	r3, [r4]
+ 117:.\togglelib.c ****             
+ 118:.\togglelib.c ****             /* Check if the toggle is the next value in the sequance */
+ 119:.\togglelib.c ****             if (sequance[index] == RIGHT_TOGGLE) {
+ 299              		.loc 1 119 0
+ 300 0092 FB1D     		add	r3, r7, #7
+ 301 0094 1B78     		ldrb	r3, [r3]
+ 302 0096 3A68     		ldr	r2, [r7]
+ 303 0098 D318     		add	r3, r2, r3
+ 304 009a 1B78     		ldrb	r3, [r3]
+ 305 009c 022B     		cmp	r3, #2
+ 306 009e 05D1     		bne	.L20
+ 120:.\togglelib.c ****                 index += 1;
+ 307              		.loc 1 120 0
+ 308 00a0 FB1D     		add	r3, r7, #7
+ 309 00a2 FA1D     		add	r2, r7, #7
+ 310 00a4 1278     		ldrb	r2, [r2]
+ 311 00a6 0132     		add	r2, r2, #1
+ 312 00a8 1A70     		strb	r2, [r3]
+ 313 00aa 02E0     		b	.L21
+ 314              	.L20:
+ 121:.\togglelib.c ****             }
+ 122:.\togglelib.c ****             else {
+ 123:.\togglelib.c ****                 index = 0;
+ 315              		.loc 1 123 0
+ 316 00ac FB1D     		add	r3, r7, #7
+ 317 00ae 0022     		mov	r2, #0
+ 318 00b0 1A70     		strb	r2, [r3]
+ 319              	.L21:
+ 124:.\togglelib.c ****             }
+ 125:.\togglelib.c ****                    
+ 126:.\togglelib.c ****            /* If the sequance is found change the state of the badge */
+ 127:.\togglelib.c ****            if (index == strlen(sequance)){
+ 320              		.loc 1 127 0
+ 321 00b2 FB1D     		add	r3, r7, #7
+ 322 00b4 1C78     		ldrb	r4, [r3]
+ 323 00b6 3B68     		ldr	r3, [r7]
+ 324 00b8 181C     		mov	r0, r3
+ 325 00ba FFF7FEFF 		bl	strlen
+ 326 00be 031C     		mov	r3, r0
+ 327 00c0 9C42     		cmp	r4, r3
+ 328 00c2 11D1     		bne	.L22
+ 128:.\togglelib.c ****             badge_state = VOLUNTEER;
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczF04ft.s 			page 9
+
+
+ 329              		.loc 1 128 0
+ 330 00c4 104B     		ldr	r3, .L23
+ 331 00c6 0122     		mov	r2, #1
+ 332 00c8 1A70     		strb	r2, [r3]
+ 129:.\togglelib.c ****             PWM_Organizer_Stop();
+ 333              		.loc 1 129 0
+ 334 00ca FFF7FEFF 		bl	PWM_Organizer_Stop
+ 130:.\togglelib.c ****             turn_off(LEFT_RIGHT_LED);
+ 335              		.loc 1 130 0
+ 336 00ce 0320     		mov	r0, #3
+ 337 00d0 FFF7FEFF 		bl	turn_off
+ 131:.\togglelib.c ****             set_color(LEFT_RIGHT_LED, GREEN);
+ 338              		.loc 1 131 0
+ 339 00d4 0320     		mov	r0, #3
+ 340 00d6 0421     		mov	r1, #4
+ 341 00d8 FFF7FEFF 		bl	set_color
+ 132:.\togglelib.c ****             turn_on(LEFT_RIGHT_LED);
+ 342              		.loc 1 132 0
+ 343 00dc 0320     		mov	r0, #3
+ 344 00de FFF7FEFF 		bl	turn_on
+ 133:.\togglelib.c ****             index = 0;
+ 345              		.loc 1 133 0
+ 346 00e2 FB1D     		add	r3, r7, #7
+ 347 00e4 0022     		mov	r2, #0
+ 348 00e6 1A70     		strb	r2, [r3]
+ 349              	.L22:
+ 134:.\togglelib.c ****            }
+ 135:.\togglelib.c ****         
+ 136:.\togglelib.c ****            /* Update the value in the VOLUNTEER toggle struct */
+ 137:.\togglelib.c ****             set_magic_toggle_index(VOLUNTEER, index);
+ 350              		.loc 1 137 0
+ 351 00e8 FB1D     		add	r3, r7, #7
+ 352 00ea 1B78     		ldrb	r3, [r3]
+ 353 00ec 0120     		mov	r0, #1
+ 354 00ee 191C     		mov	r1, r3
+ 355 00f0 FFF7FEFF 		bl	set_magic_toggle_index
+ 138:.\togglelib.c ****         break;
+ 356              		.loc 1 138 0
+ 357 00f4 C046     		mov	r8, r8
+ 358              	.L14:
+ 139:.\togglelib.c ****     }
+ 140:.\togglelib.c ****     
+ 141:.\togglelib.c ****     /* Delay for a long press and clear interrupt */
+ 142:.\togglelib.c ****     CyDelay(TOGGLE_DELAY);
+ 359              		.loc 1 142 0
+ 360 00f6 9620     		mov	r0, #150
+ 361 00f8 FFF7FEFF 		bl	CyDelay
+ 143:.\togglelib.c ****     SWR_ClearInterrupt();
+ 362              		.loc 1 143 0
+ 363 00fc FFF7FEFF 		bl	SWR_ClearInterrupt
+ 144:.\togglelib.c **** }
+ 364              		.loc 1 144 0
+ 365 0100 BD46     		mov	sp, r7
+ 366 0102 03B0     		add	sp, sp, #12
+ 367              		@ sp needed
+ 368 0104 90BD     		pop	{r4, r7, pc}
+ 369              	.L24:
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczF04ft.s 			page 10
+
+
+ 370 0106 C046     		.align	2
+ 371              	.L23:
+ 372 0108 00000000 		.word	badge_state
+ 373              		.cfi_endproc
+ 374              	.LFE34:
+ 375              		.size	SWR_Handler, .-SWR_Handler
+ 376              		.section	.text.SWB_Handler,"ax",%progbits
+ 377              		.align	2
+ 378              		.global	SWB_Handler
+ 379              		.code	16
+ 380              		.thumb_func
+ 381              		.type	SWB_Handler, %function
+ 382              	SWB_Handler:
+ 383              	.LFB35:
+ 145:.\togglelib.c **** 
+ 146:.\togglelib.c **** /* Signal handler for on board toggle press */
+ 147:.\togglelib.c **** CY_ISR( SWB_Handler ) {
+ 384              		.loc 1 147 0
+ 385              		.cfi_startproc
+ 386 0000 80B5     		push	{r7, lr}
+ 387              		.cfi_def_cfa_offset 8
+ 388              		.cfi_offset 7, -8
+ 389              		.cfi_offset 14, -4
+ 390 0002 00AF     		add	r7, sp, #0
+ 391              		.cfi_def_cfa_register 7
+ 148:.\togglelib.c ****     /* Flip IR Status */
+ 149:.\togglelib.c ****     if (get_status(IR_LED) == OFF) {
+ 392              		.loc 1 149 0
+ 393 0004 0420     		mov	r0, #4
+ 394 0006 FFF7FEFF 		bl	get_status
+ 395 000a 031C     		mov	r3, r0
+ 396 000c 002B     		cmp	r3, #0
+ 397 000e 03D1     		bne	.L26
+ 150:.\togglelib.c ****         turn_on(IR_LED);
+ 398              		.loc 1 150 0
+ 399 0010 0420     		mov	r0, #4
+ 400 0012 FFF7FEFF 		bl	turn_on
+ 401 0016 02E0     		b	.L27
+ 402              	.L26:
+ 151:.\togglelib.c ****     } 
+ 152:.\togglelib.c ****     else {
+ 153:.\togglelib.c ****          turn_off(IR_LED);
+ 403              		.loc 1 153 0
+ 404 0018 0420     		mov	r0, #4
+ 405 001a FFF7FEFF 		bl	turn_off
+ 406              	.L27:
+ 154:.\togglelib.c ****     }
+ 155:.\togglelib.c ****     
+ 156:.\togglelib.c ****     if (get_status(BOARD_LED) == OFF) {
+ 407              		.loc 1 156 0
+ 408 001e 0520     		mov	r0, #5
+ 409 0020 FFF7FEFF 		bl	get_status
+ 410 0024 031C     		mov	r3, r0
+ 411 0026 002B     		cmp	r3, #0
+ 412 0028 03D1     		bne	.L28
+ 157:.\togglelib.c ****         turn_on(BOARD_LED);
+ 413              		.loc 1 157 0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczF04ft.s 			page 11
+
+
+ 414 002a 0520     		mov	r0, #5
+ 415 002c FFF7FEFF 		bl	turn_on
+ 416 0030 02E0     		b	.L29
+ 417              	.L28:
+ 158:.\togglelib.c ****     } 
+ 159:.\togglelib.c ****     else {
+ 160:.\togglelib.c ****          turn_off(BOARD_LED);
+ 418              		.loc 1 160 0
+ 419 0032 0520     		mov	r0, #5
+ 420 0034 FFF7FEFF 		bl	turn_off
+ 421              	.L29:
+ 161:.\togglelib.c ****     }
+ 162:.\togglelib.c ****     
+ 163:.\togglelib.c **** 
+ 164:.\togglelib.c ****     /* Clear interrupt */
+ 165:.\togglelib.c ****     SWB_ClearInterrupt();
+ 422              		.loc 1 165 0
+ 423 0038 FFF7FEFF 		bl	SWB_ClearInterrupt
+ 166:.\togglelib.c **** }
+ 424              		.loc 1 166 0
+ 425 003c BD46     		mov	sp, r7
+ 426              		@ sp needed
+ 427 003e 80BD     		pop	{r7, pc}
+ 428              		.cfi_endproc
+ 429              	.LFE35:
+ 430              		.size	SWB_Handler, .-SWB_Handler
+ 431              		.global	__aeabi_idivmod
+ 432              		.section	.text.ORG_Handler,"ax",%progbits
+ 433              		.align	2
+ 434              		.global	ORG_Handler
+ 435              		.code	16
+ 436              		.thumb_func
+ 437              		.type	ORG_Handler, %function
+ 438              	ORG_Handler:
+ 439              	.LFB36:
+ 167:.\togglelib.c **** 
+ 168:.\togglelib.c **** /* Signal handler for organizer lights */
+ 169:.\togglelib.c **** CY_ISR( ORG_Handler ) {
+ 440              		.loc 1 169 0
+ 441              		.cfi_startproc
+ 442 0000 90B5     		push	{r4, r7, lr}
+ 443              		.cfi_def_cfa_offset 12
+ 444              		.cfi_offset 4, -12
+ 445              		.cfi_offset 7, -8
+ 446              		.cfi_offset 14, -4
+ 447 0002 85B0     		sub	sp, sp, #20
+ 448              		.cfi_def_cfa_offset 32
+ 449 0004 00AF     		add	r7, sp, #0
+ 450              		.cfi_def_cfa_register 7
+ 170:.\togglelib.c ****     /* */
+ 171:.\togglelib.c ****     uint8 current_color_left = get_color(LEFT_LED);
+ 451              		.loc 1 171 0
+ 452 0006 FC1D     		add	r4, r7, #7
+ 453 0008 0120     		mov	r0, #1
+ 454 000a FFF7FEFF 		bl	get_color
+ 455 000e 031C     		mov	r3, r0
+ 456 0010 2370     		strb	r3, [r4]
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczF04ft.s 			page 12
+
+
+ 172:.\togglelib.c ****     uint8 current_color_right = get_color(RIGHT_LED);
+ 457              		.loc 1 172 0
+ 458 0012 BC1D     		add	r4, r7, #6
+ 459 0014 0220     		mov	r0, #2
+ 460 0016 FFF7FEFF 		bl	get_color
+ 461 001a 031C     		mov	r3, r0
+ 462 001c 2370     		strb	r3, [r4]
+ 173:.\togglelib.c ****     uint32 rand_num_left = (rand() % 7) + 1;
+ 463              		.loc 1 173 0
+ 464 001e FFF7FEFF 		bl	rand
+ 465 0022 031C     		mov	r3, r0
+ 466 0024 181C     		mov	r0, r3
+ 467 0026 0721     		mov	r1, #7
+ 468 0028 FFF7FEFF 		bl	__aeabi_idivmod
+ 469 002c 0B1C     		mov	r3, r1
+ 470 002e 0133     		add	r3, r3, #1
+ 471 0030 FB60     		str	r3, [r7, #12]
+ 174:.\togglelib.c ****     uint32 rand_num_right = (rand() % 7) + 1;
+ 472              		.loc 1 174 0
+ 473 0032 FFF7FEFF 		bl	rand
+ 474 0036 031C     		mov	r3, r0
+ 475 0038 181C     		mov	r0, r3
+ 476 003a 0721     		mov	r1, #7
+ 477 003c FFF7FEFF 		bl	__aeabi_idivmod
+ 478 0040 0B1C     		mov	r3, r1
+ 479 0042 0133     		add	r3, r3, #1
+ 480 0044 BB60     		str	r3, [r7, #8]
+ 175:.\togglelib.c ****     
+ 176:.\togglelib.c ****     while (current_color_left == rand_num_left){
+ 481              		.loc 1 176 0
+ 482 0046 09E0     		b	.L31
+ 483              	.L32:
+ 177:.\togglelib.c ****         rand_num_left = (rand() % 7) + 1;
+ 484              		.loc 1 177 0
+ 485 0048 FFF7FEFF 		bl	rand
+ 486 004c 031C     		mov	r3, r0
+ 487 004e 181C     		mov	r0, r3
+ 488 0050 0721     		mov	r1, #7
+ 489 0052 FFF7FEFF 		bl	__aeabi_idivmod
+ 490 0056 0B1C     		mov	r3, r1
+ 491 0058 0133     		add	r3, r3, #1
+ 492 005a FB60     		str	r3, [r7, #12]
+ 493              	.L31:
+ 176:.\togglelib.c ****     while (current_color_left == rand_num_left){
+ 494              		.loc 1 176 0 discriminator 1
+ 495 005c FB1D     		add	r3, r7, #7
+ 496 005e 1A78     		ldrb	r2, [r3]
+ 497 0060 FB68     		ldr	r3, [r7, #12]
+ 498 0062 9A42     		cmp	r2, r3
+ 499 0064 F0D0     		beq	.L32
+ 178:.\togglelib.c ****     }
+ 179:.\togglelib.c ****     
+ 180:.\togglelib.c ****    while (current_color_right == rand_num_right){
+ 500              		.loc 1 180 0
+ 501 0066 09E0     		b	.L33
+ 502              	.L34:
+ 181:.\togglelib.c ****         rand_num_right = (rand() % 7) + 1;
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczF04ft.s 			page 13
+
+
+ 503              		.loc 1 181 0
+ 504 0068 FFF7FEFF 		bl	rand
+ 505 006c 031C     		mov	r3, r0
+ 506 006e 181C     		mov	r0, r3
+ 507 0070 0721     		mov	r1, #7
+ 508 0072 FFF7FEFF 		bl	__aeabi_idivmod
+ 509 0076 0B1C     		mov	r3, r1
+ 510 0078 0133     		add	r3, r3, #1
+ 511 007a BB60     		str	r3, [r7, #8]
+ 512              	.L33:
+ 180:.\togglelib.c ****    while (current_color_right == rand_num_right){
+ 513              		.loc 1 180 0 discriminator 1
+ 514 007c BB1D     		add	r3, r7, #6
+ 515 007e 1A78     		ldrb	r2, [r3]
+ 516 0080 BB68     		ldr	r3, [r7, #8]
+ 517 0082 9A42     		cmp	r2, r3
+ 518 0084 F0D0     		beq	.L34
+ 182:.\togglelib.c ****     }
+ 183:.\togglelib.c ****     
+ 184:.\togglelib.c ****     set_color(LEFT_LED, rand_num_left);
+ 519              		.loc 1 184 0
+ 520 0086 FB68     		ldr	r3, [r7, #12]
+ 521 0088 DBB2     		uxtb	r3, r3
+ 522 008a 0120     		mov	r0, #1
+ 523 008c 191C     		mov	r1, r3
+ 524 008e FFF7FEFF 		bl	set_color
+ 185:.\togglelib.c ****     set_color(RIGHT_LED, rand_num_right);
+ 525              		.loc 1 185 0
+ 526 0092 BB68     		ldr	r3, [r7, #8]
+ 527 0094 DBB2     		uxtb	r3, r3
+ 528 0096 0220     		mov	r0, #2
+ 529 0098 191C     		mov	r1, r3
+ 530 009a FFF7FEFF 		bl	set_color
+ 186:.\togglelib.c ****     turn_off(LEFT_RIGHT_LED);
+ 531              		.loc 1 186 0
+ 532 009e 0320     		mov	r0, #3
+ 533 00a0 FFF7FEFF 		bl	turn_off
+ 187:.\togglelib.c ****     turn_on(LEFT_RIGHT_LED);
+ 534              		.loc 1 187 0
+ 535 00a4 0320     		mov	r0, #3
+ 536 00a6 FFF7FEFF 		bl	turn_on
+ 188:.\togglelib.c ****     
+ 189:.\togglelib.c ****     ORG_Int_ClearPending();
+ 537              		.loc 1 189 0
+ 538 00aa FFF7FEFF 		bl	ORG_Int_ClearPending
+ 190:.\togglelib.c ****     PWM_Organizer_ReadStatusRegister();
+ 539              		.loc 1 190 0
+ 540 00ae FFF7FEFF 		bl	PWM_Organizer_ReadStatusRegister
+ 191:.\togglelib.c **** }
+ 541              		.loc 1 191 0
+ 542 00b2 BD46     		mov	sp, r7
+ 543 00b4 05B0     		add	sp, sp, #20
+ 544              		@ sp needed
+ 545 00b6 90BD     		pop	{r4, r7, pc}
+ 546              		.cfi_endproc
+ 547              	.LFE36:
+ 548              		.size	ORG_Handler, .-ORG_Handler
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczF04ft.s 			page 14
+
+
+ 549              		.section	.text.set_magic_toggle_sequance,"ax",%progbits
+ 550              		.align	2
+ 551              		.global	set_magic_toggle_sequance
+ 552              		.code	16
+ 553              		.thumb_func
+ 554              		.type	set_magic_toggle_sequance, %function
+ 555              	set_magic_toggle_sequance:
+ 556              	.LFB37:
+ 192:.\togglelib.c **** 
+ 193:.\togglelib.c **** /* Sets the magic toogle sequence of the global toggle state change structure */
+ 194:.\togglelib.c **** void set_magic_toggle_sequance(uint8 state_flag, uint8* sequance) {
+ 557              		.loc 1 194 0
+ 558              		.cfi_startproc
+ 559 0000 80B5     		push	{r7, lr}
+ 560              		.cfi_def_cfa_offset 8
+ 561              		.cfi_offset 7, -8
+ 562              		.cfi_offset 14, -4
+ 563 0002 82B0     		sub	sp, sp, #8
+ 564              		.cfi_def_cfa_offset 16
+ 565 0004 00AF     		add	r7, sp, #0
+ 566              		.cfi_def_cfa_register 7
+ 567 0006 021C     		mov	r2, r0
+ 568 0008 3960     		str	r1, [r7]
+ 569 000a FB1D     		add	r3, r7, #7
+ 570 000c 1A70     		strb	r2, [r3]
+ 195:.\togglelib.c ****     switch(state_flag) {
+ 571              		.loc 1 195 0
+ 572 000e FB1D     		add	r3, r7, #7
+ 573 0010 1B78     		ldrb	r3, [r3]
+ 574 0012 012B     		cmp	r3, #1
+ 575 0014 02D0     		beq	.L37
+ 576 0016 022B     		cmp	r3, #2
+ 577 0018 08D0     		beq	.L38
+ 578 001a 0FE0     		b	.L35
+ 579              	.L37:
+ 196:.\togglelib.c ****         case VOLUNTEER:
+ 197:.\togglelib.c ****             memmove(Volunteer_Sequence.sequance, sequance, MAX_SEQUENCE_SIZE);
+ 580              		.loc 1 197 0
+ 581 001c 094A     		ldr	r2, .L39
+ 582 001e 3B68     		ldr	r3, [r7]
+ 583 0020 101C     		mov	r0, r2
+ 584 0022 191C     		mov	r1, r3
+ 585 0024 1422     		mov	r2, #20
+ 586 0026 FFF7FEFF 		bl	memmove
+ 198:.\togglelib.c ****         break;
+ 587              		.loc 1 198 0
+ 588 002a 07E0     		b	.L35
+ 589              	.L38:
+ 199:.\togglelib.c ****         case ORGANIZER:
+ 200:.\togglelib.c ****             memmove(Organizer_Sequence.sequance, sequance, MAX_SEQUENCE_SIZE);
+ 590              		.loc 1 200 0
+ 591 002c 064A     		ldr	r2, .L39+4
+ 592 002e 3B68     		ldr	r3, [r7]
+ 593 0030 101C     		mov	r0, r2
+ 594 0032 191C     		mov	r1, r3
+ 595 0034 1422     		mov	r2, #20
+ 596 0036 FFF7FEFF 		bl	memmove
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczF04ft.s 			page 15
+
+
+ 201:.\togglelib.c ****         break;
+ 597              		.loc 1 201 0
+ 598 003a C046     		mov	r8, r8
+ 599              	.L35:
+ 202:.\togglelib.c ****     }   
+ 203:.\togglelib.c ****     
+ 204:.\togglelib.c **** }
+ 600              		.loc 1 204 0
+ 601 003c BD46     		mov	sp, r7
+ 602 003e 02B0     		add	sp, sp, #8
+ 603              		@ sp needed
+ 604 0040 80BD     		pop	{r7, pc}
+ 605              	.L40:
+ 606 0042 C046     		.align	2
+ 607              	.L39:
+ 608 0044 00000000 		.word	Volunteer_Sequence
+ 609 0048 00000000 		.word	Organizer_Sequence
+ 610              		.cfi_endproc
+ 611              	.LFE37:
+ 612              		.size	set_magic_toggle_sequance, .-set_magic_toggle_sequance
+ 613              		.section	.text.get_magic_toggle_sequance,"ax",%progbits
+ 614              		.align	2
+ 615              		.global	get_magic_toggle_sequance
+ 616              		.code	16
+ 617              		.thumb_func
+ 618              		.type	get_magic_toggle_sequance, %function
+ 619              	get_magic_toggle_sequance:
+ 620              	.LFB38:
+ 205:.\togglelib.c **** 
+ 206:.\togglelib.c **** /* Gets the magic toogle sequence of the global toggle state change structure */
+ 207:.\togglelib.c **** uint8* get_magic_toggle_sequance(uint8 state_flag) {
+ 621              		.loc 1 207 0
+ 622              		.cfi_startproc
+ 623 0000 80B5     		push	{r7, lr}
+ 624              		.cfi_def_cfa_offset 8
+ 625              		.cfi_offset 7, -8
+ 626              		.cfi_offset 14, -4
+ 627 0002 82B0     		sub	sp, sp, #8
+ 628              		.cfi_def_cfa_offset 16
+ 629 0004 00AF     		add	r7, sp, #0
+ 630              		.cfi_def_cfa_register 7
+ 631 0006 021C     		mov	r2, r0
+ 632 0008 FB1D     		add	r3, r7, #7
+ 633 000a 1A70     		strb	r2, [r3]
+ 208:.\togglelib.c ****     switch(state_flag) {
+ 634              		.loc 1 208 0
+ 635 000c FB1D     		add	r3, r7, #7
+ 636 000e 1B78     		ldrb	r3, [r3]
+ 637 0010 012B     		cmp	r3, #1
+ 638 0012 02D0     		beq	.L43
+ 639 0014 022B     		cmp	r3, #2
+ 640 0016 02D0     		beq	.L44
+ 641 0018 03E0     		b	.L46
+ 642              	.L43:
+ 209:.\togglelib.c ****         case VOLUNTEER:
+ 210:.\togglelib.c ****             return Volunteer_Sequence.sequance;
+ 643              		.loc 1 210 0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczF04ft.s 			page 16
+
+
+ 644 001a 044B     		ldr	r3, .L47
+ 645 001c 02E0     		b	.L45
+ 646              	.L44:
+ 211:.\togglelib.c ****         break;
+ 212:.\togglelib.c ****         case ORGANIZER:
+ 213:.\togglelib.c ****              return Organizer_Sequence.sequance;
+ 647              		.loc 1 213 0
+ 648 001e 044B     		ldr	r3, .L47+4
+ 649 0020 00E0     		b	.L45
+ 650              	.L46:
+ 214:.\togglelib.c ****         break;
+ 215:.\togglelib.c ****     }
+ 216:.\togglelib.c ****     return NULL;
+ 651              		.loc 1 216 0
+ 652 0022 0023     		mov	r3, #0
+ 653              	.L45:
+ 217:.\togglelib.c **** }
+ 654              		.loc 1 217 0
+ 655 0024 181C     		mov	r0, r3
+ 656 0026 BD46     		mov	sp, r7
+ 657 0028 02B0     		add	sp, sp, #8
+ 658              		@ sp needed
+ 659 002a 80BD     		pop	{r7, pc}
+ 660              	.L48:
+ 661              		.align	2
+ 662              	.L47:
+ 663 002c 00000000 		.word	Volunteer_Sequence
+ 664 0030 00000000 		.word	Organizer_Sequence
+ 665              		.cfi_endproc
+ 666              	.LFE38:
+ 667              		.size	get_magic_toggle_sequance, .-get_magic_toggle_sequance
+ 668              		.section	.text.set_magic_toggle_index,"ax",%progbits
+ 669              		.align	2
+ 670              		.global	set_magic_toggle_index
+ 671              		.code	16
+ 672              		.thumb_func
+ 673              		.type	set_magic_toggle_index, %function
+ 674              	set_magic_toggle_index:
+ 675              	.LFB39:
+ 218:.\togglelib.c **** 
+ 219:.\togglelib.c **** /* Sets the index of the magic toogle sequence of the global toggle state change structure */
+ 220:.\togglelib.c **** void set_magic_toggle_index(uint8 state_flag, uint8 value) {
+ 676              		.loc 1 220 0
+ 677              		.cfi_startproc
+ 678 0000 80B5     		push	{r7, lr}
+ 679              		.cfi_def_cfa_offset 8
+ 680              		.cfi_offset 7, -8
+ 681              		.cfi_offset 14, -4
+ 682 0002 82B0     		sub	sp, sp, #8
+ 683              		.cfi_def_cfa_offset 16
+ 684 0004 00AF     		add	r7, sp, #0
+ 685              		.cfi_def_cfa_register 7
+ 686 0006 0A1C     		mov	r2, r1
+ 687 0008 FB1D     		add	r3, r7, #7
+ 688 000a 011C     		add	r1, r0, #0
+ 689 000c 1970     		strb	r1, [r3]
+ 690 000e BB1D     		add	r3, r7, #6
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczF04ft.s 			page 17
+
+
+ 691 0010 1A70     		strb	r2, [r3]
+ 221:.\togglelib.c ****     switch(state_flag) {
+ 692              		.loc 1 221 0
+ 693 0012 FB1D     		add	r3, r7, #7
+ 694 0014 1B78     		ldrb	r3, [r3]
+ 695 0016 012B     		cmp	r3, #1
+ 696 0018 02D0     		beq	.L51
+ 697 001a 022B     		cmp	r3, #2
+ 698 001c 05D0     		beq	.L52
+ 699 001e 09E0     		b	.L49
+ 700              	.L51:
+ 222:.\togglelib.c ****         case VOLUNTEER:
+ 223:.\togglelib.c ****             Volunteer_Sequence.index = value;
+ 701              		.loc 1 223 0
+ 702 0020 064B     		ldr	r3, .L53
+ 703 0022 BA1D     		add	r2, r7, #6
+ 704 0024 1278     		ldrb	r2, [r2]
+ 705 0026 1A75     		strb	r2, [r3, #20]
+ 224:.\togglelib.c ****         break;
+ 706              		.loc 1 224 0
+ 707 0028 04E0     		b	.L49
+ 708              	.L52:
+ 225:.\togglelib.c ****         case ORGANIZER:
+ 226:.\togglelib.c ****             Organizer_Sequence.index = value;
+ 709              		.loc 1 226 0
+ 710 002a 054B     		ldr	r3, .L53+4
+ 711 002c BA1D     		add	r2, r7, #6
+ 712 002e 1278     		ldrb	r2, [r2]
+ 713 0030 1A75     		strb	r2, [r3, #20]
+ 227:.\togglelib.c ****         break;
+ 714              		.loc 1 227 0
+ 715 0032 C046     		mov	r8, r8
+ 716              	.L49:
+ 228:.\togglelib.c ****     }
+ 229:.\togglelib.c **** }
+ 717              		.loc 1 229 0
+ 718 0034 BD46     		mov	sp, r7
+ 719 0036 02B0     		add	sp, sp, #8
+ 720              		@ sp needed
+ 721 0038 80BD     		pop	{r7, pc}
+ 722              	.L54:
+ 723 003a C046     		.align	2
+ 724              	.L53:
+ 725 003c 00000000 		.word	Volunteer_Sequence
+ 726 0040 00000000 		.word	Organizer_Sequence
+ 727              		.cfi_endproc
+ 728              	.LFE39:
+ 729              		.size	set_magic_toggle_index, .-set_magic_toggle_index
+ 730              		.section	.text.get_magic_toggle_index,"ax",%progbits
+ 731              		.align	2
+ 732              		.global	get_magic_toggle_index
+ 733              		.code	16
+ 734              		.thumb_func
+ 735              		.type	get_magic_toggle_index, %function
+ 736              	get_magic_toggle_index:
+ 737              	.LFB40:
+ 230:.\togglelib.c **** 
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczF04ft.s 			page 18
+
+
+ 231:.\togglelib.c **** /* Gets the index of the magic toogle sequence of the global toggle state change structure */
+ 232:.\togglelib.c **** uint8 get_magic_toggle_index(uint8 state_flag) {
+ 738              		.loc 1 232 0
+ 739              		.cfi_startproc
+ 740 0000 80B5     		push	{r7, lr}
+ 741              		.cfi_def_cfa_offset 8
+ 742              		.cfi_offset 7, -8
+ 743              		.cfi_offset 14, -4
+ 744 0002 82B0     		sub	sp, sp, #8
+ 745              		.cfi_def_cfa_offset 16
+ 746 0004 00AF     		add	r7, sp, #0
+ 747              		.cfi_def_cfa_register 7
+ 748 0006 021C     		mov	r2, r0
+ 749 0008 FB1D     		add	r3, r7, #7
+ 750 000a 1A70     		strb	r2, [r3]
+ 233:.\togglelib.c ****         switch(state_flag) {
+ 751              		.loc 1 233 0
+ 752 000c FB1D     		add	r3, r7, #7
+ 753 000e 1B78     		ldrb	r3, [r3]
+ 754 0010 012B     		cmp	r3, #1
+ 755 0012 02D0     		beq	.L57
+ 756 0014 022B     		cmp	r3, #2
+ 757 0016 04D0     		beq	.L58
+ 758 0018 07E0     		b	.L60
+ 759              	.L57:
+ 234:.\togglelib.c ****         case VOLUNTEER:
+ 235:.\togglelib.c ****             return Volunteer_Sequence.index;
+ 760              		.loc 1 235 0
+ 761 001a 064B     		ldr	r3, .L61
+ 762 001c 1B7D     		ldrb	r3, [r3, #20]
+ 763 001e DBB2     		uxtb	r3, r3
+ 764 0020 04E0     		b	.L59
+ 765              	.L58:
+ 236:.\togglelib.c ****         break;
+ 237:.\togglelib.c ****         case ORGANIZER:
+ 238:.\togglelib.c ****             return Organizer_Sequence.index;
+ 766              		.loc 1 238 0
+ 767 0022 054B     		ldr	r3, .L61+4
+ 768 0024 1B7D     		ldrb	r3, [r3, #20]
+ 769 0026 DBB2     		uxtb	r3, r3
+ 770 0028 00E0     		b	.L59
+ 771              	.L60:
+ 239:.\togglelib.c ****         break;
+ 240:.\togglelib.c ****     }
+ 241:.\togglelib.c ****     return -1;
+ 772              		.loc 1 241 0
+ 773 002a FF23     		mov	r3, #255
+ 774              	.L59:
+ 242:.\togglelib.c **** }
+ 775              		.loc 1 242 0
+ 776 002c 181C     		mov	r0, r3
+ 777 002e BD46     		mov	sp, r7
+ 778 0030 02B0     		add	sp, sp, #8
+ 779              		@ sp needed
+ 780 0032 80BD     		pop	{r7, pc}
+ 781              	.L62:
+ 782              		.align	2
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczF04ft.s 			page 19
+
+
+ 783              	.L61:
+ 784 0034 00000000 		.word	Volunteer_Sequence
+ 785 0038 00000000 		.word	Organizer_Sequence
+ 786              		.cfi_endproc
+ 787              	.LFE40:
+ 788              		.size	get_magic_toggle_index, .-get_magic_toggle_index
+ 789              		.section	.text.init_magic_toggle_sequance,"ax",%progbits
+ 790              		.align	2
+ 791              		.global	init_magic_toggle_sequance
+ 792              		.code	16
+ 793              		.thumb_func
+ 794              		.type	init_magic_toggle_sequance, %function
+ 795              	init_magic_toggle_sequance:
+ 796              	.LFB41:
+ 243:.\togglelib.c **** 
+ 244:.\togglelib.c **** /* Initialize the magic toogle structures */
+ 245:.\togglelib.c **** void init_magic_toggle_sequance(uint8 state_flag, uint8* sequance) {
+ 797              		.loc 1 245 0
+ 798              		.cfi_startproc
+ 799 0000 80B5     		push	{r7, lr}
+ 800              		.cfi_def_cfa_offset 8
+ 801              		.cfi_offset 7, -8
+ 802              		.cfi_offset 14, -4
+ 803 0002 82B0     		sub	sp, sp, #8
+ 804              		.cfi_def_cfa_offset 16
+ 805 0004 00AF     		add	r7, sp, #0
+ 806              		.cfi_def_cfa_register 7
+ 807 0006 021C     		mov	r2, r0
+ 808 0008 3960     		str	r1, [r7]
+ 809 000a FB1D     		add	r3, r7, #7
+ 810 000c 1A70     		strb	r2, [r3]
+ 246:.\togglelib.c ****     set_magic_toggle_sequance(state_flag, sequance);
+ 811              		.loc 1 246 0
+ 812 000e FB1D     		add	r3, r7, #7
+ 813 0010 1A78     		ldrb	r2, [r3]
+ 814 0012 3B68     		ldr	r3, [r7]
+ 815 0014 101C     		mov	r0, r2
+ 816 0016 191C     		mov	r1, r3
+ 817 0018 FFF7FEFF 		bl	set_magic_toggle_sequance
+ 247:.\togglelib.c ****     set_magic_toggle_index(state_flag, 0);
+ 818              		.loc 1 247 0
+ 819 001c FB1D     		add	r3, r7, #7
+ 820 001e 1B78     		ldrb	r3, [r3]
+ 821 0020 181C     		mov	r0, r3
+ 822 0022 0021     		mov	r1, #0
+ 823 0024 FFF7FEFF 		bl	set_magic_toggle_index
+ 248:.\togglelib.c **** }
+ 824              		.loc 1 248 0
+ 825 0028 BD46     		mov	sp, r7
+ 826 002a 02B0     		add	sp, sp, #8
+ 827              		@ sp needed
+ 828 002c 80BD     		pop	{r7, pc}
+ 829              		.cfi_endproc
+ 830              	.LFE41:
+ 831              		.size	init_magic_toggle_sequance, .-init_magic_toggle_sequance
+ 832 002e C046     		.section	.text.enable_toggle_interrupts,"ax",%progbits
+ 833              		.align	2
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczF04ft.s 			page 20
+
+
+ 834              		.global	enable_toggle_interrupts
+ 835              		.code	16
+ 836              		.thumb_func
+ 837              		.type	enable_toggle_interrupts, %function
+ 838              	enable_toggle_interrupts:
+ 839              	.LFB42:
+ 249:.\togglelib.c **** 
+ 250:.\togglelib.c **** void enable_toggle_interrupts() {
+ 840              		.loc 1 250 0
+ 841              		.cfi_startproc
+ 842 0000 80B5     		push	{r7, lr}
+ 843              		.cfi_def_cfa_offset 8
+ 844              		.cfi_offset 7, -8
+ 845              		.cfi_offset 14, -4
+ 846 0002 00AF     		add	r7, sp, #0
+ 847              		.cfi_def_cfa_register 7
+ 251:.\togglelib.c ****     /* Setup toggle interrupts  */
+ 252:.\togglelib.c ****     SWB_Int_StartEx( SWB_Handler );
+ 848              		.loc 1 252 0
+ 849 0004 0C4B     		ldr	r3, .L65
+ 850 0006 181C     		mov	r0, r3
+ 851 0008 FFF7FEFF 		bl	SWB_Int_StartEx
+ 253:.\togglelib.c ****     SWL_Int_StartEx( SWL_Handler );
+ 852              		.loc 1 253 0
+ 853 000c 0B4B     		ldr	r3, .L65+4
+ 854 000e 181C     		mov	r0, r3
+ 855 0010 FFF7FEFF 		bl	SWL_Int_StartEx
+ 254:.\togglelib.c ****     SWR_Int_StartEx( SWR_Handler );
+ 856              		.loc 1 254 0
+ 857 0014 0A4B     		ldr	r3, .L65+8
+ 858 0016 181C     		mov	r0, r3
+ 859 0018 FFF7FEFF 		bl	SWR_Int_StartEx
+ 255:.\togglelib.c ****     ORG_Int_StartEx( ORG_Handler );
+ 860              		.loc 1 255 0
+ 861 001c 094B     		ldr	r3, .L65+12
+ 862 001e 181C     		mov	r0, r3
+ 863 0020 FFF7FEFF 		bl	ORG_Int_StartEx
+ 256:.\togglelib.c ****     /* Seed random */
+ 257:.\togglelib.c ****     srand(time(NULL));
+ 864              		.loc 1 257 0
+ 865 0024 0020     		mov	r0, #0
+ 866 0026 FFF7FEFF 		bl	time
+ 867 002a 031C     		mov	r3, r0
+ 868 002c 181C     		mov	r0, r3
+ 869 002e FFF7FEFF 		bl	srand
+ 258:.\togglelib.c **** }...
+ 870              		.loc 1 258 0
+ 871 0032 BD46     		mov	sp, r7
+ 872              		@ sp needed
+ 873 0034 80BD     		pop	{r7, pc}
+ 874              	.L66:
+ 875 0036 C046     		.align	2
+ 876              	.L65:
+ 877 0038 00000000 		.word	SWB_Handler
+ 878 003c 00000000 		.word	SWL_Handler
+ 879 0040 00000000 		.word	SWR_Handler
+ 880 0044 00000000 		.word	ORG_Handler
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczF04ft.s 			page 21
+
+
+ 881              		.cfi_endproc
+ 882              	.LFE42:
+ 883              		.size	enable_toggle_interrupts, .-enable_toggle_interrupts
+ 884              		.text
+ 885              	.Letext0:
+ 886              		.file 2 ".\\Generated_Source\\PSoC4/cytypes.h"
+ 887              		.file 3 ".\\togglelib.h"
+ 888              		.file 4 ".\\state.h"
+ 889              		.section	.debug_info,"",%progbits
+ 890              	.Ldebug_info0:
+ 891 0000 C6020000 		.4byte	0x2c6
+ 892 0004 0400     		.2byte	0x4
+ 893 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 894 000a 04       		.byte	0x4
+ 895 000b 01       		.uleb128 0x1
+ 896 000c 9A000000 		.4byte	.LASF34
+ 897 0010 01       		.byte	0x1
+ 898 0011 62010000 		.4byte	.LASF35
+ 899 0015 48020000 		.4byte	.LASF36
+ 900 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 901 001d 00000000 		.4byte	0
+ 902 0021 00000000 		.4byte	.Ldebug_line0
+ 903 0025 02       		.uleb128 0x2
+ 904 0026 01       		.byte	0x1
+ 905 0027 06       		.byte	0x6
+ 906 0028 B6020000 		.4byte	.LASF0
+ 907 002c 02       		.uleb128 0x2
+ 908 002d 01       		.byte	0x1
+ 909 002e 08       		.byte	0x8
+ 910 002f 16010000 		.4byte	.LASF1
+ 911 0033 02       		.uleb128 0x2
+ 912 0034 02       		.byte	0x2
+ 913 0035 05       		.byte	0x5
+ 914 0036 8B020000 		.4byte	.LASF2
+ 915 003a 02       		.uleb128 0x2
+ 916 003b 02       		.byte	0x2
+ 917 003c 07       		.byte	0x7
+ 918 003d 31000000 		.4byte	.LASF3
+ 919 0041 02       		.uleb128 0x2
+ 920 0042 04       		.byte	0x4
+ 921 0043 05       		.byte	0x5
+ 922 0044 AD020000 		.4byte	.LASF4
+ 923 0048 02       		.uleb128 0x2
+ 924 0049 04       		.byte	0x4
+ 925 004a 07       		.byte	0x7
+ 926 004b 24010000 		.4byte	.LASF5
+ 927 004f 02       		.uleb128 0x2
+ 928 0050 08       		.byte	0x8
+ 929 0051 05       		.byte	0x5
+ 930 0052 35020000 		.4byte	.LASF6
+ 931 0056 02       		.uleb128 0x2
+ 932 0057 08       		.byte	0x8
+ 933 0058 07       		.byte	0x7
+ 934 0059 B5010000 		.4byte	.LASF7
+ 935 005d 03       		.uleb128 0x3
+ 936 005e 04       		.byte	0x4
+ 937 005f 05       		.byte	0x5
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczF04ft.s 			page 22
+
+
+ 938 0060 696E7400 		.ascii	"int\000"
+ 939 0064 02       		.uleb128 0x2
+ 940 0065 04       		.byte	0x4
+ 941 0066 07       		.byte	0x7
+ 942 0067 8E010000 		.4byte	.LASF8
+ 943 006b 04       		.uleb128 0x4
+ 944 006c 36010000 		.4byte	.LASF9
+ 945 0070 02       		.byte	0x2
+ 946 0071 A1       		.byte	0xa1
+ 947 0072 2C000000 		.4byte	0x2c
+ 948 0076 04       		.uleb128 0x4
+ 949 0077 87010000 		.4byte	.LASF10
+ 950 007b 02       		.byte	0x2
+ 951 007c A3       		.byte	0xa3
+ 952 007d 48000000 		.4byte	0x48
+ 953 0081 02       		.uleb128 0x2
+ 954 0082 04       		.byte	0x4
+ 955 0083 04       		.byte	0x4
+ 956 0084 94000000 		.4byte	.LASF11
+ 957 0088 02       		.uleb128 0x2
+ 958 0089 08       		.byte	0x8
+ 959 008a 04       		.byte	0x4
+ 960 008b 5B010000 		.4byte	.LASF12
+ 961 008f 02       		.uleb128 0x2
+ 962 0090 01       		.byte	0x1
+ 963 0091 08       		.byte	0x8
+ 964 0092 43020000 		.4byte	.LASF13
+ 965 0096 05       		.uleb128 0x5
+ 966 0097 6B000000 		.4byte	0x6b
+ 967 009b 02       		.uleb128 0x2
+ 968 009c 04       		.byte	0x4
+ 969 009d 07       		.byte	0x7
+ 970 009e 23020000 		.4byte	.LASF14
+ 971 00a2 06       		.uleb128 0x6
+ 972 00a3 CC010000 		.4byte	.LASF37
+ 973 00a7 15       		.byte	0x15
+ 974 00a8 03       		.byte	0x3
+ 975 00a9 1D       		.byte	0x1d
+ 976 00aa C7000000 		.4byte	0xc7
+ 977 00ae 07       		.uleb128 0x7
+ 978 00af 2C020000 		.4byte	.LASF15
+ 979 00b3 03       		.byte	0x3
+ 980 00b4 1E       		.byte	0x1e
+ 981 00b5 C7000000 		.4byte	0xc7
+ 982 00b9 00       		.byte	0
+ 983 00ba 07       		.uleb128 0x7
+ 984 00bb 85020000 		.4byte	.LASF16
+ 985 00bf 03       		.byte	0x3
+ 986 00c0 1F       		.byte	0x1f
+ 987 00c1 6B000000 		.4byte	0x6b
+ 988 00c5 14       		.byte	0x14
+ 989 00c6 00       		.byte	0
+ 990 00c7 08       		.uleb128 0x8
+ 991 00c8 6B000000 		.4byte	0x6b
+ 992 00cc D7000000 		.4byte	0xd7
+ 993 00d0 09       		.uleb128 0x9
+ 994 00d1 9B000000 		.4byte	0x9b
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczF04ft.s 			page 23
+
+
+ 995 00d5 13       		.byte	0x13
+ 996 00d6 00       		.byte	0
+ 997 00d7 0A       		.uleb128 0xa
+ 998 00d8 95020000 		.4byte	.LASF17
+ 999 00dc 01       		.byte	0x1
+ 1000 00dd 19       		.byte	0x19
+ 1001 00de 00000000 		.4byte	.LFB33
+ 1002 00e2 0C010000 		.4byte	.LFE33-.LFB33
+ 1003 00e6 01       		.uleb128 0x1
+ 1004 00e7 9C       		.byte	0x9c
+ 1005 00e8 09010000 		.4byte	0x109
+ 1006 00ec 0B       		.uleb128 0xb
+ 1007 00ed 2C020000 		.4byte	.LASF15
+ 1008 00f1 01       		.byte	0x1
+ 1009 00f2 1A       		.byte	0x1a
+ 1010 00f3 09010000 		.4byte	0x109
+ 1011 00f7 02       		.uleb128 0x2
+ 1012 00f8 91       		.byte	0x91
+ 1013 00f9 68       		.sleb128 -24
+ 1014 00fa 0B       		.uleb128 0xb
+ 1015 00fb 85020000 		.4byte	.LASF16
+ 1016 00ff 01       		.byte	0x1
+ 1017 0100 1B       		.byte	0x1b
+ 1018 0101 6B000000 		.4byte	0x6b
+ 1019 0105 02       		.uleb128 0x2
+ 1020 0106 91       		.byte	0x91
+ 1021 0107 6F       		.sleb128 -17
+ 1022 0108 00       		.byte	0
+ 1023 0109 0C       		.uleb128 0xc
+ 1024 010a 04       		.byte	0x4
+ 1025 010b 6B000000 		.4byte	0x6b
+ 1026 010f 0A       		.uleb128 0xa
+ 1027 0110 25000000 		.4byte	.LASF18
+ 1028 0114 01       		.byte	0x1
+ 1029 0115 56       		.byte	0x56
+ 1030 0116 00000000 		.4byte	.LFB34
+ 1031 011a 0C010000 		.4byte	.LFE34-.LFB34
+ 1032 011e 01       		.uleb128 0x1
+ 1033 011f 9C       		.byte	0x9c
+ 1034 0120 41010000 		.4byte	0x141
+ 1035 0124 0B       		.uleb128 0xb
+ 1036 0125 2C020000 		.4byte	.LASF15
+ 1037 0129 01       		.byte	0x1
+ 1038 012a 57       		.byte	0x57
+ 1039 012b 09010000 		.4byte	0x109
+ 1040 012f 02       		.uleb128 0x2
+ 1041 0130 91       		.byte	0x91
+ 1042 0131 68       		.sleb128 -24
+ 1043 0132 0B       		.uleb128 0xb
+ 1044 0133 85020000 		.4byte	.LASF16
+ 1045 0137 01       		.byte	0x1
+ 1046 0138 58       		.byte	0x58
+ 1047 0139 6B000000 		.4byte	0x6b
+ 1048 013d 02       		.uleb128 0x2
+ 1049 013e 91       		.byte	0x91
+ 1050 013f 6F       		.sleb128 -17
+ 1051 0140 00       		.byte	0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczF04ft.s 			page 24
+
+
+ 1052 0141 0D       		.uleb128 0xd
+ 1053 0142 C2020000 		.4byte	.LASF38
+ 1054 0146 01       		.byte	0x1
+ 1055 0147 93       		.byte	0x93
+ 1056 0148 00000000 		.4byte	.LFB35
+ 1057 014c 40000000 		.4byte	.LFE35-.LFB35
+ 1058 0150 01       		.uleb128 0x1
+ 1059 0151 9C       		.byte	0x9c
+ 1060 0152 0A       		.uleb128 0xa
+ 1061 0153 A1020000 		.4byte	.LASF19
+ 1062 0157 01       		.byte	0x1
+ 1063 0158 A9       		.byte	0xa9
+ 1064 0159 00000000 		.4byte	.LFB36
+ 1065 015d B8000000 		.4byte	.LFE36-.LFB36
+ 1066 0161 01       		.uleb128 0x1
+ 1067 0162 9C       		.byte	0x9c
+ 1068 0163 A0010000 		.4byte	0x1a0
+ 1069 0167 0B       		.uleb128 0xb
+ 1070 0168 57000000 		.4byte	.LASF20
+ 1071 016c 01       		.byte	0x1
+ 1072 016d AB       		.byte	0xab
+ 1073 016e 6B000000 		.4byte	0x6b
+ 1074 0172 02       		.uleb128 0x2
+ 1075 0173 91       		.byte	0x91
+ 1076 0174 67       		.sleb128 -25
+ 1077 0175 0B       		.uleb128 0xb
+ 1078 0176 3C010000 		.4byte	.LASF21
+ 1079 017a 01       		.byte	0x1
+ 1080 017b AC       		.byte	0xac
+ 1081 017c 6B000000 		.4byte	0x6b
+ 1082 0180 02       		.uleb128 0x2
+ 1083 0181 91       		.byte	0x91
+ 1084 0182 66       		.sleb128 -26
+ 1085 0183 0B       		.uleb128 0xb
+ 1086 0184 15020000 		.4byte	.LASF22
+ 1087 0188 01       		.byte	0x1
+ 1088 0189 AD       		.byte	0xad
+ 1089 018a 76000000 		.4byte	0x76
+ 1090 018e 02       		.uleb128 0x2
+ 1091 018f 91       		.byte	0x91
+ 1092 0190 6C       		.sleb128 -20
+ 1093 0191 0B       		.uleb128 0xb
+ 1094 0192 85000000 		.4byte	.LASF23
+ 1095 0196 01       		.byte	0x1
+ 1096 0197 AE       		.byte	0xae
+ 1097 0198 76000000 		.4byte	0x76
+ 1098 019c 02       		.uleb128 0x2
+ 1099 019d 91       		.byte	0x91
+ 1100 019e 68       		.sleb128 -24
+ 1101 019f 00       		.byte	0
+ 1102 01a0 0A       		.uleb128 0xa
+ 1103 01a1 9B010000 		.4byte	.LASF24
+ 1104 01a5 01       		.byte	0x1
+ 1105 01a6 C2       		.byte	0xc2
+ 1106 01a7 00000000 		.4byte	.LFB37
+ 1107 01ab 4C000000 		.4byte	.LFE37-.LFB37
+ 1108 01af 01       		.uleb128 0x1
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczF04ft.s 			page 25
+
+
+ 1109 01b0 9C       		.byte	0x9c
+ 1110 01b1 D2010000 		.4byte	0x1d2
+ 1111 01b5 0E       		.uleb128 0xe
+ 1112 01b6 50010000 		.4byte	.LASF25
+ 1113 01ba 01       		.byte	0x1
+ 1114 01bb C2       		.byte	0xc2
+ 1115 01bc 6B000000 		.4byte	0x6b
+ 1116 01c0 02       		.uleb128 0x2
+ 1117 01c1 91       		.byte	0x91
+ 1118 01c2 77       		.sleb128 -9
+ 1119 01c3 0E       		.uleb128 0xe
+ 1120 01c4 2C020000 		.4byte	.LASF15
+ 1121 01c8 01       		.byte	0x1
+ 1122 01c9 C2       		.byte	0xc2
+ 1123 01ca 09010000 		.4byte	0x109
+ 1124 01ce 02       		.uleb128 0x2
+ 1125 01cf 91       		.byte	0x91
+ 1126 01d0 70       		.sleb128 -16
+ 1127 01d1 00       		.byte	0
+ 1128 01d2 0F       		.uleb128 0xf
+ 1129 01d3 FB010000 		.4byte	.LASF28
+ 1130 01d7 01       		.byte	0x1
+ 1131 01d8 CF       		.byte	0xcf
+ 1132 01d9 09010000 		.4byte	0x109
+ 1133 01dd 00000000 		.4byte	.LFB38
+ 1134 01e1 34000000 		.4byte	.LFE38-.LFB38
+ 1135 01e5 01       		.uleb128 0x1
+ 1136 01e6 9C       		.byte	0x9c
+ 1137 01e7 FA010000 		.4byte	0x1fa
+ 1138 01eb 0E       		.uleb128 0xe
+ 1139 01ec 50010000 		.4byte	.LASF25
+ 1140 01f0 01       		.byte	0x1
+ 1141 01f1 CF       		.byte	0xcf
+ 1142 01f2 6B000000 		.4byte	0x6b
+ 1143 01f6 02       		.uleb128 0x2
+ 1144 01f7 91       		.byte	0x91
+ 1145 01f8 77       		.sleb128 -9
+ 1146 01f9 00       		.byte	0
+ 1147 01fa 10       		.uleb128 0x10
+ 1148 01fb 70010000 		.4byte	.LASF26
+ 1149 01ff 01       		.byte	0x1
+ 1150 0200 DC       		.byte	0xdc
+ 1151 0201 00000000 		.4byte	.LFB39
+ 1152 0205 44000000 		.4byte	.LFE39-.LFB39
+ 1153 0209 01       		.uleb128 0x1
+ 1154 020a 9C       		.byte	0x9c
+ 1155 020b 2C020000 		.4byte	0x22c
+ 1156 020f 0E       		.uleb128 0xe
+ 1157 0210 50010000 		.4byte	.LASF25
+ 1158 0214 01       		.byte	0x1
+ 1159 0215 DC       		.byte	0xdc
+ 1160 0216 6B000000 		.4byte	0x6b
+ 1161 021a 02       		.uleb128 0x2
+ 1162 021b 91       		.byte	0x91
+ 1163 021c 77       		.sleb128 -9
+ 1164 021d 0E       		.uleb128 0xe
+ 1165 021e 1F000000 		.4byte	.LASF27
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczF04ft.s 			page 26
+
+
+ 1166 0222 01       		.byte	0x1
+ 1167 0223 DC       		.byte	0xdc
+ 1168 0224 6B000000 		.4byte	0x6b
+ 1169 0228 02       		.uleb128 0x2
+ 1170 0229 91       		.byte	0x91
+ 1171 022a 76       		.sleb128 -10
+ 1172 022b 00       		.byte	0
+ 1173 022c 0F       		.uleb128 0xf
+ 1174 022d CE020000 		.4byte	.LASF29
+ 1175 0231 01       		.byte	0x1
+ 1176 0232 E8       		.byte	0xe8
+ 1177 0233 6B000000 		.4byte	0x6b
+ 1178 0237 00000000 		.4byte	.LFB40
+ 1179 023b 3C000000 		.4byte	.LFE40-.LFB40
+ 1180 023f 01       		.uleb128 0x1
+ 1181 0240 9C       		.byte	0x9c
+ 1182 0241 54020000 		.4byte	0x254
+ 1183 0245 0E       		.uleb128 0xe
+ 1184 0246 50010000 		.4byte	.LASF25
+ 1185 024a 01       		.byte	0x1
+ 1186 024b E8       		.byte	0xe8
+ 1187 024c 6B000000 		.4byte	0x6b
+ 1188 0250 02       		.uleb128 0x2
+ 1189 0251 91       		.byte	0x91
+ 1190 0252 77       		.sleb128 -9
+ 1191 0253 00       		.byte	0
+ 1192 0254 0A       		.uleb128 0xa
+ 1193 0255 6A000000 		.4byte	.LASF30
+ 1194 0259 01       		.byte	0x1
+ 1195 025a F5       		.byte	0xf5
+ 1196 025b 00000000 		.4byte	.LFB41
+ 1197 025f 2E000000 		.4byte	.LFE41-.LFB41
+ 1198 0263 01       		.uleb128 0x1
+ 1199 0264 9C       		.byte	0x9c
+ 1200 0265 86020000 		.4byte	0x286
+ 1201 0269 0E       		.uleb128 0xe
+ 1202 026a 50010000 		.4byte	.LASF25
+ 1203 026e 01       		.byte	0x1
+ 1204 026f F5       		.byte	0xf5
+ 1205 0270 6B000000 		.4byte	0x6b
+ 1206 0274 02       		.uleb128 0x2
+ 1207 0275 91       		.byte	0x91
+ 1208 0276 77       		.sleb128 -9
+ 1209 0277 0E       		.uleb128 0xe
+ 1210 0278 2C020000 		.4byte	.LASF15
+ 1211 027c 01       		.byte	0x1
+ 1212 027d F5       		.byte	0xf5
+ 1213 027e 09010000 		.4byte	0x109
+ 1214 0282 02       		.uleb128 0x2
+ 1215 0283 91       		.byte	0x91
+ 1216 0284 70       		.sleb128 -16
+ 1217 0285 00       		.byte	0
+ 1218 0286 11       		.uleb128 0x11
+ 1219 0287 E2010000 		.4byte	.LASF39
+ 1220 028b 01       		.byte	0x1
+ 1221 028c FA       		.byte	0xfa
+ 1222 028d 00000000 		.4byte	.LFB42
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczF04ft.s 			page 27
+
+
+ 1223 0291 48000000 		.4byte	.LFE42-.LFB42
+ 1224 0295 01       		.uleb128 0x1
+ 1225 0296 9C       		.byte	0x9c
+ 1226 0297 12       		.uleb128 0x12
+ 1227 0298 13000000 		.4byte	.LASF31
+ 1228 029c 04       		.byte	0x4
+ 1229 029d 15       		.byte	0x15
+ 1230 029e 96000000 		.4byte	0x96
+ 1231 02a2 13       		.uleb128 0x13
+ 1232 02a3 00000000 		.4byte	.LASF32
+ 1233 02a7 01       		.byte	0x1
+ 1234 02a8 15       		.byte	0x15
+ 1235 02a9 B3020000 		.4byte	0x2b3
+ 1236 02ad 05       		.uleb128 0x5
+ 1237 02ae 03       		.byte	0x3
+ 1238 02af 00000000 		.4byte	Volunteer_Sequence
+ 1239 02b3 05       		.uleb128 0x5
+ 1240 02b4 A2000000 		.4byte	0xa2
+ 1241 02b8 13       		.uleb128 0x13
+ 1242 02b9 44000000 		.4byte	.LASF33
+ 1243 02bd 01       		.byte	0x1
+ 1244 02be 16       		.byte	0x16
+ 1245 02bf B3020000 		.4byte	0x2b3
+ 1246 02c3 05       		.uleb128 0x5
+ 1247 02c4 03       		.byte	0x3
+ 1248 02c5 00000000 		.4byte	Organizer_Sequence
+ 1249 02c9 00       		.byte	0
+ 1250              		.section	.debug_abbrev,"",%progbits
+ 1251              	.Ldebug_abbrev0:
+ 1252 0000 01       		.uleb128 0x1
+ 1253 0001 11       		.uleb128 0x11
+ 1254 0002 01       		.byte	0x1
+ 1255 0003 25       		.uleb128 0x25
+ 1256 0004 0E       		.uleb128 0xe
+ 1257 0005 13       		.uleb128 0x13
+ 1258 0006 0B       		.uleb128 0xb
+ 1259 0007 03       		.uleb128 0x3
+ 1260 0008 0E       		.uleb128 0xe
+ 1261 0009 1B       		.uleb128 0x1b
+ 1262 000a 0E       		.uleb128 0xe
+ 1263 000b 55       		.uleb128 0x55
+ 1264 000c 17       		.uleb128 0x17
+ 1265 000d 11       		.uleb128 0x11
+ 1266 000e 01       		.uleb128 0x1
+ 1267 000f 10       		.uleb128 0x10
+ 1268 0010 17       		.uleb128 0x17
+ 1269 0011 00       		.byte	0
+ 1270 0012 00       		.byte	0
+ 1271 0013 02       		.uleb128 0x2
+ 1272 0014 24       		.uleb128 0x24
+ 1273 0015 00       		.byte	0
+ 1274 0016 0B       		.uleb128 0xb
+ 1275 0017 0B       		.uleb128 0xb
+ 1276 0018 3E       		.uleb128 0x3e
+ 1277 0019 0B       		.uleb128 0xb
+ 1278 001a 03       		.uleb128 0x3
+ 1279 001b 0E       		.uleb128 0xe
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczF04ft.s 			page 28
+
+
+ 1280 001c 00       		.byte	0
+ 1281 001d 00       		.byte	0
+ 1282 001e 03       		.uleb128 0x3
+ 1283 001f 24       		.uleb128 0x24
+ 1284 0020 00       		.byte	0
+ 1285 0021 0B       		.uleb128 0xb
+ 1286 0022 0B       		.uleb128 0xb
+ 1287 0023 3E       		.uleb128 0x3e
+ 1288 0024 0B       		.uleb128 0xb
+ 1289 0025 03       		.uleb128 0x3
+ 1290 0026 08       		.uleb128 0x8
+ 1291 0027 00       		.byte	0
+ 1292 0028 00       		.byte	0
+ 1293 0029 04       		.uleb128 0x4
+ 1294 002a 16       		.uleb128 0x16
+ 1295 002b 00       		.byte	0
+ 1296 002c 03       		.uleb128 0x3
+ 1297 002d 0E       		.uleb128 0xe
+ 1298 002e 3A       		.uleb128 0x3a
+ 1299 002f 0B       		.uleb128 0xb
+ 1300 0030 3B       		.uleb128 0x3b
+ 1301 0031 0B       		.uleb128 0xb
+ 1302 0032 49       		.uleb128 0x49
+ 1303 0033 13       		.uleb128 0x13
+ 1304 0034 00       		.byte	0
+ 1305 0035 00       		.byte	0
+ 1306 0036 05       		.uleb128 0x5
+ 1307 0037 35       		.uleb128 0x35
+ 1308 0038 00       		.byte	0
+ 1309 0039 49       		.uleb128 0x49
+ 1310 003a 13       		.uleb128 0x13
+ 1311 003b 00       		.byte	0
+ 1312 003c 00       		.byte	0
+ 1313 003d 06       		.uleb128 0x6
+ 1314 003e 13       		.uleb128 0x13
+ 1315 003f 01       		.byte	0x1
+ 1316 0040 03       		.uleb128 0x3
+ 1317 0041 0E       		.uleb128 0xe
+ 1318 0042 0B       		.uleb128 0xb
+ 1319 0043 0B       		.uleb128 0xb
+ 1320 0044 3A       		.uleb128 0x3a
+ 1321 0045 0B       		.uleb128 0xb
+ 1322 0046 3B       		.uleb128 0x3b
+ 1323 0047 0B       		.uleb128 0xb
+ 1324 0048 01       		.uleb128 0x1
+ 1325 0049 13       		.uleb128 0x13
+ 1326 004a 00       		.byte	0
+ 1327 004b 00       		.byte	0
+ 1328 004c 07       		.uleb128 0x7
+ 1329 004d 0D       		.uleb128 0xd
+ 1330 004e 00       		.byte	0
+ 1331 004f 03       		.uleb128 0x3
+ 1332 0050 0E       		.uleb128 0xe
+ 1333 0051 3A       		.uleb128 0x3a
+ 1334 0052 0B       		.uleb128 0xb
+ 1335 0053 3B       		.uleb128 0x3b
+ 1336 0054 0B       		.uleb128 0xb
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczF04ft.s 			page 29
+
+
+ 1337 0055 49       		.uleb128 0x49
+ 1338 0056 13       		.uleb128 0x13
+ 1339 0057 38       		.uleb128 0x38
+ 1340 0058 0B       		.uleb128 0xb
+ 1341 0059 00       		.byte	0
+ 1342 005a 00       		.byte	0
+ 1343 005b 08       		.uleb128 0x8
+ 1344 005c 01       		.uleb128 0x1
+ 1345 005d 01       		.byte	0x1
+ 1346 005e 49       		.uleb128 0x49
+ 1347 005f 13       		.uleb128 0x13
+ 1348 0060 01       		.uleb128 0x1
+ 1349 0061 13       		.uleb128 0x13
+ 1350 0062 00       		.byte	0
+ 1351 0063 00       		.byte	0
+ 1352 0064 09       		.uleb128 0x9
+ 1353 0065 21       		.uleb128 0x21
+ 1354 0066 00       		.byte	0
+ 1355 0067 49       		.uleb128 0x49
+ 1356 0068 13       		.uleb128 0x13
+ 1357 0069 2F       		.uleb128 0x2f
+ 1358 006a 0B       		.uleb128 0xb
+ 1359 006b 00       		.byte	0
+ 1360 006c 00       		.byte	0
+ 1361 006d 0A       		.uleb128 0xa
+ 1362 006e 2E       		.uleb128 0x2e
+ 1363 006f 01       		.byte	0x1
+ 1364 0070 3F       		.uleb128 0x3f
+ 1365 0071 19       		.uleb128 0x19
+ 1366 0072 03       		.uleb128 0x3
+ 1367 0073 0E       		.uleb128 0xe
+ 1368 0074 3A       		.uleb128 0x3a
+ 1369 0075 0B       		.uleb128 0xb
+ 1370 0076 3B       		.uleb128 0x3b
+ 1371 0077 0B       		.uleb128 0xb
+ 1372 0078 27       		.uleb128 0x27
+ 1373 0079 19       		.uleb128 0x19
+ 1374 007a 11       		.uleb128 0x11
+ 1375 007b 01       		.uleb128 0x1
+ 1376 007c 12       		.uleb128 0x12
+ 1377 007d 06       		.uleb128 0x6
+ 1378 007e 40       		.uleb128 0x40
+ 1379 007f 18       		.uleb128 0x18
+ 1380 0080 9642     		.uleb128 0x2116
+ 1381 0082 19       		.uleb128 0x19
+ 1382 0083 01       		.uleb128 0x1
+ 1383 0084 13       		.uleb128 0x13
+ 1384 0085 00       		.byte	0
+ 1385 0086 00       		.byte	0
+ 1386 0087 0B       		.uleb128 0xb
+ 1387 0088 34       		.uleb128 0x34
+ 1388 0089 00       		.byte	0
+ 1389 008a 03       		.uleb128 0x3
+ 1390 008b 0E       		.uleb128 0xe
+ 1391 008c 3A       		.uleb128 0x3a
+ 1392 008d 0B       		.uleb128 0xb
+ 1393 008e 3B       		.uleb128 0x3b
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczF04ft.s 			page 30
+
+
+ 1394 008f 0B       		.uleb128 0xb
+ 1395 0090 49       		.uleb128 0x49
+ 1396 0091 13       		.uleb128 0x13
+ 1397 0092 02       		.uleb128 0x2
+ 1398 0093 18       		.uleb128 0x18
+ 1399 0094 00       		.byte	0
+ 1400 0095 00       		.byte	0
+ 1401 0096 0C       		.uleb128 0xc
+ 1402 0097 0F       		.uleb128 0xf
+ 1403 0098 00       		.byte	0
+ 1404 0099 0B       		.uleb128 0xb
+ 1405 009a 0B       		.uleb128 0xb
+ 1406 009b 49       		.uleb128 0x49
+ 1407 009c 13       		.uleb128 0x13
+ 1408 009d 00       		.byte	0
+ 1409 009e 00       		.byte	0
+ 1410 009f 0D       		.uleb128 0xd
+ 1411 00a0 2E       		.uleb128 0x2e
+ 1412 00a1 00       		.byte	0
+ 1413 00a2 3F       		.uleb128 0x3f
+ 1414 00a3 19       		.uleb128 0x19
+ 1415 00a4 03       		.uleb128 0x3
+ 1416 00a5 0E       		.uleb128 0xe
+ 1417 00a6 3A       		.uleb128 0x3a
+ 1418 00a7 0B       		.uleb128 0xb
+ 1419 00a8 3B       		.uleb128 0x3b
+ 1420 00a9 0B       		.uleb128 0xb
+ 1421 00aa 27       		.uleb128 0x27
+ 1422 00ab 19       		.uleb128 0x19
+ 1423 00ac 11       		.uleb128 0x11
+ 1424 00ad 01       		.uleb128 0x1
+ 1425 00ae 12       		.uleb128 0x12
+ 1426 00af 06       		.uleb128 0x6
+ 1427 00b0 40       		.uleb128 0x40
+ 1428 00b1 18       		.uleb128 0x18
+ 1429 00b2 9642     		.uleb128 0x2116
+ 1430 00b4 19       		.uleb128 0x19
+ 1431 00b5 00       		.byte	0
+ 1432 00b6 00       		.byte	0
+ 1433 00b7 0E       		.uleb128 0xe
+ 1434 00b8 05       		.uleb128 0x5
+ 1435 00b9 00       		.byte	0
+ 1436 00ba 03       		.uleb128 0x3
+ 1437 00bb 0E       		.uleb128 0xe
+ 1438 00bc 3A       		.uleb128 0x3a
+ 1439 00bd 0B       		.uleb128 0xb
+ 1440 00be 3B       		.uleb128 0x3b
+ 1441 00bf 0B       		.uleb128 0xb
+ 1442 00c0 49       		.uleb128 0x49
+ 1443 00c1 13       		.uleb128 0x13
+ 1444 00c2 02       		.uleb128 0x2
+ 1445 00c3 18       		.uleb128 0x18
+ 1446 00c4 00       		.byte	0
+ 1447 00c5 00       		.byte	0
+ 1448 00c6 0F       		.uleb128 0xf
+ 1449 00c7 2E       		.uleb128 0x2e
+ 1450 00c8 01       		.byte	0x1
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczF04ft.s 			page 31
+
+
+ 1451 00c9 3F       		.uleb128 0x3f
+ 1452 00ca 19       		.uleb128 0x19
+ 1453 00cb 03       		.uleb128 0x3
+ 1454 00cc 0E       		.uleb128 0xe
+ 1455 00cd 3A       		.uleb128 0x3a
+ 1456 00ce 0B       		.uleb128 0xb
+ 1457 00cf 3B       		.uleb128 0x3b
+ 1458 00d0 0B       		.uleb128 0xb
+ 1459 00d1 27       		.uleb128 0x27
+ 1460 00d2 19       		.uleb128 0x19
+ 1461 00d3 49       		.uleb128 0x49
+ 1462 00d4 13       		.uleb128 0x13
+ 1463 00d5 11       		.uleb128 0x11
+ 1464 00d6 01       		.uleb128 0x1
+ 1465 00d7 12       		.uleb128 0x12
+ 1466 00d8 06       		.uleb128 0x6
+ 1467 00d9 40       		.uleb128 0x40
+ 1468 00da 18       		.uleb128 0x18
+ 1469 00db 9742     		.uleb128 0x2117
+ 1470 00dd 19       		.uleb128 0x19
+ 1471 00de 01       		.uleb128 0x1
+ 1472 00df 13       		.uleb128 0x13
+ 1473 00e0 00       		.byte	0
+ 1474 00e1 00       		.byte	0
+ 1475 00e2 10       		.uleb128 0x10
+ 1476 00e3 2E       		.uleb128 0x2e
+ 1477 00e4 01       		.byte	0x1
+ 1478 00e5 3F       		.uleb128 0x3f
+ 1479 00e6 19       		.uleb128 0x19
+ 1480 00e7 03       		.uleb128 0x3
+ 1481 00e8 0E       		.uleb128 0xe
+ 1482 00e9 3A       		.uleb128 0x3a
+ 1483 00ea 0B       		.uleb128 0xb
+ 1484 00eb 3B       		.uleb128 0x3b
+ 1485 00ec 0B       		.uleb128 0xb
+ 1486 00ed 27       		.uleb128 0x27
+ 1487 00ee 19       		.uleb128 0x19
+ 1488 00ef 11       		.uleb128 0x11
+ 1489 00f0 01       		.uleb128 0x1
+ 1490 00f1 12       		.uleb128 0x12
+ 1491 00f2 06       		.uleb128 0x6
+ 1492 00f3 40       		.uleb128 0x40
+ 1493 00f4 18       		.uleb128 0x18
+ 1494 00f5 9742     		.uleb128 0x2117
+ 1495 00f7 19       		.uleb128 0x19
+ 1496 00f8 01       		.uleb128 0x1
+ 1497 00f9 13       		.uleb128 0x13
+ 1498 00fa 00       		.byte	0
+ 1499 00fb 00       		.byte	0
+ 1500 00fc 11       		.uleb128 0x11
+ 1501 00fd 2E       		.uleb128 0x2e
+ 1502 00fe 00       		.byte	0
+ 1503 00ff 3F       		.uleb128 0x3f
+ 1504 0100 19       		.uleb128 0x19
+ 1505 0101 03       		.uleb128 0x3
+ 1506 0102 0E       		.uleb128 0xe
+ 1507 0103 3A       		.uleb128 0x3a
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczF04ft.s 			page 32
+
+
+ 1508 0104 0B       		.uleb128 0xb
+ 1509 0105 3B       		.uleb128 0x3b
+ 1510 0106 0B       		.uleb128 0xb
+ 1511 0107 11       		.uleb128 0x11
+ 1512 0108 01       		.uleb128 0x1
+ 1513 0109 12       		.uleb128 0x12
+ 1514 010a 06       		.uleb128 0x6
+ 1515 010b 40       		.uleb128 0x40
+ 1516 010c 18       		.uleb128 0x18
+ 1517 010d 9642     		.uleb128 0x2116
+ 1518 010f 19       		.uleb128 0x19
+ 1519 0110 00       		.byte	0
+ 1520 0111 00       		.byte	0
+ 1521 0112 12       		.uleb128 0x12
+ 1522 0113 34       		.uleb128 0x34
+ 1523 0114 00       		.byte	0
+ 1524 0115 03       		.uleb128 0x3
+ 1525 0116 0E       		.uleb128 0xe
+ 1526 0117 3A       		.uleb128 0x3a
+ 1527 0118 0B       		.uleb128 0xb
+ 1528 0119 3B       		.uleb128 0x3b
+ 1529 011a 0B       		.uleb128 0xb
+ 1530 011b 49       		.uleb128 0x49
+ 1531 011c 13       		.uleb128 0x13
+ 1532 011d 3F       		.uleb128 0x3f
+ 1533 011e 19       		.uleb128 0x19
+ 1534 011f 3C       		.uleb128 0x3c
+ 1535 0120 19       		.uleb128 0x19
+ 1536 0121 00       		.byte	0
+ 1537 0122 00       		.byte	0
+ 1538 0123 13       		.uleb128 0x13
+ 1539 0124 34       		.uleb128 0x34
+ 1540 0125 00       		.byte	0
+ 1541 0126 03       		.uleb128 0x3
+ 1542 0127 0E       		.uleb128 0xe
+ 1543 0128 3A       		.uleb128 0x3a
+ 1544 0129 0B       		.uleb128 0xb
+ 1545 012a 3B       		.uleb128 0x3b
+ 1546 012b 0B       		.uleb128 0xb
+ 1547 012c 49       		.uleb128 0x49
+ 1548 012d 13       		.uleb128 0x13
+ 1549 012e 3F       		.uleb128 0x3f
+ 1550 012f 19       		.uleb128 0x19
+ 1551 0130 02       		.uleb128 0x2
+ 1552 0131 18       		.uleb128 0x18
+ 1553 0132 00       		.byte	0
+ 1554 0133 00       		.byte	0
+ 1555 0134 00       		.byte	0
+ 1556              		.section	.debug_aranges,"",%progbits
+ 1557 0000 64000000 		.4byte	0x64
+ 1558 0004 0200     		.2byte	0x2
+ 1559 0006 00000000 		.4byte	.Ldebug_info0
+ 1560 000a 04       		.byte	0x4
+ 1561 000b 00       		.byte	0
+ 1562 000c 0000     		.2byte	0
+ 1563 000e 0000     		.2byte	0
+ 1564 0010 00000000 		.4byte	.LFB33
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczF04ft.s 			page 33
+
+
+ 1565 0014 0C010000 		.4byte	.LFE33-.LFB33
+ 1566 0018 00000000 		.4byte	.LFB34
+ 1567 001c 0C010000 		.4byte	.LFE34-.LFB34
+ 1568 0020 00000000 		.4byte	.LFB35
+ 1569 0024 40000000 		.4byte	.LFE35-.LFB35
+ 1570 0028 00000000 		.4byte	.LFB36
+ 1571 002c B8000000 		.4byte	.LFE36-.LFB36
+ 1572 0030 00000000 		.4byte	.LFB37
+ 1573 0034 4C000000 		.4byte	.LFE37-.LFB37
+ 1574 0038 00000000 		.4byte	.LFB38
+ 1575 003c 34000000 		.4byte	.LFE38-.LFB38
+ 1576 0040 00000000 		.4byte	.LFB39
+ 1577 0044 44000000 		.4byte	.LFE39-.LFB39
+ 1578 0048 00000000 		.4byte	.LFB40
+ 1579 004c 3C000000 		.4byte	.LFE40-.LFB40
+ 1580 0050 00000000 		.4byte	.LFB41
+ 1581 0054 2E000000 		.4byte	.LFE41-.LFB41
+ 1582 0058 00000000 		.4byte	.LFB42
+ 1583 005c 48000000 		.4byte	.LFE42-.LFB42
+ 1584 0060 00000000 		.4byte	0
+ 1585 0064 00000000 		.4byte	0
+ 1586              		.section	.debug_ranges,"",%progbits
+ 1587              	.Ldebug_ranges0:
+ 1588 0000 00000000 		.4byte	.LFB33
+ 1589 0004 0C010000 		.4byte	.LFE33
+ 1590 0008 00000000 		.4byte	.LFB34
+ 1591 000c 0C010000 		.4byte	.LFE34
+ 1592 0010 00000000 		.4byte	.LFB35
+ 1593 0014 40000000 		.4byte	.LFE35
+ 1594 0018 00000000 		.4byte	.LFB36
+ 1595 001c B8000000 		.4byte	.LFE36
+ 1596 0020 00000000 		.4byte	.LFB37
+ 1597 0024 4C000000 		.4byte	.LFE37
+ 1598 0028 00000000 		.4byte	.LFB38
+ 1599 002c 34000000 		.4byte	.LFE38
+ 1600 0030 00000000 		.4byte	.LFB39
+ 1601 0034 44000000 		.4byte	.LFE39
+ 1602 0038 00000000 		.4byte	.LFB40
+ 1603 003c 3C000000 		.4byte	.LFE40
+ 1604 0040 00000000 		.4byte	.LFB41
+ 1605 0044 2E000000 		.4byte	.LFE41
+ 1606 0048 00000000 		.4byte	.LFB42
+ 1607 004c 48000000 		.4byte	.LFE42
+ 1608 0050 00000000 		.4byte	0
+ 1609 0054 00000000 		.4byte	0
+ 1610              		.section	.debug_line,"",%progbits
+ 1611              	.Ldebug_line0:
+ 1612 0000 87010000 		.section	.debug_str,"MS",%progbits,1
+ 1612      02006800 
+ 1612      00000201 
+ 1612      FB0E0D00 
+ 1612      01010101 
+ 1613              	.LASF32:
+ 1614 0000 566F6C75 		.ascii	"Volunteer_Sequence\000"
+ 1614      6E746565 
+ 1614      725F5365 
+ 1614      7175656E 
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczF04ft.s 			page 34
+
+
+ 1614      636500
+ 1615              	.LASF31:
+ 1616 0013 62616467 		.ascii	"badge_state\000"
+ 1616      655F7374 
+ 1616      61746500 
+ 1617              	.LASF27:
+ 1618 001f 76616C75 		.ascii	"value\000"
+ 1618      6500
+ 1619              	.LASF18:
+ 1620 0025 5357525F 		.ascii	"SWR_Handler\000"
+ 1620      48616E64 
+ 1620      6C657200 
+ 1621              	.LASF3:
+ 1622 0031 73686F72 		.ascii	"short unsigned int\000"
+ 1622      7420756E 
+ 1622      7369676E 
+ 1622      65642069 
+ 1622      6E7400
+ 1623              	.LASF33:
+ 1624 0044 4F726761 		.ascii	"Organizer_Sequence\000"
+ 1624      6E697A65 
+ 1624      725F5365 
+ 1624      7175656E 
+ 1624      636500
+ 1625              	.LASF20:
+ 1626 0057 63757272 		.ascii	"current_color_left\000"
+ 1626      656E745F 
+ 1626      636F6C6F 
+ 1626      725F6C65 
+ 1626      667400
+ 1627              	.LASF30:
+ 1628 006a 696E6974 		.ascii	"init_magic_toggle_sequance\000"
+ 1628      5F6D6167 
+ 1628      69635F74 
+ 1628      6F67676C 
+ 1628      655F7365 
+ 1629              	.LASF23:
+ 1630 0085 72616E64 		.ascii	"rand_num_right\000"
+ 1630      5F6E756D 
+ 1630      5F726967 
+ 1630      687400
+ 1631              	.LASF11:
+ 1632 0094 666C6F61 		.ascii	"float\000"
+ 1632      7400
+ 1633              	.LASF34:
+ 1634 009a 474E5520 		.ascii	"GNU C 4.8.4 20140526 (release) [ARM/embedded-4_8-br"
+ 1634      4320342E 
+ 1634      382E3420 
+ 1634      32303134 
+ 1634      30353236 
+ 1635 00cd 616E6368 		.ascii	"anch revision 211358] -mcpu=cortex-m0 -mthumb -g -O"
+ 1635      20726576 
+ 1635      6973696F 
+ 1635      6E203231 
+ 1635      31333538 
+ 1636 0100 30202D66 		.ascii	"0 -ffunction-sections\000"
+ 1636      66756E63 
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczF04ft.s 			page 35
+
+
+ 1636      74696F6E 
+ 1636      2D736563 
+ 1636      74696F6E 
+ 1637              	.LASF1:
+ 1638 0116 756E7369 		.ascii	"unsigned char\000"
+ 1638      676E6564 
+ 1638      20636861 
+ 1638      7200
+ 1639              	.LASF5:
+ 1640 0124 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1640      20756E73 
+ 1640      69676E65 
+ 1640      6420696E 
+ 1640      7400
+ 1641              	.LASF9:
+ 1642 0136 75696E74 		.ascii	"uint8\000"
+ 1642      3800
+ 1643              	.LASF21:
+ 1644 013c 63757272 		.ascii	"current_color_right\000"
+ 1644      656E745F 
+ 1644      636F6C6F 
+ 1644      725F7269 
+ 1644      67687400 
+ 1645              	.LASF25:
+ 1646 0150 73746174 		.ascii	"state_flag\000"
+ 1646      655F666C 
+ 1646      616700
+ 1647              	.LASF12:
+ 1648 015b 646F7562 		.ascii	"double\000"
+ 1648      6C6500
+ 1649              	.LASF35:
+ 1650 0162 2E5C746F 		.ascii	".\\togglelib.c\000"
+ 1650      67676C65 
+ 1650      6C69622E 
+ 1650      6300
+ 1651              	.LASF26:
+ 1652 0170 7365745F 		.ascii	"set_magic_toggle_index\000"
+ 1652      6D616769 
+ 1652      635F746F 
+ 1652      67676C65 
+ 1652      5F696E64 
+ 1653              	.LASF10:
+ 1654 0187 75696E74 		.ascii	"uint32\000"
+ 1654      333200
+ 1655              	.LASF8:
+ 1656 018e 756E7369 		.ascii	"unsigned int\000"
+ 1656      676E6564 
+ 1656      20696E74 
+ 1656      00
+ 1657              	.LASF24:
+ 1658 019b 7365745F 		.ascii	"set_magic_toggle_sequance\000"
+ 1658      6D616769 
+ 1658      635F746F 
+ 1658      67676C65 
+ 1658      5F736571 
+ 1659              	.LASF7:
+ 1660 01b5 6C6F6E67 		.ascii	"long long unsigned int\000"
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczF04ft.s 			page 36
+
+
+ 1660      206C6F6E 
+ 1660      6720756E 
+ 1660      7369676E 
+ 1660      65642069 
+ 1661              	.LASF37:
+ 1662 01cc 4D616769 		.ascii	"Magic_Toggle_Sequence\000"
+ 1662      635F546F 
+ 1662      67676C65 
+ 1662      5F536571 
+ 1662      75656E63 
+ 1663              	.LASF39:
+ 1664 01e2 656E6162 		.ascii	"enable_toggle_interrupts\000"
+ 1664      6C655F74 
+ 1664      6F67676C 
+ 1664      655F696E 
+ 1664      74657272 
+ 1665              	.LASF28:
+ 1666 01fb 6765745F 		.ascii	"get_magic_toggle_sequance\000"
+ 1666      6D616769 
+ 1666      635F746F 
+ 1666      67676C65 
+ 1666      5F736571 
+ 1667              	.LASF22:
+ 1668 0215 72616E64 		.ascii	"rand_num_left\000"
+ 1668      5F6E756D 
+ 1668      5F6C6566 
+ 1668      7400
+ 1669              	.LASF14:
+ 1670 0223 73697A65 		.ascii	"sizetype\000"
+ 1670      74797065 
+ 1670      00
+ 1671              	.LASF15:
+ 1672 022c 73657175 		.ascii	"sequance\000"
+ 1672      616E6365 
+ 1672      00
+ 1673              	.LASF6:
+ 1674 0235 6C6F6E67 		.ascii	"long long int\000"
+ 1674      206C6F6E 
+ 1674      6720696E 
+ 1674      7400
+ 1675              	.LASF13:
+ 1676 0243 63686172 		.ascii	"char\000"
+ 1676      00
+ 1677              	.LASF36:
+ 1678 0248 433A5C55 		.ascii	"C:\\Users\\Admin\\Desktop\\Volunteer Badge\\Volunte"
+ 1678      73657273 
+ 1678      5C41646D 
+ 1678      696E5C44 
+ 1678      65736B74 
+ 1679 0276 65725F42 		.ascii	"er_Badge.cydsn\000"
+ 1679      61646765 
+ 1679      2E637964 
+ 1679      736E00
+ 1680              	.LASF16:
+ 1681 0285 696E6465 		.ascii	"index\000"
+ 1681      7800
+ 1682              	.LASF2:
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczF04ft.s 			page 37
+
+
+ 1683 028b 73686F72 		.ascii	"short int\000"
+ 1683      7420696E 
+ 1683      7400
+ 1684              	.LASF17:
+ 1685 0295 53574C5F 		.ascii	"SWL_Handler\000"
+ 1685      48616E64 
+ 1685      6C657200 
+ 1686              	.LASF19:
+ 1687 02a1 4F52475F 		.ascii	"ORG_Handler\000"
+ 1687      48616E64 
+ 1687      6C657200 
+ 1688              	.LASF4:
+ 1689 02ad 6C6F6E67 		.ascii	"long int\000"
+ 1689      20696E74 
+ 1689      00
+ 1690              	.LASF0:
+ 1691 02b6 7369676E 		.ascii	"signed char\000"
+ 1691      65642063 
+ 1691      68617200 
+ 1692              	.LASF38:
+ 1693 02c2 5357425F 		.ascii	"SWB_Handler\000"
+ 1693      48616E64 
+ 1693      6C657200 
+ 1694              	.LASF29:
+ 1695 02ce 6765745F 		.ascii	"get_magic_toggle_index\000"
+ 1695      6D616769 
+ 1695      635F746F 
+ 1695      67676C65 
+ 1695      5F696E64 
+ 1696              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.8.4 20140526 (release) [ARM/embedded-4_8-br

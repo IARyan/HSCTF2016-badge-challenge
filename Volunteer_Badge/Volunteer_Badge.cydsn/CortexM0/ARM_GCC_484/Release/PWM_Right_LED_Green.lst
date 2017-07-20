@@ -1,0 +1,2906 @@
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccQd5moA.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 4
+  10              		.eabi_attribute 34, 0
+  11              		.eabi_attribute 18, 4
+  12              		.code	16
+  13              		.file	"PWM_Right_LED_Green.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.PWM_Right_LED_Green_Enable,"ax",%progbits
+  18              		.align	1
+  19              		.global	PWM_Right_LED_Green_Enable
+  20              		.code	16
+  21              		.thumb_func
+  22              		.type	PWM_Right_LED_Green_Enable, %function
+  23              	PWM_Right_LED_Green_Enable:
+  24              	.LFB2:
+  25              		.file 1 ".\\Generated_Source\\PSoC4\\PWM_Right_LED_Green.c"
+   1:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** /*******************************************************************************
+   2:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** * File Name: PWM_Right_LED_Green.c
+   3:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** * Version 3.10
+   4:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** *
+   5:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** * Description:
+   6:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** *  The PWM User Module consist of an 8 or 16-bit counter with two 8 or 16-bit
+   7:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** *  comparitors. Each instance of this user module is capable of generating
+   8:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** *  two PWM outputs with the same period. The pulse width is selectable between
+   9:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** *  1 and 255/65535. The period is selectable between 2 and 255/65536 clocks.
+  10:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** *  The compare value output may be configured to be active when the present
+  11:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** *  counter is less than or less than/equal to the compare value.
+  12:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** *  A terminal count output is also provided. It generates a pulse one clock
+  13:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** *  width wide when the counter is equal to zero.
+  14:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** *
+  15:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** * Note:
+  16:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** *
+  17:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** *******************************************************************************
+  18:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** * Copyright 2008-2014, Cypress Semiconductor Corporation.  All rights reserved.
+  19:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** * You may use this file only in accordance with the license, terms, conditions,
+  20:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** * disclaimers, and limitations in the end user license agreement accompanying
+  21:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** * the software package with which this file was provided.
+  22:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** ********************************************************************************/
+  23:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+  24:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** #include "PWM_Right_LED_Green.h"
+  25:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+  26:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** /* Error message for removed <resource> through optimization */
+  27:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** #ifdef PWM_Right_LED_Green_PWMUDB_genblk1_ctrlreg__REMOVED
+  28:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     #error PWM_v3_10 detected with a constant 0 for the enable or \
+  29:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****          constant 1 for reset. This will prevent the component from operating.
+  30:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** #endif /* PWM_Right_LED_Green_PWMUDB_genblk1_ctrlreg__REMOVED */
+  31:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+  32:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** uint8 PWM_Right_LED_Green_initVar = 0u;
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccQd5moA.s 			page 2
+
+
+  33:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+  34:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+  35:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** /*******************************************************************************
+  36:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** * Function Name: PWM_Right_LED_Green_Start
+  37:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** ********************************************************************************
+  38:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** *
+  39:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** * Summary:
+  40:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** *  The start function initializes the pwm with the default values, the
+  41:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** *  enables the counter to begin counting.  It does not enable interrupts,
+  42:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** *  the EnableInt command should be called if interrupt generation is required.
+  43:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** *
+  44:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** * Parameters:
+  45:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** *  None
+  46:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** *
+  47:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** * Return:
+  48:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** *  None
+  49:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** *
+  50:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** * Global variables:
+  51:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** *  PWM_Right_LED_Green_initVar: Is modified when this function is called for the
+  52:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** *   first time. Is used to ensure that initialization happens only once.
+  53:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** *
+  54:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** *******************************************************************************/
+  55:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** void PWM_Right_LED_Green_Start(void) 
+  56:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** {
+  57:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     /* If not Initialized then initialize all required hardware and software */
+  58:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     if(PWM_Right_LED_Green_initVar == 0u)
+  59:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     {
+  60:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         PWM_Right_LED_Green_Init();
+  61:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         PWM_Right_LED_Green_initVar = 1u;
+  62:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     }
+  63:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     PWM_Right_LED_Green_Enable();
+  64:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+  65:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** }
+  66:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+  67:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+  68:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** /*******************************************************************************
+  69:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** * Function Name: PWM_Right_LED_Green_Init
+  70:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** ********************************************************************************
+  71:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** *
+  72:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** * Summary:
+  73:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** *  Initialize component's parameters to the parameters set by user in the
+  74:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** *  customizer of the component placed onto schematic. Usually called in
+  75:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** *  PWM_Right_LED_Green_Start().
+  76:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** *
+  77:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** * Parameters:
+  78:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** *  None
+  79:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** *
+  80:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** * Return:
+  81:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** *  None
+  82:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** *
+  83:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** *******************************************************************************/
+  84:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** void PWM_Right_LED_Green_Init(void) 
+  85:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** {
+  86:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     #if (PWM_Right_LED_Green_UsingFixedFunction || PWM_Right_LED_Green_UseControl)
+  87:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         uint8 ctrl;
+  88:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     #endif /* (PWM_Right_LED_Green_UsingFixedFunction || PWM_Right_LED_Green_UseControl) */
+  89:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccQd5moA.s 			page 3
+
+
+  90:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     #if(!PWM_Right_LED_Green_UsingFixedFunction)
+  91:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         #if(PWM_Right_LED_Green_UseStatus)
+  92:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****             /* Interrupt State Backup for Critical Region*/
+  93:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****             uint8 PWM_Right_LED_Green_interruptState;
+  94:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         #endif /* (PWM_Right_LED_Green_UseStatus) */
+  95:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     #endif /* (!PWM_Right_LED_Green_UsingFixedFunction) */
+  96:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+  97:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     #if (PWM_Right_LED_Green_UsingFixedFunction)
+  98:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         /* You are allowed to write the compare value (FF only) */
+  99:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         PWM_Right_LED_Green_CONTROL |= PWM_Right_LED_Green_CFG0_MODE;
+ 100:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         #if (PWM_Right_LED_Green_DeadBand2_4)
+ 101:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****             PWM_Right_LED_Green_CONTROL |= PWM_Right_LED_Green_CFG0_DB;
+ 102:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         #endif /* (PWM_Right_LED_Green_DeadBand2_4) */
+ 103:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 104:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         ctrl = PWM_Right_LED_Green_CONTROL3 & ((uint8 )(~PWM_Right_LED_Green_CTRL_CMPMODE1_MASK));
+ 105:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         PWM_Right_LED_Green_CONTROL3 = ctrl | PWM_Right_LED_Green_DEFAULT_COMPARE1_MODE;
+ 106:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 107:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****          /* Clear and Set SYNCTC and SYNCCMP bits of RT1 register */
+ 108:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         PWM_Right_LED_Green_RT1 &= ((uint8)(~PWM_Right_LED_Green_RT1_MASK));
+ 109:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         PWM_Right_LED_Green_RT1 |= PWM_Right_LED_Green_SYNC;
+ 110:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 111:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         /*Enable DSI Sync all all inputs of the PWM*/
+ 112:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         PWM_Right_LED_Green_RT1 &= ((uint8)(~PWM_Right_LED_Green_SYNCDSI_MASK));
+ 113:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         PWM_Right_LED_Green_RT1 |= PWM_Right_LED_Green_SYNCDSI_EN;
+ 114:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 115:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     #elif (PWM_Right_LED_Green_UseControl)
+ 116:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         /* Set the default compare mode defined in the parameter */
+ 117:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         ctrl = PWM_Right_LED_Green_CONTROL & ((uint8)(~PWM_Right_LED_Green_CTRL_CMPMODE2_MASK)) &
+ 118:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****                 ((uint8)(~PWM_Right_LED_Green_CTRL_CMPMODE1_MASK));
+ 119:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         PWM_Right_LED_Green_CONTROL = ctrl | PWM_Right_LED_Green_DEFAULT_COMPARE2_MODE |
+ 120:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****                                    PWM_Right_LED_Green_DEFAULT_COMPARE1_MODE;
+ 121:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     #endif /* (PWM_Right_LED_Green_UsingFixedFunction) */
+ 122:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 123:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     #if (!PWM_Right_LED_Green_UsingFixedFunction)
+ 124:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         #if (PWM_Right_LED_Green_Resolution == 8)
+ 125:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****             /* Set FIFO 0 to 1 byte register for period*/
+ 126:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****             PWM_Right_LED_Green_AUX_CONTROLDP0 |= (PWM_Right_LED_Green_AUX_CTRL_FIFO0_CLR);
+ 127:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         #else /* (PWM_Right_LED_Green_Resolution == 16)*/
+ 128:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****             /* Set FIFO 0 to 1 byte register for period */
+ 129:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****             PWM_Right_LED_Green_AUX_CONTROLDP0 |= (PWM_Right_LED_Green_AUX_CTRL_FIFO0_CLR);
+ 130:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****             PWM_Right_LED_Green_AUX_CONTROLDP1 |= (PWM_Right_LED_Green_AUX_CTRL_FIFO0_CLR);
+ 131:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         #endif /* (PWM_Right_LED_Green_Resolution == 8) */
+ 132:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 133:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         PWM_Right_LED_Green_WriteCounter(PWM_Right_LED_Green_INIT_PERIOD_VALUE);
+ 134:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     #endif /* (!PWM_Right_LED_Green_UsingFixedFunction) */
+ 135:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 136:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     PWM_Right_LED_Green_WritePeriod(PWM_Right_LED_Green_INIT_PERIOD_VALUE);
+ 137:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 138:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         #if (PWM_Right_LED_Green_UseOneCompareMode)
+ 139:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****             PWM_Right_LED_Green_WriteCompare(PWM_Right_LED_Green_INIT_COMPARE_VALUE1);
+ 140:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         #else
+ 141:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****             PWM_Right_LED_Green_WriteCompare1(PWM_Right_LED_Green_INIT_COMPARE_VALUE1);
+ 142:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****             PWM_Right_LED_Green_WriteCompare2(PWM_Right_LED_Green_INIT_COMPARE_VALUE2);
+ 143:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         #endif /* (PWM_Right_LED_Green_UseOneCompareMode) */
+ 144:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 145:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         #if (PWM_Right_LED_Green_KillModeMinTime)
+ 146:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****             PWM_Right_LED_Green_WriteKillTime(PWM_Right_LED_Green_MinimumKillTime);
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccQd5moA.s 			page 4
+
+
+ 147:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         #endif /* (PWM_Right_LED_Green_KillModeMinTime) */
+ 148:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 149:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         #if (PWM_Right_LED_Green_DeadBandUsed)
+ 150:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****             PWM_Right_LED_Green_WriteDeadTime(PWM_Right_LED_Green_INIT_DEAD_TIME);
+ 151:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         #endif /* (PWM_Right_LED_Green_DeadBandUsed) */
+ 152:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 153:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     #if (PWM_Right_LED_Green_UseStatus || PWM_Right_LED_Green_UsingFixedFunction)
+ 154:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         PWM_Right_LED_Green_SetInterruptMode(PWM_Right_LED_Green_INIT_INTERRUPTS_MODE);
+ 155:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     #endif /* (PWM_Right_LED_Green_UseStatus || PWM_Right_LED_Green_UsingFixedFunction) */
+ 156:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 157:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     #if (PWM_Right_LED_Green_UsingFixedFunction)
+ 158:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         /* Globally Enable the Fixed Function Block chosen */
+ 159:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         PWM_Right_LED_Green_GLOBAL_ENABLE |= PWM_Right_LED_Green_BLOCK_EN_MASK;
+ 160:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         /* Set the Interrupt source to come from the status register */
+ 161:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         PWM_Right_LED_Green_CONTROL2 |= PWM_Right_LED_Green_CTRL2_IRQ_SEL;
+ 162:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     #else
+ 163:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         #if(PWM_Right_LED_Green_UseStatus)
+ 164:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 165:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****             /* CyEnterCriticalRegion and CyExitCriticalRegion are used to mark following region cri
+ 166:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****             /* Enter Critical Region*/
+ 167:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****             PWM_Right_LED_Green_interruptState = CyEnterCriticalSection();
+ 168:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****             /* Use the interrupt output of the status register for IRQ output */
+ 169:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****             PWM_Right_LED_Green_STATUS_AUX_CTRL |= PWM_Right_LED_Green_STATUS_ACTL_INT_EN_MASK;
+ 170:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 171:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****              /* Exit Critical Region*/
+ 172:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****             CyExitCriticalSection(PWM_Right_LED_Green_interruptState);
+ 173:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 174:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****             /* Clear the FIFO to enable the PWM_Right_LED_Green_STATUS_FIFOFULL
+ 175:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****                    bit to be set on FIFO full. */
+ 176:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****             PWM_Right_LED_Green_ClearFIFO();
+ 177:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         #endif /* (PWM_Right_LED_Green_UseStatus) */
+ 178:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     #endif /* (PWM_Right_LED_Green_UsingFixedFunction) */
+ 179:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** }
+ 180:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 181:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 182:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** /*******************************************************************************
+ 183:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** * Function Name: PWM_Right_LED_Green_Enable
+ 184:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** ********************************************************************************
+ 185:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** *
+ 186:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** * Summary:
+ 187:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** *  Enables the PWM block operation
+ 188:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** *
+ 189:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** * Parameters:
+ 190:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** *  None
+ 191:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** *
+ 192:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** * Return:
+ 193:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** *  None
+ 194:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** *
+ 195:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** * Side Effects:
+ 196:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** *  This works only if software enable mode is chosen
+ 197:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** *
+ 198:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** *******************************************************************************/
+ 199:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** void PWM_Right_LED_Green_Enable(void) 
+ 200:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** {
+  26              		.loc 1 200 0
+  27              		.cfi_startproc
+ 201:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     /* Globally Enable the Fixed Function Block chosen */
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccQd5moA.s 			page 5
+
+
+ 202:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     #if (PWM_Right_LED_Green_UsingFixedFunction)
+ 203:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         PWM_Right_LED_Green_GLOBAL_ENABLE |= PWM_Right_LED_Green_BLOCK_EN_MASK;
+ 204:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         PWM_Right_LED_Green_GLOBAL_STBY_ENABLE |= PWM_Right_LED_Green_BLOCK_STBY_EN_MASK;
+ 205:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     #endif /* (PWM_Right_LED_Green_UsingFixedFunction) */
+ 206:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 207:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     /* Enable the PWM from the control register  */
+ 208:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     #if (PWM_Right_LED_Green_UseControl || PWM_Right_LED_Green_UsingFixedFunction)
+ 209:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         PWM_Right_LED_Green_CONTROL |= PWM_Right_LED_Green_CTRL_ENABLE;
+  28              		.loc 1 209 0
+  29 0000 024B     		ldr	r3, .L2
+  30 0002 8022     		mov	r2, #128
+  31 0004 1978     		ldrb	r1, [r3]
+ 210:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     #endif /* (PWM_Right_LED_Green_UseControl || PWM_Right_LED_Green_UsingFixedFunction) */
+ 211:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** }
+  32              		.loc 1 211 0
+  33              		@ sp needed
+ 209:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         PWM_Right_LED_Green_CONTROL |= PWM_Right_LED_Green_CTRL_ENABLE;
+  34              		.loc 1 209 0
+  35 0006 0A43     		orr	r2, r1
+  36 0008 1A70     		strb	r2, [r3]
+  37              		.loc 1 211 0
+  38 000a 7047     		bx	lr
+  39              	.L3:
+  40              		.align	2
+  41              	.L2:
+  42 000c 73000F40 		.word	1074724979
+  43              		.cfi_endproc
+  44              	.LFE2:
+  45              		.size	PWM_Right_LED_Green_Enable, .-PWM_Right_LED_Green_Enable
+  46              		.section	.text.PWM_Right_LED_Green_Stop,"ax",%progbits
+  47              		.align	1
+  48              		.global	PWM_Right_LED_Green_Stop
+  49              		.code	16
+  50              		.thumb_func
+  51              		.type	PWM_Right_LED_Green_Stop, %function
+  52              	PWM_Right_LED_Green_Stop:
+  53              	.LFB3:
+ 212:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 213:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 214:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** /*******************************************************************************
+ 215:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** * Function Name: PWM_Right_LED_Green_Stop
+ 216:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** ********************************************************************************
+ 217:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** *
+ 218:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** * Summary:
+ 219:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** *  The stop function halts the PWM, but does not change any modes or disable
+ 220:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** *  interrupts.
+ 221:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** *
+ 222:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** * Parameters:
+ 223:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** *  None
+ 224:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** *
+ 225:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** * Return:
+ 226:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** *  None
+ 227:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** *
+ 228:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** * Side Effects:
+ 229:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** *  If the Enable mode is set to Hardware only then this function
+ 230:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** *  has no effect on the operation of the PWM
+ 231:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** *
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccQd5moA.s 			page 6
+
+
+ 232:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** *******************************************************************************/
+ 233:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** void PWM_Right_LED_Green_Stop(void) 
+ 234:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** {
+  54              		.loc 1 234 0
+  55              		.cfi_startproc
+ 235:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     #if (PWM_Right_LED_Green_UseControl || PWM_Right_LED_Green_UsingFixedFunction)
+ 236:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         PWM_Right_LED_Green_CONTROL &= ((uint8)(~PWM_Right_LED_Green_CTRL_ENABLE));
+  56              		.loc 1 236 0
+  57 0000 024B     		ldr	r3, .L5
+  58 0002 7F22     		mov	r2, #127
+  59 0004 1978     		ldrb	r1, [r3]
+ 237:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     #endif /* (PWM_Right_LED_Green_UseControl || PWM_Right_LED_Green_UsingFixedFunction) */
+ 238:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 239:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     /* Globally disable the Fixed Function Block chosen */
+ 240:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     #if (PWM_Right_LED_Green_UsingFixedFunction)
+ 241:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         PWM_Right_LED_Green_GLOBAL_ENABLE &= ((uint8)(~PWM_Right_LED_Green_BLOCK_EN_MASK));
+ 242:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         PWM_Right_LED_Green_GLOBAL_STBY_ENABLE &= ((uint8)(~PWM_Right_LED_Green_BLOCK_STBY_EN_MASK)
+ 243:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     #endif /* (PWM_Right_LED_Green_UsingFixedFunction) */
+ 244:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** }
+  60              		.loc 1 244 0
+  61              		@ sp needed
+ 236:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         PWM_Right_LED_Green_CONTROL &= ((uint8)(~PWM_Right_LED_Green_CTRL_ENABLE));
+  62              		.loc 1 236 0
+  63 0006 0A40     		and	r2, r1
+  64 0008 1A70     		strb	r2, [r3]
+  65              		.loc 1 244 0
+  66 000a 7047     		bx	lr
+  67              	.L6:
+  68              		.align	2
+  69              	.L5:
+  70 000c 73000F40 		.word	1074724979
+  71              		.cfi_endproc
+  72              	.LFE3:
+  73              		.size	PWM_Right_LED_Green_Stop, .-PWM_Right_LED_Green_Stop
+  74              		.section	.text.PWM_Right_LED_Green_WriteCounter,"ax",%progbits
+  75              		.align	1
+  76              		.global	PWM_Right_LED_Green_WriteCounter
+  77              		.code	16
+  78              		.thumb_func
+  79              		.type	PWM_Right_LED_Green_WriteCounter, %function
+  80              	PWM_Right_LED_Green_WriteCounter:
+  81              	.LFB4:
+ 245:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 246:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** #if (PWM_Right_LED_Green_UseOneCompareMode)
+ 247:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     #if (PWM_Right_LED_Green_CompareMode1SW)
+ 248:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 249:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 250:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         /*******************************************************************************
+ 251:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         * Function Name: PWM_Right_LED_Green_SetCompareMode
+ 252:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         ********************************************************************************
+ 253:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         *
+ 254:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         * Summary:
+ 255:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         *  This function writes the Compare Mode for the pwm output when in Dither mode,
+ 256:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         *  Center Align Mode or One Output Mode.
+ 257:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         *
+ 258:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         * Parameters:
+ 259:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         *  comparemode:  The new compare mode for the PWM output. Use the compare types
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccQd5moA.s 			page 7
+
+
+ 260:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         *                defined in the H file as input arguments.
+ 261:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         *
+ 262:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         * Return:
+ 263:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         *  None
+ 264:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         *
+ 265:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         *******************************************************************************/
+ 266:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         void PWM_Right_LED_Green_SetCompareMode(uint8 comparemode) 
+ 267:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         {
+ 268:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****             #if(PWM_Right_LED_Green_UsingFixedFunction)
+ 269:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 270:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****                 #if(0 != PWM_Right_LED_Green_CTRL_CMPMODE1_SHIFT)
+ 271:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****                     uint8 comparemodemasked = ((uint8)((uint8)comparemode << PWM_Right_LED_Green_CT
+ 272:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****                 #else
+ 273:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****                     uint8 comparemodemasked = comparemode;
+ 274:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****                 #endif /* (0 != PWM_Right_LED_Green_CTRL_CMPMODE1_SHIFT) */
+ 275:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 276:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****                 PWM_Right_LED_Green_CONTROL3 &= ((uint8)(~PWM_Right_LED_Green_CTRL_CMPMODE1_MASK));
+ 277:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****                 PWM_Right_LED_Green_CONTROL3 |= comparemodemasked;
+ 278:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 279:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****             #elif (PWM_Right_LED_Green_UseControl)
+ 280:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 281:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****                 #if(0 != PWM_Right_LED_Green_CTRL_CMPMODE1_SHIFT)
+ 282:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****                     uint8 comparemode1masked = ((uint8)((uint8)comparemode << PWM_Right_LED_Green_C
+ 283:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****                                                 PWM_Right_LED_Green_CTRL_CMPMODE1_MASK;
+ 284:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****                 #else
+ 285:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****                     uint8 comparemode1masked = comparemode & PWM_Right_LED_Green_CTRL_CMPMODE1_MASK
+ 286:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****                 #endif /* (0 != PWM_Right_LED_Green_CTRL_CMPMODE1_SHIFT) */
+ 287:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 288:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****                 #if(0 != PWM_Right_LED_Green_CTRL_CMPMODE2_SHIFT)
+ 289:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****                     uint8 comparemode2masked = ((uint8)((uint8)comparemode << PWM_Right_LED_Green_C
+ 290:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****                                                PWM_Right_LED_Green_CTRL_CMPMODE2_MASK;
+ 291:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****                 #else
+ 292:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****                     uint8 comparemode2masked = comparemode & PWM_Right_LED_Green_CTRL_CMPMODE2_MASK
+ 293:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****                 #endif /* (0 != PWM_Right_LED_Green_CTRL_CMPMODE2_SHIFT) */
+ 294:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 295:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****                 /*Clear existing mode */
+ 296:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****                 PWM_Right_LED_Green_CONTROL &= ((uint8)(~(PWM_Right_LED_Green_CTRL_CMPMODE1_MASK |
+ 297:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****                                             PWM_Right_LED_Green_CTRL_CMPMODE2_MASK)));
+ 298:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****                 PWM_Right_LED_Green_CONTROL |= (comparemode1masked | comparemode2masked);
+ 299:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 300:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****             #else
+ 301:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****                 uint8 temp = comparemode;
+ 302:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****             #endif /* (PWM_Right_LED_Green_UsingFixedFunction) */
+ 303:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         }
+ 304:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     #endif /* PWM_Right_LED_Green_CompareMode1SW */
+ 305:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 306:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** #else /* UseOneCompareMode */
+ 307:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 308:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     #if (PWM_Right_LED_Green_CompareMode1SW)
+ 309:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 310:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 311:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         /*******************************************************************************
+ 312:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         * Function Name: PWM_Right_LED_Green_SetCompareMode1
+ 313:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         ********************************************************************************
+ 314:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         *
+ 315:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         * Summary:
+ 316:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         *  This function writes the Compare Mode for the pwm or pwm1 output
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccQd5moA.s 			page 8
+
+
+ 317:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         *
+ 318:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         * Parameters:
+ 319:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         *  comparemode:  The new compare mode for the PWM output. Use the compare types
+ 320:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         *                defined in the H file as input arguments.
+ 321:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         *
+ 322:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         * Return:
+ 323:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         *  None
+ 324:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         *
+ 325:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         *******************************************************************************/
+ 326:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         void PWM_Right_LED_Green_SetCompareMode1(uint8 comparemode) 
+ 327:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         {
+ 328:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****             #if(0 != PWM_Right_LED_Green_CTRL_CMPMODE1_SHIFT)
+ 329:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****                 uint8 comparemodemasked = ((uint8)((uint8)comparemode << PWM_Right_LED_Green_CTRL_C
+ 330:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****                                            PWM_Right_LED_Green_CTRL_CMPMODE1_MASK;
+ 331:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****             #else
+ 332:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****                 uint8 comparemodemasked = comparemode & PWM_Right_LED_Green_CTRL_CMPMODE1_MASK;
+ 333:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****             #endif /* (0 != PWM_Right_LED_Green_CTRL_CMPMODE1_SHIFT) */
+ 334:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 335:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****             #if (PWM_Right_LED_Green_UseControl)
+ 336:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****                 PWM_Right_LED_Green_CONTROL &= ((uint8)(~PWM_Right_LED_Green_CTRL_CMPMODE1_MASK)); 
+ 337:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****                 PWM_Right_LED_Green_CONTROL |= comparemodemasked;
+ 338:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****             #endif /* (PWM_Right_LED_Green_UseControl) */
+ 339:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         }
+ 340:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     #endif /* PWM_Right_LED_Green_CompareMode1SW */
+ 341:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 342:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** #if (PWM_Right_LED_Green_CompareMode2SW)
+ 343:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 344:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 345:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     /*******************************************************************************
+ 346:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     * Function Name: PWM_Right_LED_Green_SetCompareMode2
+ 347:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     ********************************************************************************
+ 348:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *
+ 349:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     * Summary:
+ 350:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *  This function writes the Compare Mode for the pwm or pwm2 output
+ 351:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *
+ 352:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     * Parameters:
+ 353:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *  comparemode:  The new compare mode for the PWM output. Use the compare types
+ 354:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *                defined in the H file as input arguments.
+ 355:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *
+ 356:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     * Return:
+ 357:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *  None
+ 358:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *
+ 359:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *******************************************************************************/
+ 360:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     void PWM_Right_LED_Green_SetCompareMode2(uint8 comparemode) 
+ 361:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     {
+ 362:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 363:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         #if(0 != PWM_Right_LED_Green_CTRL_CMPMODE2_SHIFT)
+ 364:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****             uint8 comparemodemasked = ((uint8)((uint8)comparemode << PWM_Right_LED_Green_CTRL_CMPMO
+ 365:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****                                                  PWM_Right_LED_Green_CTRL_CMPMODE2_MASK;
+ 366:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         #else
+ 367:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****             uint8 comparemodemasked = comparemode & PWM_Right_LED_Green_CTRL_CMPMODE2_MASK;
+ 368:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         #endif /* (0 != PWM_Right_LED_Green_CTRL_CMPMODE2_SHIFT) */
+ 369:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 370:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         #if (PWM_Right_LED_Green_UseControl)
+ 371:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****             PWM_Right_LED_Green_CONTROL &= ((uint8)(~PWM_Right_LED_Green_CTRL_CMPMODE2_MASK)); /*Cl
+ 372:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****             PWM_Right_LED_Green_CONTROL |= comparemodemasked;
+ 373:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         #endif /* (PWM_Right_LED_Green_UseControl) */
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccQd5moA.s 			page 9
+
+
+ 374:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     }
+ 375:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     #endif /*PWM_Right_LED_Green_CompareMode2SW */
+ 376:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 377:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** #endif /* UseOneCompareMode */
+ 378:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 379:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 380:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** #if (!PWM_Right_LED_Green_UsingFixedFunction)
+ 381:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 382:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 383:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     /*******************************************************************************
+ 384:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     * Function Name: PWM_Right_LED_Green_WriteCounter
+ 385:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     ********************************************************************************
+ 386:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *
+ 387:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     * Summary:
+ 388:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *  Writes a new counter value directly to the counter register. This will be
+ 389:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *  implemented for that currently running period and only that period. This API
+ 390:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *  is valid only for UDB implementation and not available for fixed function
+ 391:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *  PWM implementation.
+ 392:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *
+ 393:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     * Parameters:
+ 394:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *  counter:  The period new period counter value.
+ 395:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *
+ 396:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     * Return:
+ 397:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *  None
+ 398:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *
+ 399:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     * Side Effects:
+ 400:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *  The PWM Period will be reloaded when a counter value will be a zero
+ 401:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *
+ 402:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *******************************************************************************/
+ 403:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     void PWM_Right_LED_Green_WriteCounter(uint8 counter) \
+ 404:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****                                        
+ 405:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     {
+  82              		.loc 1 405 0
+  83              		.cfi_startproc
+  84              	.LVL0:
+ 406:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         CY_SET_REG8(PWM_Right_LED_Green_COUNTER_LSB_PTR, counter);
+  85              		.loc 1 406 0
+  86 0000 014B     		ldr	r3, .L8
+ 407:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     }
+  87              		.loc 1 407 0
+  88              		@ sp needed
+ 406:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         CY_SET_REG8(PWM_Right_LED_Green_COUNTER_LSB_PTR, counter);
+  89              		.loc 1 406 0
+  90 0002 1870     		strb	r0, [r3]
+  91              		.loc 1 407 0
+  92 0004 7047     		bx	lr
+  93              	.L9:
+  94 0006 C046     		.align	2
+  95              	.L8:
+  96 0008 03000F40 		.word	1074724867
+  97              		.cfi_endproc
+  98              	.LFE4:
+  99              		.size	PWM_Right_LED_Green_WriteCounter, .-PWM_Right_LED_Green_WriteCounter
+ 100              		.section	.text.PWM_Right_LED_Green_ReadCounter,"ax",%progbits
+ 101              		.align	1
+ 102              		.global	PWM_Right_LED_Green_ReadCounter
+ 103              		.code	16
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccQd5moA.s 			page 10
+
+
+ 104              		.thumb_func
+ 105              		.type	PWM_Right_LED_Green_ReadCounter, %function
+ 106              	PWM_Right_LED_Green_ReadCounter:
+ 107              	.LFB5:
+ 408:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 409:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 410:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     /*******************************************************************************
+ 411:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     * Function Name: PWM_Right_LED_Green_ReadCounter
+ 412:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     ********************************************************************************
+ 413:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *
+ 414:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     * Summary:
+ 415:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *  This function returns the current value of the counter.  It doesn't matter
+ 416:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *  if the counter is enabled or running.
+ 417:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *
+ 418:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     * Parameters:
+ 419:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *  None
+ 420:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *
+ 421:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     * Return:
+ 422:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *  The current value of the counter.
+ 423:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *
+ 424:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *******************************************************************************/
+ 425:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     uint8 PWM_Right_LED_Green_ReadCounter(void) 
+ 426:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     {
+ 108              		.loc 1 426 0
+ 109              		.cfi_startproc
+ 427:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         /* Force capture by reading Accumulator */
+ 428:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         /* Must first do a software capture to be able to read the counter */
+ 429:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         /* It is up to the user code to make sure there isn't already captured data in the FIFO */
+ 430:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****           (void)CY_GET_REG8(PWM_Right_LED_Green_COUNTERCAP_LSB_PTR_8BIT);
+ 110              		.loc 1 430 0
+ 111 0000 024B     		ldr	r3, .L11
+ 431:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 432:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         /* Read the data from the FIFO */
+ 433:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         return (CY_GET_REG8(PWM_Right_LED_Green_CAPTURE_LSB_PTR));
+ 434:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     }
+ 112              		.loc 1 434 0
+ 113              		@ sp needed
+ 430:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****           (void)CY_GET_REG8(PWM_Right_LED_Green_COUNTERCAP_LSB_PTR_8BIT);
+ 114              		.loc 1 430 0
+ 115 0002 1B78     		ldrb	r3, [r3]
+ 433:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         return (CY_GET_REG8(PWM_Right_LED_Green_CAPTURE_LSB_PTR));
+ 116              		.loc 1 433 0
+ 117 0004 024B     		ldr	r3, .L11+4
+ 118 0006 1878     		ldrb	r0, [r3]
+ 119 0008 C0B2     		uxtb	r0, r0
+ 120              		.loc 1 434 0
+ 121 000a 7047     		bx	lr
+ 122              	.L12:
+ 123              		.align	2
+ 124              	.L11:
+ 125 000c 13000F40 		.word	1074724883
+ 126 0010 53000F40 		.word	1074724947
+ 127              		.cfi_endproc
+ 128              	.LFE5:
+ 129              		.size	PWM_Right_LED_Green_ReadCounter, .-PWM_Right_LED_Green_ReadCounter
+ 130              		.section	.text.PWM_Right_LED_Green_ClearFIFO,"ax",%progbits
+ 131              		.align	1
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccQd5moA.s 			page 11
+
+
+ 132              		.global	PWM_Right_LED_Green_ClearFIFO
+ 133              		.code	16
+ 134              		.thumb_func
+ 135              		.type	PWM_Right_LED_Green_ClearFIFO, %function
+ 136              	PWM_Right_LED_Green_ClearFIFO:
+ 137              	.LFB6:
+ 435:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 436:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     #if (PWM_Right_LED_Green_UseStatus)
+ 437:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 438:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 439:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         /*******************************************************************************
+ 440:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         * Function Name: PWM_Right_LED_Green_ClearFIFO
+ 441:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         ********************************************************************************
+ 442:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         *
+ 443:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         * Summary:
+ 444:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         *  This function clears all capture data from the capture FIFO
+ 445:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         *
+ 446:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         * Parameters:
+ 447:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         *  None
+ 448:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         *
+ 449:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         * Return:
+ 450:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         *  None
+ 451:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         *
+ 452:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         *******************************************************************************/
+ 453:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         void PWM_Right_LED_Green_ClearFIFO(void) 
+ 454:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         {
+ 138              		.loc 1 454 0
+ 139              		.cfi_startproc
+ 140              	.L14:
+ 141              	.LBB14:
+ 142              	.LBB15:
+ 455:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****             while(0u != (PWM_Right_LED_Green_ReadStatusRegister() & PWM_Right_LED_Green_STATUS_FIFO
+ 456:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****             {
+ 457:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****                 (void)PWM_Right_LED_Green_ReadCapture();
+ 458:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****             }
+ 459:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         }
+ 460:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 461:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     #endif /* PWM_Right_LED_Green_UseStatus */
+ 462:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 463:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** #endif /* !PWM_Right_LED_Green_UsingFixedFunction */
+ 464:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 465:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 466:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** /*******************************************************************************
+ 467:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** * Function Name: PWM_Right_LED_Green_WritePeriod
+ 468:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** ********************************************************************************
+ 469:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** *
+ 470:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** * Summary:
+ 471:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** *  This function is used to change the period of the counter.  The new period
+ 472:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** *  will be loaded the next time terminal count is detected.
+ 473:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** *
+ 474:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** * Parameters:
+ 475:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** *  period:  Period value. May be between 1 and (2^Resolution)-1.  A value of 0
+ 476:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** *           will result in the counter remaining at zero.
+ 477:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** *
+ 478:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** * Return:
+ 479:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** *  None
+ 480:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** *
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccQd5moA.s 			page 12
+
+
+ 481:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** *******************************************************************************/
+ 482:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** void PWM_Right_LED_Green_WritePeriod(uint8 period) 
+ 483:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** {
+ 484:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     #if(PWM_Right_LED_Green_UsingFixedFunction)
+ 485:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         CY_SET_REG16(PWM_Right_LED_Green_PERIOD_LSB_PTR, (uint16)period);
+ 486:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     #else
+ 487:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         CY_SET_REG8(PWM_Right_LED_Green_PERIOD_LSB_PTR, period);
+ 488:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     #endif /* (PWM_Right_LED_Green_UsingFixedFunction) */
+ 489:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** }
+ 490:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 491:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** #if (PWM_Right_LED_Green_UseOneCompareMode)
+ 492:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 493:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 494:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     /*******************************************************************************
+ 495:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     * Function Name: PWM_Right_LED_Green_WriteCompare
+ 496:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     ********************************************************************************
+ 497:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *
+ 498:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     * Summary:
+ 499:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *  This funtion is used to change the compare1 value when the PWM is in Dither
+ 500:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *  mode. The compare output will reflect the new value on the next UDB clock.
+ 501:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *  The compare output will be driven high when the present counter value is
+ 502:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *  compared to the compare value based on the compare mode defined in
+ 503:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *  Dither Mode.
+ 504:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *
+ 505:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     * Parameters:
+ 506:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *  compare:  New compare value.
+ 507:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *
+ 508:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     * Return:
+ 509:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *  None
+ 510:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *
+ 511:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     * Side Effects:
+ 512:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *  This function is only available if the PWM mode parameter is set to
+ 513:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *  Dither Mode, Center Aligned Mode or One Output Mode
+ 514:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *
+ 515:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *******************************************************************************/
+ 516:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     void PWM_Right_LED_Green_WriteCompare(uint8 compare) \
+ 517:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****                                        
+ 518:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     {
+ 519:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         #if(PWM_Right_LED_Green_UsingFixedFunction)
+ 520:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****             CY_SET_REG16(PWM_Right_LED_Green_COMPARE1_LSB_PTR, (uint16)compare);
+ 521:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         #else
+ 522:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****             CY_SET_REG8(PWM_Right_LED_Green_COMPARE1_LSB_PTR, compare);
+ 523:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         #endif /* (PWM_Right_LED_Green_UsingFixedFunction) */
+ 524:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 525:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         #if (PWM_Right_LED_Green_PWMMode == PWM_Right_LED_Green__B_PWM__DITHER)
+ 526:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****             #if(PWM_Right_LED_Green_UsingFixedFunction)
+ 527:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****                 CY_SET_REG16(PWM_Right_LED_Green_COMPARE2_LSB_PTR, (uint16)(compare + 1u));
+ 528:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****             #else
+ 529:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****                 CY_SET_REG8(PWM_Right_LED_Green_COMPARE2_LSB_PTR, (compare + 1u));
+ 530:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****             #endif /* (PWM_Right_LED_Green_UsingFixedFunction) */
+ 531:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         #endif /* (PWM_Right_LED_Green_PWMMode == PWM_Right_LED_Green__B_PWM__DITHER) */
+ 532:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     }
+ 533:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 534:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 535:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** #else
+ 536:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 537:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccQd5moA.s 			page 13
+
+
+ 538:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     /*******************************************************************************
+ 539:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     * Function Name: PWM_Right_LED_Green_WriteCompare1
+ 540:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     ********************************************************************************
+ 541:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *
+ 542:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     * Summary:
+ 543:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *  This funtion is used to change the compare1 value.  The compare output will
+ 544:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *  reflect the new value on the next UDB clock.  The compare output will be
+ 545:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *  driven high when the present counter value is less than or less than or
+ 546:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *  equal to the compare register, depending on the mode.
+ 547:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *
+ 548:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     * Parameters:
+ 549:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *  compare:  New compare value.
+ 550:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *
+ 551:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     * Return:
+ 552:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *  None
+ 553:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *
+ 554:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *******************************************************************************/
+ 555:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     void PWM_Right_LED_Green_WriteCompare1(uint8 compare) \
+ 556:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****                                         
+ 557:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     {
+ 558:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         #if(PWM_Right_LED_Green_UsingFixedFunction)
+ 559:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****             CY_SET_REG16(PWM_Right_LED_Green_COMPARE1_LSB_PTR, (uint16)compare);
+ 560:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         #else
+ 561:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****             CY_SET_REG8(PWM_Right_LED_Green_COMPARE1_LSB_PTR, compare);
+ 562:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         #endif /* (PWM_Right_LED_Green_UsingFixedFunction) */
+ 563:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     }
+ 564:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 565:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 566:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     /*******************************************************************************
+ 567:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     * Function Name: PWM_Right_LED_Green_WriteCompare2
+ 568:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     ********************************************************************************
+ 569:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *
+ 570:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     * Summary:
+ 571:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *  This funtion is used to change the compare value, for compare1 output.
+ 572:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *  The compare output will reflect the new value on the next UDB clock.
+ 573:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *  The compare output will be driven high when the present counter value is
+ 574:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *  less than or less than or equal to the compare register, depending on the
+ 575:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *  mode.
+ 576:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *
+ 577:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     * Parameters:
+ 578:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *  compare:  New compare value.
+ 579:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *
+ 580:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     * Return:
+ 581:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *  None
+ 582:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *
+ 583:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *******************************************************************************/
+ 584:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     void PWM_Right_LED_Green_WriteCompare2(uint8 compare) \
+ 585:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****                                         
+ 586:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     {
+ 587:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         #if(PWM_Right_LED_Green_UsingFixedFunction)
+ 588:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****             CY_SET_REG16(PWM_Right_LED_Green_COMPARE2_LSB_PTR, compare);
+ 589:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         #else
+ 590:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****             CY_SET_REG8(PWM_Right_LED_Green_COMPARE2_LSB_PTR, compare);
+ 591:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         #endif /* (PWM_Right_LED_Green_UsingFixedFunction) */
+ 592:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     }
+ 593:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** #endif /* UseOneCompareMode */
+ 594:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccQd5moA.s 			page 14
+
+
+ 595:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** #if (PWM_Right_LED_Green_DeadBandUsed)
+ 596:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 597:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 598:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     /*******************************************************************************
+ 599:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     * Function Name: PWM_Right_LED_Green_WriteDeadTime
+ 600:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     ********************************************************************************
+ 601:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *
+ 602:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     * Summary:
+ 603:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *  This function writes the dead-band counts to the corresponding register
+ 604:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *
+ 605:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     * Parameters:
+ 606:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *  deadtime:  Number of counts for dead time
+ 607:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *
+ 608:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     * Return:
+ 609:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *  None
+ 610:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *
+ 611:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *******************************************************************************/
+ 612:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     void PWM_Right_LED_Green_WriteDeadTime(uint8 deadtime) 
+ 613:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     {
+ 614:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         /* If using the Dead Band 1-255 mode then just write the register */
+ 615:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         #if(!PWM_Right_LED_Green_DeadBand2_4)
+ 616:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****             CY_SET_REG8(PWM_Right_LED_Green_DEADBAND_COUNT_PTR, deadtime);
+ 617:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         #else
+ 618:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****             /* Otherwise the data has to be masked and offset */
+ 619:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****             /* Clear existing data */
+ 620:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****             PWM_Right_LED_Green_DEADBAND_COUNT &= ((uint8)(~PWM_Right_LED_Green_DEADBAND_COUNT_MASK
+ 621:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 622:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****             /* Set new dead time */
+ 623:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****             #if(PWM_Right_LED_Green_DEADBAND_COUNT_SHIFT)
+ 624:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****                 PWM_Right_LED_Green_DEADBAND_COUNT |= ((uint8)((uint8)deadtime << PWM_Right_LED_Gre
+ 625:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****                                                     PWM_Right_LED_Green_DEADBAND_COUNT_MASK;
+ 626:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****             #else
+ 627:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****                 PWM_Right_LED_Green_DEADBAND_COUNT |= deadtime & PWM_Right_LED_Green_DEADBAND_COUNT
+ 628:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****             #endif /* (PWM_Right_LED_Green_DEADBAND_COUNT_SHIFT) */
+ 629:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 630:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         #endif /* (!PWM_Right_LED_Green_DeadBand2_4) */
+ 631:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     }
+ 632:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 633:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 634:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     /*******************************************************************************
+ 635:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     * Function Name: PWM_Right_LED_Green_ReadDeadTime
+ 636:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     ********************************************************************************
+ 637:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *
+ 638:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     * Summary:
+ 639:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *  This function reads the dead-band counts from the corresponding register
+ 640:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *
+ 641:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     * Parameters:
+ 642:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *  None
+ 643:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *
+ 644:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     * Return:
+ 645:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *  Dead Band Counts
+ 646:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *
+ 647:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *******************************************************************************/
+ 648:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     uint8 PWM_Right_LED_Green_ReadDeadTime(void) 
+ 649:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     {
+ 650:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         /* If using the Dead Band 1-255 mode then just read the register */
+ 651:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         #if(!PWM_Right_LED_Green_DeadBand2_4)
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccQd5moA.s 			page 15
+
+
+ 652:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****             return (CY_GET_REG8(PWM_Right_LED_Green_DEADBAND_COUNT_PTR));
+ 653:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         #else
+ 654:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 655:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****             /* Otherwise the data has to be masked and offset */
+ 656:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****             #if(PWM_Right_LED_Green_DEADBAND_COUNT_SHIFT)
+ 657:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****                 return ((uint8)(((uint8)(PWM_Right_LED_Green_DEADBAND_COUNT & PWM_Right_LED_Green_D
+ 658:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****                                                                            PWM_Right_LED_Green_DEAD
+ 659:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****             #else
+ 660:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****                 return (PWM_Right_LED_Green_DEADBAND_COUNT & PWM_Right_LED_Green_DEADBAND_COUNT_MAS
+ 661:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****             #endif /* (PWM_Right_LED_Green_DEADBAND_COUNT_SHIFT) */
+ 662:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         #endif /* (!PWM_Right_LED_Green_DeadBand2_4) */
+ 663:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     }
+ 664:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** #endif /* DeadBandUsed */
+ 665:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 666:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** #if (PWM_Right_LED_Green_UseStatus || PWM_Right_LED_Green_UsingFixedFunction)
+ 667:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 668:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 669:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     /*******************************************************************************
+ 670:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     * Function Name: PWM_Right_LED_Green_SetInterruptMode
+ 671:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     ********************************************************************************
+ 672:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *
+ 673:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     * Summary:
+ 674:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *  This function configures the interrupts mask control of theinterrupt
+ 675:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *  source status register.
+ 676:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *
+ 677:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     * Parameters:
+ 678:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *  uint8 interruptMode: Bit field containing the interrupt sources enabled
+ 679:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *
+ 680:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     * Return:
+ 681:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *  None
+ 682:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *
+ 683:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *******************************************************************************/
+ 684:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     void PWM_Right_LED_Green_SetInterruptMode(uint8 interruptMode) 
+ 685:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     {
+ 686:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         CY_SET_REG8(PWM_Right_LED_Green_STATUS_MASK_PTR, interruptMode);
+ 687:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     }
+ 688:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 689:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 690:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     /*******************************************************************************
+ 691:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     * Function Name: PWM_Right_LED_Green_ReadStatusRegister
+ 692:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     ********************************************************************************
+ 693:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *
+ 694:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     * Summary:
+ 695:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *  This function returns the current state of the status register.
+ 696:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *
+ 697:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     * Parameters:
+ 698:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *  None
+ 699:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *
+ 700:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     * Return:
+ 701:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *  uint8 : Current status register value. The status register bits are:
+ 702:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *  [7:6] : Unused(0)
+ 703:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *  [5]   : Kill event output
+ 704:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *  [4]   : FIFO not empty
+ 705:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *  [3]   : FIFO full
+ 706:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *  [2]   : Terminal count
+ 707:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *  [1]   : Compare output 2
+ 708:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *  [0]   : Compare output 1
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccQd5moA.s 			page 16
+
+
+ 709:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *
+ 710:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *******************************************************************************/
+ 711:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     uint8 PWM_Right_LED_Green_ReadStatusRegister(void) 
+ 712:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     {
+ 713:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         return (CY_GET_REG8(PWM_Right_LED_Green_STATUS_PTR));
+ 143              		.loc 1 713 0 discriminator 1
+ 144 0000 034B     		ldr	r3, .L18
+ 145 0002 1B78     		ldrb	r3, [r3]
+ 146              	.LBE15:
+ 147              	.LBE14:
+ 455:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****             while(0u != (PWM_Right_LED_Green_ReadStatusRegister() & PWM_Right_LED_Green_STATUS_FIFO
+ 148              		.loc 1 455 0 discriminator 1
+ 149 0004 DA06     		lsl	r2, r3, #27
+ 150 0006 02D5     		bpl	.L17
+ 151              	.LBB16:
+ 152              	.LBB17:
+ 714:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     }
+ 715:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 716:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** #endif /* (PWM_Right_LED_Green_UseStatus || PWM_Right_LED_Green_UsingFixedFunction) */
+ 717:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 718:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 719:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** #if (PWM_Right_LED_Green_UseControl)
+ 720:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 721:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 722:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     /*******************************************************************************
+ 723:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     * Function Name: PWM_Right_LED_Green_ReadControlRegister
+ 724:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     ********************************************************************************
+ 725:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *
+ 726:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     * Summary:
+ 727:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *  Returns the current state of the control register. This API is available
+ 728:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *  only if the control register is not removed.
+ 729:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *
+ 730:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     * Parameters:
+ 731:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *  None
+ 732:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *
+ 733:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     * Return:
+ 734:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *  uint8 : Current control register value
+ 735:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *
+ 736:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *******************************************************************************/
+ 737:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     uint8 PWM_Right_LED_Green_ReadControlRegister(void) 
+ 738:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     {
+ 739:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         uint8 result;
+ 740:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 741:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         result = CY_GET_REG8(PWM_Right_LED_Green_CONTROL_PTR);
+ 742:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         return (result);
+ 743:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     }
+ 744:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 745:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 746:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     /*******************************************************************************
+ 747:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     * Function Name: PWM_Right_LED_Green_WriteControlRegister
+ 748:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     ********************************************************************************
+ 749:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *
+ 750:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     * Summary:
+ 751:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *  Sets the bit field of the control register. This API is available only if
+ 752:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *  the control register is not removed.
+ 753:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *
+ 754:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     * Parameters:
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccQd5moA.s 			page 17
+
+
+ 755:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *  uint8 control: Control register bit field, The status register bits are:
+ 756:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *  [7]   : PWM Enable
+ 757:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *  [6]   : Reset
+ 758:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *  [5:3] : Compare Mode2
+ 759:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *  [2:0] : Compare Mode2
+ 760:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *
+ 761:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     * Return:
+ 762:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *  None
+ 763:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *
+ 764:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *******************************************************************************/
+ 765:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     void PWM_Right_LED_Green_WriteControlRegister(uint8 control) 
+ 766:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     {
+ 767:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         CY_SET_REG8(PWM_Right_LED_Green_CONTROL_PTR, control);
+ 768:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     }
+ 769:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 770:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** #endif /* (PWM_Right_LED_Green_UseControl) */
+ 771:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 772:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 773:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** #if (!PWM_Right_LED_Green_UsingFixedFunction)
+ 774:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 775:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 776:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     /*******************************************************************************
+ 777:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     * Function Name: PWM_Right_LED_Green_ReadCapture
+ 778:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     ********************************************************************************
+ 779:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *
+ 780:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     * Summary:
+ 781:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *  Reads the capture value from the capture FIFO.
+ 782:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *
+ 783:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     * Parameters:
+ 784:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *  None
+ 785:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *
+ 786:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     * Return:
+ 787:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *  uint8/uint16: The current capture value
+ 788:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *
+ 789:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *******************************************************************************/
+ 790:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     uint8 PWM_Right_LED_Green_ReadCapture(void) 
+ 791:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     {
+ 792:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         return (CY_GET_REG8(PWM_Right_LED_Green_CAPTURE_LSB_PTR));
+ 153              		.loc 1 792 0
+ 154 0008 024B     		ldr	r3, .L18+4
+ 155 000a 1B78     		ldrb	r3, [r3]
+ 156 000c F8E7     		b	.L14
+ 157              	.L17:
+ 158              	.LBE17:
+ 159              	.LBE16:
+ 459:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         }
+ 160              		.loc 1 459 0
+ 161              		@ sp needed
+ 162 000e 7047     		bx	lr
+ 163              	.L19:
+ 164              		.align	2
+ 165              	.L18:
+ 166 0010 63000F40 		.word	1074724963
+ 167 0014 53000F40 		.word	1074724947
+ 168              		.cfi_endproc
+ 169              	.LFE6:
+ 170              		.size	PWM_Right_LED_Green_ClearFIFO, .-PWM_Right_LED_Green_ClearFIFO
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccQd5moA.s 			page 18
+
+
+ 171              		.section	.text.PWM_Right_LED_Green_Init,"ax",%progbits
+ 172              		.align	1
+ 173              		.global	PWM_Right_LED_Green_Init
+ 174              		.code	16
+ 175              		.thumb_func
+ 176              		.type	PWM_Right_LED_Green_Init, %function
+ 177              	PWM_Right_LED_Green_Init:
+ 178              	.LFB1:
+  85:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** {
+ 179              		.loc 1 85 0
+ 180              		.cfi_startproc
+ 181 0000 10B5     		push	{r4, lr}
+ 182              		.cfi_def_cfa_offset 8
+ 183              		.cfi_offset 4, -8
+ 184              		.cfi_offset 14, -4
+ 117:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         ctrl = PWM_Right_LED_Green_CONTROL & ((uint8)(~PWM_Right_LED_Green_CTRL_CMPMODE2_MASK)) &
+ 185              		.loc 1 117 0
+ 186 0002 114B     		ldr	r3, .L21
+ 187 0004 3F21     		mov	r1, #63
+ 188 0006 1A78     		ldrb	r2, [r3]
+ 189              	.LVL1:
+ 126:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****             PWM_Right_LED_Green_AUX_CONTROLDP0 |= (PWM_Right_LED_Green_AUX_CTRL_FIFO0_CLR);
+ 190              		.loc 1 126 0
+ 191 0008 104C     		ldr	r4, .L21+4
+ 117:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         ctrl = PWM_Right_LED_Green_CONTROL & ((uint8)(~PWM_Right_LED_Green_CTRL_CMPMODE2_MASK)) &
+ 192              		.loc 1 117 0
+ 193 000a 8A43     		bic	r2, r1
+ 194              	.LVL2:
+ 119:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         PWM_Right_LED_Green_CONTROL = ctrl | PWM_Right_LED_Green_DEFAULT_COMPARE2_MODE |
+ 195              		.loc 1 119 0
+ 196 000c 0921     		mov	r1, #9
+ 197 000e 0A43     		orr	r2, r1
+ 198 0010 1A70     		strb	r2, [r3]
+ 126:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****             PWM_Right_LED_Green_AUX_CONTROLDP0 |= (PWM_Right_LED_Green_AUX_CTRL_FIFO0_CLR);
+ 199              		.loc 1 126 0
+ 200 0012 2378     		ldrb	r3, [r4]
+ 201 0014 0122     		mov	r2, #1
+ 202 0016 1343     		orr	r3, r2
+ 203              	.LBB18:
+ 204              	.LBB19:
+ 406:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         CY_SET_REG8(PWM_Right_LED_Green_COUNTER_LSB_PTR, counter);
+ 205              		.loc 1 406 0
+ 206 0018 0D4A     		ldr	r2, .L21+8
+ 207              	.LBE19:
+ 208              	.LBE18:
+ 126:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****             PWM_Right_LED_Green_AUX_CONTROLDP0 |= (PWM_Right_LED_Green_AUX_CTRL_FIFO0_CLR);
+ 209              		.loc 1 126 0
+ 210 001a 2370     		strb	r3, [r4]
+ 211              	.LVL3:
+ 212              	.LBB21:
+ 213              	.LBB20:
+ 406:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         CY_SET_REG8(PWM_Right_LED_Green_COUNTER_LSB_PTR, counter);
+ 214              		.loc 1 406 0
+ 215 001c 3C23     		mov	r3, #60
+ 216 001e 1370     		strb	r3, [r2]
+ 217              	.LVL4:
+ 218              	.LBE20:
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccQd5moA.s 			page 19
+
+
+ 219              	.LBE21:
+ 220              	.LBB22:
+ 221              	.LBB23:
+ 487:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         CY_SET_REG8(PWM_Right_LED_Green_PERIOD_LSB_PTR, period);
+ 222              		.loc 1 487 0
+ 223 0020 0C4A     		ldr	r2, .L21+12
+ 224              	.LBE23:
+ 225              	.LBE22:
+ 179:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** }
+ 226              		.loc 1 179 0
+ 227              		@ sp needed
+ 228              	.LBB25:
+ 229              	.LBB24:
+ 487:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         CY_SET_REG8(PWM_Right_LED_Green_PERIOD_LSB_PTR, period);
+ 230              		.loc 1 487 0
+ 231 0022 1370     		strb	r3, [r2]
+ 232              	.LVL5:
+ 233              	.LBE24:
+ 234              	.LBE25:
+ 235              	.LBB26:
+ 236              	.LBB27:
+ 522:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****             CY_SET_REG8(PWM_Right_LED_Green_COMPARE1_LSB_PTR, compare);
+ 237              		.loc 1 522 0
+ 238 0024 0C4B     		ldr	r3, .L21+16
+ 239 0026 1E22     		mov	r2, #30
+ 240 0028 1A70     		strb	r2, [r3]
+ 241              	.LVL6:
+ 242              	.LBE27:
+ 243              	.LBE26:
+ 244              	.LBB28:
+ 245              	.LBB29:
+ 686:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         CY_SET_REG8(PWM_Right_LED_Green_STATUS_MASK_PTR, interruptMode);
+ 246              		.loc 1 686 0
+ 247 002a 0C4B     		ldr	r3, .L21+20
+ 248 002c 0022     		mov	r2, #0
+ 249 002e 1A70     		strb	r2, [r3]
+ 250              	.LBE29:
+ 251              	.LBE28:
+ 167:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****             PWM_Right_LED_Green_interruptState = CyEnterCriticalSection();
+ 252              		.loc 1 167 0
+ 253 0030 FFF7FEFF 		bl	CyEnterCriticalSection
+ 254              	.LVL7:
+ 169:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****             PWM_Right_LED_Green_STATUS_AUX_CTRL |= PWM_Right_LED_Green_STATUS_ACTL_INT_EN_MASK;
+ 255              		.loc 1 169 0
+ 256 0034 2378     		ldrb	r3, [r4]
+ 257 0036 1022     		mov	r2, #16
+ 258 0038 1343     		orr	r3, r2
+ 259 003a 2370     		strb	r3, [r4]
+ 172:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****             CyExitCriticalSection(PWM_Right_LED_Green_interruptState);
+ 260              		.loc 1 172 0
+ 261 003c FFF7FEFF 		bl	CyExitCriticalSection
+ 262              	.LVL8:
+ 176:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****             PWM_Right_LED_Green_ClearFIFO();
+ 263              		.loc 1 176 0
+ 264 0040 FFF7FEFF 		bl	PWM_Right_LED_Green_ClearFIFO
+ 265              	.LVL9:
+ 179:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** }
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccQd5moA.s 			page 20
+
+
+ 266              		.loc 1 179 0
+ 267 0044 10BD     		pop	{r4, pc}
+ 268              	.L22:
+ 269 0046 C046     		.align	2
+ 270              	.L21:
+ 271 0048 73000F40 		.word	1074724979
+ 272 004c 93000F40 		.word	1074725011
+ 273 0050 03000F40 		.word	1074724867
+ 274 0054 43000F40 		.word	1074724931
+ 275 0058 23000F40 		.word	1074724899
+ 276 005c 83000F40 		.word	1074724995
+ 277              		.cfi_endproc
+ 278              	.LFE1:
+ 279              		.size	PWM_Right_LED_Green_Init, .-PWM_Right_LED_Green_Init
+ 280              		.section	.text.PWM_Right_LED_Green_Start,"ax",%progbits
+ 281              		.align	1
+ 282              		.global	PWM_Right_LED_Green_Start
+ 283              		.code	16
+ 284              		.thumb_func
+ 285              		.type	PWM_Right_LED_Green_Start, %function
+ 286              	PWM_Right_LED_Green_Start:
+ 287              	.LFB0:
+  56:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** {
+ 288              		.loc 1 56 0
+ 289              		.cfi_startproc
+ 290 0000 10B5     		push	{r4, lr}
+ 291              		.cfi_def_cfa_offset 8
+ 292              		.cfi_offset 4, -8
+ 293              		.cfi_offset 14, -4
+  58:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     if(PWM_Right_LED_Green_initVar == 0u)
+ 294              		.loc 1 58 0
+ 295 0002 054C     		ldr	r4, .L25
+ 296 0004 2378     		ldrb	r3, [r4]
+ 297 0006 002B     		cmp	r3, #0
+ 298 0008 03D1     		bne	.L24
+  60:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         PWM_Right_LED_Green_Init();
+ 299              		.loc 1 60 0
+ 300 000a FFF7FEFF 		bl	PWM_Right_LED_Green_Init
+ 301              	.LVL10:
+  61:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         PWM_Right_LED_Green_initVar = 1u;
+ 302              		.loc 1 61 0
+ 303 000e 0123     		mov	r3, #1
+ 304 0010 2370     		strb	r3, [r4]
+ 305              	.L24:
+  63:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     PWM_Right_LED_Green_Enable();
+ 306              		.loc 1 63 0
+ 307 0012 FFF7FEFF 		bl	PWM_Right_LED_Green_Enable
+ 308              	.LVL11:
+  65:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** }
+ 309              		.loc 1 65 0
+ 310              		@ sp needed
+ 311 0016 10BD     		pop	{r4, pc}
+ 312              	.L26:
+ 313              		.align	2
+ 314              	.L25:
+ 315 0018 00000000 		.word	.LANCHOR0
+ 316              		.cfi_endproc
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccQd5moA.s 			page 21
+
+
+ 317              	.LFE0:
+ 318              		.size	PWM_Right_LED_Green_Start, .-PWM_Right_LED_Green_Start
+ 319              		.section	.text.PWM_Right_LED_Green_WritePeriod,"ax",%progbits
+ 320              		.align	1
+ 321              		.global	PWM_Right_LED_Green_WritePeriod
+ 322              		.code	16
+ 323              		.thumb_func
+ 324              		.type	PWM_Right_LED_Green_WritePeriod, %function
+ 325              	PWM_Right_LED_Green_WritePeriod:
+ 326              	.LFB7:
+ 483:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** {
+ 327              		.loc 1 483 0
+ 328              		.cfi_startproc
+ 329              	.LVL12:
+ 487:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         CY_SET_REG8(PWM_Right_LED_Green_PERIOD_LSB_PTR, period);
+ 330              		.loc 1 487 0
+ 331 0000 014B     		ldr	r3, .L28
+ 489:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** }
+ 332              		.loc 1 489 0
+ 333              		@ sp needed
+ 487:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         CY_SET_REG8(PWM_Right_LED_Green_PERIOD_LSB_PTR, period);
+ 334              		.loc 1 487 0
+ 335 0002 1870     		strb	r0, [r3]
+ 489:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** }
+ 336              		.loc 1 489 0
+ 337 0004 7047     		bx	lr
+ 338              	.L29:
+ 339 0006 C046     		.align	2
+ 340              	.L28:
+ 341 0008 43000F40 		.word	1074724931
+ 342              		.cfi_endproc
+ 343              	.LFE7:
+ 344              		.size	PWM_Right_LED_Green_WritePeriod, .-PWM_Right_LED_Green_WritePeriod
+ 345              		.section	.text.PWM_Right_LED_Green_WriteCompare,"ax",%progbits
+ 346              		.align	1
+ 347              		.global	PWM_Right_LED_Green_WriteCompare
+ 348              		.code	16
+ 349              		.thumb_func
+ 350              		.type	PWM_Right_LED_Green_WriteCompare, %function
+ 351              	PWM_Right_LED_Green_WriteCompare:
+ 352              	.LFB8:
+ 518:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     {
+ 353              		.loc 1 518 0
+ 354              		.cfi_startproc
+ 355              	.LVL13:
+ 522:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****             CY_SET_REG8(PWM_Right_LED_Green_COMPARE1_LSB_PTR, compare);
+ 356              		.loc 1 522 0
+ 357 0000 014B     		ldr	r3, .L31
+ 532:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     }
+ 358              		.loc 1 532 0
+ 359              		@ sp needed
+ 522:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****             CY_SET_REG8(PWM_Right_LED_Green_COMPARE1_LSB_PTR, compare);
+ 360              		.loc 1 522 0
+ 361 0002 1870     		strb	r0, [r3]
+ 532:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     }
+ 362              		.loc 1 532 0
+ 363 0004 7047     		bx	lr
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccQd5moA.s 			page 22
+
+
+ 364              	.L32:
+ 365 0006 C046     		.align	2
+ 366              	.L31:
+ 367 0008 23000F40 		.word	1074724899
+ 368              		.cfi_endproc
+ 369              	.LFE8:
+ 370              		.size	PWM_Right_LED_Green_WriteCompare, .-PWM_Right_LED_Green_WriteCompare
+ 371              		.section	.text.PWM_Right_LED_Green_SetInterruptMode,"ax",%progbits
+ 372              		.align	1
+ 373              		.global	PWM_Right_LED_Green_SetInterruptMode
+ 374              		.code	16
+ 375              		.thumb_func
+ 376              		.type	PWM_Right_LED_Green_SetInterruptMode, %function
+ 377              	PWM_Right_LED_Green_SetInterruptMode:
+ 378              	.LFB9:
+ 685:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     {
+ 379              		.loc 1 685 0
+ 380              		.cfi_startproc
+ 381              	.LVL14:
+ 686:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         CY_SET_REG8(PWM_Right_LED_Green_STATUS_MASK_PTR, interruptMode);
+ 382              		.loc 1 686 0
+ 383 0000 014B     		ldr	r3, .L34
+ 687:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     }
+ 384              		.loc 1 687 0
+ 385              		@ sp needed
+ 686:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         CY_SET_REG8(PWM_Right_LED_Green_STATUS_MASK_PTR, interruptMode);
+ 386              		.loc 1 686 0
+ 387 0002 1870     		strb	r0, [r3]
+ 687:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     }
+ 388              		.loc 1 687 0
+ 389 0004 7047     		bx	lr
+ 390              	.L35:
+ 391 0006 C046     		.align	2
+ 392              	.L34:
+ 393 0008 83000F40 		.word	1074724995
+ 394              		.cfi_endproc
+ 395              	.LFE9:
+ 396              		.size	PWM_Right_LED_Green_SetInterruptMode, .-PWM_Right_LED_Green_SetInterruptMode
+ 397              		.section	.text.PWM_Right_LED_Green_ReadStatusRegister,"ax",%progbits
+ 398              		.align	1
+ 399              		.global	PWM_Right_LED_Green_ReadStatusRegister
+ 400              		.code	16
+ 401              		.thumb_func
+ 402              		.type	PWM_Right_LED_Green_ReadStatusRegister, %function
+ 403              	PWM_Right_LED_Green_ReadStatusRegister:
+ 404              	.LFB10:
+ 712:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     {
+ 405              		.loc 1 712 0
+ 406              		.cfi_startproc
+ 713:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         return (CY_GET_REG8(PWM_Right_LED_Green_STATUS_PTR));
+ 407              		.loc 1 713 0
+ 408 0000 014B     		ldr	r3, .L37
+ 714:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     }
+ 409              		.loc 1 714 0
+ 410              		@ sp needed
+ 713:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         return (CY_GET_REG8(PWM_Right_LED_Green_STATUS_PTR));
+ 411              		.loc 1 713 0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccQd5moA.s 			page 23
+
+
+ 412 0002 1878     		ldrb	r0, [r3]
+ 413 0004 C0B2     		uxtb	r0, r0
+ 714:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     }
+ 414              		.loc 1 714 0
+ 415 0006 7047     		bx	lr
+ 416              	.L38:
+ 417              		.align	2
+ 418              	.L37:
+ 419 0008 63000F40 		.word	1074724963
+ 420              		.cfi_endproc
+ 421              	.LFE10:
+ 422              		.size	PWM_Right_LED_Green_ReadStatusRegister, .-PWM_Right_LED_Green_ReadStatusRegister
+ 423              		.section	.text.PWM_Right_LED_Green_ReadControlRegister,"ax",%progbits
+ 424              		.align	1
+ 425              		.global	PWM_Right_LED_Green_ReadControlRegister
+ 426              		.code	16
+ 427              		.thumb_func
+ 428              		.type	PWM_Right_LED_Green_ReadControlRegister, %function
+ 429              	PWM_Right_LED_Green_ReadControlRegister:
+ 430              	.LFB11:
+ 738:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     {
+ 431              		.loc 1 738 0
+ 432              		.cfi_startproc
+ 741:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         result = CY_GET_REG8(PWM_Right_LED_Green_CONTROL_PTR);
+ 433              		.loc 1 741 0
+ 434 0000 014B     		ldr	r3, .L40
+ 743:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     }
+ 435              		.loc 1 743 0
+ 436              		@ sp needed
+ 741:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         result = CY_GET_REG8(PWM_Right_LED_Green_CONTROL_PTR);
+ 437              		.loc 1 741 0
+ 438 0002 1878     		ldrb	r0, [r3]
+ 439 0004 C0B2     		uxtb	r0, r0
+ 440              	.LVL15:
+ 743:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     }
+ 441              		.loc 1 743 0
+ 442 0006 7047     		bx	lr
+ 443              	.L41:
+ 444              		.align	2
+ 445              	.L40:
+ 446 0008 73000F40 		.word	1074724979
+ 447              		.cfi_endproc
+ 448              	.LFE11:
+ 449              		.size	PWM_Right_LED_Green_ReadControlRegister, .-PWM_Right_LED_Green_ReadControlRegister
+ 450              		.section	.text.PWM_Right_LED_Green_WriteControlRegister,"ax",%progbits
+ 451              		.align	1
+ 452              		.global	PWM_Right_LED_Green_WriteControlRegister
+ 453              		.code	16
+ 454              		.thumb_func
+ 455              		.type	PWM_Right_LED_Green_WriteControlRegister, %function
+ 456              	PWM_Right_LED_Green_WriteControlRegister:
+ 457              	.LFB12:
+ 766:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     {
+ 458              		.loc 1 766 0
+ 459              		.cfi_startproc
+ 460              	.LVL16:
+ 767:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         CY_SET_REG8(PWM_Right_LED_Green_CONTROL_PTR, control);
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccQd5moA.s 			page 24
+
+
+ 461              		.loc 1 767 0
+ 462 0000 014B     		ldr	r3, .L43
+ 768:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     }
+ 463              		.loc 1 768 0
+ 464              		@ sp needed
+ 767:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         CY_SET_REG8(PWM_Right_LED_Green_CONTROL_PTR, control);
+ 465              		.loc 1 767 0
+ 466 0002 1870     		strb	r0, [r3]
+ 768:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     }
+ 467              		.loc 1 768 0
+ 468 0004 7047     		bx	lr
+ 469              	.L44:
+ 470 0006 C046     		.align	2
+ 471              	.L43:
+ 472 0008 73000F40 		.word	1074724979
+ 473              		.cfi_endproc
+ 474              	.LFE12:
+ 475              		.size	PWM_Right_LED_Green_WriteControlRegister, .-PWM_Right_LED_Green_WriteControlRegister
+ 476              		.section	.text.PWM_Right_LED_Green_ReadCapture,"ax",%progbits
+ 477              		.align	1
+ 478              		.global	PWM_Right_LED_Green_ReadCapture
+ 479              		.code	16
+ 480              		.thumb_func
+ 481              		.type	PWM_Right_LED_Green_ReadCapture, %function
+ 482              	PWM_Right_LED_Green_ReadCapture:
+ 483              	.LFB13:
+ 791:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     {
+ 484              		.loc 1 791 0
+ 485              		.cfi_startproc
+ 486              		.loc 1 792 0
+ 487 0000 014B     		ldr	r3, .L46
+ 793:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     }
+ 488              		.loc 1 793 0
+ 489              		@ sp needed
+ 792:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         return (CY_GET_REG8(PWM_Right_LED_Green_CAPTURE_LSB_PTR));
+ 490              		.loc 1 792 0
+ 491 0002 1878     		ldrb	r0, [r3]
+ 492 0004 C0B2     		uxtb	r0, r0
+ 493              		.loc 1 793 0
+ 494 0006 7047     		bx	lr
+ 495              	.L47:
+ 496              		.align	2
+ 497              	.L46:
+ 498 0008 53000F40 		.word	1074724947
+ 499              		.cfi_endproc
+ 500              	.LFE13:
+ 501              		.size	PWM_Right_LED_Green_ReadCapture, .-PWM_Right_LED_Green_ReadCapture
+ 502              		.section	.text.PWM_Right_LED_Green_ReadCompare,"ax",%progbits
+ 503              		.align	1
+ 504              		.global	PWM_Right_LED_Green_ReadCompare
+ 505              		.code	16
+ 506              		.thumb_func
+ 507              		.type	PWM_Right_LED_Green_ReadCompare, %function
+ 508              	PWM_Right_LED_Green_ReadCompare:
+ 509              	.LFB14:
+ 794:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 795:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** #endif /* (!PWM_Right_LED_Green_UsingFixedFunction) */
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccQd5moA.s 			page 25
+
+
+ 796:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 797:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 798:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** #if (PWM_Right_LED_Green_UseOneCompareMode)
+ 799:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 800:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 801:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     /*******************************************************************************
+ 802:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     * Function Name: PWM_Right_LED_Green_ReadCompare
+ 803:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     ********************************************************************************
+ 804:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *
+ 805:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     * Summary:
+ 806:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *  Reads the compare value for the compare output when the PWM Mode parameter is
+ 807:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *  set to Dither mode, Center Aligned mode, or One Output mode.
+ 808:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *
+ 809:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     * Parameters:
+ 810:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *  None
+ 811:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *
+ 812:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     * Return:
+ 813:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *  uint8/uint16: Current compare value
+ 814:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *
+ 815:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *******************************************************************************/
+ 816:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     uint8 PWM_Right_LED_Green_ReadCompare(void) 
+ 817:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     {
+ 510              		.loc 1 817 0
+ 511              		.cfi_startproc
+ 818:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         #if(PWM_Right_LED_Green_UsingFixedFunction)
+ 819:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****             return ((uint8)CY_GET_REG16(PWM_Right_LED_Green_COMPARE1_LSB_PTR));
+ 820:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         #else
+ 821:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****             return (CY_GET_REG8(PWM_Right_LED_Green_COMPARE1_LSB_PTR));
+ 512              		.loc 1 821 0
+ 513 0000 014B     		ldr	r3, .L49
+ 822:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         #endif /* (PWM_Right_LED_Green_UsingFixedFunction) */
+ 823:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     }
+ 514              		.loc 1 823 0
+ 515              		@ sp needed
+ 821:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****             return (CY_GET_REG8(PWM_Right_LED_Green_COMPARE1_LSB_PTR));
+ 516              		.loc 1 821 0
+ 517 0002 1878     		ldrb	r0, [r3]
+ 518 0004 C0B2     		uxtb	r0, r0
+ 519              		.loc 1 823 0
+ 520 0006 7047     		bx	lr
+ 521              	.L50:
+ 522              		.align	2
+ 523              	.L49:
+ 524 0008 23000F40 		.word	1074724899
+ 525              		.cfi_endproc
+ 526              	.LFE14:
+ 527              		.size	PWM_Right_LED_Green_ReadCompare, .-PWM_Right_LED_Green_ReadCompare
+ 528              		.section	.text.PWM_Right_LED_Green_ReadPeriod,"ax",%progbits
+ 529              		.align	1
+ 530              		.global	PWM_Right_LED_Green_ReadPeriod
+ 531              		.code	16
+ 532              		.thumb_func
+ 533              		.type	PWM_Right_LED_Green_ReadPeriod, %function
+ 534              	PWM_Right_LED_Green_ReadPeriod:
+ 535              	.LFB15:
+ 824:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 825:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** #else
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccQd5moA.s 			page 26
+
+
+ 826:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 827:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 828:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     /*******************************************************************************
+ 829:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     * Function Name: PWM_Right_LED_Green_ReadCompare1
+ 830:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     ********************************************************************************
+ 831:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *
+ 832:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     * Summary:
+ 833:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *  Reads the compare value for the compare1 output.
+ 834:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *
+ 835:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     * Parameters:
+ 836:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *  None
+ 837:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *
+ 838:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     * Return:
+ 839:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *  uint8/uint16: Current compare value.
+ 840:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *
+ 841:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *******************************************************************************/
+ 842:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     uint8 PWM_Right_LED_Green_ReadCompare1(void) 
+ 843:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     {
+ 844:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         return (CY_GET_REG8(PWM_Right_LED_Green_COMPARE1_LSB_PTR));
+ 845:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     }
+ 846:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 847:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 848:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     /*******************************************************************************
+ 849:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     * Function Name: PWM_Right_LED_Green_ReadCompare2
+ 850:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     ********************************************************************************
+ 851:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *
+ 852:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     * Summary:
+ 853:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *  Reads the compare value for the compare2 output.
+ 854:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *
+ 855:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     * Parameters:
+ 856:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *  None
+ 857:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *
+ 858:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     * Return:
+ 859:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *  uint8/uint16: Current compare value.
+ 860:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *
+ 861:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     *******************************************************************************/
+ 862:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     uint8 PWM_Right_LED_Green_ReadCompare2(void) 
+ 863:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     {
+ 864:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         return (CY_GET_REG8(PWM_Right_LED_Green_COMPARE2_LSB_PTR));
+ 865:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     }
+ 866:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 867:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** #endif /* (PWM_Right_LED_Green_UseOneCompareMode) */
+ 868:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 869:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** 
+ 870:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** /*******************************************************************************
+ 871:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** * Function Name: PWM_Right_LED_Green_ReadPeriod
+ 872:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** ********************************************************************************
+ 873:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** *
+ 874:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** * Summary:
+ 875:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** *  Reads the period value used by the PWM hardware.
+ 876:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** *
+ 877:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** * Parameters:
+ 878:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** *  None
+ 879:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** *
+ 880:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** * Return:
+ 881:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** *  uint8/16: Period value
+ 882:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** *
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccQd5moA.s 			page 27
+
+
+ 883:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** *******************************************************************************/
+ 884:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** uint8 PWM_Right_LED_Green_ReadPeriod(void) 
+ 885:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** {
+ 536              		.loc 1 885 0
+ 537              		.cfi_startproc
+ 886:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     #if(PWM_Right_LED_Green_UsingFixedFunction)
+ 887:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         return ((uint8)CY_GET_REG16(PWM_Right_LED_Green_PERIOD_LSB_PTR));
+ 888:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     #else
+ 889:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         return (CY_GET_REG8(PWM_Right_LED_Green_PERIOD_LSB_PTR));
+ 538              		.loc 1 889 0
+ 539 0000 014B     		ldr	r3, .L52
+ 890:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****     #endif /* (PWM_Right_LED_Green_UsingFixedFunction) */
+ 891:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c **** }
+ 540              		.loc 1 891 0
+ 541              		@ sp needed
+ 889:.\Generated_Source\PSoC4/PWM_Right_LED_Green.c ****         return (CY_GET_REG8(PWM_Right_LED_Green_PERIOD_LSB_PTR));
+ 542              		.loc 1 889 0
+ 543 0002 1878     		ldrb	r0, [r3]
+ 544 0004 C0B2     		uxtb	r0, r0
+ 545              		.loc 1 891 0
+ 546 0006 7047     		bx	lr
+ 547              	.L53:
+ 548              		.align	2
+ 549              	.L52:
+ 550 0008 43000F40 		.word	1074724931
+ 551              		.cfi_endproc
+ 552              	.LFE15:
+ 553              		.size	PWM_Right_LED_Green_ReadPeriod, .-PWM_Right_LED_Green_ReadPeriod
+ 554              		.global	PWM_Right_LED_Green_initVar
+ 555              		.bss
+ 556              		.set	.LANCHOR0,. + 0
+ 557              		.type	PWM_Right_LED_Green_initVar, %object
+ 558              		.size	PWM_Right_LED_Green_initVar, 1
+ 559              	PWM_Right_LED_Green_initVar:
+ 560 0000 00       		.space	1
+ 561              		.text
+ 562              	.Letext0:
+ 563              		.file 2 ".\\Generated_Source\\PSoC4\\cytypes.h"
+ 564              		.file 3 ".\\Generated_Source\\PSoC4\\CyLib.h"
+ 565              		.section	.debug_info,"",%progbits
+ 566              	.Ldebug_info0:
+ 567 0000 9D030000 		.4byte	0x39d
+ 568 0004 0400     		.2byte	0x4
+ 569 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 570 000a 04       		.byte	0x4
+ 571 000b 01       		.uleb128 0x1
+ 572 000c EF000000 		.4byte	.LASF38
+ 573 0010 01       		.byte	0x1
+ 574 0011 08030000 		.4byte	.LASF39
+ 575 0015 7A030000 		.4byte	.LASF40
+ 576 0019 30000000 		.4byte	.Ldebug_ranges0+0x30
+ 577 001d 00000000 		.4byte	0
+ 578 0021 00000000 		.4byte	.Ldebug_line0
+ 579 0025 02       		.uleb128 0x2
+ 580 0026 01       		.byte	0x1
+ 581 0027 06       		.byte	0x6
+ 582 0028 05040000 		.4byte	.LASF0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccQd5moA.s 			page 28
+
+
+ 583 002c 02       		.uleb128 0x2
+ 584 002d 01       		.byte	0x1
+ 585 002e 08       		.byte	0x8
+ 586 002f 19020000 		.4byte	.LASF1
+ 587 0033 02       		.uleb128 0x2
+ 588 0034 02       		.byte	0x2
+ 589 0035 05       		.byte	0x5
+ 590 0036 D7030000 		.4byte	.LASF2
+ 591 003a 02       		.uleb128 0x2
+ 592 003b 02       		.byte	0x2
+ 593 003c 07       		.byte	0x7
+ 594 003d 7C000000 		.4byte	.LASF3
+ 595 0041 02       		.uleb128 0x2
+ 596 0042 04       		.byte	0x4
+ 597 0043 05       		.byte	0x5
+ 598 0044 F7030000 		.4byte	.LASF4
+ 599 0048 02       		.uleb128 0x2
+ 600 0049 04       		.byte	0x4
+ 601 004a 07       		.byte	0x7
+ 602 004b B8010000 		.4byte	.LASF5
+ 603 004f 02       		.uleb128 0x2
+ 604 0050 08       		.byte	0x8
+ 605 0051 05       		.byte	0x5
+ 606 0052 5E030000 		.4byte	.LASF6
+ 607 0056 02       		.uleb128 0x2
+ 608 0057 08       		.byte	0x8
+ 609 0058 07       		.byte	0x7
+ 610 0059 F1020000 		.4byte	.LASF7
+ 611 005d 03       		.uleb128 0x3
+ 612 005e 04       		.byte	0x4
+ 613 005f 05       		.byte	0x5
+ 614 0060 696E7400 		.ascii	"int\000"
+ 615 0064 02       		.uleb128 0x2
+ 616 0065 04       		.byte	0x4
+ 617 0066 07       		.byte	0x7
+ 618 0067 BD020000 		.4byte	.LASF8
+ 619 006b 04       		.uleb128 0x4
+ 620 006c CA010000 		.4byte	.LASF12
+ 621 0070 02       		.byte	0x2
+ 622 0071 A1       		.byte	0xa1
+ 623 0072 2C000000 		.4byte	0x2c
+ 624 0076 02       		.uleb128 0x2
+ 625 0077 04       		.byte	0x4
+ 626 0078 04       		.byte	0x4
+ 627 0079 6B010000 		.4byte	.LASF9
+ 628 007d 02       		.uleb128 0x2
+ 629 007e 08       		.byte	0x8
+ 630 007f 04       		.byte	0x4
+ 631 0080 8F000000 		.4byte	.LASF10
+ 632 0084 02       		.uleb128 0x2
+ 633 0085 01       		.byte	0x1
+ 634 0086 08       		.byte	0x8
+ 635 0087 00040000 		.4byte	.LASF11
+ 636 008b 05       		.uleb128 0x5
+ 637 008c B3010000 		.4byte	.LASF13
+ 638 0090 02       		.byte	0x2
+ 639 0091 4B01     		.2byte	0x14b
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccQd5moA.s 			page 29
+
+
+ 640 0093 97000000 		.4byte	0x97
+ 641 0097 06       		.uleb128 0x6
+ 642 0098 6B000000 		.4byte	0x6b
+ 643 009c 02       		.uleb128 0x2
+ 644 009d 04       		.byte	0x4
+ 645 009e 07       		.byte	0x7
+ 646 009f 55030000 		.4byte	.LASF14
+ 647 00a3 07       		.uleb128 0x7
+ 648 00a4 79010000 		.4byte	.LASF15
+ 649 00a8 01       		.byte	0x1
+ 650 00a9 1603     		.2byte	0x316
+ 651 00ab 6B000000 		.4byte	0x6b
+ 652 00af 01       		.byte	0x1
+ 653 00b0 07       		.uleb128 0x7
+ 654 00b1 CA020000 		.4byte	.LASF16
+ 655 00b5 01       		.byte	0x1
+ 656 00b6 C702     		.2byte	0x2c7
+ 657 00b8 6B000000 		.4byte	0x6b
+ 658 00bc 01       		.byte	0x1
+ 659 00bd 08       		.uleb128 0x8
+ 660 00be 85020000 		.4byte	.LASF17
+ 661 00c2 01       		.byte	0x1
+ 662 00c3 9301     		.2byte	0x193
+ 663 00c5 01       		.byte	0x1
+ 664 00c6 D7000000 		.4byte	0xd7
+ 665 00ca 09       		.uleb128 0x9
+ 666 00cb 71010000 		.4byte	.LASF19
+ 667 00cf 01       		.byte	0x1
+ 668 00d0 9301     		.2byte	0x193
+ 669 00d2 6B000000 		.4byte	0x6b
+ 670 00d6 00       		.byte	0
+ 671 00d7 08       		.uleb128 0x8
+ 672 00d8 B7030000 		.4byte	.LASF18
+ 673 00dc 01       		.byte	0x1
+ 674 00dd E201     		.2byte	0x1e2
+ 675 00df 01       		.byte	0x1
+ 676 00e0 F1000000 		.4byte	0xf1
+ 677 00e4 09       		.uleb128 0x9
+ 678 00e5 75000000 		.4byte	.LASF20
+ 679 00e9 01       		.byte	0x1
+ 680 00ea E201     		.2byte	0x1e2
+ 681 00ec 6B000000 		.4byte	0x6b
+ 682 00f0 00       		.byte	0
+ 683 00f1 08       		.uleb128 0x8
+ 684 00f2 19040000 		.4byte	.LASF21
+ 685 00f6 01       		.byte	0x1
+ 686 00f7 0402     		.2byte	0x204
+ 687 00f9 01       		.byte	0x1
+ 688 00fa 0B010000 		.4byte	0x10b
+ 689 00fe 09       		.uleb128 0x9
+ 690 00ff 11040000 		.4byte	.LASF22
+ 691 0103 01       		.byte	0x1
+ 692 0104 0402     		.2byte	0x204
+ 693 0106 6B000000 		.4byte	0x6b
+ 694 010a 00       		.byte	0
+ 695 010b 08       		.uleb128 0x8
+ 696 010c 30000000 		.4byte	.LASF23
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccQd5moA.s 			page 30
+
+
+ 697 0110 01       		.byte	0x1
+ 698 0111 AC02     		.2byte	0x2ac
+ 699 0113 01       		.byte	0x1
+ 700 0114 25010000 		.4byte	0x125
+ 701 0118 09       		.uleb128 0x9
+ 702 0119 6C030000 		.4byte	.LASF24
+ 703 011d 01       		.byte	0x1
+ 704 011e AC02     		.2byte	0x2ac
+ 705 0120 6B000000 		.4byte	0x6b
+ 706 0124 00       		.byte	0
+ 707 0125 0A       		.uleb128 0xa
+ 708 0126 27020000 		.4byte	.LASF25
+ 709 012a 01       		.byte	0x1
+ 710 012b C7       		.byte	0xc7
+ 711 012c 00000000 		.4byte	.LFB2
+ 712 0130 10000000 		.4byte	.LFE2-.LFB2
+ 713 0134 01       		.uleb128 0x1
+ 714 0135 9C       		.byte	0x9c
+ 715 0136 0A       		.uleb128 0xa
+ 716 0137 37030000 		.4byte	.LASF26
+ 717 013b 01       		.byte	0x1
+ 718 013c E9       		.byte	0xe9
+ 719 013d 00000000 		.4byte	.LFB3
+ 720 0141 10000000 		.4byte	.LFE3-.LFB3
+ 721 0145 01       		.uleb128 0x1
+ 722 0146 9C       		.byte	0x9c
+ 723 0147 0B       		.uleb128 0xb
+ 724 0148 BD000000 		.4byte	0xbd
+ 725 014c 00000000 		.4byte	.LFB4
+ 726 0150 0C000000 		.4byte	.LFE4-.LFB4
+ 727 0154 01       		.uleb128 0x1
+ 728 0155 9C       		.byte	0x9c
+ 729 0156 62010000 		.4byte	0x162
+ 730 015a 0C       		.uleb128 0xc
+ 731 015b CA000000 		.4byte	0xca
+ 732 015f 01       		.uleb128 0x1
+ 733 0160 50       		.byte	0x50
+ 734 0161 00       		.byte	0
+ 735 0162 0D       		.uleb128 0xd
+ 736 0163 65020000 		.4byte	.LASF34
+ 737 0167 01       		.byte	0x1
+ 738 0168 A901     		.2byte	0x1a9
+ 739 016a 6B000000 		.4byte	0x6b
+ 740 016e 00000000 		.4byte	.LFB5
+ 741 0172 14000000 		.4byte	.LFE5-.LFB5
+ 742 0176 01       		.uleb128 0x1
+ 743 0177 9C       		.byte	0x9c
+ 744 0178 0E       		.uleb128 0xe
+ 745 0179 96000000 		.4byte	.LASF27
+ 746 017d 01       		.byte	0x1
+ 747 017e C501     		.2byte	0x1c5
+ 748 0180 00000000 		.4byte	.LFB6
+ 749 0184 18000000 		.4byte	.LFE6-.LFB6
+ 750 0188 01       		.uleb128 0x1
+ 751 0189 9C       		.byte	0x9c
+ 752 018a AF010000 		.4byte	0x1af
+ 753 018e 0F       		.uleb128 0xf
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccQd5moA.s 			page 31
+
+
+ 754 018f B0000000 		.4byte	0xb0
+ 755 0193 00000000 		.4byte	.LBB14
+ 756 0197 04000000 		.4byte	.LBE14-.LBB14
+ 757 019b 01       		.byte	0x1
+ 758 019c C701     		.2byte	0x1c7
+ 759 019e 0F       		.uleb128 0xf
+ 760 019f A3000000 		.4byte	0xa3
+ 761 01a3 08000000 		.4byte	.LBB16
+ 762 01a7 06000000 		.4byte	.LBE16-.LBB16
+ 763 01ab 01       		.byte	0x1
+ 764 01ac C901     		.2byte	0x1c9
+ 765 01ae 00       		.byte	0
+ 766 01af 10       		.uleb128 0x10
+ 767 01b0 D8010000 		.4byte	.LASF28
+ 768 01b4 01       		.byte	0x1
+ 769 01b5 54       		.byte	0x54
+ 770 01b6 00000000 		.4byte	.LFB1
+ 771 01ba 60000000 		.4byte	.LFE1-.LFB1
+ 772 01be 01       		.uleb128 0x1
+ 773 01bf 9C       		.byte	0x9c
+ 774 01c0 66020000 		.4byte	0x266
+ 775 01c4 11       		.uleb128 0x11
+ 776 01c5 50030000 		.4byte	.LASF29
+ 777 01c9 01       		.byte	0x1
+ 778 01ca 57       		.byte	0x57
+ 779 01cb 6B000000 		.4byte	0x6b
+ 780 01cf 00000000 		.4byte	.LLST0
+ 781 01d3 11       		.uleb128 0x11
+ 782 01d4 42020000 		.4byte	.LASF30
+ 783 01d8 01       		.byte	0x1
+ 784 01d9 5D       		.byte	0x5d
+ 785 01da 6B000000 		.4byte	0x6b
+ 786 01de 18000000 		.4byte	.LLST1
+ 787 01e2 12       		.uleb128 0x12
+ 788 01e3 BD000000 		.4byte	0xbd
+ 789 01e7 18000000 		.4byte	.LBB18
+ 790 01eb 00000000 		.4byte	.Ldebug_ranges0+0
+ 791 01ef 01       		.byte	0x1
+ 792 01f0 85       		.byte	0x85
+ 793 01f1 FC010000 		.4byte	0x1fc
+ 794 01f5 13       		.uleb128 0x13
+ 795 01f6 CA000000 		.4byte	0xca
+ 796 01fa 3C       		.byte	0x3c
+ 797 01fb 00       		.byte	0
+ 798 01fc 12       		.uleb128 0x12
+ 799 01fd D7000000 		.4byte	0xd7
+ 800 0201 20000000 		.4byte	.LBB22
+ 801 0205 18000000 		.4byte	.Ldebug_ranges0+0x18
+ 802 0209 01       		.byte	0x1
+ 803 020a 88       		.byte	0x88
+ 804 020b 16020000 		.4byte	0x216
+ 805 020f 13       		.uleb128 0x13
+ 806 0210 E4000000 		.4byte	0xe4
+ 807 0214 3C       		.byte	0x3c
+ 808 0215 00       		.byte	0
+ 809 0216 14       		.uleb128 0x14
+ 810 0217 F1000000 		.4byte	0xf1
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccQd5moA.s 			page 32
+
+
+ 811 021b 24000000 		.4byte	.LBB26
+ 812 021f 06000000 		.4byte	.LBE26-.LBB26
+ 813 0223 01       		.byte	0x1
+ 814 0224 8B       		.byte	0x8b
+ 815 0225 30020000 		.4byte	0x230
+ 816 0229 13       		.uleb128 0x13
+ 817 022a FE000000 		.4byte	0xfe
+ 818 022e 1E       		.byte	0x1e
+ 819 022f 00       		.byte	0
+ 820 0230 14       		.uleb128 0x14
+ 821 0231 0B010000 		.4byte	0x10b
+ 822 0235 2A000000 		.4byte	.LBB28
+ 823 0239 06000000 		.4byte	.LBE28-.LBB28
+ 824 023d 01       		.byte	0x1
+ 825 023e 9A       		.byte	0x9a
+ 826 023f 4A020000 		.4byte	0x24a
+ 827 0243 13       		.uleb128 0x13
+ 828 0244 18010000 		.4byte	0x118
+ 829 0248 00       		.byte	0
+ 830 0249 00       		.byte	0
+ 831 024a 15       		.uleb128 0x15
+ 832 024b 34000000 		.4byte	.LVL7
+ 833 024f 88030000 		.4byte	0x388
+ 834 0253 15       		.uleb128 0x15
+ 835 0254 40000000 		.4byte	.LVL8
+ 836 0258 93030000 		.4byte	0x393
+ 837 025c 15       		.uleb128 0x15
+ 838 025d 44000000 		.4byte	.LVL9
+ 839 0261 78010000 		.4byte	0x178
+ 840 0265 00       		.byte	0
+ 841 0266 10       		.uleb128 0x10
+ 842 0267 99010000 		.4byte	.LASF31
+ 843 026b 01       		.byte	0x1
+ 844 026c 37       		.byte	0x37
+ 845 026d 00000000 		.4byte	.LFB0
+ 846 0271 1C000000 		.4byte	.LFE0-.LFB0
+ 847 0275 01       		.uleb128 0x1
+ 848 0276 9C       		.byte	0x9c
+ 849 0277 8E020000 		.4byte	0x28e
+ 850 027b 15       		.uleb128 0x15
+ 851 027c 0E000000 		.4byte	.LVL10
+ 852 0280 AF010000 		.4byte	0x1af
+ 853 0284 15       		.uleb128 0x15
+ 854 0285 16000000 		.4byte	.LVL11
+ 855 0289 25010000 		.4byte	0x125
+ 856 028d 00       		.byte	0
+ 857 028e 0B       		.uleb128 0xb
+ 858 028f D7000000 		.4byte	0xd7
+ 859 0293 00000000 		.4byte	.LFB7
+ 860 0297 0C000000 		.4byte	.LFE7-.LFB7
+ 861 029b 01       		.uleb128 0x1
+ 862 029c 9C       		.byte	0x9c
+ 863 029d A9020000 		.4byte	0x2a9
+ 864 02a1 0C       		.uleb128 0xc
+ 865 02a2 E4000000 		.4byte	0xe4
+ 866 02a6 01       		.uleb128 0x1
+ 867 02a7 50       		.byte	0x50
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccQd5moA.s 			page 33
+
+
+ 868 02a8 00       		.byte	0
+ 869 02a9 0B       		.uleb128 0xb
+ 870 02aa F1000000 		.4byte	0xf1
+ 871 02ae 00000000 		.4byte	.LFB8
+ 872 02b2 0C000000 		.4byte	.LFE8-.LFB8
+ 873 02b6 01       		.uleb128 0x1
+ 874 02b7 9C       		.byte	0x9c
+ 875 02b8 C4020000 		.4byte	0x2c4
+ 876 02bc 0C       		.uleb128 0xc
+ 877 02bd FE000000 		.4byte	0xfe
+ 878 02c1 01       		.uleb128 0x1
+ 879 02c2 50       		.byte	0x50
+ 880 02c3 00       		.byte	0
+ 881 02c4 0B       		.uleb128 0xb
+ 882 02c5 0B010000 		.4byte	0x10b
+ 883 02c9 00000000 		.4byte	.LFB9
+ 884 02cd 0C000000 		.4byte	.LFE9-.LFB9
+ 885 02d1 01       		.uleb128 0x1
+ 886 02d2 9C       		.byte	0x9c
+ 887 02d3 DF020000 		.4byte	0x2df
+ 888 02d7 0C       		.uleb128 0xc
+ 889 02d8 18010000 		.4byte	0x118
+ 890 02dc 01       		.uleb128 0x1
+ 891 02dd 50       		.byte	0x50
+ 892 02de 00       		.byte	0
+ 893 02df 16       		.uleb128 0x16
+ 894 02e0 B0000000 		.4byte	0xb0
+ 895 02e4 00000000 		.4byte	.LFB10
+ 896 02e8 0C000000 		.4byte	.LFE10-.LFB10
+ 897 02ec 01       		.uleb128 0x1
+ 898 02ed 9C       		.byte	0x9c
+ 899 02ee 17       		.uleb128 0x17
+ 900 02ef F1010000 		.4byte	.LASF41
+ 901 02f3 01       		.byte	0x1
+ 902 02f4 E102     		.2byte	0x2e1
+ 903 02f6 6B000000 		.4byte	0x6b
+ 904 02fa 00000000 		.4byte	.LFB11
+ 905 02fe 0C000000 		.4byte	.LFE11-.LFB11
+ 906 0302 01       		.uleb128 0x1
+ 907 0303 9C       		.byte	0x9c
+ 908 0304 17030000 		.4byte	0x317
+ 909 0308 18       		.uleb128 0x18
+ 910 0309 29000000 		.4byte	.LASF32
+ 911 030d 01       		.byte	0x1
+ 912 030e E302     		.2byte	0x2e3
+ 913 0310 6B000000 		.4byte	0x6b
+ 914 0314 01       		.uleb128 0x1
+ 915 0315 50       		.byte	0x50
+ 916 0316 00       		.byte	0
+ 917 0317 0E       		.uleb128 0xe
+ 918 0318 00000000 		.4byte	.LASF33
+ 919 031c 01       		.byte	0x1
+ 920 031d FD02     		.2byte	0x2fd
+ 921 031f 00000000 		.4byte	.LFB12
+ 922 0323 0C000000 		.4byte	.LFE12-.LFB12
+ 923 0327 01       		.uleb128 0x1
+ 924 0328 9C       		.byte	0x9c
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccQd5moA.s 			page 34
+
+
+ 925 0329 3C030000 		.4byte	0x33c
+ 926 032d 19       		.uleb128 0x19
+ 927 032e D0010000 		.4byte	.LASF42
+ 928 0332 01       		.byte	0x1
+ 929 0333 FD02     		.2byte	0x2fd
+ 930 0335 6B000000 		.4byte	0x6b
+ 931 0339 01       		.uleb128 0x1
+ 932 033a 50       		.byte	0x50
+ 933 033b 00       		.byte	0
+ 934 033c 16       		.uleb128 0x16
+ 935 033d A3000000 		.4byte	0xa3
+ 936 0341 00000000 		.4byte	.LFB13
+ 937 0345 0C000000 		.4byte	.LFE13-.LFB13
+ 938 0349 01       		.uleb128 0x1
+ 939 034a 9C       		.byte	0x9c
+ 940 034b 0D       		.uleb128 0xd
+ 941 034c 55000000 		.4byte	.LASF35
+ 942 0350 01       		.byte	0x1
+ 943 0351 3003     		.2byte	0x330
+ 944 0353 6B000000 		.4byte	0x6b
+ 945 0357 00000000 		.4byte	.LFB14
+ 946 035b 0C000000 		.4byte	.LFE14-.LFB14
+ 947 035f 01       		.uleb128 0x1
+ 948 0360 9C       		.byte	0x9c
+ 949 0361 0D       		.uleb128 0xd
+ 950 0362 D0000000 		.4byte	.LASF36
+ 951 0366 01       		.byte	0x1
+ 952 0367 7403     		.2byte	0x374
+ 953 0369 6B000000 		.4byte	0x6b
+ 954 036d 00000000 		.4byte	.LFB15
+ 955 0371 0C000000 		.4byte	.LFE15-.LFB15
+ 956 0375 01       		.uleb128 0x1
+ 957 0376 9C       		.byte	0x9c
+ 958 0377 1A       		.uleb128 0x1a
+ 959 0378 B4000000 		.4byte	.LASF43
+ 960 037c 01       		.byte	0x1
+ 961 037d 20       		.byte	0x20
+ 962 037e 6B000000 		.4byte	0x6b
+ 963 0382 05       		.uleb128 0x5
+ 964 0383 03       		.byte	0x3
+ 965 0384 00000000 		.4byte	PWM_Right_LED_Green_initVar
+ 966 0388 1B       		.uleb128 0x1b
+ 967 0389 A6020000 		.4byte	.LASF37
+ 968 038d 03       		.byte	0x3
+ 969 038e 82       		.byte	0x82
+ 970 038f 6B000000 		.4byte	0x6b
+ 971 0393 1C       		.uleb128 0x1c
+ 972 0394 E1030000 		.4byte	.LASF44
+ 973 0398 03       		.byte	0x3
+ 974 0399 83       		.byte	0x83
+ 975 039a 1D       		.uleb128 0x1d
+ 976 039b 6B000000 		.4byte	0x6b
+ 977 039f 00       		.byte	0
+ 978 03a0 00       		.byte	0
+ 979              		.section	.debug_abbrev,"",%progbits
+ 980              	.Ldebug_abbrev0:
+ 981 0000 01       		.uleb128 0x1
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccQd5moA.s 			page 35
+
+
+ 982 0001 11       		.uleb128 0x11
+ 983 0002 01       		.byte	0x1
+ 984 0003 25       		.uleb128 0x25
+ 985 0004 0E       		.uleb128 0xe
+ 986 0005 13       		.uleb128 0x13
+ 987 0006 0B       		.uleb128 0xb
+ 988 0007 03       		.uleb128 0x3
+ 989 0008 0E       		.uleb128 0xe
+ 990 0009 1B       		.uleb128 0x1b
+ 991 000a 0E       		.uleb128 0xe
+ 992 000b 55       		.uleb128 0x55
+ 993 000c 17       		.uleb128 0x17
+ 994 000d 11       		.uleb128 0x11
+ 995 000e 01       		.uleb128 0x1
+ 996 000f 10       		.uleb128 0x10
+ 997 0010 17       		.uleb128 0x17
+ 998 0011 00       		.byte	0
+ 999 0012 00       		.byte	0
+ 1000 0013 02       		.uleb128 0x2
+ 1001 0014 24       		.uleb128 0x24
+ 1002 0015 00       		.byte	0
+ 1003 0016 0B       		.uleb128 0xb
+ 1004 0017 0B       		.uleb128 0xb
+ 1005 0018 3E       		.uleb128 0x3e
+ 1006 0019 0B       		.uleb128 0xb
+ 1007 001a 03       		.uleb128 0x3
+ 1008 001b 0E       		.uleb128 0xe
+ 1009 001c 00       		.byte	0
+ 1010 001d 00       		.byte	0
+ 1011 001e 03       		.uleb128 0x3
+ 1012 001f 24       		.uleb128 0x24
+ 1013 0020 00       		.byte	0
+ 1014 0021 0B       		.uleb128 0xb
+ 1015 0022 0B       		.uleb128 0xb
+ 1016 0023 3E       		.uleb128 0x3e
+ 1017 0024 0B       		.uleb128 0xb
+ 1018 0025 03       		.uleb128 0x3
+ 1019 0026 08       		.uleb128 0x8
+ 1020 0027 00       		.byte	0
+ 1021 0028 00       		.byte	0
+ 1022 0029 04       		.uleb128 0x4
+ 1023 002a 16       		.uleb128 0x16
+ 1024 002b 00       		.byte	0
+ 1025 002c 03       		.uleb128 0x3
+ 1026 002d 0E       		.uleb128 0xe
+ 1027 002e 3A       		.uleb128 0x3a
+ 1028 002f 0B       		.uleb128 0xb
+ 1029 0030 3B       		.uleb128 0x3b
+ 1030 0031 0B       		.uleb128 0xb
+ 1031 0032 49       		.uleb128 0x49
+ 1032 0033 13       		.uleb128 0x13
+ 1033 0034 00       		.byte	0
+ 1034 0035 00       		.byte	0
+ 1035 0036 05       		.uleb128 0x5
+ 1036 0037 16       		.uleb128 0x16
+ 1037 0038 00       		.byte	0
+ 1038 0039 03       		.uleb128 0x3
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccQd5moA.s 			page 36
+
+
+ 1039 003a 0E       		.uleb128 0xe
+ 1040 003b 3A       		.uleb128 0x3a
+ 1041 003c 0B       		.uleb128 0xb
+ 1042 003d 3B       		.uleb128 0x3b
+ 1043 003e 05       		.uleb128 0x5
+ 1044 003f 49       		.uleb128 0x49
+ 1045 0040 13       		.uleb128 0x13
+ 1046 0041 00       		.byte	0
+ 1047 0042 00       		.byte	0
+ 1048 0043 06       		.uleb128 0x6
+ 1049 0044 35       		.uleb128 0x35
+ 1050 0045 00       		.byte	0
+ 1051 0046 49       		.uleb128 0x49
+ 1052 0047 13       		.uleb128 0x13
+ 1053 0048 00       		.byte	0
+ 1054 0049 00       		.byte	0
+ 1055 004a 07       		.uleb128 0x7
+ 1056 004b 2E       		.uleb128 0x2e
+ 1057 004c 00       		.byte	0
+ 1058 004d 3F       		.uleb128 0x3f
+ 1059 004e 19       		.uleb128 0x19
+ 1060 004f 03       		.uleb128 0x3
+ 1061 0050 0E       		.uleb128 0xe
+ 1062 0051 3A       		.uleb128 0x3a
+ 1063 0052 0B       		.uleb128 0xb
+ 1064 0053 3B       		.uleb128 0x3b
+ 1065 0054 05       		.uleb128 0x5
+ 1066 0055 27       		.uleb128 0x27
+ 1067 0056 19       		.uleb128 0x19
+ 1068 0057 49       		.uleb128 0x49
+ 1069 0058 13       		.uleb128 0x13
+ 1070 0059 20       		.uleb128 0x20
+ 1071 005a 0B       		.uleb128 0xb
+ 1072 005b 00       		.byte	0
+ 1073 005c 00       		.byte	0
+ 1074 005d 08       		.uleb128 0x8
+ 1075 005e 2E       		.uleb128 0x2e
+ 1076 005f 01       		.byte	0x1
+ 1077 0060 3F       		.uleb128 0x3f
+ 1078 0061 19       		.uleb128 0x19
+ 1079 0062 03       		.uleb128 0x3
+ 1080 0063 0E       		.uleb128 0xe
+ 1081 0064 3A       		.uleb128 0x3a
+ 1082 0065 0B       		.uleb128 0xb
+ 1083 0066 3B       		.uleb128 0x3b
+ 1084 0067 05       		.uleb128 0x5
+ 1085 0068 27       		.uleb128 0x27
+ 1086 0069 19       		.uleb128 0x19
+ 1087 006a 20       		.uleb128 0x20
+ 1088 006b 0B       		.uleb128 0xb
+ 1089 006c 01       		.uleb128 0x1
+ 1090 006d 13       		.uleb128 0x13
+ 1091 006e 00       		.byte	0
+ 1092 006f 00       		.byte	0
+ 1093 0070 09       		.uleb128 0x9
+ 1094 0071 05       		.uleb128 0x5
+ 1095 0072 00       		.byte	0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccQd5moA.s 			page 37
+
+
+ 1096 0073 03       		.uleb128 0x3
+ 1097 0074 0E       		.uleb128 0xe
+ 1098 0075 3A       		.uleb128 0x3a
+ 1099 0076 0B       		.uleb128 0xb
+ 1100 0077 3B       		.uleb128 0x3b
+ 1101 0078 05       		.uleb128 0x5
+ 1102 0079 49       		.uleb128 0x49
+ 1103 007a 13       		.uleb128 0x13
+ 1104 007b 00       		.byte	0
+ 1105 007c 00       		.byte	0
+ 1106 007d 0A       		.uleb128 0xa
+ 1107 007e 2E       		.uleb128 0x2e
+ 1108 007f 00       		.byte	0
+ 1109 0080 3F       		.uleb128 0x3f
+ 1110 0081 19       		.uleb128 0x19
+ 1111 0082 03       		.uleb128 0x3
+ 1112 0083 0E       		.uleb128 0xe
+ 1113 0084 3A       		.uleb128 0x3a
+ 1114 0085 0B       		.uleb128 0xb
+ 1115 0086 3B       		.uleb128 0x3b
+ 1116 0087 0B       		.uleb128 0xb
+ 1117 0088 27       		.uleb128 0x27
+ 1118 0089 19       		.uleb128 0x19
+ 1119 008a 11       		.uleb128 0x11
+ 1120 008b 01       		.uleb128 0x1
+ 1121 008c 12       		.uleb128 0x12
+ 1122 008d 06       		.uleb128 0x6
+ 1123 008e 40       		.uleb128 0x40
+ 1124 008f 18       		.uleb128 0x18
+ 1125 0090 9742     		.uleb128 0x2117
+ 1126 0092 19       		.uleb128 0x19
+ 1127 0093 00       		.byte	0
+ 1128 0094 00       		.byte	0
+ 1129 0095 0B       		.uleb128 0xb
+ 1130 0096 2E       		.uleb128 0x2e
+ 1131 0097 01       		.byte	0x1
+ 1132 0098 31       		.uleb128 0x31
+ 1133 0099 13       		.uleb128 0x13
+ 1134 009a 11       		.uleb128 0x11
+ 1135 009b 01       		.uleb128 0x1
+ 1136 009c 12       		.uleb128 0x12
+ 1137 009d 06       		.uleb128 0x6
+ 1138 009e 40       		.uleb128 0x40
+ 1139 009f 18       		.uleb128 0x18
+ 1140 00a0 9742     		.uleb128 0x2117
+ 1141 00a2 19       		.uleb128 0x19
+ 1142 00a3 01       		.uleb128 0x1
+ 1143 00a4 13       		.uleb128 0x13
+ 1144 00a5 00       		.byte	0
+ 1145 00a6 00       		.byte	0
+ 1146 00a7 0C       		.uleb128 0xc
+ 1147 00a8 05       		.uleb128 0x5
+ 1148 00a9 00       		.byte	0
+ 1149 00aa 31       		.uleb128 0x31
+ 1150 00ab 13       		.uleb128 0x13
+ 1151 00ac 02       		.uleb128 0x2
+ 1152 00ad 18       		.uleb128 0x18
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccQd5moA.s 			page 38
+
+
+ 1153 00ae 00       		.byte	0
+ 1154 00af 00       		.byte	0
+ 1155 00b0 0D       		.uleb128 0xd
+ 1156 00b1 2E       		.uleb128 0x2e
+ 1157 00b2 00       		.byte	0
+ 1158 00b3 3F       		.uleb128 0x3f
+ 1159 00b4 19       		.uleb128 0x19
+ 1160 00b5 03       		.uleb128 0x3
+ 1161 00b6 0E       		.uleb128 0xe
+ 1162 00b7 3A       		.uleb128 0x3a
+ 1163 00b8 0B       		.uleb128 0xb
+ 1164 00b9 3B       		.uleb128 0x3b
+ 1165 00ba 05       		.uleb128 0x5
+ 1166 00bb 27       		.uleb128 0x27
+ 1167 00bc 19       		.uleb128 0x19
+ 1168 00bd 49       		.uleb128 0x49
+ 1169 00be 13       		.uleb128 0x13
+ 1170 00bf 11       		.uleb128 0x11
+ 1171 00c0 01       		.uleb128 0x1
+ 1172 00c1 12       		.uleb128 0x12
+ 1173 00c2 06       		.uleb128 0x6
+ 1174 00c3 40       		.uleb128 0x40
+ 1175 00c4 18       		.uleb128 0x18
+ 1176 00c5 9742     		.uleb128 0x2117
+ 1177 00c7 19       		.uleb128 0x19
+ 1178 00c8 00       		.byte	0
+ 1179 00c9 00       		.byte	0
+ 1180 00ca 0E       		.uleb128 0xe
+ 1181 00cb 2E       		.uleb128 0x2e
+ 1182 00cc 01       		.byte	0x1
+ 1183 00cd 3F       		.uleb128 0x3f
+ 1184 00ce 19       		.uleb128 0x19
+ 1185 00cf 03       		.uleb128 0x3
+ 1186 00d0 0E       		.uleb128 0xe
+ 1187 00d1 3A       		.uleb128 0x3a
+ 1188 00d2 0B       		.uleb128 0xb
+ 1189 00d3 3B       		.uleb128 0x3b
+ 1190 00d4 05       		.uleb128 0x5
+ 1191 00d5 27       		.uleb128 0x27
+ 1192 00d6 19       		.uleb128 0x19
+ 1193 00d7 11       		.uleb128 0x11
+ 1194 00d8 01       		.uleb128 0x1
+ 1195 00d9 12       		.uleb128 0x12
+ 1196 00da 06       		.uleb128 0x6
+ 1197 00db 40       		.uleb128 0x40
+ 1198 00dc 18       		.uleb128 0x18
+ 1199 00dd 9742     		.uleb128 0x2117
+ 1200 00df 19       		.uleb128 0x19
+ 1201 00e0 01       		.uleb128 0x1
+ 1202 00e1 13       		.uleb128 0x13
+ 1203 00e2 00       		.byte	0
+ 1204 00e3 00       		.byte	0
+ 1205 00e4 0F       		.uleb128 0xf
+ 1206 00e5 1D       		.uleb128 0x1d
+ 1207 00e6 00       		.byte	0
+ 1208 00e7 31       		.uleb128 0x31
+ 1209 00e8 13       		.uleb128 0x13
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccQd5moA.s 			page 39
+
+
+ 1210 00e9 11       		.uleb128 0x11
+ 1211 00ea 01       		.uleb128 0x1
+ 1212 00eb 12       		.uleb128 0x12
+ 1213 00ec 06       		.uleb128 0x6
+ 1214 00ed 58       		.uleb128 0x58
+ 1215 00ee 0B       		.uleb128 0xb
+ 1216 00ef 59       		.uleb128 0x59
+ 1217 00f0 05       		.uleb128 0x5
+ 1218 00f1 00       		.byte	0
+ 1219 00f2 00       		.byte	0
+ 1220 00f3 10       		.uleb128 0x10
+ 1221 00f4 2E       		.uleb128 0x2e
+ 1222 00f5 01       		.byte	0x1
+ 1223 00f6 3F       		.uleb128 0x3f
+ 1224 00f7 19       		.uleb128 0x19
+ 1225 00f8 03       		.uleb128 0x3
+ 1226 00f9 0E       		.uleb128 0xe
+ 1227 00fa 3A       		.uleb128 0x3a
+ 1228 00fb 0B       		.uleb128 0xb
+ 1229 00fc 3B       		.uleb128 0x3b
+ 1230 00fd 0B       		.uleb128 0xb
+ 1231 00fe 27       		.uleb128 0x27
+ 1232 00ff 19       		.uleb128 0x19
+ 1233 0100 11       		.uleb128 0x11
+ 1234 0101 01       		.uleb128 0x1
+ 1235 0102 12       		.uleb128 0x12
+ 1236 0103 06       		.uleb128 0x6
+ 1237 0104 40       		.uleb128 0x40
+ 1238 0105 18       		.uleb128 0x18
+ 1239 0106 9742     		.uleb128 0x2117
+ 1240 0108 19       		.uleb128 0x19
+ 1241 0109 01       		.uleb128 0x1
+ 1242 010a 13       		.uleb128 0x13
+ 1243 010b 00       		.byte	0
+ 1244 010c 00       		.byte	0
+ 1245 010d 11       		.uleb128 0x11
+ 1246 010e 34       		.uleb128 0x34
+ 1247 010f 00       		.byte	0
+ 1248 0110 03       		.uleb128 0x3
+ 1249 0111 0E       		.uleb128 0xe
+ 1250 0112 3A       		.uleb128 0x3a
+ 1251 0113 0B       		.uleb128 0xb
+ 1252 0114 3B       		.uleb128 0x3b
+ 1253 0115 0B       		.uleb128 0xb
+ 1254 0116 49       		.uleb128 0x49
+ 1255 0117 13       		.uleb128 0x13
+ 1256 0118 02       		.uleb128 0x2
+ 1257 0119 17       		.uleb128 0x17
+ 1258 011a 00       		.byte	0
+ 1259 011b 00       		.byte	0
+ 1260 011c 12       		.uleb128 0x12
+ 1261 011d 1D       		.uleb128 0x1d
+ 1262 011e 01       		.byte	0x1
+ 1263 011f 31       		.uleb128 0x31
+ 1264 0120 13       		.uleb128 0x13
+ 1265 0121 52       		.uleb128 0x52
+ 1266 0122 01       		.uleb128 0x1
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccQd5moA.s 			page 40
+
+
+ 1267 0123 55       		.uleb128 0x55
+ 1268 0124 17       		.uleb128 0x17
+ 1269 0125 58       		.uleb128 0x58
+ 1270 0126 0B       		.uleb128 0xb
+ 1271 0127 59       		.uleb128 0x59
+ 1272 0128 0B       		.uleb128 0xb
+ 1273 0129 01       		.uleb128 0x1
+ 1274 012a 13       		.uleb128 0x13
+ 1275 012b 00       		.byte	0
+ 1276 012c 00       		.byte	0
+ 1277 012d 13       		.uleb128 0x13
+ 1278 012e 05       		.uleb128 0x5
+ 1279 012f 00       		.byte	0
+ 1280 0130 31       		.uleb128 0x31
+ 1281 0131 13       		.uleb128 0x13
+ 1282 0132 1C       		.uleb128 0x1c
+ 1283 0133 0B       		.uleb128 0xb
+ 1284 0134 00       		.byte	0
+ 1285 0135 00       		.byte	0
+ 1286 0136 14       		.uleb128 0x14
+ 1287 0137 1D       		.uleb128 0x1d
+ 1288 0138 01       		.byte	0x1
+ 1289 0139 31       		.uleb128 0x31
+ 1290 013a 13       		.uleb128 0x13
+ 1291 013b 11       		.uleb128 0x11
+ 1292 013c 01       		.uleb128 0x1
+ 1293 013d 12       		.uleb128 0x12
+ 1294 013e 06       		.uleb128 0x6
+ 1295 013f 58       		.uleb128 0x58
+ 1296 0140 0B       		.uleb128 0xb
+ 1297 0141 59       		.uleb128 0x59
+ 1298 0142 0B       		.uleb128 0xb
+ 1299 0143 01       		.uleb128 0x1
+ 1300 0144 13       		.uleb128 0x13
+ 1301 0145 00       		.byte	0
+ 1302 0146 00       		.byte	0
+ 1303 0147 15       		.uleb128 0x15
+ 1304 0148 898201   		.uleb128 0x4109
+ 1305 014b 00       		.byte	0
+ 1306 014c 11       		.uleb128 0x11
+ 1307 014d 01       		.uleb128 0x1
+ 1308 014e 31       		.uleb128 0x31
+ 1309 014f 13       		.uleb128 0x13
+ 1310 0150 00       		.byte	0
+ 1311 0151 00       		.byte	0
+ 1312 0152 16       		.uleb128 0x16
+ 1313 0153 2E       		.uleb128 0x2e
+ 1314 0154 00       		.byte	0
+ 1315 0155 31       		.uleb128 0x31
+ 1316 0156 13       		.uleb128 0x13
+ 1317 0157 11       		.uleb128 0x11
+ 1318 0158 01       		.uleb128 0x1
+ 1319 0159 12       		.uleb128 0x12
+ 1320 015a 06       		.uleb128 0x6
+ 1321 015b 40       		.uleb128 0x40
+ 1322 015c 18       		.uleb128 0x18
+ 1323 015d 9742     		.uleb128 0x2117
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccQd5moA.s 			page 41
+
+
+ 1324 015f 19       		.uleb128 0x19
+ 1325 0160 00       		.byte	0
+ 1326 0161 00       		.byte	0
+ 1327 0162 17       		.uleb128 0x17
+ 1328 0163 2E       		.uleb128 0x2e
+ 1329 0164 01       		.byte	0x1
+ 1330 0165 3F       		.uleb128 0x3f
+ 1331 0166 19       		.uleb128 0x19
+ 1332 0167 03       		.uleb128 0x3
+ 1333 0168 0E       		.uleb128 0xe
+ 1334 0169 3A       		.uleb128 0x3a
+ 1335 016a 0B       		.uleb128 0xb
+ 1336 016b 3B       		.uleb128 0x3b
+ 1337 016c 05       		.uleb128 0x5
+ 1338 016d 27       		.uleb128 0x27
+ 1339 016e 19       		.uleb128 0x19
+ 1340 016f 49       		.uleb128 0x49
+ 1341 0170 13       		.uleb128 0x13
+ 1342 0171 11       		.uleb128 0x11
+ 1343 0172 01       		.uleb128 0x1
+ 1344 0173 12       		.uleb128 0x12
+ 1345 0174 06       		.uleb128 0x6
+ 1346 0175 40       		.uleb128 0x40
+ 1347 0176 18       		.uleb128 0x18
+ 1348 0177 9742     		.uleb128 0x2117
+ 1349 0179 19       		.uleb128 0x19
+ 1350 017a 01       		.uleb128 0x1
+ 1351 017b 13       		.uleb128 0x13
+ 1352 017c 00       		.byte	0
+ 1353 017d 00       		.byte	0
+ 1354 017e 18       		.uleb128 0x18
+ 1355 017f 34       		.uleb128 0x34
+ 1356 0180 00       		.byte	0
+ 1357 0181 03       		.uleb128 0x3
+ 1358 0182 0E       		.uleb128 0xe
+ 1359 0183 3A       		.uleb128 0x3a
+ 1360 0184 0B       		.uleb128 0xb
+ 1361 0185 3B       		.uleb128 0x3b
+ 1362 0186 05       		.uleb128 0x5
+ 1363 0187 49       		.uleb128 0x49
+ 1364 0188 13       		.uleb128 0x13
+ 1365 0189 02       		.uleb128 0x2
+ 1366 018a 18       		.uleb128 0x18
+ 1367 018b 00       		.byte	0
+ 1368 018c 00       		.byte	0
+ 1369 018d 19       		.uleb128 0x19
+ 1370 018e 05       		.uleb128 0x5
+ 1371 018f 00       		.byte	0
+ 1372 0190 03       		.uleb128 0x3
+ 1373 0191 0E       		.uleb128 0xe
+ 1374 0192 3A       		.uleb128 0x3a
+ 1375 0193 0B       		.uleb128 0xb
+ 1376 0194 3B       		.uleb128 0x3b
+ 1377 0195 05       		.uleb128 0x5
+ 1378 0196 49       		.uleb128 0x49
+ 1379 0197 13       		.uleb128 0x13
+ 1380 0198 02       		.uleb128 0x2
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccQd5moA.s 			page 42
+
+
+ 1381 0199 18       		.uleb128 0x18
+ 1382 019a 00       		.byte	0
+ 1383 019b 00       		.byte	0
+ 1384 019c 1A       		.uleb128 0x1a
+ 1385 019d 34       		.uleb128 0x34
+ 1386 019e 00       		.byte	0
+ 1387 019f 03       		.uleb128 0x3
+ 1388 01a0 0E       		.uleb128 0xe
+ 1389 01a1 3A       		.uleb128 0x3a
+ 1390 01a2 0B       		.uleb128 0xb
+ 1391 01a3 3B       		.uleb128 0x3b
+ 1392 01a4 0B       		.uleb128 0xb
+ 1393 01a5 49       		.uleb128 0x49
+ 1394 01a6 13       		.uleb128 0x13
+ 1395 01a7 3F       		.uleb128 0x3f
+ 1396 01a8 19       		.uleb128 0x19
+ 1397 01a9 02       		.uleb128 0x2
+ 1398 01aa 18       		.uleb128 0x18
+ 1399 01ab 00       		.byte	0
+ 1400 01ac 00       		.byte	0
+ 1401 01ad 1B       		.uleb128 0x1b
+ 1402 01ae 2E       		.uleb128 0x2e
+ 1403 01af 00       		.byte	0
+ 1404 01b0 3F       		.uleb128 0x3f
+ 1405 01b1 19       		.uleb128 0x19
+ 1406 01b2 03       		.uleb128 0x3
+ 1407 01b3 0E       		.uleb128 0xe
+ 1408 01b4 3A       		.uleb128 0x3a
+ 1409 01b5 0B       		.uleb128 0xb
+ 1410 01b6 3B       		.uleb128 0x3b
+ 1411 01b7 0B       		.uleb128 0xb
+ 1412 01b8 27       		.uleb128 0x27
+ 1413 01b9 19       		.uleb128 0x19
+ 1414 01ba 49       		.uleb128 0x49
+ 1415 01bb 13       		.uleb128 0x13
+ 1416 01bc 3C       		.uleb128 0x3c
+ 1417 01bd 19       		.uleb128 0x19
+ 1418 01be 00       		.byte	0
+ 1419 01bf 00       		.byte	0
+ 1420 01c0 1C       		.uleb128 0x1c
+ 1421 01c1 2E       		.uleb128 0x2e
+ 1422 01c2 01       		.byte	0x1
+ 1423 01c3 3F       		.uleb128 0x3f
+ 1424 01c4 19       		.uleb128 0x19
+ 1425 01c5 03       		.uleb128 0x3
+ 1426 01c6 0E       		.uleb128 0xe
+ 1427 01c7 3A       		.uleb128 0x3a
+ 1428 01c8 0B       		.uleb128 0xb
+ 1429 01c9 3B       		.uleb128 0x3b
+ 1430 01ca 0B       		.uleb128 0xb
+ 1431 01cb 27       		.uleb128 0x27
+ 1432 01cc 19       		.uleb128 0x19
+ 1433 01cd 3C       		.uleb128 0x3c
+ 1434 01ce 19       		.uleb128 0x19
+ 1435 01cf 00       		.byte	0
+ 1436 01d0 00       		.byte	0
+ 1437 01d1 1D       		.uleb128 0x1d
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccQd5moA.s 			page 43
+
+
+ 1438 01d2 05       		.uleb128 0x5
+ 1439 01d3 00       		.byte	0
+ 1440 01d4 49       		.uleb128 0x49
+ 1441 01d5 13       		.uleb128 0x13
+ 1442 01d6 00       		.byte	0
+ 1443 01d7 00       		.byte	0
+ 1444 01d8 00       		.byte	0
+ 1445              		.section	.debug_loc,"",%progbits
+ 1446              	.Ldebug_loc0:
+ 1447              	.LLST0:
+ 1448 0000 08000000 		.4byte	.LVL1
+ 1449 0004 0C000000 		.4byte	.LVL2
+ 1450 0008 0600     		.2byte	0x6
+ 1451 000a 72       		.byte	0x72
+ 1452 000b 00       		.sleb128 0
+ 1453 000c 09       		.byte	0x9
+ 1454 000d C0       		.byte	0xc0
+ 1455 000e 1A       		.byte	0x1a
+ 1456 000f 9F       		.byte	0x9f
+ 1457 0010 00000000 		.4byte	0
+ 1458 0014 00000000 		.4byte	0
+ 1459              	.LLST1:
+ 1460 0018 34000000 		.4byte	.LVL7
+ 1461 001c 3F000000 		.4byte	.LVL8-1
+ 1462 0020 0100     		.2byte	0x1
+ 1463 0022 50       		.byte	0x50
+ 1464 0023 00000000 		.4byte	0
+ 1465 0027 00000000 		.4byte	0
+ 1466              		.section	.debug_aranges,"",%progbits
+ 1467 0000 94000000 		.4byte	0x94
+ 1468 0004 0200     		.2byte	0x2
+ 1469 0006 00000000 		.4byte	.Ldebug_info0
+ 1470 000a 04       		.byte	0x4
+ 1471 000b 00       		.byte	0
+ 1472 000c 0000     		.2byte	0
+ 1473 000e 0000     		.2byte	0
+ 1474 0010 00000000 		.4byte	.LFB2
+ 1475 0014 10000000 		.4byte	.LFE2-.LFB2
+ 1476 0018 00000000 		.4byte	.LFB3
+ 1477 001c 10000000 		.4byte	.LFE3-.LFB3
+ 1478 0020 00000000 		.4byte	.LFB4
+ 1479 0024 0C000000 		.4byte	.LFE4-.LFB4
+ 1480 0028 00000000 		.4byte	.LFB5
+ 1481 002c 14000000 		.4byte	.LFE5-.LFB5
+ 1482 0030 00000000 		.4byte	.LFB6
+ 1483 0034 18000000 		.4byte	.LFE6-.LFB6
+ 1484 0038 00000000 		.4byte	.LFB1
+ 1485 003c 60000000 		.4byte	.LFE1-.LFB1
+ 1486 0040 00000000 		.4byte	.LFB0
+ 1487 0044 1C000000 		.4byte	.LFE0-.LFB0
+ 1488 0048 00000000 		.4byte	.LFB7
+ 1489 004c 0C000000 		.4byte	.LFE7-.LFB7
+ 1490 0050 00000000 		.4byte	.LFB8
+ 1491 0054 0C000000 		.4byte	.LFE8-.LFB8
+ 1492 0058 00000000 		.4byte	.LFB9
+ 1493 005c 0C000000 		.4byte	.LFE9-.LFB9
+ 1494 0060 00000000 		.4byte	.LFB10
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccQd5moA.s 			page 44
+
+
+ 1495 0064 0C000000 		.4byte	.LFE10-.LFB10
+ 1496 0068 00000000 		.4byte	.LFB11
+ 1497 006c 0C000000 		.4byte	.LFE11-.LFB11
+ 1498 0070 00000000 		.4byte	.LFB12
+ 1499 0074 0C000000 		.4byte	.LFE12-.LFB12
+ 1500 0078 00000000 		.4byte	.LFB13
+ 1501 007c 0C000000 		.4byte	.LFE13-.LFB13
+ 1502 0080 00000000 		.4byte	.LFB14
+ 1503 0084 0C000000 		.4byte	.LFE14-.LFB14
+ 1504 0088 00000000 		.4byte	.LFB15
+ 1505 008c 0C000000 		.4byte	.LFE15-.LFB15
+ 1506 0090 00000000 		.4byte	0
+ 1507 0094 00000000 		.4byte	0
+ 1508              		.section	.debug_ranges,"",%progbits
+ 1509              	.Ldebug_ranges0:
+ 1510 0000 18000000 		.4byte	.LBB18
+ 1511 0004 1A000000 		.4byte	.LBE18
+ 1512 0008 1C000000 		.4byte	.LBB21
+ 1513 000c 20000000 		.4byte	.LBE21
+ 1514 0010 00000000 		.4byte	0
+ 1515 0014 00000000 		.4byte	0
+ 1516 0018 20000000 		.4byte	.LBB22
+ 1517 001c 22000000 		.4byte	.LBE22
+ 1518 0020 22000000 		.4byte	.LBB25
+ 1519 0024 24000000 		.4byte	.LBE25
+ 1520 0028 00000000 		.4byte	0
+ 1521 002c 00000000 		.4byte	0
+ 1522 0030 00000000 		.4byte	.LFB2
+ 1523 0034 10000000 		.4byte	.LFE2
+ 1524 0038 00000000 		.4byte	.LFB3
+ 1525 003c 10000000 		.4byte	.LFE3
+ 1526 0040 00000000 		.4byte	.LFB4
+ 1527 0044 0C000000 		.4byte	.LFE4
+ 1528 0048 00000000 		.4byte	.LFB5
+ 1529 004c 14000000 		.4byte	.LFE5
+ 1530 0050 00000000 		.4byte	.LFB6
+ 1531 0054 18000000 		.4byte	.LFE6
+ 1532 0058 00000000 		.4byte	.LFB1
+ 1533 005c 60000000 		.4byte	.LFE1
+ 1534 0060 00000000 		.4byte	.LFB0
+ 1535 0064 1C000000 		.4byte	.LFE0
+ 1536 0068 00000000 		.4byte	.LFB7
+ 1537 006c 0C000000 		.4byte	.LFE7
+ 1538 0070 00000000 		.4byte	.LFB8
+ 1539 0074 0C000000 		.4byte	.LFE8
+ 1540 0078 00000000 		.4byte	.LFB9
+ 1541 007c 0C000000 		.4byte	.LFE9
+ 1542 0080 00000000 		.4byte	.LFB10
+ 1543 0084 0C000000 		.4byte	.LFE10
+ 1544 0088 00000000 		.4byte	.LFB11
+ 1545 008c 0C000000 		.4byte	.LFE11
+ 1546 0090 00000000 		.4byte	.LFB12
+ 1547 0094 0C000000 		.4byte	.LFE12
+ 1548 0098 00000000 		.4byte	.LFB13
+ 1549 009c 0C000000 		.4byte	.LFE13
+ 1550 00a0 00000000 		.4byte	.LFB14
+ 1551 00a4 0C000000 		.4byte	.LFE14
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccQd5moA.s 			page 45
+
+
+ 1552 00a8 00000000 		.4byte	.LFB15
+ 1553 00ac 0C000000 		.4byte	.LFE15
+ 1554 00b0 00000000 		.4byte	0
+ 1555 00b4 00000000 		.4byte	0
+ 1556              		.section	.debug_line,"",%progbits
+ 1557              	.Ldebug_line0:
+ 1558 0000 F0010000 		.section	.debug_str,"MS",%progbits,1
+ 1558      02005D00 
+ 1558      00000201 
+ 1558      FB0E0D00 
+ 1558      01010101 
+ 1559              	.LASF33:
+ 1560 0000 50574D5F 		.ascii	"PWM_Right_LED_Green_WriteControlRegister\000"
+ 1560      52696768 
+ 1560      745F4C45 
+ 1560      445F4772 
+ 1560      65656E5F 
+ 1561              	.LASF32:
+ 1562 0029 72657375 		.ascii	"result\000"
+ 1562      6C7400
+ 1563              	.LASF23:
+ 1564 0030 50574D5F 		.ascii	"PWM_Right_LED_Green_SetInterruptMode\000"
+ 1564      52696768 
+ 1564      745F4C45 
+ 1564      445F4772 
+ 1564      65656E5F 
+ 1565              	.LASF35:
+ 1566 0055 50574D5F 		.ascii	"PWM_Right_LED_Green_ReadCompare\000"
+ 1566      52696768 
+ 1566      745F4C45 
+ 1566      445F4772 
+ 1566      65656E5F 
+ 1567              	.LASF20:
+ 1568 0075 70657269 		.ascii	"period\000"
+ 1568      6F6400
+ 1569              	.LASF3:
+ 1570 007c 73686F72 		.ascii	"short unsigned int\000"
+ 1570      7420756E 
+ 1570      7369676E 
+ 1570      65642069 
+ 1570      6E7400
+ 1571              	.LASF10:
+ 1572 008f 646F7562 		.ascii	"double\000"
+ 1572      6C6500
+ 1573              	.LASF27:
+ 1574 0096 50574D5F 		.ascii	"PWM_Right_LED_Green_ClearFIFO\000"
+ 1574      52696768 
+ 1574      745F4C45 
+ 1574      445F4772 
+ 1574      65656E5F 
+ 1575              	.LASF43:
+ 1576 00b4 50574D5F 		.ascii	"PWM_Right_LED_Green_initVar\000"
+ 1576      52696768 
+ 1576      745F4C45 
+ 1576      445F4772 
+ 1576      65656E5F 
+ 1577              	.LASF36:
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccQd5moA.s 			page 46
+
+
+ 1578 00d0 50574D5F 		.ascii	"PWM_Right_LED_Green_ReadPeriod\000"
+ 1578      52696768 
+ 1578      745F4C45 
+ 1578      445F4772 
+ 1578      65656E5F 
+ 1579              	.LASF38:
+ 1580 00ef 474E5520 		.ascii	"GNU C 4.8.4 20140526 (release) [ARM/embedded-4_8-br"
+ 1580      4320342E 
+ 1580      382E3420 
+ 1580      32303134 
+ 1580      30353236 
+ 1581 0122 616E6368 		.ascii	"anch revision 211358] -mcpu=cortex-m0 -mthumb -g -O"
+ 1581      20726576 
+ 1581      6973696F 
+ 1581      6E203231 
+ 1581      31333538 
+ 1582 0155 73202D66 		.ascii	"s -ffunction-sections\000"
+ 1582      66756E63 
+ 1582      74696F6E 
+ 1582      2D736563 
+ 1582      74696F6E 
+ 1583              	.LASF9:
+ 1584 016b 666C6F61 		.ascii	"float\000"
+ 1584      7400
+ 1585              	.LASF19:
+ 1586 0171 636F756E 		.ascii	"counter\000"
+ 1586      74657200 
+ 1587              	.LASF15:
+ 1588 0179 50574D5F 		.ascii	"PWM_Right_LED_Green_ReadCapture\000"
+ 1588      52696768 
+ 1588      745F4C45 
+ 1588      445F4772 
+ 1588      65656E5F 
+ 1589              	.LASF31:
+ 1590 0199 50574D5F 		.ascii	"PWM_Right_LED_Green_Start\000"
+ 1590      52696768 
+ 1590      745F4C45 
+ 1590      445F4772 
+ 1590      65656E5F 
+ 1591              	.LASF13:
+ 1592 01b3 72656738 		.ascii	"reg8\000"
+ 1592      00
+ 1593              	.LASF5:
+ 1594 01b8 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1594      20756E73 
+ 1594      69676E65 
+ 1594      6420696E 
+ 1594      7400
+ 1595              	.LASF12:
+ 1596 01ca 75696E74 		.ascii	"uint8\000"
+ 1596      3800
+ 1597              	.LASF42:
+ 1598 01d0 636F6E74 		.ascii	"control\000"
+ 1598      726F6C00 
+ 1599              	.LASF28:
+ 1600 01d8 50574D5F 		.ascii	"PWM_Right_LED_Green_Init\000"
+ 1600      52696768 
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccQd5moA.s 			page 47
+
+
+ 1600      745F4C45 
+ 1600      445F4772 
+ 1600      65656E5F 
+ 1601              	.LASF41:
+ 1602 01f1 50574D5F 		.ascii	"PWM_Right_LED_Green_ReadControlRegister\000"
+ 1602      52696768 
+ 1602      745F4C45 
+ 1602      445F4772 
+ 1602      65656E5F 
+ 1603              	.LASF1:
+ 1604 0219 756E7369 		.ascii	"unsigned char\000"
+ 1604      676E6564 
+ 1604      20636861 
+ 1604      7200
+ 1605              	.LASF25:
+ 1606 0227 50574D5F 		.ascii	"PWM_Right_LED_Green_Enable\000"
+ 1606      52696768 
+ 1606      745F4C45 
+ 1606      445F4772 
+ 1606      65656E5F 
+ 1607              	.LASF30:
+ 1608 0242 50574D5F 		.ascii	"PWM_Right_LED_Green_interruptState\000"
+ 1608      52696768 
+ 1608      745F4C45 
+ 1608      445F4772 
+ 1608      65656E5F 
+ 1609              	.LASF34:
+ 1610 0265 50574D5F 		.ascii	"PWM_Right_LED_Green_ReadCounter\000"
+ 1610      52696768 
+ 1610      745F4C45 
+ 1610      445F4772 
+ 1610      65656E5F 
+ 1611              	.LASF17:
+ 1612 0285 50574D5F 		.ascii	"PWM_Right_LED_Green_WriteCounter\000"
+ 1612      52696768 
+ 1612      745F4C45 
+ 1612      445F4772 
+ 1612      65656E5F 
+ 1613              	.LASF37:
+ 1614 02a6 4379456E 		.ascii	"CyEnterCriticalSection\000"
+ 1614      74657243 
+ 1614      72697469 
+ 1614      63616C53 
+ 1614      65637469 
+ 1615              	.LASF8:
+ 1616 02bd 756E7369 		.ascii	"unsigned int\000"
+ 1616      676E6564 
+ 1616      20696E74 
+ 1616      00
+ 1617              	.LASF16:
+ 1618 02ca 50574D5F 		.ascii	"PWM_Right_LED_Green_ReadStatusRegister\000"
+ 1618      52696768 
+ 1618      745F4C45 
+ 1618      445F4772 
+ 1618      65656E5F 
+ 1619              	.LASF7:
+ 1620 02f1 6C6F6E67 		.ascii	"long long unsigned int\000"
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccQd5moA.s 			page 48
+
+
+ 1620      206C6F6E 
+ 1620      6720756E 
+ 1620      7369676E 
+ 1620      65642069 
+ 1621              	.LASF39:
+ 1622 0308 2E5C4765 		.ascii	".\\Generated_Source\\PSoC4\\PWM_Right_LED_Green.c\000"
+ 1622      6E657261 
+ 1622      7465645F 
+ 1622      536F7572 
+ 1622      63655C50 
+ 1623              	.LASF26:
+ 1624 0337 50574D5F 		.ascii	"PWM_Right_LED_Green_Stop\000"
+ 1624      52696768 
+ 1624      745F4C45 
+ 1624      445F4772 
+ 1624      65656E5F 
+ 1625              	.LASF29:
+ 1626 0350 6374726C 		.ascii	"ctrl\000"
+ 1626      00
+ 1627              	.LASF14:
+ 1628 0355 73697A65 		.ascii	"sizetype\000"
+ 1628      74797065 
+ 1628      00
+ 1629              	.LASF6:
+ 1630 035e 6C6F6E67 		.ascii	"long long int\000"
+ 1630      206C6F6E 
+ 1630      6720696E 
+ 1630      7400
+ 1631              	.LASF24:
+ 1632 036c 696E7465 		.ascii	"interruptMode\000"
+ 1632      72727570 
+ 1632      744D6F64 
+ 1632      6500
+ 1633              	.LASF40:
+ 1634 037a 433A5C55 		.ascii	"C:\\Users\\Admin\\Desktop\\Volunteer Badge\\Volunte"
+ 1634      73657273 
+ 1634      5C41646D 
+ 1634      696E5C44 
+ 1634      65736B74 
+ 1635 03a8 65725F42 		.ascii	"er_Badge.cydsn\000"
+ 1635      61646765 
+ 1635      2E637964 
+ 1635      736E00
+ 1636              	.LASF18:
+ 1637 03b7 50574D5F 		.ascii	"PWM_Right_LED_Green_WritePeriod\000"
+ 1637      52696768 
+ 1637      745F4C45 
+ 1637      445F4772 
+ 1637      65656E5F 
+ 1638              	.LASF2:
+ 1639 03d7 73686F72 		.ascii	"short int\000"
+ 1639      7420696E 
+ 1639      7400
+ 1640              	.LASF44:
+ 1641 03e1 43794578 		.ascii	"CyExitCriticalSection\000"
+ 1641      69744372 
+ 1641      69746963 
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccQd5moA.s 			page 49
+
+
+ 1641      616C5365 
+ 1641      6374696F 
+ 1642              	.LASF4:
+ 1643 03f7 6C6F6E67 		.ascii	"long int\000"
+ 1643      20696E74 
+ 1643      00
+ 1644              	.LASF11:
+ 1645 0400 63686172 		.ascii	"char\000"
+ 1645      00
+ 1646              	.LASF0:
+ 1647 0405 7369676E 		.ascii	"signed char\000"
+ 1647      65642063 
+ 1647      68617200 
+ 1648              	.LASF22:
+ 1649 0411 636F6D70 		.ascii	"compare\000"
+ 1649      61726500 
+ 1650              	.LASF21:
+ 1651 0419 50574D5F 		.ascii	"PWM_Right_LED_Green_WriteCompare\000"
+ 1651      52696768 
+ 1651      745F4C45 
+ 1651      445F4772 
+ 1651      65656E5F 
+ 1652              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.8.4 20140526 (release) [ARM/embedded-4_8-br

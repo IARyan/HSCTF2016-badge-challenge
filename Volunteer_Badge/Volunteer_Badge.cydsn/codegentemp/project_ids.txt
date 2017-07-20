@@ -1,0 +1,5 @@
+C:\Users\Admin\Desktop\Volunteer Badge\Volunteer_Badge.cydsn\Volunteer_Badge.cyprj|a384d5f7-da48-4581-a30b-91589ae9fb80
+C:\Program Files\Cypress\PSoC Creator\3.1\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|781cfd9f-962b-4b54-b59a-73fff3756d1b
+C:\Program Files\Cypress\PSoC Creator\3.1\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|d95f8a35-b4db-4599-94b0-9d8b452514a9
+C:\Program Files\Cypress\PSoC Creator\3.1\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|c2103a08-d3be-4cfc-b74f-f65dda1f67dc
+C:\Program Files\Cypress\PSoC Creator\3.1\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|1c66ce3a-2b0f-45a1-9b75-15304806afb1

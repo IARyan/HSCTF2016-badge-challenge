@@ -1,0 +1,1170 @@
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc7kvJpg.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 4
+  10              		.eabi_attribute 34, 0
+  11              		.eabi_attribute 18, 4
+  12              		.code	16
+  13              		.file	"PWM_Left_LED_Blue_PM.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.PWM_Left_LED_Blue_SaveConfig,"ax",%progbits
+  18              		.align	1
+  19              		.global	PWM_Left_LED_Blue_SaveConfig
+  20              		.code	16
+  21              		.thumb_func
+  22              		.type	PWM_Left_LED_Blue_SaveConfig, %function
+  23              	PWM_Left_LED_Blue_SaveConfig:
+  24              	.LFB0:
+  25              		.file 1 ".\\Generated_Source\\PSoC4\\PWM_Left_LED_Blue_PM.c"
+   1:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** /*******************************************************************************
+   2:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** * File Name: PWM_Left_LED_Blue_PM.c
+   3:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** * Version 3.10
+   4:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** *
+   5:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** * Description:
+   6:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** *  This file provides the power management source code to API for the
+   7:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** *  PWM.
+   8:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** *
+   9:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** * Note:
+  10:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** *
+  11:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** ********************************************************************************
+  12:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** * Copyright 2008-2014, Cypress Semiconductor Corporation.  All rights reserved.
+  13:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** * You may use this file only in accordance with the license, terms, conditions,
+  14:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** * disclaimers, and limitations in the end user license agreement accompanying
+  15:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** * the software package with which this file was provided.
+  16:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** *******************************************************************************/
+  17:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** 
+  18:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** #include "PWM_Left_LED_Blue.h"
+  19:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** 
+  20:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** static PWM_Left_LED_Blue_backupStruct PWM_Left_LED_Blue_backup;
+  21:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** 
+  22:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** 
+  23:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** /*******************************************************************************
+  24:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** * Function Name: PWM_Left_LED_Blue_SaveConfig
+  25:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** ********************************************************************************
+  26:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** *
+  27:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** * Summary:
+  28:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** *  Saves the current user configuration of the component.
+  29:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** *
+  30:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** * Parameters:
+  31:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** *  None
+  32:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** *
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc7kvJpg.s 			page 2
+
+
+  33:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** * Return:
+  34:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** *  None
+  35:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** *
+  36:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** * Global variables:
+  37:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** *  PWM_Left_LED_Blue_backup:  Variables of this global structure are modified to
+  38:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** *  store the values of non retention configuration registers when Sleep() API is
+  39:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** *  called.
+  40:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** *
+  41:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** *******************************************************************************/
+  42:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** void PWM_Left_LED_Blue_SaveConfig(void) 
+  43:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** {
+  26              		.loc 1 43 0
+  27              		.cfi_startproc
+  28 0000 10B5     		push	{r4, lr}
+  29              		.cfi_def_cfa_offset 8
+  30              		.cfi_offset 4, -8
+  31              		.cfi_offset 14, -4
+  44:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** 
+  45:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c ****     #if(!PWM_Left_LED_Blue_UsingFixedFunction)
+  46:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c ****         #if(!PWM_Left_LED_Blue_PWMModeIsCenterAligned)
+  47:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c ****             PWM_Left_LED_Blue_backup.PWMPeriod = PWM_Left_LED_Blue_ReadPeriod();
+  32              		.loc 1 47 0
+  33 0002 FFF7FEFF 		bl	PWM_Left_LED_Blue_ReadPeriod
+  34              	.LVL0:
+  35 0006 064C     		ldr	r4, .L2
+  48:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c ****         #endif /* (!PWM_Left_LED_Blue_PWMModeIsCenterAligned) */
+  49:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c ****         PWM_Left_LED_Blue_backup.PWMUdb = PWM_Left_LED_Blue_ReadCounter();
+  50:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c ****         #if (PWM_Left_LED_Blue_UseStatus)
+  51:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c ****             PWM_Left_LED_Blue_backup.InterruptMaskValue = PWM_Left_LED_Blue_STATUS_MASK;
+  52:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c ****         #endif /* (PWM_Left_LED_Blue_UseStatus) */
+  53:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** 
+  54:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c ****         #if(PWM_Left_LED_Blue_DeadBandMode == PWM_Left_LED_Blue__B_PWM__DBM_256_CLOCKS || \
+  55:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c ****             PWM_Left_LED_Blue_DeadBandMode == PWM_Left_LED_Blue__B_PWM__DBM_2_4_CLOCKS)
+  56:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c ****             PWM_Left_LED_Blue_backup.PWMdeadBandValue = PWM_Left_LED_Blue_ReadDeadTime();
+  57:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c ****         #endif /*  deadband count is either 2-4 clocks or 256 clocks */
+  58:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** 
+  59:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c ****         #if(PWM_Left_LED_Blue_KillModeMinTime)
+  60:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c ****              PWM_Left_LED_Blue_backup.PWMKillCounterPeriod = PWM_Left_LED_Blue_ReadKillTime();
+  61:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c ****         #endif /* (PWM_Left_LED_Blue_KillModeMinTime) */
+  62:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** 
+  63:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c ****         #if(PWM_Left_LED_Blue_UseControl)
+  64:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c ****             PWM_Left_LED_Blue_backup.PWMControlRegister = PWM_Left_LED_Blue_ReadControlRegister();
+  65:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c ****         #endif /* (PWM_Left_LED_Blue_UseControl) */
+  66:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c ****     #endif  /* (!PWM_Left_LED_Blue_UsingFixedFunction) */
+  67:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** }
+  36              		.loc 1 67 0
+  37              		@ sp needed
+  47:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c ****             PWM_Left_LED_Blue_backup.PWMPeriod = PWM_Left_LED_Blue_ReadPeriod();
+  38              		.loc 1 47 0
+  39 0008 A070     		strb	r0, [r4, #2]
+  49:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c ****         PWM_Left_LED_Blue_backup.PWMUdb = PWM_Left_LED_Blue_ReadCounter();
+  40              		.loc 1 49 0
+  41 000a FFF7FEFF 		bl	PWM_Left_LED_Blue_ReadCounter
+  42              	.LVL1:
+  51:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c ****             PWM_Left_LED_Blue_backup.InterruptMaskValue = PWM_Left_LED_Blue_STATUS_MASK;
+  43              		.loc 1 51 0
+  44 000e 054B     		ldr	r3, .L2+4
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc7kvJpg.s 			page 3
+
+
+  49:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c ****         PWM_Left_LED_Blue_backup.PWMUdb = PWM_Left_LED_Blue_ReadCounter();
+  45              		.loc 1 49 0
+  46 0010 6070     		strb	r0, [r4, #1]
+  51:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c ****             PWM_Left_LED_Blue_backup.InterruptMaskValue = PWM_Left_LED_Blue_STATUS_MASK;
+  47              		.loc 1 51 0
+  48 0012 1B78     		ldrb	r3, [r3]
+  49 0014 E370     		strb	r3, [r4, #3]
+  64:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c ****             PWM_Left_LED_Blue_backup.PWMControlRegister = PWM_Left_LED_Blue_ReadControlRegister();
+  50              		.loc 1 64 0
+  51 0016 FFF7FEFF 		bl	PWM_Left_LED_Blue_ReadControlRegister
+  52              	.LVL2:
+  53 001a 2071     		strb	r0, [r4, #4]
+  54              		.loc 1 67 0
+  55 001c 10BD     		pop	{r4, pc}
+  56              	.L3:
+  57 001e C046     		.align	2
+  58              	.L2:
+  59 0020 00000000 		.word	.LANCHOR0
+  60 0024 83000F40 		.word	1074724995
+  61              		.cfi_endproc
+  62              	.LFE0:
+  63              		.size	PWM_Left_LED_Blue_SaveConfig, .-PWM_Left_LED_Blue_SaveConfig
+  64              		.section	.text.PWM_Left_LED_Blue_RestoreConfig,"ax",%progbits
+  65              		.align	1
+  66              		.global	PWM_Left_LED_Blue_RestoreConfig
+  67              		.code	16
+  68              		.thumb_func
+  69              		.type	PWM_Left_LED_Blue_RestoreConfig, %function
+  70              	PWM_Left_LED_Blue_RestoreConfig:
+  71              	.LFB1:
+  68:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** 
+  69:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** 
+  70:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** /*******************************************************************************
+  71:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** * Function Name: PWM_Left_LED_Blue_RestoreConfig
+  72:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** ********************************************************************************
+  73:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** *
+  74:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** * Summary:
+  75:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** *  Restores the current user configuration of the component.
+  76:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** *
+  77:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** * Parameters:
+  78:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** *  None
+  79:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** *
+  80:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** * Return:
+  81:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** *  None
+  82:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** *
+  83:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** * Global variables:
+  84:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** *  PWM_Left_LED_Blue_backup:  Variables of this global structure are used to
+  85:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** *  restore the values of non retention registers on wakeup from sleep mode.
+  86:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** *
+  87:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** *******************************************************************************/
+  88:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** void PWM_Left_LED_Blue_RestoreConfig(void) 
+  89:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** {
+  72              		.loc 1 89 0
+  73              		.cfi_startproc
+  74 0000 10B5     		push	{r4, lr}
+  75              		.cfi_def_cfa_offset 8
+  76              		.cfi_offset 4, -8
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc7kvJpg.s 			page 4
+
+
+  77              		.cfi_offset 14, -4
+  90:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c ****         #if(!PWM_Left_LED_Blue_UsingFixedFunction)
+  91:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c ****             #if(!PWM_Left_LED_Blue_PWMModeIsCenterAligned)
+  92:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c ****                 PWM_Left_LED_Blue_WritePeriod(PWM_Left_LED_Blue_backup.PWMPeriod);
+  78              		.loc 1 92 0
+  79 0002 074C     		ldr	r4, .L5
+  93:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c ****             #endif /* (!PWM_Left_LED_Blue_PWMModeIsCenterAligned) */
+  94:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** 
+  95:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c ****             PWM_Left_LED_Blue_WriteCounter(PWM_Left_LED_Blue_backup.PWMUdb);
+  96:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** 
+  97:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c ****             #if (PWM_Left_LED_Blue_UseStatus)
+  98:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c ****                 PWM_Left_LED_Blue_STATUS_MASK = PWM_Left_LED_Blue_backup.InterruptMaskValue;
+  99:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c ****             #endif /* (PWM_Left_LED_Blue_UseStatus) */
+ 100:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** 
+ 101:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c ****             #if(PWM_Left_LED_Blue_DeadBandMode == PWM_Left_LED_Blue__B_PWM__DBM_256_CLOCKS || \
+ 102:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c ****                 PWM_Left_LED_Blue_DeadBandMode == PWM_Left_LED_Blue__B_PWM__DBM_2_4_CLOCKS)
+ 103:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c ****                 PWM_Left_LED_Blue_WriteDeadTime(PWM_Left_LED_Blue_backup.PWMdeadBandValue);
+ 104:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c ****             #endif /* deadband count is either 2-4 clocks or 256 clocks */
+ 105:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** 
+ 106:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c ****             #if(PWM_Left_LED_Blue_KillModeMinTime)
+ 107:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c ****                 PWM_Left_LED_Blue_WriteKillTime(PWM_Left_LED_Blue_backup.PWMKillCounterPeriod);
+ 108:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c ****             #endif /* (PWM_Left_LED_Blue_KillModeMinTime) */
+ 109:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** 
+ 110:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c ****             #if(PWM_Left_LED_Blue_UseControl)
+ 111:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c ****                 PWM_Left_LED_Blue_WriteControlRegister(PWM_Left_LED_Blue_backup.PWMControlRegister)
+ 112:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c ****             #endif /* (PWM_Left_LED_Blue_UseControl) */
+ 113:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c ****         #endif  /* (!PWM_Left_LED_Blue_UsingFixedFunction) */
+ 114:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c ****     }
+  80              		.loc 1 114 0
+  81              		@ sp needed
+  92:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c ****                 PWM_Left_LED_Blue_WritePeriod(PWM_Left_LED_Blue_backup.PWMPeriod);
+  82              		.loc 1 92 0
+  83 0004 A078     		ldrb	r0, [r4, #2]
+  84 0006 FFF7FEFF 		bl	PWM_Left_LED_Blue_WritePeriod
+  85              	.LVL3:
+  95:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c ****             PWM_Left_LED_Blue_WriteCounter(PWM_Left_LED_Blue_backup.PWMUdb);
+  86              		.loc 1 95 0
+  87 000a 6078     		ldrb	r0, [r4, #1]
+  88 000c FFF7FEFF 		bl	PWM_Left_LED_Blue_WriteCounter
+  89              	.LVL4:
+  98:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c ****                 PWM_Left_LED_Blue_STATUS_MASK = PWM_Left_LED_Blue_backup.InterruptMaskValue;
+  90              		.loc 1 98 0
+  91 0010 E278     		ldrb	r2, [r4, #3]
+  92 0012 044B     		ldr	r3, .L5+4
+  93 0014 1A70     		strb	r2, [r3]
+ 111:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c ****                 PWM_Left_LED_Blue_WriteControlRegister(PWM_Left_LED_Blue_backup.PWMControlRegister)
+  94              		.loc 1 111 0
+  95 0016 2079     		ldrb	r0, [r4, #4]
+  96 0018 FFF7FEFF 		bl	PWM_Left_LED_Blue_WriteControlRegister
+  97              	.LVL5:
+  98              		.loc 1 114 0
+  99 001c 10BD     		pop	{r4, pc}
+ 100              	.L6:
+ 101 001e C046     		.align	2
+ 102              	.L5:
+ 103 0020 00000000 		.word	.LANCHOR0
+ 104 0024 83000F40 		.word	1074724995
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc7kvJpg.s 			page 5
+
+
+ 105              		.cfi_endproc
+ 106              	.LFE1:
+ 107              		.size	PWM_Left_LED_Blue_RestoreConfig, .-PWM_Left_LED_Blue_RestoreConfig
+ 108              		.section	.text.PWM_Left_LED_Blue_Sleep,"ax",%progbits
+ 109              		.align	1
+ 110              		.global	PWM_Left_LED_Blue_Sleep
+ 111              		.code	16
+ 112              		.thumb_func
+ 113              		.type	PWM_Left_LED_Blue_Sleep, %function
+ 114              	PWM_Left_LED_Blue_Sleep:
+ 115              	.LFB2:
+ 115:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** 
+ 116:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** 
+ 117:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** /*******************************************************************************
+ 118:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** * Function Name: PWM_Left_LED_Blue_Sleep
+ 119:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** ********************************************************************************
+ 120:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** *
+ 121:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** * Summary:
+ 122:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** *  Disables block's operation and saves the user configuration. Should be called
+ 123:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** *  just prior to entering sleep.
+ 124:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** *
+ 125:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** * Parameters:
+ 126:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** *  None
+ 127:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** *
+ 128:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** * Return:
+ 129:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** *  None
+ 130:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** *
+ 131:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** * Global variables:
+ 132:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** *  PWM_Left_LED_Blue_backup.PWMEnableState:  Is modified depending on the enable
+ 133:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** *  state of the block before entering sleep mode.
+ 134:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** *
+ 135:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** *******************************************************************************/
+ 136:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** void PWM_Left_LED_Blue_Sleep(void) 
+ 137:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** {
+ 116              		.loc 1 137 0
+ 117              		.cfi_startproc
+ 118 0000 08B5     		push	{r3, lr}
+ 119              		.cfi_def_cfa_offset 8
+ 120              		.cfi_offset 3, -8
+ 121              		.cfi_offset 14, -4
+ 138:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c ****     #if(PWM_Left_LED_Blue_UseControl)
+ 139:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c ****         if(PWM_Left_LED_Blue_CTRL_ENABLE == (PWM_Left_LED_Blue_CONTROL & PWM_Left_LED_Blue_CTRL_ENA
+ 122              		.loc 1 139 0
+ 123 0002 074B     		ldr	r3, .L12
+ 124 0004 1A78     		ldrb	r2, [r3]
+ 125 0006 074B     		ldr	r3, .L12+4
+ 126 0008 52B2     		sxtb	r2, r2
+ 127 000a 002A     		cmp	r2, #0
+ 128 000c 01DA     		bge	.L8
+ 140:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c ****         {
+ 141:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c ****             /*Component is enabled */
+ 142:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c ****             PWM_Left_LED_Blue_backup.PWMEnableState = 1u;
+ 129              		.loc 1 142 0
+ 130 000e 0122     		mov	r2, #1
+ 131 0010 00E0     		b	.L10
+ 132              	.L8:
+ 143:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c ****         }
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc7kvJpg.s 			page 6
+
+
+ 144:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c ****         else
+ 145:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c ****         {
+ 146:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c ****             /* Component is disabled */
+ 147:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c ****             PWM_Left_LED_Blue_backup.PWMEnableState = 0u;
+ 133              		.loc 1 147 0
+ 134 0012 0022     		mov	r2, #0
+ 135              	.L10:
+ 136 0014 1A70     		strb	r2, [r3]
+ 148:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c ****         }
+ 149:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c ****     #endif /* (PWM_Left_LED_Blue_UseControl) */
+ 150:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** 
+ 151:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c ****     /* Stop component */
+ 152:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c ****     PWM_Left_LED_Blue_Stop();
+ 153:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** 
+ 154:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c ****     /* Save registers configuration */
+ 155:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c ****     PWM_Left_LED_Blue_SaveConfig();
+ 156:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** }
+ 137              		.loc 1 156 0
+ 138              		@ sp needed
+ 152:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c ****     PWM_Left_LED_Blue_Stop();
+ 139              		.loc 1 152 0
+ 140 0016 FFF7FEFF 		bl	PWM_Left_LED_Blue_Stop
+ 141              	.LVL6:
+ 155:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c ****     PWM_Left_LED_Blue_SaveConfig();
+ 142              		.loc 1 155 0
+ 143 001a FFF7FEFF 		bl	PWM_Left_LED_Blue_SaveConfig
+ 144              	.LVL7:
+ 145              		.loc 1 156 0
+ 146 001e 08BD     		pop	{r3, pc}
+ 147              	.L13:
+ 148              		.align	2
+ 149              	.L12:
+ 150 0020 73000F40 		.word	1074724979
+ 151 0024 00000000 		.word	.LANCHOR0
+ 152              		.cfi_endproc
+ 153              	.LFE2:
+ 154              		.size	PWM_Left_LED_Blue_Sleep, .-PWM_Left_LED_Blue_Sleep
+ 155              		.section	.text.PWM_Left_LED_Blue_Wakeup,"ax",%progbits
+ 156              		.align	1
+ 157              		.global	PWM_Left_LED_Blue_Wakeup
+ 158              		.code	16
+ 159              		.thumb_func
+ 160              		.type	PWM_Left_LED_Blue_Wakeup, %function
+ 161              	PWM_Left_LED_Blue_Wakeup:
+ 162              	.LFB3:
+ 157:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** 
+ 158:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** 
+ 159:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** /*******************************************************************************
+ 160:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** * Function Name: PWM_Left_LED_Blue_Wakeup
+ 161:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** ********************************************************************************
+ 162:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** *
+ 163:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** * Summary:
+ 164:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** *  Restores and enables the user configuration. Should be called just after
+ 165:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** *  awaking from sleep.
+ 166:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** *
+ 167:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** * Parameters:
+ 168:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** *  None
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc7kvJpg.s 			page 7
+
+
+ 169:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** *
+ 170:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** * Return:
+ 171:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** *  None
+ 172:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** *
+ 173:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** * Global variables:
+ 174:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** *  PWM_Left_LED_Blue_backup.pwmEnable:  Is used to restore the enable state of
+ 175:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** *  block on wakeup from sleep mode.
+ 176:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** *
+ 177:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** *******************************************************************************/
+ 178:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** void PWM_Left_LED_Blue_Wakeup(void) 
+ 179:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** {
+ 163              		.loc 1 179 0
+ 164              		.cfi_startproc
+ 165 0000 08B5     		push	{r3, lr}
+ 166              		.cfi_def_cfa_offset 8
+ 167              		.cfi_offset 3, -8
+ 168              		.cfi_offset 14, -4
+ 180:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c ****      /* Restore registers values */
+ 181:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c ****     PWM_Left_LED_Blue_RestoreConfig();
+ 169              		.loc 1 181 0
+ 170 0002 FFF7FEFF 		bl	PWM_Left_LED_Blue_RestoreConfig
+ 171              	.LVL8:
+ 182:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** 
+ 183:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c ****     if(PWM_Left_LED_Blue_backup.PWMEnableState != 0u)
+ 172              		.loc 1 183 0
+ 173 0006 034B     		ldr	r3, .L19
+ 174 0008 1B78     		ldrb	r3, [r3]
+ 175 000a 002B     		cmp	r3, #0
+ 176 000c 01D0     		beq	.L14
+ 184:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c ****     {
+ 185:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c ****         /* Enable component's operation */
+ 186:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c ****         PWM_Left_LED_Blue_Enable();
+ 177              		.loc 1 186 0
+ 178 000e FFF7FEFF 		bl	PWM_Left_LED_Blue_Enable
+ 179              	.LVL9:
+ 180              	.L14:
+ 187:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c ****     } /* Do nothing if component's block was disabled before */
+ 188:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** 
+ 189:.\Generated_Source\PSoC4/PWM_Left_LED_Blue_PM.c **** }
+ 181              		.loc 1 189 0
+ 182              		@ sp needed
+ 183 0012 08BD     		pop	{r3, pc}
+ 184              	.L20:
+ 185              		.align	2
+ 186              	.L19:
+ 187 0014 00000000 		.word	.LANCHOR0
+ 188              		.cfi_endproc
+ 189              	.LFE3:
+ 190              		.size	PWM_Left_LED_Blue_Wakeup, .-PWM_Left_LED_Blue_Wakeup
+ 191              		.bss
+ 192              		.set	.LANCHOR0,. + 0
+ 193              		.type	PWM_Left_LED_Blue_backup, %object
+ 194              		.size	PWM_Left_LED_Blue_backup, 5
+ 195              	PWM_Left_LED_Blue_backup:
+ 196 0000 00000000 		.space	5
+ 196      00
+ 197              		.text
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc7kvJpg.s 			page 8
+
+
+ 198              	.Letext0:
+ 199              		.file 2 ".\\Generated_Source\\PSoC4\\cytypes.h"
+ 200              		.file 3 ".\\Generated_Source\\PSoC4\\PWM_Left_LED_Blue.h"
+ 201              		.section	.debug_info,"",%progbits
+ 202              	.Ldebug_info0:
+ 203 0000 15020000 		.4byte	0x215
+ 204 0004 0400     		.2byte	0x4
+ 205 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 206 000a 04       		.byte	0x4
+ 207 000b 01       		.uleb128 0x1
+ 208 000c A6000000 		.4byte	.LASF33
+ 209 0010 01       		.byte	0x1
+ 210 0011 88010000 		.4byte	.LASF34
+ 211 0015 D8010000 		.4byte	.LASF35
+ 212 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 213 001d 00000000 		.4byte	0
+ 214 0021 00000000 		.4byte	.Ldebug_line0
+ 215 0025 02       		.uleb128 0x2
+ 216 0026 01       		.byte	0x1
+ 217 0027 06       		.byte	0x6
+ 218 0028 1A030000 		.4byte	.LASF0
+ 219 002c 02       		.uleb128 0x2
+ 220 002d 01       		.byte	0x1
+ 221 002e 08       		.byte	0x8
+ 222 002f 28010000 		.4byte	.LASF1
+ 223 0033 02       		.uleb128 0x2
+ 224 0034 02       		.byte	0x2
+ 225 0035 05       		.byte	0x5
+ 226 0036 D0020000 		.4byte	.LASF2
+ 227 003a 02       		.uleb128 0x2
+ 228 003b 02       		.byte	0x2
+ 229 003c 07       		.byte	0x7
+ 230 003d 93000000 		.4byte	.LASF3
+ 231 0041 02       		.uleb128 0x2
+ 232 0042 04       		.byte	0x4
+ 233 0043 05       		.byte	0x5
+ 234 0044 F8020000 		.4byte	.LASF4
+ 235 0048 02       		.uleb128 0x2
+ 236 0049 04       		.byte	0x4
+ 237 004a 07       		.byte	0x7
+ 238 004b 45010000 		.4byte	.LASF5
+ 239 004f 02       		.uleb128 0x2
+ 240 0050 08       		.byte	0x8
+ 241 0051 05       		.byte	0x5
+ 242 0052 A4020000 		.4byte	.LASF6
+ 243 0056 02       		.uleb128 0x2
+ 244 0057 08       		.byte	0x8
+ 245 0058 07       		.byte	0x7
+ 246 0059 2C020000 		.4byte	.LASF7
+ 247 005d 03       		.uleb128 0x3
+ 248 005e 04       		.byte	0x4
+ 249 005f 05       		.byte	0x5
+ 250 0060 696E7400 		.ascii	"int\000"
+ 251 0064 02       		.uleb128 0x2
+ 252 0065 04       		.byte	0x4
+ 253 0066 07       		.byte	0x7
+ 254 0067 1F020000 		.4byte	.LASF8
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc7kvJpg.s 			page 9
+
+
+ 255 006b 04       		.uleb128 0x4
+ 256 006c 57010000 		.4byte	.LASF12
+ 257 0070 02       		.byte	0x2
+ 258 0071 A1       		.byte	0xa1
+ 259 0072 2C000000 		.4byte	0x2c
+ 260 0076 02       		.uleb128 0x2
+ 261 0077 04       		.byte	0x4
+ 262 0078 04       		.byte	0x4
+ 263 0079 22010000 		.4byte	.LASF9
+ 264 007d 02       		.uleb128 0x2
+ 265 007e 08       		.byte	0x8
+ 266 007f 04       		.byte	0x4
+ 267 0080 D1010000 		.4byte	.LASF10
+ 268 0084 02       		.uleb128 0x2
+ 269 0085 01       		.byte	0x1
+ 270 0086 08       		.byte	0x8
+ 271 0087 B2020000 		.4byte	.LASF11
+ 272 008b 05       		.uleb128 0x5
+ 273 008c 96020000 		.4byte	.LASF13
+ 274 0090 02       		.byte	0x2
+ 275 0091 4B01     		.2byte	0x14b
+ 276 0093 97000000 		.4byte	0x97
+ 277 0097 06       		.uleb128 0x6
+ 278 0098 6B000000 		.4byte	0x6b
+ 279 009c 02       		.uleb128 0x2
+ 280 009d 04       		.byte	0x4
+ 281 009e 07       		.byte	0x7
+ 282 009f 9B020000 		.4byte	.LASF14
+ 283 00a3 07       		.uleb128 0x7
+ 284 00a4 05       		.byte	0x5
+ 285 00a5 03       		.byte	0x3
+ 286 00a6 6B       		.byte	0x6b
+ 287 00a7 E8000000 		.4byte	0xe8
+ 288 00ab 08       		.uleb128 0x8
+ 289 00ac 36010000 		.4byte	.LASF15
+ 290 00b0 03       		.byte	0x3
+ 291 00b1 6E       		.byte	0x6e
+ 292 00b2 6B000000 		.4byte	0x6b
+ 293 00b6 00       		.byte	0
+ 294 00b7 08       		.uleb128 0x8
+ 295 00b8 00000000 		.4byte	.LASF16
+ 296 00bc 03       		.byte	0x3
+ 297 00bd 71       		.byte	0x71
+ 298 00be 6B000000 		.4byte	0x6b
+ 299 00c2 01       		.byte	0x1
+ 300 00c3 08       		.uleb128 0x8
+ 301 00c4 07000000 		.4byte	.LASF17
+ 302 00c8 03       		.byte	0x3
+ 303 00c9 73       		.byte	0x73
+ 304 00ca 6B000000 		.4byte	0x6b
+ 305 00ce 02       		.byte	0x2
+ 306 00cf 08       		.uleb128 0x8
+ 307 00d0 26030000 		.4byte	.LASF18
+ 308 00d4 03       		.byte	0x3
+ 309 00d5 76       		.byte	0x76
+ 310 00d6 6B000000 		.4byte	0x6b
+ 311 00da 03       		.byte	0x3
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc7kvJpg.s 			page 10
+
+
+ 312 00db 08       		.uleb128 0x8
+ 313 00dc 75010000 		.4byte	.LASF19
+ 314 00e0 03       		.byte	0x3
+ 315 00e1 86       		.byte	0x86
+ 316 00e2 6B000000 		.4byte	0x6b
+ 317 00e6 04       		.byte	0x4
+ 318 00e7 00       		.byte	0
+ 319 00e8 04       		.uleb128 0x4
+ 320 00e9 5F030000 		.4byte	.LASF20
+ 321 00ed 03       		.byte	0x3
+ 322 00ee 8B       		.byte	0x8b
+ 323 00ef A3000000 		.4byte	0xa3
+ 324 00f3 09       		.uleb128 0x9
+ 325 00f4 79020000 		.4byte	.LASF21
+ 326 00f8 01       		.byte	0x1
+ 327 00f9 2A       		.byte	0x2a
+ 328 00fa 00000000 		.4byte	.LFB0
+ 329 00fe 28000000 		.4byte	.LFE0-.LFB0
+ 330 0102 01       		.uleb128 0x1
+ 331 0103 9C       		.byte	0x9c
+ 332 0104 24010000 		.4byte	0x124
+ 333 0108 0A       		.uleb128 0xa
+ 334 0109 06000000 		.4byte	.LVL0
+ 335 010d B6010000 		.4byte	0x1b6
+ 336 0111 0A       		.uleb128 0xa
+ 337 0112 0E000000 		.4byte	.LVL1
+ 338 0116 C1010000 		.4byte	0x1c1
+ 339 011a 0A       		.uleb128 0xa
+ 340 011b 1A000000 		.4byte	.LVL2
+ 341 011f CC010000 		.4byte	0x1cc
+ 342 0123 00       		.byte	0
+ 343 0124 09       		.uleb128 0x9
+ 344 0125 73000000 		.4byte	.LASF22
+ 345 0129 01       		.byte	0x1
+ 346 012a 58       		.byte	0x58
+ 347 012b 00000000 		.4byte	.LFB1
+ 348 012f 28000000 		.4byte	.LFE1-.LFB1
+ 349 0133 01       		.uleb128 0x1
+ 350 0134 9C       		.byte	0x9c
+ 351 0135 55010000 		.4byte	0x155
+ 352 0139 0A       		.uleb128 0xa
+ 353 013a 0A000000 		.4byte	.LVL3
+ 354 013e D7010000 		.4byte	0x1d7
+ 355 0142 0A       		.uleb128 0xa
+ 356 0143 10000000 		.4byte	.LVL4
+ 357 0147 E8010000 		.4byte	0x1e8
+ 358 014b 0A       		.uleb128 0xa
+ 359 014c 1C000000 		.4byte	.LVL5
+ 360 0150 F9010000 		.4byte	0x1f9
+ 361 0154 00       		.byte	0
+ 362 0155 09       		.uleb128 0x9
+ 363 0156 5D010000 		.4byte	.LASF23
+ 364 015a 01       		.byte	0x1
+ 365 015b 88       		.byte	0x88
+ 366 015c 00000000 		.4byte	.LFB2
+ 367 0160 28000000 		.4byte	.LFE2-.LFB2
+ 368 0164 01       		.uleb128 0x1
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc7kvJpg.s 			page 11
+
+
+ 369 0165 9C       		.byte	0x9c
+ 370 0166 7D010000 		.4byte	0x17d
+ 371 016a 0A       		.uleb128 0xa
+ 372 016b 1A000000 		.4byte	.LVL6
+ 373 016f 0A020000 		.4byte	0x20a
+ 374 0173 0A       		.uleb128 0xa
+ 375 0174 1E000000 		.4byte	.LVL7
+ 376 0178 F3000000 		.4byte	0xf3
+ 377 017c 00       		.byte	0
+ 378 017d 09       		.uleb128 0x9
+ 379 017e 01030000 		.4byte	.LASF24
+ 380 0182 01       		.byte	0x1
+ 381 0183 B2       		.byte	0xb2
+ 382 0184 00000000 		.4byte	.LFB3
+ 383 0188 18000000 		.4byte	.LFE3-.LFB3
+ 384 018c 01       		.uleb128 0x1
+ 385 018d 9C       		.byte	0x9c
+ 386 018e A5010000 		.4byte	0x1a5
+ 387 0192 0A       		.uleb128 0xa
+ 388 0193 06000000 		.4byte	.LVL8
+ 389 0197 24010000 		.4byte	0x124
+ 390 019b 0A       		.uleb128 0xa
+ 391 019c 12000000 		.4byte	.LVL9
+ 392 01a0 11020000 		.4byte	0x211
+ 393 01a4 00       		.byte	0
+ 394 01a5 0B       		.uleb128 0xb
+ 395 01a6 B7020000 		.4byte	.LASF36
+ 396 01aa 01       		.byte	0x1
+ 397 01ab 14       		.byte	0x14
+ 398 01ac E8000000 		.4byte	0xe8
+ 399 01b0 05       		.uleb128 0x5
+ 400 01b1 03       		.byte	0x3
+ 401 01b2 00000000 		.4byte	PWM_Left_LED_Blue_backup
+ 402 01b6 0C       		.uleb128 0xc
+ 403 01b7 56000000 		.4byte	.LASF25
+ 404 01bb 03       		.byte	0x3
+ 405 01bc C0       		.byte	0xc0
+ 406 01bd 6B000000 		.4byte	0x6b
+ 407 01c1 0C       		.uleb128 0xc
+ 408 01c2 DA020000 		.4byte	.LASF26
+ 409 01c6 03       		.byte	0x3
+ 410 01c7 B3       		.byte	0xb3
+ 411 01c8 6B000000 		.4byte	0x6b
+ 412 01cc 0C       		.uleb128 0xc
+ 413 01cd 39030000 		.4byte	.LASF27
+ 414 01d1 03       		.byte	0x3
+ 415 01d2 9D       		.byte	0x9d
+ 416 01d3 6B000000 		.4byte	0x6b
+ 417 01d7 0D       		.uleb128 0xd
+ 418 01d8 11000000 		.4byte	.LASF28
+ 419 01dc 03       		.byte	0x3
+ 420 01dd BE       		.byte	0xbe
+ 421 01de E8010000 		.4byte	0x1e8
+ 422 01e2 0E       		.uleb128 0xe
+ 423 01e3 6B000000 		.4byte	0x6b
+ 424 01e7 00       		.byte	0
+ 425 01e8 0D       		.uleb128 0xd
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc7kvJpg.s 			page 12
+
+
+ 426 01e9 5A020000 		.4byte	.LASF29
+ 427 01ed 03       		.byte	0x3
+ 428 01ee BA       		.byte	0xba
+ 429 01ef F9010000 		.4byte	0x1f9
+ 430 01f3 0E       		.uleb128 0xe
+ 431 01f4 6B000000 		.4byte	0x6b
+ 432 01f8 00       		.byte	0
+ 433 01f9 0D       		.uleb128 0xd
+ 434 01fa 2F000000 		.4byte	.LASF30
+ 435 01fe 03       		.byte	0x3
+ 436 01ff 9E       		.byte	0x9e
+ 437 0200 0A020000 		.4byte	0x20a
+ 438 0204 0E       		.uleb128 0xe
+ 439 0205 6B000000 		.4byte	0x6b
+ 440 0209 00       		.byte	0
+ 441 020a 0F       		.uleb128 0xf
+ 442 020b 43020000 		.4byte	.LASF31
+ 443 020f 03       		.byte	0x3
+ 444 0210 93       		.byte	0x93
+ 445 0211 0F       		.uleb128 0xf
+ 446 0212 B8010000 		.4byte	.LASF32
+ 447 0216 03       		.byte	0x3
+ 448 0217 DB       		.byte	0xdb
+ 449 0218 00       		.byte	0
+ 450              		.section	.debug_abbrev,"",%progbits
+ 451              	.Ldebug_abbrev0:
+ 452 0000 01       		.uleb128 0x1
+ 453 0001 11       		.uleb128 0x11
+ 454 0002 01       		.byte	0x1
+ 455 0003 25       		.uleb128 0x25
+ 456 0004 0E       		.uleb128 0xe
+ 457 0005 13       		.uleb128 0x13
+ 458 0006 0B       		.uleb128 0xb
+ 459 0007 03       		.uleb128 0x3
+ 460 0008 0E       		.uleb128 0xe
+ 461 0009 1B       		.uleb128 0x1b
+ 462 000a 0E       		.uleb128 0xe
+ 463 000b 55       		.uleb128 0x55
+ 464 000c 17       		.uleb128 0x17
+ 465 000d 11       		.uleb128 0x11
+ 466 000e 01       		.uleb128 0x1
+ 467 000f 10       		.uleb128 0x10
+ 468 0010 17       		.uleb128 0x17
+ 469 0011 00       		.byte	0
+ 470 0012 00       		.byte	0
+ 471 0013 02       		.uleb128 0x2
+ 472 0014 24       		.uleb128 0x24
+ 473 0015 00       		.byte	0
+ 474 0016 0B       		.uleb128 0xb
+ 475 0017 0B       		.uleb128 0xb
+ 476 0018 3E       		.uleb128 0x3e
+ 477 0019 0B       		.uleb128 0xb
+ 478 001a 03       		.uleb128 0x3
+ 479 001b 0E       		.uleb128 0xe
+ 480 001c 00       		.byte	0
+ 481 001d 00       		.byte	0
+ 482 001e 03       		.uleb128 0x3
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc7kvJpg.s 			page 13
+
+
+ 483 001f 24       		.uleb128 0x24
+ 484 0020 00       		.byte	0
+ 485 0021 0B       		.uleb128 0xb
+ 486 0022 0B       		.uleb128 0xb
+ 487 0023 3E       		.uleb128 0x3e
+ 488 0024 0B       		.uleb128 0xb
+ 489 0025 03       		.uleb128 0x3
+ 490 0026 08       		.uleb128 0x8
+ 491 0027 00       		.byte	0
+ 492 0028 00       		.byte	0
+ 493 0029 04       		.uleb128 0x4
+ 494 002a 16       		.uleb128 0x16
+ 495 002b 00       		.byte	0
+ 496 002c 03       		.uleb128 0x3
+ 497 002d 0E       		.uleb128 0xe
+ 498 002e 3A       		.uleb128 0x3a
+ 499 002f 0B       		.uleb128 0xb
+ 500 0030 3B       		.uleb128 0x3b
+ 501 0031 0B       		.uleb128 0xb
+ 502 0032 49       		.uleb128 0x49
+ 503 0033 13       		.uleb128 0x13
+ 504 0034 00       		.byte	0
+ 505 0035 00       		.byte	0
+ 506 0036 05       		.uleb128 0x5
+ 507 0037 16       		.uleb128 0x16
+ 508 0038 00       		.byte	0
+ 509 0039 03       		.uleb128 0x3
+ 510 003a 0E       		.uleb128 0xe
+ 511 003b 3A       		.uleb128 0x3a
+ 512 003c 0B       		.uleb128 0xb
+ 513 003d 3B       		.uleb128 0x3b
+ 514 003e 05       		.uleb128 0x5
+ 515 003f 49       		.uleb128 0x49
+ 516 0040 13       		.uleb128 0x13
+ 517 0041 00       		.byte	0
+ 518 0042 00       		.byte	0
+ 519 0043 06       		.uleb128 0x6
+ 520 0044 35       		.uleb128 0x35
+ 521 0045 00       		.byte	0
+ 522 0046 49       		.uleb128 0x49
+ 523 0047 13       		.uleb128 0x13
+ 524 0048 00       		.byte	0
+ 525 0049 00       		.byte	0
+ 526 004a 07       		.uleb128 0x7
+ 527 004b 13       		.uleb128 0x13
+ 528 004c 01       		.byte	0x1
+ 529 004d 0B       		.uleb128 0xb
+ 530 004e 0B       		.uleb128 0xb
+ 531 004f 3A       		.uleb128 0x3a
+ 532 0050 0B       		.uleb128 0xb
+ 533 0051 3B       		.uleb128 0x3b
+ 534 0052 0B       		.uleb128 0xb
+ 535 0053 01       		.uleb128 0x1
+ 536 0054 13       		.uleb128 0x13
+ 537 0055 00       		.byte	0
+ 538 0056 00       		.byte	0
+ 539 0057 08       		.uleb128 0x8
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc7kvJpg.s 			page 14
+
+
+ 540 0058 0D       		.uleb128 0xd
+ 541 0059 00       		.byte	0
+ 542 005a 03       		.uleb128 0x3
+ 543 005b 0E       		.uleb128 0xe
+ 544 005c 3A       		.uleb128 0x3a
+ 545 005d 0B       		.uleb128 0xb
+ 546 005e 3B       		.uleb128 0x3b
+ 547 005f 0B       		.uleb128 0xb
+ 548 0060 49       		.uleb128 0x49
+ 549 0061 13       		.uleb128 0x13
+ 550 0062 38       		.uleb128 0x38
+ 551 0063 0B       		.uleb128 0xb
+ 552 0064 00       		.byte	0
+ 553 0065 00       		.byte	0
+ 554 0066 09       		.uleb128 0x9
+ 555 0067 2E       		.uleb128 0x2e
+ 556 0068 01       		.byte	0x1
+ 557 0069 3F       		.uleb128 0x3f
+ 558 006a 19       		.uleb128 0x19
+ 559 006b 03       		.uleb128 0x3
+ 560 006c 0E       		.uleb128 0xe
+ 561 006d 3A       		.uleb128 0x3a
+ 562 006e 0B       		.uleb128 0xb
+ 563 006f 3B       		.uleb128 0x3b
+ 564 0070 0B       		.uleb128 0xb
+ 565 0071 27       		.uleb128 0x27
+ 566 0072 19       		.uleb128 0x19
+ 567 0073 11       		.uleb128 0x11
+ 568 0074 01       		.uleb128 0x1
+ 569 0075 12       		.uleb128 0x12
+ 570 0076 06       		.uleb128 0x6
+ 571 0077 40       		.uleb128 0x40
+ 572 0078 18       		.uleb128 0x18
+ 573 0079 9742     		.uleb128 0x2117
+ 574 007b 19       		.uleb128 0x19
+ 575 007c 01       		.uleb128 0x1
+ 576 007d 13       		.uleb128 0x13
+ 577 007e 00       		.byte	0
+ 578 007f 00       		.byte	0
+ 579 0080 0A       		.uleb128 0xa
+ 580 0081 898201   		.uleb128 0x4109
+ 581 0084 00       		.byte	0
+ 582 0085 11       		.uleb128 0x11
+ 583 0086 01       		.uleb128 0x1
+ 584 0087 31       		.uleb128 0x31
+ 585 0088 13       		.uleb128 0x13
+ 586 0089 00       		.byte	0
+ 587 008a 00       		.byte	0
+ 588 008b 0B       		.uleb128 0xb
+ 589 008c 34       		.uleb128 0x34
+ 590 008d 00       		.byte	0
+ 591 008e 03       		.uleb128 0x3
+ 592 008f 0E       		.uleb128 0xe
+ 593 0090 3A       		.uleb128 0x3a
+ 594 0091 0B       		.uleb128 0xb
+ 595 0092 3B       		.uleb128 0x3b
+ 596 0093 0B       		.uleb128 0xb
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc7kvJpg.s 			page 15
+
+
+ 597 0094 49       		.uleb128 0x49
+ 598 0095 13       		.uleb128 0x13
+ 599 0096 02       		.uleb128 0x2
+ 600 0097 18       		.uleb128 0x18
+ 601 0098 00       		.byte	0
+ 602 0099 00       		.byte	0
+ 603 009a 0C       		.uleb128 0xc
+ 604 009b 2E       		.uleb128 0x2e
+ 605 009c 00       		.byte	0
+ 606 009d 3F       		.uleb128 0x3f
+ 607 009e 19       		.uleb128 0x19
+ 608 009f 03       		.uleb128 0x3
+ 609 00a0 0E       		.uleb128 0xe
+ 610 00a1 3A       		.uleb128 0x3a
+ 611 00a2 0B       		.uleb128 0xb
+ 612 00a3 3B       		.uleb128 0x3b
+ 613 00a4 0B       		.uleb128 0xb
+ 614 00a5 27       		.uleb128 0x27
+ 615 00a6 19       		.uleb128 0x19
+ 616 00a7 49       		.uleb128 0x49
+ 617 00a8 13       		.uleb128 0x13
+ 618 00a9 3C       		.uleb128 0x3c
+ 619 00aa 19       		.uleb128 0x19
+ 620 00ab 00       		.byte	0
+ 621 00ac 00       		.byte	0
+ 622 00ad 0D       		.uleb128 0xd
+ 623 00ae 2E       		.uleb128 0x2e
+ 624 00af 01       		.byte	0x1
+ 625 00b0 3F       		.uleb128 0x3f
+ 626 00b1 19       		.uleb128 0x19
+ 627 00b2 03       		.uleb128 0x3
+ 628 00b3 0E       		.uleb128 0xe
+ 629 00b4 3A       		.uleb128 0x3a
+ 630 00b5 0B       		.uleb128 0xb
+ 631 00b6 3B       		.uleb128 0x3b
+ 632 00b7 0B       		.uleb128 0xb
+ 633 00b8 27       		.uleb128 0x27
+ 634 00b9 19       		.uleb128 0x19
+ 635 00ba 3C       		.uleb128 0x3c
+ 636 00bb 19       		.uleb128 0x19
+ 637 00bc 01       		.uleb128 0x1
+ 638 00bd 13       		.uleb128 0x13
+ 639 00be 00       		.byte	0
+ 640 00bf 00       		.byte	0
+ 641 00c0 0E       		.uleb128 0xe
+ 642 00c1 05       		.uleb128 0x5
+ 643 00c2 00       		.byte	0
+ 644 00c3 49       		.uleb128 0x49
+ 645 00c4 13       		.uleb128 0x13
+ 646 00c5 00       		.byte	0
+ 647 00c6 00       		.byte	0
+ 648 00c7 0F       		.uleb128 0xf
+ 649 00c8 2E       		.uleb128 0x2e
+ 650 00c9 00       		.byte	0
+ 651 00ca 3F       		.uleb128 0x3f
+ 652 00cb 19       		.uleb128 0x19
+ 653 00cc 03       		.uleb128 0x3
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc7kvJpg.s 			page 16
+
+
+ 654 00cd 0E       		.uleb128 0xe
+ 655 00ce 3A       		.uleb128 0x3a
+ 656 00cf 0B       		.uleb128 0xb
+ 657 00d0 3B       		.uleb128 0x3b
+ 658 00d1 0B       		.uleb128 0xb
+ 659 00d2 27       		.uleb128 0x27
+ 660 00d3 19       		.uleb128 0x19
+ 661 00d4 3C       		.uleb128 0x3c
+ 662 00d5 19       		.uleb128 0x19
+ 663 00d6 00       		.byte	0
+ 664 00d7 00       		.byte	0
+ 665 00d8 00       		.byte	0
+ 666              		.section	.debug_aranges,"",%progbits
+ 667 0000 34000000 		.4byte	0x34
+ 668 0004 0200     		.2byte	0x2
+ 669 0006 00000000 		.4byte	.Ldebug_info0
+ 670 000a 04       		.byte	0x4
+ 671 000b 00       		.byte	0
+ 672 000c 0000     		.2byte	0
+ 673 000e 0000     		.2byte	0
+ 674 0010 00000000 		.4byte	.LFB0
+ 675 0014 28000000 		.4byte	.LFE0-.LFB0
+ 676 0018 00000000 		.4byte	.LFB1
+ 677 001c 28000000 		.4byte	.LFE1-.LFB1
+ 678 0020 00000000 		.4byte	.LFB2
+ 679 0024 28000000 		.4byte	.LFE2-.LFB2
+ 680 0028 00000000 		.4byte	.LFB3
+ 681 002c 18000000 		.4byte	.LFE3-.LFB3
+ 682 0030 00000000 		.4byte	0
+ 683 0034 00000000 		.4byte	0
+ 684              		.section	.debug_ranges,"",%progbits
+ 685              	.Ldebug_ranges0:
+ 686 0000 00000000 		.4byte	.LFB0
+ 687 0004 28000000 		.4byte	.LFE0
+ 688 0008 00000000 		.4byte	.LFB1
+ 689 000c 28000000 		.4byte	.LFE1
+ 690 0010 00000000 		.4byte	.LFB2
+ 691 0014 28000000 		.4byte	.LFE2
+ 692 0018 00000000 		.4byte	.LFB3
+ 693 001c 18000000 		.4byte	.LFE3
+ 694 0020 00000000 		.4byte	0
+ 695 0024 00000000 		.4byte	0
+ 696              		.section	.debug_line,"",%progbits
+ 697              	.Ldebug_line0:
+ 698 0000 D8000000 		.section	.debug_str,"MS",%progbits,1
+ 698      02006A00 
+ 698      00000201 
+ 698      FB0E0D00 
+ 698      01010101 
+ 699              	.LASF16:
+ 700 0000 50574D55 		.ascii	"PWMUdb\000"
+ 700      646200
+ 701              	.LASF17:
+ 702 0007 50574D50 		.ascii	"PWMPeriod\000"
+ 702      6572696F 
+ 702      6400
+ 703              	.LASF28:
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc7kvJpg.s 			page 17
+
+
+ 704 0011 50574D5F 		.ascii	"PWM_Left_LED_Blue_WritePeriod\000"
+ 704      4C656674 
+ 704      5F4C4544 
+ 704      5F426C75 
+ 704      655F5772 
+ 705              	.LASF30:
+ 706 002f 50574D5F 		.ascii	"PWM_Left_LED_Blue_WriteControlRegister\000"
+ 706      4C656674 
+ 706      5F4C4544 
+ 706      5F426C75 
+ 706      655F5772 
+ 707              	.LASF25:
+ 708 0056 50574D5F 		.ascii	"PWM_Left_LED_Blue_ReadPeriod\000"
+ 708      4C656674 
+ 708      5F4C4544 
+ 708      5F426C75 
+ 708      655F5265 
+ 709              	.LASF22:
+ 710 0073 50574D5F 		.ascii	"PWM_Left_LED_Blue_RestoreConfig\000"
+ 710      4C656674 
+ 710      5F4C4544 
+ 710      5F426C75 
+ 710      655F5265 
+ 711              	.LASF3:
+ 712 0093 73686F72 		.ascii	"short unsigned int\000"
+ 712      7420756E 
+ 712      7369676E 
+ 712      65642069 
+ 712      6E7400
+ 713              	.LASF33:
+ 714 00a6 474E5520 		.ascii	"GNU C 4.8.4 20140526 (release) [ARM/embedded-4_8-br"
+ 714      4320342E 
+ 714      382E3420 
+ 714      32303134 
+ 714      30353236 
+ 715 00d9 616E6368 		.ascii	"anch revision 211358] -mcpu=cortex-m0 -mthumb -g -O"
+ 715      20726576 
+ 715      6973696F 
+ 715      6E203231 
+ 715      31333538 
+ 716 010c 73202D66 		.ascii	"s -ffunction-sections\000"
+ 716      66756E63 
+ 716      74696F6E 
+ 716      2D736563 
+ 716      74696F6E 
+ 717              	.LASF9:
+ 718 0122 666C6F61 		.ascii	"float\000"
+ 718      7400
+ 719              	.LASF1:
+ 720 0128 756E7369 		.ascii	"unsigned char\000"
+ 720      676E6564 
+ 720      20636861 
+ 720      7200
+ 721              	.LASF15:
+ 722 0136 50574D45 		.ascii	"PWMEnableState\000"
+ 722      6E61626C 
+ 722      65537461 
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc7kvJpg.s 			page 18
+
+
+ 722      746500
+ 723              	.LASF5:
+ 724 0145 6C6F6E67 		.ascii	"long unsigned int\000"
+ 724      20756E73 
+ 724      69676E65 
+ 724      6420696E 
+ 724      7400
+ 725              	.LASF12:
+ 726 0157 75696E74 		.ascii	"uint8\000"
+ 726      3800
+ 727              	.LASF23:
+ 728 015d 50574D5F 		.ascii	"PWM_Left_LED_Blue_Sleep\000"
+ 728      4C656674 
+ 728      5F4C4544 
+ 728      5F426C75 
+ 728      655F536C 
+ 729              	.LASF19:
+ 730 0175 50574D43 		.ascii	"PWMControlRegister\000"
+ 730      6F6E7472 
+ 730      6F6C5265 
+ 730      67697374 
+ 730      657200
+ 731              	.LASF34:
+ 732 0188 2E5C4765 		.ascii	".\\Generated_Source\\PSoC4\\PWM_Left_LED_Blue_PM.c\000"
+ 732      6E657261 
+ 732      7465645F 
+ 732      536F7572 
+ 732      63655C50 
+ 733              	.LASF32:
+ 734 01b8 50574D5F 		.ascii	"PWM_Left_LED_Blue_Enable\000"
+ 734      4C656674 
+ 734      5F4C4544 
+ 734      5F426C75 
+ 734      655F456E 
+ 735              	.LASF10:
+ 736 01d1 646F7562 		.ascii	"double\000"
+ 736      6C6500
+ 737              	.LASF35:
+ 738 01d8 433A5C55 		.ascii	"C:\\Users\\Admin\\Desktop\\Teacher Badge\\Teacher_B"
+ 738      73657273 
+ 738      5C41646D 
+ 738      696E5C44 
+ 738      65736B74 
+ 739 0206 61646765 		.ascii	"adge\\Teacher_Badge.cydsn\000"
+ 739      5C546561 
+ 739      63686572 
+ 739      5F426164 
+ 739      67652E63 
+ 740              	.LASF8:
+ 741 021f 756E7369 		.ascii	"unsigned int\000"
+ 741      676E6564 
+ 741      20696E74 
+ 741      00
+ 742              	.LASF7:
+ 743 022c 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 743      206C6F6E 
+ 743      6720756E 
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc7kvJpg.s 			page 19
+
+
+ 743      7369676E 
+ 743      65642069 
+ 744              	.LASF31:
+ 745 0243 50574D5F 		.ascii	"PWM_Left_LED_Blue_Stop\000"
+ 745      4C656674 
+ 745      5F4C4544 
+ 745      5F426C75 
+ 745      655F5374 
+ 746              	.LASF29:
+ 747 025a 50574D5F 		.ascii	"PWM_Left_LED_Blue_WriteCounter\000"
+ 747      4C656674 
+ 747      5F4C4544 
+ 747      5F426C75 
+ 747      655F5772 
+ 748              	.LASF21:
+ 749 0279 50574D5F 		.ascii	"PWM_Left_LED_Blue_SaveConfig\000"
+ 749      4C656674 
+ 749      5F4C4544 
+ 749      5F426C75 
+ 749      655F5361 
+ 750              	.LASF13:
+ 751 0296 72656738 		.ascii	"reg8\000"
+ 751      00
+ 752              	.LASF14:
+ 753 029b 73697A65 		.ascii	"sizetype\000"
+ 753      74797065 
+ 753      00
+ 754              	.LASF6:
+ 755 02a4 6C6F6E67 		.ascii	"long long int\000"
+ 755      206C6F6E 
+ 755      6720696E 
+ 755      7400
+ 756              	.LASF11:
+ 757 02b2 63686172 		.ascii	"char\000"
+ 757      00
+ 758              	.LASF36:
+ 759 02b7 50574D5F 		.ascii	"PWM_Left_LED_Blue_backup\000"
+ 759      4C656674 
+ 759      5F4C4544 
+ 759      5F426C75 
+ 759      655F6261 
+ 760              	.LASF2:
+ 761 02d0 73686F72 		.ascii	"short int\000"
+ 761      7420696E 
+ 761      7400
+ 762              	.LASF26:
+ 763 02da 50574D5F 		.ascii	"PWM_Left_LED_Blue_ReadCounter\000"
+ 763      4C656674 
+ 763      5F4C4544 
+ 763      5F426C75 
+ 763      655F5265 
+ 764              	.LASF4:
+ 765 02f8 6C6F6E67 		.ascii	"long int\000"
+ 765      20696E74 
+ 765      00
+ 766              	.LASF24:
+ 767 0301 50574D5F 		.ascii	"PWM_Left_LED_Blue_Wakeup\000"
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc7kvJpg.s 			page 20
+
+
+ 767      4C656674 
+ 767      5F4C4544 
+ 767      5F426C75 
+ 767      655F5761 
+ 768              	.LASF0:
+ 769 031a 7369676E 		.ascii	"signed char\000"
+ 769      65642063 
+ 769      68617200 
+ 770              	.LASF18:
+ 771 0326 496E7465 		.ascii	"InterruptMaskValue\000"
+ 771      72727570 
+ 771      744D6173 
+ 771      6B56616C 
+ 771      756500
+ 772              	.LASF27:
+ 773 0339 50574D5F 		.ascii	"PWM_Left_LED_Blue_ReadControlRegister\000"
+ 773      4C656674 
+ 773      5F4C4544 
+ 773      5F426C75 
+ 773      655F5265 
+ 774              	.LASF20:
+ 775 035f 50574D5F 		.ascii	"PWM_Left_LED_Blue_backupStruct\000"
+ 775      4C656674 
+ 775      5F4C4544 
+ 775      5F426C75 
+ 775      655F6261 
+ 776              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.8.4 20140526 (release) [ARM/embedded-4_8-br

@@ -1,0 +1,4332 @@
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccuIaCqh.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 4
+  10              		.eabi_attribute 34, 0
+  11              		.eabi_attribute 18, 4
+  12              		.code	16
+  13              		.file	"togglelib.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.SWB_Handler,"ax",%progbits
+  18              		.align	1
+  19              		.global	SWB_Handler
+  20              		.code	16
+  21              		.thumb_func
+  22              		.type	SWB_Handler, %function
+  23              	SWB_Handler:
+  24              	.LFB35:
+  25              		.file 1 ".\\togglelib.c"
+   1:.\togglelib.c **** /* ========================================
+   2:.\togglelib.c ****  *
+   3:.\togglelib.c ****  * Copyright Nullify, 2016
+   4:.\togglelib.c ****  * All Rights Reserved
+   5:.\togglelib.c ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:.\togglelib.c ****  *
+   7:.\togglelib.c ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:.\togglelib.c ****  * WHICH IS THE PROPERTY OF NULLIY.
+   9:.\togglelib.c ****  *
+  10:.\togglelib.c ****  * ========================================
+  11:.\togglelib.c **** */
+  12:.\togglelib.c **** #include <project.h>
+  13:.\togglelib.c **** #include <stdio.h>
+  14:.\togglelib.c **** #include <time.h>
+  15:.\togglelib.c **** #include <stdlib.h>
+  16:.\togglelib.c **** #include "lightlib.h"
+  17:.\togglelib.c **** #include "togglelib.h"
+  18:.\togglelib.c **** #include "state.h"
+  19:.\togglelib.c **** 
+  20:.\togglelib.c **** /* Global Structures used to signal state change for badge  */
+  21:.\togglelib.c **** volatile struct Magic_Toggle_Sequence Morse_Sequence;
+  22:.\togglelib.c **** volatile struct Magic_Toggle_Sequence Binary_Sequence;
+  23:.\togglelib.c **** volatile struct Magic_Toggle_Sequence Substitution_Sequence;
+  24:.\togglelib.c **** volatile struct Magic_Toggle_Sequence Final_Stage_Sequence;
+  25:.\togglelib.c **** volatile struct Magic_Toggle_Sequence Organizer_Sequence;
+  26:.\togglelib.c **** 
+  27:.\togglelib.c **** /* Signal handler for left toggle press */
+  28:.\togglelib.c **** CY_ISR( SWL_Handler ) {
+  29:.\togglelib.c ****     uint8* sequance; 
+  30:.\togglelib.c ****     uint8 index;
+  31:.\togglelib.c ****     
+  32:.\togglelib.c ****     /* Determine what state the badge is currently in */
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccuIaCqh.s 			page 2
+
+
+  33:.\togglelib.c ****     switch(badge_state) {
+  34:.\togglelib.c ****         case MORSE:
+  35:.\togglelib.c ****             sequance = get_magic_toggle_sequance(BINARY);
+  36:.\togglelib.c ****             index = get_magic_toggle_index(BINARY);
+  37:.\togglelib.c ****             
+  38:.\togglelib.c ****             /* Check if the toggle is the next value in the sequance */
+  39:.\togglelib.c ****             if (sequance[index] == LEFT_TOGGLE) {
+  40:.\togglelib.c ****                 index += 1;
+  41:.\togglelib.c ****             }
+  42:.\togglelib.c ****             else {
+  43:.\togglelib.c ****                 index = 0;
+  44:.\togglelib.c ****             }
+  45:.\togglelib.c ****                    
+  46:.\togglelib.c ****            /* If the sequance is found change the state of the badge */
+  47:.\togglelib.c ****            if (index == strlen(sequance)){
+  48:.\togglelib.c ****             badge_state = BINARY;
+  49:.\togglelib.c ****             index = 0;
+  50:.\togglelib.c ****            }
+  51:.\togglelib.c ****         
+  52:.\togglelib.c ****            /* Update the value in the toggle struct */
+  53:.\togglelib.c ****             set_magic_toggle_index(BINARY, index);
+  54:.\togglelib.c ****         break;
+  55:.\togglelib.c ****         case BINARY:
+  56:.\togglelib.c ****             sequance = get_magic_toggle_sequance(SUBSTITUTION);
+  57:.\togglelib.c ****             index = get_magic_toggle_index(SUBSTITUTION);
+  58:.\togglelib.c ****             
+  59:.\togglelib.c ****             /* Check if the toggle is the next value in the sequance */
+  60:.\togglelib.c ****             if (sequance[index] == LEFT_TOGGLE) {
+  61:.\togglelib.c ****                 index += 1;
+  62:.\togglelib.c ****             }
+  63:.\togglelib.c ****             else {
+  64:.\togglelib.c ****                 index = 0;
+  65:.\togglelib.c ****             }
+  66:.\togglelib.c ****                    
+  67:.\togglelib.c ****            /* If the sequance is found change the state of the badge */
+  68:.\togglelib.c ****            if (index == strlen(sequance)){
+  69:.\togglelib.c ****             badge_state = SUBSTITUTION;
+  70:.\togglelib.c ****             index = 0;
+  71:.\togglelib.c ****            }
+  72:.\togglelib.c ****         
+  73:.\togglelib.c ****            /* Update the value in the toggle struct */
+  74:.\togglelib.c ****             set_magic_toggle_index(SUBSTITUTION, index);
+  75:.\togglelib.c ****         break;
+  76:.\togglelib.c ****         case SUBSTITUTION:
+  77:.\togglelib.c ****             sequance = get_magic_toggle_sequance(FINAL);
+  78:.\togglelib.c ****             index = get_magic_toggle_index(FINAL);
+  79:.\togglelib.c ****             
+  80:.\togglelib.c ****             /* Check if the toggle is the next value in the sequance */
+  81:.\togglelib.c ****             if (sequance[index] == LEFT_TOGGLE) {
+  82:.\togglelib.c ****                 index += 1;
+  83:.\togglelib.c ****             }
+  84:.\togglelib.c ****             else {
+  85:.\togglelib.c ****                 index = 0;
+  86:.\togglelib.c ****             }
+  87:.\togglelib.c ****                    
+  88:.\togglelib.c ****            /* If the sequance is found change the state of the badge */
+  89:.\togglelib.c ****            if (index == strlen(sequance)){
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccuIaCqh.s 			page 3
+
+
+  90:.\togglelib.c ****             badge_state = FINAL;
+  91:.\togglelib.c ****             index = 0;
+  92:.\togglelib.c ****            }
+  93:.\togglelib.c ****         
+  94:.\togglelib.c ****            /* Update the value in the toggle struct */
+  95:.\togglelib.c ****             set_magic_toggle_index(FINAL, index);
+  96:.\togglelib.c ****         break; 
+  97:.\togglelib.c ****         case FINAL:
+  98:.\togglelib.c ****             sequance = get_magic_toggle_sequance(ORGANIZER);
+  99:.\togglelib.c ****             index = get_magic_toggle_index(ORGANIZER);
+ 100:.\togglelib.c ****             
+ 101:.\togglelib.c ****             /* Check if the toggle is the next value in the sequance */
+ 102:.\togglelib.c ****             if (sequance[index] == LEFT_TOGGLE) {
+ 103:.\togglelib.c ****                 index += 1;
+ 104:.\togglelib.c ****             }
+ 105:.\togglelib.c ****             else {
+ 106:.\togglelib.c ****                 index = 0;
+ 107:.\togglelib.c ****             }
+ 108:.\togglelib.c ****                    
+ 109:.\togglelib.c ****            /* If the sequance is found change the state of the badge */
+ 110:.\togglelib.c ****            if (index == strlen(sequance)){
+ 111:.\togglelib.c ****             badge_state = ORGANIZER;
+ 112:.\togglelib.c ****             index = 0;
+ 113:.\togglelib.c ****             PWM_Organizer_Start();
+ 114:.\togglelib.c ****            }
+ 115:.\togglelib.c ****         
+ 116:.\togglelib.c ****            /* Update the value in the toggle struct */
+ 117:.\togglelib.c ****             set_magic_toggle_index(ORGANIZER, index);
+ 118:.\togglelib.c ****         break;
+ 119:.\togglelib.c ****         case ORGANIZER:
+ 120:.\togglelib.c ****             sequance = get_magic_toggle_sequance(MORSE);
+ 121:.\togglelib.c ****             index = get_magic_toggle_index(MORSE);
+ 122:.\togglelib.c ****             
+ 123:.\togglelib.c ****             /* Check if the toggle is the next value in the sequance */
+ 124:.\togglelib.c ****             if (sequance[index] == LEFT_TOGGLE) {
+ 125:.\togglelib.c ****                 index += 1;
+ 126:.\togglelib.c ****             }
+ 127:.\togglelib.c ****             else {
+ 128:.\togglelib.c ****                 index = 0;
+ 129:.\togglelib.c ****             }
+ 130:.\togglelib.c ****                    
+ 131:.\togglelib.c ****            /* If the sequance is found change the state of the badge */
+ 132:.\togglelib.c ****            if (index == strlen(sequance)){
+ 133:.\togglelib.c ****             badge_state = MORSE;
+ 134:.\togglelib.c ****             index = 0;
+ 135:.\togglelib.c ****             PWM_Organizer_Stop();
+ 136:.\togglelib.c ****            }
+ 137:.\togglelib.c ****         
+ 138:.\togglelib.c ****            /* Update the value in the toggle struct */
+ 139:.\togglelib.c ****             set_magic_toggle_index(MORSE, index);
+ 140:.\togglelib.c ****         break;    
+ 141:.\togglelib.c ****     }
+ 142:.\togglelib.c ****     /* Delay for a long press and clear interrupt */
+ 143:.\togglelib.c ****     CyDelay(TOGGLE_DELAY);
+ 144:.\togglelib.c ****     SWL_ClearInterrupt();
+ 145:.\togglelib.c **** }
+ 146:.\togglelib.c **** 
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccuIaCqh.s 			page 4
+
+
+ 147:.\togglelib.c **** /* Signal handler for right toggle press */
+ 148:.\togglelib.c **** CY_ISR( SWR_Handler ) {
+ 149:.\togglelib.c ****     uint8* sequance; 
+ 150:.\togglelib.c ****     uint8 index;
+ 151:.\togglelib.c ****     
+ 152:.\togglelib.c ****     /* Determine what state the badge is currently in */
+ 153:.\togglelib.c ****     switch(badge_state) {
+ 154:.\togglelib.c ****         case MORSE:
+ 155:.\togglelib.c ****             sequance = get_magic_toggle_sequance(BINARY);
+ 156:.\togglelib.c ****             index = get_magic_toggle_index(BINARY);
+ 157:.\togglelib.c ****             
+ 158:.\togglelib.c ****             /* Check if the toggle is the next value in the sequance */
+ 159:.\togglelib.c ****             if (sequance[index] == RIGHT_TOGGLE) {
+ 160:.\togglelib.c ****                 index += 1;
+ 161:.\togglelib.c ****             }
+ 162:.\togglelib.c ****             else {
+ 163:.\togglelib.c ****                 index = 0;
+ 164:.\togglelib.c ****             }
+ 165:.\togglelib.c ****                    
+ 166:.\togglelib.c ****            /* If the sequance is found change the state of the badge */
+ 167:.\togglelib.c ****            if (index == strlen(sequance)){
+ 168:.\togglelib.c ****             badge_state = BINARY;
+ 169:.\togglelib.c ****             index = 0;
+ 170:.\togglelib.c ****            }
+ 171:.\togglelib.c ****         
+ 172:.\togglelib.c ****            /* Update the value in the toggle struct */
+ 173:.\togglelib.c ****             set_magic_toggle_index(BINARY, index);
+ 174:.\togglelib.c ****         break;
+ 175:.\togglelib.c ****         case BINARY:
+ 176:.\togglelib.c ****             sequance = get_magic_toggle_sequance(SUBSTITUTION);
+ 177:.\togglelib.c ****             index = get_magic_toggle_index(SUBSTITUTION);
+ 178:.\togglelib.c ****             
+ 179:.\togglelib.c ****             /* Check if the toggle is the next value in the sequance */
+ 180:.\togglelib.c ****             if (sequance[index] == RIGHT_TOGGLE) {
+ 181:.\togglelib.c ****                 index += 1;
+ 182:.\togglelib.c ****             }
+ 183:.\togglelib.c ****             else {
+ 184:.\togglelib.c ****                 index = 0;
+ 185:.\togglelib.c ****             }
+ 186:.\togglelib.c ****                    
+ 187:.\togglelib.c ****            /* If the sequance is found change the state of the badge */
+ 188:.\togglelib.c ****            if (index == strlen(sequance)){
+ 189:.\togglelib.c ****             badge_state = SUBSTITUTION;
+ 190:.\togglelib.c ****             index = 0;
+ 191:.\togglelib.c ****            }
+ 192:.\togglelib.c ****         
+ 193:.\togglelib.c ****            /* Update the value in the toggle struct */
+ 194:.\togglelib.c ****             set_magic_toggle_index(SUBSTITUTION, index);
+ 195:.\togglelib.c ****         break;
+ 196:.\togglelib.c ****         case SUBSTITUTION:
+ 197:.\togglelib.c ****             sequance = get_magic_toggle_sequance(FINAL);
+ 198:.\togglelib.c ****             index = get_magic_toggle_index(FINAL);
+ 199:.\togglelib.c ****             
+ 200:.\togglelib.c ****             /* Check if the toggle is the next value in the sequance */
+ 201:.\togglelib.c ****             if (sequance[index] == RIGHT_TOGGLE) {
+ 202:.\togglelib.c ****                 index += 1;
+ 203:.\togglelib.c ****             }
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccuIaCqh.s 			page 5
+
+
+ 204:.\togglelib.c ****             else {
+ 205:.\togglelib.c ****                 index = 0;
+ 206:.\togglelib.c ****             }
+ 207:.\togglelib.c ****                    
+ 208:.\togglelib.c ****            /* If the sequance is found change the state of the badge */
+ 209:.\togglelib.c ****            if (index == strlen(sequance)){
+ 210:.\togglelib.c ****             badge_state = FINAL;
+ 211:.\togglelib.c ****             index = 0;
+ 212:.\togglelib.c ****            }
+ 213:.\togglelib.c ****         
+ 214:.\togglelib.c ****            /* Update the value in the toggle struct */
+ 215:.\togglelib.c ****             set_magic_toggle_index(FINAL, index);
+ 216:.\togglelib.c ****         break;
+ 217:.\togglelib.c ****         case FINAL:
+ 218:.\togglelib.c ****             sequance = get_magic_toggle_sequance(ORGANIZER);
+ 219:.\togglelib.c ****             index = get_magic_toggle_index(ORGANIZER);
+ 220:.\togglelib.c ****             
+ 221:.\togglelib.c ****             /* Check if the toggle is the next value in the sequance */
+ 222:.\togglelib.c ****             if (sequance[index] == RIGHT_TOGGLE) {
+ 223:.\togglelib.c ****                 index += 1;
+ 224:.\togglelib.c ****             }
+ 225:.\togglelib.c ****             else {
+ 226:.\togglelib.c ****                 index = 0;
+ 227:.\togglelib.c ****             }
+ 228:.\togglelib.c ****                    
+ 229:.\togglelib.c ****            /* If the sequance is found change the state of the badge */
+ 230:.\togglelib.c ****            if (index == strlen(sequance)){
+ 231:.\togglelib.c ****             badge_state = ORGANIZER;
+ 232:.\togglelib.c ****             index = 0;
+ 233:.\togglelib.c ****             PWM_Organizer_Start();
+ 234:.\togglelib.c ****            }
+ 235:.\togglelib.c ****         
+ 236:.\togglelib.c ****            /* Update the value in the toggle struct */
+ 237:.\togglelib.c ****             set_magic_toggle_index(ORGANIZER, index);
+ 238:.\togglelib.c ****         break;
+ 239:.\togglelib.c ****         case ORGANIZER:
+ 240:.\togglelib.c ****             sequance = get_magic_toggle_sequance(MORSE);
+ 241:.\togglelib.c ****             index = get_magic_toggle_index(MORSE);
+ 242:.\togglelib.c ****             
+ 243:.\togglelib.c ****             /* Check if the toggle is the next value in the sequance */
+ 244:.\togglelib.c ****             if (sequance[index] == RIGHT_TOGGLE) {
+ 245:.\togglelib.c ****                 index += 1;
+ 246:.\togglelib.c ****             }
+ 247:.\togglelib.c ****             else {
+ 248:.\togglelib.c ****                 index = 0;
+ 249:.\togglelib.c ****             }
+ 250:.\togglelib.c ****                    
+ 251:.\togglelib.c ****            /* If the sequance is found change the state of the badge */
+ 252:.\togglelib.c ****            if (index == strlen(sequance)){
+ 253:.\togglelib.c ****             badge_state = MORSE;
+ 254:.\togglelib.c ****             index = 0;
+ 255:.\togglelib.c ****             PWM_Organizer_Stop();
+ 256:.\togglelib.c ****            }
+ 257:.\togglelib.c ****         
+ 258:.\togglelib.c ****            /* Update the value in the toggle struct */
+ 259:.\togglelib.c ****             set_magic_toggle_index(MORSE, index);
+ 260:.\togglelib.c ****         break;
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccuIaCqh.s 			page 6
+
+
+ 261:.\togglelib.c ****         
+ 262:.\togglelib.c ****     }
+ 263:.\togglelib.c ****     
+ 264:.\togglelib.c ****     /* Delay for a long press and clear interrupt */
+ 265:.\togglelib.c ****     CyDelay(TOGGLE_DELAY);
+ 266:.\togglelib.c ****     SWR_ClearInterrupt();
+ 267:.\togglelib.c **** }
+ 268:.\togglelib.c **** 
+ 269:.\togglelib.c **** /* Signal handler for on board toggle press */
+ 270:.\togglelib.c **** CY_ISR( SWB_Handler ) {
+  26              		.loc 1 270 0
+  27              		.cfi_startproc
+  28 0000 08B5     		push	{r3, lr}
+  29              		.cfi_def_cfa_offset 8
+  30              		.cfi_offset 3, -8
+  31              		.cfi_offset 14, -4
+ 271:.\togglelib.c ****     /* Flip IR Status */
+ 272:.\togglelib.c ****     if (get_status(IR_LED) == OFF) {
+  32              		.loc 1 272 0
+  33 0002 0420     		mov	r0, #4
+  34 0004 FFF7FEFF 		bl	get_status
+  35              	.LVL0:
+  36 0008 0028     		cmp	r0, #0
+  37 000a 03D1     		bne	.L2
+ 273:.\togglelib.c ****         turn_on(IR_LED);
+  38              		.loc 1 273 0
+  39 000c 0420     		mov	r0, #4
+  40 000e FFF7FEFF 		bl	turn_on
+  41              	.LVL1:
+  42 0012 02E0     		b	.L3
+  43              	.L2:
+ 274:.\togglelib.c ****     } 
+ 275:.\togglelib.c ****     else {
+ 276:.\togglelib.c ****          turn_off(IR_LED);
+  44              		.loc 1 276 0
+  45 0014 0420     		mov	r0, #4
+  46 0016 FFF7FEFF 		bl	turn_off
+  47              	.LVL2:
+  48              	.L3:
+ 277:.\togglelib.c ****     }
+ 278:.\togglelib.c ****     
+ 279:.\togglelib.c ****     if (get_status(BOARD_LED) == OFF) {
+  49              		.loc 1 279 0
+  50 001a 0520     		mov	r0, #5
+  51 001c FFF7FEFF 		bl	get_status
+  52              	.LVL3:
+  53 0020 0028     		cmp	r0, #0
+  54 0022 03D1     		bne	.L4
+ 280:.\togglelib.c ****         turn_on(BOARD_LED);
+  55              		.loc 1 280 0
+  56 0024 0520     		mov	r0, #5
+  57 0026 FFF7FEFF 		bl	turn_on
+  58              	.LVL4:
+  59 002a 02E0     		b	.L5
+  60              	.L4:
+ 281:.\togglelib.c ****     } 
+ 282:.\togglelib.c ****     else {
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccuIaCqh.s 			page 7
+
+
+ 283:.\togglelib.c ****          turn_off(BOARD_LED);
+  61              		.loc 1 283 0
+  62 002c 0520     		mov	r0, #5
+  63 002e FFF7FEFF 		bl	turn_off
+  64              	.LVL5:
+  65              	.L5:
+ 284:.\togglelib.c ****     }
+ 285:.\togglelib.c ****     
+ 286:.\togglelib.c **** 
+ 287:.\togglelib.c ****     /* Clear interrupt */
+ 288:.\togglelib.c ****     SWB_ClearInterrupt();
+  66              		.loc 1 288 0
+  67 0032 FFF7FEFF 		bl	SWB_ClearInterrupt
+  68              	.LVL6:
+ 289:.\togglelib.c **** }
+  69              		.loc 1 289 0
+  70              		@ sp needed
+  71 0036 08BD     		pop	{r3, pc}
+  72              		.cfi_endproc
+  73              	.LFE35:
+  74              		.size	SWB_Handler, .-SWB_Handler
+  75              		.global	__aeabi_idivmod
+  76              		.section	.text.ORG_Handler,"ax",%progbits
+  77              		.align	1
+  78              		.global	ORG_Handler
+  79              		.code	16
+  80              		.thumb_func
+  81              		.type	ORG_Handler, %function
+  82              	ORG_Handler:
+  83              	.LFB36:
+ 290:.\togglelib.c **** 
+ 291:.\togglelib.c **** /* Signal handler for organizer lights */
+ 292:.\togglelib.c **** CY_ISR( ORG_Handler ) {
+  84              		.loc 1 292 0
+  85              		.cfi_startproc
+  86 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+  87              		.cfi_def_cfa_offset 24
+  88              		.cfi_offset 3, -24
+  89              		.cfi_offset 4, -20
+  90              		.cfi_offset 5, -16
+  91              		.cfi_offset 6, -12
+  92              		.cfi_offset 7, -8
+  93              		.cfi_offset 14, -4
+ 293:.\togglelib.c ****     /* */
+ 294:.\togglelib.c ****     uint8 current_color_left = get_color(LEFT_LED);
+  94              		.loc 1 294 0
+  95 0002 0120     		mov	r0, #1
+  96 0004 FFF7FEFF 		bl	get_color
+  97              	.LVL7:
+  98 0008 071C     		mov	r7, r0
+  99              	.LVL8:
+ 295:.\togglelib.c ****     uint8 current_color_right = get_color(RIGHT_LED);
+ 100              		.loc 1 295 0
+ 101 000a 0220     		mov	r0, #2
+ 102              	.LVL9:
+ 103 000c FFF7FEFF 		bl	get_color
+ 104              	.LVL10:
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccuIaCqh.s 			page 8
+
+
+ 105 0010 061C     		mov	r6, r0
+ 106              	.LVL11:
+ 296:.\togglelib.c ****     uint32 rand_num_left = (rand() % 7) + 1;
+ 107              		.loc 1 296 0
+ 108 0012 FFF7FEFF 		bl	rand
+ 109              	.LVL12:
+ 110 0016 0721     		mov	r1, #7
+ 111 0018 FFF7FEFF 		bl	__aeabi_idivmod
+ 112              	.LVL13:
+ 113 001c 4D1C     		add	r5, r1, #1
+ 114              	.LVL14:
+ 297:.\togglelib.c ****     uint32 rand_num_right = (rand() % 7) + 1;
+ 115              		.loc 1 297 0
+ 116 001e FFF7FEFF 		bl	rand
+ 117              	.LVL15:
+ 118 0022 0721     		mov	r1, #7
+ 119 0024 FFF7FEFF 		bl	__aeabi_idivmod
+ 120              	.LVL16:
+ 121 0028 4C1C     		add	r4, r1, #1
+ 122              	.LVL17:
+ 123              	.L8:
+ 298:.\togglelib.c ****     
+ 299:.\togglelib.c ****     while (current_color_left == rand_num_left){
+ 124              		.loc 1 299 0 discriminator 1
+ 125 002a AF42     		cmp	r7, r5
+ 126 002c 06D1     		bne	.L10
+ 300:.\togglelib.c ****         rand_num_left = (rand() % 7) + 1;
+ 127              		.loc 1 300 0
+ 128 002e FFF7FEFF 		bl	rand
+ 129              	.LVL18:
+ 130 0032 0721     		mov	r1, #7
+ 131 0034 FFF7FEFF 		bl	__aeabi_idivmod
+ 132              	.LVL19:
+ 133 0038 4D1C     		add	r5, r1, #1
+ 134              	.LVL20:
+ 135 003a F6E7     		b	.L8
+ 136              	.L10:
+ 301:.\togglelib.c ****     }
+ 302:.\togglelib.c ****     
+ 303:.\togglelib.c ****    while (current_color_right == rand_num_right){
+ 137              		.loc 1 303 0 discriminator 1
+ 138 003c A642     		cmp	r6, r4
+ 139 003e 06D1     		bne	.L12
+ 304:.\togglelib.c ****         rand_num_right = (rand() % 7) + 1;
+ 140              		.loc 1 304 0
+ 141 0040 FFF7FEFF 		bl	rand
+ 142              	.LVL21:
+ 143 0044 0721     		mov	r1, #7
+ 144 0046 FFF7FEFF 		bl	__aeabi_idivmod
+ 145              	.LVL22:
+ 146 004a 4C1C     		add	r4, r1, #1
+ 147              	.LVL23:
+ 148 004c F6E7     		b	.L10
+ 149              	.L12:
+ 305:.\togglelib.c ****     }
+ 306:.\togglelib.c ****     
+ 307:.\togglelib.c ****     set_color(LEFT_LED, rand_num_left);
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccuIaCqh.s 			page 9
+
+
+ 150              		.loc 1 307 0
+ 151 004e E9B2     		uxtb	r1, r5
+ 152 0050 0120     		mov	r0, #1
+ 153 0052 FFF7FEFF 		bl	set_color
+ 154              	.LVL24:
+ 308:.\togglelib.c ****     set_color(RIGHT_LED, rand_num_right);
+ 155              		.loc 1 308 0
+ 156 0056 E1B2     		uxtb	r1, r4
+ 157 0058 0220     		mov	r0, #2
+ 158 005a FFF7FEFF 		bl	set_color
+ 159              	.LVL25:
+ 309:.\togglelib.c ****     turn_off(LEFT_RIGHT_LED);
+ 160              		.loc 1 309 0
+ 161 005e 0320     		mov	r0, #3
+ 162 0060 FFF7FEFF 		bl	turn_off
+ 163              	.LVL26:
+ 310:.\togglelib.c ****     turn_on(LEFT_RIGHT_LED);
+ 164              		.loc 1 310 0
+ 165 0064 0320     		mov	r0, #3
+ 166 0066 FFF7FEFF 		bl	turn_on
+ 167              	.LVL27:
+ 311:.\togglelib.c ****     
+ 312:.\togglelib.c ****     ORG_Int_ClearPending();
+ 313:.\togglelib.c ****     PWM_Organizer_ReadStatusRegister();
+ 314:.\togglelib.c **** }
+ 168              		.loc 1 314 0
+ 169              		@ sp needed
+ 312:.\togglelib.c ****     ORG_Int_ClearPending();
+ 170              		.loc 1 312 0
+ 171 006a FFF7FEFF 		bl	ORG_Int_ClearPending
+ 172              	.LVL28:
+ 313:.\togglelib.c ****     PWM_Organizer_ReadStatusRegister();
+ 173              		.loc 1 313 0
+ 174 006e FFF7FEFF 		bl	PWM_Organizer_ReadStatusRegister
+ 175              	.LVL29:
+ 176              	.LVL30:
+ 177              	.LVL31:
+ 178              	.LVL32:
+ 179              	.LVL33:
+ 180              		.loc 1 314 0
+ 181 0072 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 182              		.cfi_endproc
+ 183              	.LFE36:
+ 184              		.size	ORG_Handler, .-ORG_Handler
+ 185              		.section	.text.SWL_Handler,"ax",%progbits
+ 186              		.align	1
+ 187              		.global	SWL_Handler
+ 188              		.code	16
+ 189              		.thumb_func
+ 190              		.type	SWL_Handler, %function
+ 191              	SWL_Handler:
+ 192              	.LFB33:
+  28:.\togglelib.c **** CY_ISR( SWL_Handler ) {
+ 193              		.loc 1 28 0
+ 194              		.cfi_startproc
+ 195 0000 70B5     		push	{r4, r5, r6, lr}
+ 196              		.cfi_def_cfa_offset 16
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccuIaCqh.s 			page 10
+
+
+ 197              		.cfi_offset 4, -16
+ 198              		.cfi_offset 5, -12
+ 199              		.cfi_offset 6, -8
+ 200              		.cfi_offset 14, -4
+  33:.\togglelib.c ****     switch(badge_state) {
+ 201              		.loc 1 33 0
+ 202 0002 364C     		ldr	r4, .L38
+ 203 0004 2078     		ldrb	r0, [r4]
+ 204 0006 0138     		sub	r0, r0, #1
+ 205 0008 0428     		cmp	r0, #4
+ 206 000a 61D8     		bhi	.L14
+ 207 000c FFF7FEFF 		bl	__gnu_thumb1_case_uqi
+ 208              	.L16:
+ 209 0010 03       		.byte	(.L15-.L16)/2
+ 210 0011 14       		.byte	(.L17-.L16)/2
+ 211 0012 25       		.byte	(.L18-.L16)/2
+ 212 0013 37       		.byte	(.L19-.L16)/2
+ 213 0014 4B       		.byte	(.L20-.L16)/2
+ 214 0015 00       		.p2align 1
+ 215              	.L15:
+ 216              	.LVL34:
+ 217              	.LBB32:
+ 218              	.LBB33:
+ 315:.\togglelib.c **** 
+ 316:.\togglelib.c **** /* Sets the magic toogle sequence of the global toggle state change structure */
+ 317:.\togglelib.c **** void set_magic_toggle_sequance(uint8 state_flag, uint8* sequance) {
+ 318:.\togglelib.c ****     switch(state_flag) {
+ 319:.\togglelib.c ****         case MORSE:
+ 320:.\togglelib.c ****             memmove(Morse_Sequence.sequance, sequance, MAX_SEQUENCE_SIZE);
+ 321:.\togglelib.c ****         break;
+ 322:.\togglelib.c ****         case BINARY:
+ 323:.\togglelib.c ****             memmove(Binary_Sequence.sequance, sequance, MAX_SEQUENCE_SIZE);
+ 324:.\togglelib.c ****         break;
+ 325:.\togglelib.c ****         case SUBSTITUTION:
+ 326:.\togglelib.c ****             memmove(Substitution_Sequence.sequance, sequance, MAX_SEQUENCE_SIZE);
+ 327:.\togglelib.c ****         break;
+ 328:.\togglelib.c ****         case FINAL:
+ 329:.\togglelib.c ****             memmove(Final_Stage_Sequence.sequance, sequance, MAX_SEQUENCE_SIZE);
+ 330:.\togglelib.c ****         break;
+ 331:.\togglelib.c ****         case ORGANIZER:
+ 332:.\togglelib.c ****             memmove(Organizer_Sequence.sequance, sequance, MAX_SEQUENCE_SIZE);
+ 333:.\togglelib.c ****         break;
+ 334:.\togglelib.c ****     }   
+ 335:.\togglelib.c ****     
+ 336:.\togglelib.c **** }
+ 337:.\togglelib.c **** 
+ 338:.\togglelib.c **** /* Gets the magic toogle sequence of the global toggle state change structure */
+ 339:.\togglelib.c **** uint8* get_magic_toggle_sequance(uint8 state_flag) {
+ 340:.\togglelib.c ****     switch(state_flag) {
+ 341:.\togglelib.c ****         case MORSE:
+ 342:.\togglelib.c ****             return Morse_Sequence.sequance;
+ 343:.\togglelib.c ****         break;
+ 344:.\togglelib.c ****         case BINARY:
+ 345:.\togglelib.c ****              return Binary_Sequence.sequance;
+ 346:.\togglelib.c ****         break;
+ 347:.\togglelib.c ****         case SUBSTITUTION:
+ 348:.\togglelib.c ****              return Substitution_Sequence.sequance;
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccuIaCqh.s 			page 11
+
+
+ 349:.\togglelib.c ****         break;
+ 350:.\togglelib.c ****         case FINAL:
+ 351:.\togglelib.c ****              return Final_Stage_Sequence.sequance;
+ 352:.\togglelib.c ****         break;
+ 353:.\togglelib.c ****         case ORGANIZER:
+ 354:.\togglelib.c ****              return Organizer_Sequence.sequance;
+ 355:.\togglelib.c ****         break;
+ 356:.\togglelib.c ****     }
+ 357:.\togglelib.c ****     return NULL;
+ 358:.\togglelib.c **** }
+ 359:.\togglelib.c **** 
+ 360:.\togglelib.c **** /* Sets the index of the magic toogle sequence of the global toggle state change structure */
+ 361:.\togglelib.c **** void set_magic_toggle_index(uint8 state_flag, uint8 value) {
+ 362:.\togglelib.c ****     switch(state_flag) {
+ 363:.\togglelib.c ****         case MORSE:
+ 364:.\togglelib.c ****             Morse_Sequence.index = value;
+ 365:.\togglelib.c ****         break;
+ 366:.\togglelib.c ****         case BINARY:
+ 367:.\togglelib.c ****             Binary_Sequence.index = value;
+ 368:.\togglelib.c ****         break;
+ 369:.\togglelib.c ****         case SUBSTITUTION:
+ 370:.\togglelib.c ****             Substitution_Sequence.index = value;
+ 371:.\togglelib.c ****         break;
+ 372:.\togglelib.c ****         case FINAL:
+ 373:.\togglelib.c ****             Final_Stage_Sequence.index = value;
+ 374:.\togglelib.c ****         break;
+ 375:.\togglelib.c ****         case ORGANIZER:
+ 376:.\togglelib.c ****             Organizer_Sequence.index = value;
+ 377:.\togglelib.c ****         break;
+ 378:.\togglelib.c ****     }
+ 379:.\togglelib.c **** }
+ 380:.\togglelib.c **** 
+ 381:.\togglelib.c **** /* Gets the index of the magic toogle sequence of the global toggle state change structure */
+ 382:.\togglelib.c **** uint8 get_magic_toggle_index(uint8 state_flag) {
+ 383:.\togglelib.c ****         switch(state_flag) {
+ 384:.\togglelib.c ****         case MORSE:
+ 385:.\togglelib.c ****             return Morse_Sequence.index;
+ 386:.\togglelib.c ****         break;
+ 387:.\togglelib.c ****         case BINARY:
+ 388:.\togglelib.c ****             return Binary_Sequence.index;
+ 219              		.loc 1 388 0
+ 220 0016 3248     		ldr	r0, .L38+4
+ 221              	.LBE33:
+ 222              	.LBE32:
+  43:.\togglelib.c ****                 index = 0;
+ 223              		.loc 1 43 0
+ 224 0018 0025     		mov	r5, #0
+ 225              	.LBB35:
+ 226              	.LBB34:
+ 227              		.loc 1 388 0
+ 228 001a 037D     		ldrb	r3, [r0, #20]
+ 229 001c 061C     		mov	r6, r0
+ 230 001e DBB2     		uxtb	r3, r3
+ 231              	.LBE34:
+ 232              	.LBE35:
+  39:.\togglelib.c ****             if (sequance[index] == LEFT_TOGGLE) {
+ 233              		.loc 1 39 0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccuIaCqh.s 			page 12
+
+
+ 234 0020 C25C     		ldrb	r2, [r0, r3]
+ 235 0022 012A     		cmp	r2, #1
+ 236 0024 01D1     		bne	.L21
+  40:.\togglelib.c ****                 index += 1;
+ 237              		.loc 1 40 0
+ 238 0026 5D1C     		add	r5, r3, #1
+ 239 0028 EDB2     		uxtb	r5, r5
+ 240              	.LVL35:
+ 241              	.L21:
+  47:.\togglelib.c ****            if (index == strlen(sequance)){
+ 242              		.loc 1 47 0
+ 243 002a 301C     		mov	r0, r6
+ 244 002c FFF7FEFF 		bl	strlen
+ 245              	.LVL36:
+  48:.\togglelib.c ****             badge_state = BINARY;
+ 246              		.loc 1 48 0
+ 247 0030 0223     		mov	r3, #2
+  47:.\togglelib.c ****            if (index == strlen(sequance)){
+ 248              		.loc 1 47 0
+ 249 0032 8542     		cmp	r5, r0
+ 250 0034 4BD1     		bne	.L30
+ 251 0036 20E0     		b	.L37
+ 252              	.LVL37:
+ 253              	.L17:
+ 254              	.LBB36:
+ 255              	.LBB37:
+ 389:.\togglelib.c ****         break;
+ 390:.\togglelib.c ****         case SUBSTITUTION:
+ 391:.\togglelib.c ****             return Substitution_Sequence.index;
+ 256              		.loc 1 391 0
+ 257 0038 2A48     		ldr	r0, .L38+8
+ 258              	.LBE37:
+ 259              	.LBE36:
+  64:.\togglelib.c ****                 index = 0;
+ 260              		.loc 1 64 0
+ 261 003a 0025     		mov	r5, #0
+ 262              	.LBB39:
+ 263              	.LBB38:
+ 264              		.loc 1 391 0
+ 265 003c 037D     		ldrb	r3, [r0, #20]
+ 266 003e 061C     		mov	r6, r0
+ 267 0040 DBB2     		uxtb	r3, r3
+ 268              	.LBE38:
+ 269              	.LBE39:
+  60:.\togglelib.c ****             if (sequance[index] == LEFT_TOGGLE) {
+ 270              		.loc 1 60 0
+ 271 0042 C25C     		ldrb	r2, [r0, r3]
+ 272 0044 012A     		cmp	r2, #1
+ 273 0046 01D1     		bne	.L23
+  61:.\togglelib.c ****                 index += 1;
+ 274              		.loc 1 61 0
+ 275 0048 5D1C     		add	r5, r3, #1
+ 276 004a EDB2     		uxtb	r5, r5
+ 277              	.LVL38:
+ 278              	.L23:
+  68:.\togglelib.c ****            if (index == strlen(sequance)){
+ 279              		.loc 1 68 0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccuIaCqh.s 			page 13
+
+
+ 280 004c 301C     		mov	r0, r6
+ 281 004e FFF7FEFF 		bl	strlen
+ 282              	.LVL39:
+  69:.\togglelib.c ****             badge_state = SUBSTITUTION;
+ 283              		.loc 1 69 0
+ 284 0052 0323     		mov	r3, #3
+  68:.\togglelib.c ****            if (index == strlen(sequance)){
+ 285              		.loc 1 68 0
+ 286 0054 8542     		cmp	r5, r0
+ 287 0056 3AD1     		bne	.L30
+ 288 0058 0FE0     		b	.L37
+ 289              	.LVL40:
+ 290              	.L18:
+ 291              	.LBB40:
+ 292              	.LBB41:
+ 392:.\togglelib.c ****         break;
+ 393:.\togglelib.c ****         case FINAL:
+ 394:.\togglelib.c ****             return Final_Stage_Sequence.index;
+ 293              		.loc 1 394 0
+ 294 005a 2348     		ldr	r0, .L38+12
+ 295              	.LBE41:
+ 296              	.LBE40:
+  85:.\togglelib.c ****                 index = 0;
+ 297              		.loc 1 85 0
+ 298 005c 0025     		mov	r5, #0
+ 299              	.LBB43:
+ 300              	.LBB42:
+ 301              		.loc 1 394 0
+ 302 005e 037D     		ldrb	r3, [r0, #20]
+ 303 0060 061C     		mov	r6, r0
+ 304 0062 DBB2     		uxtb	r3, r3
+ 305              	.LBE42:
+ 306              	.LBE43:
+  81:.\togglelib.c ****             if (sequance[index] == LEFT_TOGGLE) {
+ 307              		.loc 1 81 0
+ 308 0064 C25C     		ldrb	r2, [r0, r3]
+ 309 0066 012A     		cmp	r2, #1
+ 310 0068 01D1     		bne	.L25
+  82:.\togglelib.c ****                 index += 1;
+ 311              		.loc 1 82 0
+ 312 006a 5D1C     		add	r5, r3, #1
+ 313 006c EDB2     		uxtb	r5, r5
+ 314              	.LVL41:
+ 315              	.L25:
+  89:.\togglelib.c ****            if (index == strlen(sequance)){
+ 316              		.loc 1 89 0
+ 317 006e 301C     		mov	r0, r6
+ 318 0070 FFF7FEFF 		bl	strlen
+ 319              	.LVL42:
+ 320 0074 8542     		cmp	r5, r0
+ 321 0076 2AD1     		bne	.L30
+  90:.\togglelib.c ****             badge_state = FINAL;
+ 322              		.loc 1 90 0
+ 323 0078 0423     		mov	r3, #4
+ 324              	.LVL43:
+ 325              	.L37:
+ 326 007a 2370     		strb	r3, [r4]
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccuIaCqh.s 			page 14
+
+
+ 327              	.LVL44:
+ 328 007c 26E0     		b	.L36
+ 329              	.LVL45:
+ 330              	.L19:
+ 331              	.LBB44:
+ 332              	.LBB45:
+ 395:.\togglelib.c ****         break;
+ 396:.\togglelib.c ****         case ORGANIZER:
+ 397:.\togglelib.c ****             return Organizer_Sequence.index;
+ 333              		.loc 1 397 0
+ 334 007e 1B48     		ldr	r0, .L38+16
+ 335              	.LBE45:
+ 336              	.LBE44:
+ 106:.\togglelib.c ****                 index = 0;
+ 337              		.loc 1 106 0
+ 338 0080 0025     		mov	r5, #0
+ 339              	.LBB47:
+ 340              	.LBB46:
+ 341              		.loc 1 397 0
+ 342 0082 037D     		ldrb	r3, [r0, #20]
+ 343 0084 061C     		mov	r6, r0
+ 344 0086 DBB2     		uxtb	r3, r3
+ 345              	.LBE46:
+ 346              	.LBE47:
+ 102:.\togglelib.c ****             if (sequance[index] == LEFT_TOGGLE) {
+ 347              		.loc 1 102 0
+ 348 0088 C25C     		ldrb	r2, [r0, r3]
+ 349 008a 012A     		cmp	r2, #1
+ 350 008c 01D1     		bne	.L27
+ 103:.\togglelib.c ****                 index += 1;
+ 351              		.loc 1 103 0
+ 352 008e 5D1C     		add	r5, r3, #1
+ 353 0090 EDB2     		uxtb	r5, r5
+ 354              	.LVL46:
+ 355              	.L27:
+ 110:.\togglelib.c ****            if (index == strlen(sequance)){
+ 356              		.loc 1 110 0
+ 357 0092 301C     		mov	r0, r6
+ 358 0094 FFF7FEFF 		bl	strlen
+ 359              	.LVL47:
+ 360 0098 8542     		cmp	r5, r0
+ 361 009a 18D1     		bne	.L30
+ 111:.\togglelib.c ****             badge_state = ORGANIZER;
+ 362              		.loc 1 111 0
+ 363 009c 0523     		mov	r3, #5
+ 364 009e 2370     		strb	r3, [r4]
+ 365              	.LVL48:
+ 113:.\togglelib.c ****             PWM_Organizer_Start();
+ 366              		.loc 1 113 0
+ 367 00a0 FFF7FEFF 		bl	PWM_Organizer_Start
+ 368              	.LVL49:
+ 369 00a4 12E0     		b	.L36
+ 370              	.LVL50:
+ 371              	.L20:
+ 372              	.LBB48:
+ 373              	.LBB49:
+ 385:.\togglelib.c ****             return Morse_Sequence.index;
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccuIaCqh.s 			page 15
+
+
+ 374              		.loc 1 385 0
+ 375 00a6 1248     		ldr	r0, .L38+20
+ 376              	.LBE49:
+ 377              	.LBE48:
+ 128:.\togglelib.c ****                 index = 0;
+ 378              		.loc 1 128 0
+ 379 00a8 0025     		mov	r5, #0
+ 380              	.LBB51:
+ 381              	.LBB50:
+ 385:.\togglelib.c ****             return Morse_Sequence.index;
+ 382              		.loc 1 385 0
+ 383 00aa 037D     		ldrb	r3, [r0, #20]
+ 384 00ac 061C     		mov	r6, r0
+ 385 00ae DBB2     		uxtb	r3, r3
+ 386              	.LBE50:
+ 387              	.LBE51:
+ 124:.\togglelib.c ****             if (sequance[index] == LEFT_TOGGLE) {
+ 388              		.loc 1 124 0
+ 389 00b0 C25C     		ldrb	r2, [r0, r3]
+ 390 00b2 012A     		cmp	r2, #1
+ 391 00b4 01D1     		bne	.L29
+ 125:.\togglelib.c ****                 index += 1;
+ 392              		.loc 1 125 0
+ 393 00b6 5D1C     		add	r5, r3, #1
+ 394 00b8 EDB2     		uxtb	r5, r5
+ 395              	.LVL51:
+ 396              	.L29:
+ 132:.\togglelib.c ****            if (index == strlen(sequance)){
+ 397              		.loc 1 132 0
+ 398 00ba 301C     		mov	r0, r6
+ 399 00bc FFF7FEFF 		bl	strlen
+ 400              	.LVL52:
+ 401 00c0 8542     		cmp	r5, r0
+ 402 00c2 04D1     		bne	.L30
+ 133:.\togglelib.c ****             badge_state = MORSE;
+ 403              		.loc 1 133 0
+ 404 00c4 0123     		mov	r3, #1
+ 405 00c6 2370     		strb	r3, [r4]
+ 406              	.LVL53:
+ 135:.\togglelib.c ****             PWM_Organizer_Stop();
+ 407              		.loc 1 135 0
+ 408 00c8 FFF7FEFF 		bl	PWM_Organizer_Stop
+ 409              	.LVL54:
+ 410              	.L36:
+ 134:.\togglelib.c ****             index = 0;
+ 411              		.loc 1 134 0
+ 412 00cc 0025     		mov	r5, #0
+ 413              	.LVL55:
+ 414              	.L30:
+ 415              	.LBB52:
+ 416              	.LBB53:
+ 364:.\togglelib.c ****             Morse_Sequence.index = value;
+ 417              		.loc 1 364 0
+ 418 00ce 3575     		strb	r5, [r6, #20]
+ 419              	.LVL56:
+ 420              	.L14:
+ 421              	.LBE53:
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccuIaCqh.s 			page 16
+
+
+ 422              	.LBE52:
+ 143:.\togglelib.c ****     CyDelay(TOGGLE_DELAY);
+ 423              		.loc 1 143 0
+ 424 00d0 9620     		mov	r0, #150
+ 425 00d2 FFF7FEFF 		bl	CyDelay
+ 426              	.LVL57:
+ 145:.\togglelib.c **** }
+ 427              		.loc 1 145 0
+ 428              		@ sp needed
+ 144:.\togglelib.c ****     SWL_ClearInterrupt();
+ 429              		.loc 1 144 0
+ 430 00d6 FFF7FEFF 		bl	SWL_ClearInterrupt
+ 431              	.LVL58:
+ 145:.\togglelib.c **** }
+ 432              		.loc 1 145 0
+ 433 00da 70BD     		pop	{r4, r5, r6, pc}
+ 434              	.L39:
+ 435              		.align	2
+ 436              	.L38:
+ 437 00dc 00000000 		.word	badge_state
+ 438 00e0 00000000 		.word	Binary_Sequence
+ 439 00e4 00000000 		.word	Substitution_Sequence
+ 440 00e8 00000000 		.word	Final_Stage_Sequence
+ 441 00ec 00000000 		.word	Organizer_Sequence
+ 442 00f0 00000000 		.word	Morse_Sequence
+ 443              		.cfi_endproc
+ 444              	.LFE33:
+ 445              		.size	SWL_Handler, .-SWL_Handler
+ 446              		.section	.text.SWR_Handler,"ax",%progbits
+ 447              		.align	1
+ 448              		.global	SWR_Handler
+ 449              		.code	16
+ 450              		.thumb_func
+ 451              		.type	SWR_Handler, %function
+ 452              	SWR_Handler:
+ 453              	.LFB34:
+ 148:.\togglelib.c **** CY_ISR( SWR_Handler ) {
+ 454              		.loc 1 148 0
+ 455              		.cfi_startproc
+ 456 0000 70B5     		push	{r4, r5, r6, lr}
+ 457              		.cfi_def_cfa_offset 16
+ 458              		.cfi_offset 4, -16
+ 459              		.cfi_offset 5, -12
+ 460              		.cfi_offset 6, -8
+ 461              		.cfi_offset 14, -4
+ 153:.\togglelib.c ****     switch(badge_state) {
+ 462              		.loc 1 153 0
+ 463 0002 364C     		ldr	r4, .L65
+ 464 0004 2078     		ldrb	r0, [r4]
+ 465 0006 0138     		sub	r0, r0, #1
+ 466 0008 0428     		cmp	r0, #4
+ 467 000a 61D8     		bhi	.L41
+ 468 000c FFF7FEFF 		bl	__gnu_thumb1_case_uqi
+ 469              	.L43:
+ 470 0010 03       		.byte	(.L42-.L43)/2
+ 471 0011 14       		.byte	(.L44-.L43)/2
+ 472 0012 25       		.byte	(.L45-.L43)/2
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccuIaCqh.s 			page 17
+
+
+ 473 0013 37       		.byte	(.L46-.L43)/2
+ 474 0014 4B       		.byte	(.L47-.L43)/2
+ 475 0015 00       		.p2align 1
+ 476              	.L42:
+ 477              	.LVL59:
+ 478              	.LBB84:
+ 479              	.LBB85:
+ 388:.\togglelib.c ****             return Binary_Sequence.index;
+ 480              		.loc 1 388 0
+ 481 0016 3248     		ldr	r0, .L65+4
+ 482              	.LBE85:
+ 483              	.LBE84:
+ 163:.\togglelib.c ****                 index = 0;
+ 484              		.loc 1 163 0
+ 485 0018 0025     		mov	r5, #0
+ 486              	.LBB87:
+ 487              	.LBB86:
+ 388:.\togglelib.c ****             return Binary_Sequence.index;
+ 488              		.loc 1 388 0
+ 489 001a 037D     		ldrb	r3, [r0, #20]
+ 490 001c 061C     		mov	r6, r0
+ 491 001e DBB2     		uxtb	r3, r3
+ 492              	.LBE86:
+ 493              	.LBE87:
+ 159:.\togglelib.c ****             if (sequance[index] == RIGHT_TOGGLE) {
+ 494              		.loc 1 159 0
+ 495 0020 C25C     		ldrb	r2, [r0, r3]
+ 496 0022 022A     		cmp	r2, #2
+ 497 0024 01D1     		bne	.L48
+ 160:.\togglelib.c ****                 index += 1;
+ 498              		.loc 1 160 0
+ 499 0026 5D1C     		add	r5, r3, #1
+ 500 0028 EDB2     		uxtb	r5, r5
+ 501              	.LVL60:
+ 502              	.L48:
+ 167:.\togglelib.c ****            if (index == strlen(sequance)){
+ 503              		.loc 1 167 0
+ 504 002a 301C     		mov	r0, r6
+ 505 002c FFF7FEFF 		bl	strlen
+ 506              	.LVL61:
+ 168:.\togglelib.c ****             badge_state = BINARY;
+ 507              		.loc 1 168 0
+ 508 0030 0223     		mov	r3, #2
+ 167:.\togglelib.c ****            if (index == strlen(sequance)){
+ 509              		.loc 1 167 0
+ 510 0032 8542     		cmp	r5, r0
+ 511 0034 4BD1     		bne	.L57
+ 512 0036 20E0     		b	.L64
+ 513              	.LVL62:
+ 514              	.L44:
+ 515              	.LBB88:
+ 516              	.LBB89:
+ 391:.\togglelib.c ****             return Substitution_Sequence.index;
+ 517              		.loc 1 391 0
+ 518 0038 2A48     		ldr	r0, .L65+8
+ 519              	.LBE89:
+ 520              	.LBE88:
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccuIaCqh.s 			page 18
+
+
+ 184:.\togglelib.c ****                 index = 0;
+ 521              		.loc 1 184 0
+ 522 003a 0025     		mov	r5, #0
+ 523              	.LBB91:
+ 524              	.LBB90:
+ 391:.\togglelib.c ****             return Substitution_Sequence.index;
+ 525              		.loc 1 391 0
+ 526 003c 037D     		ldrb	r3, [r0, #20]
+ 527 003e 061C     		mov	r6, r0
+ 528 0040 DBB2     		uxtb	r3, r3
+ 529              	.LBE90:
+ 530              	.LBE91:
+ 180:.\togglelib.c ****             if (sequance[index] == RIGHT_TOGGLE) {
+ 531              		.loc 1 180 0
+ 532 0042 C25C     		ldrb	r2, [r0, r3]
+ 533 0044 022A     		cmp	r2, #2
+ 534 0046 01D1     		bne	.L50
+ 181:.\togglelib.c ****                 index += 1;
+ 535              		.loc 1 181 0
+ 536 0048 5D1C     		add	r5, r3, #1
+ 537 004a EDB2     		uxtb	r5, r5
+ 538              	.LVL63:
+ 539              	.L50:
+ 188:.\togglelib.c ****            if (index == strlen(sequance)){
+ 540              		.loc 1 188 0
+ 541 004c 301C     		mov	r0, r6
+ 542 004e FFF7FEFF 		bl	strlen
+ 543              	.LVL64:
+ 189:.\togglelib.c ****             badge_state = SUBSTITUTION;
+ 544              		.loc 1 189 0
+ 545 0052 0323     		mov	r3, #3
+ 188:.\togglelib.c ****            if (index == strlen(sequance)){
+ 546              		.loc 1 188 0
+ 547 0054 8542     		cmp	r5, r0
+ 548 0056 3AD1     		bne	.L57
+ 549 0058 0FE0     		b	.L64
+ 550              	.LVL65:
+ 551              	.L45:
+ 552              	.LBB92:
+ 553              	.LBB93:
+ 394:.\togglelib.c ****             return Final_Stage_Sequence.index;
+ 554              		.loc 1 394 0
+ 555 005a 2348     		ldr	r0, .L65+12
+ 556              	.LBE93:
+ 557              	.LBE92:
+ 205:.\togglelib.c ****                 index = 0;
+ 558              		.loc 1 205 0
+ 559 005c 0025     		mov	r5, #0
+ 560              	.LBB95:
+ 561              	.LBB94:
+ 394:.\togglelib.c ****             return Final_Stage_Sequence.index;
+ 562              		.loc 1 394 0
+ 563 005e 037D     		ldrb	r3, [r0, #20]
+ 564 0060 061C     		mov	r6, r0
+ 565 0062 DBB2     		uxtb	r3, r3
+ 566              	.LBE94:
+ 567              	.LBE95:
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccuIaCqh.s 			page 19
+
+
+ 201:.\togglelib.c ****             if (sequance[index] == RIGHT_TOGGLE) {
+ 568              		.loc 1 201 0
+ 569 0064 C25C     		ldrb	r2, [r0, r3]
+ 570 0066 022A     		cmp	r2, #2
+ 571 0068 01D1     		bne	.L52
+ 202:.\togglelib.c ****                 index += 1;
+ 572              		.loc 1 202 0
+ 573 006a 5D1C     		add	r5, r3, #1
+ 574 006c EDB2     		uxtb	r5, r5
+ 575              	.LVL66:
+ 576              	.L52:
+ 209:.\togglelib.c ****            if (index == strlen(sequance)){
+ 577              		.loc 1 209 0
+ 578 006e 301C     		mov	r0, r6
+ 579 0070 FFF7FEFF 		bl	strlen
+ 580              	.LVL67:
+ 581 0074 8542     		cmp	r5, r0
+ 582 0076 2AD1     		bne	.L57
+ 210:.\togglelib.c ****             badge_state = FINAL;
+ 583              		.loc 1 210 0
+ 584 0078 0423     		mov	r3, #4
+ 585              	.LVL68:
+ 586              	.L64:
+ 587 007a 2370     		strb	r3, [r4]
+ 588              	.LVL69:
+ 589 007c 26E0     		b	.L63
+ 590              	.LVL70:
+ 591              	.L46:
+ 592              	.LBB96:
+ 593              	.LBB97:
+ 594              		.loc 1 397 0
+ 595 007e 1B48     		ldr	r0, .L65+16
+ 596              	.LBE97:
+ 597              	.LBE96:
+ 226:.\togglelib.c ****                 index = 0;
+ 598              		.loc 1 226 0
+ 599 0080 0025     		mov	r5, #0
+ 600              	.LBB99:
+ 601              	.LBB98:
+ 602              		.loc 1 397 0
+ 603 0082 037D     		ldrb	r3, [r0, #20]
+ 604 0084 061C     		mov	r6, r0
+ 605 0086 DBB2     		uxtb	r3, r3
+ 606              	.LBE98:
+ 607              	.LBE99:
+ 222:.\togglelib.c ****             if (sequance[index] == RIGHT_TOGGLE) {
+ 608              		.loc 1 222 0
+ 609 0088 C25C     		ldrb	r2, [r0, r3]
+ 610 008a 022A     		cmp	r2, #2
+ 611 008c 01D1     		bne	.L54
+ 223:.\togglelib.c ****                 index += 1;
+ 612              		.loc 1 223 0
+ 613 008e 5D1C     		add	r5, r3, #1
+ 614 0090 EDB2     		uxtb	r5, r5
+ 615              	.LVL71:
+ 616              	.L54:
+ 230:.\togglelib.c ****            if (index == strlen(sequance)){
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccuIaCqh.s 			page 20
+
+
+ 617              		.loc 1 230 0
+ 618 0092 301C     		mov	r0, r6
+ 619 0094 FFF7FEFF 		bl	strlen
+ 620              	.LVL72:
+ 621 0098 8542     		cmp	r5, r0
+ 622 009a 18D1     		bne	.L57
+ 231:.\togglelib.c ****             badge_state = ORGANIZER;
+ 623              		.loc 1 231 0
+ 624 009c 0523     		mov	r3, #5
+ 625 009e 2370     		strb	r3, [r4]
+ 626              	.LVL73:
+ 233:.\togglelib.c ****             PWM_Organizer_Start();
+ 627              		.loc 1 233 0
+ 628 00a0 FFF7FEFF 		bl	PWM_Organizer_Start
+ 629              	.LVL74:
+ 630 00a4 12E0     		b	.L63
+ 631              	.LVL75:
+ 632              	.L47:
+ 633              	.LBB100:
+ 634              	.LBB101:
+ 385:.\togglelib.c ****             return Morse_Sequence.index;
+ 635              		.loc 1 385 0
+ 636 00a6 1248     		ldr	r0, .L65+20
+ 637              	.LBE101:
+ 638              	.LBE100:
+ 248:.\togglelib.c ****                 index = 0;
+ 639              		.loc 1 248 0
+ 640 00a8 0025     		mov	r5, #0
+ 641              	.LBB103:
+ 642              	.LBB102:
+ 385:.\togglelib.c ****             return Morse_Sequence.index;
+ 643              		.loc 1 385 0
+ 644 00aa 037D     		ldrb	r3, [r0, #20]
+ 645 00ac 061C     		mov	r6, r0
+ 646 00ae DBB2     		uxtb	r3, r3
+ 647              	.LBE102:
+ 648              	.LBE103:
+ 244:.\togglelib.c ****             if (sequance[index] == RIGHT_TOGGLE) {
+ 649              		.loc 1 244 0
+ 650 00b0 C25C     		ldrb	r2, [r0, r3]
+ 651 00b2 022A     		cmp	r2, #2
+ 652 00b4 01D1     		bne	.L56
+ 245:.\togglelib.c ****                 index += 1;
+ 653              		.loc 1 245 0
+ 654 00b6 5D1C     		add	r5, r3, #1
+ 655 00b8 EDB2     		uxtb	r5, r5
+ 656              	.LVL76:
+ 657              	.L56:
+ 252:.\togglelib.c ****            if (index == strlen(sequance)){
+ 658              		.loc 1 252 0
+ 659 00ba 301C     		mov	r0, r6
+ 660 00bc FFF7FEFF 		bl	strlen
+ 661              	.LVL77:
+ 662 00c0 8542     		cmp	r5, r0
+ 663 00c2 04D1     		bne	.L57
+ 253:.\togglelib.c ****             badge_state = MORSE;
+ 664              		.loc 1 253 0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccuIaCqh.s 			page 21
+
+
+ 665 00c4 0123     		mov	r3, #1
+ 666 00c6 2370     		strb	r3, [r4]
+ 667              	.LVL78:
+ 255:.\togglelib.c ****             PWM_Organizer_Stop();
+ 668              		.loc 1 255 0
+ 669 00c8 FFF7FEFF 		bl	PWM_Organizer_Stop
+ 670              	.LVL79:
+ 671              	.L63:
+ 254:.\togglelib.c ****             index = 0;
+ 672              		.loc 1 254 0
+ 673 00cc 0025     		mov	r5, #0
+ 674              	.LVL80:
+ 675              	.L57:
+ 676              	.LBB104:
+ 677              	.LBB105:
+ 364:.\togglelib.c ****             Morse_Sequence.index = value;
+ 678              		.loc 1 364 0
+ 679 00ce 3575     		strb	r5, [r6, #20]
+ 680              	.LVL81:
+ 681              	.L41:
+ 682              	.LBE105:
+ 683              	.LBE104:
+ 265:.\togglelib.c ****     CyDelay(TOGGLE_DELAY);
+ 684              		.loc 1 265 0
+ 685 00d0 9620     		mov	r0, #150
+ 686 00d2 FFF7FEFF 		bl	CyDelay
+ 687              	.LVL82:
+ 267:.\togglelib.c **** }
+ 688              		.loc 1 267 0
+ 689              		@ sp needed
+ 266:.\togglelib.c ****     SWR_ClearInterrupt();
+ 690              		.loc 1 266 0
+ 691 00d6 FFF7FEFF 		bl	SWR_ClearInterrupt
+ 692              	.LVL83:
+ 267:.\togglelib.c **** }
+ 693              		.loc 1 267 0
+ 694 00da 70BD     		pop	{r4, r5, r6, pc}
+ 695              	.L66:
+ 696              		.align	2
+ 697              	.L65:
+ 698 00dc 00000000 		.word	badge_state
+ 699 00e0 00000000 		.word	Binary_Sequence
+ 700 00e4 00000000 		.word	Substitution_Sequence
+ 701 00e8 00000000 		.word	Final_Stage_Sequence
+ 702 00ec 00000000 		.word	Organizer_Sequence
+ 703 00f0 00000000 		.word	Morse_Sequence
+ 704              		.cfi_endproc
+ 705              	.LFE34:
+ 706              		.size	SWR_Handler, .-SWR_Handler
+ 707              		.section	.text.set_magic_toggle_sequance,"ax",%progbits
+ 708              		.align	1
+ 709              		.global	set_magic_toggle_sequance
+ 710              		.code	16
+ 711              		.thumb_func
+ 712              		.type	set_magic_toggle_sequance, %function
+ 713              	set_magic_toggle_sequance:
+ 714              	.LFB37:
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccuIaCqh.s 			page 22
+
+
+ 317:.\togglelib.c **** void set_magic_toggle_sequance(uint8 state_flag, uint8* sequance) {
+ 715              		.loc 1 317 0
+ 716              		.cfi_startproc
+ 717              	.LVL84:
+ 318:.\togglelib.c ****     switch(state_flag) {
+ 718              		.loc 1 318 0
+ 719 0000 0138     		sub	r0, r0, #1
+ 720              	.LVL85:
+ 317:.\togglelib.c **** void set_magic_toggle_sequance(uint8 state_flag, uint8* sequance) {
+ 721              		.loc 1 317 0
+ 722 0002 08B5     		push	{r3, lr}
+ 723              		.cfi_def_cfa_offset 8
+ 724              		.cfi_offset 3, -8
+ 725              		.cfi_offset 14, -4
+ 318:.\togglelib.c ****     switch(state_flag) {
+ 726              		.loc 1 318 0
+ 727 0004 0428     		cmp	r0, #4
+ 728 0006 10D8     		bhi	.L67
+ 729 0008 FFF7FEFF 		bl	__gnu_thumb1_case_uqi
+ 730              	.L70:
+ 731 000c 03       		.byte	(.L69-.L70)/2
+ 732 000d 05       		.byte	(.L71-.L70)/2
+ 733 000e 07       		.byte	(.L72-.L70)/2
+ 734 000f 09       		.byte	(.L73-.L70)/2
+ 735 0010 0B       		.byte	(.L74-.L70)/2
+ 736 0011 00       		.p2align 1
+ 737              	.L69:
+ 320:.\togglelib.c ****             memmove(Morse_Sequence.sequance, sequance, MAX_SEQUENCE_SIZE);
+ 738              		.loc 1 320 0
+ 739 0012 0648     		ldr	r0, .L76
+ 740 0014 06E0     		b	.L75
+ 741              	.L71:
+ 323:.\togglelib.c ****             memmove(Binary_Sequence.sequance, sequance, MAX_SEQUENCE_SIZE);
+ 742              		.loc 1 323 0
+ 743 0016 0648     		ldr	r0, .L76+4
+ 744 0018 04E0     		b	.L75
+ 745              	.L72:
+ 326:.\togglelib.c ****             memmove(Substitution_Sequence.sequance, sequance, MAX_SEQUENCE_SIZE);
+ 746              		.loc 1 326 0
+ 747 001a 0648     		ldr	r0, .L76+8
+ 748 001c 02E0     		b	.L75
+ 749              	.L73:
+ 329:.\togglelib.c ****             memmove(Final_Stage_Sequence.sequance, sequance, MAX_SEQUENCE_SIZE);
+ 750              		.loc 1 329 0
+ 751 001e 0648     		ldr	r0, .L76+12
+ 752 0020 00E0     		b	.L75
+ 753              	.L74:
+ 332:.\togglelib.c ****             memmove(Organizer_Sequence.sequance, sequance, MAX_SEQUENCE_SIZE);
+ 754              		.loc 1 332 0
+ 755 0022 0648     		ldr	r0, .L76+16
+ 756              	.L75:
+ 757 0024 1422     		mov	r2, #20
+ 758 0026 FFF7FEFF 		bl	memmove
+ 759              	.LVL86:
+ 760              	.L67:
+ 336:.\togglelib.c **** }
+ 761              		.loc 1 336 0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccuIaCqh.s 			page 23
+
+
+ 762              		@ sp needed
+ 763 002a 08BD     		pop	{r3, pc}
+ 764              	.L77:
+ 765              		.align	2
+ 766              	.L76:
+ 767 002c 00000000 		.word	Morse_Sequence
+ 768 0030 00000000 		.word	Binary_Sequence
+ 769 0034 00000000 		.word	Substitution_Sequence
+ 770 0038 00000000 		.word	Final_Stage_Sequence
+ 771 003c 00000000 		.word	Organizer_Sequence
+ 772              		.cfi_endproc
+ 773              	.LFE37:
+ 774              		.size	set_magic_toggle_sequance, .-set_magic_toggle_sequance
+ 775              		.section	.text.get_magic_toggle_sequance,"ax",%progbits
+ 776              		.align	1
+ 777              		.global	get_magic_toggle_sequance
+ 778              		.code	16
+ 779              		.thumb_func
+ 780              		.type	get_magic_toggle_sequance, %function
+ 781              	get_magic_toggle_sequance:
+ 782              	.LFB38:
+ 339:.\togglelib.c **** uint8* get_magic_toggle_sequance(uint8 state_flag) {
+ 783              		.loc 1 339 0
+ 784              		.cfi_startproc
+ 785              	.LVL87:
+ 786 0000 431E     		sub	r3, r0, #1
+ 787 0002 DBB2     		uxtb	r3, r3
+ 339:.\togglelib.c **** uint8* get_magic_toggle_sequance(uint8 state_flag) {
+ 788              		.loc 1 339 0
+ 789 0004 0020     		mov	r0, #0
+ 790              	.LVL88:
+ 791 0006 042B     		cmp	r3, #4
+ 792 0008 02D8     		bhi	.L79
+ 793 000a 024A     		ldr	r2, .L81
+ 794 000c 9B00     		lsl	r3, r3, #2
+ 795 000e 9858     		ldr	r0, [r3, r2]
+ 796              	.L79:
+ 358:.\togglelib.c **** }
+ 797              		.loc 1 358 0
+ 798              		@ sp needed
+ 799 0010 7047     		bx	lr
+ 800              	.L82:
+ 801 0012 C046     		.align	2
+ 802              	.L81:
+ 803 0014 00000000 		.word	.LANCHOR0
+ 804              		.cfi_endproc
+ 805              	.LFE38:
+ 806              		.size	get_magic_toggle_sequance, .-get_magic_toggle_sequance
+ 807              		.section	.text.set_magic_toggle_index,"ax",%progbits
+ 808              		.align	1
+ 809              		.global	set_magic_toggle_index
+ 810              		.code	16
+ 811              		.thumb_func
+ 812              		.type	set_magic_toggle_index, %function
+ 813              	set_magic_toggle_index:
+ 814              	.LFB39:
+ 361:.\togglelib.c **** void set_magic_toggle_index(uint8 state_flag, uint8 value) {
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccuIaCqh.s 			page 24
+
+
+ 815              		.loc 1 361 0
+ 816              		.cfi_startproc
+ 817              	.LVL89:
+ 362:.\togglelib.c ****     switch(state_flag) {
+ 818              		.loc 1 362 0
+ 819 0000 0138     		sub	r0, r0, #1
+ 820              	.LVL90:
+ 361:.\togglelib.c **** void set_magic_toggle_index(uint8 state_flag, uint8 value) {
+ 821              		.loc 1 361 0
+ 822 0002 00B5     		push	{lr}
+ 823              		.cfi_def_cfa_offset 4
+ 824              		.cfi_offset 14, -4
+ 362:.\togglelib.c ****     switch(state_flag) {
+ 825              		.loc 1 362 0
+ 826 0004 0428     		cmp	r0, #4
+ 827 0006 0ED8     		bhi	.L83
+ 828 0008 FFF7FEFF 		bl	__gnu_thumb1_case_uqi
+ 829              	.L86:
+ 830 000c 03       		.byte	(.L85-.L86)/2
+ 831 000d 05       		.byte	(.L87-.L86)/2
+ 832 000e 07       		.byte	(.L88-.L86)/2
+ 833 000f 09       		.byte	(.L89-.L86)/2
+ 834 0010 0B       		.byte	(.L90-.L86)/2
+ 835 0011 00       		.p2align 1
+ 836              	.L85:
+ 364:.\togglelib.c ****             Morse_Sequence.index = value;
+ 837              		.loc 1 364 0
+ 838 0012 054B     		ldr	r3, .L92
+ 839 0014 06E0     		b	.L91
+ 840              	.L87:
+ 367:.\togglelib.c ****             Binary_Sequence.index = value;
+ 841              		.loc 1 367 0
+ 842 0016 054B     		ldr	r3, .L92+4
+ 843 0018 04E0     		b	.L91
+ 844              	.L88:
+ 370:.\togglelib.c ****             Substitution_Sequence.index = value;
+ 845              		.loc 1 370 0
+ 846 001a 054B     		ldr	r3, .L92+8
+ 847 001c 02E0     		b	.L91
+ 848              	.L89:
+ 373:.\togglelib.c ****             Final_Stage_Sequence.index = value;
+ 849              		.loc 1 373 0
+ 850 001e 054B     		ldr	r3, .L92+12
+ 851 0020 00E0     		b	.L91
+ 852              	.L90:
+ 376:.\togglelib.c ****             Organizer_Sequence.index = value;
+ 853              		.loc 1 376 0
+ 854 0022 054B     		ldr	r3, .L92+16
+ 855              	.L91:
+ 856 0024 1975     		strb	r1, [r3, #20]
+ 857              	.L83:
+ 379:.\togglelib.c **** }
+ 858              		.loc 1 379 0
+ 859              		@ sp needed
+ 860 0026 00BD     		pop	{pc}
+ 861              	.L93:
+ 862              		.align	2
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccuIaCqh.s 			page 25
+
+
+ 863              	.L92:
+ 864 0028 00000000 		.word	Morse_Sequence
+ 865 002c 00000000 		.word	Binary_Sequence
+ 866 0030 00000000 		.word	Substitution_Sequence
+ 867 0034 00000000 		.word	Final_Stage_Sequence
+ 868 0038 00000000 		.word	Organizer_Sequence
+ 869              		.cfi_endproc
+ 870              	.LFE39:
+ 871              		.size	set_magic_toggle_index, .-set_magic_toggle_index
+ 872              		.section	.text.get_magic_toggle_index,"ax",%progbits
+ 873              		.align	1
+ 874              		.global	get_magic_toggle_index
+ 875              		.code	16
+ 876              		.thumb_func
+ 877              		.type	get_magic_toggle_index, %function
+ 878              	get_magic_toggle_index:
+ 879              	.LFB40:
+ 382:.\togglelib.c **** uint8 get_magic_toggle_index(uint8 state_flag) {
+ 880              		.loc 1 382 0
+ 881              		.cfi_startproc
+ 882              	.LVL91:
+ 383:.\togglelib.c ****         switch(state_flag) {
+ 883              		.loc 1 383 0
+ 884 0000 0138     		sub	r0, r0, #1
+ 885              	.LVL92:
+ 382:.\togglelib.c **** uint8 get_magic_toggle_index(uint8 state_flag) {
+ 886              		.loc 1 382 0
+ 887 0002 00B5     		push	{lr}
+ 888              		.cfi_def_cfa_offset 4
+ 889              		.cfi_offset 14, -4
+ 398:.\togglelib.c ****         break;
+ 399:.\togglelib.c ****     }
+ 400:.\togglelib.c ****     return -1;
+ 890              		.loc 1 400 0
+ 891 0004 FF23     		mov	r3, #255
+ 383:.\togglelib.c ****         switch(state_flag) {
+ 892              		.loc 1 383 0
+ 893 0006 0428     		cmp	r0, #4
+ 894 0008 0FD8     		bhi	.L95
+ 895 000a FFF7FEFF 		bl	__gnu_thumb1_case_uqi
+ 896              	.L97:
+ 897 000e 03       		.byte	(.L96-.L97)/2
+ 898 000f 05       		.byte	(.L98-.L97)/2
+ 899 0010 07       		.byte	(.L99-.L97)/2
+ 900 0011 09       		.byte	(.L100-.L97)/2
+ 901 0012 0B       		.byte	(.L101-.L97)/2
+ 902 0013 00       		.p2align 1
+ 903              	.L96:
+ 385:.\togglelib.c ****             return Morse_Sequence.index;
+ 904              		.loc 1 385 0
+ 905 0014 064B     		ldr	r3, .L104
+ 906 0016 06E0     		b	.L103
+ 907              	.L98:
+ 388:.\togglelib.c ****             return Binary_Sequence.index;
+ 908              		.loc 1 388 0
+ 909 0018 064B     		ldr	r3, .L104+4
+ 910 001a 04E0     		b	.L103
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccuIaCqh.s 			page 26
+
+
+ 911              	.L99:
+ 391:.\togglelib.c ****             return Substitution_Sequence.index;
+ 912              		.loc 1 391 0
+ 913 001c 064B     		ldr	r3, .L104+8
+ 914 001e 02E0     		b	.L103
+ 915              	.L100:
+ 394:.\togglelib.c ****             return Final_Stage_Sequence.index;
+ 916              		.loc 1 394 0
+ 917 0020 064B     		ldr	r3, .L104+12
+ 918 0022 00E0     		b	.L103
+ 919              	.L101:
+ 397:.\togglelib.c ****             return Organizer_Sequence.index;
+ 920              		.loc 1 397 0
+ 921 0024 064B     		ldr	r3, .L104+16
+ 922              	.L103:
+ 923 0026 1B7D     		ldrb	r3, [r3, #20]
+ 924 0028 DBB2     		uxtb	r3, r3
+ 925              	.L95:
+ 401:.\togglelib.c **** }
+ 926              		.loc 1 401 0
+ 927 002a 181C     		mov	r0, r3
+ 928              		@ sp needed
+ 929 002c 00BD     		pop	{pc}
+ 930              	.L105:
+ 931 002e C046     		.align	2
+ 932              	.L104:
+ 933 0030 00000000 		.word	Morse_Sequence
+ 934 0034 00000000 		.word	Binary_Sequence
+ 935 0038 00000000 		.word	Substitution_Sequence
+ 936 003c 00000000 		.word	Final_Stage_Sequence
+ 937 0040 00000000 		.word	Organizer_Sequence
+ 938              		.cfi_endproc
+ 939              	.LFE40:
+ 940              		.size	get_magic_toggle_index, .-get_magic_toggle_index
+ 941              		.section	.text.init_magic_toggle_sequance,"ax",%progbits
+ 942              		.align	1
+ 943              		.global	init_magic_toggle_sequance
+ 944              		.code	16
+ 945              		.thumb_func
+ 946              		.type	init_magic_toggle_sequance, %function
+ 947              	init_magic_toggle_sequance:
+ 948              	.LFB41:
+ 402:.\togglelib.c **** 
+ 403:.\togglelib.c **** /* Initialize the magic toogle structures */
+ 404:.\togglelib.c **** void init_magic_toggle_sequance(uint8 state_flag, uint8* sequance) {
+ 949              		.loc 1 404 0
+ 950              		.cfi_startproc
+ 951              	.LVL93:
+ 952 0000 10B5     		push	{r4, lr}
+ 953              		.cfi_def_cfa_offset 8
+ 954              		.cfi_offset 4, -8
+ 955              		.cfi_offset 14, -4
+ 956              		.loc 1 404 0
+ 957 0002 041C     		mov	r4, r0
+ 405:.\togglelib.c ****     set_magic_toggle_sequance(state_flag, sequance);
+ 958              		.loc 1 405 0
+ 959 0004 FFF7FEFF 		bl	set_magic_toggle_sequance
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccuIaCqh.s 			page 27
+
+
+ 960              	.LVL94:
+ 406:.\togglelib.c ****     set_magic_toggle_index(state_flag, 0);
+ 961              		.loc 1 406 0
+ 962 0008 201C     		mov	r0, r4
+ 963 000a 0021     		mov	r1, #0
+ 964 000c FFF7FEFF 		bl	set_magic_toggle_index
+ 965              	.LVL95:
+ 407:.\togglelib.c **** }
+ 966              		.loc 1 407 0
+ 967              		@ sp needed
+ 968 0010 10BD     		pop	{r4, pc}
+ 969              		.cfi_endproc
+ 970              	.LFE41:
+ 971              		.size	init_magic_toggle_sequance, .-init_magic_toggle_sequance
+ 972              		.section	.text.enable_toggle_interrupts,"ax",%progbits
+ 973              		.align	1
+ 974              		.global	enable_toggle_interrupts
+ 975              		.code	16
+ 976              		.thumb_func
+ 977              		.type	enable_toggle_interrupts, %function
+ 978              	enable_toggle_interrupts:
+ 979              	.LFB42:
+ 408:.\togglelib.c **** 
+ 409:.\togglelib.c **** void enable_toggle_interrupts() {
+ 980              		.loc 1 409 0
+ 981              		.cfi_startproc
+ 982 0000 08B5     		push	{r3, lr}
+ 983              		.cfi_def_cfa_offset 8
+ 984              		.cfi_offset 3, -8
+ 985              		.cfi_offset 14, -4
+ 410:.\togglelib.c ****     /* Setup toggle interrupts  */
+ 411:.\togglelib.c ****     SWB_Int_StartEx( SWB_Handler );
+ 986              		.loc 1 411 0
+ 987 0002 0948     		ldr	r0, .L108
+ 988 0004 FFF7FEFF 		bl	SWB_Int_StartEx
+ 989              	.LVL96:
+ 412:.\togglelib.c ****     SWL_Int_StartEx( SWL_Handler );
+ 990              		.loc 1 412 0
+ 991 0008 0848     		ldr	r0, .L108+4
+ 992 000a FFF7FEFF 		bl	SWL_Int_StartEx
+ 993              	.LVL97:
+ 413:.\togglelib.c ****     SWR_Int_StartEx( SWR_Handler );
+ 994              		.loc 1 413 0
+ 995 000e 0848     		ldr	r0, .L108+8
+ 996 0010 FFF7FEFF 		bl	SWR_Int_StartEx
+ 997              	.LVL98:
+ 414:.\togglelib.c ****     ORG_Int_StartEx( ORG_Handler );
+ 998              		.loc 1 414 0
+ 999 0014 0748     		ldr	r0, .L108+12
+ 1000 0016 FFF7FEFF 		bl	ORG_Int_StartEx
+ 1001              	.LVL99:
+ 415:.\togglelib.c ****     /* Seed random */
+ 416:.\togglelib.c ****     srand(time(NULL));
+ 1002              		.loc 1 416 0
+ 1003 001a 0020     		mov	r0, #0
+ 1004 001c FFF7FEFF 		bl	time
+ 1005              	.LVL100:
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccuIaCqh.s 			page 28
+
+
+ 1006 0020 FFF7FEFF 		bl	srand
+ 1007              	.LVL101:
+ 417:.\togglelib.c **** }...
+ 1008              		.loc 1 417 0
+ 1009              		@ sp needed
+ 1010 0024 08BD     		pop	{r3, pc}
+ 1011              	.L109:
+ 1012 0026 C046     		.align	2
+ 1013              	.L108:
+ 1014 0028 00000000 		.word	SWB_Handler
+ 1015 002c 00000000 		.word	SWL_Handler
+ 1016 0030 00000000 		.word	SWR_Handler
+ 1017 0034 00000000 		.word	ORG_Handler
+ 1018              		.cfi_endproc
+ 1019              	.LFE42:
+ 1020              		.size	enable_toggle_interrupts, .-enable_toggle_interrupts
+ 1021              		.comm	Organizer_Sequence,21,1
+ 1022              		.comm	Final_Stage_Sequence,21,1
+ 1023              		.comm	Substitution_Sequence,21,1
+ 1024              		.comm	Binary_Sequence,21,1
+ 1025              		.comm	Morse_Sequence,21,1
+ 1026              		.section	.rodata
+ 1027              		.align	2
+ 1028              		.set	.LANCHOR0,. + 0
+ 1029              		.type	CSWTCH.6, %object
+ 1030              		.size	CSWTCH.6, 20
+ 1031              	CSWTCH.6:
+ 1032 0000 00000000 		.word	Morse_Sequence
+ 1033 0004 00000000 		.word	Binary_Sequence
+ 1034 0008 00000000 		.word	Substitution_Sequence
+ 1035 000c 00000000 		.word	Final_Stage_Sequence
+ 1036 0010 00000000 		.word	Organizer_Sequence
+ 1037              		.text
+ 1038              	.Letext0:
+ 1039              		.file 2 ".\\Generated_Source\\PSoC4/cytypes.h"
+ 1040              		.file 3 "c:\\program files\\cypress\\psoc creator\\3.1\\psoc creator\\import\\gnu_cs\\arm\\4.8.4\\
+ 1041              		.file 4 "c:\\program files\\cypress\\psoc creator\\3.1\\psoc creator\\import\\gnu_cs\\arm\\4.8.4\\
+ 1042              		.file 5 ".\\togglelib.h"
+ 1043              		.file 6 ".\\state.h"
+ 1044              		.file 7 ".\\lightlib.h"
+ 1045              		.file 8 ".\\Generated_Source\\PSoC4/SWB.h"
+ 1046              		.file 9 "c:\\program files\\cypress\\psoc creator\\3.1\\psoc creator\\import\\gnu_cs\\arm\\4.8.4\\
+ 1047              		.file 10 ".\\Generated_Source\\PSoC4/PWM_Organizer.h"
+ 1048              		.file 11 "c:\\program files\\cypress\\psoc creator\\3.1\\psoc creator\\import\\gnu_cs\\arm\\4.8.4\
+ 1049              		.file 12 ".\\Generated_Source\\PSoC4/ORG_Int.h"
+ 1050              		.file 13 ".\\Generated_Source\\PSoC4/CyLib.h"
+ 1051              		.file 14 ".\\Generated_Source\\PSoC4/SWL.h"
+ 1052              		.file 15 ".\\Generated_Source\\PSoC4/SWR.h"
+ 1053              		.file 16 ".\\Generated_Source\\PSoC4/SWB_Int.h"
+ 1054              		.file 17 ".\\Generated_Source\\PSoC4/SWL_Int.h"
+ 1055              		.file 18 ".\\Generated_Source\\PSoC4/SWR_Int.h"
+ 1056              		.file 19 "c:\\program files\\cypress\\psoc creator\\3.1\\psoc creator\\import\\gnu_cs\\arm\\4.8.4\
+ 1057              		.section	.debug_info,"",%progbits
+ 1058              	.Ldebug_info0:
+ 1059 0000 69090000 		.4byte	0x969
+ 1060 0004 0400     		.2byte	0x4
+ 1061 0006 00000000 		.4byte	.Ldebug_abbrev0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccuIaCqh.s 			page 29
+
+
+ 1062 000a 04       		.byte	0x4
+ 1063 000b 01       		.uleb128 0x1
+ 1064 000c 64000000 		.4byte	.LASF62
+ 1065 0010 01       		.byte	0x1
+ 1066 0011 F5030000 		.4byte	.LASF63
+ 1067 0015 20020000 		.4byte	.LASF64
+ 1068 0019 F0000000 		.4byte	.Ldebug_ranges0+0xf0
+ 1069 001d 00000000 		.4byte	0
+ 1070 0021 00000000 		.4byte	.Ldebug_line0
+ 1071 0025 02       		.uleb128 0x2
+ 1072 0026 01       		.byte	0x1
+ 1073 0027 06       		.byte	0x6
+ 1074 0028 BE020000 		.4byte	.LASF0
+ 1075 002c 02       		.uleb128 0x2
+ 1076 002d 01       		.byte	0x1
+ 1077 002e 08       		.byte	0x8
+ 1078 002f 78020000 		.4byte	.LASF1
+ 1079 0033 02       		.uleb128 0x2
+ 1080 0034 02       		.byte	0x2
+ 1081 0035 05       		.byte	0x5
+ 1082 0036 E0000000 		.4byte	.LASF2
+ 1083 003a 02       		.uleb128 0x2
+ 1084 003b 02       		.byte	0x2
+ 1085 003c 07       		.byte	0x7
+ 1086 003d 17030000 		.4byte	.LASF3
+ 1087 0041 02       		.uleb128 0x2
+ 1088 0042 04       		.byte	0x4
+ 1089 0043 05       		.byte	0x5
+ 1090 0044 0D020000 		.4byte	.LASF4
+ 1091 0048 02       		.uleb128 0x2
+ 1092 0049 04       		.byte	0x4
+ 1093 004a 07       		.byte	0x7
+ 1094 004b 8A030000 		.4byte	.LASF5
+ 1095 004f 02       		.uleb128 0x2
+ 1096 0050 08       		.byte	0x8
+ 1097 0051 05       		.byte	0x5
+ 1098 0052 CF010000 		.4byte	.LASF6
+ 1099 0056 02       		.uleb128 0x2
+ 1100 0057 08       		.byte	0x8
+ 1101 0058 07       		.byte	0x7
+ 1102 0059 CA020000 		.4byte	.LASF7
+ 1103 005d 03       		.uleb128 0x3
+ 1104 005e 04       		.byte	0x4
+ 1105 005f 05       		.byte	0x5
+ 1106 0060 696E7400 		.ascii	"int\000"
+ 1107 0064 02       		.uleb128 0x2
+ 1108 0065 04       		.byte	0x4
+ 1109 0066 07       		.byte	0x7
+ 1110 0067 E1020000 		.4byte	.LASF8
+ 1111 006b 04       		.uleb128 0x4
+ 1112 006c B2010000 		.4byte	.LASF9
+ 1113 0070 02       		.byte	0x2
+ 1114 0071 A1       		.byte	0xa1
+ 1115 0072 2C000000 		.4byte	0x2c
+ 1116 0076 04       		.uleb128 0x4
+ 1117 0077 6F030000 		.4byte	.LASF10
+ 1118 007b 02       		.byte	0x2
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccuIaCqh.s 			page 30
+
+
+ 1119 007c A3       		.byte	0xa3
+ 1120 007d 48000000 		.4byte	0x48
+ 1121 0081 02       		.uleb128 0x2
+ 1122 0082 04       		.byte	0x4
+ 1123 0083 04       		.byte	0x4
+ 1124 0084 C9010000 		.4byte	.LASF11
+ 1125 0088 02       		.uleb128 0x2
+ 1126 0089 08       		.byte	0x8
+ 1127 008a 04       		.byte	0x4
+ 1128 008b B2030000 		.4byte	.LASF12
+ 1129 008f 02       		.uleb128 0x2
+ 1130 0090 01       		.byte	0x1
+ 1131 0091 08       		.byte	0x8
+ 1132 0092 3A030000 		.4byte	.LASF13
+ 1133 0096 05       		.uleb128 0x5
+ 1134 0097 6B000000 		.4byte	0x6b
+ 1135 009b 06       		.uleb128 0x6
+ 1136 009c A1020000 		.4byte	.LASF14
+ 1137 00a0 02       		.byte	0x2
+ 1138 00a1 5D01     		.2byte	0x15d
+ 1139 00a3 A7000000 		.4byte	0xa7
+ 1140 00a7 07       		.uleb128 0x7
+ 1141 00a8 04       		.byte	0x4
+ 1142 00a9 AD000000 		.4byte	0xad
+ 1143 00ad 08       		.uleb128 0x8
+ 1144 00ae 04       		.uleb128 0x4
+ 1145 00af EA000000 		.4byte	.LASF15
+ 1146 00b3 03       		.byte	0x3
+ 1147 00b4 D4       		.byte	0xd4
+ 1148 00b5 64000000 		.4byte	0x64
+ 1149 00b9 02       		.uleb128 0x2
+ 1150 00ba 04       		.byte	0x4
+ 1151 00bb 07       		.byte	0x7
+ 1152 00bc F1000000 		.4byte	.LASF16
+ 1153 00c0 09       		.uleb128 0x9
+ 1154 00c1 04       		.byte	0x4
+ 1155 00c2 07       		.uleb128 0x7
+ 1156 00c3 04       		.byte	0x4
+ 1157 00c4 C8000000 		.4byte	0xc8
+ 1158 00c8 0A       		.uleb128 0xa
+ 1159 00c9 8F000000 		.4byte	0x8f
+ 1160 00cd 04       		.uleb128 0x4
+ 1161 00ce B7020000 		.4byte	.LASF17
+ 1162 00d2 04       		.byte	0x4
+ 1163 00d3 7A       		.byte	0x7a
+ 1164 00d4 41000000 		.4byte	0x41
+ 1165 00d8 07       		.uleb128 0x7
+ 1166 00d9 04       		.byte	0x4
+ 1167 00da DE000000 		.4byte	0xde
+ 1168 00de 0B       		.uleb128 0xb
+ 1169 00df 0C       		.uleb128 0xc
+ 1170 00e0 9C030000 		.4byte	.LASF65
+ 1171 00e4 15       		.byte	0x15
+ 1172 00e5 05       		.byte	0x5
+ 1173 00e6 1D       		.byte	0x1d
+ 1174 00e7 04010000 		.4byte	0x104
+ 1175 00eb 0D       		.uleb128 0xd
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccuIaCqh.s 			page 31
+
+
+ 1176 00ec AE020000 		.4byte	.LASF18
+ 1177 00f0 05       		.byte	0x5
+ 1178 00f1 1E       		.byte	0x1e
+ 1179 00f2 04010000 		.4byte	0x104
+ 1180 00f6 00       		.byte	0
+ 1181 00f7 0D       		.uleb128 0xd
+ 1182 00f8 AC010000 		.4byte	.LASF19
+ 1183 00fc 05       		.byte	0x5
+ 1184 00fd 1F       		.byte	0x1f
+ 1185 00fe 6B000000 		.4byte	0x6b
+ 1186 0102 14       		.byte	0x14
+ 1187 0103 00       		.byte	0
+ 1188 0104 0E       		.uleb128 0xe
+ 1189 0105 6B000000 		.4byte	0x6b
+ 1190 0109 14010000 		.4byte	0x114
+ 1191 010d 0F       		.uleb128 0xf
+ 1192 010e B9000000 		.4byte	0xb9
+ 1193 0112 13       		.byte	0x13
+ 1194 0113 00       		.byte	0
+ 1195 0114 10       		.uleb128 0x10
+ 1196 0115 28040000 		.4byte	.LASF20
+ 1197 0119 01       		.byte	0x1
+ 1198 011a 0E01     		.2byte	0x10e
+ 1199 011c 00000000 		.4byte	.LFB35
+ 1200 0120 38000000 		.4byte	.LFE35-.LFB35
+ 1201 0124 01       		.uleb128 0x1
+ 1202 0125 9C       		.byte	0x9c
+ 1203 0126 A6010000 		.4byte	0x1a6
+ 1204 012a 11       		.uleb128 0x11
+ 1205 012b 08000000 		.4byte	.LVL0
+ 1206 012f 0D080000 		.4byte	0x80d
+ 1207 0133 3D010000 		.4byte	0x13d
+ 1208 0137 12       		.uleb128 0x12
+ 1209 0138 01       		.uleb128 0x1
+ 1210 0139 50       		.byte	0x50
+ 1211 013a 01       		.uleb128 0x1
+ 1212 013b 34       		.byte	0x34
+ 1213 013c 00       		.byte	0
+ 1214 013d 11       		.uleb128 0x11
+ 1215 013e 12000000 		.4byte	.LVL1
+ 1216 0142 22080000 		.4byte	0x822
+ 1217 0146 50010000 		.4byte	0x150
+ 1218 014a 12       		.uleb128 0x12
+ 1219 014b 01       		.uleb128 0x1
+ 1220 014c 50       		.byte	0x50
+ 1221 014d 01       		.uleb128 0x1
+ 1222 014e 34       		.byte	0x34
+ 1223 014f 00       		.byte	0
+ 1224 0150 11       		.uleb128 0x11
+ 1225 0151 1A000000 		.4byte	.LVL2
+ 1226 0155 33080000 		.4byte	0x833
+ 1227 0159 63010000 		.4byte	0x163
+ 1228 015d 12       		.uleb128 0x12
+ 1229 015e 01       		.uleb128 0x1
+ 1230 015f 50       		.byte	0x50
+ 1231 0160 01       		.uleb128 0x1
+ 1232 0161 34       		.byte	0x34
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccuIaCqh.s 			page 32
+
+
+ 1233 0162 00       		.byte	0
+ 1234 0163 11       		.uleb128 0x11
+ 1235 0164 20000000 		.4byte	.LVL3
+ 1236 0168 0D080000 		.4byte	0x80d
+ 1237 016c 76010000 		.4byte	0x176
+ 1238 0170 12       		.uleb128 0x12
+ 1239 0171 01       		.uleb128 0x1
+ 1240 0172 50       		.byte	0x50
+ 1241 0173 01       		.uleb128 0x1
+ 1242 0174 35       		.byte	0x35
+ 1243 0175 00       		.byte	0
+ 1244 0176 11       		.uleb128 0x11
+ 1245 0177 2A000000 		.4byte	.LVL4
+ 1246 017b 22080000 		.4byte	0x822
+ 1247 017f 89010000 		.4byte	0x189
+ 1248 0183 12       		.uleb128 0x12
+ 1249 0184 01       		.uleb128 0x1
+ 1250 0185 50       		.byte	0x50
+ 1251 0186 01       		.uleb128 0x1
+ 1252 0187 35       		.byte	0x35
+ 1253 0188 00       		.byte	0
+ 1254 0189 11       		.uleb128 0x11
+ 1255 018a 32000000 		.4byte	.LVL5
+ 1256 018e 33080000 		.4byte	0x833
+ 1257 0192 9C010000 		.4byte	0x19c
+ 1258 0196 12       		.uleb128 0x12
+ 1259 0197 01       		.uleb128 0x1
+ 1260 0198 50       		.byte	0x50
+ 1261 0199 01       		.uleb128 0x1
+ 1262 019a 35       		.byte	0x35
+ 1263 019b 00       		.byte	0
+ 1264 019c 13       		.uleb128 0x13
+ 1265 019d 36000000 		.4byte	.LVL6
+ 1266 01a1 44080000 		.4byte	0x844
+ 1267 01a5 00       		.byte	0
+ 1268 01a6 14       		.uleb128 0x14
+ 1269 01a7 5C040000 		.4byte	.LASF21
+ 1270 01ab 01       		.byte	0x1
+ 1271 01ac 2401     		.2byte	0x124
+ 1272 01ae 00000000 		.4byte	.LFB36
+ 1273 01b2 74000000 		.4byte	.LFE36-.LFB36
+ 1274 01b6 01       		.uleb128 0x1
+ 1275 01b7 9C       		.byte	0x9c
+ 1276 01b8 B1020000 		.4byte	0x2b1
+ 1277 01bc 15       		.uleb128 0x15
+ 1278 01bd E2030000 		.4byte	.LASF22
+ 1279 01c1 01       		.byte	0x1
+ 1280 01c2 2601     		.2byte	0x126
+ 1281 01c4 6B000000 		.4byte	0x6b
+ 1282 01c8 00000000 		.4byte	.LLST0
+ 1283 01cc 15       		.uleb128 0x15
+ 1284 01cd DD010000 		.4byte	.LASF23
+ 1285 01d1 01       		.byte	0x1
+ 1286 01d2 2701     		.2byte	0x127
+ 1287 01d4 6B000000 		.4byte	0x6b
+ 1288 01d8 1E000000 		.4byte	.LLST1
+ 1289 01dc 15       		.uleb128 0x15
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccuIaCqh.s 			page 33
+
+
+ 1290 01dd 0D010000 		.4byte	.LASF24
+ 1291 01e1 01       		.byte	0x1
+ 1292 01e2 2801     		.2byte	0x128
+ 1293 01e4 76000000 		.4byte	0x76
+ 1294 01e8 3C000000 		.4byte	.LLST2
+ 1295 01ec 15       		.uleb128 0x15
+ 1296 01ed B9030000 		.4byte	.LASF25
+ 1297 01f1 01       		.byte	0x1
+ 1298 01f2 2901     		.2byte	0x129
+ 1299 01f4 76000000 		.4byte	0x76
+ 1300 01f8 4F000000 		.4byte	.LLST3
+ 1301 01fc 11       		.uleb128 0x11
+ 1302 01fd 08000000 		.4byte	.LVL7
+ 1303 0201 4F080000 		.4byte	0x84f
+ 1304 0205 0F020000 		.4byte	0x20f
+ 1305 0209 12       		.uleb128 0x12
+ 1306 020a 01       		.uleb128 0x1
+ 1307 020b 50       		.byte	0x50
+ 1308 020c 01       		.uleb128 0x1
+ 1309 020d 31       		.byte	0x31
+ 1310 020e 00       		.byte	0
+ 1311 020f 11       		.uleb128 0x11
+ 1312 0210 10000000 		.4byte	.LVL10
+ 1313 0214 4F080000 		.4byte	0x84f
+ 1314 0218 22020000 		.4byte	0x222
+ 1315 021c 12       		.uleb128 0x12
+ 1316 021d 01       		.uleb128 0x1
+ 1317 021e 50       		.byte	0x50
+ 1318 021f 01       		.uleb128 0x1
+ 1319 0220 32       		.byte	0x32
+ 1320 0221 00       		.byte	0
+ 1321 0222 13       		.uleb128 0x13
+ 1322 0223 16000000 		.4byte	.LVL12
+ 1323 0227 64080000 		.4byte	0x864
+ 1324 022b 13       		.uleb128 0x13
+ 1325 022c 22000000 		.4byte	.LVL15
+ 1326 0230 64080000 		.4byte	0x864
+ 1327 0234 13       		.uleb128 0x13
+ 1328 0235 32000000 		.4byte	.LVL18
+ 1329 0239 64080000 		.4byte	0x864
+ 1330 023d 13       		.uleb128 0x13
+ 1331 023e 44000000 		.4byte	.LVL21
+ 1332 0242 64080000 		.4byte	0x864
+ 1333 0246 11       		.uleb128 0x11
+ 1334 0247 56000000 		.4byte	.LVL24
+ 1335 024b 6F080000 		.4byte	0x86f
+ 1336 024f 5F020000 		.4byte	0x25f
+ 1337 0253 12       		.uleb128 0x12
+ 1338 0254 01       		.uleb128 0x1
+ 1339 0255 51       		.byte	0x51
+ 1340 0256 02       		.uleb128 0x2
+ 1341 0257 75       		.byte	0x75
+ 1342 0258 00       		.sleb128 0
+ 1343 0259 12       		.uleb128 0x12
+ 1344 025a 01       		.uleb128 0x1
+ 1345 025b 50       		.byte	0x50
+ 1346 025c 01       		.uleb128 0x1
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccuIaCqh.s 			page 34
+
+
+ 1347 025d 31       		.byte	0x31
+ 1348 025e 00       		.byte	0
+ 1349 025f 11       		.uleb128 0x11
+ 1350 0260 5E000000 		.4byte	.LVL25
+ 1351 0264 6F080000 		.4byte	0x86f
+ 1352 0268 78020000 		.4byte	0x278
+ 1353 026c 12       		.uleb128 0x12
+ 1354 026d 01       		.uleb128 0x1
+ 1355 026e 51       		.byte	0x51
+ 1356 026f 02       		.uleb128 0x2
+ 1357 0270 74       		.byte	0x74
+ 1358 0271 00       		.sleb128 0
+ 1359 0272 12       		.uleb128 0x12
+ 1360 0273 01       		.uleb128 0x1
+ 1361 0274 50       		.byte	0x50
+ 1362 0275 01       		.uleb128 0x1
+ 1363 0276 32       		.byte	0x32
+ 1364 0277 00       		.byte	0
+ 1365 0278 11       		.uleb128 0x11
+ 1366 0279 64000000 		.4byte	.LVL26
+ 1367 027d 33080000 		.4byte	0x833
+ 1368 0281 8B020000 		.4byte	0x28b
+ 1369 0285 12       		.uleb128 0x12
+ 1370 0286 01       		.uleb128 0x1
+ 1371 0287 50       		.byte	0x50
+ 1372 0288 01       		.uleb128 0x1
+ 1373 0289 33       		.byte	0x33
+ 1374 028a 00       		.byte	0
+ 1375 028b 11       		.uleb128 0x11
+ 1376 028c 6A000000 		.4byte	.LVL27
+ 1377 0290 22080000 		.4byte	0x822
+ 1378 0294 9E020000 		.4byte	0x29e
+ 1379 0298 12       		.uleb128 0x12
+ 1380 0299 01       		.uleb128 0x1
+ 1381 029a 50       		.byte	0x50
+ 1382 029b 01       		.uleb128 0x1
+ 1383 029c 33       		.byte	0x33
+ 1384 029d 00       		.byte	0
+ 1385 029e 13       		.uleb128 0x13
+ 1386 029f 6E000000 		.4byte	.LVL28
+ 1387 02a3 85080000 		.4byte	0x885
+ 1388 02a7 13       		.uleb128 0x13
+ 1389 02a8 72000000 		.4byte	.LVL29
+ 1390 02ac 8C080000 		.4byte	0x88c
+ 1391 02b0 00       		.byte	0
+ 1392 02b1 16       		.uleb128 0x16
+ 1393 02b2 7B010000 		.4byte	.LASF26
+ 1394 02b6 01       		.byte	0x1
+ 1395 02b7 5301     		.2byte	0x153
+ 1396 02b9 CF020000 		.4byte	0x2cf
+ 1397 02bd 01       		.byte	0x1
+ 1398 02be CF020000 		.4byte	0x2cf
+ 1399 02c2 17       		.uleb128 0x17
+ 1400 02c3 70010000 		.4byte	.LASF28
+ 1401 02c7 01       		.byte	0x1
+ 1402 02c8 5301     		.2byte	0x153
+ 1403 02ca 6B000000 		.4byte	0x6b
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccuIaCqh.s 			page 35
+
+
+ 1404 02ce 00       		.byte	0
+ 1405 02cf 07       		.uleb128 0x7
+ 1406 02d0 04       		.byte	0x4
+ 1407 02d1 6B000000 		.4byte	0x6b
+ 1408 02d5 16       		.uleb128 0x16
+ 1409 02d6 4D000000 		.4byte	.LASF27
+ 1410 02da 01       		.byte	0x1
+ 1411 02db 7E01     		.2byte	0x17e
+ 1412 02dd 6B000000 		.4byte	0x6b
+ 1413 02e1 01       		.byte	0x1
+ 1414 02e2 F3020000 		.4byte	0x2f3
+ 1415 02e6 17       		.uleb128 0x17
+ 1416 02e7 70010000 		.4byte	.LASF28
+ 1417 02eb 01       		.byte	0x1
+ 1418 02ec 7E01     		.2byte	0x17e
+ 1419 02ee 6B000000 		.4byte	0x6b
+ 1420 02f2 00       		.byte	0
+ 1421 02f3 18       		.uleb128 0x18
+ 1422 02f4 00000000 		.4byte	.LASF41
+ 1423 02f8 01       		.byte	0x1
+ 1424 02f9 6901     		.2byte	0x169
+ 1425 02fb 01       		.byte	0x1
+ 1426 02fc 19030000 		.4byte	0x319
+ 1427 0300 17       		.uleb128 0x17
+ 1428 0301 70010000 		.4byte	.LASF28
+ 1429 0305 01       		.byte	0x1
+ 1430 0306 6901     		.2byte	0x169
+ 1431 0308 6B000000 		.4byte	0x6b
+ 1432 030c 17       		.uleb128 0x17
+ 1433 030d 9D010000 		.4byte	.LASF29
+ 1434 0311 01       		.byte	0x1
+ 1435 0312 6901     		.2byte	0x169
+ 1436 0314 6B000000 		.4byte	0x6b
+ 1437 0318 00       		.byte	0
+ 1438 0319 19       		.uleb128 0x19
+ 1439 031a BD010000 		.4byte	.LASF30
+ 1440 031e 01       		.byte	0x1
+ 1441 031f 1C       		.byte	0x1c
+ 1442 0320 00000000 		.4byte	.LFB33
+ 1443 0324 F4000000 		.4byte	.LFE33-.LFB33
+ 1444 0328 01       		.uleb128 0x1
+ 1445 0329 9C       		.byte	0x9c
+ 1446 032a 93040000 		.4byte	0x493
+ 1447 032e 1A       		.uleb128 0x1a
+ 1448 032f AE020000 		.4byte	.LASF18
+ 1449 0333 01       		.byte	0x1
+ 1450 0334 1D       		.byte	0x1d
+ 1451 0335 CF020000 		.4byte	0x2cf
+ 1452 0339 1B       		.uleb128 0x1b
+ 1453 033a AC010000 		.4byte	.LASF19
+ 1454 033e 01       		.byte	0x1
+ 1455 033f 1E       		.byte	0x1e
+ 1456 0340 6B000000 		.4byte	0x6b
+ 1457 0344 62000000 		.4byte	.LLST4
+ 1458 0348 1C       		.uleb128 0x1c
+ 1459 0349 D5020000 		.4byte	0x2d5
+ 1460 034d 16000000 		.4byte	.LBB32
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccuIaCqh.s 			page 36
+
+
+ 1461 0351 00000000 		.4byte	.Ldebug_ranges0+0
+ 1462 0355 01       		.byte	0x1
+ 1463 0356 24       		.byte	0x24
+ 1464 0357 65030000 		.4byte	0x365
+ 1465 035b 1D       		.uleb128 0x1d
+ 1466 035c E6020000 		.4byte	0x2e6
+ 1467 0360 D0000000 		.4byte	.LLST5
+ 1468 0364 00       		.byte	0
+ 1469 0365 1C       		.uleb128 0x1c
+ 1470 0366 D5020000 		.4byte	0x2d5
+ 1471 036a 38000000 		.4byte	.LBB36
+ 1472 036e 18000000 		.4byte	.Ldebug_ranges0+0x18
+ 1473 0372 01       		.byte	0x1
+ 1474 0373 39       		.byte	0x39
+ 1475 0374 82030000 		.4byte	0x382
+ 1476 0378 1D       		.uleb128 0x1d
+ 1477 0379 E6020000 		.4byte	0x2e6
+ 1478 037d E4000000 		.4byte	.LLST6
+ 1479 0381 00       		.byte	0
+ 1480 0382 1C       		.uleb128 0x1c
+ 1481 0383 D5020000 		.4byte	0x2d5
+ 1482 0387 5A000000 		.4byte	.LBB40
+ 1483 038b 30000000 		.4byte	.Ldebug_ranges0+0x30
+ 1484 038f 01       		.byte	0x1
+ 1485 0390 4E       		.byte	0x4e
+ 1486 0391 9F030000 		.4byte	0x39f
+ 1487 0395 1D       		.uleb128 0x1d
+ 1488 0396 E6020000 		.4byte	0x2e6
+ 1489 039a F8000000 		.4byte	.LLST7
+ 1490 039e 00       		.byte	0
+ 1491 039f 1C       		.uleb128 0x1c
+ 1492 03a0 D5020000 		.4byte	0x2d5
+ 1493 03a4 7E000000 		.4byte	.LBB44
+ 1494 03a8 48000000 		.4byte	.Ldebug_ranges0+0x48
+ 1495 03ac 01       		.byte	0x1
+ 1496 03ad 63       		.byte	0x63
+ 1497 03ae BC030000 		.4byte	0x3bc
+ 1498 03b2 1D       		.uleb128 0x1d
+ 1499 03b3 E6020000 		.4byte	0x2e6
+ 1500 03b7 0C010000 		.4byte	.LLST8
+ 1501 03bb 00       		.byte	0
+ 1502 03bc 1C       		.uleb128 0x1c
+ 1503 03bd D5020000 		.4byte	0x2d5
+ 1504 03c1 A6000000 		.4byte	.LBB48
+ 1505 03c5 60000000 		.4byte	.Ldebug_ranges0+0x60
+ 1506 03c9 01       		.byte	0x1
+ 1507 03ca 79       		.byte	0x79
+ 1508 03cb D9030000 		.4byte	0x3d9
+ 1509 03cf 1D       		.uleb128 0x1d
+ 1510 03d0 E6020000 		.4byte	0x2e6
+ 1511 03d4 20010000 		.4byte	.LLST9
+ 1512 03d8 00       		.byte	0
+ 1513 03d9 1E       		.uleb128 0x1e
+ 1514 03da F3020000 		.4byte	0x2f3
+ 1515 03de CE000000 		.4byte	.LBB52
+ 1516 03e2 02000000 		.4byte	.LBE52-.LBB52
+ 1517 03e6 01       		.byte	0x1
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccuIaCqh.s 			page 37
+
+
+ 1518 03e7 8B       		.byte	0x8b
+ 1519 03e8 FF030000 		.4byte	0x3ff
+ 1520 03ec 1D       		.uleb128 0x1d
+ 1521 03ed 0C030000 		.4byte	0x30c
+ 1522 03f1 34010000 		.4byte	.LLST10
+ 1523 03f5 1D       		.uleb128 0x1d
+ 1524 03f6 00030000 		.4byte	0x300
+ 1525 03fa 47010000 		.4byte	.LLST11
+ 1526 03fe 00       		.byte	0
+ 1527 03ff 11       		.uleb128 0x11
+ 1528 0400 30000000 		.4byte	.LVL36
+ 1529 0404 97080000 		.4byte	0x897
+ 1530 0408 13040000 		.4byte	0x413
+ 1531 040c 12       		.uleb128 0x12
+ 1532 040d 01       		.uleb128 0x1
+ 1533 040e 50       		.byte	0x50
+ 1534 040f 02       		.uleb128 0x2
+ 1535 0410 76       		.byte	0x76
+ 1536 0411 00       		.sleb128 0
+ 1537 0412 00       		.byte	0
+ 1538 0413 11       		.uleb128 0x11
+ 1539 0414 52000000 		.4byte	.LVL39
+ 1540 0418 97080000 		.4byte	0x897
+ 1541 041c 27040000 		.4byte	0x427
+ 1542 0420 12       		.uleb128 0x12
+ 1543 0421 01       		.uleb128 0x1
+ 1544 0422 50       		.byte	0x50
+ 1545 0423 02       		.uleb128 0x2
+ 1546 0424 76       		.byte	0x76
+ 1547 0425 00       		.sleb128 0
+ 1548 0426 00       		.byte	0
+ 1549 0427 11       		.uleb128 0x11
+ 1550 0428 74000000 		.4byte	.LVL42
+ 1551 042c 97080000 		.4byte	0x897
+ 1552 0430 3B040000 		.4byte	0x43b
+ 1553 0434 12       		.uleb128 0x12
+ 1554 0435 01       		.uleb128 0x1
+ 1555 0436 50       		.byte	0x50
+ 1556 0437 02       		.uleb128 0x2
+ 1557 0438 76       		.byte	0x76
+ 1558 0439 00       		.sleb128 0
+ 1559 043a 00       		.byte	0
+ 1560 043b 11       		.uleb128 0x11
+ 1561 043c 98000000 		.4byte	.LVL47
+ 1562 0440 97080000 		.4byte	0x897
+ 1563 0444 4F040000 		.4byte	0x44f
+ 1564 0448 12       		.uleb128 0x12
+ 1565 0449 01       		.uleb128 0x1
+ 1566 044a 50       		.byte	0x50
+ 1567 044b 02       		.uleb128 0x2
+ 1568 044c 76       		.byte	0x76
+ 1569 044d 00       		.sleb128 0
+ 1570 044e 00       		.byte	0
+ 1571 044f 13       		.uleb128 0x13
+ 1572 0450 A4000000 		.4byte	.LVL49
+ 1573 0454 AC080000 		.4byte	0x8ac
+ 1574 0458 11       		.uleb128 0x11
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccuIaCqh.s 			page 38
+
+
+ 1575 0459 C0000000 		.4byte	.LVL52
+ 1576 045d 97080000 		.4byte	0x897
+ 1577 0461 6C040000 		.4byte	0x46c
+ 1578 0465 12       		.uleb128 0x12
+ 1579 0466 01       		.uleb128 0x1
+ 1580 0467 50       		.byte	0x50
+ 1581 0468 02       		.uleb128 0x2
+ 1582 0469 76       		.byte	0x76
+ 1583 046a 00       		.sleb128 0
+ 1584 046b 00       		.byte	0
+ 1585 046c 13       		.uleb128 0x13
+ 1586 046d CC000000 		.4byte	.LVL54
+ 1587 0471 B3080000 		.4byte	0x8b3
+ 1588 0475 11       		.uleb128 0x11
+ 1589 0476 D6000000 		.4byte	.LVL57
+ 1590 047a BA080000 		.4byte	0x8ba
+ 1591 047e 89040000 		.4byte	0x489
+ 1592 0482 12       		.uleb128 0x12
+ 1593 0483 01       		.uleb128 0x1
+ 1594 0484 50       		.byte	0x50
+ 1595 0485 02       		.uleb128 0x2
+ 1596 0486 08       		.byte	0x8
+ 1597 0487 96       		.byte	0x96
+ 1598 0488 00       		.byte	0
+ 1599 0489 13       		.uleb128 0x13
+ 1600 048a DA000000 		.4byte	.LVL58
+ 1601 048e CB080000 		.4byte	0x8cb
+ 1602 0492 00       		.byte	0
+ 1603 0493 19       		.uleb128 0x19
+ 1604 0494 01020000 		.4byte	.LASF31
+ 1605 0498 01       		.byte	0x1
+ 1606 0499 94       		.byte	0x94
+ 1607 049a 00000000 		.4byte	.LFB34
+ 1608 049e F4000000 		.4byte	.LFE34-.LFB34
+ 1609 04a2 01       		.uleb128 0x1
+ 1610 04a3 9C       		.byte	0x9c
+ 1611 04a4 0E060000 		.4byte	0x60e
+ 1612 04a8 1A       		.uleb128 0x1a
+ 1613 04a9 AE020000 		.4byte	.LASF18
+ 1614 04ad 01       		.byte	0x1
+ 1615 04ae 95       		.byte	0x95
+ 1616 04af CF020000 		.4byte	0x2cf
+ 1617 04b3 1B       		.uleb128 0x1b
+ 1618 04b4 AC010000 		.4byte	.LASF19
+ 1619 04b8 01       		.byte	0x1
+ 1620 04b9 96       		.byte	0x96
+ 1621 04ba 6B000000 		.4byte	0x6b
+ 1622 04be 5B010000 		.4byte	.LLST12
+ 1623 04c2 1C       		.uleb128 0x1c
+ 1624 04c3 D5020000 		.4byte	0x2d5
+ 1625 04c7 16000000 		.4byte	.LBB84
+ 1626 04cb 78000000 		.4byte	.Ldebug_ranges0+0x78
+ 1627 04cf 01       		.byte	0x1
+ 1628 04d0 9C       		.byte	0x9c
+ 1629 04d1 DF040000 		.4byte	0x4df
+ 1630 04d5 1D       		.uleb128 0x1d
+ 1631 04d6 E6020000 		.4byte	0x2e6
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccuIaCqh.s 			page 39
+
+
+ 1632 04da C9010000 		.4byte	.LLST13
+ 1633 04de 00       		.byte	0
+ 1634 04df 1C       		.uleb128 0x1c
+ 1635 04e0 D5020000 		.4byte	0x2d5
+ 1636 04e4 38000000 		.4byte	.LBB88
+ 1637 04e8 90000000 		.4byte	.Ldebug_ranges0+0x90
+ 1638 04ec 01       		.byte	0x1
+ 1639 04ed B1       		.byte	0xb1
+ 1640 04ee FC040000 		.4byte	0x4fc
+ 1641 04f2 1D       		.uleb128 0x1d
+ 1642 04f3 E6020000 		.4byte	0x2e6
+ 1643 04f7 DD010000 		.4byte	.LLST14
+ 1644 04fb 00       		.byte	0
+ 1645 04fc 1C       		.uleb128 0x1c
+ 1646 04fd D5020000 		.4byte	0x2d5
+ 1647 0501 5A000000 		.4byte	.LBB92
+ 1648 0505 A8000000 		.4byte	.Ldebug_ranges0+0xa8
+ 1649 0509 01       		.byte	0x1
+ 1650 050a C6       		.byte	0xc6
+ 1651 050b 19050000 		.4byte	0x519
+ 1652 050f 1D       		.uleb128 0x1d
+ 1653 0510 E6020000 		.4byte	0x2e6
+ 1654 0514 F1010000 		.4byte	.LLST15
+ 1655 0518 00       		.byte	0
+ 1656 0519 1C       		.uleb128 0x1c
+ 1657 051a D5020000 		.4byte	0x2d5
+ 1658 051e 7E000000 		.4byte	.LBB96
+ 1659 0522 C0000000 		.4byte	.Ldebug_ranges0+0xc0
+ 1660 0526 01       		.byte	0x1
+ 1661 0527 DB       		.byte	0xdb
+ 1662 0528 36050000 		.4byte	0x536
+ 1663 052c 1D       		.uleb128 0x1d
+ 1664 052d E6020000 		.4byte	0x2e6
+ 1665 0531 05020000 		.4byte	.LLST16
+ 1666 0535 00       		.byte	0
+ 1667 0536 1C       		.uleb128 0x1c
+ 1668 0537 D5020000 		.4byte	0x2d5
+ 1669 053b A6000000 		.4byte	.LBB100
+ 1670 053f D8000000 		.4byte	.Ldebug_ranges0+0xd8
+ 1671 0543 01       		.byte	0x1
+ 1672 0544 F1       		.byte	0xf1
+ 1673 0545 53050000 		.4byte	0x553
+ 1674 0549 1D       		.uleb128 0x1d
+ 1675 054a E6020000 		.4byte	0x2e6
+ 1676 054e 19020000 		.4byte	.LLST17
+ 1677 0552 00       		.byte	0
+ 1678 0553 1F       		.uleb128 0x1f
+ 1679 0554 F3020000 		.4byte	0x2f3
+ 1680 0558 CE000000 		.4byte	.LBB104
+ 1681 055c 02000000 		.4byte	.LBE104-.LBB104
+ 1682 0560 01       		.byte	0x1
+ 1683 0561 0301     		.2byte	0x103
+ 1684 0563 7A050000 		.4byte	0x57a
+ 1685 0567 1D       		.uleb128 0x1d
+ 1686 0568 0C030000 		.4byte	0x30c
+ 1687 056c 2D020000 		.4byte	.LLST18
+ 1688 0570 1D       		.uleb128 0x1d
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccuIaCqh.s 			page 40
+
+
+ 1689 0571 00030000 		.4byte	0x300
+ 1690 0575 40020000 		.4byte	.LLST19
+ 1691 0579 00       		.byte	0
+ 1692 057a 11       		.uleb128 0x11
+ 1693 057b 30000000 		.4byte	.LVL61
+ 1694 057f 97080000 		.4byte	0x897
+ 1695 0583 8E050000 		.4byte	0x58e
+ 1696 0587 12       		.uleb128 0x12
+ 1697 0588 01       		.uleb128 0x1
+ 1698 0589 50       		.byte	0x50
+ 1699 058a 02       		.uleb128 0x2
+ 1700 058b 76       		.byte	0x76
+ 1701 058c 00       		.sleb128 0
+ 1702 058d 00       		.byte	0
+ 1703 058e 11       		.uleb128 0x11
+ 1704 058f 52000000 		.4byte	.LVL64
+ 1705 0593 97080000 		.4byte	0x897
+ 1706 0597 A2050000 		.4byte	0x5a2
+ 1707 059b 12       		.uleb128 0x12
+ 1708 059c 01       		.uleb128 0x1
+ 1709 059d 50       		.byte	0x50
+ 1710 059e 02       		.uleb128 0x2
+ 1711 059f 76       		.byte	0x76
+ 1712 05a0 00       		.sleb128 0
+ 1713 05a1 00       		.byte	0
+ 1714 05a2 11       		.uleb128 0x11
+ 1715 05a3 74000000 		.4byte	.LVL67
+ 1716 05a7 97080000 		.4byte	0x897
+ 1717 05ab B6050000 		.4byte	0x5b6
+ 1718 05af 12       		.uleb128 0x12
+ 1719 05b0 01       		.uleb128 0x1
+ 1720 05b1 50       		.byte	0x50
+ 1721 05b2 02       		.uleb128 0x2
+ 1722 05b3 76       		.byte	0x76
+ 1723 05b4 00       		.sleb128 0
+ 1724 05b5 00       		.byte	0
+ 1725 05b6 11       		.uleb128 0x11
+ 1726 05b7 98000000 		.4byte	.LVL72
+ 1727 05bb 97080000 		.4byte	0x897
+ 1728 05bf CA050000 		.4byte	0x5ca
+ 1729 05c3 12       		.uleb128 0x12
+ 1730 05c4 01       		.uleb128 0x1
+ 1731 05c5 50       		.byte	0x50
+ 1732 05c6 02       		.uleb128 0x2
+ 1733 05c7 76       		.byte	0x76
+ 1734 05c8 00       		.sleb128 0
+ 1735 05c9 00       		.byte	0
+ 1736 05ca 13       		.uleb128 0x13
+ 1737 05cb A4000000 		.4byte	.LVL74
+ 1738 05cf AC080000 		.4byte	0x8ac
+ 1739 05d3 11       		.uleb128 0x11
+ 1740 05d4 C0000000 		.4byte	.LVL77
+ 1741 05d8 97080000 		.4byte	0x897
+ 1742 05dc E7050000 		.4byte	0x5e7
+ 1743 05e0 12       		.uleb128 0x12
+ 1744 05e1 01       		.uleb128 0x1
+ 1745 05e2 50       		.byte	0x50
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccuIaCqh.s 			page 41
+
+
+ 1746 05e3 02       		.uleb128 0x2
+ 1747 05e4 76       		.byte	0x76
+ 1748 05e5 00       		.sleb128 0
+ 1749 05e6 00       		.byte	0
+ 1750 05e7 13       		.uleb128 0x13
+ 1751 05e8 CC000000 		.4byte	.LVL79
+ 1752 05ec B3080000 		.4byte	0x8b3
+ 1753 05f0 11       		.uleb128 0x11
+ 1754 05f1 D6000000 		.4byte	.LVL82
+ 1755 05f5 BA080000 		.4byte	0x8ba
+ 1756 05f9 04060000 		.4byte	0x604
+ 1757 05fd 12       		.uleb128 0x12
+ 1758 05fe 01       		.uleb128 0x1
+ 1759 05ff 50       		.byte	0x50
+ 1760 0600 02       		.uleb128 0x2
+ 1761 0601 08       		.byte	0x8
+ 1762 0602 96       		.byte	0x96
+ 1763 0603 00       		.byte	0
+ 1764 0604 13       		.uleb128 0x13
+ 1765 0605 DA000000 		.4byte	.LVL83
+ 1766 0609 D6080000 		.4byte	0x8d6
+ 1767 060d 00       		.byte	0
+ 1768 060e 10       		.uleb128 0x10
+ 1769 060f 34040000 		.4byte	.LASF32
+ 1770 0613 01       		.byte	0x1
+ 1771 0614 3D01     		.2byte	0x13d
+ 1772 0616 00000000 		.4byte	.LFB37
+ 1773 061a 40000000 		.4byte	.LFE37-.LFB37
+ 1774 061e 01       		.uleb128 0x1
+ 1775 061f 9C       		.byte	0x9c
+ 1776 0620 54060000 		.4byte	0x654
+ 1777 0624 20       		.uleb128 0x20
+ 1778 0625 70010000 		.4byte	.LASF28
+ 1779 0629 01       		.byte	0x1
+ 1780 062a 3D01     		.2byte	0x13d
+ 1781 062c 6B000000 		.4byte	0x6b
+ 1782 0630 54020000 		.4byte	.LLST20
+ 1783 0634 20       		.uleb128 0x20
+ 1784 0635 AE020000 		.4byte	.LASF18
+ 1785 0639 01       		.byte	0x1
+ 1786 063a 3D01     		.2byte	0x13d
+ 1787 063c CF020000 		.4byte	0x2cf
+ 1788 0640 75020000 		.4byte	.LLST21
+ 1789 0644 21       		.uleb128 0x21
+ 1790 0645 2A000000 		.4byte	.LVL86
+ 1791 0649 E1080000 		.4byte	0x8e1
+ 1792 064d 12       		.uleb128 0x12
+ 1793 064e 01       		.uleb128 0x1
+ 1794 064f 52       		.byte	0x52
+ 1795 0650 01       		.uleb128 0x1
+ 1796 0651 44       		.byte	0x44
+ 1797 0652 00       		.byte	0
+ 1798 0653 00       		.byte	0
+ 1799 0654 22       		.uleb128 0x22
+ 1800 0655 B1020000 		.4byte	0x2b1
+ 1801 0659 00000000 		.4byte	.LFB38
+ 1802 065d 18000000 		.4byte	.LFE38-.LFB38
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccuIaCqh.s 			page 42
+
+
+ 1803 0661 01       		.uleb128 0x1
+ 1804 0662 9C       		.byte	0x9c
+ 1805 0663 71060000 		.4byte	0x671
+ 1806 0667 1D       		.uleb128 0x1d
+ 1807 0668 C2020000 		.4byte	0x2c2
+ 1808 066c 96020000 		.4byte	.LLST22
+ 1809 0670 00       		.byte	0
+ 1810 0671 22       		.uleb128 0x22
+ 1811 0672 F3020000 		.4byte	0x2f3
+ 1812 0676 00000000 		.4byte	.LFB39
+ 1813 067a 3C000000 		.4byte	.LFE39-.LFB39
+ 1814 067e 01       		.uleb128 0x1
+ 1815 067f 9C       		.byte	0x9c
+ 1816 0680 95060000 		.4byte	0x695
+ 1817 0684 1D       		.uleb128 0x1d
+ 1818 0685 00030000 		.4byte	0x300
+ 1819 0689 B7020000 		.4byte	.LLST23
+ 1820 068d 23       		.uleb128 0x23
+ 1821 068e 0C030000 		.4byte	0x30c
+ 1822 0692 01       		.uleb128 0x1
+ 1823 0693 51       		.byte	0x51
+ 1824 0694 00       		.byte	0
+ 1825 0695 22       		.uleb128 0x22
+ 1826 0696 D5020000 		.4byte	0x2d5
+ 1827 069a 00000000 		.4byte	.LFB40
+ 1828 069e 44000000 		.4byte	.LFE40-.LFB40
+ 1829 06a2 01       		.uleb128 0x1
+ 1830 06a3 9C       		.byte	0x9c
+ 1831 06a4 B2060000 		.4byte	0x6b2
+ 1832 06a8 1D       		.uleb128 0x1d
+ 1833 06a9 E6020000 		.4byte	0x2e6
+ 1834 06ad D8020000 		.4byte	.LLST24
+ 1835 06b1 00       		.byte	0
+ 1836 06b2 10       		.uleb128 0x10
+ 1837 06b3 1B010000 		.4byte	.LASF33
+ 1838 06b7 01       		.byte	0x1
+ 1839 06b8 9401     		.2byte	0x194
+ 1840 06ba 00000000 		.4byte	.LFB41
+ 1841 06be 12000000 		.4byte	.LFE41-.LFB41
+ 1842 06c2 01       		.uleb128 0x1
+ 1843 06c3 9C       		.byte	0x9c
+ 1844 06c4 19070000 		.4byte	0x719
+ 1845 06c8 20       		.uleb128 0x20
+ 1846 06c9 70010000 		.4byte	.LASF28
+ 1847 06cd 01       		.byte	0x1
+ 1848 06ce 9401     		.2byte	0x194
+ 1849 06d0 6B000000 		.4byte	0x6b
+ 1850 06d4 F9020000 		.4byte	.LLST25
+ 1851 06d8 20       		.uleb128 0x20
+ 1852 06d9 AE020000 		.4byte	.LASF18
+ 1853 06dd 01       		.byte	0x1
+ 1854 06de 9401     		.2byte	0x194
+ 1855 06e0 CF020000 		.4byte	0x2cf
+ 1856 06e4 1A030000 		.4byte	.LLST26
+ 1857 06e8 11       		.uleb128 0x11
+ 1858 06e9 08000000 		.4byte	.LVL94
+ 1859 06ed 0E060000 		.4byte	0x60e
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccuIaCqh.s 			page 43
+
+
+ 1860 06f1 03070000 		.4byte	0x703
+ 1861 06f5 12       		.uleb128 0x12
+ 1862 06f6 01       		.uleb128 0x1
+ 1863 06f7 51       		.byte	0x51
+ 1864 06f8 03       		.uleb128 0x3
+ 1865 06f9 F3       		.byte	0xf3
+ 1866 06fa 01       		.uleb128 0x1
+ 1867 06fb 51       		.byte	0x51
+ 1868 06fc 12       		.uleb128 0x12
+ 1869 06fd 01       		.uleb128 0x1
+ 1870 06fe 50       		.byte	0x50
+ 1871 06ff 02       		.uleb128 0x2
+ 1872 0700 74       		.byte	0x74
+ 1873 0701 00       		.sleb128 0
+ 1874 0702 00       		.byte	0
+ 1875 0703 21       		.uleb128 0x21
+ 1876 0704 10000000 		.4byte	.LVL95
+ 1877 0708 F3020000 		.4byte	0x2f3
+ 1878 070c 12       		.uleb128 0x12
+ 1879 070d 01       		.uleb128 0x1
+ 1880 070e 51       		.byte	0x51
+ 1881 070f 01       		.uleb128 0x1
+ 1882 0710 30       		.byte	0x30
+ 1883 0711 12       		.uleb128 0x12
+ 1884 0712 01       		.uleb128 0x1
+ 1885 0713 50       		.byte	0x50
+ 1886 0714 02       		.uleb128 0x2
+ 1887 0715 74       		.byte	0x74
+ 1888 0716 00       		.sleb128 0
+ 1889 0717 00       		.byte	0
+ 1890 0718 00       		.byte	0
+ 1891 0719 24       		.uleb128 0x24
+ 1892 071a 57010000 		.4byte	.LASF66
+ 1893 071e 01       		.byte	0x1
+ 1894 071f 9901     		.2byte	0x199
+ 1895 0721 00000000 		.4byte	.LFB42
+ 1896 0725 38000000 		.4byte	.LFE42-.LFB42
+ 1897 0729 01       		.uleb128 0x1
+ 1898 072a 9C       		.byte	0x9c
+ 1899 072b A8070000 		.4byte	0x7a8
+ 1900 072f 11       		.uleb128 0x11
+ 1901 0730 08000000 		.4byte	.LVL96
+ 1902 0734 00090000 		.4byte	0x900
+ 1903 0738 46070000 		.4byte	0x746
+ 1904 073c 12       		.uleb128 0x12
+ 1905 073d 01       		.uleb128 0x1
+ 1906 073e 50       		.byte	0x50
+ 1907 073f 05       		.uleb128 0x5
+ 1908 0740 03       		.byte	0x3
+ 1909 0741 00000000 		.4byte	SWB_Handler
+ 1910 0745 00       		.byte	0
+ 1911 0746 11       		.uleb128 0x11
+ 1912 0747 0E000000 		.4byte	.LVL97
+ 1913 074b 11090000 		.4byte	0x911
+ 1914 074f 5D070000 		.4byte	0x75d
+ 1915 0753 12       		.uleb128 0x12
+ 1916 0754 01       		.uleb128 0x1
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccuIaCqh.s 			page 44
+
+
+ 1917 0755 50       		.byte	0x50
+ 1918 0756 05       		.uleb128 0x5
+ 1919 0757 03       		.byte	0x3
+ 1920 0758 00000000 		.4byte	SWL_Handler
+ 1921 075c 00       		.byte	0
+ 1922 075d 11       		.uleb128 0x11
+ 1923 075e 14000000 		.4byte	.LVL98
+ 1924 0762 22090000 		.4byte	0x922
+ 1925 0766 74070000 		.4byte	0x774
+ 1926 076a 12       		.uleb128 0x12
+ 1927 076b 01       		.uleb128 0x1
+ 1928 076c 50       		.byte	0x50
+ 1929 076d 05       		.uleb128 0x5
+ 1930 076e 03       		.byte	0x3
+ 1931 076f 00000000 		.4byte	SWR_Handler
+ 1932 0773 00       		.byte	0
+ 1933 0774 11       		.uleb128 0x11
+ 1934 0775 1A000000 		.4byte	.LVL99
+ 1935 0779 33090000 		.4byte	0x933
+ 1936 077d 8B070000 		.4byte	0x78b
+ 1937 0781 12       		.uleb128 0x12
+ 1938 0782 01       		.uleb128 0x1
+ 1939 0783 50       		.byte	0x50
+ 1940 0784 05       		.uleb128 0x5
+ 1941 0785 03       		.byte	0x3
+ 1942 0786 00000000 		.4byte	ORG_Handler
+ 1943 078a 00       		.byte	0
+ 1944 078b 11       		.uleb128 0x11
+ 1945 078c 20000000 		.4byte	.LVL100
+ 1946 0790 44090000 		.4byte	0x944
+ 1947 0794 9E070000 		.4byte	0x79e
+ 1948 0798 12       		.uleb128 0x12
+ 1949 0799 01       		.uleb128 0x1
+ 1950 079a 50       		.byte	0x50
+ 1951 079b 01       		.uleb128 0x1
+ 1952 079c 30       		.byte	0x30
+ 1953 079d 00       		.byte	0
+ 1954 079e 13       		.uleb128 0x13
+ 1955 079f 24000000 		.4byte	.LVL101
+ 1956 07a3 5F090000 		.4byte	0x95f
+ 1957 07a7 00       		.byte	0
+ 1958 07a8 25       		.uleb128 0x25
+ 1959 07a9 68040000 		.4byte	.LASF34
+ 1960 07ad 06       		.byte	0x6
+ 1961 07ae 18       		.byte	0x18
+ 1962 07af 96000000 		.4byte	0x96
+ 1963 07b3 26       		.uleb128 0x26
+ 1964 07b4 08030000 		.4byte	.LASF35
+ 1965 07b8 01       		.byte	0x1
+ 1966 07b9 15       		.byte	0x15
+ 1967 07ba C4070000 		.4byte	0x7c4
+ 1968 07be 05       		.uleb128 0x5
+ 1969 07bf 03       		.byte	0x3
+ 1970 07c0 00000000 		.4byte	Morse_Sequence
+ 1971 07c4 05       		.uleb128 0x5
+ 1972 07c5 DF000000 		.4byte	0xdf
+ 1973 07c9 26       		.uleb128 0x26
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccuIaCqh.s 			page 45
+
+
+ 1974 07ca D2030000 		.4byte	.LASF36
+ 1975 07ce 01       		.byte	0x1
+ 1976 07cf 16       		.byte	0x16
+ 1977 07d0 C4070000 		.4byte	0x7c4
+ 1978 07d4 05       		.uleb128 0x5
+ 1979 07d5 03       		.byte	0x3
+ 1980 07d6 00000000 		.4byte	Binary_Sequence
+ 1981 07da 26       		.uleb128 0x26
+ 1982 07db 59030000 		.4byte	.LASF37
+ 1983 07df 01       		.byte	0x1
+ 1984 07e0 17       		.byte	0x17
+ 1985 07e1 C4070000 		.4byte	0x7c4
+ 1986 07e5 05       		.uleb128 0x5
+ 1987 07e6 03       		.byte	0x3
+ 1988 07e7 00000000 		.4byte	Substitution_Sequence
+ 1989 07eb 26       		.uleb128 0x26
+ 1990 07ec 13040000 		.4byte	.LASF38
+ 1991 07f0 01       		.byte	0x1
+ 1992 07f1 18       		.byte	0x18
+ 1993 07f2 C4070000 		.4byte	0x7c4
+ 1994 07f6 05       		.uleb128 0x5
+ 1995 07f7 03       		.byte	0x3
+ 1996 07f8 00000000 		.4byte	Final_Stage_Sequence
+ 1997 07fc 26       		.uleb128 0x26
+ 1998 07fd FA000000 		.4byte	.LASF39
+ 1999 0801 01       		.byte	0x1
+ 2000 0802 19       		.byte	0x19
+ 2001 0803 C4070000 		.4byte	0x7c4
+ 2002 0807 05       		.uleb128 0x5
+ 2003 0808 03       		.byte	0x3
+ 2004 0809 00000000 		.4byte	Organizer_Sequence
+ 2005 080d 27       		.uleb128 0x27
+ 2006 080e 6D020000 		.4byte	.LASF40
+ 2007 0812 07       		.byte	0x7
+ 2008 0813 3A       		.byte	0x3a
+ 2009 0814 6B000000 		.4byte	0x6b
+ 2010 0818 22080000 		.4byte	0x822
+ 2011 081c 28       		.uleb128 0x28
+ 2012 081d 6B000000 		.4byte	0x6b
+ 2013 0821 00       		.byte	0
+ 2014 0822 29       		.uleb128 0x29
+ 2015 0823 95010000 		.4byte	.LASF42
+ 2016 0827 07       		.byte	0x7
+ 2017 0828 3B       		.byte	0x3b
+ 2018 0829 33080000 		.4byte	0x833
+ 2019 082d 28       		.uleb128 0x28
+ 2020 082e 6B000000 		.4byte	0x6b
+ 2021 0832 00       		.byte	0
+ 2022 0833 29       		.uleb128 0x29
+ 2023 0834 A3010000 		.4byte	.LASF43
+ 2024 0838 07       		.byte	0x7
+ 2025 0839 3C       		.byte	0x3c
+ 2026 083a 44080000 		.4byte	0x844
+ 2027 083e 28       		.uleb128 0x28
+ 2028 083f 6B000000 		.4byte	0x6b
+ 2029 0843 00       		.byte	0
+ 2030 0844 2A       		.uleb128 0x2a
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccuIaCqh.s 			page 46
+
+
+ 2031 0845 3A000000 		.4byte	.LASF45
+ 2032 0849 08       		.byte	0x8
+ 2033 084a 21       		.byte	0x21
+ 2034 084b 6B000000 		.4byte	0x6b
+ 2035 084f 27       		.uleb128 0x27
+ 2036 0850 16020000 		.4byte	.LASF44
+ 2037 0854 07       		.byte	0x7
+ 2038 0855 39       		.byte	0x39
+ 2039 0856 6B000000 		.4byte	0x6b
+ 2040 085a 64080000 		.4byte	0x864
+ 2041 085e 28       		.uleb128 0x28
+ 2042 085f 6B000000 		.4byte	0x6b
+ 2043 0863 00       		.byte	0
+ 2044 0864 2A       		.uleb128 0x2a
+ 2045 0865 B8010000 		.4byte	.LASF46
+ 2046 0869 09       		.byte	0x9
+ 2047 086a 7C       		.byte	0x7c
+ 2048 086b 5D000000 		.4byte	0x5d
+ 2049 086f 29       		.uleb128 0x29
+ 2050 0870 C8030000 		.4byte	.LASF47
+ 2051 0874 07       		.byte	0x7
+ 2052 0875 37       		.byte	0x37
+ 2053 0876 85080000 		.4byte	0x885
+ 2054 087a 28       		.uleb128 0x28
+ 2055 087b 6B000000 		.4byte	0x6b
+ 2056 087f 28       		.uleb128 0x28
+ 2057 0880 6B000000 		.4byte	0x6b
+ 2058 0884 00       		.byte	0
+ 2059 0885 2B       		.uleb128 0x2b
+ 2060 0886 EE020000 		.4byte	.LASF50
+ 2061 088a 0C       		.byte	0xc
+ 2062 088b 28       		.byte	0x28
+ 2063 088c 2A       		.uleb128 0x2a
+ 2064 088d 36010000 		.4byte	.LASF48
+ 2065 0891 0A       		.byte	0xa
+ 2066 0892 97       		.byte	0x97
+ 2067 0893 6B000000 		.4byte	0x6b
+ 2068 0897 27       		.uleb128 0x27
+ 2069 0898 3F030000 		.4byte	.LASF49
+ 2070 089c 0B       		.byte	0xb
+ 2071 089d 21       		.byte	0x21
+ 2072 089e AE000000 		.4byte	0xae
+ 2073 08a2 AC080000 		.4byte	0x8ac
+ 2074 08a6 28       		.uleb128 0x28
+ 2075 08a7 C2000000 		.4byte	0xc2
+ 2076 08ab 00       		.byte	0
+ 2077 08ac 2B       		.uleb128 0x2b
+ 2078 08ad 76030000 		.4byte	.LASF51
+ 2079 08b1 0A       		.byte	0xa
+ 2080 08b2 92       		.byte	0x92
+ 2081 08b3 2B       		.uleb128 0x2b
+ 2082 08b4 46030000 		.4byte	.LASF52
+ 2083 08b8 0A       		.byte	0xa
+ 2084 08b9 93       		.byte	0x93
+ 2085 08ba 29       		.uleb128 0x29
+ 2086 08bb 4E040000 		.4byte	.LASF53
+ 2087 08bf 0D       		.byte	0xd
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccuIaCqh.s 			page 47
+
+
+ 2088 08c0 7B       		.byte	0x7b
+ 2089 08c1 CB080000 		.4byte	0x8cb
+ 2090 08c5 28       		.uleb128 0x28
+ 2091 08c6 76000000 		.4byte	0x76
+ 2092 08ca 00       		.byte	0
+ 2093 08cb 2A       		.uleb128 0x2a
+ 2094 08cc 86020000 		.4byte	.LASF54
+ 2095 08d0 0E       		.byte	0xe
+ 2096 08d1 21       		.byte	0x21
+ 2097 08d2 6B000000 		.4byte	0x6b
+ 2098 08d6 2A       		.uleb128 0x2a
+ 2099 08d7 17000000 		.4byte	.LASF55
+ 2100 08db 0F       		.byte	0xf
+ 2101 08dc 21       		.byte	0x21
+ 2102 08dd 6B000000 		.4byte	0x6b
+ 2103 08e1 27       		.uleb128 0x27
+ 2104 08e2 99020000 		.4byte	.LASF56
+ 2105 08e6 0B       		.byte	0xb
+ 2106 08e7 18       		.byte	0x18
+ 2107 08e8 C0000000 		.4byte	0xc0
+ 2108 08ec 00090000 		.4byte	0x900
+ 2109 08f0 28       		.uleb128 0x28
+ 2110 08f1 C0000000 		.4byte	0xc0
+ 2111 08f5 28       		.uleb128 0x28
+ 2112 08f6 D8000000 		.4byte	0xd8
+ 2113 08fa 28       		.uleb128 0x28
+ 2114 08fb AE000000 		.4byte	0xae
+ 2115 08ff 00       		.byte	0
+ 2116 0900 29       		.uleb128 0x29
+ 2117 0901 F1010000 		.4byte	.LASF57
+ 2118 0905 10       		.byte	0x10
+ 2119 0906 18       		.byte	0x18
+ 2120 0907 11090000 		.4byte	0x911
+ 2121 090b 28       		.uleb128 0x28
+ 2122 090c 9B000000 		.4byte	0x9b
+ 2123 0910 00       		.byte	0
+ 2124 0911 29       		.uleb128 0x29
+ 2125 0912 2A000000 		.4byte	.LASF58
+ 2126 0916 11       		.byte	0x11
+ 2127 0917 18       		.byte	0x18
+ 2128 0918 22090000 		.4byte	0x922
+ 2129 091c 28       		.uleb128 0x28
+ 2130 091d 9B000000 		.4byte	0x9b
+ 2131 0921 00       		.byte	0
+ 2132 0922 29       		.uleb128 0x29
+ 2133 0923 2A030000 		.4byte	.LASF59
+ 2134 0927 12       		.byte	0x12
+ 2135 0928 18       		.byte	0x18
+ 2136 0929 33090000 		.4byte	0x933
+ 2137 092d 28       		.uleb128 0x28
+ 2138 092e 9B000000 		.4byte	0x9b
+ 2139 0932 00       		.byte	0
+ 2140 0933 29       		.uleb128 0x29
+ 2141 0934 03040000 		.4byte	.LASF60
+ 2142 0938 0C       		.byte	0xc
+ 2143 0939 18       		.byte	0x18
+ 2144 093a 44090000 		.4byte	0x944
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccuIaCqh.s 			page 48
+
+
+ 2145 093e 28       		.uleb128 0x28
+ 2146 093f 9B000000 		.4byte	0x9b
+ 2147 0943 00       		.byte	0
+ 2148 0944 27       		.uleb128 0x27
+ 2149 0945 03030000 		.4byte	.LASF61
+ 2150 0949 13       		.byte	0x13
+ 2151 094a 2F       		.byte	0x2f
+ 2152 094b CD000000 		.4byte	0xcd
+ 2153 094f 59090000 		.4byte	0x959
+ 2154 0953 28       		.uleb128 0x28
+ 2155 0954 59090000 		.4byte	0x959
+ 2156 0958 00       		.byte	0
+ 2157 0959 07       		.uleb128 0x7
+ 2158 095a 04       		.byte	0x4
+ 2159 095b CD000000 		.4byte	0xcd
+ 2160 095f 2C       		.uleb128 0x2c
+ 2161 0960 56040000 		.4byte	.LASF67
+ 2162 0964 09       		.byte	0x9
+ 2163 0965 82       		.byte	0x82
+ 2164 0966 28       		.uleb128 0x28
+ 2165 0967 64000000 		.4byte	0x64
+ 2166 096b 00       		.byte	0
+ 2167 096c 00       		.byte	0
+ 2168              		.section	.debug_abbrev,"",%progbits
+ 2169              	.Ldebug_abbrev0:
+ 2170 0000 01       		.uleb128 0x1
+ 2171 0001 11       		.uleb128 0x11
+ 2172 0002 01       		.byte	0x1
+ 2173 0003 25       		.uleb128 0x25
+ 2174 0004 0E       		.uleb128 0xe
+ 2175 0005 13       		.uleb128 0x13
+ 2176 0006 0B       		.uleb128 0xb
+ 2177 0007 03       		.uleb128 0x3
+ 2178 0008 0E       		.uleb128 0xe
+ 2179 0009 1B       		.uleb128 0x1b
+ 2180 000a 0E       		.uleb128 0xe
+ 2181 000b 55       		.uleb128 0x55
+ 2182 000c 17       		.uleb128 0x17
+ 2183 000d 11       		.uleb128 0x11
+ 2184 000e 01       		.uleb128 0x1
+ 2185 000f 10       		.uleb128 0x10
+ 2186 0010 17       		.uleb128 0x17
+ 2187 0011 00       		.byte	0
+ 2188 0012 00       		.byte	0
+ 2189 0013 02       		.uleb128 0x2
+ 2190 0014 24       		.uleb128 0x24
+ 2191 0015 00       		.byte	0
+ 2192 0016 0B       		.uleb128 0xb
+ 2193 0017 0B       		.uleb128 0xb
+ 2194 0018 3E       		.uleb128 0x3e
+ 2195 0019 0B       		.uleb128 0xb
+ 2196 001a 03       		.uleb128 0x3
+ 2197 001b 0E       		.uleb128 0xe
+ 2198 001c 00       		.byte	0
+ 2199 001d 00       		.byte	0
+ 2200 001e 03       		.uleb128 0x3
+ 2201 001f 24       		.uleb128 0x24
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccuIaCqh.s 			page 49
+
+
+ 2202 0020 00       		.byte	0
+ 2203 0021 0B       		.uleb128 0xb
+ 2204 0022 0B       		.uleb128 0xb
+ 2205 0023 3E       		.uleb128 0x3e
+ 2206 0024 0B       		.uleb128 0xb
+ 2207 0025 03       		.uleb128 0x3
+ 2208 0026 08       		.uleb128 0x8
+ 2209 0027 00       		.byte	0
+ 2210 0028 00       		.byte	0
+ 2211 0029 04       		.uleb128 0x4
+ 2212 002a 16       		.uleb128 0x16
+ 2213 002b 00       		.byte	0
+ 2214 002c 03       		.uleb128 0x3
+ 2215 002d 0E       		.uleb128 0xe
+ 2216 002e 3A       		.uleb128 0x3a
+ 2217 002f 0B       		.uleb128 0xb
+ 2218 0030 3B       		.uleb128 0x3b
+ 2219 0031 0B       		.uleb128 0xb
+ 2220 0032 49       		.uleb128 0x49
+ 2221 0033 13       		.uleb128 0x13
+ 2222 0034 00       		.byte	0
+ 2223 0035 00       		.byte	0
+ 2224 0036 05       		.uleb128 0x5
+ 2225 0037 35       		.uleb128 0x35
+ 2226 0038 00       		.byte	0
+ 2227 0039 49       		.uleb128 0x49
+ 2228 003a 13       		.uleb128 0x13
+ 2229 003b 00       		.byte	0
+ 2230 003c 00       		.byte	0
+ 2231 003d 06       		.uleb128 0x6
+ 2232 003e 16       		.uleb128 0x16
+ 2233 003f 00       		.byte	0
+ 2234 0040 03       		.uleb128 0x3
+ 2235 0041 0E       		.uleb128 0xe
+ 2236 0042 3A       		.uleb128 0x3a
+ 2237 0043 0B       		.uleb128 0xb
+ 2238 0044 3B       		.uleb128 0x3b
+ 2239 0045 05       		.uleb128 0x5
+ 2240 0046 49       		.uleb128 0x49
+ 2241 0047 13       		.uleb128 0x13
+ 2242 0048 00       		.byte	0
+ 2243 0049 00       		.byte	0
+ 2244 004a 07       		.uleb128 0x7
+ 2245 004b 0F       		.uleb128 0xf
+ 2246 004c 00       		.byte	0
+ 2247 004d 0B       		.uleb128 0xb
+ 2248 004e 0B       		.uleb128 0xb
+ 2249 004f 49       		.uleb128 0x49
+ 2250 0050 13       		.uleb128 0x13
+ 2251 0051 00       		.byte	0
+ 2252 0052 00       		.byte	0
+ 2253 0053 08       		.uleb128 0x8
+ 2254 0054 15       		.uleb128 0x15
+ 2255 0055 00       		.byte	0
+ 2256 0056 27       		.uleb128 0x27
+ 2257 0057 19       		.uleb128 0x19
+ 2258 0058 00       		.byte	0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccuIaCqh.s 			page 50
+
+
+ 2259 0059 00       		.byte	0
+ 2260 005a 09       		.uleb128 0x9
+ 2261 005b 0F       		.uleb128 0xf
+ 2262 005c 00       		.byte	0
+ 2263 005d 0B       		.uleb128 0xb
+ 2264 005e 0B       		.uleb128 0xb
+ 2265 005f 00       		.byte	0
+ 2266 0060 00       		.byte	0
+ 2267 0061 0A       		.uleb128 0xa
+ 2268 0062 26       		.uleb128 0x26
+ 2269 0063 00       		.byte	0
+ 2270 0064 49       		.uleb128 0x49
+ 2271 0065 13       		.uleb128 0x13
+ 2272 0066 00       		.byte	0
+ 2273 0067 00       		.byte	0
+ 2274 0068 0B       		.uleb128 0xb
+ 2275 0069 26       		.uleb128 0x26
+ 2276 006a 00       		.byte	0
+ 2277 006b 00       		.byte	0
+ 2278 006c 00       		.byte	0
+ 2279 006d 0C       		.uleb128 0xc
+ 2280 006e 13       		.uleb128 0x13
+ 2281 006f 01       		.byte	0x1
+ 2282 0070 03       		.uleb128 0x3
+ 2283 0071 0E       		.uleb128 0xe
+ 2284 0072 0B       		.uleb128 0xb
+ 2285 0073 0B       		.uleb128 0xb
+ 2286 0074 3A       		.uleb128 0x3a
+ 2287 0075 0B       		.uleb128 0xb
+ 2288 0076 3B       		.uleb128 0x3b
+ 2289 0077 0B       		.uleb128 0xb
+ 2290 0078 01       		.uleb128 0x1
+ 2291 0079 13       		.uleb128 0x13
+ 2292 007a 00       		.byte	0
+ 2293 007b 00       		.byte	0
+ 2294 007c 0D       		.uleb128 0xd
+ 2295 007d 0D       		.uleb128 0xd
+ 2296 007e 00       		.byte	0
+ 2297 007f 03       		.uleb128 0x3
+ 2298 0080 0E       		.uleb128 0xe
+ 2299 0081 3A       		.uleb128 0x3a
+ 2300 0082 0B       		.uleb128 0xb
+ 2301 0083 3B       		.uleb128 0x3b
+ 2302 0084 0B       		.uleb128 0xb
+ 2303 0085 49       		.uleb128 0x49
+ 2304 0086 13       		.uleb128 0x13
+ 2305 0087 38       		.uleb128 0x38
+ 2306 0088 0B       		.uleb128 0xb
+ 2307 0089 00       		.byte	0
+ 2308 008a 00       		.byte	0
+ 2309 008b 0E       		.uleb128 0xe
+ 2310 008c 01       		.uleb128 0x1
+ 2311 008d 01       		.byte	0x1
+ 2312 008e 49       		.uleb128 0x49
+ 2313 008f 13       		.uleb128 0x13
+ 2314 0090 01       		.uleb128 0x1
+ 2315 0091 13       		.uleb128 0x13
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccuIaCqh.s 			page 51
+
+
+ 2316 0092 00       		.byte	0
+ 2317 0093 00       		.byte	0
+ 2318 0094 0F       		.uleb128 0xf
+ 2319 0095 21       		.uleb128 0x21
+ 2320 0096 00       		.byte	0
+ 2321 0097 49       		.uleb128 0x49
+ 2322 0098 13       		.uleb128 0x13
+ 2323 0099 2F       		.uleb128 0x2f
+ 2324 009a 0B       		.uleb128 0xb
+ 2325 009b 00       		.byte	0
+ 2326 009c 00       		.byte	0
+ 2327 009d 10       		.uleb128 0x10
+ 2328 009e 2E       		.uleb128 0x2e
+ 2329 009f 01       		.byte	0x1
+ 2330 00a0 3F       		.uleb128 0x3f
+ 2331 00a1 19       		.uleb128 0x19
+ 2332 00a2 03       		.uleb128 0x3
+ 2333 00a3 0E       		.uleb128 0xe
+ 2334 00a4 3A       		.uleb128 0x3a
+ 2335 00a5 0B       		.uleb128 0xb
+ 2336 00a6 3B       		.uleb128 0x3b
+ 2337 00a7 05       		.uleb128 0x5
+ 2338 00a8 27       		.uleb128 0x27
+ 2339 00a9 19       		.uleb128 0x19
+ 2340 00aa 11       		.uleb128 0x11
+ 2341 00ab 01       		.uleb128 0x1
+ 2342 00ac 12       		.uleb128 0x12
+ 2343 00ad 06       		.uleb128 0x6
+ 2344 00ae 40       		.uleb128 0x40
+ 2345 00af 18       		.uleb128 0x18
+ 2346 00b0 9742     		.uleb128 0x2117
+ 2347 00b2 19       		.uleb128 0x19
+ 2348 00b3 01       		.uleb128 0x1
+ 2349 00b4 13       		.uleb128 0x13
+ 2350 00b5 00       		.byte	0
+ 2351 00b6 00       		.byte	0
+ 2352 00b7 11       		.uleb128 0x11
+ 2353 00b8 898201   		.uleb128 0x4109
+ 2354 00bb 01       		.byte	0x1
+ 2355 00bc 11       		.uleb128 0x11
+ 2356 00bd 01       		.uleb128 0x1
+ 2357 00be 31       		.uleb128 0x31
+ 2358 00bf 13       		.uleb128 0x13
+ 2359 00c0 01       		.uleb128 0x1
+ 2360 00c1 13       		.uleb128 0x13
+ 2361 00c2 00       		.byte	0
+ 2362 00c3 00       		.byte	0
+ 2363 00c4 12       		.uleb128 0x12
+ 2364 00c5 8A8201   		.uleb128 0x410a
+ 2365 00c8 00       		.byte	0
+ 2366 00c9 02       		.uleb128 0x2
+ 2367 00ca 18       		.uleb128 0x18
+ 2368 00cb 9142     		.uleb128 0x2111
+ 2369 00cd 18       		.uleb128 0x18
+ 2370 00ce 00       		.byte	0
+ 2371 00cf 00       		.byte	0
+ 2372 00d0 13       		.uleb128 0x13
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccuIaCqh.s 			page 52
+
+
+ 2373 00d1 898201   		.uleb128 0x4109
+ 2374 00d4 00       		.byte	0
+ 2375 00d5 11       		.uleb128 0x11
+ 2376 00d6 01       		.uleb128 0x1
+ 2377 00d7 31       		.uleb128 0x31
+ 2378 00d8 13       		.uleb128 0x13
+ 2379 00d9 00       		.byte	0
+ 2380 00da 00       		.byte	0
+ 2381 00db 14       		.uleb128 0x14
+ 2382 00dc 2E       		.uleb128 0x2e
+ 2383 00dd 01       		.byte	0x1
+ 2384 00de 3F       		.uleb128 0x3f
+ 2385 00df 19       		.uleb128 0x19
+ 2386 00e0 03       		.uleb128 0x3
+ 2387 00e1 0E       		.uleb128 0xe
+ 2388 00e2 3A       		.uleb128 0x3a
+ 2389 00e3 0B       		.uleb128 0xb
+ 2390 00e4 3B       		.uleb128 0x3b
+ 2391 00e5 05       		.uleb128 0x5
+ 2392 00e6 27       		.uleb128 0x27
+ 2393 00e7 19       		.uleb128 0x19
+ 2394 00e8 11       		.uleb128 0x11
+ 2395 00e9 01       		.uleb128 0x1
+ 2396 00ea 12       		.uleb128 0x12
+ 2397 00eb 06       		.uleb128 0x6
+ 2398 00ec 40       		.uleb128 0x40
+ 2399 00ed 18       		.uleb128 0x18
+ 2400 00ee 9642     		.uleb128 0x2116
+ 2401 00f0 19       		.uleb128 0x19
+ 2402 00f1 01       		.uleb128 0x1
+ 2403 00f2 13       		.uleb128 0x13
+ 2404 00f3 00       		.byte	0
+ 2405 00f4 00       		.byte	0
+ 2406 00f5 15       		.uleb128 0x15
+ 2407 00f6 34       		.uleb128 0x34
+ 2408 00f7 00       		.byte	0
+ 2409 00f8 03       		.uleb128 0x3
+ 2410 00f9 0E       		.uleb128 0xe
+ 2411 00fa 3A       		.uleb128 0x3a
+ 2412 00fb 0B       		.uleb128 0xb
+ 2413 00fc 3B       		.uleb128 0x3b
+ 2414 00fd 05       		.uleb128 0x5
+ 2415 00fe 49       		.uleb128 0x49
+ 2416 00ff 13       		.uleb128 0x13
+ 2417 0100 02       		.uleb128 0x2
+ 2418 0101 17       		.uleb128 0x17
+ 2419 0102 00       		.byte	0
+ 2420 0103 00       		.byte	0
+ 2421 0104 16       		.uleb128 0x16
+ 2422 0105 2E       		.uleb128 0x2e
+ 2423 0106 01       		.byte	0x1
+ 2424 0107 3F       		.uleb128 0x3f
+ 2425 0108 19       		.uleb128 0x19
+ 2426 0109 03       		.uleb128 0x3
+ 2427 010a 0E       		.uleb128 0xe
+ 2428 010b 3A       		.uleb128 0x3a
+ 2429 010c 0B       		.uleb128 0xb
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccuIaCqh.s 			page 53
+
+
+ 2430 010d 3B       		.uleb128 0x3b
+ 2431 010e 05       		.uleb128 0x5
+ 2432 010f 27       		.uleb128 0x27
+ 2433 0110 19       		.uleb128 0x19
+ 2434 0111 49       		.uleb128 0x49
+ 2435 0112 13       		.uleb128 0x13
+ 2436 0113 20       		.uleb128 0x20
+ 2437 0114 0B       		.uleb128 0xb
+ 2438 0115 01       		.uleb128 0x1
+ 2439 0116 13       		.uleb128 0x13
+ 2440 0117 00       		.byte	0
+ 2441 0118 00       		.byte	0
+ 2442 0119 17       		.uleb128 0x17
+ 2443 011a 05       		.uleb128 0x5
+ 2444 011b 00       		.byte	0
+ 2445 011c 03       		.uleb128 0x3
+ 2446 011d 0E       		.uleb128 0xe
+ 2447 011e 3A       		.uleb128 0x3a
+ 2448 011f 0B       		.uleb128 0xb
+ 2449 0120 3B       		.uleb128 0x3b
+ 2450 0121 05       		.uleb128 0x5
+ 2451 0122 49       		.uleb128 0x49
+ 2452 0123 13       		.uleb128 0x13
+ 2453 0124 00       		.byte	0
+ 2454 0125 00       		.byte	0
+ 2455 0126 18       		.uleb128 0x18
+ 2456 0127 2E       		.uleb128 0x2e
+ 2457 0128 01       		.byte	0x1
+ 2458 0129 3F       		.uleb128 0x3f
+ 2459 012a 19       		.uleb128 0x19
+ 2460 012b 03       		.uleb128 0x3
+ 2461 012c 0E       		.uleb128 0xe
+ 2462 012d 3A       		.uleb128 0x3a
+ 2463 012e 0B       		.uleb128 0xb
+ 2464 012f 3B       		.uleb128 0x3b
+ 2465 0130 05       		.uleb128 0x5
+ 2466 0131 27       		.uleb128 0x27
+ 2467 0132 19       		.uleb128 0x19
+ 2468 0133 20       		.uleb128 0x20
+ 2469 0134 0B       		.uleb128 0xb
+ 2470 0135 01       		.uleb128 0x1
+ 2471 0136 13       		.uleb128 0x13
+ 2472 0137 00       		.byte	0
+ 2473 0138 00       		.byte	0
+ 2474 0139 19       		.uleb128 0x19
+ 2475 013a 2E       		.uleb128 0x2e
+ 2476 013b 01       		.byte	0x1
+ 2477 013c 3F       		.uleb128 0x3f
+ 2478 013d 19       		.uleb128 0x19
+ 2479 013e 03       		.uleb128 0x3
+ 2480 013f 0E       		.uleb128 0xe
+ 2481 0140 3A       		.uleb128 0x3a
+ 2482 0141 0B       		.uleb128 0xb
+ 2483 0142 3B       		.uleb128 0x3b
+ 2484 0143 0B       		.uleb128 0xb
+ 2485 0144 27       		.uleb128 0x27
+ 2486 0145 19       		.uleb128 0x19
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccuIaCqh.s 			page 54
+
+
+ 2487 0146 11       		.uleb128 0x11
+ 2488 0147 01       		.uleb128 0x1
+ 2489 0148 12       		.uleb128 0x12
+ 2490 0149 06       		.uleb128 0x6
+ 2491 014a 40       		.uleb128 0x40
+ 2492 014b 18       		.uleb128 0x18
+ 2493 014c 9742     		.uleb128 0x2117
+ 2494 014e 19       		.uleb128 0x19
+ 2495 014f 01       		.uleb128 0x1
+ 2496 0150 13       		.uleb128 0x13
+ 2497 0151 00       		.byte	0
+ 2498 0152 00       		.byte	0
+ 2499 0153 1A       		.uleb128 0x1a
+ 2500 0154 34       		.uleb128 0x34
+ 2501 0155 00       		.byte	0
+ 2502 0156 03       		.uleb128 0x3
+ 2503 0157 0E       		.uleb128 0xe
+ 2504 0158 3A       		.uleb128 0x3a
+ 2505 0159 0B       		.uleb128 0xb
+ 2506 015a 3B       		.uleb128 0x3b
+ 2507 015b 0B       		.uleb128 0xb
+ 2508 015c 49       		.uleb128 0x49
+ 2509 015d 13       		.uleb128 0x13
+ 2510 015e 00       		.byte	0
+ 2511 015f 00       		.byte	0
+ 2512 0160 1B       		.uleb128 0x1b
+ 2513 0161 34       		.uleb128 0x34
+ 2514 0162 00       		.byte	0
+ 2515 0163 03       		.uleb128 0x3
+ 2516 0164 0E       		.uleb128 0xe
+ 2517 0165 3A       		.uleb128 0x3a
+ 2518 0166 0B       		.uleb128 0xb
+ 2519 0167 3B       		.uleb128 0x3b
+ 2520 0168 0B       		.uleb128 0xb
+ 2521 0169 49       		.uleb128 0x49
+ 2522 016a 13       		.uleb128 0x13
+ 2523 016b 02       		.uleb128 0x2
+ 2524 016c 17       		.uleb128 0x17
+ 2525 016d 00       		.byte	0
+ 2526 016e 00       		.byte	0
+ 2527 016f 1C       		.uleb128 0x1c
+ 2528 0170 1D       		.uleb128 0x1d
+ 2529 0171 01       		.byte	0x1
+ 2530 0172 31       		.uleb128 0x31
+ 2531 0173 13       		.uleb128 0x13
+ 2532 0174 52       		.uleb128 0x52
+ 2533 0175 01       		.uleb128 0x1
+ 2534 0176 55       		.uleb128 0x55
+ 2535 0177 17       		.uleb128 0x17
+ 2536 0178 58       		.uleb128 0x58
+ 2537 0179 0B       		.uleb128 0xb
+ 2538 017a 59       		.uleb128 0x59
+ 2539 017b 0B       		.uleb128 0xb
+ 2540 017c 01       		.uleb128 0x1
+ 2541 017d 13       		.uleb128 0x13
+ 2542 017e 00       		.byte	0
+ 2543 017f 00       		.byte	0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccuIaCqh.s 			page 55
+
+
+ 2544 0180 1D       		.uleb128 0x1d
+ 2545 0181 05       		.uleb128 0x5
+ 2546 0182 00       		.byte	0
+ 2547 0183 31       		.uleb128 0x31
+ 2548 0184 13       		.uleb128 0x13
+ 2549 0185 02       		.uleb128 0x2
+ 2550 0186 17       		.uleb128 0x17
+ 2551 0187 00       		.byte	0
+ 2552 0188 00       		.byte	0
+ 2553 0189 1E       		.uleb128 0x1e
+ 2554 018a 1D       		.uleb128 0x1d
+ 2555 018b 01       		.byte	0x1
+ 2556 018c 31       		.uleb128 0x31
+ 2557 018d 13       		.uleb128 0x13
+ 2558 018e 11       		.uleb128 0x11
+ 2559 018f 01       		.uleb128 0x1
+ 2560 0190 12       		.uleb128 0x12
+ 2561 0191 06       		.uleb128 0x6
+ 2562 0192 58       		.uleb128 0x58
+ 2563 0193 0B       		.uleb128 0xb
+ 2564 0194 59       		.uleb128 0x59
+ 2565 0195 0B       		.uleb128 0xb
+ 2566 0196 01       		.uleb128 0x1
+ 2567 0197 13       		.uleb128 0x13
+ 2568 0198 00       		.byte	0
+ 2569 0199 00       		.byte	0
+ 2570 019a 1F       		.uleb128 0x1f
+ 2571 019b 1D       		.uleb128 0x1d
+ 2572 019c 01       		.byte	0x1
+ 2573 019d 31       		.uleb128 0x31
+ 2574 019e 13       		.uleb128 0x13
+ 2575 019f 11       		.uleb128 0x11
+ 2576 01a0 01       		.uleb128 0x1
+ 2577 01a1 12       		.uleb128 0x12
+ 2578 01a2 06       		.uleb128 0x6
+ 2579 01a3 58       		.uleb128 0x58
+ 2580 01a4 0B       		.uleb128 0xb
+ 2581 01a5 59       		.uleb128 0x59
+ 2582 01a6 05       		.uleb128 0x5
+ 2583 01a7 01       		.uleb128 0x1
+ 2584 01a8 13       		.uleb128 0x13
+ 2585 01a9 00       		.byte	0
+ 2586 01aa 00       		.byte	0
+ 2587 01ab 20       		.uleb128 0x20
+ 2588 01ac 05       		.uleb128 0x5
+ 2589 01ad 00       		.byte	0
+ 2590 01ae 03       		.uleb128 0x3
+ 2591 01af 0E       		.uleb128 0xe
+ 2592 01b0 3A       		.uleb128 0x3a
+ 2593 01b1 0B       		.uleb128 0xb
+ 2594 01b2 3B       		.uleb128 0x3b
+ 2595 01b3 05       		.uleb128 0x5
+ 2596 01b4 49       		.uleb128 0x49
+ 2597 01b5 13       		.uleb128 0x13
+ 2598 01b6 02       		.uleb128 0x2
+ 2599 01b7 17       		.uleb128 0x17
+ 2600 01b8 00       		.byte	0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccuIaCqh.s 			page 56
+
+
+ 2601 01b9 00       		.byte	0
+ 2602 01ba 21       		.uleb128 0x21
+ 2603 01bb 898201   		.uleb128 0x4109
+ 2604 01be 01       		.byte	0x1
+ 2605 01bf 11       		.uleb128 0x11
+ 2606 01c0 01       		.uleb128 0x1
+ 2607 01c1 31       		.uleb128 0x31
+ 2608 01c2 13       		.uleb128 0x13
+ 2609 01c3 00       		.byte	0
+ 2610 01c4 00       		.byte	0
+ 2611 01c5 22       		.uleb128 0x22
+ 2612 01c6 2E       		.uleb128 0x2e
+ 2613 01c7 01       		.byte	0x1
+ 2614 01c8 31       		.uleb128 0x31
+ 2615 01c9 13       		.uleb128 0x13
+ 2616 01ca 11       		.uleb128 0x11
+ 2617 01cb 01       		.uleb128 0x1
+ 2618 01cc 12       		.uleb128 0x12
+ 2619 01cd 06       		.uleb128 0x6
+ 2620 01ce 40       		.uleb128 0x40
+ 2621 01cf 18       		.uleb128 0x18
+ 2622 01d0 9742     		.uleb128 0x2117
+ 2623 01d2 19       		.uleb128 0x19
+ 2624 01d3 01       		.uleb128 0x1
+ 2625 01d4 13       		.uleb128 0x13
+ 2626 01d5 00       		.byte	0
+ 2627 01d6 00       		.byte	0
+ 2628 01d7 23       		.uleb128 0x23
+ 2629 01d8 05       		.uleb128 0x5
+ 2630 01d9 00       		.byte	0
+ 2631 01da 31       		.uleb128 0x31
+ 2632 01db 13       		.uleb128 0x13
+ 2633 01dc 02       		.uleb128 0x2
+ 2634 01dd 18       		.uleb128 0x18
+ 2635 01de 00       		.byte	0
+ 2636 01df 00       		.byte	0
+ 2637 01e0 24       		.uleb128 0x24
+ 2638 01e1 2E       		.uleb128 0x2e
+ 2639 01e2 01       		.byte	0x1
+ 2640 01e3 3F       		.uleb128 0x3f
+ 2641 01e4 19       		.uleb128 0x19
+ 2642 01e5 03       		.uleb128 0x3
+ 2643 01e6 0E       		.uleb128 0xe
+ 2644 01e7 3A       		.uleb128 0x3a
+ 2645 01e8 0B       		.uleb128 0xb
+ 2646 01e9 3B       		.uleb128 0x3b
+ 2647 01ea 05       		.uleb128 0x5
+ 2648 01eb 11       		.uleb128 0x11
+ 2649 01ec 01       		.uleb128 0x1
+ 2650 01ed 12       		.uleb128 0x12
+ 2651 01ee 06       		.uleb128 0x6
+ 2652 01ef 40       		.uleb128 0x40
+ 2653 01f0 18       		.uleb128 0x18
+ 2654 01f1 9742     		.uleb128 0x2117
+ 2655 01f3 19       		.uleb128 0x19
+ 2656 01f4 01       		.uleb128 0x1
+ 2657 01f5 13       		.uleb128 0x13
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccuIaCqh.s 			page 57
+
+
+ 2658 01f6 00       		.byte	0
+ 2659 01f7 00       		.byte	0
+ 2660 01f8 25       		.uleb128 0x25
+ 2661 01f9 34       		.uleb128 0x34
+ 2662 01fa 00       		.byte	0
+ 2663 01fb 03       		.uleb128 0x3
+ 2664 01fc 0E       		.uleb128 0xe
+ 2665 01fd 3A       		.uleb128 0x3a
+ 2666 01fe 0B       		.uleb128 0xb
+ 2667 01ff 3B       		.uleb128 0x3b
+ 2668 0200 0B       		.uleb128 0xb
+ 2669 0201 49       		.uleb128 0x49
+ 2670 0202 13       		.uleb128 0x13
+ 2671 0203 3F       		.uleb128 0x3f
+ 2672 0204 19       		.uleb128 0x19
+ 2673 0205 3C       		.uleb128 0x3c
+ 2674 0206 19       		.uleb128 0x19
+ 2675 0207 00       		.byte	0
+ 2676 0208 00       		.byte	0
+ 2677 0209 26       		.uleb128 0x26
+ 2678 020a 34       		.uleb128 0x34
+ 2679 020b 00       		.byte	0
+ 2680 020c 03       		.uleb128 0x3
+ 2681 020d 0E       		.uleb128 0xe
+ 2682 020e 3A       		.uleb128 0x3a
+ 2683 020f 0B       		.uleb128 0xb
+ 2684 0210 3B       		.uleb128 0x3b
+ 2685 0211 0B       		.uleb128 0xb
+ 2686 0212 49       		.uleb128 0x49
+ 2687 0213 13       		.uleb128 0x13
+ 2688 0214 3F       		.uleb128 0x3f
+ 2689 0215 19       		.uleb128 0x19
+ 2690 0216 02       		.uleb128 0x2
+ 2691 0217 18       		.uleb128 0x18
+ 2692 0218 00       		.byte	0
+ 2693 0219 00       		.byte	0
+ 2694 021a 27       		.uleb128 0x27
+ 2695 021b 2E       		.uleb128 0x2e
+ 2696 021c 01       		.byte	0x1
+ 2697 021d 3F       		.uleb128 0x3f
+ 2698 021e 19       		.uleb128 0x19
+ 2699 021f 03       		.uleb128 0x3
+ 2700 0220 0E       		.uleb128 0xe
+ 2701 0221 3A       		.uleb128 0x3a
+ 2702 0222 0B       		.uleb128 0xb
+ 2703 0223 3B       		.uleb128 0x3b
+ 2704 0224 0B       		.uleb128 0xb
+ 2705 0225 27       		.uleb128 0x27
+ 2706 0226 19       		.uleb128 0x19
+ 2707 0227 49       		.uleb128 0x49
+ 2708 0228 13       		.uleb128 0x13
+ 2709 0229 3C       		.uleb128 0x3c
+ 2710 022a 19       		.uleb128 0x19
+ 2711 022b 01       		.uleb128 0x1
+ 2712 022c 13       		.uleb128 0x13
+ 2713 022d 00       		.byte	0
+ 2714 022e 00       		.byte	0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccuIaCqh.s 			page 58
+
+
+ 2715 022f 28       		.uleb128 0x28
+ 2716 0230 05       		.uleb128 0x5
+ 2717 0231 00       		.byte	0
+ 2718 0232 49       		.uleb128 0x49
+ 2719 0233 13       		.uleb128 0x13
+ 2720 0234 00       		.byte	0
+ 2721 0235 00       		.byte	0
+ 2722 0236 29       		.uleb128 0x29
+ 2723 0237 2E       		.uleb128 0x2e
+ 2724 0238 01       		.byte	0x1
+ 2725 0239 3F       		.uleb128 0x3f
+ 2726 023a 19       		.uleb128 0x19
+ 2727 023b 03       		.uleb128 0x3
+ 2728 023c 0E       		.uleb128 0xe
+ 2729 023d 3A       		.uleb128 0x3a
+ 2730 023e 0B       		.uleb128 0xb
+ 2731 023f 3B       		.uleb128 0x3b
+ 2732 0240 0B       		.uleb128 0xb
+ 2733 0241 27       		.uleb128 0x27
+ 2734 0242 19       		.uleb128 0x19
+ 2735 0243 3C       		.uleb128 0x3c
+ 2736 0244 19       		.uleb128 0x19
+ 2737 0245 01       		.uleb128 0x1
+ 2738 0246 13       		.uleb128 0x13
+ 2739 0247 00       		.byte	0
+ 2740 0248 00       		.byte	0
+ 2741 0249 2A       		.uleb128 0x2a
+ 2742 024a 2E       		.uleb128 0x2e
+ 2743 024b 00       		.byte	0
+ 2744 024c 3F       		.uleb128 0x3f
+ 2745 024d 19       		.uleb128 0x19
+ 2746 024e 03       		.uleb128 0x3
+ 2747 024f 0E       		.uleb128 0xe
+ 2748 0250 3A       		.uleb128 0x3a
+ 2749 0251 0B       		.uleb128 0xb
+ 2750 0252 3B       		.uleb128 0x3b
+ 2751 0253 0B       		.uleb128 0xb
+ 2752 0254 27       		.uleb128 0x27
+ 2753 0255 19       		.uleb128 0x19
+ 2754 0256 49       		.uleb128 0x49
+ 2755 0257 13       		.uleb128 0x13
+ 2756 0258 3C       		.uleb128 0x3c
+ 2757 0259 19       		.uleb128 0x19
+ 2758 025a 00       		.byte	0
+ 2759 025b 00       		.byte	0
+ 2760 025c 2B       		.uleb128 0x2b
+ 2761 025d 2E       		.uleb128 0x2e
+ 2762 025e 00       		.byte	0
+ 2763 025f 3F       		.uleb128 0x3f
+ 2764 0260 19       		.uleb128 0x19
+ 2765 0261 03       		.uleb128 0x3
+ 2766 0262 0E       		.uleb128 0xe
+ 2767 0263 3A       		.uleb128 0x3a
+ 2768 0264 0B       		.uleb128 0xb
+ 2769 0265 3B       		.uleb128 0x3b
+ 2770 0266 0B       		.uleb128 0xb
+ 2771 0267 27       		.uleb128 0x27
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccuIaCqh.s 			page 59
+
+
+ 2772 0268 19       		.uleb128 0x19
+ 2773 0269 3C       		.uleb128 0x3c
+ 2774 026a 19       		.uleb128 0x19
+ 2775 026b 00       		.byte	0
+ 2776 026c 00       		.byte	0
+ 2777 026d 2C       		.uleb128 0x2c
+ 2778 026e 2E       		.uleb128 0x2e
+ 2779 026f 01       		.byte	0x1
+ 2780 0270 3F       		.uleb128 0x3f
+ 2781 0271 19       		.uleb128 0x19
+ 2782 0272 03       		.uleb128 0x3
+ 2783 0273 0E       		.uleb128 0xe
+ 2784 0274 3A       		.uleb128 0x3a
+ 2785 0275 0B       		.uleb128 0xb
+ 2786 0276 3B       		.uleb128 0x3b
+ 2787 0277 0B       		.uleb128 0xb
+ 2788 0278 27       		.uleb128 0x27
+ 2789 0279 19       		.uleb128 0x19
+ 2790 027a 3C       		.uleb128 0x3c
+ 2791 027b 19       		.uleb128 0x19
+ 2792 027c 00       		.byte	0
+ 2793 027d 00       		.byte	0
+ 2794 027e 00       		.byte	0
+ 2795              		.section	.debug_loc,"",%progbits
+ 2796              	.Ldebug_loc0:
+ 2797              	.LLST0:
+ 2798 0000 0A000000 		.4byte	.LVL8
+ 2799 0004 0C000000 		.4byte	.LVL9
+ 2800 0008 0100     		.2byte	0x1
+ 2801 000a 50       		.byte	0x50
+ 2802 000b 0C000000 		.4byte	.LVL9
+ 2803 000f 72000000 		.4byte	.LVL33
+ 2804 0013 0100     		.2byte	0x1
+ 2805 0015 57       		.byte	0x57
+ 2806 0016 00000000 		.4byte	0
+ 2807 001a 00000000 		.4byte	0
+ 2808              	.LLST1:
+ 2809 001e 12000000 		.4byte	.LVL11
+ 2810 0022 15000000 		.4byte	.LVL12-1
+ 2811 0026 0100     		.2byte	0x1
+ 2812 0028 50       		.byte	0x50
+ 2813 0029 15000000 		.4byte	.LVL12-1
+ 2814 002d 72000000 		.4byte	.LVL32
+ 2815 0031 0100     		.2byte	0x1
+ 2816 0033 56       		.byte	0x56
+ 2817 0034 00000000 		.4byte	0
+ 2818 0038 00000000 		.4byte	0
+ 2819              	.LLST2:
+ 2820 003c 1E000000 		.4byte	.LVL14
+ 2821 0040 72000000 		.4byte	.LVL31
+ 2822 0044 0100     		.2byte	0x1
+ 2823 0046 55       		.byte	0x55
+ 2824 0047 00000000 		.4byte	0
+ 2825 004b 00000000 		.4byte	0
+ 2826              	.LLST3:
+ 2827 004f 2A000000 		.4byte	.LVL17
+ 2828 0053 72000000 		.4byte	.LVL30
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccuIaCqh.s 			page 60
+
+
+ 2829 0057 0100     		.2byte	0x1
+ 2830 0059 54       		.byte	0x54
+ 2831 005a 00000000 		.4byte	0
+ 2832 005e 00000000 		.4byte	0
+ 2833              	.LLST4:
+ 2834 0062 2A000000 		.4byte	.LVL35
+ 2835 0066 38000000 		.4byte	.LVL37
+ 2836 006a 0100     		.2byte	0x1
+ 2837 006c 55       		.byte	0x55
+ 2838 006d 4C000000 		.4byte	.LVL38
+ 2839 0071 5A000000 		.4byte	.LVL40
+ 2840 0075 0100     		.2byte	0x1
+ 2841 0077 55       		.byte	0x55
+ 2842 0078 6E000000 		.4byte	.LVL41
+ 2843 007c 7A000000 		.4byte	.LVL43
+ 2844 0080 0100     		.2byte	0x1
+ 2845 0082 55       		.byte	0x55
+ 2846 0083 7C000000 		.4byte	.LVL44
+ 2847 0087 7E000000 		.4byte	.LVL45
+ 2848 008b 0200     		.2byte	0x2
+ 2849 008d 30       		.byte	0x30
+ 2850 008e 9F       		.byte	0x9f
+ 2851 008f 92000000 		.4byte	.LVL46
+ 2852 0093 A0000000 		.4byte	.LVL48
+ 2853 0097 0100     		.2byte	0x1
+ 2854 0099 55       		.byte	0x55
+ 2855 009a A0000000 		.4byte	.LVL48
+ 2856 009e A6000000 		.4byte	.LVL50
+ 2857 00a2 0200     		.2byte	0x2
+ 2858 00a4 30       		.byte	0x30
+ 2859 00a5 9F       		.byte	0x9f
+ 2860 00a6 BA000000 		.4byte	.LVL51
+ 2861 00aa C8000000 		.4byte	.LVL53
+ 2862 00ae 0100     		.2byte	0x1
+ 2863 00b0 55       		.byte	0x55
+ 2864 00b1 C8000000 		.4byte	.LVL53
+ 2865 00b5 CE000000 		.4byte	.LVL55
+ 2866 00b9 0200     		.2byte	0x2
+ 2867 00bb 30       		.byte	0x30
+ 2868 00bc 9F       		.byte	0x9f
+ 2869 00bd CE000000 		.4byte	.LVL55
+ 2870 00c1 D0000000 		.4byte	.LVL56
+ 2871 00c5 0100     		.2byte	0x1
+ 2872 00c7 55       		.byte	0x55
+ 2873 00c8 00000000 		.4byte	0
+ 2874 00cc 00000000 		.4byte	0
+ 2875              	.LLST5:
+ 2876 00d0 16000000 		.4byte	.LVL34
+ 2877 00d4 38000000 		.4byte	.LVL37
+ 2878 00d8 0200     		.2byte	0x2
+ 2879 00da 32       		.byte	0x32
+ 2880 00db 9F       		.byte	0x9f
+ 2881 00dc 00000000 		.4byte	0
+ 2882 00e0 00000000 		.4byte	0
+ 2883              	.LLST6:
+ 2884 00e4 38000000 		.4byte	.LVL37
+ 2885 00e8 5A000000 		.4byte	.LVL40
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccuIaCqh.s 			page 61
+
+
+ 2886 00ec 0200     		.2byte	0x2
+ 2887 00ee 33       		.byte	0x33
+ 2888 00ef 9F       		.byte	0x9f
+ 2889 00f0 00000000 		.4byte	0
+ 2890 00f4 00000000 		.4byte	0
+ 2891              	.LLST7:
+ 2892 00f8 5A000000 		.4byte	.LVL40
+ 2893 00fc 7A000000 		.4byte	.LVL43
+ 2894 0100 0200     		.2byte	0x2
+ 2895 0102 34       		.byte	0x34
+ 2896 0103 9F       		.byte	0x9f
+ 2897 0104 00000000 		.4byte	0
+ 2898 0108 00000000 		.4byte	0
+ 2899              	.LLST8:
+ 2900 010c 7E000000 		.4byte	.LVL45
+ 2901 0110 A6000000 		.4byte	.LVL50
+ 2902 0114 0200     		.2byte	0x2
+ 2903 0116 35       		.byte	0x35
+ 2904 0117 9F       		.byte	0x9f
+ 2905 0118 00000000 		.4byte	0
+ 2906 011c 00000000 		.4byte	0
+ 2907              	.LLST9:
+ 2908 0120 A6000000 		.4byte	.LVL50
+ 2909 0124 CC000000 		.4byte	.LVL54
+ 2910 0128 0200     		.2byte	0x2
+ 2911 012a 31       		.byte	0x31
+ 2912 012b 9F       		.byte	0x9f
+ 2913 012c 00000000 		.4byte	0
+ 2914 0130 00000000 		.4byte	0
+ 2915              	.LLST10:
+ 2916 0134 CE000000 		.4byte	.LVL55
+ 2917 0138 D0000000 		.4byte	.LVL56
+ 2918 013c 0100     		.2byte	0x1
+ 2919 013e 55       		.byte	0x55
+ 2920 013f 00000000 		.4byte	0
+ 2921 0143 00000000 		.4byte	0
+ 2922              	.LLST11:
+ 2923 0147 CE000000 		.4byte	.LVL55
+ 2924 014b D0000000 		.4byte	.LVL56
+ 2925 014f 0200     		.2byte	0x2
+ 2926 0151 31       		.byte	0x31
+ 2927 0152 9F       		.byte	0x9f
+ 2928 0153 00000000 		.4byte	0
+ 2929 0157 00000000 		.4byte	0
+ 2930              	.LLST12:
+ 2931 015b 2A000000 		.4byte	.LVL60
+ 2932 015f 38000000 		.4byte	.LVL62
+ 2933 0163 0100     		.2byte	0x1
+ 2934 0165 55       		.byte	0x55
+ 2935 0166 4C000000 		.4byte	.LVL63
+ 2936 016a 5A000000 		.4byte	.LVL65
+ 2937 016e 0100     		.2byte	0x1
+ 2938 0170 55       		.byte	0x55
+ 2939 0171 6E000000 		.4byte	.LVL66
+ 2940 0175 7A000000 		.4byte	.LVL68
+ 2941 0179 0100     		.2byte	0x1
+ 2942 017b 55       		.byte	0x55
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccuIaCqh.s 			page 62
+
+
+ 2943 017c 7C000000 		.4byte	.LVL69
+ 2944 0180 7E000000 		.4byte	.LVL70
+ 2945 0184 0200     		.2byte	0x2
+ 2946 0186 30       		.byte	0x30
+ 2947 0187 9F       		.byte	0x9f
+ 2948 0188 92000000 		.4byte	.LVL71
+ 2949 018c A0000000 		.4byte	.LVL73
+ 2950 0190 0100     		.2byte	0x1
+ 2951 0192 55       		.byte	0x55
+ 2952 0193 A0000000 		.4byte	.LVL73
+ 2953 0197 A6000000 		.4byte	.LVL75
+ 2954 019b 0200     		.2byte	0x2
+ 2955 019d 30       		.byte	0x30
+ 2956 019e 9F       		.byte	0x9f
+ 2957 019f BA000000 		.4byte	.LVL76
+ 2958 01a3 C8000000 		.4byte	.LVL78
+ 2959 01a7 0100     		.2byte	0x1
+ 2960 01a9 55       		.byte	0x55
+ 2961 01aa C8000000 		.4byte	.LVL78
+ 2962 01ae CE000000 		.4byte	.LVL80
+ 2963 01b2 0200     		.2byte	0x2
+ 2964 01b4 30       		.byte	0x30
+ 2965 01b5 9F       		.byte	0x9f
+ 2966 01b6 CE000000 		.4byte	.LVL80
+ 2967 01ba D0000000 		.4byte	.LVL81
+ 2968 01be 0100     		.2byte	0x1
+ 2969 01c0 55       		.byte	0x55
+ 2970 01c1 00000000 		.4byte	0
+ 2971 01c5 00000000 		.4byte	0
+ 2972              	.LLST13:
+ 2973 01c9 16000000 		.4byte	.LVL59
+ 2974 01cd 38000000 		.4byte	.LVL62
+ 2975 01d1 0200     		.2byte	0x2
+ 2976 01d3 32       		.byte	0x32
+ 2977 01d4 9F       		.byte	0x9f
+ 2978 01d5 00000000 		.4byte	0
+ 2979 01d9 00000000 		.4byte	0
+ 2980              	.LLST14:
+ 2981 01dd 38000000 		.4byte	.LVL62
+ 2982 01e1 5A000000 		.4byte	.LVL65
+ 2983 01e5 0200     		.2byte	0x2
+ 2984 01e7 33       		.byte	0x33
+ 2985 01e8 9F       		.byte	0x9f
+ 2986 01e9 00000000 		.4byte	0
+ 2987 01ed 00000000 		.4byte	0
+ 2988              	.LLST15:
+ 2989 01f1 5A000000 		.4byte	.LVL65
+ 2990 01f5 7A000000 		.4byte	.LVL68
+ 2991 01f9 0200     		.2byte	0x2
+ 2992 01fb 34       		.byte	0x34
+ 2993 01fc 9F       		.byte	0x9f
+ 2994 01fd 00000000 		.4byte	0
+ 2995 0201 00000000 		.4byte	0
+ 2996              	.LLST16:
+ 2997 0205 7E000000 		.4byte	.LVL70
+ 2998 0209 A6000000 		.4byte	.LVL75
+ 2999 020d 0200     		.2byte	0x2
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccuIaCqh.s 			page 63
+
+
+ 3000 020f 35       		.byte	0x35
+ 3001 0210 9F       		.byte	0x9f
+ 3002 0211 00000000 		.4byte	0
+ 3003 0215 00000000 		.4byte	0
+ 3004              	.LLST17:
+ 3005 0219 A6000000 		.4byte	.LVL75
+ 3006 021d CC000000 		.4byte	.LVL79
+ 3007 0221 0200     		.2byte	0x2
+ 3008 0223 31       		.byte	0x31
+ 3009 0224 9F       		.byte	0x9f
+ 3010 0225 00000000 		.4byte	0
+ 3011 0229 00000000 		.4byte	0
+ 3012              	.LLST18:
+ 3013 022d CE000000 		.4byte	.LVL80
+ 3014 0231 D0000000 		.4byte	.LVL81
+ 3015 0235 0100     		.2byte	0x1
+ 3016 0237 55       		.byte	0x55
+ 3017 0238 00000000 		.4byte	0
+ 3018 023c 00000000 		.4byte	0
+ 3019              	.LLST19:
+ 3020 0240 CE000000 		.4byte	.LVL80
+ 3021 0244 D0000000 		.4byte	.LVL81
+ 3022 0248 0200     		.2byte	0x2
+ 3023 024a 31       		.byte	0x31
+ 3024 024b 9F       		.byte	0x9f
+ 3025 024c 00000000 		.4byte	0
+ 3026 0250 00000000 		.4byte	0
+ 3027              	.LLST20:
+ 3028 0254 00000000 		.4byte	.LVL84
+ 3029 0258 02000000 		.4byte	.LVL85
+ 3030 025c 0100     		.2byte	0x1
+ 3031 025e 50       		.byte	0x50
+ 3032 025f 02000000 		.4byte	.LVL85
+ 3033 0263 40000000 		.4byte	.LFE37
+ 3034 0267 0400     		.2byte	0x4
+ 3035 0269 F3       		.byte	0xf3
+ 3036 026a 01       		.uleb128 0x1
+ 3037 026b 50       		.byte	0x50
+ 3038 026c 9F       		.byte	0x9f
+ 3039 026d 00000000 		.4byte	0
+ 3040 0271 00000000 		.4byte	0
+ 3041              	.LLST21:
+ 3042 0275 00000000 		.4byte	.LVL84
+ 3043 0279 29000000 		.4byte	.LVL86-1
+ 3044 027d 0100     		.2byte	0x1
+ 3045 027f 51       		.byte	0x51
+ 3046 0280 29000000 		.4byte	.LVL86-1
+ 3047 0284 40000000 		.4byte	.LFE37
+ 3048 0288 0400     		.2byte	0x4
+ 3049 028a F3       		.byte	0xf3
+ 3050 028b 01       		.uleb128 0x1
+ 3051 028c 51       		.byte	0x51
+ 3052 028d 9F       		.byte	0x9f
+ 3053 028e 00000000 		.4byte	0
+ 3054 0292 00000000 		.4byte	0
+ 3055              	.LLST22:
+ 3056 0296 00000000 		.4byte	.LVL87
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccuIaCqh.s 			page 64
+
+
+ 3057 029a 06000000 		.4byte	.LVL88
+ 3058 029e 0100     		.2byte	0x1
+ 3059 02a0 50       		.byte	0x50
+ 3060 02a1 06000000 		.4byte	.LVL88
+ 3061 02a5 18000000 		.4byte	.LFE38
+ 3062 02a9 0400     		.2byte	0x4
+ 3063 02ab F3       		.byte	0xf3
+ 3064 02ac 01       		.uleb128 0x1
+ 3065 02ad 50       		.byte	0x50
+ 3066 02ae 9F       		.byte	0x9f
+ 3067 02af 00000000 		.4byte	0
+ 3068 02b3 00000000 		.4byte	0
+ 3069              	.LLST23:
+ 3070 02b7 00000000 		.4byte	.LVL89
+ 3071 02bb 02000000 		.4byte	.LVL90
+ 3072 02bf 0100     		.2byte	0x1
+ 3073 02c1 50       		.byte	0x50
+ 3074 02c2 02000000 		.4byte	.LVL90
+ 3075 02c6 3C000000 		.4byte	.LFE39
+ 3076 02ca 0400     		.2byte	0x4
+ 3077 02cc F3       		.byte	0xf3
+ 3078 02cd 01       		.uleb128 0x1
+ 3079 02ce 50       		.byte	0x50
+ 3080 02cf 9F       		.byte	0x9f
+ 3081 02d0 00000000 		.4byte	0
+ 3082 02d4 00000000 		.4byte	0
+ 3083              	.LLST24:
+ 3084 02d8 00000000 		.4byte	.LVL91
+ 3085 02dc 02000000 		.4byte	.LVL92
+ 3086 02e0 0100     		.2byte	0x1
+ 3087 02e2 50       		.byte	0x50
+ 3088 02e3 02000000 		.4byte	.LVL92
+ 3089 02e7 44000000 		.4byte	.LFE40
+ 3090 02eb 0400     		.2byte	0x4
+ 3091 02ed F3       		.byte	0xf3
+ 3092 02ee 01       		.uleb128 0x1
+ 3093 02ef 50       		.byte	0x50
+ 3094 02f0 9F       		.byte	0x9f
+ 3095 02f1 00000000 		.4byte	0
+ 3096 02f5 00000000 		.4byte	0
+ 3097              	.LLST25:
+ 3098 02f9 00000000 		.4byte	.LVL93
+ 3099 02fd 07000000 		.4byte	.LVL94-1
+ 3100 0301 0100     		.2byte	0x1
+ 3101 0303 50       		.byte	0x50
+ 3102 0304 07000000 		.4byte	.LVL94-1
+ 3103 0308 12000000 		.4byte	.LFE41
+ 3104 030c 0400     		.2byte	0x4
+ 3105 030e F3       		.byte	0xf3
+ 3106 030f 01       		.uleb128 0x1
+ 3107 0310 50       		.byte	0x50
+ 3108 0311 9F       		.byte	0x9f
+ 3109 0312 00000000 		.4byte	0
+ 3110 0316 00000000 		.4byte	0
+ 3111              	.LLST26:
+ 3112 031a 00000000 		.4byte	.LVL93
+ 3113 031e 07000000 		.4byte	.LVL94-1
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccuIaCqh.s 			page 65
+
+
+ 3114 0322 0100     		.2byte	0x1
+ 3115 0324 51       		.byte	0x51
+ 3116 0325 07000000 		.4byte	.LVL94-1
+ 3117 0329 12000000 		.4byte	.LFE41
+ 3118 032d 0400     		.2byte	0x4
+ 3119 032f F3       		.byte	0xf3
+ 3120 0330 01       		.uleb128 0x1
+ 3121 0331 51       		.byte	0x51
+ 3122 0332 9F       		.byte	0x9f
+ 3123 0333 00000000 		.4byte	0
+ 3124 0337 00000000 		.4byte	0
+ 3125              		.section	.debug_aranges,"",%progbits
+ 3126 0000 64000000 		.4byte	0x64
+ 3127 0004 0200     		.2byte	0x2
+ 3128 0006 00000000 		.4byte	.Ldebug_info0
+ 3129 000a 04       		.byte	0x4
+ 3130 000b 00       		.byte	0
+ 3131 000c 0000     		.2byte	0
+ 3132 000e 0000     		.2byte	0
+ 3133 0010 00000000 		.4byte	.LFB35
+ 3134 0014 38000000 		.4byte	.LFE35-.LFB35
+ 3135 0018 00000000 		.4byte	.LFB36
+ 3136 001c 74000000 		.4byte	.LFE36-.LFB36
+ 3137 0020 00000000 		.4byte	.LFB33
+ 3138 0024 F4000000 		.4byte	.LFE33-.LFB33
+ 3139 0028 00000000 		.4byte	.LFB34
+ 3140 002c F4000000 		.4byte	.LFE34-.LFB34
+ 3141 0030 00000000 		.4byte	.LFB37
+ 3142 0034 40000000 		.4byte	.LFE37-.LFB37
+ 3143 0038 00000000 		.4byte	.LFB38
+ 3144 003c 18000000 		.4byte	.LFE38-.LFB38
+ 3145 0040 00000000 		.4byte	.LFB39
+ 3146 0044 3C000000 		.4byte	.LFE39-.LFB39
+ 3147 0048 00000000 		.4byte	.LFB40
+ 3148 004c 44000000 		.4byte	.LFE40-.LFB40
+ 3149 0050 00000000 		.4byte	.LFB41
+ 3150 0054 12000000 		.4byte	.LFE41-.LFB41
+ 3151 0058 00000000 		.4byte	.LFB42
+ 3152 005c 38000000 		.4byte	.LFE42-.LFB42
+ 3153 0060 00000000 		.4byte	0
+ 3154 0064 00000000 		.4byte	0
+ 3155              		.section	.debug_ranges,"",%progbits
+ 3156              	.Ldebug_ranges0:
+ 3157 0000 16000000 		.4byte	.LBB32
+ 3158 0004 18000000 		.4byte	.LBE32
+ 3159 0008 1A000000 		.4byte	.LBB35
+ 3160 000c 20000000 		.4byte	.LBE35
+ 3161 0010 00000000 		.4byte	0
+ 3162 0014 00000000 		.4byte	0
+ 3163 0018 38000000 		.4byte	.LBB36
+ 3164 001c 3A000000 		.4byte	.LBE36
+ 3165 0020 3C000000 		.4byte	.LBB39
+ 3166 0024 42000000 		.4byte	.LBE39
+ 3167 0028 00000000 		.4byte	0
+ 3168 002c 00000000 		.4byte	0
+ 3169 0030 5A000000 		.4byte	.LBB40
+ 3170 0034 5C000000 		.4byte	.LBE40
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccuIaCqh.s 			page 66
+
+
+ 3171 0038 5E000000 		.4byte	.LBB43
+ 3172 003c 64000000 		.4byte	.LBE43
+ 3173 0040 00000000 		.4byte	0
+ 3174 0044 00000000 		.4byte	0
+ 3175 0048 7E000000 		.4byte	.LBB44
+ 3176 004c 80000000 		.4byte	.LBE44
+ 3177 0050 82000000 		.4byte	.LBB47
+ 3178 0054 88000000 		.4byte	.LBE47
+ 3179 0058 00000000 		.4byte	0
+ 3180 005c 00000000 		.4byte	0
+ 3181 0060 A6000000 		.4byte	.LBB48
+ 3182 0064 A8000000 		.4byte	.LBE48
+ 3183 0068 AA000000 		.4byte	.LBB51
+ 3184 006c B0000000 		.4byte	.LBE51
+ 3185 0070 00000000 		.4byte	0
+ 3186 0074 00000000 		.4byte	0
+ 3187 0078 16000000 		.4byte	.LBB84
+ 3188 007c 18000000 		.4byte	.LBE84
+ 3189 0080 1A000000 		.4byte	.LBB87
+ 3190 0084 20000000 		.4byte	.LBE87
+ 3191 0088 00000000 		.4byte	0
+ 3192 008c 00000000 		.4byte	0
+ 3193 0090 38000000 		.4byte	.LBB88
+ 3194 0094 3A000000 		.4byte	.LBE88
+ 3195 0098 3C000000 		.4byte	.LBB91
+ 3196 009c 42000000 		.4byte	.LBE91
+ 3197 00a0 00000000 		.4byte	0
+ 3198 00a4 00000000 		.4byte	0
+ 3199 00a8 5A000000 		.4byte	.LBB92
+ 3200 00ac 5C000000 		.4byte	.LBE92
+ 3201 00b0 5E000000 		.4byte	.LBB95
+ 3202 00b4 64000000 		.4byte	.LBE95
+ 3203 00b8 00000000 		.4byte	0
+ 3204 00bc 00000000 		.4byte	0
+ 3205 00c0 7E000000 		.4byte	.LBB96
+ 3206 00c4 80000000 		.4byte	.LBE96
+ 3207 00c8 82000000 		.4byte	.LBB99
+ 3208 00cc 88000000 		.4byte	.LBE99
+ 3209 00d0 00000000 		.4byte	0
+ 3210 00d4 00000000 		.4byte	0
+ 3211 00d8 A6000000 		.4byte	.LBB100
+ 3212 00dc A8000000 		.4byte	.LBE100
+ 3213 00e0 AA000000 		.4byte	.LBB103
+ 3214 00e4 B0000000 		.4byte	.LBE103
+ 3215 00e8 00000000 		.4byte	0
+ 3216 00ec 00000000 		.4byte	0
+ 3217 00f0 00000000 		.4byte	.LFB35
+ 3218 00f4 38000000 		.4byte	.LFE35
+ 3219 00f8 00000000 		.4byte	.LFB36
+ 3220 00fc 74000000 		.4byte	.LFE36
+ 3221 0100 00000000 		.4byte	.LFB33
+ 3222 0104 F4000000 		.4byte	.LFE33
+ 3223 0108 00000000 		.4byte	.LFB34
+ 3224 010c F4000000 		.4byte	.LFE34
+ 3225 0110 00000000 		.4byte	.LFB37
+ 3226 0114 40000000 		.4byte	.LFE37
+ 3227 0118 00000000 		.4byte	.LFB38
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccuIaCqh.s 			page 67
+
+
+ 3228 011c 18000000 		.4byte	.LFE38
+ 3229 0120 00000000 		.4byte	.LFB39
+ 3230 0124 3C000000 		.4byte	.LFE39
+ 3231 0128 00000000 		.4byte	.LFB40
+ 3232 012c 44000000 		.4byte	.LFE40
+ 3233 0130 00000000 		.4byte	.LFB41
+ 3234 0134 12000000 		.4byte	.LFE41
+ 3235 0138 00000000 		.4byte	.LFB42
+ 3236 013c 38000000 		.4byte	.LFE42
+ 3237 0140 00000000 		.4byte	0
+ 3238 0144 00000000 		.4byte	0
+ 3239              		.section	.debug_line,"",%progbits
+ 3240              	.Ldebug_line0:
+ 3241 0000 32040000 		.section	.debug_str,"MS",%progbits,1
+ 3241      02005F02 
+ 3241      00000201 
+ 3241      FB0E0D00 
+ 3241      01010101 
+ 3242              	.LASF41:
+ 3243 0000 7365745F 		.ascii	"set_magic_toggle_index\000"
+ 3243      6D616769 
+ 3243      635F746F 
+ 3243      67676C65 
+ 3243      5F696E64 
+ 3244              	.LASF55:
+ 3245 0017 5357525F 		.ascii	"SWR_ClearInterrupt\000"
+ 3245      436C6561 
+ 3245      72496E74 
+ 3245      65727275 
+ 3245      707400
+ 3246              	.LASF58:
+ 3247 002a 53574C5F 		.ascii	"SWL_Int_StartEx\000"
+ 3247      496E745F 
+ 3247      53746172 
+ 3247      74457800 
+ 3248              	.LASF45:
+ 3249 003a 5357425F 		.ascii	"SWB_ClearInterrupt\000"
+ 3249      436C6561 
+ 3249      72496E74 
+ 3249      65727275 
+ 3249      707400
+ 3250              	.LASF27:
+ 3251 004d 6765745F 		.ascii	"get_magic_toggle_index\000"
+ 3251      6D616769 
+ 3251      635F746F 
+ 3251      67676C65 
+ 3251      5F696E64 
+ 3252              	.LASF62:
+ 3253 0064 474E5520 		.ascii	"GNU C 4.8.4 20140526 (release) [ARM/embedded-4_8-br"
+ 3253      4320342E 
+ 3253      382E3420 
+ 3253      32303134 
+ 3253      30353236 
+ 3254 0097 616E6368 		.ascii	"anch revision 211358] -mcpu=cortex-m0 -mthumb -g -O"
+ 3254      20726576 
+ 3254      6973696F 
+ 3254      6E203231 
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccuIaCqh.s 			page 68
+
+
+ 3254      31333538 
+ 3255 00ca 73202D66 		.ascii	"s -ffunction-sections\000"
+ 3255      66756E63 
+ 3255      74696F6E 
+ 3255      2D736563 
+ 3255      74696F6E 
+ 3256              	.LASF2:
+ 3257 00e0 73686F72 		.ascii	"short int\000"
+ 3257      7420696E 
+ 3257      7400
+ 3258              	.LASF15:
+ 3259 00ea 73697A65 		.ascii	"size_t\000"
+ 3259      5F7400
+ 3260              	.LASF16:
+ 3261 00f1 73697A65 		.ascii	"sizetype\000"
+ 3261      74797065 
+ 3261      00
+ 3262              	.LASF39:
+ 3263 00fa 4F726761 		.ascii	"Organizer_Sequence\000"
+ 3263      6E697A65 
+ 3263      725F5365 
+ 3263      7175656E 
+ 3263      636500
+ 3264              	.LASF24:
+ 3265 010d 72616E64 		.ascii	"rand_num_left\000"
+ 3265      5F6E756D 
+ 3265      5F6C6566 
+ 3265      7400
+ 3266              	.LASF33:
+ 3267 011b 696E6974 		.ascii	"init_magic_toggle_sequance\000"
+ 3267      5F6D6167 
+ 3267      69635F74 
+ 3267      6F67676C 
+ 3267      655F7365 
+ 3268              	.LASF48:
+ 3269 0136 50574D5F 		.ascii	"PWM_Organizer_ReadStatusRegister\000"
+ 3269      4F726761 
+ 3269      6E697A65 
+ 3269      725F5265 
+ 3269      61645374 
+ 3270              	.LASF66:
+ 3271 0157 656E6162 		.ascii	"enable_toggle_interrupts\000"
+ 3271      6C655F74 
+ 3271      6F67676C 
+ 3271      655F696E 
+ 3271      74657272 
+ 3272              	.LASF28:
+ 3273 0170 73746174 		.ascii	"state_flag\000"
+ 3273      655F666C 
+ 3273      616700
+ 3274              	.LASF26:
+ 3275 017b 6765745F 		.ascii	"get_magic_toggle_sequance\000"
+ 3275      6D616769 
+ 3275      635F746F 
+ 3275      67676C65 
+ 3275      5F736571 
+ 3276              	.LASF42:
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccuIaCqh.s 			page 69
+
+
+ 3277 0195 7475726E 		.ascii	"turn_on\000"
+ 3277      5F6F6E00 
+ 3278              	.LASF29:
+ 3279 019d 76616C75 		.ascii	"value\000"
+ 3279      6500
+ 3280              	.LASF43:
+ 3281 01a3 7475726E 		.ascii	"turn_off\000"
+ 3281      5F6F6666 
+ 3281      00
+ 3282              	.LASF19:
+ 3283 01ac 696E6465 		.ascii	"index\000"
+ 3283      7800
+ 3284              	.LASF9:
+ 3285 01b2 75696E74 		.ascii	"uint8\000"
+ 3285      3800
+ 3286              	.LASF46:
+ 3287 01b8 72616E64 		.ascii	"rand\000"
+ 3287      00
+ 3288              	.LASF30:
+ 3289 01bd 53574C5F 		.ascii	"SWL_Handler\000"
+ 3289      48616E64 
+ 3289      6C657200 
+ 3290              	.LASF11:
+ 3291 01c9 666C6F61 		.ascii	"float\000"
+ 3291      7400
+ 3292              	.LASF6:
+ 3293 01cf 6C6F6E67 		.ascii	"long long int\000"
+ 3293      206C6F6E 
+ 3293      6720696E 
+ 3293      7400
+ 3294              	.LASF23:
+ 3295 01dd 63757272 		.ascii	"current_color_right\000"
+ 3295      656E745F 
+ 3295      636F6C6F 
+ 3295      725F7269 
+ 3295      67687400 
+ 3296              	.LASF57:
+ 3297 01f1 5357425F 		.ascii	"SWB_Int_StartEx\000"
+ 3297      496E745F 
+ 3297      53746172 
+ 3297      74457800 
+ 3298              	.LASF31:
+ 3299 0201 5357525F 		.ascii	"SWR_Handler\000"
+ 3299      48616E64 
+ 3299      6C657200 
+ 3300              	.LASF4:
+ 3301 020d 6C6F6E67 		.ascii	"long int\000"
+ 3301      20696E74 
+ 3301      00
+ 3302              	.LASF44:
+ 3303 0216 6765745F 		.ascii	"get_color\000"
+ 3303      636F6C6F 
+ 3303      7200
+ 3304              	.LASF64:
+ 3305 0220 433A5C55 		.ascii	"C:\\Users\\Admin\\Desktop\\Organizer Badge\\Organiz"
+ 3305      73657273 
+ 3305      5C41646D 
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccuIaCqh.s 			page 70
+
+
+ 3305      696E5C44 
+ 3305      65736B74 
+ 3306 024e 65725F42 		.ascii	"er_Badge\\Organizer_Badge.cydsn\000"
+ 3306      61646765 
+ 3306      5C4F7267 
+ 3306      616E697A 
+ 3306      65725F42 
+ 3307              	.LASF40:
+ 3308 026d 6765745F 		.ascii	"get_status\000"
+ 3308      73746174 
+ 3308      757300
+ 3309              	.LASF1:
+ 3310 0278 756E7369 		.ascii	"unsigned char\000"
+ 3310      676E6564 
+ 3310      20636861 
+ 3310      7200
+ 3311              	.LASF54:
+ 3312 0286 53574C5F 		.ascii	"SWL_ClearInterrupt\000"
+ 3312      436C6561 
+ 3312      72496E74 
+ 3312      65727275 
+ 3312      707400
+ 3313              	.LASF56:
+ 3314 0299 6D656D6D 		.ascii	"memmove\000"
+ 3314      6F766500 
+ 3315              	.LASF14:
+ 3316 02a1 63796973 		.ascii	"cyisraddress\000"
+ 3316      72616464 
+ 3316      72657373 
+ 3316      00
+ 3317              	.LASF18:
+ 3318 02ae 73657175 		.ascii	"sequance\000"
+ 3318      616E6365 
+ 3318      00
+ 3319              	.LASF17:
+ 3320 02b7 74696D65 		.ascii	"time_t\000"
+ 3320      5F7400
+ 3321              	.LASF0:
+ 3322 02be 7369676E 		.ascii	"signed char\000"
+ 3322      65642063 
+ 3322      68617200 
+ 3323              	.LASF7:
+ 3324 02ca 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 3324      206C6F6E 
+ 3324      6720756E 
+ 3324      7369676E 
+ 3324      65642069 
+ 3325              	.LASF8:
+ 3326 02e1 756E7369 		.ascii	"unsigned int\000"
+ 3326      676E6564 
+ 3326      20696E74 
+ 3326      00
+ 3327              	.LASF50:
+ 3328 02ee 4F52475F 		.ascii	"ORG_Int_ClearPending\000"
+ 3328      496E745F 
+ 3328      436C6561 
+ 3328      7250656E 
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccuIaCqh.s 			page 71
+
+
+ 3328      64696E67 
+ 3329              	.LASF61:
+ 3330 0303 74696D65 		.ascii	"time\000"
+ 3330      00
+ 3331              	.LASF35:
+ 3332 0308 4D6F7273 		.ascii	"Morse_Sequence\000"
+ 3332      655F5365 
+ 3332      7175656E 
+ 3332      636500
+ 3333              	.LASF3:
+ 3334 0317 73686F72 		.ascii	"short unsigned int\000"
+ 3334      7420756E 
+ 3334      7369676E 
+ 3334      65642069 
+ 3334      6E7400
+ 3335              	.LASF59:
+ 3336 032a 5357525F 		.ascii	"SWR_Int_StartEx\000"
+ 3336      496E745F 
+ 3336      53746172 
+ 3336      74457800 
+ 3337              	.LASF13:
+ 3338 033a 63686172 		.ascii	"char\000"
+ 3338      00
+ 3339              	.LASF49:
+ 3340 033f 7374726C 		.ascii	"strlen\000"
+ 3340      656E00
+ 3341              	.LASF52:
+ 3342 0346 50574D5F 		.ascii	"PWM_Organizer_Stop\000"
+ 3342      4F726761 
+ 3342      6E697A65 
+ 3342      725F5374 
+ 3342      6F7000
+ 3343              	.LASF37:
+ 3344 0359 53756273 		.ascii	"Substitution_Sequence\000"
+ 3344      74697475 
+ 3344      74696F6E 
+ 3344      5F536571 
+ 3344      75656E63 
+ 3345              	.LASF10:
+ 3346 036f 75696E74 		.ascii	"uint32\000"
+ 3346      333200
+ 3347              	.LASF51:
+ 3348 0376 50574D5F 		.ascii	"PWM_Organizer_Start\000"
+ 3348      4F726761 
+ 3348      6E697A65 
+ 3348      725F5374 
+ 3348      61727400 
+ 3349              	.LASF5:
+ 3350 038a 6C6F6E67 		.ascii	"long unsigned int\000"
+ 3350      20756E73 
+ 3350      69676E65 
+ 3350      6420696E 
+ 3350      7400
+ 3351              	.LASF65:
+ 3352 039c 4D616769 		.ascii	"Magic_Toggle_Sequence\000"
+ 3352      635F546F 
+ 3352      67676C65 
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccuIaCqh.s 			page 72
+
+
+ 3352      5F536571 
+ 3352      75656E63 
+ 3353              	.LASF12:
+ 3354 03b2 646F7562 		.ascii	"double\000"
+ 3354      6C6500
+ 3355              	.LASF25:
+ 3356 03b9 72616E64 		.ascii	"rand_num_right\000"
+ 3356      5F6E756D 
+ 3356      5F726967 
+ 3356      687400
+ 3357              	.LASF47:
+ 3358 03c8 7365745F 		.ascii	"set_color\000"
+ 3358      636F6C6F 
+ 3358      7200
+ 3359              	.LASF36:
+ 3360 03d2 42696E61 		.ascii	"Binary_Sequence\000"
+ 3360      72795F53 
+ 3360      65717565 
+ 3360      6E636500 
+ 3361              	.LASF22:
+ 3362 03e2 63757272 		.ascii	"current_color_left\000"
+ 3362      656E745F 
+ 3362      636F6C6F 
+ 3362      725F6C65 
+ 3362      667400
+ 3363              	.LASF63:
+ 3364 03f5 2E5C746F 		.ascii	".\\togglelib.c\000"
+ 3364      67676C65 
+ 3364      6C69622E 
+ 3364      6300
+ 3365              	.LASF60:
+ 3366 0403 4F52475F 		.ascii	"ORG_Int_StartEx\000"
+ 3366      496E745F 
+ 3366      53746172 
+ 3366      74457800 
+ 3367              	.LASF38:
+ 3368 0413 46696E61 		.ascii	"Final_Stage_Sequence\000"
+ 3368      6C5F5374 
+ 3368      6167655F 
+ 3368      53657175 
+ 3368      656E6365 
+ 3369              	.LASF20:
+ 3370 0428 5357425F 		.ascii	"SWB_Handler\000"
+ 3370      48616E64 
+ 3370      6C657200 
+ 3371              	.LASF32:
+ 3372 0434 7365745F 		.ascii	"set_magic_toggle_sequance\000"
+ 3372      6D616769 
+ 3372      635F746F 
+ 3372      67676C65 
+ 3372      5F736571 
+ 3373              	.LASF53:
+ 3374 044e 43794465 		.ascii	"CyDelay\000"
+ 3374      6C617900 
+ 3375              	.LASF67:
+ 3376 0456 7372616E 		.ascii	"srand\000"
+ 3376      6400
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccuIaCqh.s 			page 73
+
+
+ 3377              	.LASF21:
+ 3378 045c 4F52475F 		.ascii	"ORG_Handler\000"
+ 3378      48616E64 
+ 3378      6C657200 
+ 3379              	.LASF34:
+ 3380 0468 62616467 		.ascii	"badge_state\000"
+ 3380      655F7374 
+ 3380      61746500 
+ 3381              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.8.4 20140526 (release) [ARM/embedded-4_8-br

@@ -1,0 +1,2902 @@
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccLQsfrR.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 4
+  10              		.eabi_attribute 34, 0
+  11              		.eabi_attribute 18, 4
+  12              		.code	16
+  13              		.file	"binary.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.blink_zero,"ax",%progbits
+  18              		.align	1
+  19              		.global	blink_zero
+  20              		.code	16
+  21              		.thumb_func
+  22              		.type	blink_zero, %function
+  23              	blink_zero:
+  24              	.LFB33:
+  25              		.file 1 ".\\binary.c"
+   1:.\binary.c    **** /* ========================================
+   2:.\binary.c    ****  *
+   3:.\binary.c    ****  * Copyright Nullify, 2016
+   4:.\binary.c    ****  * All Rights Reserved
+   5:.\binary.c    ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:.\binary.c    ****  *
+   7:.\binary.c    ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:.\binary.c    ****  * WHICH IS THE PROPERTY OF NULLIY.
+   9:.\binary.c    ****  *
+  10:.\binary.c    ****  * ========================================
+  11:.\binary.c    **** */
+  12:.\binary.c    **** #include <project.h>
+  13:.\binary.c    **** #include <string.h>
+  14:.\binary.c    **** #include "lightlib.h"
+  15:.\binary.c    **** #include "binary.h"
+  16:.\binary.c    **** 
+  17:.\binary.c    **** void blink_zero(void) {
+  26              		.loc 1 17 0
+  27              		.cfi_startproc
+  28 0000 10B5     		push	{r4, lr}
+  29              		.cfi_def_cfa_offset 8
+  30              		.cfi_offset 4, -8
+  31              		.cfi_offset 14, -4
+  18:.\binary.c    ****     turn_on(LEFT_LED);
+  19:.\binary.c    ****     CyDelay(BLINK_DELAY_ON);
+  32              		.loc 1 19 0
+  33 0002 FA24     		mov	r4, #250
+  34 0004 6400     		lsl	r4, r4, #1
+  18:.\binary.c    ****     turn_on(LEFT_LED);
+  35              		.loc 1 18 0
+  36 0006 0120     		mov	r0, #1
+  37 0008 FFF7FEFF 		bl	turn_on
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccLQsfrR.s 			page 2
+
+
+  38              	.LVL0:
+  39              		.loc 1 19 0
+  40 000c 201C     		mov	r0, r4
+  41 000e FFF7FEFF 		bl	CyDelay
+  42              	.LVL1:
+  20:.\binary.c    ****     turn_off(LEFT_LED);
+  43              		.loc 1 20 0
+  44 0012 0120     		mov	r0, #1
+  45 0014 FFF7FEFF 		bl	turn_off
+  46              	.LVL2:
+  21:.\binary.c    ****     CyDelay(BLINK_DELAY_OFF);
+  47              		.loc 1 21 0
+  48 0018 201C     		mov	r0, r4
+  49 001a FFF7FEFF 		bl	CyDelay
+  50              	.LVL3:
+  22:.\binary.c    **** }
+  51              		.loc 1 22 0
+  52              		@ sp needed
+  53 001e 10BD     		pop	{r4, pc}
+  54              		.cfi_endproc
+  55              	.LFE33:
+  56              		.size	blink_zero, .-blink_zero
+  57              		.section	.text.blink_one,"ax",%progbits
+  58              		.align	1
+  59              		.global	blink_one
+  60              		.code	16
+  61              		.thumb_func
+  62              		.type	blink_one, %function
+  63              	blink_one:
+  64              	.LFB34:
+  23:.\binary.c    **** 
+  24:.\binary.c    **** void blink_one(void) {
+  65              		.loc 1 24 0
+  66              		.cfi_startproc
+  67 0000 10B5     		push	{r4, lr}
+  68              		.cfi_def_cfa_offset 8
+  69              		.cfi_offset 4, -8
+  70              		.cfi_offset 14, -4
+  25:.\binary.c    ****     turn_on(RIGHT_LED);
+  26:.\binary.c    ****     CyDelay(BLINK_DELAY_ON);
+  71              		.loc 1 26 0
+  72 0002 FA24     		mov	r4, #250
+  73 0004 6400     		lsl	r4, r4, #1
+  25:.\binary.c    ****     turn_on(RIGHT_LED);
+  74              		.loc 1 25 0
+  75 0006 0220     		mov	r0, #2
+  76 0008 FFF7FEFF 		bl	turn_on
+  77              	.LVL4:
+  78              		.loc 1 26 0
+  79 000c 201C     		mov	r0, r4
+  80 000e FFF7FEFF 		bl	CyDelay
+  81              	.LVL5:
+  27:.\binary.c    ****     turn_off(RIGHT_LED);
+  82              		.loc 1 27 0
+  83 0012 0220     		mov	r0, #2
+  84 0014 FFF7FEFF 		bl	turn_off
+  85              	.LVL6:
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccLQsfrR.s 			page 3
+
+
+  28:.\binary.c    ****     CyDelay(BLINK_DELAY_OFF);
+  86              		.loc 1 28 0
+  87 0018 201C     		mov	r0, r4
+  88 001a FFF7FEFF 		bl	CyDelay
+  89              	.LVL7:
+  29:.\binary.c    **** }
+  90              		.loc 1 29 0
+  91              		@ sp needed
+  92 001e 10BD     		pop	{r4, pc}
+  93              		.cfi_endproc
+  94              	.LFE34:
+  95              		.size	blink_one, .-blink_one
+  96              		.section	.text.new_message,"ax",%progbits
+  97              		.align	1
+  98              		.global	new_message
+  99              		.code	16
+ 100              		.thumb_func
+ 101              		.type	new_message, %function
+ 102              	new_message:
+ 103              	.LFB35:
+  30:.\binary.c    **** 
+  31:.\binary.c    **** void new_message(void) {
+ 104              		.loc 1 31 0
+ 105              		.cfi_startproc
+ 106 0000 10B5     		push	{r4, lr}
+ 107              		.cfi_def_cfa_offset 8
+ 108              		.cfi_offset 4, -8
+ 109              		.cfi_offset 14, -4
+  32:.\binary.c    ****     unsigned int i;
+  33:.\binary.c    ****     set_color(LEFT_RIGHT_LED, WHITE);
+ 110              		.loc 1 33 0
+ 111 0002 0320     		mov	r0, #3
+ 112 0004 0721     		mov	r1, #7
+ 113 0006 FFF7FEFF 		bl	set_color
+ 114              	.LVL8:
+ 115 000a 0524     		mov	r4, #5
+ 116              	.LVL9:
+ 117              	.L5:
+  34:.\binary.c    ****     for (i=0; i<NEW_MESSAGE_NUMBER; i++) {
+  35:.\binary.c    ****        turn_on(LEFT_RIGHT_LED);
+ 118              		.loc 1 35 0 discriminator 2
+ 119 000c 0320     		mov	r0, #3
+ 120 000e FFF7FEFF 		bl	turn_on
+ 121              	.LVL10:
+  36:.\binary.c    ****        CyDelay(RESET_DELAY);
+ 122              		.loc 1 36 0 discriminator 2
+ 123 0012 FA20     		mov	r0, #250
+ 124 0014 FFF7FEFF 		bl	CyDelay
+ 125              	.LVL11:
+  37:.\binary.c    ****        turn_off(LEFT_RIGHT_LED);
+ 126              		.loc 1 37 0 discriminator 2
+ 127 0018 0320     		mov	r0, #3
+ 128 001a FFF7FEFF 		bl	turn_off
+ 129              	.LVL12:
+ 130 001e 013C     		sub	r4, r4, #1
+ 131              	.LVL13:
+  38:.\binary.c    ****        CyDelay(RESET_DELAY);
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccLQsfrR.s 			page 4
+
+
+ 132              		.loc 1 38 0 discriminator 2
+ 133 0020 FA20     		mov	r0, #250
+ 134 0022 FFF7FEFF 		bl	CyDelay
+ 135              	.LVL14:
+  34:.\binary.c    ****     for (i=0; i<NEW_MESSAGE_NUMBER; i++) {
+ 136              		.loc 1 34 0 discriminator 2
+ 137 0026 002C     		cmp	r4, #0
+ 138 0028 F0D1     		bne	.L5
+  39:.\binary.c    ****     }
+  40:.\binary.c    ****     set_color(LEFT_RIGHT_LED, BLUE);
+ 139              		.loc 1 40 0
+ 140 002a 0320     		mov	r0, #3
+ 141 002c 0221     		mov	r1, #2
+ 142 002e FFF7FEFF 		bl	set_color
+ 143              	.LVL15:
+  41:.\binary.c    **** }
+ 144              		.loc 1 41 0
+ 145              		@ sp needed
+ 146 0032 10BD     		pop	{r4, pc}
+ 147              		.cfi_endproc
+ 148              	.LFE35:
+ 149              		.size	new_message, .-new_message
+ 150              		.section	.text.binary_encode,"ax",%progbits
+ 151              		.align	1
+ 152              		.global	binary_encode
+ 153              		.code	16
+ 154              		.thumb_func
+ 155              		.type	binary_encode, %function
+ 156              	binary_encode:
+ 157              	.LFB36:
+  42:.\binary.c    **** 
+  43:.\binary.c    **** void binary_encode(char c){
+ 158              		.loc 1 43 0
+ 159              		.cfi_startproc
+ 160              	.LVL16:
+  44:.\binary.c    **** 
+  45:.\binary.c    ****     switch(c) {
+ 161              		.loc 1 45 0
+ 162 0000 3038     		sub	r0, r0, #48
+ 163              	.LVL17:
+  43:.\binary.c    **** void binary_encode(char c){
+ 164              		.loc 1 43 0
+ 165 0002 08B5     		push	{r3, lr}
+ 166              		.cfi_def_cfa_offset 8
+ 167              		.cfi_offset 3, -8
+ 168              		.cfi_offset 14, -4
+ 169              		.loc 1 45 0
+ 170 0004 4A28     		cmp	r0, #74
+ 171 0006 00D9     		bls	.LCB113
+ 172 0008 B7E1     		b	.L7	@long jump
+ 173              	.LCB113:
+ 174 000a FFF7FEFF 		bl	__gnu_thumb1_case_uhi
+ 175              	.L10:
+ 176 000e 2D01     		.2byte	(.L9-.L10)/2
+ 177 0010 3801     		.2byte	(.L11-.L10)/2
+ 178 0012 4301     		.2byte	(.L12-.L10)/2
+ 179 0014 5001     		.2byte	(.L13-.L10)/2
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccLQsfrR.s 			page 5
+
+
+ 180 0016 5D01     		.2byte	(.L14-.L10)/2
+ 181 0018 6A01     		.2byte	(.L15-.L10)/2
+ 182 001a 7701     		.2byte	(.L16-.L10)/2
+ 183 001c 8601     		.2byte	(.L17-.L10)/2
+ 184 001e 9501     		.2byte	(.L18-.L10)/2
+ 185 0020 A601     		.2byte	(.L19-.L10)/2
+ 186 0022 B601     		.2byte	(.L7-.L10)/2
+ 187 0024 B601     		.2byte	(.L7-.L10)/2
+ 188 0026 B601     		.2byte	(.L7-.L10)/2
+ 189 0028 B601     		.2byte	(.L7-.L10)/2
+ 190 002a B601     		.2byte	(.L7-.L10)/2
+ 191 002c B601     		.2byte	(.L7-.L10)/2
+ 192 002e B601     		.2byte	(.L7-.L10)/2
+ 193 0030 4B00     		.2byte	(.L20-.L10)/2
+ 194 0032 5400     		.2byte	(.L21-.L10)/2
+ 195 0034 5D00     		.2byte	(.L22-.L10)/2
+ 196 0036 6600     		.2byte	(.L23-.L10)/2
+ 197 0038 6F00     		.2byte	(.L24-.L10)/2
+ 198 003a 7800     		.2byte	(.L25-.L10)/2
+ 199 003c 8100     		.2byte	(.L26-.L10)/2
+ 200 003e 8A00     		.2byte	(.L27-.L10)/2
+ 201 0040 9300     		.2byte	(.L28-.L10)/2
+ 202 0042 9C00     		.2byte	(.L29-.L10)/2
+ 203 0044 A500     		.2byte	(.L30-.L10)/2
+ 204 0046 B000     		.2byte	(.L31-.L10)/2
+ 205 0048 BB00     		.2byte	(.L32-.L10)/2
+ 206 004a C600     		.2byte	(.L33-.L10)/2
+ 207 004c D100     		.2byte	(.L34-.L10)/2
+ 208 004e DC00     		.2byte	(.L35-.L10)/2
+ 209 0050 E300     		.2byte	(.L36-.L10)/2
+ 210 0052 EA00     		.2byte	(.L37-.L10)/2
+ 211 0054 F100     		.2byte	(.L38-.L10)/2
+ 212 0056 F800     		.2byte	(.L39-.L10)/2
+ 213 0058 FF00     		.2byte	(.L40-.L10)/2
+ 214 005a 0601     		.2byte	(.L41-.L10)/2
+ 215 005c 0D01     		.2byte	(.L42-.L10)/2
+ 216 005e 1401     		.2byte	(.L43-.L10)/2
+ 217 0060 1B01     		.2byte	(.L44-.L10)/2
+ 218 0062 2201     		.2byte	(.L45-.L10)/2
+ 219 0064 B601     		.2byte	(.L7-.L10)/2
+ 220 0066 B601     		.2byte	(.L7-.L10)/2
+ 221 0068 B601     		.2byte	(.L7-.L10)/2
+ 222 006a B601     		.2byte	(.L7-.L10)/2
+ 223 006c B601     		.2byte	(.L7-.L10)/2
+ 224 006e B601     		.2byte	(.L7-.L10)/2
+ 225 0070 4B00     		.2byte	(.L20-.L10)/2
+ 226 0072 5400     		.2byte	(.L21-.L10)/2
+ 227 0074 5D00     		.2byte	(.L22-.L10)/2
+ 228 0076 6600     		.2byte	(.L23-.L10)/2
+ 229 0078 6F00     		.2byte	(.L24-.L10)/2
+ 230 007a 7800     		.2byte	(.L25-.L10)/2
+ 231 007c 8100     		.2byte	(.L26-.L10)/2
+ 232 007e 8A00     		.2byte	(.L27-.L10)/2
+ 233 0080 9300     		.2byte	(.L28-.L10)/2
+ 234 0082 9C00     		.2byte	(.L29-.L10)/2
+ 235 0084 A500     		.2byte	(.L30-.L10)/2
+ 236 0086 B000     		.2byte	(.L31-.L10)/2
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccLQsfrR.s 			page 6
+
+
+ 237 0088 BB00     		.2byte	(.L32-.L10)/2
+ 238 008a C600     		.2byte	(.L33-.L10)/2
+ 239 008c D100     		.2byte	(.L34-.L10)/2
+ 240 008e DC00     		.2byte	(.L35-.L10)/2
+ 241 0090 E300     		.2byte	(.L36-.L10)/2
+ 242 0092 EA00     		.2byte	(.L37-.L10)/2
+ 243 0094 F100     		.2byte	(.L38-.L10)/2
+ 244 0096 F800     		.2byte	(.L39-.L10)/2
+ 245 0098 FF00     		.2byte	(.L40-.L10)/2
+ 246 009a 0601     		.2byte	(.L41-.L10)/2
+ 247 009c 0D01     		.2byte	(.L42-.L10)/2
+ 248 009e 1401     		.2byte	(.L43-.L10)/2
+ 249 00a0 1B01     		.2byte	(.L44-.L10)/2
+ 250 00a2 2201     		.2byte	(.L45-.L10)/2
+ 251              		.p2align 1
+ 252              	.L20:
+  46:.\binary.c    ****       case 'A':
+  47:.\binary.c    ****       case 'a':
+  48:.\binary.c    ****         blink_zero();
+ 253              		.loc 1 48 0
+ 254 00a4 FFF7FEFF 		bl	blink_zero
+ 255              	.LVL18:
+  49:.\binary.c    ****         blink_one();
+ 256              		.loc 1 49 0
+ 257 00a8 FFF7FEFF 		bl	blink_one
+ 258              	.LVL19:
+  50:.\binary.c    ****         blink_zero();
+ 259              		.loc 1 50 0
+ 260 00ac FFF7FEFF 		bl	blink_zero
+ 261              	.LVL20:
+  51:.\binary.c    ****         blink_zero();
+ 262              		.loc 1 51 0
+ 263 00b0 FFF7FEFF 		bl	blink_zero
+ 264              	.LVL21:
+ 265 00b4 EBE0     		b	.L64
+ 266              	.L21:
+  52:.\binary.c    ****         blink_zero();
+  53:.\binary.c    ****         blink_zero();
+  54:.\binary.c    ****         blink_zero();
+  55:.\binary.c    ****         blink_one();
+  56:.\binary.c    ****         break;
+  57:.\binary.c    ****       case 'B':
+  58:.\binary.c    ****       case 'b':
+  59:.\binary.c    ****         blink_zero();
+ 267              		.loc 1 59 0
+ 268 00b6 FFF7FEFF 		bl	blink_zero
+ 269              	.LVL22:
+  60:.\binary.c    ****         blink_one();
+ 270              		.loc 1 60 0
+ 271 00ba FFF7FEFF 		bl	blink_one
+ 272              	.LVL23:
+  61:.\binary.c    ****         blink_zero();
+ 273              		.loc 1 61 0
+ 274 00be FFF7FEFF 		bl	blink_zero
+ 275              	.LVL24:
+  62:.\binary.c    ****         blink_zero();
+ 276              		.loc 1 62 0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccLQsfrR.s 			page 7
+
+
+ 277 00c2 FFF7FEFF 		bl	blink_zero
+ 278              	.LVL25:
+ 279 00c6 EDE0     		b	.L73
+ 280              	.L22:
+  63:.\binary.c    ****         blink_zero();
+  64:.\binary.c    ****         blink_zero();
+  65:.\binary.c    ****         blink_one();
+  66:.\binary.c    ****         blink_zero();
+  67:.\binary.c    ****         break;
+  68:.\binary.c    ****       case 'C':
+  69:.\binary.c    ****       case 'c':
+  70:.\binary.c    ****         blink_zero();
+ 281              		.loc 1 70 0
+ 282 00c8 FFF7FEFF 		bl	blink_zero
+ 283              	.LVL26:
+  71:.\binary.c    ****         blink_one();
+ 284              		.loc 1 71 0
+ 285 00cc FFF7FEFF 		bl	blink_one
+ 286              	.LVL27:
+  72:.\binary.c    ****         blink_zero();
+ 287              		.loc 1 72 0
+ 288 00d0 FFF7FEFF 		bl	blink_zero
+ 289              	.LVL28:
+  73:.\binary.c    ****         blink_zero();
+ 290              		.loc 1 73 0
+ 291 00d4 FFF7FEFF 		bl	blink_zero
+ 292              	.LVL29:
+ 293 00d8 F1E0     		b	.L76
+ 294              	.L23:
+  74:.\binary.c    ****         blink_zero();
+  75:.\binary.c    ****         blink_zero();
+  76:.\binary.c    ****         blink_one();
+  77:.\binary.c    ****         blink_one();
+  78:.\binary.c    ****         break;
+  79:.\binary.c    ****       case 'D':
+  80:.\binary.c    ****       case 'd':
+  81:.\binary.c    ****         blink_zero();
+ 295              		.loc 1 81 0
+ 296 00da FFF7FEFF 		bl	blink_zero
+ 297              	.LVL30:
+  82:.\binary.c    ****         blink_one();
+ 298              		.loc 1 82 0
+ 299 00de FFF7FEFF 		bl	blink_one
+ 300              	.LVL31:
+  83:.\binary.c    ****         blink_zero();
+ 301              		.loc 1 83 0
+ 302 00e2 FFF7FEFF 		bl	blink_zero
+ 303              	.LVL32:
+  84:.\binary.c    ****         blink_zero();
+ 304              		.loc 1 84 0
+ 305 00e6 FFF7FEFF 		bl	blink_zero
+ 306              	.LVL33:
+ 307 00ea F5E0     		b	.L58
+ 308              	.L24:
+  85:.\binary.c    ****         blink_zero();
+  86:.\binary.c    ****         blink_one();
+  87:.\binary.c    ****         blink_zero();
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccLQsfrR.s 			page 8
+
+
+  88:.\binary.c    ****         blink_zero();
+  89:.\binary.c    ****         break;
+  90:.\binary.c    ****        case 'E':
+  91:.\binary.c    ****        case 'e':
+  92:.\binary.c    ****         blink_zero();
+ 309              		.loc 1 92 0
+ 310 00ec FFF7FEFF 		bl	blink_zero
+ 311              	.LVL34:
+  93:.\binary.c    ****         blink_one();
+ 312              		.loc 1 93 0
+ 313 00f0 FFF7FEFF 		bl	blink_one
+ 314              	.LVL35:
+  94:.\binary.c    ****         blink_zero();
+ 315              		.loc 1 94 0
+ 316 00f4 FFF7FEFF 		bl	blink_zero
+ 317              	.LVL36:
+  95:.\binary.c    ****         blink_zero();
+ 318              		.loc 1 95 0
+ 319 00f8 FFF7FEFF 		bl	blink_zero
+ 320              	.LVL37:
+ 321 00fc F9E0     		b	.L67
+ 322              	.L25:
+  96:.\binary.c    ****         blink_zero();
+  97:.\binary.c    ****         blink_one();
+  98:.\binary.c    ****         blink_zero();
+  99:.\binary.c    ****         blink_one();
+ 100:.\binary.c    ****         break;
+ 101:.\binary.c    ****        case 'F':
+ 102:.\binary.c    ****        case 'f':
+ 103:.\binary.c    ****         blink_zero();
+ 323              		.loc 1 103 0
+ 324 00fe FFF7FEFF 		bl	blink_zero
+ 325              	.LVL38:
+ 104:.\binary.c    ****         blink_one();
+ 326              		.loc 1 104 0
+ 327 0102 FFF7FEFF 		bl	blink_one
+ 328              	.LVL39:
+ 105:.\binary.c    ****         blink_zero();
+ 329              		.loc 1 105 0
+ 330 0106 FFF7FEFF 		bl	blink_zero
+ 331              	.LVL40:
+ 106:.\binary.c    ****         blink_zero();
+ 332              		.loc 1 106 0
+ 333 010a FFF7FEFF 		bl	blink_zero
+ 334              	.LVL41:
+ 335 010e FDE0     		b	.L61
+ 336              	.L26:
+ 107:.\binary.c    ****         blink_zero();
+ 108:.\binary.c    ****         blink_one();
+ 109:.\binary.c    ****         blink_one();
+ 110:.\binary.c    ****         blink_zero();
+ 111:.\binary.c    ****         break;
+ 112:.\binary.c    ****        case 'G':
+ 113:.\binary.c    ****        case 'g':
+ 114:.\binary.c    ****         blink_zero();
+ 337              		.loc 1 114 0
+ 338 0110 FFF7FEFF 		bl	blink_zero
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccLQsfrR.s 			page 9
+
+
+ 339              	.LVL42:
+ 115:.\binary.c    ****         blink_one();
+ 340              		.loc 1 115 0
+ 341 0114 FFF7FEFF 		bl	blink_one
+ 342              	.LVL43:
+ 116:.\binary.c    ****         blink_zero();
+ 343              		.loc 1 116 0
+ 344 0118 FFF7FEFF 		bl	blink_zero
+ 345              	.LVL44:
+ 117:.\binary.c    ****         blink_zero();
+ 346              		.loc 1 117 0
+ 347 011c FFF7FEFF 		bl	blink_zero
+ 348              	.LVL45:
+ 349 0120 03E1     		b	.L70
+ 350              	.L27:
+ 118:.\binary.c    ****         blink_zero();
+ 119:.\binary.c    ****         blink_one();
+ 120:.\binary.c    ****         blink_one();
+ 121:.\binary.c    ****         blink_one();
+ 122:.\binary.c    ****         break;
+ 123:.\binary.c    ****        case 'H':
+ 124:.\binary.c    ****        case 'h':
+ 125:.\binary.c    ****         blink_zero();
+ 351              		.loc 1 125 0
+ 352 0122 FFF7FEFF 		bl	blink_zero
+ 353              	.LVL46:
+ 126:.\binary.c    ****         blink_one();
+ 354              		.loc 1 126 0
+ 355 0126 FFF7FEFF 		bl	blink_one
+ 356              	.LVL47:
+ 127:.\binary.c    ****         blink_zero();
+ 357              		.loc 1 127 0
+ 358 012a FFF7FEFF 		bl	blink_zero
+ 359              	.LVL48:
+ 128:.\binary.c    ****         blink_zero();
+ 360              		.loc 1 128 0
+ 361 012e FFF7FEFF 		bl	blink_zero
+ 362              	.LVL49:
+ 363 0132 09E1     		b	.L55
+ 364              	.L28:
+ 129:.\binary.c    ****         blink_one();
+ 130:.\binary.c    ****         blink_zero();
+ 131:.\binary.c    ****         blink_zero();
+ 132:.\binary.c    ****         blink_zero();
+ 133:.\binary.c    ****         break;
+ 134:.\binary.c    ****        case 'I':
+ 135:.\binary.c    ****        case 'i':
+ 136:.\binary.c    ****         blink_zero();
+ 365              		.loc 1 136 0
+ 366 0134 FFF7FEFF 		bl	blink_zero
+ 367              	.LVL50:
+ 137:.\binary.c    ****         blink_one();
+ 368              		.loc 1 137 0
+ 369 0138 FFF7FEFF 		bl	blink_one
+ 370              	.LVL51:
+ 138:.\binary.c    ****         blink_zero();
+ 371              		.loc 1 138 0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccLQsfrR.s 			page 10
+
+
+ 372 013c FFF7FEFF 		bl	blink_zero
+ 373              	.LVL52:
+ 139:.\binary.c    ****         blink_zero();
+ 374              		.loc 1 139 0
+ 375 0140 FFF7FEFF 		bl	blink_zero
+ 376              	.LVL53:
+ 377 0144 11E1     		b	.L54
+ 378              	.L29:
+ 140:.\binary.c    ****         blink_one();
+ 141:.\binary.c    ****         blink_zero();
+ 142:.\binary.c    ****         blink_zero();
+ 143:.\binary.c    ****         blink_one();
+ 144:.\binary.c    ****         break;
+ 145:.\binary.c    ****        case 'J':
+ 146:.\binary.c    ****        case 'j':
+ 147:.\binary.c    ****         blink_zero();
+ 379              		.loc 1 147 0
+ 380 0146 FFF7FEFF 		bl	blink_zero
+ 381              	.LVL54:
+ 148:.\binary.c    ****         blink_one();
+ 382              		.loc 1 148 0
+ 383 014a FFF7FEFF 		bl	blink_one
+ 384              	.LVL55:
+ 149:.\binary.c    ****         blink_zero();
+ 385              		.loc 1 149 0
+ 386 014e FFF7FEFF 		bl	blink_zero
+ 387              	.LVL56:
+ 150:.\binary.c    ****         blink_zero();
+ 388              		.loc 1 150 0
+ 389 0152 FFF7FEFF 		bl	blink_zero
+ 390              	.LVL57:
+ 391 0156 84E0     		b	.L79
+ 392              	.L30:
+ 151:.\binary.c    ****         blink_one();
+ 152:.\binary.c    ****         blink_zero();
+ 153:.\binary.c    ****         blink_one();
+ 154:.\binary.c    ****         blink_zero();
+ 155:.\binary.c    ****         break;
+ 156:.\binary.c    ****        case 'K':
+ 157:.\binary.c    ****        case 'k':
+ 158:.\binary.c    ****         blink_zero();
+ 393              		.loc 1 158 0
+ 394 0158 FFF7FEFF 		bl	blink_zero
+ 395              	.LVL58:
+ 159:.\binary.c    ****         blink_one();
+ 396              		.loc 1 159 0
+ 397 015c FFF7FEFF 		bl	blink_one
+ 398              	.LVL59:
+ 160:.\binary.c    ****         blink_zero();
+ 399              		.loc 1 160 0
+ 400 0160 FFF7FEFF 		bl	blink_zero
+ 401              	.LVL60:
+ 161:.\binary.c    ****         blink_zero();
+ 402              		.loc 1 161 0
+ 403 0164 FFF7FEFF 		bl	blink_zero
+ 404              	.LVL61:
+ 162:.\binary.c    ****         blink_one();
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccLQsfrR.s 			page 11
+
+
+ 405              		.loc 1 162 0
+ 406 0168 FFF7FEFF 		bl	blink_one
+ 407              	.LVL62:
+ 408 016c A9E0     		b	.L78
+ 409              	.L31:
+ 163:.\binary.c    ****         blink_zero();
+ 164:.\binary.c    ****         blink_one();
+ 165:.\binary.c    ****         blink_one();
+ 166:.\binary.c    ****         break;
+ 167:.\binary.c    ****        case 'L':
+ 168:.\binary.c    ****        case 'l':
+ 169:.\binary.c    ****         blink_zero();
+ 410              		.loc 1 169 0
+ 411 016e FFF7FEFF 		bl	blink_zero
+ 412              	.LVL63:
+ 170:.\binary.c    ****         blink_one();
+ 413              		.loc 1 170 0
+ 414 0172 FFF7FEFF 		bl	blink_one
+ 415              	.LVL64:
+ 171:.\binary.c    ****         blink_zero();
+ 416              		.loc 1 171 0
+ 417 0176 FFF7FEFF 		bl	blink_zero
+ 418              	.LVL65:
+ 172:.\binary.c    ****         blink_zero();
+ 419              		.loc 1 172 0
+ 420 017a FFF7FEFF 		bl	blink_zero
+ 421              	.LVL66:
+ 173:.\binary.c    ****         blink_one();
+ 422              		.loc 1 173 0
+ 423 017e FFF7FEFF 		bl	blink_one
+ 424              	.LVL67:
+ 425 0182 ABE0     		b	.L59
+ 426              	.L32:
+ 174:.\binary.c    ****         blink_one();
+ 175:.\binary.c    ****         blink_zero();
+ 176:.\binary.c    ****         blink_zero();
+ 177:.\binary.c    ****         break;
+ 178:.\binary.c    ****        case 'M':
+ 179:.\binary.c    ****        case 'm':
+ 180:.\binary.c    ****         blink_zero();
+ 427              		.loc 1 180 0
+ 428 0184 FFF7FEFF 		bl	blink_zero
+ 429              	.LVL68:
+ 181:.\binary.c    ****         blink_one();
+ 430              		.loc 1 181 0
+ 431 0188 FFF7FEFF 		bl	blink_one
+ 432              	.LVL69:
+ 182:.\binary.c    ****         blink_zero();
+ 433              		.loc 1 182 0
+ 434 018c FFF7FEFF 		bl	blink_zero
+ 435              	.LVL70:
+ 183:.\binary.c    ****         blink_zero();
+ 436              		.loc 1 183 0
+ 437 0190 FFF7FEFF 		bl	blink_zero
+ 438              	.LVL71:
+ 184:.\binary.c    ****         blink_one();
+ 439              		.loc 1 184 0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccLQsfrR.s 			page 12
+
+
+ 440 0194 FFF7FEFF 		bl	blink_one
+ 441              	.LVL72:
+ 442 0198 ADE0     		b	.L68
+ 443              	.L33:
+ 185:.\binary.c    ****         blink_one();
+ 186:.\binary.c    ****         blink_zero();
+ 187:.\binary.c    ****         blink_one();
+ 188:.\binary.c    ****         break;
+ 189:.\binary.c    ****        case 'N':
+ 190:.\binary.c    ****        case 'n':
+ 191:.\binary.c    ****         blink_zero();
+ 444              		.loc 1 191 0
+ 445 019a FFF7FEFF 		bl	blink_zero
+ 446              	.LVL73:
+ 192:.\binary.c    ****         blink_one();
+ 447              		.loc 1 192 0
+ 448 019e FFF7FEFF 		bl	blink_one
+ 449              	.LVL74:
+ 193:.\binary.c    ****         blink_zero();
+ 450              		.loc 1 193 0
+ 451 01a2 FFF7FEFF 		bl	blink_zero
+ 452              	.LVL75:
+ 194:.\binary.c    ****         blink_zero();
+ 453              		.loc 1 194 0
+ 454 01a6 FFF7FEFF 		bl	blink_zero
+ 455              	.LVL76:
+ 195:.\binary.c    ****         blink_one();
+ 456              		.loc 1 195 0
+ 457 01aa FFF7FEFF 		bl	blink_one
+ 458              	.LVL77:
+ 459 01ae AFE0     		b	.L62
+ 460              	.L34:
+ 196:.\binary.c    ****         blink_one();
+ 197:.\binary.c    ****         blink_one();
+ 198:.\binary.c    ****         blink_zero();
+ 199:.\binary.c    ****         break;
+ 200:.\binary.c    ****        case 'O':
+ 201:.\binary.c    ****        case 'o':
+ 202:.\binary.c    ****         blink_zero();
+ 461              		.loc 1 202 0
+ 462 01b0 FFF7FEFF 		bl	blink_zero
+ 463              	.LVL78:
+ 203:.\binary.c    ****         blink_one();
+ 464              		.loc 1 203 0
+ 465 01b4 FFF7FEFF 		bl	blink_one
+ 466              	.LVL79:
+ 204:.\binary.c    ****         blink_zero();
+ 467              		.loc 1 204 0
+ 468 01b8 FFF7FEFF 		bl	blink_zero
+ 469              	.LVL80:
+ 205:.\binary.c    ****         blink_zero();
+ 470              		.loc 1 205 0
+ 471 01bc FFF7FEFF 		bl	blink_zero
+ 472              	.LVL81:
+ 206:.\binary.c    ****         blink_one();
+ 473              		.loc 1 206 0
+ 474 01c0 FFF7FEFF 		bl	blink_one
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccLQsfrR.s 			page 13
+
+
+ 475              	.LVL82:
+ 476 01c4 B3E0     		b	.L71
+ 477              	.L35:
+ 207:.\binary.c    ****         blink_one();
+ 208:.\binary.c    ****         blink_one();
+ 209:.\binary.c    ****         blink_one();
+ 210:.\binary.c    ****         break;
+ 211:.\binary.c    ****        case 'P':
+ 212:.\binary.c    ****        case 'p':
+ 213:.\binary.c    ****         blink_zero();
+ 478              		.loc 1 213 0
+ 479 01c6 FFF7FEFF 		bl	blink_zero
+ 480              	.LVL83:
+ 214:.\binary.c    ****         blink_one();
+ 481              		.loc 1 214 0
+ 482 01ca FFF7FEFF 		bl	blink_one
+ 483              	.LVL84:
+ 215:.\binary.c    ****         blink_zero();
+ 484              		.loc 1 215 0
+ 485 01ce FFF7FEFF 		bl	blink_zero
+ 486              	.LVL85:
+ 487 01d2 4FE0     		b	.L56
+ 488              	.L36:
+ 216:.\binary.c    ****         blink_one();
+ 217:.\binary.c    ****         blink_zero();
+ 218:.\binary.c    ****         blink_zero();
+ 219:.\binary.c    ****         blink_zero();
+ 220:.\binary.c    ****         blink_zero();
+ 221:.\binary.c    ****         break;
+ 222:.\binary.c    ****        case 'Q':
+ 223:.\binary.c    ****        case 'q':
+ 224:.\binary.c    ****         blink_zero();
+ 489              		.loc 1 224 0
+ 490 01d4 FFF7FEFF 		bl	blink_zero
+ 491              	.LVL86:
+ 225:.\binary.c    ****         blink_one();
+ 492              		.loc 1 225 0
+ 493 01d8 FFF7FEFF 		bl	blink_one
+ 494              	.LVL87:
+ 226:.\binary.c    ****         blink_zero();
+ 495              		.loc 1 226 0
+ 496 01dc FFF7FEFF 		bl	blink_zero
+ 497              	.LVL88:
+ 498 01e0 53E0     		b	.L65
+ 499              	.L37:
+ 227:.\binary.c    ****         blink_one();
+ 228:.\binary.c    ****         blink_zero();
+ 229:.\binary.c    ****         blink_zero();
+ 230:.\binary.c    ****         blink_zero();
+ 231:.\binary.c    ****         blink_one();
+ 232:.\binary.c    ****         break;
+ 233:.\binary.c    ****        case 'R':
+ 234:.\binary.c    ****        case 'r':
+ 235:.\binary.c    ****         blink_zero();
+ 500              		.loc 1 235 0
+ 501 01e2 FFF7FEFF 		bl	blink_zero
+ 502              	.LVL89:
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccLQsfrR.s 			page 14
+
+
+ 236:.\binary.c    ****         blink_one();
+ 503              		.loc 1 236 0
+ 504 01e6 FFF7FEFF 		bl	blink_one
+ 505              	.LVL90:
+ 237:.\binary.c    ****         blink_zero();
+ 506              		.loc 1 237 0
+ 507 01ea FFF7FEFF 		bl	blink_zero
+ 508              	.LVL91:
+ 509 01ee 57E0     		b	.L75
+ 510              	.L38:
+ 238:.\binary.c    ****         blink_one();
+ 239:.\binary.c    ****         blink_zero();
+ 240:.\binary.c    ****         blink_zero();
+ 241:.\binary.c    ****         blink_one();
+ 242:.\binary.c    ****         blink_zero();
+ 243:.\binary.c    ****         break;
+ 244:.\binary.c    ****        case 'S':
+ 245:.\binary.c    ****        case 's':
+ 246:.\binary.c    ****         blink_zero();
+ 511              		.loc 1 246 0
+ 512 01f0 FFF7FEFF 		bl	blink_zero
+ 513              	.LVL92:
+ 247:.\binary.c    ****         blink_one();
+ 514              		.loc 1 247 0
+ 515 01f4 FFF7FEFF 		bl	blink_one
+ 516              	.LVL93:
+ 248:.\binary.c    ****         blink_zero();
+ 517              		.loc 1 248 0
+ 518 01f8 FFF7FEFF 		bl	blink_zero
+ 519              	.LVL94:
+ 520 01fc 5DE0     		b	.L77
+ 521              	.L39:
+ 249:.\binary.c    ****         blink_one();
+ 250:.\binary.c    ****         blink_zero();
+ 251:.\binary.c    ****         blink_zero();
+ 252:.\binary.c    ****         blink_one();
+ 253:.\binary.c    ****         blink_one();
+ 254:.\binary.c    ****         break;
+ 255:.\binary.c    ****        case 'T':
+ 256:.\binary.c    ****        case 't':
+ 257:.\binary.c    ****         blink_zero();
+ 522              		.loc 1 257 0
+ 523 01fe FFF7FEFF 		bl	blink_zero
+ 524              	.LVL95:
+ 258:.\binary.c    ****         blink_one();
+ 525              		.loc 1 258 0
+ 526 0202 FFF7FEFF 		bl	blink_one
+ 527              	.LVL96:
+ 259:.\binary.c    ****         blink_zero();
+ 528              		.loc 1 259 0
+ 529 0206 FFF7FEFF 		bl	blink_zero
+ 530              	.LVL97:
+ 531 020a 63E0     		b	.L57
+ 532              	.L40:
+ 260:.\binary.c    ****         blink_one();
+ 261:.\binary.c    ****         blink_zero();
+ 262:.\binary.c    ****         blink_one();
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccLQsfrR.s 			page 15
+
+
+ 263:.\binary.c    ****         blink_zero();
+ 264:.\binary.c    ****         blink_zero();
+ 265:.\binary.c    ****         break;
+ 266:.\binary.c    ****        case 'U':
+ 267:.\binary.c    ****        case 'u':
+ 268:.\binary.c    ****         blink_zero();
+ 533              		.loc 1 268 0
+ 534 020c FFF7FEFF 		bl	blink_zero
+ 535              	.LVL98:
+ 269:.\binary.c    ****         blink_one();
+ 536              		.loc 1 269 0
+ 537 0210 FFF7FEFF 		bl	blink_one
+ 538              	.LVL99:
+ 270:.\binary.c    ****         blink_zero();
+ 539              		.loc 1 270 0
+ 540 0214 FFF7FEFF 		bl	blink_zero
+ 541              	.LVL100:
+ 542 0218 69E0     		b	.L66
+ 543              	.L41:
+ 271:.\binary.c    ****         blink_one();
+ 272:.\binary.c    ****         blink_zero();
+ 273:.\binary.c    ****         blink_one();
+ 274:.\binary.c    ****         blink_zero();
+ 275:.\binary.c    ****         blink_one();
+ 276:.\binary.c    ****         break;
+ 277:.\binary.c    ****        case 'V':
+ 278:.\binary.c    ****        case 'v':
+ 279:.\binary.c    ****         blink_zero();
+ 544              		.loc 1 279 0
+ 545 021a FFF7FEFF 		bl	blink_zero
+ 546              	.LVL101:
+ 280:.\binary.c    ****         blink_one();
+ 547              		.loc 1 280 0
+ 548 021e FFF7FEFF 		bl	blink_one
+ 549              	.LVL102:
+ 281:.\binary.c    ****         blink_zero();
+ 550              		.loc 1 281 0
+ 551 0222 FFF7FEFF 		bl	blink_zero
+ 552              	.LVL103:
+ 553 0226 6FE0     		b	.L63
+ 554              	.L42:
+ 282:.\binary.c    ****         blink_one();
+ 283:.\binary.c    ****         blink_zero();
+ 284:.\binary.c    ****         blink_one();
+ 285:.\binary.c    ****         blink_one();
+ 286:.\binary.c    ****         blink_zero();
+ 287:.\binary.c    ****         break;
+ 288:.\binary.c    ****        case 'W':
+ 289:.\binary.c    ****        case 'w':
+ 290:.\binary.c    ****         blink_zero();
+ 555              		.loc 1 290 0
+ 556 0228 FFF7FEFF 		bl	blink_zero
+ 557              	.LVL104:
+ 291:.\binary.c    ****         blink_one();
+ 558              		.loc 1 291 0
+ 559 022c FFF7FEFF 		bl	blink_one
+ 560              	.LVL105:
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccLQsfrR.s 			page 16
+
+
+ 292:.\binary.c    ****         blink_zero();
+ 561              		.loc 1 292 0
+ 562 0230 FFF7FEFF 		bl	blink_zero
+ 563              	.LVL106:
+ 564 0234 77E0     		b	.L72
+ 565              	.L43:
+ 293:.\binary.c    ****         blink_one();
+ 294:.\binary.c    ****         blink_zero();
+ 295:.\binary.c    ****         blink_one();
+ 296:.\binary.c    ****         blink_one();
+ 297:.\binary.c    ****         blink_one();
+ 298:.\binary.c    ****         break;
+ 299:.\binary.c    ****        case 'X':
+ 300:.\binary.c    ****        case 'x':
+ 301:.\binary.c    ****         blink_zero();
+ 566              		.loc 1 301 0
+ 567 0236 FFF7FEFF 		bl	blink_zero
+ 568              	.LVL107:
+ 302:.\binary.c    ****         blink_one();
+ 569              		.loc 1 302 0
+ 570 023a FFF7FEFF 		bl	blink_one
+ 571              	.LVL108:
+ 303:.\binary.c    ****         blink_zero();
+ 572              		.loc 1 303 0
+ 573 023e FFF7FEFF 		bl	blink_zero
+ 574              	.LVL109:
+ 575 0242 7FE0     		b	.L53
+ 576              	.L44:
+ 304:.\binary.c    ****         blink_one();
+ 305:.\binary.c    ****         blink_one();
+ 306:.\binary.c    ****         blink_zero();
+ 307:.\binary.c    ****         blink_zero();
+ 308:.\binary.c    ****         blink_zero();
+ 309:.\binary.c    ****         break;
+ 310:.\binary.c    ****        case 'Y':
+ 311:.\binary.c    ****        case 'y':
+ 312:.\binary.c    ****         blink_zero();
+ 577              		.loc 1 312 0
+ 578 0244 FFF7FEFF 		bl	blink_zero
+ 579              	.LVL110:
+ 313:.\binary.c    ****         blink_one();
+ 580              		.loc 1 313 0
+ 581 0248 FFF7FEFF 		bl	blink_one
+ 582              	.LVL111:
+ 314:.\binary.c    ****         blink_zero();
+ 583              		.loc 1 314 0
+ 584 024c FFF7FEFF 		bl	blink_zero
+ 585              	.LVL112:
+ 586 0250 89E0     		b	.L52
+ 587              	.L45:
+ 315:.\binary.c    ****         blink_one();
+ 316:.\binary.c    ****         blink_one();
+ 317:.\binary.c    ****         blink_zero();
+ 318:.\binary.c    ****         blink_zero();
+ 319:.\binary.c    ****         blink_one();
+ 320:.\binary.c    ****         break;
+ 321:.\binary.c    ****        case 'Z':
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccLQsfrR.s 			page 17
+
+
+ 322:.\binary.c    ****        case 'z':
+ 323:.\binary.c    ****         blink_zero();
+ 588              		.loc 1 323 0
+ 589 0252 FFF7FEFF 		bl	blink_zero
+ 590              	.LVL113:
+ 324:.\binary.c    ****         blink_one();
+ 591              		.loc 1 324 0
+ 592 0256 FFF7FEFF 		bl	blink_one
+ 593              	.LVL114:
+ 325:.\binary.c    ****         blink_zero();
+ 594              		.loc 1 325 0
+ 595 025a FFF7FEFF 		bl	blink_zero
+ 596              	.LVL115:
+ 326:.\binary.c    ****         blink_one();
+ 597              		.loc 1 326 0
+ 598 025e FFF7FEFF 		bl	blink_one
+ 599              	.LVL116:
+ 600              	.L79:
+ 327:.\binary.c    ****         blink_one();
+ 601              		.loc 1 327 0
+ 602 0262 FFF7FEFF 		bl	blink_one
+ 603              	.LVL117:
+ 604 0266 1FE0     		b	.L74
+ 605              	.L9:
+ 328:.\binary.c    ****         blink_zero();
+ 329:.\binary.c    ****         blink_one();
+ 330:.\binary.c    ****         blink_zero();
+ 331:.\binary.c    ****         break;
+ 332:.\binary.c    ****        case '0':
+ 333:.\binary.c    ****         blink_zero();
+ 606              		.loc 1 333 0
+ 607 0268 FFF7FEFF 		bl	blink_zero
+ 608              	.LVL118:
+ 334:.\binary.c    ****         blink_zero();
+ 609              		.loc 1 334 0
+ 610 026c FFF7FEFF 		bl	blink_zero
+ 611              	.LVL119:
+ 335:.\binary.c    ****         blink_one();
+ 612              		.loc 1 335 0
+ 613 0270 FFF7FEFF 		bl	blink_one
+ 614              	.LVL120:
+ 615              	.L56:
+ 336:.\binary.c    ****         blink_one();
+ 616              		.loc 1 336 0
+ 617 0274 FFF7FEFF 		bl	blink_one
+ 618              	.LVL121:
+ 337:.\binary.c    ****         blink_zero();
+ 619              		.loc 1 337 0
+ 620 0278 FFF7FEFF 		bl	blink_zero
+ 621              	.LVL122:
+ 622 027c 66E0     		b	.L51
+ 623              	.L11:
+ 338:.\binary.c    ****         blink_zero();
+ 339:.\binary.c    ****         blink_zero();
+ 340:.\binary.c    ****         blink_zero();
+ 341:.\binary.c    ****         break;
+ 342:.\binary.c    ****        case '1':
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccLQsfrR.s 			page 18
+
+
+ 343:.\binary.c    ****         blink_zero();
+ 624              		.loc 1 343 0
+ 625 027e FFF7FEFF 		bl	blink_zero
+ 626              	.LVL123:
+ 344:.\binary.c    ****         blink_zero();
+ 627              		.loc 1 344 0
+ 628 0282 FFF7FEFF 		bl	blink_zero
+ 629              	.LVL124:
+ 345:.\binary.c    ****         blink_one();
+ 630              		.loc 1 345 0
+ 631 0286 FFF7FEFF 		bl	blink_one
+ 632              	.LVL125:
+ 633              	.L65:
+ 346:.\binary.c    ****         blink_one();
+ 634              		.loc 1 346 0
+ 635 028a FFF7FEFF 		bl	blink_one
+ 636              	.LVL126:
+ 637              	.L64:
+ 347:.\binary.c    ****         blink_zero();
+ 638              		.loc 1 347 0
+ 639 028e FFF7FEFF 		bl	blink_zero
+ 640              	.LVL127:
+ 641 0292 6CE0     		b	.L47
+ 642              	.L12:
+ 348:.\binary.c    ****         blink_zero();
+ 349:.\binary.c    ****         blink_zero();
+ 350:.\binary.c    ****         blink_one();
+ 351:.\binary.c    ****         break;
+ 352:.\binary.c    ****        case '2':
+ 353:.\binary.c    ****         blink_zero();
+ 643              		.loc 1 353 0
+ 644 0294 FFF7FEFF 		bl	blink_zero
+ 645              	.LVL128:
+ 354:.\binary.c    ****         blink_zero();
+ 646              		.loc 1 354 0
+ 647 0298 FFF7FEFF 		bl	blink_zero
+ 648              	.LVL129:
+ 355:.\binary.c    ****         blink_one();
+ 649              		.loc 1 355 0
+ 650 029c FFF7FEFF 		bl	blink_one
+ 651              	.LVL130:
+ 652              	.L75:
+ 356:.\binary.c    ****         blink_one();
+ 653              		.loc 1 356 0
+ 654 02a0 FFF7FEFF 		bl	blink_one
+ 655              	.LVL131:
+ 656              	.L73:
+ 357:.\binary.c    ****         blink_zero();
+ 657              		.loc 1 357 0
+ 658 02a4 FFF7FEFF 		bl	blink_zero
+ 659              	.LVL132:
+ 660              	.L74:
+ 358:.\binary.c    ****         blink_zero();
+ 661              		.loc 1 358 0
+ 662 02a8 FFF7FEFF 		bl	blink_zero
+ 663              	.LVL133:
+ 664 02ac 32E0     		b	.L60
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccLQsfrR.s 			page 19
+
+
+ 665              	.L13:
+ 359:.\binary.c    ****         blink_one();
+ 360:.\binary.c    ****         blink_zero();
+ 361:.\binary.c    ****         break;
+ 362:.\binary.c    ****        case '3':
+ 363:.\binary.c    ****         blink_zero();
+ 666              		.loc 1 363 0
+ 667 02ae FFF7FEFF 		bl	blink_zero
+ 668              	.LVL134:
+ 364:.\binary.c    ****         blink_zero();
+ 669              		.loc 1 364 0
+ 670 02b2 FFF7FEFF 		bl	blink_zero
+ 671              	.LVL135:
+ 365:.\binary.c    ****         blink_one();
+ 672              		.loc 1 365 0
+ 673 02b6 FFF7FEFF 		bl	blink_one
+ 674              	.LVL136:
+ 675              	.L77:
+ 366:.\binary.c    ****         blink_one();
+ 676              		.loc 1 366 0
+ 677 02ba FFF7FEFF 		bl	blink_one
+ 678              	.LVL137:
+ 679              	.L76:
+ 367:.\binary.c    ****         blink_zero();
+ 680              		.loc 1 367 0
+ 681 02be FFF7FEFF 		bl	blink_zero
+ 682              	.LVL138:
+ 683              	.L78:
+ 368:.\binary.c    ****         blink_zero();
+ 684              		.loc 1 368 0
+ 685 02c2 FFF7FEFF 		bl	blink_zero
+ 686              	.LVL139:
+ 687 02c6 34E0     		b	.L69
+ 688              	.L14:
+ 369:.\binary.c    ****         blink_one();
+ 370:.\binary.c    ****         blink_one();
+ 371:.\binary.c    ****         break;
+ 372:.\binary.c    ****        case '4':
+ 373:.\binary.c    ****         blink_zero();
+ 689              		.loc 1 373 0
+ 690 02c8 FFF7FEFF 		bl	blink_zero
+ 691              	.LVL140:
+ 374:.\binary.c    ****         blink_zero();
+ 692              		.loc 1 374 0
+ 693 02cc FFF7FEFF 		bl	blink_zero
+ 694              	.LVL141:
+ 375:.\binary.c    ****         blink_one();
+ 695              		.loc 1 375 0
+ 696 02d0 FFF7FEFF 		bl	blink_one
+ 697              	.LVL142:
+ 698              	.L57:
+ 376:.\binary.c    ****         blink_one();
+ 699              		.loc 1 376 0
+ 700 02d4 FFF7FEFF 		bl	blink_one
+ 701              	.LVL143:
+ 702              	.L58:
+ 377:.\binary.c    ****         blink_zero();
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccLQsfrR.s 			page 20
+
+
+ 703              		.loc 1 377 0
+ 704 02d8 FFF7FEFF 		bl	blink_zero
+ 705              	.LVL144:
+ 706              	.L59:
+ 378:.\binary.c    ****         blink_one();
+ 707              		.loc 1 378 0
+ 708 02dc FFF7FEFF 		bl	blink_one
+ 709              	.LVL145:
+ 710 02e0 36E0     		b	.L50
+ 711              	.L15:
+ 379:.\binary.c    ****         blink_zero();
+ 380:.\binary.c    ****         blink_zero();
+ 381:.\binary.c    ****         break;
+ 382:.\binary.c    ****        case '5':
+ 383:.\binary.c    ****         blink_zero();
+ 712              		.loc 1 383 0
+ 713 02e2 FFF7FEFF 		bl	blink_zero
+ 714              	.LVL146:
+ 384:.\binary.c    ****         blink_zero();
+ 715              		.loc 1 384 0
+ 716 02e6 FFF7FEFF 		bl	blink_zero
+ 717              	.LVL147:
+ 385:.\binary.c    ****         blink_one();
+ 718              		.loc 1 385 0
+ 719 02ea FFF7FEFF 		bl	blink_one
+ 720              	.LVL148:
+ 721              	.L66:
+ 386:.\binary.c    ****         blink_one();
+ 722              		.loc 1 386 0
+ 723 02ee FFF7FEFF 		bl	blink_one
+ 724              	.LVL149:
+ 725              	.L67:
+ 387:.\binary.c    ****         blink_zero();
+ 726              		.loc 1 387 0
+ 727 02f2 FFF7FEFF 		bl	blink_zero
+ 728              	.LVL150:
+ 729              	.L68:
+ 388:.\binary.c    ****         blink_one();
+ 730              		.loc 1 388 0
+ 731 02f6 FFF7FEFF 		bl	blink_one
+ 732              	.LVL151:
+ 733 02fa 3AE0     		b	.L49
+ 734              	.L16:
+ 389:.\binary.c    ****         blink_zero();
+ 390:.\binary.c    ****         blink_one();
+ 391:.\binary.c    ****         break;
+ 392:.\binary.c    ****        case '6':
+ 393:.\binary.c    ****         blink_zero();
+ 735              		.loc 1 393 0
+ 736 02fc FFF7FEFF 		bl	blink_zero
+ 737              	.LVL152:
+ 394:.\binary.c    ****         blink_zero();
+ 738              		.loc 1 394 0
+ 739 0300 FFF7FEFF 		bl	blink_zero
+ 740              	.LVL153:
+ 395:.\binary.c    ****         blink_one();
+ 741              		.loc 1 395 0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccLQsfrR.s 			page 21
+
+
+ 742 0304 FFF7FEFF 		bl	blink_one
+ 743              	.LVL154:
+ 744              	.L63:
+ 396:.\binary.c    ****         blink_one();
+ 745              		.loc 1 396 0
+ 746 0308 FFF7FEFF 		bl	blink_one
+ 747              	.LVL155:
+ 748              	.L61:
+ 397:.\binary.c    ****         blink_zero();
+ 749              		.loc 1 397 0
+ 750 030c FFF7FEFF 		bl	blink_zero
+ 751              	.LVL156:
+ 752              	.L62:
+ 398:.\binary.c    ****         blink_one();
+ 753              		.loc 1 398 0
+ 754 0310 FFF7FEFF 		bl	blink_one
+ 755              	.LVL157:
+ 756              	.L60:
+ 399:.\binary.c    ****         blink_one();
+ 757              		.loc 1 399 0
+ 758 0314 FFF7FEFF 		bl	blink_one
+ 759              	.LVL158:
+ 760 0318 1CE0     		b	.L48
+ 761              	.L17:
+ 400:.\binary.c    ****         blink_zero();
+ 401:.\binary.c    ****         break;
+ 402:.\binary.c    ****        case '7':
+ 403:.\binary.c    ****         blink_zero();
+ 762              		.loc 1 403 0
+ 763 031a FFF7FEFF 		bl	blink_zero
+ 764              	.LVL159:
+ 404:.\binary.c    ****         blink_zero();
+ 765              		.loc 1 404 0
+ 766 031e FFF7FEFF 		bl	blink_zero
+ 767              	.LVL160:
+ 405:.\binary.c    ****         blink_one();
+ 768              		.loc 1 405 0
+ 769 0322 FFF7FEFF 		bl	blink_one
+ 770              	.LVL161:
+ 771              	.L72:
+ 406:.\binary.c    ****         blink_one();
+ 772              		.loc 1 406 0
+ 773 0326 FFF7FEFF 		bl	blink_one
+ 774              	.LVL162:
+ 775              	.L70:
+ 407:.\binary.c    ****         blink_zero();
+ 776              		.loc 1 407 0
+ 777 032a FFF7FEFF 		bl	blink_zero
+ 778              	.LVL163:
+ 779              	.L71:
+ 408:.\binary.c    ****         blink_one();
+ 780              		.loc 1 408 0
+ 781 032e FFF7FEFF 		bl	blink_one
+ 782              	.LVL164:
+ 783              	.L69:
+ 409:.\binary.c    ****         blink_one();
+ 784              		.loc 1 409 0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccLQsfrR.s 			page 22
+
+
+ 785 0332 FFF7FEFF 		bl	blink_one
+ 786              	.LVL165:
+ 787 0336 1EE0     		b	.L46
+ 788              	.L18:
+ 410:.\binary.c    ****         blink_one();
+ 411:.\binary.c    ****         break;
+ 412:.\binary.c    ****        case '8':
+ 413:.\binary.c    ****         blink_zero();
+ 789              		.loc 1 413 0
+ 790 0338 FFF7FEFF 		bl	blink_zero
+ 791              	.LVL166:
+ 414:.\binary.c    ****         blink_zero();
+ 792              		.loc 1 414 0
+ 793 033c FFF7FEFF 		bl	blink_zero
+ 794              	.LVL167:
+ 415:.\binary.c    ****         blink_one();
+ 795              		.loc 1 415 0
+ 796 0340 FFF7FEFF 		bl	blink_one
+ 797              	.LVL168:
+ 798              	.L53:
+ 416:.\binary.c    ****         blink_one();
+ 799              		.loc 1 416 0
+ 800 0344 FFF7FEFF 		bl	blink_one
+ 801              	.LVL169:
+ 802              	.L55:
+ 417:.\binary.c    ****         blink_one();
+ 803              		.loc 1 417 0
+ 804 0348 FFF7FEFF 		bl	blink_one
+ 805              	.LVL170:
+ 806              	.L51:
+ 418:.\binary.c    ****         blink_zero();
+ 807              		.loc 1 418 0
+ 808 034c FFF7FEFF 		bl	blink_zero
+ 809              	.LVL171:
+ 810              	.L50:
+ 419:.\binary.c    ****         blink_zero();
+ 811              		.loc 1 419 0
+ 812 0350 FFF7FEFF 		bl	blink_zero
+ 813              	.LVL172:
+ 814              	.L48:
+ 420:.\binary.c    ****         blink_zero();
+ 815              		.loc 1 420 0
+ 816 0354 FFF7FEFF 		bl	blink_zero
+ 817              	.LVL173:
+ 421:.\binary.c    ****         break;
+ 818              		.loc 1 421 0
+ 819 0358 0FE0     		b	.L7
+ 820              	.L19:
+ 422:.\binary.c    ****        case '9':
+ 423:.\binary.c    ****         blink_zero();
+ 821              		.loc 1 423 0
+ 822 035a FFF7FEFF 		bl	blink_zero
+ 823              	.LVL174:
+ 424:.\binary.c    ****         blink_zero();
+ 824              		.loc 1 424 0
+ 825 035e FFF7FEFF 		bl	blink_zero
+ 826              	.LVL175:
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccLQsfrR.s 			page 23
+
+
+ 425:.\binary.c    ****         blink_one();
+ 827              		.loc 1 425 0
+ 828 0362 FFF7FEFF 		bl	blink_one
+ 829              	.LVL176:
+ 830              	.L52:
+ 426:.\binary.c    ****         blink_one();
+ 831              		.loc 1 426 0
+ 832 0366 FFF7FEFF 		bl	blink_one
+ 833              	.LVL177:
+ 834              	.L54:
+ 427:.\binary.c    ****         blink_one();
+ 835              		.loc 1 427 0
+ 836 036a FFF7FEFF 		bl	blink_one
+ 837              	.LVL178:
+ 838              	.L47:
+ 428:.\binary.c    ****         blink_zero();
+ 839              		.loc 1 428 0
+ 840 036e FFF7FEFF 		bl	blink_zero
+ 841              	.LVL179:
+ 842              	.L49:
+ 429:.\binary.c    ****         blink_zero();
+ 843              		.loc 1 429 0
+ 844 0372 FFF7FEFF 		bl	blink_zero
+ 845              	.LVL180:
+ 846              	.L46:
+ 430:.\binary.c    ****         blink_one();
+ 847              		.loc 1 430 0
+ 848 0376 FFF7FEFF 		bl	blink_one
+ 849              	.LVL181:
+ 850              	.L7:
+ 431:.\binary.c    ****         break;
+ 432:.\binary.c    ****        case '\n':
+ 433:.\binary.c    ****         /* Clear the screen on a new line */
+ 434:.\binary.c    ****         break;
+ 435:.\binary.c    ****    }
+ 436:.\binary.c    **** }
+ 851              		.loc 1 436 0
+ 852              		@ sp needed
+ 853 037a 08BD     		pop	{r3, pc}
+ 854              		.cfi_endproc
+ 855              	.LFE36:
+ 856              		.size	binary_encode, .-binary_encode
+ 857              		.section	.text.binary_message,"ax",%progbits
+ 858              		.align	1
+ 859              		.global	binary_message
+ 860              		.code	16
+ 861              		.thumb_func
+ 862              		.type	binary_message, %function
+ 863              	binary_message:
+ 864              	.LFB37:
+ 437:.\binary.c    **** 
+ 438:.\binary.c    **** void binary_message(char* message) {
+ 865              		.loc 1 438 0
+ 866              		.cfi_startproc
+ 867              	.LVL182:
+ 868 0000 38B5     		push	{r3, r4, r5, lr}
+ 869              		.cfi_def_cfa_offset 16
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccLQsfrR.s 			page 24
+
+
+ 870              		.cfi_offset 3, -16
+ 871              		.cfi_offset 4, -12
+ 872              		.cfi_offset 5, -8
+ 873              		.cfi_offset 14, -4
+ 874              		.loc 1 438 0
+ 875 0002 051C     		mov	r5, r0
+ 439:.\binary.c    ****     unsigned int i;
+ 440:.\binary.c    ****     
+ 441:.\binary.c    ****     /* Signal new message to user */
+ 442:.\binary.c    ****     new_message();
+ 876              		.loc 1 442 0
+ 877 0004 FFF7FEFF 		bl	new_message
+ 878              	.LVL183:
+ 443:.\binary.c    ****     
+ 444:.\binary.c    ****     /* Blink the encoded message */
+ 445:.\binary.c    ****     for (i=0; i < strlen(message); i++) {
+ 879              		.loc 1 445 0
+ 880 0008 0024     		mov	r4, #0
+ 881              	.LVL184:
+ 882              	.L81:
+ 883              		.loc 1 445 0 is_stmt 0 discriminator 1
+ 884 000a 281C     		mov	r0, r5
+ 885 000c FFF7FEFF 		bl	strlen
+ 886              	.LVL185:
+ 887 0010 8442     		cmp	r4, r0
+ 888 0012 04D2     		bcs	.L83
+ 446:.\binary.c    ****         binary_encode(message[i]);
+ 889              		.loc 1 446 0 is_stmt 1 discriminator 2
+ 890 0014 285D     		ldrb	r0, [r5, r4]
+ 891 0016 FFF7FEFF 		bl	binary_encode
+ 892              	.LVL186:
+ 445:.\binary.c    ****     for (i=0; i < strlen(message); i++) {
+ 893              		.loc 1 445 0 discriminator 2
+ 894 001a 0134     		add	r4, r4, #1
+ 895              	.LVL187:
+ 896 001c F5E7     		b	.L81
+ 897              	.L83:
+ 447:.\binary.c    ****     }
+ 448:.\binary.c    **** }
+ 898              		.loc 1 448 0
+ 899              		@ sp needed
+ 900              	.LVL188:
+ 901              	.LVL189:
+ 902 001e 38BD     		pop	{r3, r4, r5, pc}
+ 903              		.cfi_endproc
+ 904              	.LFE37:
+ 905              		.size	binary_message, .-binary_message
+ 906              		.text
+ 907              	.Letext0:
+ 908              		.file 2 ".\\Generated_Source\\PSoC4/cytypes.h"
+ 909              		.file 3 "c:\\program files\\cypress\\psoc creator\\3.1\\psoc creator\\import\\gnu_cs\\arm\\4.8.4\\
+ 910              		.file 4 ".\\lightlib.h"
+ 911              		.file 5 ".\\Generated_Source\\PSoC4/CyLib.h"
+ 912              		.file 6 "c:\\program files\\cypress\\psoc creator\\3.1\\psoc creator\\import\\gnu_cs\\arm\\4.8.4\\
+ 913              		.section	.debug_info,"",%progbits
+ 914              	.Ldebug_info0:
+ 915 0000 AF080000 		.4byte	0x8af
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccLQsfrR.s 			page 25
+
+
+ 916 0004 0400     		.2byte	0x4
+ 917 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 918 000a 04       		.byte	0x4
+ 919 000b 01       		.uleb128 0x1
+ 920 000c 4A000000 		.4byte	.LASF27
+ 921 0010 01       		.byte	0x1
+ 922 0011 D4010000 		.4byte	.LASF28
+ 923 0015 4A010000 		.4byte	.LASF29
+ 924 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 925 001d 00000000 		.4byte	0
+ 926 0021 00000000 		.4byte	.Ldebug_line0
+ 927 0025 02       		.uleb128 0x2
+ 928 0026 01       		.byte	0x1
+ 929 0027 06       		.byte	0x6
+ 930 0028 C8010000 		.4byte	.LASF0
+ 931 002c 02       		.uleb128 0x2
+ 932 002d 01       		.byte	0x1
+ 933 002e 08       		.byte	0x8
+ 934 002f D9000000 		.4byte	.LASF1
+ 935 0033 02       		.uleb128 0x2
+ 936 0034 02       		.byte	0x2
+ 937 0035 05       		.byte	0x5
+ 938 0036 AD010000 		.4byte	.LASF2
+ 939 003a 02       		.uleb128 0x2
+ 940 003b 02       		.byte	0x2
+ 941 003c 07       		.byte	0x7
+ 942 003d 37000000 		.4byte	.LASF3
+ 943 0041 02       		.uleb128 0x2
+ 944 0042 04       		.byte	0x4
+ 945 0043 05       		.byte	0x5
+ 946 0044 BF010000 		.4byte	.LASF4
+ 947 0048 02       		.uleb128 0x2
+ 948 0049 04       		.byte	0x4
+ 949 004a 07       		.byte	0x7
+ 950 004b E7000000 		.4byte	.LASF5
+ 951 004f 02       		.uleb128 0x2
+ 952 0050 08       		.byte	0x8
+ 953 0051 05       		.byte	0x5
+ 954 0052 9A010000 		.4byte	.LASF6
+ 955 0056 02       		.uleb128 0x2
+ 956 0057 08       		.byte	0x8
+ 957 0058 07       		.byte	0x7
+ 958 0059 33010000 		.4byte	.LASF7
+ 959 005d 03       		.uleb128 0x3
+ 960 005e 04       		.byte	0x4
+ 961 005f 05       		.byte	0x5
+ 962 0060 696E7400 		.ascii	"int\000"
+ 963 0064 02       		.uleb128 0x2
+ 964 0065 04       		.byte	0x4
+ 965 0066 07       		.byte	0x7
+ 966 0067 26010000 		.4byte	.LASF8
+ 967 006b 04       		.uleb128 0x4
+ 968 006c F9000000 		.4byte	.LASF9
+ 969 0070 02       		.byte	0x2
+ 970 0071 A1       		.byte	0xa1
+ 971 0072 2C000000 		.4byte	0x2c
+ 972 0076 04       		.uleb128 0x4
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccLQsfrR.s 			page 26
+
+
+ 973 0077 1F010000 		.4byte	.LASF10
+ 974 007b 02       		.byte	0x2
+ 975 007c A3       		.byte	0xa3
+ 976 007d 48000000 		.4byte	0x48
+ 977 0081 02       		.uleb128 0x2
+ 978 0082 04       		.byte	0x4
+ 979 0083 04       		.byte	0x4
+ 980 0084 31000000 		.4byte	.LASF11
+ 981 0088 02       		.uleb128 0x2
+ 982 0089 08       		.byte	0x8
+ 983 008a 04       		.byte	0x4
+ 984 008b 18010000 		.4byte	.LASF12
+ 985 008f 02       		.uleb128 0x2
+ 986 0090 01       		.byte	0x1
+ 987 0091 08       		.byte	0x8
+ 988 0092 A8010000 		.4byte	.LASF13
+ 989 0096 04       		.uleb128 0x4
+ 990 0097 21000000 		.4byte	.LASF14
+ 991 009b 03       		.byte	0x3
+ 992 009c D4       		.byte	0xd4
+ 993 009d 64000000 		.4byte	0x64
+ 994 00a1 02       		.uleb128 0x2
+ 995 00a2 04       		.byte	0x4
+ 996 00a3 07       		.byte	0x7
+ 997 00a4 91010000 		.4byte	.LASF15
+ 998 00a8 05       		.uleb128 0x5
+ 999 00a9 04       		.byte	0x4
+ 1000 00aa 8F000000 		.4byte	0x8f
+ 1001 00ae 05       		.uleb128 0x5
+ 1002 00af 04       		.byte	0x4
+ 1003 00b0 B4000000 		.4byte	0xb4
+ 1004 00b4 06       		.uleb128 0x6
+ 1005 00b5 8F000000 		.4byte	0x8f
+ 1006 00b9 07       		.uleb128 0x7
+ 1007 00ba 0D010000 		.4byte	.LASF16
+ 1008 00be 01       		.byte	0x1
+ 1009 00bf 11       		.byte	0x11
+ 1010 00c0 00000000 		.4byte	.LFB33
+ 1011 00c4 20000000 		.4byte	.LFE33-.LFB33
+ 1012 00c8 01       		.uleb128 0x1
+ 1013 00c9 9C       		.byte	0x9c
+ 1014 00ca 19010000 		.4byte	0x119
+ 1015 00ce 08       		.uleb128 0x8
+ 1016 00cf 0C000000 		.4byte	.LVL0
+ 1017 00d3 58080000 		.4byte	0x858
+ 1018 00d7 E1000000 		.4byte	0xe1
+ 1019 00db 09       		.uleb128 0x9
+ 1020 00dc 01       		.uleb128 0x1
+ 1021 00dd 50       		.byte	0x50
+ 1022 00de 01       		.uleb128 0x1
+ 1023 00df 31       		.byte	0x31
+ 1024 00e0 00       		.byte	0
+ 1025 00e1 08       		.uleb128 0x8
+ 1026 00e2 12000000 		.4byte	.LVL1
+ 1027 00e6 69080000 		.4byte	0x869
+ 1028 00ea F5000000 		.4byte	0xf5
+ 1029 00ee 09       		.uleb128 0x9
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccLQsfrR.s 			page 27
+
+
+ 1030 00ef 01       		.uleb128 0x1
+ 1031 00f0 50       		.byte	0x50
+ 1032 00f1 02       		.uleb128 0x2
+ 1033 00f2 74       		.byte	0x74
+ 1034 00f3 00       		.sleb128 0
+ 1035 00f4 00       		.byte	0
+ 1036 00f5 08       		.uleb128 0x8
+ 1037 00f6 18000000 		.4byte	.LVL2
+ 1038 00fa 7A080000 		.4byte	0x87a
+ 1039 00fe 08010000 		.4byte	0x108
+ 1040 0102 09       		.uleb128 0x9
+ 1041 0103 01       		.uleb128 0x1
+ 1042 0104 50       		.byte	0x50
+ 1043 0105 01       		.uleb128 0x1
+ 1044 0106 31       		.byte	0x31
+ 1045 0107 00       		.byte	0
+ 1046 0108 0A       		.uleb128 0xa
+ 1047 0109 1E000000 		.4byte	.LVL3
+ 1048 010d 69080000 		.4byte	0x869
+ 1049 0111 09       		.uleb128 0x9
+ 1050 0112 01       		.uleb128 0x1
+ 1051 0113 50       		.byte	0x50
+ 1052 0114 02       		.uleb128 0x2
+ 1053 0115 74       		.byte	0x74
+ 1054 0116 00       		.sleb128 0
+ 1055 0117 00       		.byte	0
+ 1056 0118 00       		.byte	0
+ 1057 0119 07       		.uleb128 0x7
+ 1058 011a E7010000 		.4byte	.LASF17
+ 1059 011e 01       		.byte	0x1
+ 1060 011f 18       		.byte	0x18
+ 1061 0120 00000000 		.4byte	.LFB34
+ 1062 0124 20000000 		.4byte	.LFE34-.LFB34
+ 1063 0128 01       		.uleb128 0x1
+ 1064 0129 9C       		.byte	0x9c
+ 1065 012a 79010000 		.4byte	0x179
+ 1066 012e 08       		.uleb128 0x8
+ 1067 012f 0C000000 		.4byte	.LVL4
+ 1068 0133 58080000 		.4byte	0x858
+ 1069 0137 41010000 		.4byte	0x141
+ 1070 013b 09       		.uleb128 0x9
+ 1071 013c 01       		.uleb128 0x1
+ 1072 013d 50       		.byte	0x50
+ 1073 013e 01       		.uleb128 0x1
+ 1074 013f 32       		.byte	0x32
+ 1075 0140 00       		.byte	0
+ 1076 0141 08       		.uleb128 0x8
+ 1077 0142 12000000 		.4byte	.LVL5
+ 1078 0146 69080000 		.4byte	0x869
+ 1079 014a 55010000 		.4byte	0x155
+ 1080 014e 09       		.uleb128 0x9
+ 1081 014f 01       		.uleb128 0x1
+ 1082 0150 50       		.byte	0x50
+ 1083 0151 02       		.uleb128 0x2
+ 1084 0152 74       		.byte	0x74
+ 1085 0153 00       		.sleb128 0
+ 1086 0154 00       		.byte	0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccLQsfrR.s 			page 28
+
+
+ 1087 0155 08       		.uleb128 0x8
+ 1088 0156 18000000 		.4byte	.LVL6
+ 1089 015a 7A080000 		.4byte	0x87a
+ 1090 015e 68010000 		.4byte	0x168
+ 1091 0162 09       		.uleb128 0x9
+ 1092 0163 01       		.uleb128 0x1
+ 1093 0164 50       		.byte	0x50
+ 1094 0165 01       		.uleb128 0x1
+ 1095 0166 32       		.byte	0x32
+ 1096 0167 00       		.byte	0
+ 1097 0168 0A       		.uleb128 0xa
+ 1098 0169 1E000000 		.4byte	.LVL7
+ 1099 016d 69080000 		.4byte	0x869
+ 1100 0171 09       		.uleb128 0x9
+ 1101 0172 01       		.uleb128 0x1
+ 1102 0173 50       		.byte	0x50
+ 1103 0174 02       		.uleb128 0x2
+ 1104 0175 74       		.byte	0x74
+ 1105 0176 00       		.sleb128 0
+ 1106 0177 00       		.byte	0
+ 1107 0178 00       		.byte	0
+ 1108 0179 07       		.uleb128 0x7
+ 1109 017a CD000000 		.4byte	.LASF18
+ 1110 017e 01       		.byte	0x1
+ 1111 017f 1F       		.byte	0x1f
+ 1112 0180 00000000 		.4byte	.LFB35
+ 1113 0184 34000000 		.4byte	.LFE35-.LFB35
+ 1114 0188 01       		.uleb128 0x1
+ 1115 0189 9C       		.byte	0x9c
+ 1116 018a 16020000 		.4byte	0x216
+ 1117 018e 0B       		.uleb128 0xb
+ 1118 018f 6900     		.ascii	"i\000"
+ 1119 0191 01       		.byte	0x1
+ 1120 0192 20       		.byte	0x20
+ 1121 0193 64000000 		.4byte	0x64
+ 1122 0197 00000000 		.4byte	.LLST0
+ 1123 019b 08       		.uleb128 0x8
+ 1124 019c 0A000000 		.4byte	.LVL8
+ 1125 01a0 8B080000 		.4byte	0x88b
+ 1126 01a4 B3010000 		.4byte	0x1b3
+ 1127 01a8 09       		.uleb128 0x9
+ 1128 01a9 01       		.uleb128 0x1
+ 1129 01aa 51       		.byte	0x51
+ 1130 01ab 01       		.uleb128 0x1
+ 1131 01ac 37       		.byte	0x37
+ 1132 01ad 09       		.uleb128 0x9
+ 1133 01ae 01       		.uleb128 0x1
+ 1134 01af 50       		.byte	0x50
+ 1135 01b0 01       		.uleb128 0x1
+ 1136 01b1 33       		.byte	0x33
+ 1137 01b2 00       		.byte	0
+ 1138 01b3 08       		.uleb128 0x8
+ 1139 01b4 12000000 		.4byte	.LVL10
+ 1140 01b8 58080000 		.4byte	0x858
+ 1141 01bc C6010000 		.4byte	0x1c6
+ 1142 01c0 09       		.uleb128 0x9
+ 1143 01c1 01       		.uleb128 0x1
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccLQsfrR.s 			page 29
+
+
+ 1144 01c2 50       		.byte	0x50
+ 1145 01c3 01       		.uleb128 0x1
+ 1146 01c4 33       		.byte	0x33
+ 1147 01c5 00       		.byte	0
+ 1148 01c6 08       		.uleb128 0x8
+ 1149 01c7 18000000 		.4byte	.LVL11
+ 1150 01cb 69080000 		.4byte	0x869
+ 1151 01cf DA010000 		.4byte	0x1da
+ 1152 01d3 09       		.uleb128 0x9
+ 1153 01d4 01       		.uleb128 0x1
+ 1154 01d5 50       		.byte	0x50
+ 1155 01d6 02       		.uleb128 0x2
+ 1156 01d7 08       		.byte	0x8
+ 1157 01d8 FA       		.byte	0xfa
+ 1158 01d9 00       		.byte	0
+ 1159 01da 08       		.uleb128 0x8
+ 1160 01db 1E000000 		.4byte	.LVL12
+ 1161 01df 7A080000 		.4byte	0x87a
+ 1162 01e3 ED010000 		.4byte	0x1ed
+ 1163 01e7 09       		.uleb128 0x9
+ 1164 01e8 01       		.uleb128 0x1
+ 1165 01e9 50       		.byte	0x50
+ 1166 01ea 01       		.uleb128 0x1
+ 1167 01eb 33       		.byte	0x33
+ 1168 01ec 00       		.byte	0
+ 1169 01ed 08       		.uleb128 0x8
+ 1170 01ee 26000000 		.4byte	.LVL14
+ 1171 01f2 69080000 		.4byte	0x869
+ 1172 01f6 01020000 		.4byte	0x201
+ 1173 01fa 09       		.uleb128 0x9
+ 1174 01fb 01       		.uleb128 0x1
+ 1175 01fc 50       		.byte	0x50
+ 1176 01fd 02       		.uleb128 0x2
+ 1177 01fe 08       		.byte	0x8
+ 1178 01ff FA       		.byte	0xfa
+ 1179 0200 00       		.byte	0
+ 1180 0201 0A       		.uleb128 0xa
+ 1181 0202 32000000 		.4byte	.LVL15
+ 1182 0206 8B080000 		.4byte	0x88b
+ 1183 020a 09       		.uleb128 0x9
+ 1184 020b 01       		.uleb128 0x1
+ 1185 020c 51       		.byte	0x51
+ 1186 020d 01       		.uleb128 0x1
+ 1187 020e 32       		.byte	0x32
+ 1188 020f 09       		.uleb128 0x9
+ 1189 0210 01       		.uleb128 0x1
+ 1190 0211 50       		.byte	0x50
+ 1191 0212 01       		.uleb128 0x1
+ 1192 0213 33       		.byte	0x33
+ 1193 0214 00       		.byte	0
+ 1194 0215 00       		.byte	0
+ 1195 0216 07       		.uleb128 0x7
+ 1196 0217 FF000000 		.4byte	.LASF19
+ 1197 021b 01       		.byte	0x1
+ 1198 021c 2B       		.byte	0x2b
+ 1199 021d 00000000 		.4byte	.LFB36
+ 1200 0221 7C030000 		.4byte	.LFE36-.LFB36
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccLQsfrR.s 			page 30
+
+
+ 1201 0225 01       		.uleb128 0x1
+ 1202 0226 9C       		.byte	0x9c
+ 1203 0227 FD070000 		.4byte	0x7fd
+ 1204 022b 0C       		.uleb128 0xc
+ 1205 022c 6300     		.ascii	"c\000"
+ 1206 022e 01       		.byte	0x1
+ 1207 022f 2B       		.byte	0x2b
+ 1208 0230 8F000000 		.4byte	0x8f
+ 1209 0234 32000000 		.4byte	.LLST1
+ 1210 0238 0D       		.uleb128 0xd
+ 1211 0239 A8000000 		.4byte	.LVL18
+ 1212 023d B9000000 		.4byte	0xb9
+ 1213 0241 0D       		.uleb128 0xd
+ 1214 0242 AC000000 		.4byte	.LVL19
+ 1215 0246 19010000 		.4byte	0x119
+ 1216 024a 0D       		.uleb128 0xd
+ 1217 024b B0000000 		.4byte	.LVL20
+ 1218 024f B9000000 		.4byte	0xb9
+ 1219 0253 0D       		.uleb128 0xd
+ 1220 0254 B4000000 		.4byte	.LVL21
+ 1221 0258 B9000000 		.4byte	0xb9
+ 1222 025c 0D       		.uleb128 0xd
+ 1223 025d BA000000 		.4byte	.LVL22
+ 1224 0261 B9000000 		.4byte	0xb9
+ 1225 0265 0D       		.uleb128 0xd
+ 1226 0266 BE000000 		.4byte	.LVL23
+ 1227 026a 19010000 		.4byte	0x119
+ 1228 026e 0D       		.uleb128 0xd
+ 1229 026f C2000000 		.4byte	.LVL24
+ 1230 0273 B9000000 		.4byte	0xb9
+ 1231 0277 0D       		.uleb128 0xd
+ 1232 0278 C6000000 		.4byte	.LVL25
+ 1233 027c B9000000 		.4byte	0xb9
+ 1234 0280 0D       		.uleb128 0xd
+ 1235 0281 CC000000 		.4byte	.LVL26
+ 1236 0285 B9000000 		.4byte	0xb9
+ 1237 0289 0D       		.uleb128 0xd
+ 1238 028a D0000000 		.4byte	.LVL27
+ 1239 028e 19010000 		.4byte	0x119
+ 1240 0292 0D       		.uleb128 0xd
+ 1241 0293 D4000000 		.4byte	.LVL28
+ 1242 0297 B9000000 		.4byte	0xb9
+ 1243 029b 0D       		.uleb128 0xd
+ 1244 029c D8000000 		.4byte	.LVL29
+ 1245 02a0 B9000000 		.4byte	0xb9
+ 1246 02a4 0D       		.uleb128 0xd
+ 1247 02a5 DE000000 		.4byte	.LVL30
+ 1248 02a9 B9000000 		.4byte	0xb9
+ 1249 02ad 0D       		.uleb128 0xd
+ 1250 02ae E2000000 		.4byte	.LVL31
+ 1251 02b2 19010000 		.4byte	0x119
+ 1252 02b6 0D       		.uleb128 0xd
+ 1253 02b7 E6000000 		.4byte	.LVL32
+ 1254 02bb B9000000 		.4byte	0xb9
+ 1255 02bf 0D       		.uleb128 0xd
+ 1256 02c0 EA000000 		.4byte	.LVL33
+ 1257 02c4 B9000000 		.4byte	0xb9
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccLQsfrR.s 			page 31
+
+
+ 1258 02c8 0D       		.uleb128 0xd
+ 1259 02c9 F0000000 		.4byte	.LVL34
+ 1260 02cd B9000000 		.4byte	0xb9
+ 1261 02d1 0D       		.uleb128 0xd
+ 1262 02d2 F4000000 		.4byte	.LVL35
+ 1263 02d6 19010000 		.4byte	0x119
+ 1264 02da 0D       		.uleb128 0xd
+ 1265 02db F8000000 		.4byte	.LVL36
+ 1266 02df B9000000 		.4byte	0xb9
+ 1267 02e3 0D       		.uleb128 0xd
+ 1268 02e4 FC000000 		.4byte	.LVL37
+ 1269 02e8 B9000000 		.4byte	0xb9
+ 1270 02ec 0D       		.uleb128 0xd
+ 1271 02ed 02010000 		.4byte	.LVL38
+ 1272 02f1 B9000000 		.4byte	0xb9
+ 1273 02f5 0D       		.uleb128 0xd
+ 1274 02f6 06010000 		.4byte	.LVL39
+ 1275 02fa 19010000 		.4byte	0x119
+ 1276 02fe 0D       		.uleb128 0xd
+ 1277 02ff 0A010000 		.4byte	.LVL40
+ 1278 0303 B9000000 		.4byte	0xb9
+ 1279 0307 0D       		.uleb128 0xd
+ 1280 0308 0E010000 		.4byte	.LVL41
+ 1281 030c B9000000 		.4byte	0xb9
+ 1282 0310 0D       		.uleb128 0xd
+ 1283 0311 14010000 		.4byte	.LVL42
+ 1284 0315 B9000000 		.4byte	0xb9
+ 1285 0319 0D       		.uleb128 0xd
+ 1286 031a 18010000 		.4byte	.LVL43
+ 1287 031e 19010000 		.4byte	0x119
+ 1288 0322 0D       		.uleb128 0xd
+ 1289 0323 1C010000 		.4byte	.LVL44
+ 1290 0327 B9000000 		.4byte	0xb9
+ 1291 032b 0D       		.uleb128 0xd
+ 1292 032c 20010000 		.4byte	.LVL45
+ 1293 0330 B9000000 		.4byte	0xb9
+ 1294 0334 0D       		.uleb128 0xd
+ 1295 0335 26010000 		.4byte	.LVL46
+ 1296 0339 B9000000 		.4byte	0xb9
+ 1297 033d 0D       		.uleb128 0xd
+ 1298 033e 2A010000 		.4byte	.LVL47
+ 1299 0342 19010000 		.4byte	0x119
+ 1300 0346 0D       		.uleb128 0xd
+ 1301 0347 2E010000 		.4byte	.LVL48
+ 1302 034b B9000000 		.4byte	0xb9
+ 1303 034f 0D       		.uleb128 0xd
+ 1304 0350 32010000 		.4byte	.LVL49
+ 1305 0354 B9000000 		.4byte	0xb9
+ 1306 0358 0D       		.uleb128 0xd
+ 1307 0359 38010000 		.4byte	.LVL50
+ 1308 035d B9000000 		.4byte	0xb9
+ 1309 0361 0D       		.uleb128 0xd
+ 1310 0362 3C010000 		.4byte	.LVL51
+ 1311 0366 19010000 		.4byte	0x119
+ 1312 036a 0D       		.uleb128 0xd
+ 1313 036b 40010000 		.4byte	.LVL52
+ 1314 036f B9000000 		.4byte	0xb9
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccLQsfrR.s 			page 32
+
+
+ 1315 0373 0D       		.uleb128 0xd
+ 1316 0374 44010000 		.4byte	.LVL53
+ 1317 0378 B9000000 		.4byte	0xb9
+ 1318 037c 0D       		.uleb128 0xd
+ 1319 037d 4A010000 		.4byte	.LVL54
+ 1320 0381 B9000000 		.4byte	0xb9
+ 1321 0385 0D       		.uleb128 0xd
+ 1322 0386 4E010000 		.4byte	.LVL55
+ 1323 038a 19010000 		.4byte	0x119
+ 1324 038e 0D       		.uleb128 0xd
+ 1325 038f 52010000 		.4byte	.LVL56
+ 1326 0393 B9000000 		.4byte	0xb9
+ 1327 0397 0D       		.uleb128 0xd
+ 1328 0398 56010000 		.4byte	.LVL57
+ 1329 039c B9000000 		.4byte	0xb9
+ 1330 03a0 0D       		.uleb128 0xd
+ 1331 03a1 5C010000 		.4byte	.LVL58
+ 1332 03a5 B9000000 		.4byte	0xb9
+ 1333 03a9 0D       		.uleb128 0xd
+ 1334 03aa 60010000 		.4byte	.LVL59
+ 1335 03ae 19010000 		.4byte	0x119
+ 1336 03b2 0D       		.uleb128 0xd
+ 1337 03b3 64010000 		.4byte	.LVL60
+ 1338 03b7 B9000000 		.4byte	0xb9
+ 1339 03bb 0D       		.uleb128 0xd
+ 1340 03bc 68010000 		.4byte	.LVL61
+ 1341 03c0 B9000000 		.4byte	0xb9
+ 1342 03c4 0D       		.uleb128 0xd
+ 1343 03c5 6C010000 		.4byte	.LVL62
+ 1344 03c9 19010000 		.4byte	0x119
+ 1345 03cd 0D       		.uleb128 0xd
+ 1346 03ce 72010000 		.4byte	.LVL63
+ 1347 03d2 B9000000 		.4byte	0xb9
+ 1348 03d6 0D       		.uleb128 0xd
+ 1349 03d7 76010000 		.4byte	.LVL64
+ 1350 03db 19010000 		.4byte	0x119
+ 1351 03df 0D       		.uleb128 0xd
+ 1352 03e0 7A010000 		.4byte	.LVL65
+ 1353 03e4 B9000000 		.4byte	0xb9
+ 1354 03e8 0D       		.uleb128 0xd
+ 1355 03e9 7E010000 		.4byte	.LVL66
+ 1356 03ed B9000000 		.4byte	0xb9
+ 1357 03f1 0D       		.uleb128 0xd
+ 1358 03f2 82010000 		.4byte	.LVL67
+ 1359 03f6 19010000 		.4byte	0x119
+ 1360 03fa 0D       		.uleb128 0xd
+ 1361 03fb 88010000 		.4byte	.LVL68
+ 1362 03ff B9000000 		.4byte	0xb9
+ 1363 0403 0D       		.uleb128 0xd
+ 1364 0404 8C010000 		.4byte	.LVL69
+ 1365 0408 19010000 		.4byte	0x119
+ 1366 040c 0D       		.uleb128 0xd
+ 1367 040d 90010000 		.4byte	.LVL70
+ 1368 0411 B9000000 		.4byte	0xb9
+ 1369 0415 0D       		.uleb128 0xd
+ 1370 0416 94010000 		.4byte	.LVL71
+ 1371 041a B9000000 		.4byte	0xb9
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccLQsfrR.s 			page 33
+
+
+ 1372 041e 0D       		.uleb128 0xd
+ 1373 041f 98010000 		.4byte	.LVL72
+ 1374 0423 19010000 		.4byte	0x119
+ 1375 0427 0D       		.uleb128 0xd
+ 1376 0428 9E010000 		.4byte	.LVL73
+ 1377 042c B9000000 		.4byte	0xb9
+ 1378 0430 0D       		.uleb128 0xd
+ 1379 0431 A2010000 		.4byte	.LVL74
+ 1380 0435 19010000 		.4byte	0x119
+ 1381 0439 0D       		.uleb128 0xd
+ 1382 043a A6010000 		.4byte	.LVL75
+ 1383 043e B9000000 		.4byte	0xb9
+ 1384 0442 0D       		.uleb128 0xd
+ 1385 0443 AA010000 		.4byte	.LVL76
+ 1386 0447 B9000000 		.4byte	0xb9
+ 1387 044b 0D       		.uleb128 0xd
+ 1388 044c AE010000 		.4byte	.LVL77
+ 1389 0450 19010000 		.4byte	0x119
+ 1390 0454 0D       		.uleb128 0xd
+ 1391 0455 B4010000 		.4byte	.LVL78
+ 1392 0459 B9000000 		.4byte	0xb9
+ 1393 045d 0D       		.uleb128 0xd
+ 1394 045e B8010000 		.4byte	.LVL79
+ 1395 0462 19010000 		.4byte	0x119
+ 1396 0466 0D       		.uleb128 0xd
+ 1397 0467 BC010000 		.4byte	.LVL80
+ 1398 046b B9000000 		.4byte	0xb9
+ 1399 046f 0D       		.uleb128 0xd
+ 1400 0470 C0010000 		.4byte	.LVL81
+ 1401 0474 B9000000 		.4byte	0xb9
+ 1402 0478 0D       		.uleb128 0xd
+ 1403 0479 C4010000 		.4byte	.LVL82
+ 1404 047d 19010000 		.4byte	0x119
+ 1405 0481 0D       		.uleb128 0xd
+ 1406 0482 CA010000 		.4byte	.LVL83
+ 1407 0486 B9000000 		.4byte	0xb9
+ 1408 048a 0D       		.uleb128 0xd
+ 1409 048b CE010000 		.4byte	.LVL84
+ 1410 048f 19010000 		.4byte	0x119
+ 1411 0493 0D       		.uleb128 0xd
+ 1412 0494 D2010000 		.4byte	.LVL85
+ 1413 0498 B9000000 		.4byte	0xb9
+ 1414 049c 0D       		.uleb128 0xd
+ 1415 049d D8010000 		.4byte	.LVL86
+ 1416 04a1 B9000000 		.4byte	0xb9
+ 1417 04a5 0D       		.uleb128 0xd
+ 1418 04a6 DC010000 		.4byte	.LVL87
+ 1419 04aa 19010000 		.4byte	0x119
+ 1420 04ae 0D       		.uleb128 0xd
+ 1421 04af E0010000 		.4byte	.LVL88
+ 1422 04b3 B9000000 		.4byte	0xb9
+ 1423 04b7 0D       		.uleb128 0xd
+ 1424 04b8 E6010000 		.4byte	.LVL89
+ 1425 04bc B9000000 		.4byte	0xb9
+ 1426 04c0 0D       		.uleb128 0xd
+ 1427 04c1 EA010000 		.4byte	.LVL90
+ 1428 04c5 19010000 		.4byte	0x119
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccLQsfrR.s 			page 34
+
+
+ 1429 04c9 0D       		.uleb128 0xd
+ 1430 04ca EE010000 		.4byte	.LVL91
+ 1431 04ce B9000000 		.4byte	0xb9
+ 1432 04d2 0D       		.uleb128 0xd
+ 1433 04d3 F4010000 		.4byte	.LVL92
+ 1434 04d7 B9000000 		.4byte	0xb9
+ 1435 04db 0D       		.uleb128 0xd
+ 1436 04dc F8010000 		.4byte	.LVL93
+ 1437 04e0 19010000 		.4byte	0x119
+ 1438 04e4 0D       		.uleb128 0xd
+ 1439 04e5 FC010000 		.4byte	.LVL94
+ 1440 04e9 B9000000 		.4byte	0xb9
+ 1441 04ed 0D       		.uleb128 0xd
+ 1442 04ee 02020000 		.4byte	.LVL95
+ 1443 04f2 B9000000 		.4byte	0xb9
+ 1444 04f6 0D       		.uleb128 0xd
+ 1445 04f7 06020000 		.4byte	.LVL96
+ 1446 04fb 19010000 		.4byte	0x119
+ 1447 04ff 0D       		.uleb128 0xd
+ 1448 0500 0A020000 		.4byte	.LVL97
+ 1449 0504 B9000000 		.4byte	0xb9
+ 1450 0508 0D       		.uleb128 0xd
+ 1451 0509 10020000 		.4byte	.LVL98
+ 1452 050d B9000000 		.4byte	0xb9
+ 1453 0511 0D       		.uleb128 0xd
+ 1454 0512 14020000 		.4byte	.LVL99
+ 1455 0516 19010000 		.4byte	0x119
+ 1456 051a 0D       		.uleb128 0xd
+ 1457 051b 18020000 		.4byte	.LVL100
+ 1458 051f B9000000 		.4byte	0xb9
+ 1459 0523 0D       		.uleb128 0xd
+ 1460 0524 1E020000 		.4byte	.LVL101
+ 1461 0528 B9000000 		.4byte	0xb9
+ 1462 052c 0D       		.uleb128 0xd
+ 1463 052d 22020000 		.4byte	.LVL102
+ 1464 0531 19010000 		.4byte	0x119
+ 1465 0535 0D       		.uleb128 0xd
+ 1466 0536 26020000 		.4byte	.LVL103
+ 1467 053a B9000000 		.4byte	0xb9
+ 1468 053e 0D       		.uleb128 0xd
+ 1469 053f 2C020000 		.4byte	.LVL104
+ 1470 0543 B9000000 		.4byte	0xb9
+ 1471 0547 0D       		.uleb128 0xd
+ 1472 0548 30020000 		.4byte	.LVL105
+ 1473 054c 19010000 		.4byte	0x119
+ 1474 0550 0D       		.uleb128 0xd
+ 1475 0551 34020000 		.4byte	.LVL106
+ 1476 0555 B9000000 		.4byte	0xb9
+ 1477 0559 0D       		.uleb128 0xd
+ 1478 055a 3A020000 		.4byte	.LVL107
+ 1479 055e B9000000 		.4byte	0xb9
+ 1480 0562 0D       		.uleb128 0xd
+ 1481 0563 3E020000 		.4byte	.LVL108
+ 1482 0567 19010000 		.4byte	0x119
+ 1483 056b 0D       		.uleb128 0xd
+ 1484 056c 42020000 		.4byte	.LVL109
+ 1485 0570 B9000000 		.4byte	0xb9
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccLQsfrR.s 			page 35
+
+
+ 1486 0574 0D       		.uleb128 0xd
+ 1487 0575 48020000 		.4byte	.LVL110
+ 1488 0579 B9000000 		.4byte	0xb9
+ 1489 057d 0D       		.uleb128 0xd
+ 1490 057e 4C020000 		.4byte	.LVL111
+ 1491 0582 19010000 		.4byte	0x119
+ 1492 0586 0D       		.uleb128 0xd
+ 1493 0587 50020000 		.4byte	.LVL112
+ 1494 058b B9000000 		.4byte	0xb9
+ 1495 058f 0D       		.uleb128 0xd
+ 1496 0590 56020000 		.4byte	.LVL113
+ 1497 0594 B9000000 		.4byte	0xb9
+ 1498 0598 0D       		.uleb128 0xd
+ 1499 0599 5A020000 		.4byte	.LVL114
+ 1500 059d 19010000 		.4byte	0x119
+ 1501 05a1 0D       		.uleb128 0xd
+ 1502 05a2 5E020000 		.4byte	.LVL115
+ 1503 05a6 B9000000 		.4byte	0xb9
+ 1504 05aa 0D       		.uleb128 0xd
+ 1505 05ab 62020000 		.4byte	.LVL116
+ 1506 05af 19010000 		.4byte	0x119
+ 1507 05b3 0D       		.uleb128 0xd
+ 1508 05b4 66020000 		.4byte	.LVL117
+ 1509 05b8 19010000 		.4byte	0x119
+ 1510 05bc 0D       		.uleb128 0xd
+ 1511 05bd 6C020000 		.4byte	.LVL118
+ 1512 05c1 B9000000 		.4byte	0xb9
+ 1513 05c5 0D       		.uleb128 0xd
+ 1514 05c6 70020000 		.4byte	.LVL119
+ 1515 05ca B9000000 		.4byte	0xb9
+ 1516 05ce 0D       		.uleb128 0xd
+ 1517 05cf 74020000 		.4byte	.LVL120
+ 1518 05d3 19010000 		.4byte	0x119
+ 1519 05d7 0D       		.uleb128 0xd
+ 1520 05d8 78020000 		.4byte	.LVL121
+ 1521 05dc 19010000 		.4byte	0x119
+ 1522 05e0 0D       		.uleb128 0xd
+ 1523 05e1 7C020000 		.4byte	.LVL122
+ 1524 05e5 B9000000 		.4byte	0xb9
+ 1525 05e9 0D       		.uleb128 0xd
+ 1526 05ea 82020000 		.4byte	.LVL123
+ 1527 05ee B9000000 		.4byte	0xb9
+ 1528 05f2 0D       		.uleb128 0xd
+ 1529 05f3 86020000 		.4byte	.LVL124
+ 1530 05f7 B9000000 		.4byte	0xb9
+ 1531 05fb 0D       		.uleb128 0xd
+ 1532 05fc 8A020000 		.4byte	.LVL125
+ 1533 0600 19010000 		.4byte	0x119
+ 1534 0604 0D       		.uleb128 0xd
+ 1535 0605 8E020000 		.4byte	.LVL126
+ 1536 0609 19010000 		.4byte	0x119
+ 1537 060d 0D       		.uleb128 0xd
+ 1538 060e 92020000 		.4byte	.LVL127
+ 1539 0612 B9000000 		.4byte	0xb9
+ 1540 0616 0D       		.uleb128 0xd
+ 1541 0617 98020000 		.4byte	.LVL128
+ 1542 061b B9000000 		.4byte	0xb9
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccLQsfrR.s 			page 36
+
+
+ 1543 061f 0D       		.uleb128 0xd
+ 1544 0620 9C020000 		.4byte	.LVL129
+ 1545 0624 B9000000 		.4byte	0xb9
+ 1546 0628 0D       		.uleb128 0xd
+ 1547 0629 A0020000 		.4byte	.LVL130
+ 1548 062d 19010000 		.4byte	0x119
+ 1549 0631 0D       		.uleb128 0xd
+ 1550 0632 A4020000 		.4byte	.LVL131
+ 1551 0636 19010000 		.4byte	0x119
+ 1552 063a 0D       		.uleb128 0xd
+ 1553 063b A8020000 		.4byte	.LVL132
+ 1554 063f B9000000 		.4byte	0xb9
+ 1555 0643 0D       		.uleb128 0xd
+ 1556 0644 AC020000 		.4byte	.LVL133
+ 1557 0648 B9000000 		.4byte	0xb9
+ 1558 064c 0D       		.uleb128 0xd
+ 1559 064d B2020000 		.4byte	.LVL134
+ 1560 0651 B9000000 		.4byte	0xb9
+ 1561 0655 0D       		.uleb128 0xd
+ 1562 0656 B6020000 		.4byte	.LVL135
+ 1563 065a B9000000 		.4byte	0xb9
+ 1564 065e 0D       		.uleb128 0xd
+ 1565 065f BA020000 		.4byte	.LVL136
+ 1566 0663 19010000 		.4byte	0x119
+ 1567 0667 0D       		.uleb128 0xd
+ 1568 0668 BE020000 		.4byte	.LVL137
+ 1569 066c 19010000 		.4byte	0x119
+ 1570 0670 0D       		.uleb128 0xd
+ 1571 0671 C2020000 		.4byte	.LVL138
+ 1572 0675 B9000000 		.4byte	0xb9
+ 1573 0679 0D       		.uleb128 0xd
+ 1574 067a C6020000 		.4byte	.LVL139
+ 1575 067e B9000000 		.4byte	0xb9
+ 1576 0682 0D       		.uleb128 0xd
+ 1577 0683 CC020000 		.4byte	.LVL140
+ 1578 0687 B9000000 		.4byte	0xb9
+ 1579 068b 0D       		.uleb128 0xd
+ 1580 068c D0020000 		.4byte	.LVL141
+ 1581 0690 B9000000 		.4byte	0xb9
+ 1582 0694 0D       		.uleb128 0xd
+ 1583 0695 D4020000 		.4byte	.LVL142
+ 1584 0699 19010000 		.4byte	0x119
+ 1585 069d 0D       		.uleb128 0xd
+ 1586 069e D8020000 		.4byte	.LVL143
+ 1587 06a2 19010000 		.4byte	0x119
+ 1588 06a6 0D       		.uleb128 0xd
+ 1589 06a7 DC020000 		.4byte	.LVL144
+ 1590 06ab B9000000 		.4byte	0xb9
+ 1591 06af 0D       		.uleb128 0xd
+ 1592 06b0 E0020000 		.4byte	.LVL145
+ 1593 06b4 19010000 		.4byte	0x119
+ 1594 06b8 0D       		.uleb128 0xd
+ 1595 06b9 E6020000 		.4byte	.LVL146
+ 1596 06bd B9000000 		.4byte	0xb9
+ 1597 06c1 0D       		.uleb128 0xd
+ 1598 06c2 EA020000 		.4byte	.LVL147
+ 1599 06c6 B9000000 		.4byte	0xb9
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccLQsfrR.s 			page 37
+
+
+ 1600 06ca 0D       		.uleb128 0xd
+ 1601 06cb EE020000 		.4byte	.LVL148
+ 1602 06cf 19010000 		.4byte	0x119
+ 1603 06d3 0D       		.uleb128 0xd
+ 1604 06d4 F2020000 		.4byte	.LVL149
+ 1605 06d8 19010000 		.4byte	0x119
+ 1606 06dc 0D       		.uleb128 0xd
+ 1607 06dd F6020000 		.4byte	.LVL150
+ 1608 06e1 B9000000 		.4byte	0xb9
+ 1609 06e5 0D       		.uleb128 0xd
+ 1610 06e6 FA020000 		.4byte	.LVL151
+ 1611 06ea 19010000 		.4byte	0x119
+ 1612 06ee 0D       		.uleb128 0xd
+ 1613 06ef 00030000 		.4byte	.LVL152
+ 1614 06f3 B9000000 		.4byte	0xb9
+ 1615 06f7 0D       		.uleb128 0xd
+ 1616 06f8 04030000 		.4byte	.LVL153
+ 1617 06fc B9000000 		.4byte	0xb9
+ 1618 0700 0D       		.uleb128 0xd
+ 1619 0701 08030000 		.4byte	.LVL154
+ 1620 0705 19010000 		.4byte	0x119
+ 1621 0709 0D       		.uleb128 0xd
+ 1622 070a 0C030000 		.4byte	.LVL155
+ 1623 070e 19010000 		.4byte	0x119
+ 1624 0712 0D       		.uleb128 0xd
+ 1625 0713 10030000 		.4byte	.LVL156
+ 1626 0717 B9000000 		.4byte	0xb9
+ 1627 071b 0D       		.uleb128 0xd
+ 1628 071c 14030000 		.4byte	.LVL157
+ 1629 0720 19010000 		.4byte	0x119
+ 1630 0724 0D       		.uleb128 0xd
+ 1631 0725 18030000 		.4byte	.LVL158
+ 1632 0729 19010000 		.4byte	0x119
+ 1633 072d 0D       		.uleb128 0xd
+ 1634 072e 1E030000 		.4byte	.LVL159
+ 1635 0732 B9000000 		.4byte	0xb9
+ 1636 0736 0D       		.uleb128 0xd
+ 1637 0737 22030000 		.4byte	.LVL160
+ 1638 073b B9000000 		.4byte	0xb9
+ 1639 073f 0D       		.uleb128 0xd
+ 1640 0740 26030000 		.4byte	.LVL161
+ 1641 0744 19010000 		.4byte	0x119
+ 1642 0748 0D       		.uleb128 0xd
+ 1643 0749 2A030000 		.4byte	.LVL162
+ 1644 074d 19010000 		.4byte	0x119
+ 1645 0751 0D       		.uleb128 0xd
+ 1646 0752 2E030000 		.4byte	.LVL163
+ 1647 0756 B9000000 		.4byte	0xb9
+ 1648 075a 0D       		.uleb128 0xd
+ 1649 075b 32030000 		.4byte	.LVL164
+ 1650 075f 19010000 		.4byte	0x119
+ 1651 0763 0D       		.uleb128 0xd
+ 1652 0764 36030000 		.4byte	.LVL165
+ 1653 0768 19010000 		.4byte	0x119
+ 1654 076c 0D       		.uleb128 0xd
+ 1655 076d 3C030000 		.4byte	.LVL166
+ 1656 0771 B9000000 		.4byte	0xb9
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccLQsfrR.s 			page 38
+
+
+ 1657 0775 0D       		.uleb128 0xd
+ 1658 0776 40030000 		.4byte	.LVL167
+ 1659 077a B9000000 		.4byte	0xb9
+ 1660 077e 0D       		.uleb128 0xd
+ 1661 077f 44030000 		.4byte	.LVL168
+ 1662 0783 19010000 		.4byte	0x119
+ 1663 0787 0D       		.uleb128 0xd
+ 1664 0788 48030000 		.4byte	.LVL169
+ 1665 078c 19010000 		.4byte	0x119
+ 1666 0790 0D       		.uleb128 0xd
+ 1667 0791 4C030000 		.4byte	.LVL170
+ 1668 0795 19010000 		.4byte	0x119
+ 1669 0799 0D       		.uleb128 0xd
+ 1670 079a 50030000 		.4byte	.LVL171
+ 1671 079e B9000000 		.4byte	0xb9
+ 1672 07a2 0D       		.uleb128 0xd
+ 1673 07a3 54030000 		.4byte	.LVL172
+ 1674 07a7 B9000000 		.4byte	0xb9
+ 1675 07ab 0D       		.uleb128 0xd
+ 1676 07ac 58030000 		.4byte	.LVL173
+ 1677 07b0 B9000000 		.4byte	0xb9
+ 1678 07b4 0D       		.uleb128 0xd
+ 1679 07b5 5E030000 		.4byte	.LVL174
+ 1680 07b9 B9000000 		.4byte	0xb9
+ 1681 07bd 0D       		.uleb128 0xd
+ 1682 07be 62030000 		.4byte	.LVL175
+ 1683 07c2 B9000000 		.4byte	0xb9
+ 1684 07c6 0D       		.uleb128 0xd
+ 1685 07c7 66030000 		.4byte	.LVL176
+ 1686 07cb 19010000 		.4byte	0x119
+ 1687 07cf 0D       		.uleb128 0xd
+ 1688 07d0 6A030000 		.4byte	.LVL177
+ 1689 07d4 19010000 		.4byte	0x119
+ 1690 07d8 0D       		.uleb128 0xd
+ 1691 07d9 6E030000 		.4byte	.LVL178
+ 1692 07dd 19010000 		.4byte	0x119
+ 1693 07e1 0D       		.uleb128 0xd
+ 1694 07e2 72030000 		.4byte	.LVL179
+ 1695 07e6 B9000000 		.4byte	0xb9
+ 1696 07ea 0D       		.uleb128 0xd
+ 1697 07eb 76030000 		.4byte	.LVL180
+ 1698 07ef B9000000 		.4byte	0xb9
+ 1699 07f3 0D       		.uleb128 0xd
+ 1700 07f4 7A030000 		.4byte	.LVL181
+ 1701 07f8 19010000 		.4byte	0x119
+ 1702 07fc 00       		.byte	0
+ 1703 07fd 0E       		.uleb128 0xe
+ 1704 07fe 12000000 		.4byte	.LASF20
+ 1705 0802 01       		.byte	0x1
+ 1706 0803 B601     		.2byte	0x1b6
+ 1707 0805 00000000 		.4byte	.LFB37
+ 1708 0809 20000000 		.4byte	.LFE37-.LFB37
+ 1709 080d 01       		.uleb128 0x1
+ 1710 080e 9C       		.byte	0x9c
+ 1711 080f 58080000 		.4byte	0x858
+ 1712 0813 0F       		.uleb128 0xf
+ 1713 0814 00000000 		.4byte	.LASF21
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccLQsfrR.s 			page 39
+
+
+ 1714 0818 01       		.byte	0x1
+ 1715 0819 B601     		.2byte	0x1b6
+ 1716 081b A8000000 		.4byte	0xa8
+ 1717 081f 53000000 		.4byte	.LLST2
+ 1718 0823 10       		.uleb128 0x10
+ 1719 0824 6900     		.ascii	"i\000"
+ 1720 0826 01       		.byte	0x1
+ 1721 0827 B701     		.2byte	0x1b7
+ 1722 0829 64000000 		.4byte	0x64
+ 1723 082d 7F000000 		.4byte	.LLST3
+ 1724 0831 0D       		.uleb128 0xd
+ 1725 0832 08000000 		.4byte	.LVL183
+ 1726 0836 79010000 		.4byte	0x179
+ 1727 083a 08       		.uleb128 0x8
+ 1728 083b 10000000 		.4byte	.LVL185
+ 1729 083f A1080000 		.4byte	0x8a1
+ 1730 0843 4E080000 		.4byte	0x84e
+ 1731 0847 09       		.uleb128 0x9
+ 1732 0848 01       		.uleb128 0x1
+ 1733 0849 50       		.byte	0x50
+ 1734 084a 02       		.uleb128 0x2
+ 1735 084b 75       		.byte	0x75
+ 1736 084c 00       		.sleb128 0
+ 1737 084d 00       		.byte	0
+ 1738 084e 0D       		.uleb128 0xd
+ 1739 084f 1A000000 		.4byte	.LVL186
+ 1740 0853 16020000 		.4byte	0x216
+ 1741 0857 00       		.byte	0
+ 1742 0858 11       		.uleb128 0x11
+ 1743 0859 B7010000 		.4byte	.LASF22
+ 1744 085d 04       		.byte	0x4
+ 1745 085e 3B       		.byte	0x3b
+ 1746 085f 69080000 		.4byte	0x869
+ 1747 0863 12       		.uleb128 0x12
+ 1748 0864 6B000000 		.4byte	0x6b
+ 1749 0868 00       		.byte	0
+ 1750 0869 11       		.uleb128 0x11
+ 1751 086a DF010000 		.4byte	.LASF23
+ 1752 086e 05       		.byte	0x5
+ 1753 086f 7B       		.byte	0x7b
+ 1754 0870 7A080000 		.4byte	0x87a
+ 1755 0874 12       		.uleb128 0x12
+ 1756 0875 76000000 		.4byte	0x76
+ 1757 0879 00       		.byte	0
+ 1758 087a 11       		.uleb128 0x11
+ 1759 087b 28000000 		.4byte	.LASF24
+ 1760 087f 04       		.byte	0x4
+ 1761 0880 3C       		.byte	0x3c
+ 1762 0881 8B080000 		.4byte	0x88b
+ 1763 0885 12       		.uleb128 0x12
+ 1764 0886 6B000000 		.4byte	0x6b
+ 1765 088a 00       		.byte	0
+ 1766 088b 11       		.uleb128 0x11
+ 1767 088c 08000000 		.4byte	.LASF25
+ 1768 0890 04       		.byte	0x4
+ 1769 0891 37       		.byte	0x37
+ 1770 0892 A1080000 		.4byte	0x8a1
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccLQsfrR.s 			page 40
+
+
+ 1771 0896 12       		.uleb128 0x12
+ 1772 0897 6B000000 		.4byte	0x6b
+ 1773 089b 12       		.uleb128 0x12
+ 1774 089c 6B000000 		.4byte	0x6b
+ 1775 08a0 00       		.byte	0
+ 1776 08a1 13       		.uleb128 0x13
+ 1777 08a2 C6000000 		.4byte	.LASF26
+ 1778 08a6 06       		.byte	0x6
+ 1779 08a7 21       		.byte	0x21
+ 1780 08a8 96000000 		.4byte	0x96
+ 1781 08ac 12       		.uleb128 0x12
+ 1782 08ad AE000000 		.4byte	0xae
+ 1783 08b1 00       		.byte	0
+ 1784 08b2 00       		.byte	0
+ 1785              		.section	.debug_abbrev,"",%progbits
+ 1786              	.Ldebug_abbrev0:
+ 1787 0000 01       		.uleb128 0x1
+ 1788 0001 11       		.uleb128 0x11
+ 1789 0002 01       		.byte	0x1
+ 1790 0003 25       		.uleb128 0x25
+ 1791 0004 0E       		.uleb128 0xe
+ 1792 0005 13       		.uleb128 0x13
+ 1793 0006 0B       		.uleb128 0xb
+ 1794 0007 03       		.uleb128 0x3
+ 1795 0008 0E       		.uleb128 0xe
+ 1796 0009 1B       		.uleb128 0x1b
+ 1797 000a 0E       		.uleb128 0xe
+ 1798 000b 55       		.uleb128 0x55
+ 1799 000c 17       		.uleb128 0x17
+ 1800 000d 11       		.uleb128 0x11
+ 1801 000e 01       		.uleb128 0x1
+ 1802 000f 10       		.uleb128 0x10
+ 1803 0010 17       		.uleb128 0x17
+ 1804 0011 00       		.byte	0
+ 1805 0012 00       		.byte	0
+ 1806 0013 02       		.uleb128 0x2
+ 1807 0014 24       		.uleb128 0x24
+ 1808 0015 00       		.byte	0
+ 1809 0016 0B       		.uleb128 0xb
+ 1810 0017 0B       		.uleb128 0xb
+ 1811 0018 3E       		.uleb128 0x3e
+ 1812 0019 0B       		.uleb128 0xb
+ 1813 001a 03       		.uleb128 0x3
+ 1814 001b 0E       		.uleb128 0xe
+ 1815 001c 00       		.byte	0
+ 1816 001d 00       		.byte	0
+ 1817 001e 03       		.uleb128 0x3
+ 1818 001f 24       		.uleb128 0x24
+ 1819 0020 00       		.byte	0
+ 1820 0021 0B       		.uleb128 0xb
+ 1821 0022 0B       		.uleb128 0xb
+ 1822 0023 3E       		.uleb128 0x3e
+ 1823 0024 0B       		.uleb128 0xb
+ 1824 0025 03       		.uleb128 0x3
+ 1825 0026 08       		.uleb128 0x8
+ 1826 0027 00       		.byte	0
+ 1827 0028 00       		.byte	0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccLQsfrR.s 			page 41
+
+
+ 1828 0029 04       		.uleb128 0x4
+ 1829 002a 16       		.uleb128 0x16
+ 1830 002b 00       		.byte	0
+ 1831 002c 03       		.uleb128 0x3
+ 1832 002d 0E       		.uleb128 0xe
+ 1833 002e 3A       		.uleb128 0x3a
+ 1834 002f 0B       		.uleb128 0xb
+ 1835 0030 3B       		.uleb128 0x3b
+ 1836 0031 0B       		.uleb128 0xb
+ 1837 0032 49       		.uleb128 0x49
+ 1838 0033 13       		.uleb128 0x13
+ 1839 0034 00       		.byte	0
+ 1840 0035 00       		.byte	0
+ 1841 0036 05       		.uleb128 0x5
+ 1842 0037 0F       		.uleb128 0xf
+ 1843 0038 00       		.byte	0
+ 1844 0039 0B       		.uleb128 0xb
+ 1845 003a 0B       		.uleb128 0xb
+ 1846 003b 49       		.uleb128 0x49
+ 1847 003c 13       		.uleb128 0x13
+ 1848 003d 00       		.byte	0
+ 1849 003e 00       		.byte	0
+ 1850 003f 06       		.uleb128 0x6
+ 1851 0040 26       		.uleb128 0x26
+ 1852 0041 00       		.byte	0
+ 1853 0042 49       		.uleb128 0x49
+ 1854 0043 13       		.uleb128 0x13
+ 1855 0044 00       		.byte	0
+ 1856 0045 00       		.byte	0
+ 1857 0046 07       		.uleb128 0x7
+ 1858 0047 2E       		.uleb128 0x2e
+ 1859 0048 01       		.byte	0x1
+ 1860 0049 3F       		.uleb128 0x3f
+ 1861 004a 19       		.uleb128 0x19
+ 1862 004b 03       		.uleb128 0x3
+ 1863 004c 0E       		.uleb128 0xe
+ 1864 004d 3A       		.uleb128 0x3a
+ 1865 004e 0B       		.uleb128 0xb
+ 1866 004f 3B       		.uleb128 0x3b
+ 1867 0050 0B       		.uleb128 0xb
+ 1868 0051 27       		.uleb128 0x27
+ 1869 0052 19       		.uleb128 0x19
+ 1870 0053 11       		.uleb128 0x11
+ 1871 0054 01       		.uleb128 0x1
+ 1872 0055 12       		.uleb128 0x12
+ 1873 0056 06       		.uleb128 0x6
+ 1874 0057 40       		.uleb128 0x40
+ 1875 0058 18       		.uleb128 0x18
+ 1876 0059 9742     		.uleb128 0x2117
+ 1877 005b 19       		.uleb128 0x19
+ 1878 005c 01       		.uleb128 0x1
+ 1879 005d 13       		.uleb128 0x13
+ 1880 005e 00       		.byte	0
+ 1881 005f 00       		.byte	0
+ 1882 0060 08       		.uleb128 0x8
+ 1883 0061 898201   		.uleb128 0x4109
+ 1884 0064 01       		.byte	0x1
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccLQsfrR.s 			page 42
+
+
+ 1885 0065 11       		.uleb128 0x11
+ 1886 0066 01       		.uleb128 0x1
+ 1887 0067 31       		.uleb128 0x31
+ 1888 0068 13       		.uleb128 0x13
+ 1889 0069 01       		.uleb128 0x1
+ 1890 006a 13       		.uleb128 0x13
+ 1891 006b 00       		.byte	0
+ 1892 006c 00       		.byte	0
+ 1893 006d 09       		.uleb128 0x9
+ 1894 006e 8A8201   		.uleb128 0x410a
+ 1895 0071 00       		.byte	0
+ 1896 0072 02       		.uleb128 0x2
+ 1897 0073 18       		.uleb128 0x18
+ 1898 0074 9142     		.uleb128 0x2111
+ 1899 0076 18       		.uleb128 0x18
+ 1900 0077 00       		.byte	0
+ 1901 0078 00       		.byte	0
+ 1902 0079 0A       		.uleb128 0xa
+ 1903 007a 898201   		.uleb128 0x4109
+ 1904 007d 01       		.byte	0x1
+ 1905 007e 11       		.uleb128 0x11
+ 1906 007f 01       		.uleb128 0x1
+ 1907 0080 31       		.uleb128 0x31
+ 1908 0081 13       		.uleb128 0x13
+ 1909 0082 00       		.byte	0
+ 1910 0083 00       		.byte	0
+ 1911 0084 0B       		.uleb128 0xb
+ 1912 0085 34       		.uleb128 0x34
+ 1913 0086 00       		.byte	0
+ 1914 0087 03       		.uleb128 0x3
+ 1915 0088 08       		.uleb128 0x8
+ 1916 0089 3A       		.uleb128 0x3a
+ 1917 008a 0B       		.uleb128 0xb
+ 1918 008b 3B       		.uleb128 0x3b
+ 1919 008c 0B       		.uleb128 0xb
+ 1920 008d 49       		.uleb128 0x49
+ 1921 008e 13       		.uleb128 0x13
+ 1922 008f 02       		.uleb128 0x2
+ 1923 0090 17       		.uleb128 0x17
+ 1924 0091 00       		.byte	0
+ 1925 0092 00       		.byte	0
+ 1926 0093 0C       		.uleb128 0xc
+ 1927 0094 05       		.uleb128 0x5
+ 1928 0095 00       		.byte	0
+ 1929 0096 03       		.uleb128 0x3
+ 1930 0097 08       		.uleb128 0x8
+ 1931 0098 3A       		.uleb128 0x3a
+ 1932 0099 0B       		.uleb128 0xb
+ 1933 009a 3B       		.uleb128 0x3b
+ 1934 009b 0B       		.uleb128 0xb
+ 1935 009c 49       		.uleb128 0x49
+ 1936 009d 13       		.uleb128 0x13
+ 1937 009e 02       		.uleb128 0x2
+ 1938 009f 17       		.uleb128 0x17
+ 1939 00a0 00       		.byte	0
+ 1940 00a1 00       		.byte	0
+ 1941 00a2 0D       		.uleb128 0xd
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccLQsfrR.s 			page 43
+
+
+ 1942 00a3 898201   		.uleb128 0x4109
+ 1943 00a6 00       		.byte	0
+ 1944 00a7 11       		.uleb128 0x11
+ 1945 00a8 01       		.uleb128 0x1
+ 1946 00a9 31       		.uleb128 0x31
+ 1947 00aa 13       		.uleb128 0x13
+ 1948 00ab 00       		.byte	0
+ 1949 00ac 00       		.byte	0
+ 1950 00ad 0E       		.uleb128 0xe
+ 1951 00ae 2E       		.uleb128 0x2e
+ 1952 00af 01       		.byte	0x1
+ 1953 00b0 3F       		.uleb128 0x3f
+ 1954 00b1 19       		.uleb128 0x19
+ 1955 00b2 03       		.uleb128 0x3
+ 1956 00b3 0E       		.uleb128 0xe
+ 1957 00b4 3A       		.uleb128 0x3a
+ 1958 00b5 0B       		.uleb128 0xb
+ 1959 00b6 3B       		.uleb128 0x3b
+ 1960 00b7 05       		.uleb128 0x5
+ 1961 00b8 27       		.uleb128 0x27
+ 1962 00b9 19       		.uleb128 0x19
+ 1963 00ba 11       		.uleb128 0x11
+ 1964 00bb 01       		.uleb128 0x1
+ 1965 00bc 12       		.uleb128 0x12
+ 1966 00bd 06       		.uleb128 0x6
+ 1967 00be 40       		.uleb128 0x40
+ 1968 00bf 18       		.uleb128 0x18
+ 1969 00c0 9742     		.uleb128 0x2117
+ 1970 00c2 19       		.uleb128 0x19
+ 1971 00c3 01       		.uleb128 0x1
+ 1972 00c4 13       		.uleb128 0x13
+ 1973 00c5 00       		.byte	0
+ 1974 00c6 00       		.byte	0
+ 1975 00c7 0F       		.uleb128 0xf
+ 1976 00c8 05       		.uleb128 0x5
+ 1977 00c9 00       		.byte	0
+ 1978 00ca 03       		.uleb128 0x3
+ 1979 00cb 0E       		.uleb128 0xe
+ 1980 00cc 3A       		.uleb128 0x3a
+ 1981 00cd 0B       		.uleb128 0xb
+ 1982 00ce 3B       		.uleb128 0x3b
+ 1983 00cf 05       		.uleb128 0x5
+ 1984 00d0 49       		.uleb128 0x49
+ 1985 00d1 13       		.uleb128 0x13
+ 1986 00d2 02       		.uleb128 0x2
+ 1987 00d3 17       		.uleb128 0x17
+ 1988 00d4 00       		.byte	0
+ 1989 00d5 00       		.byte	0
+ 1990 00d6 10       		.uleb128 0x10
+ 1991 00d7 34       		.uleb128 0x34
+ 1992 00d8 00       		.byte	0
+ 1993 00d9 03       		.uleb128 0x3
+ 1994 00da 08       		.uleb128 0x8
+ 1995 00db 3A       		.uleb128 0x3a
+ 1996 00dc 0B       		.uleb128 0xb
+ 1997 00dd 3B       		.uleb128 0x3b
+ 1998 00de 05       		.uleb128 0x5
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccLQsfrR.s 			page 44
+
+
+ 1999 00df 49       		.uleb128 0x49
+ 2000 00e0 13       		.uleb128 0x13
+ 2001 00e1 02       		.uleb128 0x2
+ 2002 00e2 17       		.uleb128 0x17
+ 2003 00e3 00       		.byte	0
+ 2004 00e4 00       		.byte	0
+ 2005 00e5 11       		.uleb128 0x11
+ 2006 00e6 2E       		.uleb128 0x2e
+ 2007 00e7 01       		.byte	0x1
+ 2008 00e8 3F       		.uleb128 0x3f
+ 2009 00e9 19       		.uleb128 0x19
+ 2010 00ea 03       		.uleb128 0x3
+ 2011 00eb 0E       		.uleb128 0xe
+ 2012 00ec 3A       		.uleb128 0x3a
+ 2013 00ed 0B       		.uleb128 0xb
+ 2014 00ee 3B       		.uleb128 0x3b
+ 2015 00ef 0B       		.uleb128 0xb
+ 2016 00f0 27       		.uleb128 0x27
+ 2017 00f1 19       		.uleb128 0x19
+ 2018 00f2 3C       		.uleb128 0x3c
+ 2019 00f3 19       		.uleb128 0x19
+ 2020 00f4 01       		.uleb128 0x1
+ 2021 00f5 13       		.uleb128 0x13
+ 2022 00f6 00       		.byte	0
+ 2023 00f7 00       		.byte	0
+ 2024 00f8 12       		.uleb128 0x12
+ 2025 00f9 05       		.uleb128 0x5
+ 2026 00fa 00       		.byte	0
+ 2027 00fb 49       		.uleb128 0x49
+ 2028 00fc 13       		.uleb128 0x13
+ 2029 00fd 00       		.byte	0
+ 2030 00fe 00       		.byte	0
+ 2031 00ff 13       		.uleb128 0x13
+ 2032 0100 2E       		.uleb128 0x2e
+ 2033 0101 01       		.byte	0x1
+ 2034 0102 3F       		.uleb128 0x3f
+ 2035 0103 19       		.uleb128 0x19
+ 2036 0104 03       		.uleb128 0x3
+ 2037 0105 0E       		.uleb128 0xe
+ 2038 0106 3A       		.uleb128 0x3a
+ 2039 0107 0B       		.uleb128 0xb
+ 2040 0108 3B       		.uleb128 0x3b
+ 2041 0109 0B       		.uleb128 0xb
+ 2042 010a 27       		.uleb128 0x27
+ 2043 010b 19       		.uleb128 0x19
+ 2044 010c 49       		.uleb128 0x49
+ 2045 010d 13       		.uleb128 0x13
+ 2046 010e 3C       		.uleb128 0x3c
+ 2047 010f 19       		.uleb128 0x19
+ 2048 0110 00       		.byte	0
+ 2049 0111 00       		.byte	0
+ 2050 0112 00       		.byte	0
+ 2051              		.section	.debug_loc,"",%progbits
+ 2052              	.Ldebug_loc0:
+ 2053              	.LLST0:
+ 2054 0000 0A000000 		.4byte	.LVL8
+ 2055 0004 0C000000 		.4byte	.LVL9
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccLQsfrR.s 			page 45
+
+
+ 2056 0008 0200     		.2byte	0x2
+ 2057 000a 30       		.byte	0x30
+ 2058 000b 9F       		.byte	0x9f
+ 2059 000c 0C000000 		.4byte	.LVL9
+ 2060 0010 20000000 		.4byte	.LVL13
+ 2061 0014 0500     		.2byte	0x5
+ 2062 0016 35       		.byte	0x35
+ 2063 0017 74       		.byte	0x74
+ 2064 0018 00       		.sleb128 0
+ 2065 0019 1C       		.byte	0x1c
+ 2066 001a 9F       		.byte	0x9f
+ 2067 001b 20000000 		.4byte	.LVL13
+ 2068 001f 26000000 		.4byte	.LVL14
+ 2069 0023 0500     		.2byte	0x5
+ 2070 0025 34       		.byte	0x34
+ 2071 0026 74       		.byte	0x74
+ 2072 0027 00       		.sleb128 0
+ 2073 0028 1C       		.byte	0x1c
+ 2074 0029 9F       		.byte	0x9f
+ 2075 002a 00000000 		.4byte	0
+ 2076 002e 00000000 		.4byte	0
+ 2077              	.LLST1:
+ 2078 0032 00000000 		.4byte	.LVL16
+ 2079 0036 02000000 		.4byte	.LVL17
+ 2080 003a 0100     		.2byte	0x1
+ 2081 003c 50       		.byte	0x50
+ 2082 003d 02000000 		.4byte	.LVL17
+ 2083 0041 7C030000 		.4byte	.LFE36
+ 2084 0045 0400     		.2byte	0x4
+ 2085 0047 F3       		.byte	0xf3
+ 2086 0048 01       		.uleb128 0x1
+ 2087 0049 50       		.byte	0x50
+ 2088 004a 9F       		.byte	0x9f
+ 2089 004b 00000000 		.4byte	0
+ 2090 004f 00000000 		.4byte	0
+ 2091              	.LLST2:
+ 2092 0053 00000000 		.4byte	.LVL182
+ 2093 0057 07000000 		.4byte	.LVL183-1
+ 2094 005b 0100     		.2byte	0x1
+ 2095 005d 50       		.byte	0x50
+ 2096 005e 07000000 		.4byte	.LVL183-1
+ 2097 0062 1E000000 		.4byte	.LVL189
+ 2098 0066 0100     		.2byte	0x1
+ 2099 0068 55       		.byte	0x55
+ 2100 0069 1E000000 		.4byte	.LVL189
+ 2101 006d 20000000 		.4byte	.LFE37
+ 2102 0071 0400     		.2byte	0x4
+ 2103 0073 F3       		.byte	0xf3
+ 2104 0074 01       		.uleb128 0x1
+ 2105 0075 50       		.byte	0x50
+ 2106 0076 9F       		.byte	0x9f
+ 2107 0077 00000000 		.4byte	0
+ 2108 007b 00000000 		.4byte	0
+ 2109              	.LLST3:
+ 2110 007f 08000000 		.4byte	.LVL183
+ 2111 0083 0A000000 		.4byte	.LVL184
+ 2112 0087 0200     		.2byte	0x2
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccLQsfrR.s 			page 46
+
+
+ 2113 0089 30       		.byte	0x30
+ 2114 008a 9F       		.byte	0x9f
+ 2115 008b 0A000000 		.4byte	.LVL184
+ 2116 008f 1E000000 		.4byte	.LVL188
+ 2117 0093 0100     		.2byte	0x1
+ 2118 0095 54       		.byte	0x54
+ 2119 0096 00000000 		.4byte	0
+ 2120 009a 00000000 		.4byte	0
+ 2121              		.section	.debug_aranges,"",%progbits
+ 2122 0000 3C000000 		.4byte	0x3c
+ 2123 0004 0200     		.2byte	0x2
+ 2124 0006 00000000 		.4byte	.Ldebug_info0
+ 2125 000a 04       		.byte	0x4
+ 2126 000b 00       		.byte	0
+ 2127 000c 0000     		.2byte	0
+ 2128 000e 0000     		.2byte	0
+ 2129 0010 00000000 		.4byte	.LFB33
+ 2130 0014 20000000 		.4byte	.LFE33-.LFB33
+ 2131 0018 00000000 		.4byte	.LFB34
+ 2132 001c 20000000 		.4byte	.LFE34-.LFB34
+ 2133 0020 00000000 		.4byte	.LFB35
+ 2134 0024 34000000 		.4byte	.LFE35-.LFB35
+ 2135 0028 00000000 		.4byte	.LFB36
+ 2136 002c 7C030000 		.4byte	.LFE36-.LFB36
+ 2137 0030 00000000 		.4byte	.LFB37
+ 2138 0034 20000000 		.4byte	.LFE37-.LFB37
+ 2139 0038 00000000 		.4byte	0
+ 2140 003c 00000000 		.4byte	0
+ 2141              		.section	.debug_ranges,"",%progbits
+ 2142              	.Ldebug_ranges0:
+ 2143 0000 00000000 		.4byte	.LFB33
+ 2144 0004 20000000 		.4byte	.LFE33
+ 2145 0008 00000000 		.4byte	.LFB34
+ 2146 000c 20000000 		.4byte	.LFE34
+ 2147 0010 00000000 		.4byte	.LFB35
+ 2148 0014 34000000 		.4byte	.LFE35
+ 2149 0018 00000000 		.4byte	.LFB36
+ 2150 001c 7C030000 		.4byte	.LFE36
+ 2151 0020 00000000 		.4byte	.LFB37
+ 2152 0024 20000000 		.4byte	.LFE37
+ 2153 0028 00000000 		.4byte	0
+ 2154 002c 00000000 		.4byte	0
+ 2155              		.section	.debug_line,"",%progbits
+ 2156              	.Ldebug_line0:
+ 2157 0000 A0020000 		.section	.debug_str,"MS",%progbits,1
+ 2157      02005201 
+ 2157      00000201 
+ 2157      FB0E0D00 
+ 2157      01010101 
+ 2158              	.LASF21:
+ 2159 0000 6D657373 		.ascii	"message\000"
+ 2159      61676500 
+ 2160              	.LASF25:
+ 2161 0008 7365745F 		.ascii	"set_color\000"
+ 2161      636F6C6F 
+ 2161      7200
+ 2162              	.LASF20:
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccLQsfrR.s 			page 47
+
+
+ 2163 0012 62696E61 		.ascii	"binary_message\000"
+ 2163      72795F6D 
+ 2163      65737361 
+ 2163      676500
+ 2164              	.LASF14:
+ 2165 0021 73697A65 		.ascii	"size_t\000"
+ 2165      5F7400
+ 2166              	.LASF24:
+ 2167 0028 7475726E 		.ascii	"turn_off\000"
+ 2167      5F6F6666 
+ 2167      00
+ 2168              	.LASF11:
+ 2169 0031 666C6F61 		.ascii	"float\000"
+ 2169      7400
+ 2170              	.LASF3:
+ 2171 0037 73686F72 		.ascii	"short unsigned int\000"
+ 2171      7420756E 
+ 2171      7369676E 
+ 2171      65642069 
+ 2171      6E7400
+ 2172              	.LASF27:
+ 2173 004a 474E5520 		.ascii	"GNU C 4.8.4 20140526 (release) [ARM/embedded-4_8-br"
+ 2173      4320342E 
+ 2173      382E3420 
+ 2173      32303134 
+ 2173      30353236 
+ 2174 007d 616E6368 		.ascii	"anch revision 211358] -mcpu=cortex-m0 -mthumb -g -O"
+ 2174      20726576 
+ 2174      6973696F 
+ 2174      6E203231 
+ 2174      31333538 
+ 2175 00b0 73202D66 		.ascii	"s -ffunction-sections\000"
+ 2175      66756E63 
+ 2175      74696F6E 
+ 2175      2D736563 
+ 2175      74696F6E 
+ 2176              	.LASF26:
+ 2177 00c6 7374726C 		.ascii	"strlen\000"
+ 2177      656E00
+ 2178              	.LASF18:
+ 2179 00cd 6E65775F 		.ascii	"new_message\000"
+ 2179      6D657373 
+ 2179      61676500 
+ 2180              	.LASF1:
+ 2181 00d9 756E7369 		.ascii	"unsigned char\000"
+ 2181      676E6564 
+ 2181      20636861 
+ 2181      7200
+ 2182              	.LASF5:
+ 2183 00e7 6C6F6E67 		.ascii	"long unsigned int\000"
+ 2183      20756E73 
+ 2183      69676E65 
+ 2183      6420696E 
+ 2183      7400
+ 2184              	.LASF9:
+ 2185 00f9 75696E74 		.ascii	"uint8\000"
+ 2185      3800
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccLQsfrR.s 			page 48
+
+
+ 2186              	.LASF19:
+ 2187 00ff 62696E61 		.ascii	"binary_encode\000"
+ 2187      72795F65 
+ 2187      6E636F64 
+ 2187      6500
+ 2188              	.LASF16:
+ 2189 010d 626C696E 		.ascii	"blink_zero\000"
+ 2189      6B5F7A65 
+ 2189      726F00
+ 2190              	.LASF12:
+ 2191 0118 646F7562 		.ascii	"double\000"
+ 2191      6C6500
+ 2192              	.LASF10:
+ 2193 011f 75696E74 		.ascii	"uint32\000"
+ 2193      333200
+ 2194              	.LASF8:
+ 2195 0126 756E7369 		.ascii	"unsigned int\000"
+ 2195      676E6564 
+ 2195      20696E74 
+ 2195      00
+ 2196              	.LASF7:
+ 2197 0133 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 2197      206C6F6E 
+ 2197      6720756E 
+ 2197      7369676E 
+ 2197      65642069 
+ 2198              	.LASF29:
+ 2199 014a 433A5C55 		.ascii	"C:\\Users\\Admin\\Desktop\\Teacher Badge\\Teacher_B"
+ 2199      73657273 
+ 2199      5C41646D 
+ 2199      696E5C44 
+ 2199      65736B74 
+ 2200 0178 61646765 		.ascii	"adge\\Teacher_Badge.cydsn\000"
+ 2200      5C546561 
+ 2200      63686572 
+ 2200      5F426164 
+ 2200      67652E63 
+ 2201              	.LASF15:
+ 2202 0191 73697A65 		.ascii	"sizetype\000"
+ 2202      74797065 
+ 2202      00
+ 2203              	.LASF6:
+ 2204 019a 6C6F6E67 		.ascii	"long long int\000"
+ 2204      206C6F6E 
+ 2204      6720696E 
+ 2204      7400
+ 2205              	.LASF13:
+ 2206 01a8 63686172 		.ascii	"char\000"
+ 2206      00
+ 2207              	.LASF2:
+ 2208 01ad 73686F72 		.ascii	"short int\000"
+ 2208      7420696E 
+ 2208      7400
+ 2209              	.LASF22:
+ 2210 01b7 7475726E 		.ascii	"turn_on\000"
+ 2210      5F6F6E00 
+ 2211              	.LASF4:
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccLQsfrR.s 			page 49
+
+
+ 2212 01bf 6C6F6E67 		.ascii	"long int\000"
+ 2212      20696E74 
+ 2212      00
+ 2213              	.LASF0:
+ 2214 01c8 7369676E 		.ascii	"signed char\000"
+ 2214      65642063 
+ 2214      68617200 
+ 2215              	.LASF28:
+ 2216 01d4 2E5C6269 		.ascii	".\\binary.c\000"
+ 2216      6E617279 
+ 2216      2E6300
+ 2217              	.LASF23:
+ 2218 01df 43794465 		.ascii	"CyDelay\000"
+ 2218      6C617900 
+ 2219              	.LASF17:
+ 2220 01e7 626C696E 		.ascii	"blink_one\000"
+ 2220      6B5F6F6E 
+ 2220      6500
+ 2221              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.8.4 20140526 (release) [ARM/embedded-4_8-br

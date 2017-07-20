@@ -1,0 +1,2628 @@
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc94kbZI.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 4
+  10              		.eabi_attribute 34, 0
+  11              		.eabi_attribute 18, 4
+  12              		.code	16
+  13              		.file	"lightlib.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.set_color,"ax",%progbits
+  18              		.align	1
+  19              		.global	set_color
+  20              		.code	16
+  21              		.thumb_func
+  22              		.type	set_color, %function
+  23              	set_color:
+  24              	.LFB33:
+  25              		.file 1 ".\\lightlib.c"
+   1:.\lightlib.c  **** /* ========================================
+   2:.\lightlib.c  ****  *
+   3:.\lightlib.c  ****  * Copyright Nullify, 2016
+   4:.\lightlib.c  ****  * All Rights Reserved
+   5:.\lightlib.c  ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:.\lightlib.c  ****  *
+   7:.\lightlib.c  ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:.\lightlib.c  ****  * WHICH IS THE PROPERTY OF NULLIY.
+   9:.\lightlib.c  ****  *
+  10:.\lightlib.c  ****  * ========================================
+  11:.\lightlib.c  **** */
+  12:.\lightlib.c  **** #include <project.h>
+  13:.\lightlib.c  **** #include "lightlib.h"
+  14:.\lightlib.c  **** 
+  15:.\lightlib.c  **** 
+  16:.\lightlib.c  **** /* Allocate a structure for each led in the project */
+  17:.\lightlib.c  **** volatile struct RGB_LED_State Left_LED_State;
+  18:.\lightlib.c  **** volatile struct RGB_LED_State Right_LED_State;
+  19:.\lightlib.c  **** volatile struct LED_State IR_LED_State;
+  20:.\lightlib.c  **** volatile struct LED_State Board_LED_State;
+  21:.\lightlib.c  **** 
+  22:.\lightlib.c  **** /*
+  23:.\lightlib.c  ****  * Sets the color of the of the passed in led_flag.
+  24:.\lightlib.c  ****  */
+  25:.\lightlib.c  **** void set_color(uint8 led_flag, uint8 color) {
+  26              		.loc 1 25 0
+  27              		.cfi_startproc
+  28              	.LVL0:
+  29 0000 10B5     		push	{r4, lr}
+  30              		.cfi_def_cfa_offset 8
+  31              		.cfi_offset 4, -8
+  32              		.cfi_offset 14, -4
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc94kbZI.s 			page 2
+
+
+  33              		.loc 1 25 0
+  34 0002 0C1C     		mov	r4, r1
+  26:.\lightlib.c  ****     switch(led_flag) {
+  35              		.loc 1 26 0
+  36 0004 0228     		cmp	r0, #2
+  37 0006 08D0     		beq	.L3
+  38 0008 0328     		cmp	r0, #3
+  39 000a 03D0     		beq	.L4
+  40 000c 0128     		cmp	r0, #1
+  41 000e 06D1     		bne	.L1
+  27:.\lightlib.c  ****         case LEFT_LED:
+  28:.\lightlib.c  ****             Left_LED_State.color = color;
+  42              		.loc 1 28 0
+  43 0010 034B     		ldr	r3, .L11
+  44 0012 03E0     		b	.L9
+  45              	.L4:
+  29:.\lightlib.c  ****         break;
+  30:.\lightlib.c  ****         case RIGHT_LED:
+  31:.\lightlib.c  ****             Right_LED_State.color = color;
+  32:.\lightlib.c  ****         break;
+  33:.\lightlib.c  ****         case LEFT_RIGHT_LED:
+  34:.\lightlib.c  ****             set_color(LEFT_LED, color);
+  46              		.loc 1 34 0
+  47 0014 0120     		mov	r0, #1
+  48              	.LVL1:
+  49 0016 FFF7FEFF 		bl	set_color
+  50              	.LVL2:
+  51              	.L3:
+  31:.\lightlib.c  ****             Right_LED_State.color = color;
+  52              		.loc 1 31 0
+  53 001a 024B     		ldr	r3, .L11+4
+  54              	.L9:
+  55 001c 5C70     		strb	r4, [r3, #1]
+  56              	.L1:
+  35:.\lightlib.c  ****             set_color(RIGHT_LED, color);
+  36:.\lightlib.c  ****         break;
+  37:.\lightlib.c  ****     }    
+  38:.\lightlib.c  **** }
+  57              		.loc 1 38 0
+  58              		@ sp needed
+  59 001e 10BD     		pop	{r4, pc}
+  60              	.L12:
+  61              		.align	2
+  62              	.L11:
+  63 0020 00000000 		.word	Left_LED_State
+  64 0024 00000000 		.word	Right_LED_State
+  65              		.cfi_endproc
+  66              	.LFE33:
+  67              		.size	set_color, .-set_color
+  68              		.section	.text.set_status,"ax",%progbits
+  69              		.align	1
+  70              		.global	set_status
+  71              		.code	16
+  72              		.thumb_func
+  73              		.type	set_status, %function
+  74              	set_status:
+  75              	.LFB34:
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc94kbZI.s 			page 3
+
+
+  39:.\lightlib.c  **** 
+  40:.\lightlib.c  **** void set_status(uint8 led_flag, uint8 status) {
+  76              		.loc 1 40 0
+  77              		.cfi_startproc
+  78              	.LVL3:
+  41:.\lightlib.c  ****     switch(led_flag) {
+  79              		.loc 1 41 0
+  80 0000 0138     		sub	r0, r0, #1
+  81              	.LVL4:
+  40:.\lightlib.c  **** void set_status(uint8 led_flag, uint8 status) {
+  82              		.loc 1 40 0
+  83 0002 10B5     		push	{r4, lr}
+  84              		.cfi_def_cfa_offset 8
+  85              		.cfi_offset 4, -8
+  86              		.cfi_offset 14, -4
+  40:.\lightlib.c  **** void set_status(uint8 led_flag, uint8 status) {
+  87              		.loc 1 40 0
+  88 0004 0C1C     		mov	r4, r1
+  89              		.loc 1 41 0
+  90 0006 0428     		cmp	r0, #4
+  91 0008 0FD8     		bhi	.L13
+  92 000a FFF7FEFF 		bl	__gnu_thumb1_case_uqi
+  93              	.L16:
+  94 000e 03       		.byte	(.L15-.L16)/2
+  95 000f 08       		.byte	(.L17-.L16)/2
+  96 0010 05       		.byte	(.L18-.L16)/2
+  97 0011 0A       		.byte	(.L19-.L16)/2
+  98 0012 0C       		.byte	(.L20-.L16)/2
+  99 0013 00       		.p2align 1
+ 100              	.L15:
+  42:.\lightlib.c  ****         case LEFT_LED:
+  43:.\lightlib.c  ****             Left_LED_State.status = status;
+ 101              		.loc 1 43 0
+ 102 0014 054B     		ldr	r3, .L22
+ 103 0016 07E0     		b	.L21
+ 104              	.L18:
+  44:.\lightlib.c  ****         break;
+  45:.\lightlib.c  ****         case RIGHT_LED:
+  46:.\lightlib.c  ****             Right_LED_State.status = status;
+  47:.\lightlib.c  ****         break;
+  48:.\lightlib.c  ****         case LEFT_RIGHT_LED:
+  49:.\lightlib.c  ****             set_status(LEFT_LED, status);
+ 105              		.loc 1 49 0
+ 106 0018 0120     		mov	r0, #1
+ 107 001a FFF7FEFF 		bl	set_status
+ 108              	.LVL5:
+ 109              	.L17:
+  46:.\lightlib.c  ****             Right_LED_State.status = status;
+ 110              		.loc 1 46 0
+ 111 001e 044B     		ldr	r3, .L22+4
+ 112 0020 02E0     		b	.L21
+ 113              	.LVL6:
+ 114              	.L19:
+  50:.\lightlib.c  ****             set_status(RIGHT_LED, status);
+  51:.\lightlib.c  ****         break;
+  52:.\lightlib.c  ****         case IR_LED:
+  53:.\lightlib.c  ****             IR_LED_State.status = status;
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc94kbZI.s 			page 4
+
+
+ 115              		.loc 1 53 0
+ 116 0022 044B     		ldr	r3, .L22+8
+ 117 0024 00E0     		b	.L21
+ 118              	.L20:
+  54:.\lightlib.c  ****         break;
+  55:.\lightlib.c  ****         case BOARD_LED:
+  56:.\lightlib.c  ****            Board_LED_State.status = status;
+ 119              		.loc 1 56 0
+ 120 0026 044B     		ldr	r3, .L22+12
+ 121              	.LVL7:
+ 122              	.L21:
+ 123 0028 1C70     		strb	r4, [r3]
+ 124              	.L13:
+  57:.\lightlib.c  ****         break;
+  58:.\lightlib.c  ****     }    
+  59:.\lightlib.c  **** }
+ 125              		.loc 1 59 0
+ 126              		@ sp needed
+ 127 002a 10BD     		pop	{r4, pc}
+ 128              	.L23:
+ 129              		.align	2
+ 130              	.L22:
+ 131 002c 00000000 		.word	Left_LED_State
+ 132 0030 00000000 		.word	Right_LED_State
+ 133 0034 00000000 		.word	IR_LED_State
+ 134 0038 00000000 		.word	Board_LED_State
+ 135              		.cfi_endproc
+ 136              	.LFE34:
+ 137              		.size	set_status, .-set_status
+ 138              		.section	.text.get_color,"ax",%progbits
+ 139              		.align	1
+ 140              		.global	get_color
+ 141              		.code	16
+ 142              		.thumb_func
+ 143              		.type	get_color, %function
+ 144              	get_color:
+ 145              	.LFB35:
+  60:.\lightlib.c  **** 
+  61:.\lightlib.c  **** uint8 get_color(uint8 led_flag) {
+ 146              		.loc 1 61 0
+ 147              		.cfi_startproc
+ 148              	.LVL8:
+  62:.\lightlib.c  ****     switch(led_flag) {
+ 149              		.loc 1 62 0
+ 150 0000 0128     		cmp	r0, #1
+ 151 0002 03D0     		beq	.L26
+ 152 0004 0228     		cmp	r0, #2
+ 153 0006 05D1     		bne	.L31
+  63:.\lightlib.c  ****         case LEFT_LED:
+  64:.\lightlib.c  ****             return Left_LED_State.color;
+  65:.\lightlib.c  ****         break;
+  66:.\lightlib.c  ****         case RIGHT_LED:
+  67:.\lightlib.c  ****             return Right_LED_State.color;
+ 154              		.loc 1 67 0
+ 155 0008 034B     		ldr	r3, .L32
+ 156 000a 00E0     		b	.L30
+ 157              	.L26:
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc94kbZI.s 			page 5
+
+
+  64:.\lightlib.c  ****             return Left_LED_State.color;
+ 158              		.loc 1 64 0
+ 159 000c 034B     		ldr	r3, .L32+4
+ 160              	.L30:
+ 161              		.loc 1 67 0
+ 162 000e 5878     		ldrb	r0, [r3, #1]
+ 163              	.LVL9:
+ 164 0010 C0B2     		uxtb	r0, r0
+ 165 0012 00E0     		b	.L25
+ 166              	.LVL10:
+ 167              	.L31:
+  68:.\lightlib.c  ****         break;
+  69:.\lightlib.c  ****     }
+  70:.\lightlib.c  ****     return -1;
+ 168              		.loc 1 70 0
+ 169 0014 FF20     		mov	r0, #255
+ 170              	.LVL11:
+ 171              	.L25:
+  71:.\lightlib.c  **** }
+ 172              		.loc 1 71 0
+ 173              		@ sp needed
+ 174 0016 7047     		bx	lr
+ 175              	.L33:
+ 176              		.align	2
+ 177              	.L32:
+ 178 0018 00000000 		.word	Right_LED_State
+ 179 001c 00000000 		.word	Left_LED_State
+ 180              		.cfi_endproc
+ 181              	.LFE35:
+ 182              		.size	get_color, .-get_color
+ 183              		.section	.text.get_status,"ax",%progbits
+ 184              		.align	1
+ 185              		.global	get_status
+ 186              		.code	16
+ 187              		.thumb_func
+ 188              		.type	get_status, %function
+ 189              	get_status:
+ 190              	.LFB36:
+  72:.\lightlib.c  **** 
+  73:.\lightlib.c  **** uint8 get_status(uint8 led_flag) {
+ 191              		.loc 1 73 0
+ 192              		.cfi_startproc
+ 193              	.LVL12:
+  74:.\lightlib.c  ****     switch(led_flag) {
+ 194              		.loc 1 74 0
+ 195 0000 0138     		sub	r0, r0, #1
+ 196              	.LVL13:
+  73:.\lightlib.c  **** uint8 get_status(uint8 led_flag) {
+ 197              		.loc 1 73 0
+ 198 0002 00B5     		push	{lr}
+ 199              		.cfi_def_cfa_offset 4
+ 200              		.cfi_offset 14, -4
+ 201              		.loc 1 74 0
+ 202 0004 0428     		cmp	r0, #4
+ 203 0006 0ED8     		bhi	.L41
+ 204 0008 FFF7FEFF 		bl	__gnu_thumb1_case_uqi
+ 205              	.L37:
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc94kbZI.s 			page 6
+
+
+ 206 000c 03       		.byte	(.L36-.L37)/2
+ 207 000d 05       		.byte	(.L38-.L37)/2
+ 208 000e 0D       		.byte	(.L41-.L37)/2
+ 209 000f 07       		.byte	(.L39-.L37)/2
+ 210 0010 09       		.byte	(.L40-.L37)/2
+ 211 0011 00       		.p2align 1
+ 212              	.L36:
+  75:.\lightlib.c  ****         case LEFT_LED:
+  76:.\lightlib.c  ****             return Left_LED_State.status;
+ 213              		.loc 1 76 0
+ 214 0012 064B     		ldr	r3, .L43
+ 215 0014 04E0     		b	.L42
+ 216              	.L38:
+  77:.\lightlib.c  ****         break;
+  78:.\lightlib.c  ****         case RIGHT_LED:
+  79:.\lightlib.c  ****             return Right_LED_State.status;
+ 217              		.loc 1 79 0
+ 218 0016 064B     		ldr	r3, .L43+4
+ 219 0018 02E0     		b	.L42
+ 220              	.L39:
+  80:.\lightlib.c  ****         break;
+  81:.\lightlib.c  ****         case IR_LED:
+  82:.\lightlib.c  ****             return IR_LED_State.status;
+ 221              		.loc 1 82 0
+ 222 001a 064B     		ldr	r3, .L43+8
+ 223 001c 00E0     		b	.L42
+ 224              	.L40:
+  83:.\lightlib.c  ****         break;
+  84:.\lightlib.c  ****         case BOARD_LED:
+  85:.\lightlib.c  ****            return Board_LED_State.status;
+ 225              		.loc 1 85 0
+ 226 001e 064B     		ldr	r3, .L43+12
+ 227              	.L42:
+ 228 0020 1878     		ldrb	r0, [r3]
+ 229 0022 C0B2     		uxtb	r0, r0
+ 230 0024 00E0     		b	.L35
+ 231              	.L41:
+  86:.\lightlib.c  ****         break;
+  87:.\lightlib.c  ****     }  
+  88:.\lightlib.c  ****     return -1;
+ 232              		.loc 1 88 0
+ 233 0026 FF20     		mov	r0, #255
+ 234              	.L35:
+  89:.\lightlib.c  **** }
+ 235              		.loc 1 89 0
+ 236              		@ sp needed
+ 237 0028 00BD     		pop	{pc}
+ 238              	.L44:
+ 239 002a C046     		.align	2
+ 240              	.L43:
+ 241 002c 00000000 		.word	Left_LED_State
+ 242 0030 00000000 		.word	Right_LED_State
+ 243 0034 00000000 		.word	IR_LED_State
+ 244 0038 00000000 		.word	Board_LED_State
+ 245              		.cfi_endproc
+ 246              	.LFE36:
+ 247              		.size	get_status, .-get_status
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc94kbZI.s 			page 7
+
+
+ 248              		.section	.text.turn_on,"ax",%progbits
+ 249              		.align	1
+ 250              		.global	turn_on
+ 251              		.code	16
+ 252              		.thumb_func
+ 253              		.type	turn_on, %function
+ 254              	turn_on:
+ 255              	.LFB37:
+  90:.\lightlib.c  **** 
+  91:.\lightlib.c  **** void turn_on(uint8 led_flag) {
+ 256              		.loc 1 91 0
+ 257              		.cfi_startproc
+ 258              	.LVL14:
+  92:.\lightlib.c  ****     switch(led_flag) {
+ 259              		.loc 1 92 0
+ 260 0000 0138     		sub	r0, r0, #1
+ 261              	.LVL15:
+  91:.\lightlib.c  **** void turn_on(uint8 led_flag) {
+ 262              		.loc 1 91 0
+ 263 0002 08B5     		push	{r3, lr}
+ 264              		.cfi_def_cfa_offset 8
+ 265              		.cfi_offset 3, -8
+ 266              		.cfi_offset 14, -4
+ 267              		.loc 1 92 0
+ 268 0004 0428     		cmp	r0, #4
+ 269 0006 5AD8     		bhi	.L45
+ 270 0008 FFF7FEFF 		bl	__gnu_thumb1_case_uqi
+ 271              	.L48:
+ 272 000c 03       		.byte	(.L47-.L48)/2
+ 273 000d 2A       		.byte	(.L49-.L48)/2
+ 274 000e 27       		.byte	(.L50-.L48)/2
+ 275 000f 4D       		.byte	(.L51-.L48)/2
+ 276 0010 52       		.byte	(.L52-.L48)/2
+ 277 0011 00       		.p2align 1
+ 278              	.L47:
+ 279              	.LVL16:
+ 280              	.LBB6:
+ 281              	.LBB7:
+  64:.\lightlib.c  ****             return Left_LED_State.color;
+ 282              		.loc 1 64 0
+ 283 0012 2B4B     		ldr	r3, .L79
+ 284 0014 5878     		ldrb	r0, [r3, #1]
+ 285              	.LBE7:
+ 286              	.LBE6:
+  93:.\lightlib.c  ****         case LEFT_LED:
+  94:.\lightlib.c  ****             switch(get_color(LEFT_LED)) {
+ 287              		.loc 1 94 0
+ 288 0016 0138     		sub	r0, r0, #1
+ 289 0018 0628     		cmp	r0, #6
+ 290 001a 1BD8     		bhi	.L53
+ 291 001c FFF7FEFF 		bl	__gnu_thumb1_case_uqi
+ 292              	.L55:
+ 293 0020 04       		.byte	(.L54-.L55)/2
+ 294 0021 0B       		.byte	(.L71-.L55)/2
+ 295 0022 08       		.byte	(.L57-.L55)/2
+ 296 0023 17       		.byte	(.L73-.L55)/2
+ 297 0024 0E       		.byte	(.L59-.L55)/2
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc94kbZI.s 			page 8
+
+
+ 298 0025 15       		.byte	(.L72-.L55)/2
+ 299 0026 12       		.byte	(.L61-.L55)/2
+ 300 0027 00       		.p2align 1
+ 301              	.L54:
+  95:.\lightlib.c  ****                 case RED:
+  96:.\lightlib.c  ****                     Left_LED_Red_Write(1);
+ 302              		.loc 1 96 0
+ 303 0028 0120     		mov	r0, #1
+ 304 002a FFF7FEFF 		bl	Left_LED_Red_Write
+ 305              	.LVL17:
+  97:.\lightlib.c  ****                 break;
+ 306              		.loc 1 97 0
+ 307 002e 11E0     		b	.L53
+ 308              	.L57:
+  98:.\lightlib.c  ****                 case BLUE:
+  99:.\lightlib.c  ****                     PWM_Left_LED_Blue_Start();
+ 100:.\lightlib.c  ****                 break;
+ 101:.\lightlib.c  ****                 case MAGENTA:
+ 102:.\lightlib.c  ****                     Left_LED_Red_Write(1);
+ 309              		.loc 1 102 0
+ 310 0030 0120     		mov	r0, #1
+ 311 0032 FFF7FEFF 		bl	Left_LED_Red_Write
+ 312              	.LVL18:
+ 313              	.L71:
+ 103:.\lightlib.c  ****                     PWM_Left_LED_Blue_Start();
+ 314              		.loc 1 103 0
+ 315 0036 FFF7FEFF 		bl	PWM_Left_LED_Blue_Start
+ 316              	.LVL19:
+ 104:.\lightlib.c  ****                 break;
+ 317              		.loc 1 104 0
+ 318 003a 0BE0     		b	.L53
+ 319              	.L59:
+ 105:.\lightlib.c  ****                 case GREEN:
+ 106:.\lightlib.c  ****                     Left_LED_Green_Write(1);
+ 107:.\lightlib.c  ****                 break;
+ 108:.\lightlib.c  ****                 case YELLOW:
+ 109:.\lightlib.c  ****                     Left_LED_Red_Write(1);
+ 320              		.loc 1 109 0
+ 321 003c 0120     		mov	r0, #1
+ 322 003e FFF7FEFF 		bl	Left_LED_Red_Write
+ 323              	.LVL20:
+ 324 0042 04E0     		b	.L73
+ 325              	.L61:
+ 110:.\lightlib.c  ****                     Left_LED_Green_Write(1);
+ 111:.\lightlib.c  ****                 break;
+ 112:.\lightlib.c  ****                 case CYAN:
+ 113:.\lightlib.c  ****                     PWM_Left_LED_Blue_Start();
+ 114:.\lightlib.c  ****                     Left_LED_Green_Write(1);
+ 115:.\lightlib.c  ****                 break;
+ 116:.\lightlib.c  ****                 case WHITE:
+ 117:.\lightlib.c  ****                     Left_LED_Red_Write(1);
+ 326              		.loc 1 117 0
+ 327 0044 0120     		mov	r0, #1
+ 328 0046 FFF7FEFF 		bl	Left_LED_Red_Write
+ 329              	.LVL21:
+ 330              	.L72:
+ 118:.\lightlib.c  ****                     PWM_Left_LED_Blue_Start();
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc94kbZI.s 			page 9
+
+
+ 331              		.loc 1 118 0
+ 332 004a FFF7FEFF 		bl	PWM_Left_LED_Blue_Start
+ 333              	.LVL22:
+ 334              	.L73:
+ 119:.\lightlib.c  ****                     Left_LED_Green_Write(1);
+ 335              		.loc 1 119 0
+ 336 004e 0120     		mov	r0, #1
+ 337 0050 FFF7FEFF 		bl	Left_LED_Green_Write
+ 338              	.LVL23:
+ 339              	.L53:
+ 120:.\lightlib.c  ****                 break;
+ 121:.\lightlib.c  ****             }
+ 122:.\lightlib.c  ****         set_status(LEFT_LED, ON);
+ 340              		.loc 1 122 0
+ 341 0054 0120     		mov	r0, #1
+ 342 0056 011C     		mov	r1, r0
+ 343 0058 2FE0     		b	.L78
+ 344              	.LVL24:
+ 345              	.L50:
+ 123:.\lightlib.c  ****         break;
+ 124:.\lightlib.c  ****         case RIGHT_LED:
+ 125:.\lightlib.c  ****             switch(get_color(RIGHT_LED)) {
+ 126:.\lightlib.c  ****                 case RED:
+ 127:.\lightlib.c  ****                     Right_LED_Red_Write(1);
+ 128:.\lightlib.c  ****                 break;
+ 129:.\lightlib.c  ****                 case BLUE:
+ 130:.\lightlib.c  ****                     PWM_Right_LED_Blue_Start();
+ 131:.\lightlib.c  ****                 break;
+ 132:.\lightlib.c  ****                 case MAGENTA:
+ 133:.\lightlib.c  ****                     Right_LED_Red_Write(1);
+ 134:.\lightlib.c  ****                     PWM_Right_LED_Blue_Start();
+ 135:.\lightlib.c  ****                 break;
+ 136:.\lightlib.c  ****                 case GREEN:
+ 137:.\lightlib.c  ****                     Right_LED_Green_Write(1);
+ 138:.\lightlib.c  ****                 break;
+ 139:.\lightlib.c  ****                 case YELLOW:
+ 140:.\lightlib.c  ****                     Right_LED_Red_Write(1);
+ 141:.\lightlib.c  ****                     Right_LED_Green_Write(1);
+ 142:.\lightlib.c  ****                 break;
+ 143:.\lightlib.c  ****                 case CYAN:
+ 144:.\lightlib.c  ****                     PWM_Right_LED_Blue_Start();
+ 145:.\lightlib.c  ****                     Right_LED_Green_Write(1);
+ 146:.\lightlib.c  ****                 break;
+ 147:.\lightlib.c  ****                 case WHITE:
+ 148:.\lightlib.c  ****                     Right_LED_Red_Write(1);
+ 149:.\lightlib.c  ****                     PWM_Right_LED_Blue_Start();
+ 150:.\lightlib.c  ****                     Right_LED_Green_Write(1);
+ 151:.\lightlib.c  ****                 break;
+ 152:.\lightlib.c  ****             }
+ 153:.\lightlib.c  ****         set_status(RIGHT_LED, ON);
+ 154:.\lightlib.c  ****         break;
+ 155:.\lightlib.c  ****         case LEFT_RIGHT_LED:
+ 156:.\lightlib.c  ****             turn_on(LEFT_LED);
+ 346              		.loc 1 156 0
+ 347 005a 0120     		mov	r0, #1
+ 348 005c FFF7FEFF 		bl	turn_on
+ 349              	.LVL25:
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc94kbZI.s 			page 10
+
+
+ 350              	.L49:
+ 351              	.LBB8:
+ 352              	.LBB9:
+  67:.\lightlib.c  ****             return Right_LED_State.color;
+ 353              		.loc 1 67 0
+ 354 0060 184B     		ldr	r3, .L79+4
+ 355 0062 5878     		ldrb	r0, [r3, #1]
+ 356              	.LBE9:
+ 357              	.LBE8:
+ 125:.\lightlib.c  ****             switch(get_color(RIGHT_LED)) {
+ 358              		.loc 1 125 0
+ 359 0064 0138     		sub	r0, r0, #1
+ 360 0066 0628     		cmp	r0, #6
+ 361 0068 1BD8     		bhi	.L62
+ 362 006a FFF7FEFF 		bl	__gnu_thumb1_case_uqi
+ 363              	.L64:
+ 364 006e 04       		.byte	(.L63-.L64)/2
+ 365 006f 0B       		.byte	(.L74-.L64)/2
+ 366 0070 08       		.byte	(.L66-.L64)/2
+ 367 0071 17       		.byte	(.L76-.L64)/2
+ 368 0072 0E       		.byte	(.L68-.L64)/2
+ 369 0073 15       		.byte	(.L75-.L64)/2
+ 370 0074 12       		.byte	(.L70-.L64)/2
+ 371 0075 00       		.p2align 1
+ 372              	.L63:
+ 127:.\lightlib.c  ****                     Right_LED_Red_Write(1);
+ 373              		.loc 1 127 0
+ 374 0076 0120     		mov	r0, #1
+ 375 0078 FFF7FEFF 		bl	Right_LED_Red_Write
+ 376              	.LVL26:
+ 128:.\lightlib.c  ****                 break;
+ 377              		.loc 1 128 0
+ 378 007c 11E0     		b	.L62
+ 379              	.L66:
+ 133:.\lightlib.c  ****                     Right_LED_Red_Write(1);
+ 380              		.loc 1 133 0
+ 381 007e 0120     		mov	r0, #1
+ 382 0080 FFF7FEFF 		bl	Right_LED_Red_Write
+ 383              	.LVL27:
+ 384              	.L74:
+ 134:.\lightlib.c  ****                     PWM_Right_LED_Blue_Start();
+ 385              		.loc 1 134 0
+ 386 0084 FFF7FEFF 		bl	PWM_Right_LED_Blue_Start
+ 387              	.LVL28:
+ 135:.\lightlib.c  ****                 break;
+ 388              		.loc 1 135 0
+ 389 0088 0BE0     		b	.L62
+ 390              	.L68:
+ 140:.\lightlib.c  ****                     Right_LED_Red_Write(1);
+ 391              		.loc 1 140 0
+ 392 008a 0120     		mov	r0, #1
+ 393 008c FFF7FEFF 		bl	Right_LED_Red_Write
+ 394              	.LVL29:
+ 395 0090 04E0     		b	.L76
+ 396              	.L70:
+ 148:.\lightlib.c  ****                     Right_LED_Red_Write(1);
+ 397              		.loc 1 148 0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc94kbZI.s 			page 11
+
+
+ 398 0092 0120     		mov	r0, #1
+ 399 0094 FFF7FEFF 		bl	Right_LED_Red_Write
+ 400              	.LVL30:
+ 401              	.L75:
+ 149:.\lightlib.c  ****                     PWM_Right_LED_Blue_Start();
+ 402              		.loc 1 149 0
+ 403 0098 FFF7FEFF 		bl	PWM_Right_LED_Blue_Start
+ 404              	.LVL31:
+ 405              	.L76:
+ 150:.\lightlib.c  ****                     Right_LED_Green_Write(1);
+ 406              		.loc 1 150 0
+ 407 009c 0120     		mov	r0, #1
+ 408 009e FFF7FEFF 		bl	Right_LED_Green_Write
+ 409              	.LVL32:
+ 410              	.L62:
+ 153:.\lightlib.c  ****         set_status(RIGHT_LED, ON);
+ 411              		.loc 1 153 0
+ 412 00a2 0220     		mov	r0, #2
+ 413 00a4 08E0     		b	.L77
+ 414              	.LVL33:
+ 415              	.L51:
+ 157:.\lightlib.c  ****             turn_on(RIGHT_LED);
+ 158:.\lightlib.c  ****         break;
+ 159:.\lightlib.c  ****         case IR_LED:
+ 160:.\lightlib.c  ****             IR_LED_Write(1);
+ 416              		.loc 1 160 0
+ 417 00a6 0120     		mov	r0, #1
+ 418 00a8 FFF7FEFF 		bl	IR_LED_Write
+ 419              	.LVL34:
+ 161:.\lightlib.c  ****             set_status(IR_LED, ON);
+ 420              		.loc 1 161 0
+ 421 00ac 0420     		mov	r0, #4
+ 422 00ae 03E0     		b	.L77
+ 423              	.L52:
+ 162:.\lightlib.c  ****         break;
+ 163:.\lightlib.c  ****         case BOARD_LED:
+ 164:.\lightlib.c  ****             Board_LED_Write(1);
+ 424              		.loc 1 164 0
+ 425 00b0 0120     		mov	r0, #1
+ 426 00b2 FFF7FEFF 		bl	Board_LED_Write
+ 427              	.LVL35:
+ 165:.\lightlib.c  ****             set_status(BOARD_LED, ON);
+ 428              		.loc 1 165 0
+ 429 00b6 0520     		mov	r0, #5
+ 430              	.L77:
+ 431 00b8 0121     		mov	r1, #1
+ 432              	.L78:
+ 433 00ba FFF7FEFF 		bl	set_status
+ 434              	.LVL36:
+ 435              	.L45:
+ 166:.\lightlib.c  **** 
+ 167:.\lightlib.c  ****         break;
+ 168:.\lightlib.c  ****     }    
+ 169:.\lightlib.c  **** }
+ 436              		.loc 1 169 0
+ 437              		@ sp needed
+ 438 00be 08BD     		pop	{r3, pc}
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc94kbZI.s 			page 12
+
+
+ 439              	.L80:
+ 440              		.align	2
+ 441              	.L79:
+ 442 00c0 00000000 		.word	Left_LED_State
+ 443 00c4 00000000 		.word	Right_LED_State
+ 444              		.cfi_endproc
+ 445              	.LFE37:
+ 446              		.size	turn_on, .-turn_on
+ 447              		.section	.text.turn_off,"ax",%progbits
+ 448              		.align	1
+ 449              		.global	turn_off
+ 450              		.code	16
+ 451              		.thumb_func
+ 452              		.type	turn_off, %function
+ 453              	turn_off:
+ 454              	.LFB38:
+ 170:.\lightlib.c  **** 
+ 171:.\lightlib.c  **** void turn_off(uint8 led_flag) {
+ 455              		.loc 1 171 0
+ 456              		.cfi_startproc
+ 457              	.LVL37:
+ 172:.\lightlib.c  ****     switch(led_flag) {
+ 458              		.loc 1 172 0
+ 459 0000 0138     		sub	r0, r0, #1
+ 460              	.LVL38:
+ 171:.\lightlib.c  **** void turn_off(uint8 led_flag) {
+ 461              		.loc 1 171 0
+ 462 0002 08B5     		push	{r3, lr}
+ 463              		.cfi_def_cfa_offset 8
+ 464              		.cfi_offset 3, -8
+ 465              		.cfi_offset 14, -4
+ 466              		.loc 1 172 0
+ 467 0004 0428     		cmp	r0, #4
+ 468 0006 27D8     		bhi	.L81
+ 469 0008 FFF7FEFF 		bl	__gnu_thumb1_case_uqi
+ 470              	.L84:
+ 471 000c 03       		.byte	(.L83-.L84)/2
+ 472 000d 10       		.byte	(.L85-.L84)/2
+ 473 000e 0D       		.byte	(.L86-.L84)/2
+ 474 000f 1A       		.byte	(.L87-.L84)/2
+ 475 0010 1F       		.byte	(.L88-.L84)/2
+ 476 0011 00       		.p2align 1
+ 477              	.L83:
+ 478              	.LVL39:
+ 479              	.LBB12:
+ 480              	.LBB13:
+ 173:.\lightlib.c  ****         case LEFT_LED:
+ 174:.\lightlib.c  ****             Left_LED_Red_Write(0);
+ 481              		.loc 1 174 0
+ 482 0012 0020     		mov	r0, #0
+ 483 0014 FFF7FEFF 		bl	Left_LED_Red_Write
+ 484              	.LVL40:
+ 175:.\lightlib.c  ****             PWM_Left_LED_Blue_Stop();
+ 485              		.loc 1 175 0
+ 486 0018 FFF7FEFF 		bl	PWM_Left_LED_Blue_Stop
+ 487              	.LVL41:
+ 176:.\lightlib.c  ****             Left_LED_Green_Write(0);
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc94kbZI.s 			page 13
+
+
+ 488              		.loc 1 176 0
+ 489 001c 0020     		mov	r0, #0
+ 490 001e FFF7FEFF 		bl	Left_LED_Green_Write
+ 491              	.LVL42:
+ 177:.\lightlib.c  ****             set_status(LEFT_LED, OFF);
+ 492              		.loc 1 177 0
+ 493 0022 0120     		mov	r0, #1
+ 494 0024 15E0     		b	.L89
+ 495              	.LVL43:
+ 496              	.L86:
+ 497              	.LBE13:
+ 498              	.LBE12:
+ 178:.\lightlib.c  ****         break;
+ 179:.\lightlib.c  ****         case RIGHT_LED:
+ 180:.\lightlib.c  ****             Right_LED_Red_Write(0);
+ 181:.\lightlib.c  ****             PWM_Right_LED_Blue_Stop();
+ 182:.\lightlib.c  ****             Right_LED_Green_Write(0);
+ 183:.\lightlib.c  ****             set_status(RIGHT_LED, OFF);
+ 184:.\lightlib.c  ****         break;
+ 185:.\lightlib.c  ****         case LEFT_RIGHT_LED:
+ 186:.\lightlib.c  ****             turn_off(LEFT_LED);
+ 499              		.loc 1 186 0
+ 500 0026 0120     		mov	r0, #1
+ 501 0028 FFF7FEFF 		bl	turn_off
+ 502              	.LVL44:
+ 503              	.L85:
+ 180:.\lightlib.c  ****             Right_LED_Red_Write(0);
+ 504              		.loc 1 180 0
+ 505 002c 0020     		mov	r0, #0
+ 506 002e FFF7FEFF 		bl	Right_LED_Red_Write
+ 507              	.LVL45:
+ 181:.\lightlib.c  ****             PWM_Right_LED_Blue_Stop();
+ 508              		.loc 1 181 0
+ 509 0032 FFF7FEFF 		bl	PWM_Right_LED_Blue_Stop
+ 510              	.LVL46:
+ 182:.\lightlib.c  ****             Right_LED_Green_Write(0);
+ 511              		.loc 1 182 0
+ 512 0036 0020     		mov	r0, #0
+ 513 0038 FFF7FEFF 		bl	Right_LED_Green_Write
+ 514              	.LVL47:
+ 183:.\lightlib.c  ****             set_status(RIGHT_LED, OFF);
+ 515              		.loc 1 183 0
+ 516 003c 0220     		mov	r0, #2
+ 517 003e 08E0     		b	.L89
+ 518              	.L87:
+ 187:.\lightlib.c  ****             turn_off(RIGHT_LED);
+ 188:.\lightlib.c  ****         break;
+ 189:.\lightlib.c  ****         case IR_LED:
+ 190:.\lightlib.c  ****             IR_LED_Write(0);
+ 519              		.loc 1 190 0
+ 520 0040 0020     		mov	r0, #0
+ 521 0042 FFF7FEFF 		bl	IR_LED_Write
+ 522              	.LVL48:
+ 191:.\lightlib.c  ****             set_status(IR_LED, OFF);
+ 523              		.loc 1 191 0
+ 524 0046 0420     		mov	r0, #4
+ 525 0048 03E0     		b	.L89
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc94kbZI.s 			page 14
+
+
+ 526              	.L88:
+ 192:.\lightlib.c  ****         break;
+ 193:.\lightlib.c  ****         case BOARD_LED:
+ 194:.\lightlib.c  ****             Board_LED_Write(0);
+ 527              		.loc 1 194 0
+ 528 004a 0020     		mov	r0, #0
+ 529 004c FFF7FEFF 		bl	Board_LED_Write
+ 530              	.LVL49:
+ 195:.\lightlib.c  ****            set_status(BOARD_LED, OFF);
+ 531              		.loc 1 195 0
+ 532 0050 0520     		mov	r0, #5
+ 533              	.L89:
+ 534 0052 0021     		mov	r1, #0
+ 535 0054 FFF7FEFF 		bl	set_status
+ 536              	.LVL50:
+ 537              	.L81:
+ 196:.\lightlib.c  ****         break;
+ 197:.\lightlib.c  ****     }    
+ 198:.\lightlib.c  **** }
+ 538              		.loc 1 198 0
+ 539              		@ sp needed
+ 540 0058 08BD     		pop	{r3, pc}
+ 541              		.cfi_endproc
+ 542              	.LFE38:
+ 543              		.size	turn_off, .-turn_off
+ 544              		.section	.text.turn_on_all_led,"ax",%progbits
+ 545              		.align	1
+ 546              		.global	turn_on_all_led
+ 547              		.code	16
+ 548              		.thumb_func
+ 549              		.type	turn_on_all_led, %function
+ 550              	turn_on_all_led:
+ 551              	.LFB39:
+ 199:.\lightlib.c  **** 
+ 200:.\lightlib.c  **** void turn_on_all_led(void) {
+ 552              		.loc 1 200 0
+ 553              		.cfi_startproc
+ 554 0000 08B5     		push	{r3, lr}
+ 555              		.cfi_def_cfa_offset 8
+ 556              		.cfi_offset 3, -8
+ 557              		.cfi_offset 14, -4
+ 201:.\lightlib.c  ****     turn_on(LEFT_LED);
+ 558              		.loc 1 201 0
+ 559 0002 0120     		mov	r0, #1
+ 560 0004 FFF7FEFF 		bl	turn_on
+ 561              	.LVL51:
+ 202:.\lightlib.c  ****     turn_on(RIGHT_LED); 
+ 562              		.loc 1 202 0
+ 563 0008 0220     		mov	r0, #2
+ 564 000a FFF7FEFF 		bl	turn_on
+ 565              	.LVL52:
+ 203:.\lightlib.c  ****     turn_on(IR_LED); 
+ 566              		.loc 1 203 0
+ 567 000e 0420     		mov	r0, #4
+ 568 0010 FFF7FEFF 		bl	turn_on
+ 569              	.LVL53:
+ 204:.\lightlib.c  ****     turn_on(BOARD_LED); 
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc94kbZI.s 			page 15
+
+
+ 570              		.loc 1 204 0
+ 571 0014 0520     		mov	r0, #5
+ 572 0016 FFF7FEFF 		bl	turn_on
+ 573              	.LVL54:
+ 205:.\lightlib.c  **** }
+ 574              		.loc 1 205 0
+ 575              		@ sp needed
+ 576 001a 08BD     		pop	{r3, pc}
+ 577              		.cfi_endproc
+ 578              	.LFE39:
+ 579              		.size	turn_on_all_led, .-turn_on_all_led
+ 580              		.section	.text.turn_off_all_led,"ax",%progbits
+ 581              		.align	1
+ 582              		.global	turn_off_all_led
+ 583              		.code	16
+ 584              		.thumb_func
+ 585              		.type	turn_off_all_led, %function
+ 586              	turn_off_all_led:
+ 587              	.LFB40:
+ 206:.\lightlib.c  **** 
+ 207:.\lightlib.c  **** void turn_off_all_led(void) {
+ 588              		.loc 1 207 0
+ 589              		.cfi_startproc
+ 590 0000 08B5     		push	{r3, lr}
+ 591              		.cfi_def_cfa_offset 8
+ 592              		.cfi_offset 3, -8
+ 593              		.cfi_offset 14, -4
+ 208:.\lightlib.c  ****     turn_off(LEFT_LED);
+ 594              		.loc 1 208 0
+ 595 0002 0120     		mov	r0, #1
+ 596 0004 FFF7FEFF 		bl	turn_off
+ 597              	.LVL55:
+ 209:.\lightlib.c  ****     turn_off(RIGHT_LED); 
+ 598              		.loc 1 209 0
+ 599 0008 0220     		mov	r0, #2
+ 600 000a FFF7FEFF 		bl	turn_off
+ 601              	.LVL56:
+ 210:.\lightlib.c  ****     turn_off(IR_LED); 
+ 602              		.loc 1 210 0
+ 603 000e 0420     		mov	r0, #4
+ 604 0010 FFF7FEFF 		bl	turn_off
+ 605              	.LVL57:
+ 211:.\lightlib.c  ****     turn_off(BOARD_LED); 
+ 606              		.loc 1 211 0
+ 607 0014 0520     		mov	r0, #5
+ 608 0016 FFF7FEFF 		bl	turn_off
+ 609              	.LVL58:
+ 212:.\lightlib.c  **** }
+ 610              		.loc 1 212 0
+ 611              		@ sp needed
+ 612 001a 08BD     		pop	{r3, pc}
+ 613              		.cfi_endproc
+ 614              	.LFE40:
+ 615              		.size	turn_off_all_led, .-turn_off_all_led
+ 616              		.section	.text.init_led,"ax",%progbits
+ 617              		.align	1
+ 618              		.global	init_led
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc94kbZI.s 			page 16
+
+
+ 619              		.code	16
+ 620              		.thumb_func
+ 621              		.type	init_led, %function
+ 622              	init_led:
+ 623              	.LFB41:
+ 213:.\lightlib.c  **** 
+ 214:.\lightlib.c  **** void init_led(uint8 color) {
+ 624              		.loc 1 214 0
+ 625              		.cfi_startproc
+ 626              	.LVL59:
+ 627 0000 10B5     		push	{r4, lr}
+ 628              		.cfi_def_cfa_offset 8
+ 629              		.cfi_offset 4, -8
+ 630              		.cfi_offset 14, -4
+ 631              		.loc 1 214 0
+ 632 0002 041C     		mov	r4, r0
+ 215:.\lightlib.c  ****     /* Turn off all leds */
+ 216:.\lightlib.c  ****     turn_off_all_led();
+ 633              		.loc 1 216 0
+ 634 0004 FFF7FEFF 		bl	turn_off_all_led
+ 635              	.LVL60:
+ 217:.\lightlib.c  ****     
+ 218:.\lightlib.c  ****     /* Set default led color */
+ 219:.\lightlib.c  ****     set_color(LEFT_LED, color);
+ 636              		.loc 1 219 0
+ 637 0008 211C     		mov	r1, r4
+ 638 000a 0120     		mov	r0, #1
+ 639 000c FFF7FEFF 		bl	set_color
+ 640              	.LVL61:
+ 220:.\lightlib.c  ****     set_color(RIGHT_LED, color);
+ 641              		.loc 1 220 0
+ 642 0010 0220     		mov	r0, #2
+ 643 0012 211C     		mov	r1, r4
+ 644 0014 FFF7FEFF 		bl	set_color
+ 645              	.LVL62:
+ 221:.\lightlib.c  **** }...
+ 646              		.loc 1 221 0
+ 647              		@ sp needed
+ 648 0018 10BD     		pop	{r4, pc}
+ 649              		.cfi_endproc
+ 650              	.LFE41:
+ 651              		.size	init_led, .-init_led
+ 652              		.comm	Board_LED_State,1,1
+ 653              		.comm	IR_LED_State,1,1
+ 654              		.comm	Right_LED_State,2,1
+ 655              		.comm	Left_LED_State,2,1
+ 656              		.text
+ 657              	.Letext0:
+ 658              		.file 2 ".\\lightlib.h"
+ 659              		.file 3 ".\\Generated_Source\\PSoC4/Left_LED_Red.h"
+ 660              		.file 4 ".\\Generated_Source\\PSoC4/Left_LED_Green.h"
+ 661              		.file 5 ".\\Generated_Source\\PSoC4/Right_LED_Red.h"
+ 662              		.file 6 ".\\Generated_Source\\PSoC4/PWM_Left_LED_Blue.h"
+ 663              		.file 7 ".\\Generated_Source\\PSoC4/PWM_Right_LED_Blue.h"
+ 664              		.file 8 ".\\Generated_Source\\PSoC4/Right_LED_Green.h"
+ 665              		.file 9 ".\\Generated_Source\\PSoC4/IR_LED.h"
+ 666              		.file 10 ".\\Generated_Source\\PSoC4/Board_LED.h"
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc94kbZI.s 			page 17
+
+
+ 667              		.file 11 ".\\Generated_Source\\PSoC4/cytypes.h"
+ 668              		.section	.debug_info,"",%progbits
+ 669              	.Ldebug_info0:
+ 670 0000 0E060000 		.4byte	0x60e
+ 671 0004 0400     		.2byte	0x4
+ 672 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 673 000a 04       		.byte	0x4
+ 674 000b 01       		.uleb128 0x1
+ 675 000c 8C000000 		.4byte	.LASF39
+ 676 0010 01       		.byte	0x1
+ 677 0011 F6020000 		.4byte	.LASF40
+ 678 0015 E6010000 		.4byte	.LASF41
+ 679 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 680 001d 00000000 		.4byte	0
+ 681 0021 00000000 		.4byte	.Ldebug_line0
+ 682 0025 02       		.uleb128 0x2
+ 683 0026 01       		.byte	0x1
+ 684 0027 06       		.byte	0x6
+ 685 0028 EA020000 		.4byte	.LASF0
+ 686 002c 02       		.uleb128 0x2
+ 687 002d 01       		.byte	0x1
+ 688 002e 08       		.byte	0x8
+ 689 002f 0E010000 		.4byte	.LASF1
+ 690 0033 02       		.uleb128 0x2
+ 691 0034 02       		.byte	0x2
+ 692 0035 05       		.byte	0x5
+ 693 0036 78020000 		.4byte	.LASF2
+ 694 003a 02       		.uleb128 0x2
+ 695 003b 02       		.byte	0x2
+ 696 003c 07       		.byte	0x7
+ 697 003d 42000000 		.4byte	.LASF3
+ 698 0041 02       		.uleb128 0x2
+ 699 0042 04       		.byte	0x4
+ 700 0043 05       		.byte	0x5
+ 701 0044 A8020000 		.4byte	.LASF4
+ 702 0048 02       		.uleb128 0x2
+ 703 0049 04       		.byte	0x4
+ 704 004a 07       		.byte	0x7
+ 705 004b 1C010000 		.4byte	.LASF5
+ 706 004f 02       		.uleb128 0x2
+ 707 0050 08       		.byte	0x8
+ 708 0051 05       		.byte	0x5
+ 709 0052 4C020000 		.4byte	.LASF6
+ 710 0056 02       		.uleb128 0x2
+ 711 0057 08       		.byte	0x8
+ 712 0058 07       		.byte	0x7
+ 713 0059 BF010000 		.4byte	.LASF7
+ 714 005d 03       		.uleb128 0x3
+ 715 005e 04       		.byte	0x4
+ 716 005f 05       		.byte	0x5
+ 717 0060 696E7400 		.ascii	"int\000"
+ 718 0064 02       		.uleb128 0x2
+ 719 0065 04       		.byte	0x4
+ 720 0066 07       		.byte	0x7
+ 721 0067 88010000 		.4byte	.LASF8
+ 722 006b 04       		.uleb128 0x4
+ 723 006c 3B010000 		.4byte	.LASF42
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc94kbZI.s 			page 18
+
+
+ 724 0070 0B       		.byte	0xb
+ 725 0071 A1       		.byte	0xa1
+ 726 0072 2C000000 		.4byte	0x2c
+ 727 0076 02       		.uleb128 0x2
+ 728 0077 04       		.byte	0x4
+ 729 0078 04       		.byte	0x4
+ 730 0079 08010000 		.4byte	.LASF9
+ 731 007d 02       		.uleb128 0x2
+ 732 007e 08       		.byte	0x8
+ 733 007f 04       		.byte	0x4
+ 734 0080 72010000 		.4byte	.LASF10
+ 735 0084 02       		.uleb128 0x2
+ 736 0085 01       		.byte	0x1
+ 737 0086 08       		.byte	0x8
+ 738 0087 19000000 		.4byte	.LASF11
+ 739 008b 02       		.uleb128 0x2
+ 740 008c 04       		.byte	0x4
+ 741 008d 07       		.byte	0x7
+ 742 008e 43020000 		.4byte	.LASF12
+ 743 0092 05       		.uleb128 0x5
+ 744 0093 2B000000 		.4byte	.LASF15
+ 745 0097 02       		.byte	0x2
+ 746 0098 02       		.byte	0x2
+ 747 0099 26       		.byte	0x26
+ 748 009a B7000000 		.4byte	0xb7
+ 749 009e 06       		.uleb128 0x6
+ 750 009f 75000000 		.4byte	.LASF13
+ 751 00a3 02       		.byte	0x2
+ 752 00a4 27       		.byte	0x27
+ 753 00a5 6B000000 		.4byte	0x6b
+ 754 00a9 00       		.byte	0
+ 755 00aa 06       		.uleb128 0x6
+ 756 00ab 79010000 		.4byte	.LASF14
+ 757 00af 02       		.byte	0x2
+ 758 00b0 28       		.byte	0x28
+ 759 00b1 6B000000 		.4byte	0x6b
+ 760 00b5 01       		.byte	0x1
+ 761 00b6 00       		.byte	0
+ 762 00b7 05       		.uleb128 0x5
+ 763 00b8 5A020000 		.4byte	.LASF16
+ 764 00bc 01       		.byte	0x1
+ 765 00bd 02       		.byte	0x2
+ 766 00be 2C       		.byte	0x2c
+ 767 00bf D0000000 		.4byte	0xd0
+ 768 00c3 06       		.uleb128 0x6
+ 769 00c4 75000000 		.4byte	.LASF13
+ 770 00c8 02       		.byte	0x2
+ 771 00c9 2D       		.byte	0x2d
+ 772 00ca 6B000000 		.4byte	0x6b
+ 773 00ce 00       		.byte	0
+ 774 00cf 00       		.byte	0
+ 775 00d0 07       		.uleb128 0x7
+ 776 00d1 39000000 		.4byte	.LASF28
+ 777 00d5 01       		.byte	0x1
+ 778 00d6 AB       		.byte	0xab
+ 779 00d7 01       		.byte	0x1
+ 780 00d8 E8000000 		.4byte	0xe8
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc94kbZI.s 			page 19
+
+
+ 781 00dc 08       		.uleb128 0x8
+ 782 00dd C9020000 		.4byte	.LASF17
+ 783 00e1 01       		.byte	0x1
+ 784 00e2 AB       		.byte	0xab
+ 785 00e3 6B000000 		.4byte	0x6b
+ 786 00e7 00       		.byte	0
+ 787 00e8 09       		.uleb128 0x9
+ 788 00e9 0F000000 		.4byte	.LASF18
+ 789 00ed 01       		.byte	0x1
+ 790 00ee 19       		.byte	0x19
+ 791 00ef 00000000 		.4byte	.LFB33
+ 792 00f3 28000000 		.4byte	.LFE33-.LFB33
+ 793 00f7 01       		.uleb128 0x1
+ 794 00f8 9C       		.byte	0x9c
+ 795 00f9 2B010000 		.4byte	0x12b
+ 796 00fd 0A       		.uleb128 0xa
+ 797 00fe C9020000 		.4byte	.LASF17
+ 798 0102 01       		.byte	0x1
+ 799 0103 19       		.byte	0x19
+ 800 0104 6B000000 		.4byte	0x6b
+ 801 0108 00000000 		.4byte	.LLST0
+ 802 010c 0A       		.uleb128 0xa
+ 803 010d 79010000 		.4byte	.LASF14
+ 804 0111 01       		.byte	0x1
+ 805 0112 19       		.byte	0x19
+ 806 0113 6B000000 		.4byte	0x6b
+ 807 0117 21000000 		.4byte	.LLST1
+ 808 011b 0B       		.uleb128 0xb
+ 809 011c 1A000000 		.4byte	.LVL2
+ 810 0120 E8000000 		.4byte	0xe8
+ 811 0124 0C       		.uleb128 0xc
+ 812 0125 01       		.uleb128 0x1
+ 813 0126 50       		.byte	0x50
+ 814 0127 01       		.uleb128 0x1
+ 815 0128 31       		.byte	0x31
+ 816 0129 00       		.byte	0
+ 817 012a 00       		.byte	0
+ 818 012b 09       		.uleb128 0x9
+ 819 012c 55000000 		.4byte	.LASF19
+ 820 0130 01       		.byte	0x1
+ 821 0131 28       		.byte	0x28
+ 822 0132 00000000 		.4byte	.LFB34
+ 823 0136 3C000000 		.4byte	.LFE34-.LFB34
+ 824 013a 01       		.uleb128 0x1
+ 825 013b 9C       		.byte	0x9c
+ 826 013c 6E010000 		.4byte	0x16e
+ 827 0140 0A       		.uleb128 0xa
+ 828 0141 C9020000 		.4byte	.LASF17
+ 829 0145 01       		.byte	0x1
+ 830 0146 28       		.byte	0x28
+ 831 0147 6B000000 		.4byte	0x6b
+ 832 014b 42000000 		.4byte	.LLST2
+ 833 014f 0A       		.uleb128 0xa
+ 834 0150 75000000 		.4byte	.LASF13
+ 835 0154 01       		.byte	0x1
+ 836 0155 28       		.byte	0x28
+ 837 0156 6B000000 		.4byte	0x6b
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc94kbZI.s 			page 20
+
+
+ 838 015a 63000000 		.4byte	.LLST3
+ 839 015e 0B       		.uleb128 0xb
+ 840 015f 1E000000 		.4byte	.LVL5
+ 841 0163 2B010000 		.4byte	0x12b
+ 842 0167 0C       		.uleb128 0xc
+ 843 0168 01       		.uleb128 0x1
+ 844 0169 50       		.byte	0x50
+ 845 016a 01       		.uleb128 0x1
+ 846 016b 31       		.byte	0x31
+ 847 016c 00       		.byte	0
+ 848 016d 00       		.byte	0
+ 849 016e 0D       		.uleb128 0xd
+ 850 016f 58010000 		.4byte	.LASF43
+ 851 0173 01       		.byte	0x1
+ 852 0174 3D       		.byte	0x3d
+ 853 0175 6B000000 		.4byte	0x6b
+ 854 0179 01       		.byte	0x1
+ 855 017a 8A010000 		.4byte	0x18a
+ 856 017e 08       		.uleb128 0x8
+ 857 017f C9020000 		.4byte	.LASF17
+ 858 0183 01       		.byte	0x1
+ 859 0184 3D       		.byte	0x3d
+ 860 0185 6B000000 		.4byte	0x6b
+ 861 0189 00       		.byte	0
+ 862 018a 0E       		.uleb128 0xe
+ 863 018b 6E010000 		.4byte	0x16e
+ 864 018f 00000000 		.4byte	.LFB35
+ 865 0193 20000000 		.4byte	.LFE35-.LFB35
+ 866 0197 01       		.uleb128 0x1
+ 867 0198 9C       		.byte	0x9c
+ 868 0199 A7010000 		.4byte	0x1a7
+ 869 019d 0F       		.uleb128 0xf
+ 870 019e 7E010000 		.4byte	0x17e
+ 871 01a2 9D000000 		.4byte	.LLST4
+ 872 01a6 00       		.byte	0
+ 873 01a7 10       		.uleb128 0x10
+ 874 01a8 95020000 		.4byte	.LASF44
+ 875 01ac 01       		.byte	0x1
+ 876 01ad 49       		.byte	0x49
+ 877 01ae 6B000000 		.4byte	0x6b
+ 878 01b2 00000000 		.4byte	.LFB36
+ 879 01b6 3C000000 		.4byte	.LFE36-.LFB36
+ 880 01ba 01       		.uleb128 0x1
+ 881 01bb 9C       		.byte	0x9c
+ 882 01bc D0010000 		.4byte	0x1d0
+ 883 01c0 0A       		.uleb128 0xa
+ 884 01c1 C9020000 		.4byte	.LASF17
+ 885 01c5 01       		.byte	0x1
+ 886 01c6 49       		.byte	0x49
+ 887 01c7 6B000000 		.4byte	0x6b
+ 888 01cb D7000000 		.4byte	.LLST5
+ 889 01cf 00       		.byte	0
+ 890 01d0 09       		.uleb128 0x9
+ 891 01d1 A0020000 		.4byte	.LASF20
+ 892 01d5 01       		.byte	0x1
+ 893 01d6 5B       		.byte	0x5b
+ 894 01d7 00000000 		.4byte	.LFB37
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc94kbZI.s 			page 21
+
+
+ 895 01db C8000000 		.4byte	.LFE37-.LFB37
+ 896 01df 01       		.uleb128 0x1
+ 897 01e0 9C       		.byte	0x9c
+ 898 01e1 53030000 		.4byte	0x353
+ 899 01e5 0A       		.uleb128 0xa
+ 900 01e6 C9020000 		.4byte	.LASF17
+ 901 01ea 01       		.byte	0x1
+ 902 01eb 5B       		.byte	0x5b
+ 903 01ec 6B000000 		.4byte	0x6b
+ 904 01f0 F8000000 		.4byte	.LLST6
+ 905 01f4 11       		.uleb128 0x11
+ 906 01f5 6E010000 		.4byte	0x16e
+ 907 01f9 12000000 		.4byte	.LBB6
+ 908 01fd 04000000 		.4byte	.LBE6-.LBB6
+ 909 0201 01       		.byte	0x1
+ 910 0202 5E       		.byte	0x5e
+ 911 0203 11020000 		.4byte	0x211
+ 912 0207 0F       		.uleb128 0xf
+ 913 0208 7E010000 		.4byte	0x17e
+ 914 020c 19010000 		.4byte	.LLST7
+ 915 0210 00       		.byte	0
+ 916 0211 11       		.uleb128 0x11
+ 917 0212 6E010000 		.4byte	0x16e
+ 918 0216 60000000 		.4byte	.LBB8
+ 919 021a 04000000 		.4byte	.LBE8-.LBB8
+ 920 021e 01       		.byte	0x1
+ 921 021f 7D       		.byte	0x7d
+ 922 0220 2E020000 		.4byte	0x22e
+ 923 0224 0F       		.uleb128 0xf
+ 924 0225 7E010000 		.4byte	0x17e
+ 925 0229 2D010000 		.4byte	.LLST8
+ 926 022d 00       		.byte	0
+ 927 022e 12       		.uleb128 0x12
+ 928 022f 2E000000 		.4byte	.LVL17
+ 929 0233 8F050000 		.4byte	0x58f
+ 930 0237 41020000 		.4byte	0x241
+ 931 023b 0C       		.uleb128 0xc
+ 932 023c 01       		.uleb128 0x1
+ 933 023d 50       		.byte	0x50
+ 934 023e 01       		.uleb128 0x1
+ 935 023f 31       		.byte	0x31
+ 936 0240 00       		.byte	0
+ 937 0241 12       		.uleb128 0x12
+ 938 0242 36000000 		.4byte	.LVL18
+ 939 0246 8F050000 		.4byte	0x58f
+ 940 024a 54020000 		.4byte	0x254
+ 941 024e 0C       		.uleb128 0xc
+ 942 024f 01       		.uleb128 0x1
+ 943 0250 50       		.byte	0x50
+ 944 0251 01       		.uleb128 0x1
+ 945 0252 31       		.byte	0x31
+ 946 0253 00       		.byte	0
+ 947 0254 13       		.uleb128 0x13
+ 948 0255 3A000000 		.4byte	.LVL19
+ 949 0259 A0050000 		.4byte	0x5a0
+ 950 025d 12       		.uleb128 0x12
+ 951 025e 42000000 		.4byte	.LVL20
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc94kbZI.s 			page 22
+
+
+ 952 0262 8F050000 		.4byte	0x58f
+ 953 0266 70020000 		.4byte	0x270
+ 954 026a 0C       		.uleb128 0xc
+ 955 026b 01       		.uleb128 0x1
+ 956 026c 50       		.byte	0x50
+ 957 026d 01       		.uleb128 0x1
+ 958 026e 31       		.byte	0x31
+ 959 026f 00       		.byte	0
+ 960 0270 12       		.uleb128 0x12
+ 961 0271 4A000000 		.4byte	.LVL21
+ 962 0275 8F050000 		.4byte	0x58f
+ 963 0279 83020000 		.4byte	0x283
+ 964 027d 0C       		.uleb128 0xc
+ 965 027e 01       		.uleb128 0x1
+ 966 027f 50       		.byte	0x50
+ 967 0280 01       		.uleb128 0x1
+ 968 0281 31       		.byte	0x31
+ 969 0282 00       		.byte	0
+ 970 0283 13       		.uleb128 0x13
+ 971 0284 4E000000 		.4byte	.LVL22
+ 972 0288 A0050000 		.4byte	0x5a0
+ 973 028c 12       		.uleb128 0x12
+ 974 028d 54000000 		.4byte	.LVL23
+ 975 0291 A7050000 		.4byte	0x5a7
+ 976 0295 9F020000 		.4byte	0x29f
+ 977 0299 0C       		.uleb128 0xc
+ 978 029a 01       		.uleb128 0x1
+ 979 029b 50       		.byte	0x50
+ 980 029c 01       		.uleb128 0x1
+ 981 029d 31       		.byte	0x31
+ 982 029e 00       		.byte	0
+ 983 029f 12       		.uleb128 0x12
+ 984 02a0 60000000 		.4byte	.LVL25
+ 985 02a4 D0010000 		.4byte	0x1d0
+ 986 02a8 B2020000 		.4byte	0x2b2
+ 987 02ac 0C       		.uleb128 0xc
+ 988 02ad 01       		.uleb128 0x1
+ 989 02ae 50       		.byte	0x50
+ 990 02af 01       		.uleb128 0x1
+ 991 02b0 31       		.byte	0x31
+ 992 02b1 00       		.byte	0
+ 993 02b2 12       		.uleb128 0x12
+ 994 02b3 7C000000 		.4byte	.LVL26
+ 995 02b7 B8050000 		.4byte	0x5b8
+ 996 02bb C5020000 		.4byte	0x2c5
+ 997 02bf 0C       		.uleb128 0xc
+ 998 02c0 01       		.uleb128 0x1
+ 999 02c1 50       		.byte	0x50
+ 1000 02c2 01       		.uleb128 0x1
+ 1001 02c3 31       		.byte	0x31
+ 1002 02c4 00       		.byte	0
+ 1003 02c5 12       		.uleb128 0x12
+ 1004 02c6 84000000 		.4byte	.LVL27
+ 1005 02ca B8050000 		.4byte	0x5b8
+ 1006 02ce D8020000 		.4byte	0x2d8
+ 1007 02d2 0C       		.uleb128 0xc
+ 1008 02d3 01       		.uleb128 0x1
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc94kbZI.s 			page 23
+
+
+ 1009 02d4 50       		.byte	0x50
+ 1010 02d5 01       		.uleb128 0x1
+ 1011 02d6 31       		.byte	0x31
+ 1012 02d7 00       		.byte	0
+ 1013 02d8 13       		.uleb128 0x13
+ 1014 02d9 88000000 		.4byte	.LVL28
+ 1015 02dd C9050000 		.4byte	0x5c9
+ 1016 02e1 12       		.uleb128 0x12
+ 1017 02e2 90000000 		.4byte	.LVL29
+ 1018 02e6 B8050000 		.4byte	0x5b8
+ 1019 02ea F4020000 		.4byte	0x2f4
+ 1020 02ee 0C       		.uleb128 0xc
+ 1021 02ef 01       		.uleb128 0x1
+ 1022 02f0 50       		.byte	0x50
+ 1023 02f1 01       		.uleb128 0x1
+ 1024 02f2 31       		.byte	0x31
+ 1025 02f3 00       		.byte	0
+ 1026 02f4 12       		.uleb128 0x12
+ 1027 02f5 98000000 		.4byte	.LVL30
+ 1028 02f9 B8050000 		.4byte	0x5b8
+ 1029 02fd 07030000 		.4byte	0x307
+ 1030 0301 0C       		.uleb128 0xc
+ 1031 0302 01       		.uleb128 0x1
+ 1032 0303 50       		.byte	0x50
+ 1033 0304 01       		.uleb128 0x1
+ 1034 0305 31       		.byte	0x31
+ 1035 0306 00       		.byte	0
+ 1036 0307 13       		.uleb128 0x13
+ 1037 0308 9C000000 		.4byte	.LVL31
+ 1038 030c C9050000 		.4byte	0x5c9
+ 1039 0310 12       		.uleb128 0x12
+ 1040 0311 A2000000 		.4byte	.LVL32
+ 1041 0315 D0050000 		.4byte	0x5d0
+ 1042 0319 23030000 		.4byte	0x323
+ 1043 031d 0C       		.uleb128 0xc
+ 1044 031e 01       		.uleb128 0x1
+ 1045 031f 50       		.byte	0x50
+ 1046 0320 01       		.uleb128 0x1
+ 1047 0321 31       		.byte	0x31
+ 1048 0322 00       		.byte	0
+ 1049 0323 12       		.uleb128 0x12
+ 1050 0324 AC000000 		.4byte	.LVL34
+ 1051 0328 E1050000 		.4byte	0x5e1
+ 1052 032c 36030000 		.4byte	0x336
+ 1053 0330 0C       		.uleb128 0xc
+ 1054 0331 01       		.uleb128 0x1
+ 1055 0332 50       		.byte	0x50
+ 1056 0333 01       		.uleb128 0x1
+ 1057 0334 31       		.byte	0x31
+ 1058 0335 00       		.byte	0
+ 1059 0336 12       		.uleb128 0x12
+ 1060 0337 B6000000 		.4byte	.LVL35
+ 1061 033b F2050000 		.4byte	0x5f2
+ 1062 033f 49030000 		.4byte	0x349
+ 1063 0343 0C       		.uleb128 0xc
+ 1064 0344 01       		.uleb128 0x1
+ 1065 0345 50       		.byte	0x50
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc94kbZI.s 			page 24
+
+
+ 1066 0346 01       		.uleb128 0x1
+ 1067 0347 31       		.byte	0x31
+ 1068 0348 00       		.byte	0
+ 1069 0349 13       		.uleb128 0x13
+ 1070 034a BE000000 		.4byte	.LVL36
+ 1071 034e 2B010000 		.4byte	0x12b
+ 1072 0352 00       		.byte	0
+ 1073 0353 0E       		.uleb128 0xe
+ 1074 0354 D0000000 		.4byte	0xd0
+ 1075 0358 00000000 		.4byte	.LFB38
+ 1076 035c 5A000000 		.4byte	.LFE38-.LFB38
+ 1077 0360 01       		.uleb128 0x1
+ 1078 0361 9C       		.byte	0x9c
+ 1079 0362 29040000 		.4byte	0x429
+ 1080 0366 0F       		.uleb128 0xf
+ 1081 0367 DC000000 		.4byte	0xdc
+ 1082 036b 41010000 		.4byte	.LLST9
+ 1083 036f 14       		.uleb128 0x14
+ 1084 0370 12000000 		.4byte	.LBB12
+ 1085 0374 14000000 		.4byte	.LBE12-.LBB12
+ 1086 0378 B1030000 		.4byte	0x3b1
+ 1087 037c 0F       		.uleb128 0xf
+ 1088 037d DC000000 		.4byte	0xdc
+ 1089 0381 62010000 		.4byte	.LLST10
+ 1090 0385 12       		.uleb128 0x12
+ 1091 0386 18000000 		.4byte	.LVL40
+ 1092 038a 8F050000 		.4byte	0x58f
+ 1093 038e 98030000 		.4byte	0x398
+ 1094 0392 0C       		.uleb128 0xc
+ 1095 0393 01       		.uleb128 0x1
+ 1096 0394 50       		.byte	0x50
+ 1097 0395 01       		.uleb128 0x1
+ 1098 0396 30       		.byte	0x30
+ 1099 0397 00       		.byte	0
+ 1100 0398 13       		.uleb128 0x13
+ 1101 0399 1C000000 		.4byte	.LVL41
+ 1102 039d 03060000 		.4byte	0x603
+ 1103 03a1 0B       		.uleb128 0xb
+ 1104 03a2 22000000 		.4byte	.LVL42
+ 1105 03a6 A7050000 		.4byte	0x5a7
+ 1106 03aa 0C       		.uleb128 0xc
+ 1107 03ab 01       		.uleb128 0x1
+ 1108 03ac 50       		.byte	0x50
+ 1109 03ad 01       		.uleb128 0x1
+ 1110 03ae 30       		.byte	0x30
+ 1111 03af 00       		.byte	0
+ 1112 03b0 00       		.byte	0
+ 1113 03b1 12       		.uleb128 0x12
+ 1114 03b2 2C000000 		.4byte	.LVL44
+ 1115 03b6 D0000000 		.4byte	0xd0
+ 1116 03ba C4030000 		.4byte	0x3c4
+ 1117 03be 0C       		.uleb128 0xc
+ 1118 03bf 01       		.uleb128 0x1
+ 1119 03c0 50       		.byte	0x50
+ 1120 03c1 01       		.uleb128 0x1
+ 1121 03c2 31       		.byte	0x31
+ 1122 03c3 00       		.byte	0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc94kbZI.s 			page 25
+
+
+ 1123 03c4 12       		.uleb128 0x12
+ 1124 03c5 32000000 		.4byte	.LVL45
+ 1125 03c9 B8050000 		.4byte	0x5b8
+ 1126 03cd D7030000 		.4byte	0x3d7
+ 1127 03d1 0C       		.uleb128 0xc
+ 1128 03d2 01       		.uleb128 0x1
+ 1129 03d3 50       		.byte	0x50
+ 1130 03d4 01       		.uleb128 0x1
+ 1131 03d5 30       		.byte	0x30
+ 1132 03d6 00       		.byte	0
+ 1133 03d7 13       		.uleb128 0x13
+ 1134 03d8 36000000 		.4byte	.LVL46
+ 1135 03dc 0A060000 		.4byte	0x60a
+ 1136 03e0 12       		.uleb128 0x12
+ 1137 03e1 3C000000 		.4byte	.LVL47
+ 1138 03e5 D0050000 		.4byte	0x5d0
+ 1139 03e9 F3030000 		.4byte	0x3f3
+ 1140 03ed 0C       		.uleb128 0xc
+ 1141 03ee 01       		.uleb128 0x1
+ 1142 03ef 50       		.byte	0x50
+ 1143 03f0 01       		.uleb128 0x1
+ 1144 03f1 30       		.byte	0x30
+ 1145 03f2 00       		.byte	0
+ 1146 03f3 12       		.uleb128 0x12
+ 1147 03f4 46000000 		.4byte	.LVL48
+ 1148 03f8 E1050000 		.4byte	0x5e1
+ 1149 03fc 06040000 		.4byte	0x406
+ 1150 0400 0C       		.uleb128 0xc
+ 1151 0401 01       		.uleb128 0x1
+ 1152 0402 50       		.byte	0x50
+ 1153 0403 01       		.uleb128 0x1
+ 1154 0404 30       		.byte	0x30
+ 1155 0405 00       		.byte	0
+ 1156 0406 12       		.uleb128 0x12
+ 1157 0407 50000000 		.4byte	.LVL49
+ 1158 040b F2050000 		.4byte	0x5f2
+ 1159 040f 19040000 		.4byte	0x419
+ 1160 0413 0C       		.uleb128 0xc
+ 1161 0414 01       		.uleb128 0x1
+ 1162 0415 50       		.byte	0x50
+ 1163 0416 01       		.uleb128 0x1
+ 1164 0417 30       		.byte	0x30
+ 1165 0418 00       		.byte	0
+ 1166 0419 0B       		.uleb128 0xb
+ 1167 041a 58000000 		.4byte	.LVL50
+ 1168 041e 2B010000 		.4byte	0x12b
+ 1169 0422 0C       		.uleb128 0xc
+ 1170 0423 01       		.uleb128 0x1
+ 1171 0424 51       		.byte	0x51
+ 1172 0425 01       		.uleb128 0x1
+ 1173 0426 30       		.byte	0x30
+ 1174 0427 00       		.byte	0
+ 1175 0428 00       		.byte	0
+ 1176 0429 09       		.uleb128 0x9
+ 1177 042a 62010000 		.4byte	.LASF21
+ 1178 042e 01       		.byte	0x1
+ 1179 042f C8       		.byte	0xc8
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc94kbZI.s 			page 26
+
+
+ 1180 0430 00000000 		.4byte	.LFB39
+ 1181 0434 1C000000 		.4byte	.LFE39-.LFB39
+ 1182 0438 01       		.uleb128 0x1
+ 1183 0439 9C       		.byte	0x9c
+ 1184 043a 87040000 		.4byte	0x487
+ 1185 043e 12       		.uleb128 0x12
+ 1186 043f 08000000 		.4byte	.LVL51
+ 1187 0443 D0010000 		.4byte	0x1d0
+ 1188 0447 51040000 		.4byte	0x451
+ 1189 044b 0C       		.uleb128 0xc
+ 1190 044c 01       		.uleb128 0x1
+ 1191 044d 50       		.byte	0x50
+ 1192 044e 01       		.uleb128 0x1
+ 1193 044f 31       		.byte	0x31
+ 1194 0450 00       		.byte	0
+ 1195 0451 12       		.uleb128 0x12
+ 1196 0452 0E000000 		.4byte	.LVL52
+ 1197 0456 D0010000 		.4byte	0x1d0
+ 1198 045a 64040000 		.4byte	0x464
+ 1199 045e 0C       		.uleb128 0xc
+ 1200 045f 01       		.uleb128 0x1
+ 1201 0460 50       		.byte	0x50
+ 1202 0461 01       		.uleb128 0x1
+ 1203 0462 32       		.byte	0x32
+ 1204 0463 00       		.byte	0
+ 1205 0464 12       		.uleb128 0x12
+ 1206 0465 14000000 		.4byte	.LVL53
+ 1207 0469 D0010000 		.4byte	0x1d0
+ 1208 046d 77040000 		.4byte	0x477
+ 1209 0471 0C       		.uleb128 0xc
+ 1210 0472 01       		.uleb128 0x1
+ 1211 0473 50       		.byte	0x50
+ 1212 0474 01       		.uleb128 0x1
+ 1213 0475 34       		.byte	0x34
+ 1214 0476 00       		.byte	0
+ 1215 0477 0B       		.uleb128 0xb
+ 1216 0478 1A000000 		.4byte	.LVL54
+ 1217 047c D0010000 		.4byte	0x1d0
+ 1218 0480 0C       		.uleb128 0xc
+ 1219 0481 01       		.uleb128 0x1
+ 1220 0482 50       		.byte	0x50
+ 1221 0483 01       		.uleb128 0x1
+ 1222 0484 35       		.byte	0x35
+ 1223 0485 00       		.byte	0
+ 1224 0486 00       		.byte	0
+ 1225 0487 09       		.uleb128 0x9
+ 1226 0488 95010000 		.4byte	.LASF22
+ 1227 048c 01       		.byte	0x1
+ 1228 048d CF       		.byte	0xcf
+ 1229 048e 00000000 		.4byte	.LFB40
+ 1230 0492 1C000000 		.4byte	.LFE40-.LFB40
+ 1231 0496 01       		.uleb128 0x1
+ 1232 0497 9C       		.byte	0x9c
+ 1233 0498 E5040000 		.4byte	0x4e5
+ 1234 049c 12       		.uleb128 0x12
+ 1235 049d 08000000 		.4byte	.LVL55
+ 1236 04a1 D0000000 		.4byte	0xd0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc94kbZI.s 			page 27
+
+
+ 1237 04a5 AF040000 		.4byte	0x4af
+ 1238 04a9 0C       		.uleb128 0xc
+ 1239 04aa 01       		.uleb128 0x1
+ 1240 04ab 50       		.byte	0x50
+ 1241 04ac 01       		.uleb128 0x1
+ 1242 04ad 31       		.byte	0x31
+ 1243 04ae 00       		.byte	0
+ 1244 04af 12       		.uleb128 0x12
+ 1245 04b0 0E000000 		.4byte	.LVL56
+ 1246 04b4 D0000000 		.4byte	0xd0
+ 1247 04b8 C2040000 		.4byte	0x4c2
+ 1248 04bc 0C       		.uleb128 0xc
+ 1249 04bd 01       		.uleb128 0x1
+ 1250 04be 50       		.byte	0x50
+ 1251 04bf 01       		.uleb128 0x1
+ 1252 04c0 32       		.byte	0x32
+ 1253 04c1 00       		.byte	0
+ 1254 04c2 12       		.uleb128 0x12
+ 1255 04c3 14000000 		.4byte	.LVL57
+ 1256 04c7 D0000000 		.4byte	0xd0
+ 1257 04cb D5040000 		.4byte	0x4d5
+ 1258 04cf 0C       		.uleb128 0xc
+ 1259 04d0 01       		.uleb128 0x1
+ 1260 04d1 50       		.byte	0x50
+ 1261 04d2 01       		.uleb128 0x1
+ 1262 04d3 34       		.byte	0x34
+ 1263 04d4 00       		.byte	0
+ 1264 04d5 0B       		.uleb128 0xb
+ 1265 04d6 1A000000 		.4byte	.LVL58
+ 1266 04da D0000000 		.4byte	0xd0
+ 1267 04de 0C       		.uleb128 0xc
+ 1268 04df 01       		.uleb128 0x1
+ 1269 04e0 50       		.byte	0x50
+ 1270 04e1 01       		.uleb128 0x1
+ 1271 04e2 35       		.byte	0x35
+ 1272 04e3 00       		.byte	0
+ 1273 04e4 00       		.byte	0
+ 1274 04e5 09       		.uleb128 0x9
+ 1275 04e6 7F010000 		.4byte	.LASF23
+ 1276 04ea 01       		.byte	0x1
+ 1277 04eb D6       		.byte	0xd6
+ 1278 04ec 00000000 		.4byte	.LFB41
+ 1279 04f0 1A000000 		.4byte	.LFE41-.LFB41
+ 1280 04f4 01       		.uleb128 0x1
+ 1281 04f5 9C       		.byte	0x9c
+ 1282 04f6 41050000 		.4byte	0x541
+ 1283 04fa 0A       		.uleb128 0xa
+ 1284 04fb 79010000 		.4byte	.LASF14
+ 1285 04ff 01       		.byte	0x1
+ 1286 0500 D6       		.byte	0xd6
+ 1287 0501 6B000000 		.4byte	0x6b
+ 1288 0505 76010000 		.4byte	.LLST11
+ 1289 0509 13       		.uleb128 0x13
+ 1290 050a 08000000 		.4byte	.LVL60
+ 1291 050e 87040000 		.4byte	0x487
+ 1292 0512 12       		.uleb128 0x12
+ 1293 0513 10000000 		.4byte	.LVL61
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc94kbZI.s 			page 28
+
+
+ 1294 0517 E8000000 		.4byte	0xe8
+ 1295 051b 2B050000 		.4byte	0x52b
+ 1296 051f 0C       		.uleb128 0xc
+ 1297 0520 01       		.uleb128 0x1
+ 1298 0521 51       		.byte	0x51
+ 1299 0522 02       		.uleb128 0x2
+ 1300 0523 74       		.byte	0x74
+ 1301 0524 00       		.sleb128 0
+ 1302 0525 0C       		.uleb128 0xc
+ 1303 0526 01       		.uleb128 0x1
+ 1304 0527 50       		.byte	0x50
+ 1305 0528 01       		.uleb128 0x1
+ 1306 0529 31       		.byte	0x31
+ 1307 052a 00       		.byte	0
+ 1308 052b 0B       		.uleb128 0xb
+ 1309 052c 18000000 		.4byte	.LVL62
+ 1310 0530 E8000000 		.4byte	0xe8
+ 1311 0534 0C       		.uleb128 0xc
+ 1312 0535 01       		.uleb128 0x1
+ 1313 0536 51       		.byte	0x51
+ 1314 0537 02       		.uleb128 0x2
+ 1315 0538 74       		.byte	0x74
+ 1316 0539 00       		.sleb128 0
+ 1317 053a 0C       		.uleb128 0xc
+ 1318 053b 01       		.uleb128 0x1
+ 1319 053c 50       		.byte	0x50
+ 1320 053d 01       		.uleb128 0x1
+ 1321 053e 32       		.byte	0x32
+ 1322 053f 00       		.byte	0
+ 1323 0540 00       		.byte	0
+ 1324 0541 15       		.uleb128 0x15
+ 1325 0542 00000000 		.4byte	.LASF24
+ 1326 0546 01       		.byte	0x1
+ 1327 0547 11       		.byte	0x11
+ 1328 0548 52050000 		.4byte	0x552
+ 1329 054c 05       		.uleb128 0x5
+ 1330 054d 03       		.byte	0x3
+ 1331 054e 00000000 		.4byte	Left_LED_State
+ 1332 0552 16       		.uleb128 0x16
+ 1333 0553 92000000 		.4byte	0x92
+ 1334 0557 15       		.uleb128 0x15
+ 1335 0558 7C000000 		.4byte	.LASF25
+ 1336 055c 01       		.byte	0x1
+ 1337 055d 12       		.byte	0x12
+ 1338 055e 52050000 		.4byte	0x552
+ 1339 0562 05       		.uleb128 0x5
+ 1340 0563 03       		.byte	0x3
+ 1341 0564 00000000 		.4byte	Right_LED_State
+ 1342 0568 15       		.uleb128 0x15
+ 1343 0569 1E000000 		.4byte	.LASF26
+ 1344 056d 01       		.byte	0x1
+ 1345 056e 13       		.byte	0x13
+ 1346 056f 79050000 		.4byte	0x579
+ 1347 0573 05       		.uleb128 0x5
+ 1348 0574 03       		.byte	0x3
+ 1349 0575 00000000 		.4byte	IR_LED_State
+ 1350 0579 16       		.uleb128 0x16
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc94kbZI.s 			page 29
+
+
+ 1351 057a B7000000 		.4byte	0xb7
+ 1352 057e 15       		.uleb128 0x15
+ 1353 057f D6010000 		.4byte	.LASF27
+ 1354 0583 01       		.byte	0x1
+ 1355 0584 14       		.byte	0x14
+ 1356 0585 79050000 		.4byte	0x579
+ 1357 0589 05       		.uleb128 0x5
+ 1358 058a 03       		.byte	0x3
+ 1359 058b 00000000 		.4byte	Board_LED_State
+ 1360 058f 17       		.uleb128 0x17
+ 1361 0590 82020000 		.4byte	.LASF29
+ 1362 0594 03       		.byte	0x3
+ 1363 0595 1D       		.byte	0x1d
+ 1364 0596 A0050000 		.4byte	0x5a0
+ 1365 059a 18       		.uleb128 0x18
+ 1366 059b 6B000000 		.4byte	0x6b
+ 1367 059f 00       		.byte	0
+ 1368 05a0 19       		.uleb128 0x19
+ 1369 05a1 B1020000 		.4byte	.LASF32
+ 1370 05a5 06       		.byte	0x6
+ 1371 05a6 92       		.byte	0x92
+ 1372 05a7 17       		.uleb128 0x17
+ 1373 05a8 60000000 		.4byte	.LASF30
+ 1374 05ac 04       		.byte	0x4
+ 1375 05ad 1D       		.byte	0x1d
+ 1376 05ae B8050000 		.4byte	0x5b8
+ 1377 05b2 18       		.uleb128 0x18
+ 1378 05b3 6B000000 		.4byte	0x6b
+ 1379 05b7 00       		.byte	0
+ 1380 05b8 17       		.uleb128 0x17
+ 1381 05b9 64020000 		.4byte	.LASF31
+ 1382 05bd 05       		.byte	0x5
+ 1383 05be 1D       		.byte	0x1d
+ 1384 05bf C9050000 		.4byte	0x5c9
+ 1385 05c3 18       		.uleb128 0x18
+ 1386 05c4 6B000000 		.4byte	0x6b
+ 1387 05c8 00       		.byte	0
+ 1388 05c9 19       		.uleb128 0x19
+ 1389 05ca A6010000 		.4byte	.LASF33
+ 1390 05ce 07       		.byte	0x7
+ 1391 05cf 92       		.byte	0x92
+ 1392 05d0 17       		.uleb128 0x17
+ 1393 05d1 2D020000 		.4byte	.LASF34
+ 1394 05d5 08       		.byte	0x8
+ 1395 05d6 1D       		.byte	0x1d
+ 1396 05d7 E1050000 		.4byte	0x5e1
+ 1397 05db 18       		.uleb128 0x18
+ 1398 05dc 6B000000 		.4byte	0x6b
+ 1399 05e0 00       		.byte	0
+ 1400 05e1 17       		.uleb128 0x17
+ 1401 05e2 2E010000 		.4byte	.LASF35
+ 1402 05e6 09       		.byte	0x9
+ 1403 05e7 1D       		.byte	0x1d
+ 1404 05e8 F2050000 		.4byte	0x5f2
+ 1405 05ec 18       		.uleb128 0x18
+ 1406 05ed 6B000000 		.4byte	0x6b
+ 1407 05f1 00       		.byte	0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc94kbZI.s 			page 30
+
+
+ 1408 05f2 17       		.uleb128 0x17
+ 1409 05f3 03030000 		.4byte	.LASF36
+ 1410 05f7 0A       		.byte	0xa
+ 1411 05f8 1D       		.byte	0x1d
+ 1412 05f9 03060000 		.4byte	0x603
+ 1413 05fd 18       		.uleb128 0x18
+ 1414 05fe 6B000000 		.4byte	0x6b
+ 1415 0602 00       		.byte	0
+ 1416 0603 19       		.uleb128 0x19
+ 1417 0604 41010000 		.4byte	.LASF37
+ 1418 0608 06       		.byte	0x6
+ 1419 0609 93       		.byte	0x93
+ 1420 060a 19       		.uleb128 0x19
+ 1421 060b D2020000 		.4byte	.LASF38
+ 1422 060f 07       		.byte	0x7
+ 1423 0610 93       		.byte	0x93
+ 1424 0611 00       		.byte	0
+ 1425              		.section	.debug_abbrev,"",%progbits
+ 1426              	.Ldebug_abbrev0:
+ 1427 0000 01       		.uleb128 0x1
+ 1428 0001 11       		.uleb128 0x11
+ 1429 0002 01       		.byte	0x1
+ 1430 0003 25       		.uleb128 0x25
+ 1431 0004 0E       		.uleb128 0xe
+ 1432 0005 13       		.uleb128 0x13
+ 1433 0006 0B       		.uleb128 0xb
+ 1434 0007 03       		.uleb128 0x3
+ 1435 0008 0E       		.uleb128 0xe
+ 1436 0009 1B       		.uleb128 0x1b
+ 1437 000a 0E       		.uleb128 0xe
+ 1438 000b 55       		.uleb128 0x55
+ 1439 000c 17       		.uleb128 0x17
+ 1440 000d 11       		.uleb128 0x11
+ 1441 000e 01       		.uleb128 0x1
+ 1442 000f 10       		.uleb128 0x10
+ 1443 0010 17       		.uleb128 0x17
+ 1444 0011 00       		.byte	0
+ 1445 0012 00       		.byte	0
+ 1446 0013 02       		.uleb128 0x2
+ 1447 0014 24       		.uleb128 0x24
+ 1448 0015 00       		.byte	0
+ 1449 0016 0B       		.uleb128 0xb
+ 1450 0017 0B       		.uleb128 0xb
+ 1451 0018 3E       		.uleb128 0x3e
+ 1452 0019 0B       		.uleb128 0xb
+ 1453 001a 03       		.uleb128 0x3
+ 1454 001b 0E       		.uleb128 0xe
+ 1455 001c 00       		.byte	0
+ 1456 001d 00       		.byte	0
+ 1457 001e 03       		.uleb128 0x3
+ 1458 001f 24       		.uleb128 0x24
+ 1459 0020 00       		.byte	0
+ 1460 0021 0B       		.uleb128 0xb
+ 1461 0022 0B       		.uleb128 0xb
+ 1462 0023 3E       		.uleb128 0x3e
+ 1463 0024 0B       		.uleb128 0xb
+ 1464 0025 03       		.uleb128 0x3
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc94kbZI.s 			page 31
+
+
+ 1465 0026 08       		.uleb128 0x8
+ 1466 0027 00       		.byte	0
+ 1467 0028 00       		.byte	0
+ 1468 0029 04       		.uleb128 0x4
+ 1469 002a 16       		.uleb128 0x16
+ 1470 002b 00       		.byte	0
+ 1471 002c 03       		.uleb128 0x3
+ 1472 002d 0E       		.uleb128 0xe
+ 1473 002e 3A       		.uleb128 0x3a
+ 1474 002f 0B       		.uleb128 0xb
+ 1475 0030 3B       		.uleb128 0x3b
+ 1476 0031 0B       		.uleb128 0xb
+ 1477 0032 49       		.uleb128 0x49
+ 1478 0033 13       		.uleb128 0x13
+ 1479 0034 00       		.byte	0
+ 1480 0035 00       		.byte	0
+ 1481 0036 05       		.uleb128 0x5
+ 1482 0037 13       		.uleb128 0x13
+ 1483 0038 01       		.byte	0x1
+ 1484 0039 03       		.uleb128 0x3
+ 1485 003a 0E       		.uleb128 0xe
+ 1486 003b 0B       		.uleb128 0xb
+ 1487 003c 0B       		.uleb128 0xb
+ 1488 003d 3A       		.uleb128 0x3a
+ 1489 003e 0B       		.uleb128 0xb
+ 1490 003f 3B       		.uleb128 0x3b
+ 1491 0040 0B       		.uleb128 0xb
+ 1492 0041 01       		.uleb128 0x1
+ 1493 0042 13       		.uleb128 0x13
+ 1494 0043 00       		.byte	0
+ 1495 0044 00       		.byte	0
+ 1496 0045 06       		.uleb128 0x6
+ 1497 0046 0D       		.uleb128 0xd
+ 1498 0047 00       		.byte	0
+ 1499 0048 03       		.uleb128 0x3
+ 1500 0049 0E       		.uleb128 0xe
+ 1501 004a 3A       		.uleb128 0x3a
+ 1502 004b 0B       		.uleb128 0xb
+ 1503 004c 3B       		.uleb128 0x3b
+ 1504 004d 0B       		.uleb128 0xb
+ 1505 004e 49       		.uleb128 0x49
+ 1506 004f 13       		.uleb128 0x13
+ 1507 0050 38       		.uleb128 0x38
+ 1508 0051 0B       		.uleb128 0xb
+ 1509 0052 00       		.byte	0
+ 1510 0053 00       		.byte	0
+ 1511 0054 07       		.uleb128 0x7
+ 1512 0055 2E       		.uleb128 0x2e
+ 1513 0056 01       		.byte	0x1
+ 1514 0057 3F       		.uleb128 0x3f
+ 1515 0058 19       		.uleb128 0x19
+ 1516 0059 03       		.uleb128 0x3
+ 1517 005a 0E       		.uleb128 0xe
+ 1518 005b 3A       		.uleb128 0x3a
+ 1519 005c 0B       		.uleb128 0xb
+ 1520 005d 3B       		.uleb128 0x3b
+ 1521 005e 0B       		.uleb128 0xb
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc94kbZI.s 			page 32
+
+
+ 1522 005f 27       		.uleb128 0x27
+ 1523 0060 19       		.uleb128 0x19
+ 1524 0061 20       		.uleb128 0x20
+ 1525 0062 0B       		.uleb128 0xb
+ 1526 0063 01       		.uleb128 0x1
+ 1527 0064 13       		.uleb128 0x13
+ 1528 0065 00       		.byte	0
+ 1529 0066 00       		.byte	0
+ 1530 0067 08       		.uleb128 0x8
+ 1531 0068 05       		.uleb128 0x5
+ 1532 0069 00       		.byte	0
+ 1533 006a 03       		.uleb128 0x3
+ 1534 006b 0E       		.uleb128 0xe
+ 1535 006c 3A       		.uleb128 0x3a
+ 1536 006d 0B       		.uleb128 0xb
+ 1537 006e 3B       		.uleb128 0x3b
+ 1538 006f 0B       		.uleb128 0xb
+ 1539 0070 49       		.uleb128 0x49
+ 1540 0071 13       		.uleb128 0x13
+ 1541 0072 00       		.byte	0
+ 1542 0073 00       		.byte	0
+ 1543 0074 09       		.uleb128 0x9
+ 1544 0075 2E       		.uleb128 0x2e
+ 1545 0076 01       		.byte	0x1
+ 1546 0077 3F       		.uleb128 0x3f
+ 1547 0078 19       		.uleb128 0x19
+ 1548 0079 03       		.uleb128 0x3
+ 1549 007a 0E       		.uleb128 0xe
+ 1550 007b 3A       		.uleb128 0x3a
+ 1551 007c 0B       		.uleb128 0xb
+ 1552 007d 3B       		.uleb128 0x3b
+ 1553 007e 0B       		.uleb128 0xb
+ 1554 007f 27       		.uleb128 0x27
+ 1555 0080 19       		.uleb128 0x19
+ 1556 0081 11       		.uleb128 0x11
+ 1557 0082 01       		.uleb128 0x1
+ 1558 0083 12       		.uleb128 0x12
+ 1559 0084 06       		.uleb128 0x6
+ 1560 0085 40       		.uleb128 0x40
+ 1561 0086 18       		.uleb128 0x18
+ 1562 0087 9742     		.uleb128 0x2117
+ 1563 0089 19       		.uleb128 0x19
+ 1564 008a 01       		.uleb128 0x1
+ 1565 008b 13       		.uleb128 0x13
+ 1566 008c 00       		.byte	0
+ 1567 008d 00       		.byte	0
+ 1568 008e 0A       		.uleb128 0xa
+ 1569 008f 05       		.uleb128 0x5
+ 1570 0090 00       		.byte	0
+ 1571 0091 03       		.uleb128 0x3
+ 1572 0092 0E       		.uleb128 0xe
+ 1573 0093 3A       		.uleb128 0x3a
+ 1574 0094 0B       		.uleb128 0xb
+ 1575 0095 3B       		.uleb128 0x3b
+ 1576 0096 0B       		.uleb128 0xb
+ 1577 0097 49       		.uleb128 0x49
+ 1578 0098 13       		.uleb128 0x13
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc94kbZI.s 			page 33
+
+
+ 1579 0099 02       		.uleb128 0x2
+ 1580 009a 17       		.uleb128 0x17
+ 1581 009b 00       		.byte	0
+ 1582 009c 00       		.byte	0
+ 1583 009d 0B       		.uleb128 0xb
+ 1584 009e 898201   		.uleb128 0x4109
+ 1585 00a1 01       		.byte	0x1
+ 1586 00a2 11       		.uleb128 0x11
+ 1587 00a3 01       		.uleb128 0x1
+ 1588 00a4 31       		.uleb128 0x31
+ 1589 00a5 13       		.uleb128 0x13
+ 1590 00a6 00       		.byte	0
+ 1591 00a7 00       		.byte	0
+ 1592 00a8 0C       		.uleb128 0xc
+ 1593 00a9 8A8201   		.uleb128 0x410a
+ 1594 00ac 00       		.byte	0
+ 1595 00ad 02       		.uleb128 0x2
+ 1596 00ae 18       		.uleb128 0x18
+ 1597 00af 9142     		.uleb128 0x2111
+ 1598 00b1 18       		.uleb128 0x18
+ 1599 00b2 00       		.byte	0
+ 1600 00b3 00       		.byte	0
+ 1601 00b4 0D       		.uleb128 0xd
+ 1602 00b5 2E       		.uleb128 0x2e
+ 1603 00b6 01       		.byte	0x1
+ 1604 00b7 3F       		.uleb128 0x3f
+ 1605 00b8 19       		.uleb128 0x19
+ 1606 00b9 03       		.uleb128 0x3
+ 1607 00ba 0E       		.uleb128 0xe
+ 1608 00bb 3A       		.uleb128 0x3a
+ 1609 00bc 0B       		.uleb128 0xb
+ 1610 00bd 3B       		.uleb128 0x3b
+ 1611 00be 0B       		.uleb128 0xb
+ 1612 00bf 27       		.uleb128 0x27
+ 1613 00c0 19       		.uleb128 0x19
+ 1614 00c1 49       		.uleb128 0x49
+ 1615 00c2 13       		.uleb128 0x13
+ 1616 00c3 20       		.uleb128 0x20
+ 1617 00c4 0B       		.uleb128 0xb
+ 1618 00c5 01       		.uleb128 0x1
+ 1619 00c6 13       		.uleb128 0x13
+ 1620 00c7 00       		.byte	0
+ 1621 00c8 00       		.byte	0
+ 1622 00c9 0E       		.uleb128 0xe
+ 1623 00ca 2E       		.uleb128 0x2e
+ 1624 00cb 01       		.byte	0x1
+ 1625 00cc 31       		.uleb128 0x31
+ 1626 00cd 13       		.uleb128 0x13
+ 1627 00ce 11       		.uleb128 0x11
+ 1628 00cf 01       		.uleb128 0x1
+ 1629 00d0 12       		.uleb128 0x12
+ 1630 00d1 06       		.uleb128 0x6
+ 1631 00d2 40       		.uleb128 0x40
+ 1632 00d3 18       		.uleb128 0x18
+ 1633 00d4 9742     		.uleb128 0x2117
+ 1634 00d6 19       		.uleb128 0x19
+ 1635 00d7 01       		.uleb128 0x1
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc94kbZI.s 			page 34
+
+
+ 1636 00d8 13       		.uleb128 0x13
+ 1637 00d9 00       		.byte	0
+ 1638 00da 00       		.byte	0
+ 1639 00db 0F       		.uleb128 0xf
+ 1640 00dc 05       		.uleb128 0x5
+ 1641 00dd 00       		.byte	0
+ 1642 00de 31       		.uleb128 0x31
+ 1643 00df 13       		.uleb128 0x13
+ 1644 00e0 02       		.uleb128 0x2
+ 1645 00e1 17       		.uleb128 0x17
+ 1646 00e2 00       		.byte	0
+ 1647 00e3 00       		.byte	0
+ 1648 00e4 10       		.uleb128 0x10
+ 1649 00e5 2E       		.uleb128 0x2e
+ 1650 00e6 01       		.byte	0x1
+ 1651 00e7 3F       		.uleb128 0x3f
+ 1652 00e8 19       		.uleb128 0x19
+ 1653 00e9 03       		.uleb128 0x3
+ 1654 00ea 0E       		.uleb128 0xe
+ 1655 00eb 3A       		.uleb128 0x3a
+ 1656 00ec 0B       		.uleb128 0xb
+ 1657 00ed 3B       		.uleb128 0x3b
+ 1658 00ee 0B       		.uleb128 0xb
+ 1659 00ef 27       		.uleb128 0x27
+ 1660 00f0 19       		.uleb128 0x19
+ 1661 00f1 49       		.uleb128 0x49
+ 1662 00f2 13       		.uleb128 0x13
+ 1663 00f3 11       		.uleb128 0x11
+ 1664 00f4 01       		.uleb128 0x1
+ 1665 00f5 12       		.uleb128 0x12
+ 1666 00f6 06       		.uleb128 0x6
+ 1667 00f7 40       		.uleb128 0x40
+ 1668 00f8 18       		.uleb128 0x18
+ 1669 00f9 9742     		.uleb128 0x2117
+ 1670 00fb 19       		.uleb128 0x19
+ 1671 00fc 01       		.uleb128 0x1
+ 1672 00fd 13       		.uleb128 0x13
+ 1673 00fe 00       		.byte	0
+ 1674 00ff 00       		.byte	0
+ 1675 0100 11       		.uleb128 0x11
+ 1676 0101 1D       		.uleb128 0x1d
+ 1677 0102 01       		.byte	0x1
+ 1678 0103 31       		.uleb128 0x31
+ 1679 0104 13       		.uleb128 0x13
+ 1680 0105 11       		.uleb128 0x11
+ 1681 0106 01       		.uleb128 0x1
+ 1682 0107 12       		.uleb128 0x12
+ 1683 0108 06       		.uleb128 0x6
+ 1684 0109 58       		.uleb128 0x58
+ 1685 010a 0B       		.uleb128 0xb
+ 1686 010b 59       		.uleb128 0x59
+ 1687 010c 0B       		.uleb128 0xb
+ 1688 010d 01       		.uleb128 0x1
+ 1689 010e 13       		.uleb128 0x13
+ 1690 010f 00       		.byte	0
+ 1691 0110 00       		.byte	0
+ 1692 0111 12       		.uleb128 0x12
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc94kbZI.s 			page 35
+
+
+ 1693 0112 898201   		.uleb128 0x4109
+ 1694 0115 01       		.byte	0x1
+ 1695 0116 11       		.uleb128 0x11
+ 1696 0117 01       		.uleb128 0x1
+ 1697 0118 31       		.uleb128 0x31
+ 1698 0119 13       		.uleb128 0x13
+ 1699 011a 01       		.uleb128 0x1
+ 1700 011b 13       		.uleb128 0x13
+ 1701 011c 00       		.byte	0
+ 1702 011d 00       		.byte	0
+ 1703 011e 13       		.uleb128 0x13
+ 1704 011f 898201   		.uleb128 0x4109
+ 1705 0122 00       		.byte	0
+ 1706 0123 11       		.uleb128 0x11
+ 1707 0124 01       		.uleb128 0x1
+ 1708 0125 31       		.uleb128 0x31
+ 1709 0126 13       		.uleb128 0x13
+ 1710 0127 00       		.byte	0
+ 1711 0128 00       		.byte	0
+ 1712 0129 14       		.uleb128 0x14
+ 1713 012a 0B       		.uleb128 0xb
+ 1714 012b 01       		.byte	0x1
+ 1715 012c 11       		.uleb128 0x11
+ 1716 012d 01       		.uleb128 0x1
+ 1717 012e 12       		.uleb128 0x12
+ 1718 012f 06       		.uleb128 0x6
+ 1719 0130 01       		.uleb128 0x1
+ 1720 0131 13       		.uleb128 0x13
+ 1721 0132 00       		.byte	0
+ 1722 0133 00       		.byte	0
+ 1723 0134 15       		.uleb128 0x15
+ 1724 0135 34       		.uleb128 0x34
+ 1725 0136 00       		.byte	0
+ 1726 0137 03       		.uleb128 0x3
+ 1727 0138 0E       		.uleb128 0xe
+ 1728 0139 3A       		.uleb128 0x3a
+ 1729 013a 0B       		.uleb128 0xb
+ 1730 013b 3B       		.uleb128 0x3b
+ 1731 013c 0B       		.uleb128 0xb
+ 1732 013d 49       		.uleb128 0x49
+ 1733 013e 13       		.uleb128 0x13
+ 1734 013f 3F       		.uleb128 0x3f
+ 1735 0140 19       		.uleb128 0x19
+ 1736 0141 02       		.uleb128 0x2
+ 1737 0142 18       		.uleb128 0x18
+ 1738 0143 00       		.byte	0
+ 1739 0144 00       		.byte	0
+ 1740 0145 16       		.uleb128 0x16
+ 1741 0146 35       		.uleb128 0x35
+ 1742 0147 00       		.byte	0
+ 1743 0148 49       		.uleb128 0x49
+ 1744 0149 13       		.uleb128 0x13
+ 1745 014a 00       		.byte	0
+ 1746 014b 00       		.byte	0
+ 1747 014c 17       		.uleb128 0x17
+ 1748 014d 2E       		.uleb128 0x2e
+ 1749 014e 01       		.byte	0x1
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc94kbZI.s 			page 36
+
+
+ 1750 014f 3F       		.uleb128 0x3f
+ 1751 0150 19       		.uleb128 0x19
+ 1752 0151 03       		.uleb128 0x3
+ 1753 0152 0E       		.uleb128 0xe
+ 1754 0153 3A       		.uleb128 0x3a
+ 1755 0154 0B       		.uleb128 0xb
+ 1756 0155 3B       		.uleb128 0x3b
+ 1757 0156 0B       		.uleb128 0xb
+ 1758 0157 27       		.uleb128 0x27
+ 1759 0158 19       		.uleb128 0x19
+ 1760 0159 3C       		.uleb128 0x3c
+ 1761 015a 19       		.uleb128 0x19
+ 1762 015b 01       		.uleb128 0x1
+ 1763 015c 13       		.uleb128 0x13
+ 1764 015d 00       		.byte	0
+ 1765 015e 00       		.byte	0
+ 1766 015f 18       		.uleb128 0x18
+ 1767 0160 05       		.uleb128 0x5
+ 1768 0161 00       		.byte	0
+ 1769 0162 49       		.uleb128 0x49
+ 1770 0163 13       		.uleb128 0x13
+ 1771 0164 00       		.byte	0
+ 1772 0165 00       		.byte	0
+ 1773 0166 19       		.uleb128 0x19
+ 1774 0167 2E       		.uleb128 0x2e
+ 1775 0168 00       		.byte	0
+ 1776 0169 3F       		.uleb128 0x3f
+ 1777 016a 19       		.uleb128 0x19
+ 1778 016b 03       		.uleb128 0x3
+ 1779 016c 0E       		.uleb128 0xe
+ 1780 016d 3A       		.uleb128 0x3a
+ 1781 016e 0B       		.uleb128 0xb
+ 1782 016f 3B       		.uleb128 0x3b
+ 1783 0170 0B       		.uleb128 0xb
+ 1784 0171 27       		.uleb128 0x27
+ 1785 0172 19       		.uleb128 0x19
+ 1786 0173 3C       		.uleb128 0x3c
+ 1787 0174 19       		.uleb128 0x19
+ 1788 0175 00       		.byte	0
+ 1789 0176 00       		.byte	0
+ 1790 0177 00       		.byte	0
+ 1791              		.section	.debug_loc,"",%progbits
+ 1792              	.Ldebug_loc0:
+ 1793              	.LLST0:
+ 1794 0000 00000000 		.4byte	.LVL0
+ 1795 0004 16000000 		.4byte	.LVL1
+ 1796 0008 0100     		.2byte	0x1
+ 1797 000a 50       		.byte	0x50
+ 1798 000b 16000000 		.4byte	.LVL1
+ 1799 000f 28000000 		.4byte	.LFE33
+ 1800 0013 0400     		.2byte	0x4
+ 1801 0015 F3       		.byte	0xf3
+ 1802 0016 01       		.uleb128 0x1
+ 1803 0017 50       		.byte	0x50
+ 1804 0018 9F       		.byte	0x9f
+ 1805 0019 00000000 		.4byte	0
+ 1806 001d 00000000 		.4byte	0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc94kbZI.s 			page 37
+
+
+ 1807              	.LLST1:
+ 1808 0021 00000000 		.4byte	.LVL0
+ 1809 0025 19000000 		.4byte	.LVL2-1
+ 1810 0029 0100     		.2byte	0x1
+ 1811 002b 51       		.byte	0x51
+ 1812 002c 19000000 		.4byte	.LVL2-1
+ 1813 0030 28000000 		.4byte	.LFE33
+ 1814 0034 0400     		.2byte	0x4
+ 1815 0036 F3       		.byte	0xf3
+ 1816 0037 01       		.uleb128 0x1
+ 1817 0038 51       		.byte	0x51
+ 1818 0039 9F       		.byte	0x9f
+ 1819 003a 00000000 		.4byte	0
+ 1820 003e 00000000 		.4byte	0
+ 1821              	.LLST2:
+ 1822 0042 00000000 		.4byte	.LVL3
+ 1823 0046 02000000 		.4byte	.LVL4
+ 1824 004a 0100     		.2byte	0x1
+ 1825 004c 50       		.byte	0x50
+ 1826 004d 02000000 		.4byte	.LVL4
+ 1827 0051 3C000000 		.4byte	.LFE34
+ 1828 0055 0400     		.2byte	0x4
+ 1829 0057 F3       		.byte	0xf3
+ 1830 0058 01       		.uleb128 0x1
+ 1831 0059 50       		.byte	0x50
+ 1832 005a 9F       		.byte	0x9f
+ 1833 005b 00000000 		.4byte	0
+ 1834 005f 00000000 		.4byte	0
+ 1835              	.LLST3:
+ 1836 0063 00000000 		.4byte	.LVL3
+ 1837 0067 1D000000 		.4byte	.LVL5-1
+ 1838 006b 0100     		.2byte	0x1
+ 1839 006d 51       		.byte	0x51
+ 1840 006e 1D000000 		.4byte	.LVL5-1
+ 1841 0072 22000000 		.4byte	.LVL6
+ 1842 0076 0400     		.2byte	0x4
+ 1843 0078 F3       		.byte	0xf3
+ 1844 0079 01       		.uleb128 0x1
+ 1845 007a 51       		.byte	0x51
+ 1846 007b 9F       		.byte	0x9f
+ 1847 007c 22000000 		.4byte	.LVL6
+ 1848 0080 28000000 		.4byte	.LVL7
+ 1849 0084 0100     		.2byte	0x1
+ 1850 0086 51       		.byte	0x51
+ 1851 0087 28000000 		.4byte	.LVL7
+ 1852 008b 3C000000 		.4byte	.LFE34
+ 1853 008f 0400     		.2byte	0x4
+ 1854 0091 F3       		.byte	0xf3
+ 1855 0092 01       		.uleb128 0x1
+ 1856 0093 51       		.byte	0x51
+ 1857 0094 9F       		.byte	0x9f
+ 1858 0095 00000000 		.4byte	0
+ 1859 0099 00000000 		.4byte	0
+ 1860              	.LLST4:
+ 1861 009d 00000000 		.4byte	.LVL8
+ 1862 00a1 10000000 		.4byte	.LVL9
+ 1863 00a5 0100     		.2byte	0x1
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc94kbZI.s 			page 38
+
+
+ 1864 00a7 50       		.byte	0x50
+ 1865 00a8 10000000 		.4byte	.LVL9
+ 1866 00ac 14000000 		.4byte	.LVL10
+ 1867 00b0 0400     		.2byte	0x4
+ 1868 00b2 F3       		.byte	0xf3
+ 1869 00b3 01       		.uleb128 0x1
+ 1870 00b4 50       		.byte	0x50
+ 1871 00b5 9F       		.byte	0x9f
+ 1872 00b6 14000000 		.4byte	.LVL10
+ 1873 00ba 16000000 		.4byte	.LVL11
+ 1874 00be 0100     		.2byte	0x1
+ 1875 00c0 50       		.byte	0x50
+ 1876 00c1 16000000 		.4byte	.LVL11
+ 1877 00c5 20000000 		.4byte	.LFE35
+ 1878 00c9 0400     		.2byte	0x4
+ 1879 00cb F3       		.byte	0xf3
+ 1880 00cc 01       		.uleb128 0x1
+ 1881 00cd 50       		.byte	0x50
+ 1882 00ce 9F       		.byte	0x9f
+ 1883 00cf 00000000 		.4byte	0
+ 1884 00d3 00000000 		.4byte	0
+ 1885              	.LLST5:
+ 1886 00d7 00000000 		.4byte	.LVL12
+ 1887 00db 02000000 		.4byte	.LVL13
+ 1888 00df 0100     		.2byte	0x1
+ 1889 00e1 50       		.byte	0x50
+ 1890 00e2 02000000 		.4byte	.LVL13
+ 1891 00e6 3C000000 		.4byte	.LFE36
+ 1892 00ea 0400     		.2byte	0x4
+ 1893 00ec F3       		.byte	0xf3
+ 1894 00ed 01       		.uleb128 0x1
+ 1895 00ee 50       		.byte	0x50
+ 1896 00ef 9F       		.byte	0x9f
+ 1897 00f0 00000000 		.4byte	0
+ 1898 00f4 00000000 		.4byte	0
+ 1899              	.LLST6:
+ 1900 00f8 00000000 		.4byte	.LVL14
+ 1901 00fc 02000000 		.4byte	.LVL15
+ 1902 0100 0100     		.2byte	0x1
+ 1903 0102 50       		.byte	0x50
+ 1904 0103 02000000 		.4byte	.LVL15
+ 1905 0107 C8000000 		.4byte	.LFE37
+ 1906 010b 0400     		.2byte	0x4
+ 1907 010d F3       		.byte	0xf3
+ 1908 010e 01       		.uleb128 0x1
+ 1909 010f 50       		.byte	0x50
+ 1910 0110 9F       		.byte	0x9f
+ 1911 0111 00000000 		.4byte	0
+ 1912 0115 00000000 		.4byte	0
+ 1913              	.LLST7:
+ 1914 0119 12000000 		.4byte	.LVL16
+ 1915 011d 5A000000 		.4byte	.LVL24
+ 1916 0121 0200     		.2byte	0x2
+ 1917 0123 31       		.byte	0x31
+ 1918 0124 9F       		.byte	0x9f
+ 1919 0125 00000000 		.4byte	0
+ 1920 0129 00000000 		.4byte	0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc94kbZI.s 			page 39
+
+
+ 1921              	.LLST8:
+ 1922 012d 60000000 		.4byte	.LVL25
+ 1923 0131 A6000000 		.4byte	.LVL33
+ 1924 0135 0200     		.2byte	0x2
+ 1925 0137 32       		.byte	0x32
+ 1926 0138 9F       		.byte	0x9f
+ 1927 0139 00000000 		.4byte	0
+ 1928 013d 00000000 		.4byte	0
+ 1929              	.LLST9:
+ 1930 0141 00000000 		.4byte	.LVL37
+ 1931 0145 02000000 		.4byte	.LVL38
+ 1932 0149 0100     		.2byte	0x1
+ 1933 014b 50       		.byte	0x50
+ 1934 014c 02000000 		.4byte	.LVL38
+ 1935 0150 5A000000 		.4byte	.LFE38
+ 1936 0154 0400     		.2byte	0x4
+ 1937 0156 F3       		.byte	0xf3
+ 1938 0157 01       		.uleb128 0x1
+ 1939 0158 50       		.byte	0x50
+ 1940 0159 9F       		.byte	0x9f
+ 1941 015a 00000000 		.4byte	0
+ 1942 015e 00000000 		.4byte	0
+ 1943              	.LLST10:
+ 1944 0162 12000000 		.4byte	.LVL39
+ 1945 0166 26000000 		.4byte	.LVL43
+ 1946 016a 0200     		.2byte	0x2
+ 1947 016c 31       		.byte	0x31
+ 1948 016d 9F       		.byte	0x9f
+ 1949 016e 00000000 		.4byte	0
+ 1950 0172 00000000 		.4byte	0
+ 1951              	.LLST11:
+ 1952 0176 00000000 		.4byte	.LVL59
+ 1953 017a 07000000 		.4byte	.LVL60-1
+ 1954 017e 0100     		.2byte	0x1
+ 1955 0180 50       		.byte	0x50
+ 1956 0181 07000000 		.4byte	.LVL60-1
+ 1957 0185 1A000000 		.4byte	.LFE41
+ 1958 0189 0400     		.2byte	0x4
+ 1959 018b F3       		.byte	0xf3
+ 1960 018c 01       		.uleb128 0x1
+ 1961 018d 50       		.byte	0x50
+ 1962 018e 9F       		.byte	0x9f
+ 1963 018f 00000000 		.4byte	0
+ 1964 0193 00000000 		.4byte	0
+ 1965              		.section	.debug_aranges,"",%progbits
+ 1966 0000 5C000000 		.4byte	0x5c
+ 1967 0004 0200     		.2byte	0x2
+ 1968 0006 00000000 		.4byte	.Ldebug_info0
+ 1969 000a 04       		.byte	0x4
+ 1970 000b 00       		.byte	0
+ 1971 000c 0000     		.2byte	0
+ 1972 000e 0000     		.2byte	0
+ 1973 0010 00000000 		.4byte	.LFB33
+ 1974 0014 28000000 		.4byte	.LFE33-.LFB33
+ 1975 0018 00000000 		.4byte	.LFB34
+ 1976 001c 3C000000 		.4byte	.LFE34-.LFB34
+ 1977 0020 00000000 		.4byte	.LFB35
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc94kbZI.s 			page 40
+
+
+ 1978 0024 20000000 		.4byte	.LFE35-.LFB35
+ 1979 0028 00000000 		.4byte	.LFB36
+ 1980 002c 3C000000 		.4byte	.LFE36-.LFB36
+ 1981 0030 00000000 		.4byte	.LFB37
+ 1982 0034 C8000000 		.4byte	.LFE37-.LFB37
+ 1983 0038 00000000 		.4byte	.LFB38
+ 1984 003c 5A000000 		.4byte	.LFE38-.LFB38
+ 1985 0040 00000000 		.4byte	.LFB39
+ 1986 0044 1C000000 		.4byte	.LFE39-.LFB39
+ 1987 0048 00000000 		.4byte	.LFB40
+ 1988 004c 1C000000 		.4byte	.LFE40-.LFB40
+ 1989 0050 00000000 		.4byte	.LFB41
+ 1990 0054 1A000000 		.4byte	.LFE41-.LFB41
+ 1991 0058 00000000 		.4byte	0
+ 1992 005c 00000000 		.4byte	0
+ 1993              		.section	.debug_ranges,"",%progbits
+ 1994              	.Ldebug_ranges0:
+ 1995 0000 00000000 		.4byte	.LFB33
+ 1996 0004 28000000 		.4byte	.LFE33
+ 1997 0008 00000000 		.4byte	.LFB34
+ 1998 000c 3C000000 		.4byte	.LFE34
+ 1999 0010 00000000 		.4byte	.LFB35
+ 2000 0014 20000000 		.4byte	.LFE35
+ 2001 0018 00000000 		.4byte	.LFB36
+ 2002 001c 3C000000 		.4byte	.LFE36
+ 2003 0020 00000000 		.4byte	.LFB37
+ 2004 0024 C8000000 		.4byte	.LFE37
+ 2005 0028 00000000 		.4byte	.LFB38
+ 2006 002c 5A000000 		.4byte	.LFE38
+ 2007 0030 00000000 		.4byte	.LFB39
+ 2008 0034 1C000000 		.4byte	.LFE39
+ 2009 0038 00000000 		.4byte	.LFB40
+ 2010 003c 1C000000 		.4byte	.LFE40
+ 2011 0040 00000000 		.4byte	.LFB41
+ 2012 0044 1A000000 		.4byte	.LFE41
+ 2013 0048 00000000 		.4byte	0
+ 2014 004c 00000000 		.4byte	0
+ 2015              		.section	.debug_line,"",%progbits
+ 2016              	.Ldebug_line0:
+ 2017 0000 F3010000 		.section	.debug_str,"MS",%progbits,1
+ 2017      0200F100 
+ 2017      00000201 
+ 2017      FB0E0D00 
+ 2017      01010101 
+ 2018              	.LASF24:
+ 2019 0000 4C656674 		.ascii	"Left_LED_State\000"
+ 2019      5F4C4544 
+ 2019      5F537461 
+ 2019      746500
+ 2020              	.LASF18:
+ 2021 000f 7365745F 		.ascii	"set_color\000"
+ 2021      636F6C6F 
+ 2021      7200
+ 2022              	.LASF11:
+ 2023 0019 63686172 		.ascii	"char\000"
+ 2023      00
+ 2024              	.LASF26:
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc94kbZI.s 			page 41
+
+
+ 2025 001e 49525F4C 		.ascii	"IR_LED_State\000"
+ 2025      45445F53 
+ 2025      74617465 
+ 2025      00
+ 2026              	.LASF15:
+ 2027 002b 5247425F 		.ascii	"RGB_LED_State\000"
+ 2027      4C45445F 
+ 2027      53746174 
+ 2027      6500
+ 2028              	.LASF28:
+ 2029 0039 7475726E 		.ascii	"turn_off\000"
+ 2029      5F6F6666 
+ 2029      00
+ 2030              	.LASF3:
+ 2031 0042 73686F72 		.ascii	"short unsigned int\000"
+ 2031      7420756E 
+ 2031      7369676E 
+ 2031      65642069 
+ 2031      6E7400
+ 2032              	.LASF19:
+ 2033 0055 7365745F 		.ascii	"set_status\000"
+ 2033      73746174 
+ 2033      757300
+ 2034              	.LASF30:
+ 2035 0060 4C656674 		.ascii	"Left_LED_Green_Write\000"
+ 2035      5F4C4544 
+ 2035      5F477265 
+ 2035      656E5F57 
+ 2035      72697465 
+ 2036              	.LASF13:
+ 2037 0075 73746174 		.ascii	"status\000"
+ 2037      757300
+ 2038              	.LASF25:
+ 2039 007c 52696768 		.ascii	"Right_LED_State\000"
+ 2039      745F4C45 
+ 2039      445F5374 
+ 2039      61746500 
+ 2040              	.LASF39:
+ 2041 008c 474E5520 		.ascii	"GNU C 4.8.4 20140526 (release) [ARM/embedded-4_8-br"
+ 2041      4320342E 
+ 2041      382E3420 
+ 2041      32303134 
+ 2041      30353236 
+ 2042 00bf 616E6368 		.ascii	"anch revision 211358] -mcpu=cortex-m0 -mthumb -g -O"
+ 2042      20726576 
+ 2042      6973696F 
+ 2042      6E203231 
+ 2042      31333538 
+ 2043 00f2 73202D66 		.ascii	"s -ffunction-sections\000"
+ 2043      66756E63 
+ 2043      74696F6E 
+ 2043      2D736563 
+ 2043      74696F6E 
+ 2044              	.LASF9:
+ 2045 0108 666C6F61 		.ascii	"float\000"
+ 2045      7400
+ 2046              	.LASF1:
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc94kbZI.s 			page 42
+
+
+ 2047 010e 756E7369 		.ascii	"unsigned char\000"
+ 2047      676E6564 
+ 2047      20636861 
+ 2047      7200
+ 2048              	.LASF5:
+ 2049 011c 6C6F6E67 		.ascii	"long unsigned int\000"
+ 2049      20756E73 
+ 2049      69676E65 
+ 2049      6420696E 
+ 2049      7400
+ 2050              	.LASF35:
+ 2051 012e 49525F4C 		.ascii	"IR_LED_Write\000"
+ 2051      45445F57 
+ 2051      72697465 
+ 2051      00
+ 2052              	.LASF42:
+ 2053 013b 75696E74 		.ascii	"uint8\000"
+ 2053      3800
+ 2054              	.LASF37:
+ 2055 0141 50574D5F 		.ascii	"PWM_Left_LED_Blue_Stop\000"
+ 2055      4C656674 
+ 2055      5F4C4544 
+ 2055      5F426C75 
+ 2055      655F5374 
+ 2056              	.LASF43:
+ 2057 0158 6765745F 		.ascii	"get_color\000"
+ 2057      636F6C6F 
+ 2057      7200
+ 2058              	.LASF21:
+ 2059 0162 7475726E 		.ascii	"turn_on_all_led\000"
+ 2059      5F6F6E5F 
+ 2059      616C6C5F 
+ 2059      6C656400 
+ 2060              	.LASF10:
+ 2061 0172 646F7562 		.ascii	"double\000"
+ 2061      6C6500
+ 2062              	.LASF14:
+ 2063 0179 636F6C6F 		.ascii	"color\000"
+ 2063      7200
+ 2064              	.LASF23:
+ 2065 017f 696E6974 		.ascii	"init_led\000"
+ 2065      5F6C6564 
+ 2065      00
+ 2066              	.LASF8:
+ 2067 0188 756E7369 		.ascii	"unsigned int\000"
+ 2067      676E6564 
+ 2067      20696E74 
+ 2067      00
+ 2068              	.LASF22:
+ 2069 0195 7475726E 		.ascii	"turn_off_all_led\000"
+ 2069      5F6F6666 
+ 2069      5F616C6C 
+ 2069      5F6C6564 
+ 2069      00
+ 2070              	.LASF33:
+ 2071 01a6 50574D5F 		.ascii	"PWM_Right_LED_Blue_Start\000"
+ 2071      52696768 
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc94kbZI.s 			page 43
+
+
+ 2071      745F4C45 
+ 2071      445F426C 
+ 2071      75655F53 
+ 2072              	.LASF7:
+ 2073 01bf 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 2073      206C6F6E 
+ 2073      6720756E 
+ 2073      7369676E 
+ 2073      65642069 
+ 2074              	.LASF27:
+ 2075 01d6 426F6172 		.ascii	"Board_LED_State\000"
+ 2075      645F4C45 
+ 2075      445F5374 
+ 2075      61746500 
+ 2076              	.LASF41:
+ 2077 01e6 433A5C55 		.ascii	"C:\\Users\\Admin\\Desktop\\Teacher Badge\\Teacher_B"
+ 2077      73657273 
+ 2077      5C41646D 
+ 2077      696E5C44 
+ 2077      65736B74 
+ 2078 0214 61646765 		.ascii	"adge\\Teacher_Badge.cydsn\000"
+ 2078      5C546561 
+ 2078      63686572 
+ 2078      5F426164 
+ 2078      67652E63 
+ 2079              	.LASF34:
+ 2080 022d 52696768 		.ascii	"Right_LED_Green_Write\000"
+ 2080      745F4C45 
+ 2080      445F4772 
+ 2080      65656E5F 
+ 2080      57726974 
+ 2081              	.LASF12:
+ 2082 0243 73697A65 		.ascii	"sizetype\000"
+ 2082      74797065 
+ 2082      00
+ 2083              	.LASF6:
+ 2084 024c 6C6F6E67 		.ascii	"long long int\000"
+ 2084      206C6F6E 
+ 2084      6720696E 
+ 2084      7400
+ 2085              	.LASF16:
+ 2086 025a 4C45445F 		.ascii	"LED_State\000"
+ 2086      53746174 
+ 2086      6500
+ 2087              	.LASF31:
+ 2088 0264 52696768 		.ascii	"Right_LED_Red_Write\000"
+ 2088      745F4C45 
+ 2088      445F5265 
+ 2088      645F5772 
+ 2088      69746500 
+ 2089              	.LASF2:
+ 2090 0278 73686F72 		.ascii	"short int\000"
+ 2090      7420696E 
+ 2090      7400
+ 2091              	.LASF29:
+ 2092 0282 4C656674 		.ascii	"Left_LED_Red_Write\000"
+ 2092      5F4C4544 
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc94kbZI.s 			page 44
+
+
+ 2092      5F526564 
+ 2092      5F577269 
+ 2092      746500
+ 2093              	.LASF44:
+ 2094 0295 6765745F 		.ascii	"get_status\000"
+ 2094      73746174 
+ 2094      757300
+ 2095              	.LASF20:
+ 2096 02a0 7475726E 		.ascii	"turn_on\000"
+ 2096      5F6F6E00 
+ 2097              	.LASF4:
+ 2098 02a8 6C6F6E67 		.ascii	"long int\000"
+ 2098      20696E74 
+ 2098      00
+ 2099              	.LASF32:
+ 2100 02b1 50574D5F 		.ascii	"PWM_Left_LED_Blue_Start\000"
+ 2100      4C656674 
+ 2100      5F4C4544 
+ 2100      5F426C75 
+ 2100      655F5374 
+ 2101              	.LASF17:
+ 2102 02c9 6C65645F 		.ascii	"led_flag\000"
+ 2102      666C6167 
+ 2102      00
+ 2103              	.LASF38:
+ 2104 02d2 50574D5F 		.ascii	"PWM_Right_LED_Blue_Stop\000"
+ 2104      52696768 
+ 2104      745F4C45 
+ 2104      445F426C 
+ 2104      75655F53 
+ 2105              	.LASF0:
+ 2106 02ea 7369676E 		.ascii	"signed char\000"
+ 2106      65642063 
+ 2106      68617200 
+ 2107              	.LASF40:
+ 2108 02f6 2E5C6C69 		.ascii	".\\lightlib.c\000"
+ 2108      6768746C 
+ 2108      69622E63 
+ 2108      00
+ 2109              	.LASF36:
+ 2110 0303 426F6172 		.ascii	"Board_LED_Write\000"
+ 2110      645F4C45 
+ 2110      445F5772 
+ 2110      69746500 
+ 2111              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.8.4 20140526 (release) [ARM/embedded-4_8-br

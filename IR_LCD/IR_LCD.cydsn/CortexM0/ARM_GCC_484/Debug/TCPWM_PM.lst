@@ -1,0 +1,789 @@
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccH9eHce.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 6
+  10              		.eabi_attribute 34, 0
+  11              		.eabi_attribute 18, 4
+  12              		.code	16
+  13              		.file	"TCPWM_PM.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.bss
+  18              		.align	2
+  19              	TCPWM_backup:
+  20 0000 00       		.space	1
+  21 0001 000000   		.section	.text.TCPWM_SaveConfig,"ax",%progbits
+  22              		.align	2
+  23              		.global	TCPWM_SaveConfig
+  24              		.code	16
+  25              		.thumb_func
+  26              		.type	TCPWM_SaveConfig, %function
+  27              	TCPWM_SaveConfig:
+  28              	.LFB0:
+  29              		.file 1 ".\\Generated_Source\\PSoC4\\TCPWM_PM.c"
+   1:.\Generated_Source\PSoC4/TCPWM_PM.c **** /*******************************************************************************
+   2:.\Generated_Source\PSoC4/TCPWM_PM.c **** * File Name: TCPWM_PM.c
+   3:.\Generated_Source\PSoC4/TCPWM_PM.c **** * Version 1.10
+   4:.\Generated_Source\PSoC4/TCPWM_PM.c **** *
+   5:.\Generated_Source\PSoC4/TCPWM_PM.c **** * Description:
+   6:.\Generated_Source\PSoC4/TCPWM_PM.c **** *  This file contains the setup, control, and status commands to support
+   7:.\Generated_Source\PSoC4/TCPWM_PM.c **** *  the component operations in the low power mode.
+   8:.\Generated_Source\PSoC4/TCPWM_PM.c **** *
+   9:.\Generated_Source\PSoC4/TCPWM_PM.c **** * Note:
+  10:.\Generated_Source\PSoC4/TCPWM_PM.c **** *  None
+  11:.\Generated_Source\PSoC4/TCPWM_PM.c **** *
+  12:.\Generated_Source\PSoC4/TCPWM_PM.c **** ********************************************************************************
+  13:.\Generated_Source\PSoC4/TCPWM_PM.c **** * Copyright 2013-2014, Cypress Semiconductor Corporation.  All rights reserved.
+  14:.\Generated_Source\PSoC4/TCPWM_PM.c **** * You may use this file only in accordance with the license, terms, conditions,
+  15:.\Generated_Source\PSoC4/TCPWM_PM.c **** * disclaimers, and limitations in the end user license agreement accompanying
+  16:.\Generated_Source\PSoC4/TCPWM_PM.c **** * the software package with which this file was provided.
+  17:.\Generated_Source\PSoC4/TCPWM_PM.c **** *******************************************************************************/
+  18:.\Generated_Source\PSoC4/TCPWM_PM.c **** 
+  19:.\Generated_Source\PSoC4/TCPWM_PM.c **** #include "TCPWM.h"
+  20:.\Generated_Source\PSoC4/TCPWM_PM.c **** 
+  21:.\Generated_Source\PSoC4/TCPWM_PM.c **** static TCPWM_BACKUP_STRUCT TCPWM_backup;
+  22:.\Generated_Source\PSoC4/TCPWM_PM.c **** 
+  23:.\Generated_Source\PSoC4/TCPWM_PM.c **** 
+  24:.\Generated_Source\PSoC4/TCPWM_PM.c **** /*******************************************************************************
+  25:.\Generated_Source\PSoC4/TCPWM_PM.c **** * Function Name: TCPWM_SaveConfig
+  26:.\Generated_Source\PSoC4/TCPWM_PM.c **** ********************************************************************************
+  27:.\Generated_Source\PSoC4/TCPWM_PM.c **** *
+  28:.\Generated_Source\PSoC4/TCPWM_PM.c **** * Summary:
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccH9eHce.s 			page 2
+
+
+  29:.\Generated_Source\PSoC4/TCPWM_PM.c **** *  All configuration registers are retention. Nothing to save here.
+  30:.\Generated_Source\PSoC4/TCPWM_PM.c **** *
+  31:.\Generated_Source\PSoC4/TCPWM_PM.c **** * Parameters:
+  32:.\Generated_Source\PSoC4/TCPWM_PM.c **** *  None
+  33:.\Generated_Source\PSoC4/TCPWM_PM.c **** *
+  34:.\Generated_Source\PSoC4/TCPWM_PM.c **** * Return:
+  35:.\Generated_Source\PSoC4/TCPWM_PM.c **** *  None
+  36:.\Generated_Source\PSoC4/TCPWM_PM.c **** *
+  37:.\Generated_Source\PSoC4/TCPWM_PM.c **** *******************************************************************************/
+  38:.\Generated_Source\PSoC4/TCPWM_PM.c **** void TCPWM_SaveConfig(void)
+  39:.\Generated_Source\PSoC4/TCPWM_PM.c **** {
+  30              		.loc 1 39 0
+  31              		.cfi_startproc
+  32 0000 80B5     		push	{r7, lr}
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 7, -8
+  35              		.cfi_offset 14, -4
+  36 0002 00AF     		add	r7, sp, #0
+  37              		.cfi_def_cfa_register 7
+  40:.\Generated_Source\PSoC4/TCPWM_PM.c **** 
+  41:.\Generated_Source\PSoC4/TCPWM_PM.c **** }
+  38              		.loc 1 41 0
+  39 0004 BD46     		mov	sp, r7
+  40              		@ sp needed
+  41 0006 80BD     		pop	{r7, pc}
+  42              		.cfi_endproc
+  43              	.LFE0:
+  44              		.size	TCPWM_SaveConfig, .-TCPWM_SaveConfig
+  45              		.section	.text.TCPWM_Sleep,"ax",%progbits
+  46              		.align	2
+  47              		.global	TCPWM_Sleep
+  48              		.code	16
+  49              		.thumb_func
+  50              		.type	TCPWM_Sleep, %function
+  51              	TCPWM_Sleep:
+  52              	.LFB1:
+  42:.\Generated_Source\PSoC4/TCPWM_PM.c **** 
+  43:.\Generated_Source\PSoC4/TCPWM_PM.c **** 
+  44:.\Generated_Source\PSoC4/TCPWM_PM.c **** /*******************************************************************************
+  45:.\Generated_Source\PSoC4/TCPWM_PM.c **** * Function Name: TCPWM_Sleep
+  46:.\Generated_Source\PSoC4/TCPWM_PM.c **** ********************************************************************************
+  47:.\Generated_Source\PSoC4/TCPWM_PM.c **** *
+  48:.\Generated_Source\PSoC4/TCPWM_PM.c **** * Summary:
+  49:.\Generated_Source\PSoC4/TCPWM_PM.c **** *  Stops the component operation and saves the user configuration.
+  50:.\Generated_Source\PSoC4/TCPWM_PM.c **** *
+  51:.\Generated_Source\PSoC4/TCPWM_PM.c **** * Parameters:
+  52:.\Generated_Source\PSoC4/TCPWM_PM.c **** *  None
+  53:.\Generated_Source\PSoC4/TCPWM_PM.c **** *
+  54:.\Generated_Source\PSoC4/TCPWM_PM.c **** * Return:
+  55:.\Generated_Source\PSoC4/TCPWM_PM.c **** *  None
+  56:.\Generated_Source\PSoC4/TCPWM_PM.c **** *
+  57:.\Generated_Source\PSoC4/TCPWM_PM.c **** *******************************************************************************/
+  58:.\Generated_Source\PSoC4/TCPWM_PM.c **** void TCPWM_Sleep(void)
+  59:.\Generated_Source\PSoC4/TCPWM_PM.c **** {
+  53              		.loc 1 59 0
+  54              		.cfi_startproc
+  55 0000 80B5     		push	{r7, lr}
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccH9eHce.s 			page 3
+
+
+  56              		.cfi_def_cfa_offset 8
+  57              		.cfi_offset 7, -8
+  58              		.cfi_offset 14, -4
+  59 0002 00AF     		add	r7, sp, #0
+  60              		.cfi_def_cfa_register 7
+  60:.\Generated_Source\PSoC4/TCPWM_PM.c ****     if(0u != (TCPWM_BLOCK_CONTROL_REG & TCPWM_MASK))
+  61              		.loc 1 60 0
+  62 0004 084B     		ldr	r3, .L5
+  63 0006 1A68     		ldr	r2, [r3]
+  64 0008 0123     		mov	r3, #1
+  65 000a 1340     		and	r3, r2
+  66 000c 03D0     		beq	.L3
+  61:.\Generated_Source\PSoC4/TCPWM_PM.c ****     {
+  62:.\Generated_Source\PSoC4/TCPWM_PM.c ****         TCPWM_backup.enableState = 1u;
+  67              		.loc 1 62 0
+  68 000e 074B     		ldr	r3, .L5+4
+  69 0010 0122     		mov	r2, #1
+  70 0012 1A70     		strb	r2, [r3]
+  71 0014 02E0     		b	.L4
+  72              	.L3:
+  63:.\Generated_Source\PSoC4/TCPWM_PM.c ****     }
+  64:.\Generated_Source\PSoC4/TCPWM_PM.c ****     else
+  65:.\Generated_Source\PSoC4/TCPWM_PM.c ****     {
+  66:.\Generated_Source\PSoC4/TCPWM_PM.c ****         TCPWM_backup.enableState = 0u;
+  73              		.loc 1 66 0
+  74 0016 054B     		ldr	r3, .L5+4
+  75 0018 0022     		mov	r2, #0
+  76 001a 1A70     		strb	r2, [r3]
+  77              	.L4:
+  67:.\Generated_Source\PSoC4/TCPWM_PM.c ****     }
+  68:.\Generated_Source\PSoC4/TCPWM_PM.c **** 
+  69:.\Generated_Source\PSoC4/TCPWM_PM.c ****     TCPWM_Stop();
+  78              		.loc 1 69 0
+  79 001c FFF7FEFF 		bl	TCPWM_Stop
+  70:.\Generated_Source\PSoC4/TCPWM_PM.c ****     TCPWM_SaveConfig();
+  80              		.loc 1 70 0
+  81 0020 FFF7FEFF 		bl	TCPWM_SaveConfig
+  71:.\Generated_Source\PSoC4/TCPWM_PM.c **** }
+  82              		.loc 1 71 0
+  83 0024 BD46     		mov	sp, r7
+  84              		@ sp needed
+  85 0026 80BD     		pop	{r7, pc}
+  86              	.L6:
+  87              		.align	2
+  88              	.L5:
+  89 0028 00000540 		.word	1074069504
+  90 002c 00000000 		.word	TCPWM_backup
+  91              		.cfi_endproc
+  92              	.LFE1:
+  93              		.size	TCPWM_Sleep, .-TCPWM_Sleep
+  94              		.section	.text.TCPWM_RestoreConfig,"ax",%progbits
+  95              		.align	2
+  96              		.global	TCPWM_RestoreConfig
+  97              		.code	16
+  98              		.thumb_func
+  99              		.type	TCPWM_RestoreConfig, %function
+ 100              	TCPWM_RestoreConfig:
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccH9eHce.s 			page 4
+
+
+ 101              	.LFB2:
+  72:.\Generated_Source\PSoC4/TCPWM_PM.c **** 
+  73:.\Generated_Source\PSoC4/TCPWM_PM.c **** 
+  74:.\Generated_Source\PSoC4/TCPWM_PM.c **** /*******************************************************************************
+  75:.\Generated_Source\PSoC4/TCPWM_PM.c **** * Function Name: TCPWM_RestoreConfig
+  76:.\Generated_Source\PSoC4/TCPWM_PM.c **** ********************************************************************************
+  77:.\Generated_Source\PSoC4/TCPWM_PM.c **** *
+  78:.\Generated_Source\PSoC4/TCPWM_PM.c **** * Summary:
+  79:.\Generated_Source\PSoC4/TCPWM_PM.c **** *  All configuration registers are retention. Nothing to restore here.
+  80:.\Generated_Source\PSoC4/TCPWM_PM.c **** *
+  81:.\Generated_Source\PSoC4/TCPWM_PM.c **** * Parameters:
+  82:.\Generated_Source\PSoC4/TCPWM_PM.c **** *  None
+  83:.\Generated_Source\PSoC4/TCPWM_PM.c **** *
+  84:.\Generated_Source\PSoC4/TCPWM_PM.c **** * Return:
+  85:.\Generated_Source\PSoC4/TCPWM_PM.c **** *  None
+  86:.\Generated_Source\PSoC4/TCPWM_PM.c **** *
+  87:.\Generated_Source\PSoC4/TCPWM_PM.c **** *******************************************************************************/
+  88:.\Generated_Source\PSoC4/TCPWM_PM.c **** void TCPWM_RestoreConfig(void)
+  89:.\Generated_Source\PSoC4/TCPWM_PM.c **** {
+ 102              		.loc 1 89 0
+ 103              		.cfi_startproc
+ 104 0000 80B5     		push	{r7, lr}
+ 105              		.cfi_def_cfa_offset 8
+ 106              		.cfi_offset 7, -8
+ 107              		.cfi_offset 14, -4
+ 108 0002 00AF     		add	r7, sp, #0
+ 109              		.cfi_def_cfa_register 7
+  90:.\Generated_Source\PSoC4/TCPWM_PM.c **** 
+  91:.\Generated_Source\PSoC4/TCPWM_PM.c **** }
+ 110              		.loc 1 91 0
+ 111 0004 BD46     		mov	sp, r7
+ 112              		@ sp needed
+ 113 0006 80BD     		pop	{r7, pc}
+ 114              		.cfi_endproc
+ 115              	.LFE2:
+ 116              		.size	TCPWM_RestoreConfig, .-TCPWM_RestoreConfig
+ 117              		.section	.text.TCPWM_Wakeup,"ax",%progbits
+ 118              		.align	2
+ 119              		.global	TCPWM_Wakeup
+ 120              		.code	16
+ 121              		.thumb_func
+ 122              		.type	TCPWM_Wakeup, %function
+ 123              	TCPWM_Wakeup:
+ 124              	.LFB3:
+  92:.\Generated_Source\PSoC4/TCPWM_PM.c **** 
+  93:.\Generated_Source\PSoC4/TCPWM_PM.c **** 
+  94:.\Generated_Source\PSoC4/TCPWM_PM.c **** /*******************************************************************************
+  95:.\Generated_Source\PSoC4/TCPWM_PM.c **** * Function Name: TCPWM_Wakeup
+  96:.\Generated_Source\PSoC4/TCPWM_PM.c **** ********************************************************************************
+  97:.\Generated_Source\PSoC4/TCPWM_PM.c **** *
+  98:.\Generated_Source\PSoC4/TCPWM_PM.c **** * Summary:
+  99:.\Generated_Source\PSoC4/TCPWM_PM.c **** *  Restores the user configuration and restores the enable state.
+ 100:.\Generated_Source\PSoC4/TCPWM_PM.c **** *
+ 101:.\Generated_Source\PSoC4/TCPWM_PM.c **** * Parameters:
+ 102:.\Generated_Source\PSoC4/TCPWM_PM.c **** *  None
+ 103:.\Generated_Source\PSoC4/TCPWM_PM.c **** *
+ 104:.\Generated_Source\PSoC4/TCPWM_PM.c **** * Return:
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccH9eHce.s 			page 5
+
+
+ 105:.\Generated_Source\PSoC4/TCPWM_PM.c **** *  None
+ 106:.\Generated_Source\PSoC4/TCPWM_PM.c **** *
+ 107:.\Generated_Source\PSoC4/TCPWM_PM.c **** *******************************************************************************/
+ 108:.\Generated_Source\PSoC4/TCPWM_PM.c **** void TCPWM_Wakeup(void)
+ 109:.\Generated_Source\PSoC4/TCPWM_PM.c **** {
+ 125              		.loc 1 109 0
+ 126              		.cfi_startproc
+ 127 0000 80B5     		push	{r7, lr}
+ 128              		.cfi_def_cfa_offset 8
+ 129              		.cfi_offset 7, -8
+ 130              		.cfi_offset 14, -4
+ 131 0002 00AF     		add	r7, sp, #0
+ 132              		.cfi_def_cfa_register 7
+ 110:.\Generated_Source\PSoC4/TCPWM_PM.c ****     TCPWM_RestoreConfig();
+ 133              		.loc 1 110 0
+ 134 0004 FFF7FEFF 		bl	TCPWM_RestoreConfig
+ 111:.\Generated_Source\PSoC4/TCPWM_PM.c **** 
+ 112:.\Generated_Source\PSoC4/TCPWM_PM.c ****     if(0u != TCPWM_backup.enableState)
+ 135              		.loc 1 112 0
+ 136 0008 034B     		ldr	r3, .L10
+ 137 000a 1B78     		ldrb	r3, [r3]
+ 138 000c 002B     		cmp	r3, #0
+ 139 000e 01D0     		beq	.L8
+ 113:.\Generated_Source\PSoC4/TCPWM_PM.c ****     {
+ 114:.\Generated_Source\PSoC4/TCPWM_PM.c ****         TCPWM_Enable();
+ 140              		.loc 1 114 0
+ 141 0010 FFF7FEFF 		bl	TCPWM_Enable
+ 142              	.L8:
+ 115:.\Generated_Source\PSoC4/TCPWM_PM.c ****     }
+ 116:.\Generated_Source\PSoC4/TCPWM_PM.c **** }
+ 143              		.loc 1 116 0
+ 144 0014 BD46     		mov	sp, r7
+ 145              		@ sp needed
+ 146 0016 80BD     		pop	{r7, pc}
+ 147              	.L11:
+ 148              		.align	2
+ 149              	.L10:
+ 150 0018 00000000 		.word	TCPWM_backup
+ 151              		.cfi_endproc
+ 152              	.LFE3:
+ 153              		.size	TCPWM_Wakeup, .-TCPWM_Wakeup
+ 154              		.text
+ 155              	.Letext0:
+ 156              		.file 2 ".\\Generated_Source\\PSoC4\\cytypes.h"
+ 157              		.file 3 ".\\Generated_Source\\PSoC4\\TCPWM.h"
+ 158              		.section	.debug_info,"",%progbits
+ 159              	.Ldebug_info0:
+ 160 0000 19010000 		.4byte	0x119
+ 161 0004 0400     		.2byte	0x4
+ 162 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 163 000a 04       		.byte	0x4
+ 164 000b 01       		.uleb128 0x1
+ 165 000c E8000000 		.4byte	.LASF20
+ 166 0010 01       		.byte	0x1
+ 167 0011 9C000000 		.4byte	.LASF21
+ 168 0015 1A000000 		.4byte	.LASF22
+ 169 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccH9eHce.s 			page 6
+
+
+ 170 001d 00000000 		.4byte	0
+ 171 0021 00000000 		.4byte	.Ldebug_line0
+ 172 0025 02       		.uleb128 0x2
+ 173 0026 01       		.byte	0x1
+ 174 0027 06       		.byte	0x6
+ 175 0028 C6010000 		.4byte	.LASF0
+ 176 002c 02       		.uleb128 0x2
+ 177 002d 01       		.byte	0x1
+ 178 002e 08       		.byte	0x8
+ 179 002f 69000000 		.4byte	.LASF1
+ 180 0033 02       		.uleb128 0x2
+ 181 0034 02       		.byte	0x2
+ 182 0035 05       		.byte	0x5
+ 183 0036 84010000 		.4byte	.LASF2
+ 184 003a 02       		.uleb128 0x2
+ 185 003b 02       		.byte	0x2
+ 186 003c 07       		.byte	0x7
+ 187 003d 89000000 		.4byte	.LASF3
+ 188 0041 02       		.uleb128 0x2
+ 189 0042 04       		.byte	0x4
+ 190 0043 05       		.byte	0x5
+ 191 0044 A5010000 		.4byte	.LASF4
+ 192 0048 02       		.uleb128 0x2
+ 193 0049 04       		.byte	0x4
+ 194 004a 07       		.byte	0x7
+ 195 004b 77000000 		.4byte	.LASF5
+ 196 004f 02       		.uleb128 0x2
+ 197 0050 08       		.byte	0x8
+ 198 0051 05       		.byte	0x5
+ 199 0052 64010000 		.4byte	.LASF6
+ 200 0056 02       		.uleb128 0x2
+ 201 0057 08       		.byte	0x8
+ 202 0058 07       		.byte	0x7
+ 203 0059 52000000 		.4byte	.LASF7
+ 204 005d 03       		.uleb128 0x3
+ 205 005e 04       		.byte	0x4
+ 206 005f 05       		.byte	0x5
+ 207 0060 696E7400 		.ascii	"int\000"
+ 208 0064 02       		.uleb128 0x2
+ 209 0065 04       		.byte	0x4
+ 210 0066 07       		.byte	0x7
+ 211 0067 DB000000 		.4byte	.LASF8
+ 212 006b 04       		.uleb128 0x4
+ 213 006c 8E010000 		.4byte	.LASF9
+ 214 0070 02       		.byte	0x2
+ 215 0071 A1       		.byte	0xa1
+ 216 0072 2C000000 		.4byte	0x2c
+ 217 0076 04       		.uleb128 0x4
+ 218 0077 D4000000 		.4byte	.LASF10
+ 219 007b 02       		.byte	0x2
+ 220 007c A3       		.byte	0xa3
+ 221 007d 48000000 		.4byte	0x48
+ 222 0081 02       		.uleb128 0x2
+ 223 0082 04       		.byte	0x4
+ 224 0083 04       		.byte	0x4
+ 225 0084 4C000000 		.4byte	.LASF11
+ 226 0088 02       		.uleb128 0x2
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccH9eHce.s 			page 7
+
+
+ 227 0089 08       		.byte	0x8
+ 228 008a 04       		.byte	0x4
+ 229 008b C0000000 		.4byte	.LASF12
+ 230 008f 02       		.uleb128 0x2
+ 231 0090 01       		.byte	0x1
+ 232 0091 08       		.byte	0x8
+ 233 0092 7F010000 		.4byte	.LASF13
+ 234 0096 05       		.uleb128 0x5
+ 235 0097 00000000 		.4byte	.LASF14
+ 236 009b 02       		.byte	0x2
+ 237 009c 4D01     		.2byte	0x14d
+ 238 009e A2000000 		.4byte	0xa2
+ 239 00a2 06       		.uleb128 0x6
+ 240 00a3 76000000 		.4byte	0x76
+ 241 00a7 07       		.uleb128 0x7
+ 242 00a8 01       		.byte	0x1
+ 243 00a9 03       		.byte	0x3
+ 244 00aa 1F       		.byte	0x1f
+ 245 00ab BC000000 		.4byte	0xbc
+ 246 00af 08       		.uleb128 0x8
+ 247 00b0 AE010000 		.4byte	.LASF23
+ 248 00b4 03       		.byte	0x3
+ 249 00b5 21       		.byte	0x21
+ 250 00b6 6B000000 		.4byte	0x6b
+ 251 00ba 00       		.byte	0
+ 252 00bb 00       		.byte	0
+ 253 00bc 04       		.uleb128 0x4
+ 254 00bd D2010000 		.4byte	.LASF15
+ 255 00c1 03       		.byte	0x3
+ 256 00c2 22       		.byte	0x22
+ 257 00c3 A7000000 		.4byte	0xa7
+ 258 00c7 09       		.uleb128 0x9
+ 259 00c8 94010000 		.4byte	.LASF16
+ 260 00cc 01       		.byte	0x1
+ 261 00cd 26       		.byte	0x26
+ 262 00ce 00000000 		.4byte	.LFB0
+ 263 00d2 08000000 		.4byte	.LFE0-.LFB0
+ 264 00d6 01       		.uleb128 0x1
+ 265 00d7 9C       		.byte	0x9c
+ 266 00d8 0A       		.uleb128 0xa
+ 267 00d9 BA010000 		.4byte	.LASF17
+ 268 00dd 01       		.byte	0x1
+ 269 00de 3A       		.byte	0x3a
+ 270 00df 00000000 		.4byte	.LFB1
+ 271 00e3 30000000 		.4byte	.LFE1-.LFB1
+ 272 00e7 01       		.uleb128 0x1
+ 273 00e8 9C       		.byte	0x9c
+ 274 00e9 09       		.uleb128 0x9
+ 275 00ea 06000000 		.4byte	.LASF18
+ 276 00ee 01       		.byte	0x1
+ 277 00ef 58       		.byte	0x58
+ 278 00f0 00000000 		.4byte	.LFB2
+ 279 00f4 08000000 		.4byte	.LFE2-.LFB2
+ 280 00f8 01       		.uleb128 0x1
+ 281 00f9 9C       		.byte	0x9c
+ 282 00fa 0A       		.uleb128 0xa
+ 283 00fb 72010000 		.4byte	.LASF19
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccH9eHce.s 			page 8
+
+
+ 284 00ff 01       		.byte	0x1
+ 285 0100 6C       		.byte	0x6c
+ 286 0101 00000000 		.4byte	.LFB3
+ 287 0105 1C000000 		.4byte	.LFE3-.LFB3
+ 288 0109 01       		.uleb128 0x1
+ 289 010a 9C       		.byte	0x9c
+ 290 010b 0B       		.uleb128 0xb
+ 291 010c C7000000 		.4byte	.LASF24
+ 292 0110 01       		.byte	0x1
+ 293 0111 15       		.byte	0x15
+ 294 0112 BC000000 		.4byte	0xbc
+ 295 0116 05       		.uleb128 0x5
+ 296 0117 03       		.byte	0x3
+ 297 0118 00000000 		.4byte	TCPWM_backup
+ 298 011c 00       		.byte	0
+ 299              		.section	.debug_abbrev,"",%progbits
+ 300              	.Ldebug_abbrev0:
+ 301 0000 01       		.uleb128 0x1
+ 302 0001 11       		.uleb128 0x11
+ 303 0002 01       		.byte	0x1
+ 304 0003 25       		.uleb128 0x25
+ 305 0004 0E       		.uleb128 0xe
+ 306 0005 13       		.uleb128 0x13
+ 307 0006 0B       		.uleb128 0xb
+ 308 0007 03       		.uleb128 0x3
+ 309 0008 0E       		.uleb128 0xe
+ 310 0009 1B       		.uleb128 0x1b
+ 311 000a 0E       		.uleb128 0xe
+ 312 000b 55       		.uleb128 0x55
+ 313 000c 17       		.uleb128 0x17
+ 314 000d 11       		.uleb128 0x11
+ 315 000e 01       		.uleb128 0x1
+ 316 000f 10       		.uleb128 0x10
+ 317 0010 17       		.uleb128 0x17
+ 318 0011 00       		.byte	0
+ 319 0012 00       		.byte	0
+ 320 0013 02       		.uleb128 0x2
+ 321 0014 24       		.uleb128 0x24
+ 322 0015 00       		.byte	0
+ 323 0016 0B       		.uleb128 0xb
+ 324 0017 0B       		.uleb128 0xb
+ 325 0018 3E       		.uleb128 0x3e
+ 326 0019 0B       		.uleb128 0xb
+ 327 001a 03       		.uleb128 0x3
+ 328 001b 0E       		.uleb128 0xe
+ 329 001c 00       		.byte	0
+ 330 001d 00       		.byte	0
+ 331 001e 03       		.uleb128 0x3
+ 332 001f 24       		.uleb128 0x24
+ 333 0020 00       		.byte	0
+ 334 0021 0B       		.uleb128 0xb
+ 335 0022 0B       		.uleb128 0xb
+ 336 0023 3E       		.uleb128 0x3e
+ 337 0024 0B       		.uleb128 0xb
+ 338 0025 03       		.uleb128 0x3
+ 339 0026 08       		.uleb128 0x8
+ 340 0027 00       		.byte	0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccH9eHce.s 			page 9
+
+
+ 341 0028 00       		.byte	0
+ 342 0029 04       		.uleb128 0x4
+ 343 002a 16       		.uleb128 0x16
+ 344 002b 00       		.byte	0
+ 345 002c 03       		.uleb128 0x3
+ 346 002d 0E       		.uleb128 0xe
+ 347 002e 3A       		.uleb128 0x3a
+ 348 002f 0B       		.uleb128 0xb
+ 349 0030 3B       		.uleb128 0x3b
+ 350 0031 0B       		.uleb128 0xb
+ 351 0032 49       		.uleb128 0x49
+ 352 0033 13       		.uleb128 0x13
+ 353 0034 00       		.byte	0
+ 354 0035 00       		.byte	0
+ 355 0036 05       		.uleb128 0x5
+ 356 0037 16       		.uleb128 0x16
+ 357 0038 00       		.byte	0
+ 358 0039 03       		.uleb128 0x3
+ 359 003a 0E       		.uleb128 0xe
+ 360 003b 3A       		.uleb128 0x3a
+ 361 003c 0B       		.uleb128 0xb
+ 362 003d 3B       		.uleb128 0x3b
+ 363 003e 05       		.uleb128 0x5
+ 364 003f 49       		.uleb128 0x49
+ 365 0040 13       		.uleb128 0x13
+ 366 0041 00       		.byte	0
+ 367 0042 00       		.byte	0
+ 368 0043 06       		.uleb128 0x6
+ 369 0044 35       		.uleb128 0x35
+ 370 0045 00       		.byte	0
+ 371 0046 49       		.uleb128 0x49
+ 372 0047 13       		.uleb128 0x13
+ 373 0048 00       		.byte	0
+ 374 0049 00       		.byte	0
+ 375 004a 07       		.uleb128 0x7
+ 376 004b 13       		.uleb128 0x13
+ 377 004c 01       		.byte	0x1
+ 378 004d 0B       		.uleb128 0xb
+ 379 004e 0B       		.uleb128 0xb
+ 380 004f 3A       		.uleb128 0x3a
+ 381 0050 0B       		.uleb128 0xb
+ 382 0051 3B       		.uleb128 0x3b
+ 383 0052 0B       		.uleb128 0xb
+ 384 0053 01       		.uleb128 0x1
+ 385 0054 13       		.uleb128 0x13
+ 386 0055 00       		.byte	0
+ 387 0056 00       		.byte	0
+ 388 0057 08       		.uleb128 0x8
+ 389 0058 0D       		.uleb128 0xd
+ 390 0059 00       		.byte	0
+ 391 005a 03       		.uleb128 0x3
+ 392 005b 0E       		.uleb128 0xe
+ 393 005c 3A       		.uleb128 0x3a
+ 394 005d 0B       		.uleb128 0xb
+ 395 005e 3B       		.uleb128 0x3b
+ 396 005f 0B       		.uleb128 0xb
+ 397 0060 49       		.uleb128 0x49
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccH9eHce.s 			page 10
+
+
+ 398 0061 13       		.uleb128 0x13
+ 399 0062 38       		.uleb128 0x38
+ 400 0063 0B       		.uleb128 0xb
+ 401 0064 00       		.byte	0
+ 402 0065 00       		.byte	0
+ 403 0066 09       		.uleb128 0x9
+ 404 0067 2E       		.uleb128 0x2e
+ 405 0068 00       		.byte	0
+ 406 0069 3F       		.uleb128 0x3f
+ 407 006a 19       		.uleb128 0x19
+ 408 006b 03       		.uleb128 0x3
+ 409 006c 0E       		.uleb128 0xe
+ 410 006d 3A       		.uleb128 0x3a
+ 411 006e 0B       		.uleb128 0xb
+ 412 006f 3B       		.uleb128 0x3b
+ 413 0070 0B       		.uleb128 0xb
+ 414 0071 27       		.uleb128 0x27
+ 415 0072 19       		.uleb128 0x19
+ 416 0073 11       		.uleb128 0x11
+ 417 0074 01       		.uleb128 0x1
+ 418 0075 12       		.uleb128 0x12
+ 419 0076 06       		.uleb128 0x6
+ 420 0077 40       		.uleb128 0x40
+ 421 0078 18       		.uleb128 0x18
+ 422 0079 9742     		.uleb128 0x2117
+ 423 007b 19       		.uleb128 0x19
+ 424 007c 00       		.byte	0
+ 425 007d 00       		.byte	0
+ 426 007e 0A       		.uleb128 0xa
+ 427 007f 2E       		.uleb128 0x2e
+ 428 0080 00       		.byte	0
+ 429 0081 3F       		.uleb128 0x3f
+ 430 0082 19       		.uleb128 0x19
+ 431 0083 03       		.uleb128 0x3
+ 432 0084 0E       		.uleb128 0xe
+ 433 0085 3A       		.uleb128 0x3a
+ 434 0086 0B       		.uleb128 0xb
+ 435 0087 3B       		.uleb128 0x3b
+ 436 0088 0B       		.uleb128 0xb
+ 437 0089 27       		.uleb128 0x27
+ 438 008a 19       		.uleb128 0x19
+ 439 008b 11       		.uleb128 0x11
+ 440 008c 01       		.uleb128 0x1
+ 441 008d 12       		.uleb128 0x12
+ 442 008e 06       		.uleb128 0x6
+ 443 008f 40       		.uleb128 0x40
+ 444 0090 18       		.uleb128 0x18
+ 445 0091 9642     		.uleb128 0x2116
+ 446 0093 19       		.uleb128 0x19
+ 447 0094 00       		.byte	0
+ 448 0095 00       		.byte	0
+ 449 0096 0B       		.uleb128 0xb
+ 450 0097 34       		.uleb128 0x34
+ 451 0098 00       		.byte	0
+ 452 0099 03       		.uleb128 0x3
+ 453 009a 0E       		.uleb128 0xe
+ 454 009b 3A       		.uleb128 0x3a
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccH9eHce.s 			page 11
+
+
+ 455 009c 0B       		.uleb128 0xb
+ 456 009d 3B       		.uleb128 0x3b
+ 457 009e 0B       		.uleb128 0xb
+ 458 009f 49       		.uleb128 0x49
+ 459 00a0 13       		.uleb128 0x13
+ 460 00a1 02       		.uleb128 0x2
+ 461 00a2 18       		.uleb128 0x18
+ 462 00a3 00       		.byte	0
+ 463 00a4 00       		.byte	0
+ 464 00a5 00       		.byte	0
+ 465              		.section	.debug_aranges,"",%progbits
+ 466 0000 34000000 		.4byte	0x34
+ 467 0004 0200     		.2byte	0x2
+ 468 0006 00000000 		.4byte	.Ldebug_info0
+ 469 000a 04       		.byte	0x4
+ 470 000b 00       		.byte	0
+ 471 000c 0000     		.2byte	0
+ 472 000e 0000     		.2byte	0
+ 473 0010 00000000 		.4byte	.LFB0
+ 474 0014 08000000 		.4byte	.LFE0-.LFB0
+ 475 0018 00000000 		.4byte	.LFB1
+ 476 001c 30000000 		.4byte	.LFE1-.LFB1
+ 477 0020 00000000 		.4byte	.LFB2
+ 478 0024 08000000 		.4byte	.LFE2-.LFB2
+ 479 0028 00000000 		.4byte	.LFB3
+ 480 002c 1C000000 		.4byte	.LFE3-.LFB3
+ 481 0030 00000000 		.4byte	0
+ 482 0034 00000000 		.4byte	0
+ 483              		.section	.debug_ranges,"",%progbits
+ 484              	.Ldebug_ranges0:
+ 485 0000 00000000 		.4byte	.LFB0
+ 486 0004 08000000 		.4byte	.LFE0
+ 487 0008 00000000 		.4byte	.LFB1
+ 488 000c 30000000 		.4byte	.LFE1
+ 489 0010 00000000 		.4byte	.LFB2
+ 490 0014 08000000 		.4byte	.LFE2
+ 491 0018 00000000 		.4byte	.LFB3
+ 492 001c 1C000000 		.4byte	.LFE3
+ 493 0020 00000000 		.4byte	0
+ 494 0024 00000000 		.4byte	0
+ 495              		.section	.debug_line,"",%progbits
+ 496              	.Ldebug_line0:
+ 497 0000 A2000000 		.section	.debug_str,"MS",%progbits,1
+ 497      02005200 
+ 497      00000201 
+ 497      FB0E0D00 
+ 497      01010101 
+ 498              	.LASF14:
+ 499 0000 72656733 		.ascii	"reg32\000"
+ 499      3200
+ 500              	.LASF18:
+ 501 0006 54435057 		.ascii	"TCPWM_RestoreConfig\000"
+ 501      4D5F5265 
+ 501      73746F72 
+ 501      65436F6E 
+ 501      66696700 
+ 502              	.LASF22:
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccH9eHce.s 			page 12
+
+
+ 503 001a 433A5C55 		.ascii	"C:\\Users\\Admin\\Desktop\\IR LCD\\IR_LCD\\IR_LCD.c"
+ 503      73657273 
+ 503      5C41646D 
+ 503      696E5C44 
+ 503      65736B74 
+ 504 0047 7964736E 		.ascii	"ydsn\000"
+ 504      00
+ 505              	.LASF11:
+ 506 004c 666C6F61 		.ascii	"float\000"
+ 506      7400
+ 507              	.LASF7:
+ 508 0052 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 508      206C6F6E 
+ 508      6720756E 
+ 508      7369676E 
+ 508      65642069 
+ 509              	.LASF1:
+ 510 0069 756E7369 		.ascii	"unsigned char\000"
+ 510      676E6564 
+ 510      20636861 
+ 510      7200
+ 511              	.LASF5:
+ 512 0077 6C6F6E67 		.ascii	"long unsigned int\000"
+ 512      20756E73 
+ 512      69676E65 
+ 512      6420696E 
+ 512      7400
+ 513              	.LASF3:
+ 514 0089 73686F72 		.ascii	"short unsigned int\000"
+ 514      7420756E 
+ 514      7369676E 
+ 514      65642069 
+ 514      6E7400
+ 515              	.LASF21:
+ 516 009c 2E5C4765 		.ascii	".\\Generated_Source\\PSoC4\\TCPWM_PM.c\000"
+ 516      6E657261 
+ 516      7465645F 
+ 516      536F7572 
+ 516      63655C50 
+ 517              	.LASF12:
+ 518 00c0 646F7562 		.ascii	"double\000"
+ 518      6C6500
+ 519              	.LASF24:
+ 520 00c7 54435057 		.ascii	"TCPWM_backup\000"
+ 520      4D5F6261 
+ 520      636B7570 
+ 520      00
+ 521              	.LASF10:
+ 522 00d4 75696E74 		.ascii	"uint32\000"
+ 522      333200
+ 523              	.LASF8:
+ 524 00db 756E7369 		.ascii	"unsigned int\000"
+ 524      676E6564 
+ 524      20696E74 
+ 524      00
+ 525              	.LASF20:
+ 526 00e8 474E5520 		.ascii	"GNU C 4.8.4 20140526 (release) [ARM/embedded-4_8-br"
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccH9eHce.s 			page 13
+
+
+ 526      4320342E 
+ 526      382E3420 
+ 526      32303134 
+ 526      30353236 
+ 527 011b 616E6368 		.ascii	"anch revision 211358] -mcpu=cortex-m0 -mthumb -g -O"
+ 527      20726576 
+ 527      6973696F 
+ 527      6E203231 
+ 527      31333538 
+ 528 014e 30202D66 		.ascii	"0 -ffunction-sections\000"
+ 528      66756E63 
+ 528      74696F6E 
+ 528      2D736563 
+ 528      74696F6E 
+ 529              	.LASF6:
+ 530 0164 6C6F6E67 		.ascii	"long long int\000"
+ 530      206C6F6E 
+ 530      6720696E 
+ 530      7400
+ 531              	.LASF19:
+ 532 0172 54435057 		.ascii	"TCPWM_Wakeup\000"
+ 532      4D5F5761 
+ 532      6B657570 
+ 532      00
+ 533              	.LASF13:
+ 534 017f 63686172 		.ascii	"char\000"
+ 534      00
+ 535              	.LASF2:
+ 536 0184 73686F72 		.ascii	"short int\000"
+ 536      7420696E 
+ 536      7400
+ 537              	.LASF9:
+ 538 018e 75696E74 		.ascii	"uint8\000"
+ 538      3800
+ 539              	.LASF16:
+ 540 0194 54435057 		.ascii	"TCPWM_SaveConfig\000"
+ 540      4D5F5361 
+ 540      7665436F 
+ 540      6E666967 
+ 540      00
+ 541              	.LASF4:
+ 542 01a5 6C6F6E67 		.ascii	"long int\000"
+ 542      20696E74 
+ 542      00
+ 543              	.LASF23:
+ 544 01ae 656E6162 		.ascii	"enableState\000"
+ 544      6C655374 
+ 544      61746500 
+ 545              	.LASF17:
+ 546 01ba 54435057 		.ascii	"TCPWM_Sleep\000"
+ 546      4D5F536C 
+ 546      65657000 
+ 547              	.LASF0:
+ 548 01c6 7369676E 		.ascii	"signed char\000"
+ 548      65642063 
+ 548      68617200 
+ 549              	.LASF15:
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccH9eHce.s 			page 14
+
+
+ 550 01d2 54435057 		.ascii	"TCPWM_BACKUP_STRUCT\000"
+ 550      4D5F4241 
+ 550      434B5550 
+ 550      5F535452 
+ 550      55435400 
+ 551              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.8.4 20140526 (release) [ARM/embedded-4_8-br

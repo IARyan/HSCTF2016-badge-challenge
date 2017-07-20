@@ -1,0 +1,2894 @@
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccvACxp2.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 4
+  10              		.eabi_attribute 34, 0
+  11              		.eabi_attribute 18, 4
+  12              		.code	16
+  13              		.file	"PWM_Timer.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.PWM_Timer_Enable,"ax",%progbits
+  18              		.align	1
+  19              		.global	PWM_Timer_Enable
+  20              		.code	16
+  21              		.thumb_func
+  22              		.type	PWM_Timer_Enable, %function
+  23              	PWM_Timer_Enable:
+  24              	.LFB2:
+  25              		.file 1 ".\\Generated_Source\\PSoC4\\PWM_Timer.c"
+   1:.\Generated_Source\PSoC4/PWM_Timer.c **** /*******************************************************************************
+   2:.\Generated_Source\PSoC4/PWM_Timer.c **** * File Name: PWM_Timer.c
+   3:.\Generated_Source\PSoC4/PWM_Timer.c **** * Version 3.10
+   4:.\Generated_Source\PSoC4/PWM_Timer.c **** *
+   5:.\Generated_Source\PSoC4/PWM_Timer.c **** * Description:
+   6:.\Generated_Source\PSoC4/PWM_Timer.c **** *  The PWM User Module consist of an 8 or 16-bit counter with two 8 or 16-bit
+   7:.\Generated_Source\PSoC4/PWM_Timer.c **** *  comparitors. Each instance of this user module is capable of generating
+   8:.\Generated_Source\PSoC4/PWM_Timer.c **** *  two PWM outputs with the same period. The pulse width is selectable between
+   9:.\Generated_Source\PSoC4/PWM_Timer.c **** *  1 and 255/65535. The period is selectable between 2 and 255/65536 clocks.
+  10:.\Generated_Source\PSoC4/PWM_Timer.c **** *  The compare value output may be configured to be active when the present
+  11:.\Generated_Source\PSoC4/PWM_Timer.c **** *  counter is less than or less than/equal to the compare value.
+  12:.\Generated_Source\PSoC4/PWM_Timer.c **** *  A terminal count output is also provided. It generates a pulse one clock
+  13:.\Generated_Source\PSoC4/PWM_Timer.c **** *  width wide when the counter is equal to zero.
+  14:.\Generated_Source\PSoC4/PWM_Timer.c **** *
+  15:.\Generated_Source\PSoC4/PWM_Timer.c **** * Note:
+  16:.\Generated_Source\PSoC4/PWM_Timer.c **** *
+  17:.\Generated_Source\PSoC4/PWM_Timer.c **** *******************************************************************************
+  18:.\Generated_Source\PSoC4/PWM_Timer.c **** * Copyright 2008-2014, Cypress Semiconductor Corporation.  All rights reserved.
+  19:.\Generated_Source\PSoC4/PWM_Timer.c **** * You may use this file only in accordance with the license, terms, conditions,
+  20:.\Generated_Source\PSoC4/PWM_Timer.c **** * disclaimers, and limitations in the end user license agreement accompanying
+  21:.\Generated_Source\PSoC4/PWM_Timer.c **** * the software package with which this file was provided.
+  22:.\Generated_Source\PSoC4/PWM_Timer.c **** ********************************************************************************/
+  23:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+  24:.\Generated_Source\PSoC4/PWM_Timer.c **** #include "PWM_Timer.h"
+  25:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+  26:.\Generated_Source\PSoC4/PWM_Timer.c **** /* Error message for removed <resource> through optimization */
+  27:.\Generated_Source\PSoC4/PWM_Timer.c **** #ifdef PWM_Timer_PWMUDB_genblk1_ctrlreg__REMOVED
+  28:.\Generated_Source\PSoC4/PWM_Timer.c ****     #error PWM_v3_10 detected with a constant 0 for the enable or \
+  29:.\Generated_Source\PSoC4/PWM_Timer.c ****          constant 1 for reset. This will prevent the component from operating.
+  30:.\Generated_Source\PSoC4/PWM_Timer.c **** #endif /* PWM_Timer_PWMUDB_genblk1_ctrlreg__REMOVED */
+  31:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+  32:.\Generated_Source\PSoC4/PWM_Timer.c **** uint8 PWM_Timer_initVar = 0u;
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccvACxp2.s 			page 2
+
+
+  33:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+  34:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+  35:.\Generated_Source\PSoC4/PWM_Timer.c **** /*******************************************************************************
+  36:.\Generated_Source\PSoC4/PWM_Timer.c **** * Function Name: PWM_Timer_Start
+  37:.\Generated_Source\PSoC4/PWM_Timer.c **** ********************************************************************************
+  38:.\Generated_Source\PSoC4/PWM_Timer.c **** *
+  39:.\Generated_Source\PSoC4/PWM_Timer.c **** * Summary:
+  40:.\Generated_Source\PSoC4/PWM_Timer.c **** *  The start function initializes the pwm with the default values, the
+  41:.\Generated_Source\PSoC4/PWM_Timer.c **** *  enables the counter to begin counting.  It does not enable interrupts,
+  42:.\Generated_Source\PSoC4/PWM_Timer.c **** *  the EnableInt command should be called if interrupt generation is required.
+  43:.\Generated_Source\PSoC4/PWM_Timer.c **** *
+  44:.\Generated_Source\PSoC4/PWM_Timer.c **** * Parameters:
+  45:.\Generated_Source\PSoC4/PWM_Timer.c **** *  None
+  46:.\Generated_Source\PSoC4/PWM_Timer.c **** *
+  47:.\Generated_Source\PSoC4/PWM_Timer.c **** * Return:
+  48:.\Generated_Source\PSoC4/PWM_Timer.c **** *  None
+  49:.\Generated_Source\PSoC4/PWM_Timer.c **** *
+  50:.\Generated_Source\PSoC4/PWM_Timer.c **** * Global variables:
+  51:.\Generated_Source\PSoC4/PWM_Timer.c **** *  PWM_Timer_initVar: Is modified when this function is called for the
+  52:.\Generated_Source\PSoC4/PWM_Timer.c **** *   first time. Is used to ensure that initialization happens only once.
+  53:.\Generated_Source\PSoC4/PWM_Timer.c **** *
+  54:.\Generated_Source\PSoC4/PWM_Timer.c **** *******************************************************************************/
+  55:.\Generated_Source\PSoC4/PWM_Timer.c **** void PWM_Timer_Start(void) 
+  56:.\Generated_Source\PSoC4/PWM_Timer.c **** {
+  57:.\Generated_Source\PSoC4/PWM_Timer.c ****     /* If not Initialized then initialize all required hardware and software */
+  58:.\Generated_Source\PSoC4/PWM_Timer.c ****     if(PWM_Timer_initVar == 0u)
+  59:.\Generated_Source\PSoC4/PWM_Timer.c ****     {
+  60:.\Generated_Source\PSoC4/PWM_Timer.c ****         PWM_Timer_Init();
+  61:.\Generated_Source\PSoC4/PWM_Timer.c ****         PWM_Timer_initVar = 1u;
+  62:.\Generated_Source\PSoC4/PWM_Timer.c ****     }
+  63:.\Generated_Source\PSoC4/PWM_Timer.c ****     PWM_Timer_Enable();
+  64:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+  65:.\Generated_Source\PSoC4/PWM_Timer.c **** }
+  66:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+  67:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+  68:.\Generated_Source\PSoC4/PWM_Timer.c **** /*******************************************************************************
+  69:.\Generated_Source\PSoC4/PWM_Timer.c **** * Function Name: PWM_Timer_Init
+  70:.\Generated_Source\PSoC4/PWM_Timer.c **** ********************************************************************************
+  71:.\Generated_Source\PSoC4/PWM_Timer.c **** *
+  72:.\Generated_Source\PSoC4/PWM_Timer.c **** * Summary:
+  73:.\Generated_Source\PSoC4/PWM_Timer.c **** *  Initialize component's parameters to the parameters set by user in the
+  74:.\Generated_Source\PSoC4/PWM_Timer.c **** *  customizer of the component placed onto schematic. Usually called in
+  75:.\Generated_Source\PSoC4/PWM_Timer.c **** *  PWM_Timer_Start().
+  76:.\Generated_Source\PSoC4/PWM_Timer.c **** *
+  77:.\Generated_Source\PSoC4/PWM_Timer.c **** * Parameters:
+  78:.\Generated_Source\PSoC4/PWM_Timer.c **** *  None
+  79:.\Generated_Source\PSoC4/PWM_Timer.c **** *
+  80:.\Generated_Source\PSoC4/PWM_Timer.c **** * Return:
+  81:.\Generated_Source\PSoC4/PWM_Timer.c **** *  None
+  82:.\Generated_Source\PSoC4/PWM_Timer.c **** *
+  83:.\Generated_Source\PSoC4/PWM_Timer.c **** *******************************************************************************/
+  84:.\Generated_Source\PSoC4/PWM_Timer.c **** void PWM_Timer_Init(void) 
+  85:.\Generated_Source\PSoC4/PWM_Timer.c **** {
+  86:.\Generated_Source\PSoC4/PWM_Timer.c ****     #if (PWM_Timer_UsingFixedFunction || PWM_Timer_UseControl)
+  87:.\Generated_Source\PSoC4/PWM_Timer.c ****         uint8 ctrl;
+  88:.\Generated_Source\PSoC4/PWM_Timer.c ****     #endif /* (PWM_Timer_UsingFixedFunction || PWM_Timer_UseControl) */
+  89:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccvACxp2.s 			page 3
+
+
+  90:.\Generated_Source\PSoC4/PWM_Timer.c ****     #if(!PWM_Timer_UsingFixedFunction)
+  91:.\Generated_Source\PSoC4/PWM_Timer.c ****         #if(PWM_Timer_UseStatus)
+  92:.\Generated_Source\PSoC4/PWM_Timer.c ****             /* Interrupt State Backup for Critical Region*/
+  93:.\Generated_Source\PSoC4/PWM_Timer.c ****             uint8 PWM_Timer_interruptState;
+  94:.\Generated_Source\PSoC4/PWM_Timer.c ****         #endif /* (PWM_Timer_UseStatus) */
+  95:.\Generated_Source\PSoC4/PWM_Timer.c ****     #endif /* (!PWM_Timer_UsingFixedFunction) */
+  96:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+  97:.\Generated_Source\PSoC4/PWM_Timer.c ****     #if (PWM_Timer_UsingFixedFunction)
+  98:.\Generated_Source\PSoC4/PWM_Timer.c ****         /* You are allowed to write the compare value (FF only) */
+  99:.\Generated_Source\PSoC4/PWM_Timer.c ****         PWM_Timer_CONTROL |= PWM_Timer_CFG0_MODE;
+ 100:.\Generated_Source\PSoC4/PWM_Timer.c ****         #if (PWM_Timer_DeadBand2_4)
+ 101:.\Generated_Source\PSoC4/PWM_Timer.c ****             PWM_Timer_CONTROL |= PWM_Timer_CFG0_DB;
+ 102:.\Generated_Source\PSoC4/PWM_Timer.c ****         #endif /* (PWM_Timer_DeadBand2_4) */
+ 103:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 104:.\Generated_Source\PSoC4/PWM_Timer.c ****         ctrl = PWM_Timer_CONTROL3 & ((uint8 )(~PWM_Timer_CTRL_CMPMODE1_MASK));
+ 105:.\Generated_Source\PSoC4/PWM_Timer.c ****         PWM_Timer_CONTROL3 = ctrl | PWM_Timer_DEFAULT_COMPARE1_MODE;
+ 106:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 107:.\Generated_Source\PSoC4/PWM_Timer.c ****          /* Clear and Set SYNCTC and SYNCCMP bits of RT1 register */
+ 108:.\Generated_Source\PSoC4/PWM_Timer.c ****         PWM_Timer_RT1 &= ((uint8)(~PWM_Timer_RT1_MASK));
+ 109:.\Generated_Source\PSoC4/PWM_Timer.c ****         PWM_Timer_RT1 |= PWM_Timer_SYNC;
+ 110:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 111:.\Generated_Source\PSoC4/PWM_Timer.c ****         /*Enable DSI Sync all all inputs of the PWM*/
+ 112:.\Generated_Source\PSoC4/PWM_Timer.c ****         PWM_Timer_RT1 &= ((uint8)(~PWM_Timer_SYNCDSI_MASK));
+ 113:.\Generated_Source\PSoC4/PWM_Timer.c ****         PWM_Timer_RT1 |= PWM_Timer_SYNCDSI_EN;
+ 114:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 115:.\Generated_Source\PSoC4/PWM_Timer.c ****     #elif (PWM_Timer_UseControl)
+ 116:.\Generated_Source\PSoC4/PWM_Timer.c ****         /* Set the default compare mode defined in the parameter */
+ 117:.\Generated_Source\PSoC4/PWM_Timer.c ****         ctrl = PWM_Timer_CONTROL & ((uint8)(~PWM_Timer_CTRL_CMPMODE2_MASK)) &
+ 118:.\Generated_Source\PSoC4/PWM_Timer.c ****                 ((uint8)(~PWM_Timer_CTRL_CMPMODE1_MASK));
+ 119:.\Generated_Source\PSoC4/PWM_Timer.c ****         PWM_Timer_CONTROL = ctrl | PWM_Timer_DEFAULT_COMPARE2_MODE |
+ 120:.\Generated_Source\PSoC4/PWM_Timer.c ****                                    PWM_Timer_DEFAULT_COMPARE1_MODE;
+ 121:.\Generated_Source\PSoC4/PWM_Timer.c ****     #endif /* (PWM_Timer_UsingFixedFunction) */
+ 122:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 123:.\Generated_Source\PSoC4/PWM_Timer.c ****     #if (!PWM_Timer_UsingFixedFunction)
+ 124:.\Generated_Source\PSoC4/PWM_Timer.c ****         #if (PWM_Timer_Resolution == 8)
+ 125:.\Generated_Source\PSoC4/PWM_Timer.c ****             /* Set FIFO 0 to 1 byte register for period*/
+ 126:.\Generated_Source\PSoC4/PWM_Timer.c ****             PWM_Timer_AUX_CONTROLDP0 |= (PWM_Timer_AUX_CTRL_FIFO0_CLR);
+ 127:.\Generated_Source\PSoC4/PWM_Timer.c ****         #else /* (PWM_Timer_Resolution == 16)*/
+ 128:.\Generated_Source\PSoC4/PWM_Timer.c ****             /* Set FIFO 0 to 1 byte register for period */
+ 129:.\Generated_Source\PSoC4/PWM_Timer.c ****             PWM_Timer_AUX_CONTROLDP0 |= (PWM_Timer_AUX_CTRL_FIFO0_CLR);
+ 130:.\Generated_Source\PSoC4/PWM_Timer.c ****             PWM_Timer_AUX_CONTROLDP1 |= (PWM_Timer_AUX_CTRL_FIFO0_CLR);
+ 131:.\Generated_Source\PSoC4/PWM_Timer.c ****         #endif /* (PWM_Timer_Resolution == 8) */
+ 132:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 133:.\Generated_Source\PSoC4/PWM_Timer.c ****         PWM_Timer_WriteCounter(PWM_Timer_INIT_PERIOD_VALUE);
+ 134:.\Generated_Source\PSoC4/PWM_Timer.c ****     #endif /* (!PWM_Timer_UsingFixedFunction) */
+ 135:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 136:.\Generated_Source\PSoC4/PWM_Timer.c ****     PWM_Timer_WritePeriod(PWM_Timer_INIT_PERIOD_VALUE);
+ 137:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 138:.\Generated_Source\PSoC4/PWM_Timer.c ****         #if (PWM_Timer_UseOneCompareMode)
+ 139:.\Generated_Source\PSoC4/PWM_Timer.c ****             PWM_Timer_WriteCompare(PWM_Timer_INIT_COMPARE_VALUE1);
+ 140:.\Generated_Source\PSoC4/PWM_Timer.c ****         #else
+ 141:.\Generated_Source\PSoC4/PWM_Timer.c ****             PWM_Timer_WriteCompare1(PWM_Timer_INIT_COMPARE_VALUE1);
+ 142:.\Generated_Source\PSoC4/PWM_Timer.c ****             PWM_Timer_WriteCompare2(PWM_Timer_INIT_COMPARE_VALUE2);
+ 143:.\Generated_Source\PSoC4/PWM_Timer.c ****         #endif /* (PWM_Timer_UseOneCompareMode) */
+ 144:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 145:.\Generated_Source\PSoC4/PWM_Timer.c ****         #if (PWM_Timer_KillModeMinTime)
+ 146:.\Generated_Source\PSoC4/PWM_Timer.c ****             PWM_Timer_WriteKillTime(PWM_Timer_MinimumKillTime);
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccvACxp2.s 			page 4
+
+
+ 147:.\Generated_Source\PSoC4/PWM_Timer.c ****         #endif /* (PWM_Timer_KillModeMinTime) */
+ 148:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 149:.\Generated_Source\PSoC4/PWM_Timer.c ****         #if (PWM_Timer_DeadBandUsed)
+ 150:.\Generated_Source\PSoC4/PWM_Timer.c ****             PWM_Timer_WriteDeadTime(PWM_Timer_INIT_DEAD_TIME);
+ 151:.\Generated_Source\PSoC4/PWM_Timer.c ****         #endif /* (PWM_Timer_DeadBandUsed) */
+ 152:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 153:.\Generated_Source\PSoC4/PWM_Timer.c ****     #if (PWM_Timer_UseStatus || PWM_Timer_UsingFixedFunction)
+ 154:.\Generated_Source\PSoC4/PWM_Timer.c ****         PWM_Timer_SetInterruptMode(PWM_Timer_INIT_INTERRUPTS_MODE);
+ 155:.\Generated_Source\PSoC4/PWM_Timer.c ****     #endif /* (PWM_Timer_UseStatus || PWM_Timer_UsingFixedFunction) */
+ 156:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 157:.\Generated_Source\PSoC4/PWM_Timer.c ****     #if (PWM_Timer_UsingFixedFunction)
+ 158:.\Generated_Source\PSoC4/PWM_Timer.c ****         /* Globally Enable the Fixed Function Block chosen */
+ 159:.\Generated_Source\PSoC4/PWM_Timer.c ****         PWM_Timer_GLOBAL_ENABLE |= PWM_Timer_BLOCK_EN_MASK;
+ 160:.\Generated_Source\PSoC4/PWM_Timer.c ****         /* Set the Interrupt source to come from the status register */
+ 161:.\Generated_Source\PSoC4/PWM_Timer.c ****         PWM_Timer_CONTROL2 |= PWM_Timer_CTRL2_IRQ_SEL;
+ 162:.\Generated_Source\PSoC4/PWM_Timer.c ****     #else
+ 163:.\Generated_Source\PSoC4/PWM_Timer.c ****         #if(PWM_Timer_UseStatus)
+ 164:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 165:.\Generated_Source\PSoC4/PWM_Timer.c ****             /* CyEnterCriticalRegion and CyExitCriticalRegion are used to mark following region cri
+ 166:.\Generated_Source\PSoC4/PWM_Timer.c ****             /* Enter Critical Region*/
+ 167:.\Generated_Source\PSoC4/PWM_Timer.c ****             PWM_Timer_interruptState = CyEnterCriticalSection();
+ 168:.\Generated_Source\PSoC4/PWM_Timer.c ****             /* Use the interrupt output of the status register for IRQ output */
+ 169:.\Generated_Source\PSoC4/PWM_Timer.c ****             PWM_Timer_STATUS_AUX_CTRL |= PWM_Timer_STATUS_ACTL_INT_EN_MASK;
+ 170:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 171:.\Generated_Source\PSoC4/PWM_Timer.c ****              /* Exit Critical Region*/
+ 172:.\Generated_Source\PSoC4/PWM_Timer.c ****             CyExitCriticalSection(PWM_Timer_interruptState);
+ 173:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 174:.\Generated_Source\PSoC4/PWM_Timer.c ****             /* Clear the FIFO to enable the PWM_Timer_STATUS_FIFOFULL
+ 175:.\Generated_Source\PSoC4/PWM_Timer.c ****                    bit to be set on FIFO full. */
+ 176:.\Generated_Source\PSoC4/PWM_Timer.c ****             PWM_Timer_ClearFIFO();
+ 177:.\Generated_Source\PSoC4/PWM_Timer.c ****         #endif /* (PWM_Timer_UseStatus) */
+ 178:.\Generated_Source\PSoC4/PWM_Timer.c ****     #endif /* (PWM_Timer_UsingFixedFunction) */
+ 179:.\Generated_Source\PSoC4/PWM_Timer.c **** }
+ 180:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 181:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 182:.\Generated_Source\PSoC4/PWM_Timer.c **** /*******************************************************************************
+ 183:.\Generated_Source\PSoC4/PWM_Timer.c **** * Function Name: PWM_Timer_Enable
+ 184:.\Generated_Source\PSoC4/PWM_Timer.c **** ********************************************************************************
+ 185:.\Generated_Source\PSoC4/PWM_Timer.c **** *
+ 186:.\Generated_Source\PSoC4/PWM_Timer.c **** * Summary:
+ 187:.\Generated_Source\PSoC4/PWM_Timer.c **** *  Enables the PWM block operation
+ 188:.\Generated_Source\PSoC4/PWM_Timer.c **** *
+ 189:.\Generated_Source\PSoC4/PWM_Timer.c **** * Parameters:
+ 190:.\Generated_Source\PSoC4/PWM_Timer.c **** *  None
+ 191:.\Generated_Source\PSoC4/PWM_Timer.c **** *
+ 192:.\Generated_Source\PSoC4/PWM_Timer.c **** * Return:
+ 193:.\Generated_Source\PSoC4/PWM_Timer.c **** *  None
+ 194:.\Generated_Source\PSoC4/PWM_Timer.c **** *
+ 195:.\Generated_Source\PSoC4/PWM_Timer.c **** * Side Effects:
+ 196:.\Generated_Source\PSoC4/PWM_Timer.c **** *  This works only if software enable mode is chosen
+ 197:.\Generated_Source\PSoC4/PWM_Timer.c **** *
+ 198:.\Generated_Source\PSoC4/PWM_Timer.c **** *******************************************************************************/
+ 199:.\Generated_Source\PSoC4/PWM_Timer.c **** void PWM_Timer_Enable(void) 
+ 200:.\Generated_Source\PSoC4/PWM_Timer.c **** {
+  26              		.loc 1 200 0
+  27              		.cfi_startproc
+ 201:.\Generated_Source\PSoC4/PWM_Timer.c ****     /* Globally Enable the Fixed Function Block chosen */
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccvACxp2.s 			page 5
+
+
+ 202:.\Generated_Source\PSoC4/PWM_Timer.c ****     #if (PWM_Timer_UsingFixedFunction)
+ 203:.\Generated_Source\PSoC4/PWM_Timer.c ****         PWM_Timer_GLOBAL_ENABLE |= PWM_Timer_BLOCK_EN_MASK;
+ 204:.\Generated_Source\PSoC4/PWM_Timer.c ****         PWM_Timer_GLOBAL_STBY_ENABLE |= PWM_Timer_BLOCK_STBY_EN_MASK;
+ 205:.\Generated_Source\PSoC4/PWM_Timer.c ****     #endif /* (PWM_Timer_UsingFixedFunction) */
+ 206:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 207:.\Generated_Source\PSoC4/PWM_Timer.c ****     /* Enable the PWM from the control register  */
+ 208:.\Generated_Source\PSoC4/PWM_Timer.c ****     #if (PWM_Timer_UseControl || PWM_Timer_UsingFixedFunction)
+ 209:.\Generated_Source\PSoC4/PWM_Timer.c ****         PWM_Timer_CONTROL |= PWM_Timer_CTRL_ENABLE;
+  28              		.loc 1 209 0
+  29 0000 024B     		ldr	r3, .L2
+  30 0002 8022     		mov	r2, #128
+  31 0004 1978     		ldrb	r1, [r3]
+ 210:.\Generated_Source\PSoC4/PWM_Timer.c ****     #endif /* (PWM_Timer_UseControl || PWM_Timer_UsingFixedFunction) */
+ 211:.\Generated_Source\PSoC4/PWM_Timer.c **** }
+  32              		.loc 1 211 0
+  33              		@ sp needed
+ 209:.\Generated_Source\PSoC4/PWM_Timer.c ****         PWM_Timer_CONTROL |= PWM_Timer_CTRL_ENABLE;
+  34              		.loc 1 209 0
+  35 0006 0A43     		orr	r2, r1
+  36 0008 1A70     		strb	r2, [r3]
+  37              		.loc 1 211 0
+  38 000a 7047     		bx	lr
+  39              	.L3:
+  40              		.align	2
+  41              	.L2:
+  42 000c 72000F40 		.word	1074724978
+  43              		.cfi_endproc
+  44              	.LFE2:
+  45              		.size	PWM_Timer_Enable, .-PWM_Timer_Enable
+  46              		.section	.text.PWM_Timer_Stop,"ax",%progbits
+  47              		.align	1
+  48              		.global	PWM_Timer_Stop
+  49              		.code	16
+  50              		.thumb_func
+  51              		.type	PWM_Timer_Stop, %function
+  52              	PWM_Timer_Stop:
+  53              	.LFB3:
+ 212:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 213:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 214:.\Generated_Source\PSoC4/PWM_Timer.c **** /*******************************************************************************
+ 215:.\Generated_Source\PSoC4/PWM_Timer.c **** * Function Name: PWM_Timer_Stop
+ 216:.\Generated_Source\PSoC4/PWM_Timer.c **** ********************************************************************************
+ 217:.\Generated_Source\PSoC4/PWM_Timer.c **** *
+ 218:.\Generated_Source\PSoC4/PWM_Timer.c **** * Summary:
+ 219:.\Generated_Source\PSoC4/PWM_Timer.c **** *  The stop function halts the PWM, but does not change any modes or disable
+ 220:.\Generated_Source\PSoC4/PWM_Timer.c **** *  interrupts.
+ 221:.\Generated_Source\PSoC4/PWM_Timer.c **** *
+ 222:.\Generated_Source\PSoC4/PWM_Timer.c **** * Parameters:
+ 223:.\Generated_Source\PSoC4/PWM_Timer.c **** *  None
+ 224:.\Generated_Source\PSoC4/PWM_Timer.c **** *
+ 225:.\Generated_Source\PSoC4/PWM_Timer.c **** * Return:
+ 226:.\Generated_Source\PSoC4/PWM_Timer.c **** *  None
+ 227:.\Generated_Source\PSoC4/PWM_Timer.c **** *
+ 228:.\Generated_Source\PSoC4/PWM_Timer.c **** * Side Effects:
+ 229:.\Generated_Source\PSoC4/PWM_Timer.c **** *  If the Enable mode is set to Hardware only then this function
+ 230:.\Generated_Source\PSoC4/PWM_Timer.c **** *  has no effect on the operation of the PWM
+ 231:.\Generated_Source\PSoC4/PWM_Timer.c **** *
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccvACxp2.s 			page 6
+
+
+ 232:.\Generated_Source\PSoC4/PWM_Timer.c **** *******************************************************************************/
+ 233:.\Generated_Source\PSoC4/PWM_Timer.c **** void PWM_Timer_Stop(void) 
+ 234:.\Generated_Source\PSoC4/PWM_Timer.c **** {
+  54              		.loc 1 234 0
+  55              		.cfi_startproc
+ 235:.\Generated_Source\PSoC4/PWM_Timer.c ****     #if (PWM_Timer_UseControl || PWM_Timer_UsingFixedFunction)
+ 236:.\Generated_Source\PSoC4/PWM_Timer.c ****         PWM_Timer_CONTROL &= ((uint8)(~PWM_Timer_CTRL_ENABLE));
+  56              		.loc 1 236 0
+  57 0000 024B     		ldr	r3, .L5
+  58 0002 7F22     		mov	r2, #127
+  59 0004 1978     		ldrb	r1, [r3]
+ 237:.\Generated_Source\PSoC4/PWM_Timer.c ****     #endif /* (PWM_Timer_UseControl || PWM_Timer_UsingFixedFunction) */
+ 238:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 239:.\Generated_Source\PSoC4/PWM_Timer.c ****     /* Globally disable the Fixed Function Block chosen */
+ 240:.\Generated_Source\PSoC4/PWM_Timer.c ****     #if (PWM_Timer_UsingFixedFunction)
+ 241:.\Generated_Source\PSoC4/PWM_Timer.c ****         PWM_Timer_GLOBAL_ENABLE &= ((uint8)(~PWM_Timer_BLOCK_EN_MASK));
+ 242:.\Generated_Source\PSoC4/PWM_Timer.c ****         PWM_Timer_GLOBAL_STBY_ENABLE &= ((uint8)(~PWM_Timer_BLOCK_STBY_EN_MASK));
+ 243:.\Generated_Source\PSoC4/PWM_Timer.c ****     #endif /* (PWM_Timer_UsingFixedFunction) */
+ 244:.\Generated_Source\PSoC4/PWM_Timer.c **** }
+  60              		.loc 1 244 0
+  61              		@ sp needed
+ 236:.\Generated_Source\PSoC4/PWM_Timer.c ****         PWM_Timer_CONTROL &= ((uint8)(~PWM_Timer_CTRL_ENABLE));
+  62              		.loc 1 236 0
+  63 0006 0A40     		and	r2, r1
+  64 0008 1A70     		strb	r2, [r3]
+  65              		.loc 1 244 0
+  66 000a 7047     		bx	lr
+  67              	.L6:
+  68              		.align	2
+  69              	.L5:
+  70 000c 72000F40 		.word	1074724978
+  71              		.cfi_endproc
+  72              	.LFE3:
+  73              		.size	PWM_Timer_Stop, .-PWM_Timer_Stop
+  74              		.section	.text.PWM_Timer_WriteCounter,"ax",%progbits
+  75              		.align	1
+  76              		.global	PWM_Timer_WriteCounter
+  77              		.code	16
+  78              		.thumb_func
+  79              		.type	PWM_Timer_WriteCounter, %function
+  80              	PWM_Timer_WriteCounter:
+  81              	.LFB4:
+ 245:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 246:.\Generated_Source\PSoC4/PWM_Timer.c **** #if (PWM_Timer_UseOneCompareMode)
+ 247:.\Generated_Source\PSoC4/PWM_Timer.c ****     #if (PWM_Timer_CompareMode1SW)
+ 248:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 249:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 250:.\Generated_Source\PSoC4/PWM_Timer.c ****         /*******************************************************************************
+ 251:.\Generated_Source\PSoC4/PWM_Timer.c ****         * Function Name: PWM_Timer_SetCompareMode
+ 252:.\Generated_Source\PSoC4/PWM_Timer.c ****         ********************************************************************************
+ 253:.\Generated_Source\PSoC4/PWM_Timer.c ****         *
+ 254:.\Generated_Source\PSoC4/PWM_Timer.c ****         * Summary:
+ 255:.\Generated_Source\PSoC4/PWM_Timer.c ****         *  This function writes the Compare Mode for the pwm output when in Dither mode,
+ 256:.\Generated_Source\PSoC4/PWM_Timer.c ****         *  Center Align Mode or One Output Mode.
+ 257:.\Generated_Source\PSoC4/PWM_Timer.c ****         *
+ 258:.\Generated_Source\PSoC4/PWM_Timer.c ****         * Parameters:
+ 259:.\Generated_Source\PSoC4/PWM_Timer.c ****         *  comparemode:  The new compare mode for the PWM output. Use the compare types
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccvACxp2.s 			page 7
+
+
+ 260:.\Generated_Source\PSoC4/PWM_Timer.c ****         *                defined in the H file as input arguments.
+ 261:.\Generated_Source\PSoC4/PWM_Timer.c ****         *
+ 262:.\Generated_Source\PSoC4/PWM_Timer.c ****         * Return:
+ 263:.\Generated_Source\PSoC4/PWM_Timer.c ****         *  None
+ 264:.\Generated_Source\PSoC4/PWM_Timer.c ****         *
+ 265:.\Generated_Source\PSoC4/PWM_Timer.c ****         *******************************************************************************/
+ 266:.\Generated_Source\PSoC4/PWM_Timer.c ****         void PWM_Timer_SetCompareMode(uint8 comparemode) 
+ 267:.\Generated_Source\PSoC4/PWM_Timer.c ****         {
+ 268:.\Generated_Source\PSoC4/PWM_Timer.c ****             #if(PWM_Timer_UsingFixedFunction)
+ 269:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 270:.\Generated_Source\PSoC4/PWM_Timer.c ****                 #if(0 != PWM_Timer_CTRL_CMPMODE1_SHIFT)
+ 271:.\Generated_Source\PSoC4/PWM_Timer.c ****                     uint8 comparemodemasked = ((uint8)((uint8)comparemode << PWM_Timer_CTRL_CMPMODE
+ 272:.\Generated_Source\PSoC4/PWM_Timer.c ****                 #else
+ 273:.\Generated_Source\PSoC4/PWM_Timer.c ****                     uint8 comparemodemasked = comparemode;
+ 274:.\Generated_Source\PSoC4/PWM_Timer.c ****                 #endif /* (0 != PWM_Timer_CTRL_CMPMODE1_SHIFT) */
+ 275:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 276:.\Generated_Source\PSoC4/PWM_Timer.c ****                 PWM_Timer_CONTROL3 &= ((uint8)(~PWM_Timer_CTRL_CMPMODE1_MASK)); /*Clear Existing Da
+ 277:.\Generated_Source\PSoC4/PWM_Timer.c ****                 PWM_Timer_CONTROL3 |= comparemodemasked;
+ 278:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 279:.\Generated_Source\PSoC4/PWM_Timer.c ****             #elif (PWM_Timer_UseControl)
+ 280:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 281:.\Generated_Source\PSoC4/PWM_Timer.c ****                 #if(0 != PWM_Timer_CTRL_CMPMODE1_SHIFT)
+ 282:.\Generated_Source\PSoC4/PWM_Timer.c ****                     uint8 comparemode1masked = ((uint8)((uint8)comparemode << PWM_Timer_CTRL_CMPMOD
+ 283:.\Generated_Source\PSoC4/PWM_Timer.c ****                                                 PWM_Timer_CTRL_CMPMODE1_MASK;
+ 284:.\Generated_Source\PSoC4/PWM_Timer.c ****                 #else
+ 285:.\Generated_Source\PSoC4/PWM_Timer.c ****                     uint8 comparemode1masked = comparemode & PWM_Timer_CTRL_CMPMODE1_MASK;
+ 286:.\Generated_Source\PSoC4/PWM_Timer.c ****                 #endif /* (0 != PWM_Timer_CTRL_CMPMODE1_SHIFT) */
+ 287:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 288:.\Generated_Source\PSoC4/PWM_Timer.c ****                 #if(0 != PWM_Timer_CTRL_CMPMODE2_SHIFT)
+ 289:.\Generated_Source\PSoC4/PWM_Timer.c ****                     uint8 comparemode2masked = ((uint8)((uint8)comparemode << PWM_Timer_CTRL_CMPMOD
+ 290:.\Generated_Source\PSoC4/PWM_Timer.c ****                                                PWM_Timer_CTRL_CMPMODE2_MASK;
+ 291:.\Generated_Source\PSoC4/PWM_Timer.c ****                 #else
+ 292:.\Generated_Source\PSoC4/PWM_Timer.c ****                     uint8 comparemode2masked = comparemode & PWM_Timer_CTRL_CMPMODE2_MASK;
+ 293:.\Generated_Source\PSoC4/PWM_Timer.c ****                 #endif /* (0 != PWM_Timer_CTRL_CMPMODE2_SHIFT) */
+ 294:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 295:.\Generated_Source\PSoC4/PWM_Timer.c ****                 /*Clear existing mode */
+ 296:.\Generated_Source\PSoC4/PWM_Timer.c ****                 PWM_Timer_CONTROL &= ((uint8)(~(PWM_Timer_CTRL_CMPMODE1_MASK |
+ 297:.\Generated_Source\PSoC4/PWM_Timer.c ****                                             PWM_Timer_CTRL_CMPMODE2_MASK)));
+ 298:.\Generated_Source\PSoC4/PWM_Timer.c ****                 PWM_Timer_CONTROL |= (comparemode1masked | comparemode2masked);
+ 299:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 300:.\Generated_Source\PSoC4/PWM_Timer.c ****             #else
+ 301:.\Generated_Source\PSoC4/PWM_Timer.c ****                 uint8 temp = comparemode;
+ 302:.\Generated_Source\PSoC4/PWM_Timer.c ****             #endif /* (PWM_Timer_UsingFixedFunction) */
+ 303:.\Generated_Source\PSoC4/PWM_Timer.c ****         }
+ 304:.\Generated_Source\PSoC4/PWM_Timer.c ****     #endif /* PWM_Timer_CompareMode1SW */
+ 305:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 306:.\Generated_Source\PSoC4/PWM_Timer.c **** #else /* UseOneCompareMode */
+ 307:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 308:.\Generated_Source\PSoC4/PWM_Timer.c ****     #if (PWM_Timer_CompareMode1SW)
+ 309:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 310:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 311:.\Generated_Source\PSoC4/PWM_Timer.c ****         /*******************************************************************************
+ 312:.\Generated_Source\PSoC4/PWM_Timer.c ****         * Function Name: PWM_Timer_SetCompareMode1
+ 313:.\Generated_Source\PSoC4/PWM_Timer.c ****         ********************************************************************************
+ 314:.\Generated_Source\PSoC4/PWM_Timer.c ****         *
+ 315:.\Generated_Source\PSoC4/PWM_Timer.c ****         * Summary:
+ 316:.\Generated_Source\PSoC4/PWM_Timer.c ****         *  This function writes the Compare Mode for the pwm or pwm1 output
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccvACxp2.s 			page 8
+
+
+ 317:.\Generated_Source\PSoC4/PWM_Timer.c ****         *
+ 318:.\Generated_Source\PSoC4/PWM_Timer.c ****         * Parameters:
+ 319:.\Generated_Source\PSoC4/PWM_Timer.c ****         *  comparemode:  The new compare mode for the PWM output. Use the compare types
+ 320:.\Generated_Source\PSoC4/PWM_Timer.c ****         *                defined in the H file as input arguments.
+ 321:.\Generated_Source\PSoC4/PWM_Timer.c ****         *
+ 322:.\Generated_Source\PSoC4/PWM_Timer.c ****         * Return:
+ 323:.\Generated_Source\PSoC4/PWM_Timer.c ****         *  None
+ 324:.\Generated_Source\PSoC4/PWM_Timer.c ****         *
+ 325:.\Generated_Source\PSoC4/PWM_Timer.c ****         *******************************************************************************/
+ 326:.\Generated_Source\PSoC4/PWM_Timer.c ****         void PWM_Timer_SetCompareMode1(uint8 comparemode) 
+ 327:.\Generated_Source\PSoC4/PWM_Timer.c ****         {
+ 328:.\Generated_Source\PSoC4/PWM_Timer.c ****             #if(0 != PWM_Timer_CTRL_CMPMODE1_SHIFT)
+ 329:.\Generated_Source\PSoC4/PWM_Timer.c ****                 uint8 comparemodemasked = ((uint8)((uint8)comparemode << PWM_Timer_CTRL_CMPMODE1_SH
+ 330:.\Generated_Source\PSoC4/PWM_Timer.c ****                                            PWM_Timer_CTRL_CMPMODE1_MASK;
+ 331:.\Generated_Source\PSoC4/PWM_Timer.c ****             #else
+ 332:.\Generated_Source\PSoC4/PWM_Timer.c ****                 uint8 comparemodemasked = comparemode & PWM_Timer_CTRL_CMPMODE1_MASK;
+ 333:.\Generated_Source\PSoC4/PWM_Timer.c ****             #endif /* (0 != PWM_Timer_CTRL_CMPMODE1_SHIFT) */
+ 334:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 335:.\Generated_Source\PSoC4/PWM_Timer.c ****             #if (PWM_Timer_UseControl)
+ 336:.\Generated_Source\PSoC4/PWM_Timer.c ****                 PWM_Timer_CONTROL &= ((uint8)(~PWM_Timer_CTRL_CMPMODE1_MASK)); /*Clear existing mod
+ 337:.\Generated_Source\PSoC4/PWM_Timer.c ****                 PWM_Timer_CONTROL |= comparemodemasked;
+ 338:.\Generated_Source\PSoC4/PWM_Timer.c ****             #endif /* (PWM_Timer_UseControl) */
+ 339:.\Generated_Source\PSoC4/PWM_Timer.c ****         }
+ 340:.\Generated_Source\PSoC4/PWM_Timer.c ****     #endif /* PWM_Timer_CompareMode1SW */
+ 341:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 342:.\Generated_Source\PSoC4/PWM_Timer.c **** #if (PWM_Timer_CompareMode2SW)
+ 343:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 344:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 345:.\Generated_Source\PSoC4/PWM_Timer.c ****     /*******************************************************************************
+ 346:.\Generated_Source\PSoC4/PWM_Timer.c ****     * Function Name: PWM_Timer_SetCompareMode2
+ 347:.\Generated_Source\PSoC4/PWM_Timer.c ****     ********************************************************************************
+ 348:.\Generated_Source\PSoC4/PWM_Timer.c ****     *
+ 349:.\Generated_Source\PSoC4/PWM_Timer.c ****     * Summary:
+ 350:.\Generated_Source\PSoC4/PWM_Timer.c ****     *  This function writes the Compare Mode for the pwm or pwm2 output
+ 351:.\Generated_Source\PSoC4/PWM_Timer.c ****     *
+ 352:.\Generated_Source\PSoC4/PWM_Timer.c ****     * Parameters:
+ 353:.\Generated_Source\PSoC4/PWM_Timer.c ****     *  comparemode:  The new compare mode for the PWM output. Use the compare types
+ 354:.\Generated_Source\PSoC4/PWM_Timer.c ****     *                defined in the H file as input arguments.
+ 355:.\Generated_Source\PSoC4/PWM_Timer.c ****     *
+ 356:.\Generated_Source\PSoC4/PWM_Timer.c ****     * Return:
+ 357:.\Generated_Source\PSoC4/PWM_Timer.c ****     *  None
+ 358:.\Generated_Source\PSoC4/PWM_Timer.c ****     *
+ 359:.\Generated_Source\PSoC4/PWM_Timer.c ****     *******************************************************************************/
+ 360:.\Generated_Source\PSoC4/PWM_Timer.c ****     void PWM_Timer_SetCompareMode2(uint8 comparemode) 
+ 361:.\Generated_Source\PSoC4/PWM_Timer.c ****     {
+ 362:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 363:.\Generated_Source\PSoC4/PWM_Timer.c ****         #if(0 != PWM_Timer_CTRL_CMPMODE2_SHIFT)
+ 364:.\Generated_Source\PSoC4/PWM_Timer.c ****             uint8 comparemodemasked = ((uint8)((uint8)comparemode << PWM_Timer_CTRL_CMPMODE2_SHIFT)
+ 365:.\Generated_Source\PSoC4/PWM_Timer.c ****                                                  PWM_Timer_CTRL_CMPMODE2_MASK;
+ 366:.\Generated_Source\PSoC4/PWM_Timer.c ****         #else
+ 367:.\Generated_Source\PSoC4/PWM_Timer.c ****             uint8 comparemodemasked = comparemode & PWM_Timer_CTRL_CMPMODE2_MASK;
+ 368:.\Generated_Source\PSoC4/PWM_Timer.c ****         #endif /* (0 != PWM_Timer_CTRL_CMPMODE2_SHIFT) */
+ 369:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 370:.\Generated_Source\PSoC4/PWM_Timer.c ****         #if (PWM_Timer_UseControl)
+ 371:.\Generated_Source\PSoC4/PWM_Timer.c ****             PWM_Timer_CONTROL &= ((uint8)(~PWM_Timer_CTRL_CMPMODE2_MASK)); /*Clear existing mode */
+ 372:.\Generated_Source\PSoC4/PWM_Timer.c ****             PWM_Timer_CONTROL |= comparemodemasked;
+ 373:.\Generated_Source\PSoC4/PWM_Timer.c ****         #endif /* (PWM_Timer_UseControl) */
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccvACxp2.s 			page 9
+
+
+ 374:.\Generated_Source\PSoC4/PWM_Timer.c ****     }
+ 375:.\Generated_Source\PSoC4/PWM_Timer.c ****     #endif /*PWM_Timer_CompareMode2SW */
+ 376:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 377:.\Generated_Source\PSoC4/PWM_Timer.c **** #endif /* UseOneCompareMode */
+ 378:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 379:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 380:.\Generated_Source\PSoC4/PWM_Timer.c **** #if (!PWM_Timer_UsingFixedFunction)
+ 381:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 382:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 383:.\Generated_Source\PSoC4/PWM_Timer.c ****     /*******************************************************************************
+ 384:.\Generated_Source\PSoC4/PWM_Timer.c ****     * Function Name: PWM_Timer_WriteCounter
+ 385:.\Generated_Source\PSoC4/PWM_Timer.c ****     ********************************************************************************
+ 386:.\Generated_Source\PSoC4/PWM_Timer.c ****     *
+ 387:.\Generated_Source\PSoC4/PWM_Timer.c ****     * Summary:
+ 388:.\Generated_Source\PSoC4/PWM_Timer.c ****     *  Writes a new counter value directly to the counter register. This will be
+ 389:.\Generated_Source\PSoC4/PWM_Timer.c ****     *  implemented for that currently running period and only that period. This API
+ 390:.\Generated_Source\PSoC4/PWM_Timer.c ****     *  is valid only for UDB implementation and not available for fixed function
+ 391:.\Generated_Source\PSoC4/PWM_Timer.c ****     *  PWM implementation.
+ 392:.\Generated_Source\PSoC4/PWM_Timer.c ****     *
+ 393:.\Generated_Source\PSoC4/PWM_Timer.c ****     * Parameters:
+ 394:.\Generated_Source\PSoC4/PWM_Timer.c ****     *  counter:  The period new period counter value.
+ 395:.\Generated_Source\PSoC4/PWM_Timer.c ****     *
+ 396:.\Generated_Source\PSoC4/PWM_Timer.c ****     * Return:
+ 397:.\Generated_Source\PSoC4/PWM_Timer.c ****     *  None
+ 398:.\Generated_Source\PSoC4/PWM_Timer.c ****     *
+ 399:.\Generated_Source\PSoC4/PWM_Timer.c ****     * Side Effects:
+ 400:.\Generated_Source\PSoC4/PWM_Timer.c ****     *  The PWM Period will be reloaded when a counter value will be a zero
+ 401:.\Generated_Source\PSoC4/PWM_Timer.c ****     *
+ 402:.\Generated_Source\PSoC4/PWM_Timer.c ****     *******************************************************************************/
+ 403:.\Generated_Source\PSoC4/PWM_Timer.c ****     void PWM_Timer_WriteCounter(uint16 counter) \
+ 404:.\Generated_Source\PSoC4/PWM_Timer.c ****                                        
+ 405:.\Generated_Source\PSoC4/PWM_Timer.c ****     {
+  82              		.loc 1 405 0
+  83              		.cfi_startproc
+  84              	.LVL0:
+ 406:.\Generated_Source\PSoC4/PWM_Timer.c ****         CY_SET_REG16(PWM_Timer_COUNTER_LSB_PTR, counter);
+  85              		.loc 1 406 0
+  86 0000 014B     		ldr	r3, .L8
+ 407:.\Generated_Source\PSoC4/PWM_Timer.c ****     }
+  87              		.loc 1 407 0
+  88              		@ sp needed
+ 406:.\Generated_Source\PSoC4/PWM_Timer.c ****         CY_SET_REG16(PWM_Timer_COUNTER_LSB_PTR, counter);
+  89              		.loc 1 406 0
+  90 0002 1880     		strh	r0, [r3]
+  91              		.loc 1 407 0
+  92 0004 7047     		bx	lr
+  93              	.L9:
+  94 0006 C046     		.align	2
+  95              	.L8:
+  96 0008 04100F40 		.word	1074728964
+  97              		.cfi_endproc
+  98              	.LFE4:
+  99              		.size	PWM_Timer_WriteCounter, .-PWM_Timer_WriteCounter
+ 100              		.section	.text.PWM_Timer_ReadCounter,"ax",%progbits
+ 101              		.align	1
+ 102              		.global	PWM_Timer_ReadCounter
+ 103              		.code	16
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccvACxp2.s 			page 10
+
+
+ 104              		.thumb_func
+ 105              		.type	PWM_Timer_ReadCounter, %function
+ 106              	PWM_Timer_ReadCounter:
+ 107              	.LFB5:
+ 408:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 409:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 410:.\Generated_Source\PSoC4/PWM_Timer.c ****     /*******************************************************************************
+ 411:.\Generated_Source\PSoC4/PWM_Timer.c ****     * Function Name: PWM_Timer_ReadCounter
+ 412:.\Generated_Source\PSoC4/PWM_Timer.c ****     ********************************************************************************
+ 413:.\Generated_Source\PSoC4/PWM_Timer.c ****     *
+ 414:.\Generated_Source\PSoC4/PWM_Timer.c ****     * Summary:
+ 415:.\Generated_Source\PSoC4/PWM_Timer.c ****     *  This function returns the current value of the counter.  It doesn't matter
+ 416:.\Generated_Source\PSoC4/PWM_Timer.c ****     *  if the counter is enabled or running.
+ 417:.\Generated_Source\PSoC4/PWM_Timer.c ****     *
+ 418:.\Generated_Source\PSoC4/PWM_Timer.c ****     * Parameters:
+ 419:.\Generated_Source\PSoC4/PWM_Timer.c ****     *  None
+ 420:.\Generated_Source\PSoC4/PWM_Timer.c ****     *
+ 421:.\Generated_Source\PSoC4/PWM_Timer.c ****     * Return:
+ 422:.\Generated_Source\PSoC4/PWM_Timer.c ****     *  The current value of the counter.
+ 423:.\Generated_Source\PSoC4/PWM_Timer.c ****     *
+ 424:.\Generated_Source\PSoC4/PWM_Timer.c ****     *******************************************************************************/
+ 425:.\Generated_Source\PSoC4/PWM_Timer.c ****     uint16 PWM_Timer_ReadCounter(void) 
+ 426:.\Generated_Source\PSoC4/PWM_Timer.c ****     {
+ 108              		.loc 1 426 0
+ 109              		.cfi_startproc
+ 427:.\Generated_Source\PSoC4/PWM_Timer.c ****         /* Force capture by reading Accumulator */
+ 428:.\Generated_Source\PSoC4/PWM_Timer.c ****         /* Must first do a software capture to be able to read the counter */
+ 429:.\Generated_Source\PSoC4/PWM_Timer.c ****         /* It is up to the user code to make sure there isn't already captured data in the FIFO */
+ 430:.\Generated_Source\PSoC4/PWM_Timer.c ****           (void)CY_GET_REG8(PWM_Timer_COUNTERCAP_LSB_PTR_8BIT);
+ 110              		.loc 1 430 0
+ 111 0000 024B     		ldr	r3, .L11
+ 431:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 432:.\Generated_Source\PSoC4/PWM_Timer.c ****         /* Read the data from the FIFO */
+ 433:.\Generated_Source\PSoC4/PWM_Timer.c ****         return (CY_GET_REG16(PWM_Timer_CAPTURE_LSB_PTR));
+ 434:.\Generated_Source\PSoC4/PWM_Timer.c ****     }
+ 112              		.loc 1 434 0
+ 113              		@ sp needed
+ 430:.\Generated_Source\PSoC4/PWM_Timer.c ****           (void)CY_GET_REG8(PWM_Timer_COUNTERCAP_LSB_PTR_8BIT);
+ 114              		.loc 1 430 0
+ 115 0002 1B78     		ldrb	r3, [r3]
+ 433:.\Generated_Source\PSoC4/PWM_Timer.c ****         return (CY_GET_REG16(PWM_Timer_CAPTURE_LSB_PTR));
+ 116              		.loc 1 433 0
+ 117 0004 024B     		ldr	r3, .L11+4
+ 118 0006 1888     		ldrh	r0, [r3]
+ 119 0008 80B2     		uxth	r0, r0
+ 120              		.loc 1 434 0
+ 121 000a 7047     		bx	lr
+ 122              	.L12:
+ 123              		.align	2
+ 124              	.L11:
+ 125 000c 12000F40 		.word	1074724882
+ 126 0010 A4100F40 		.word	1074729124
+ 127              		.cfi_endproc
+ 128              	.LFE5:
+ 129              		.size	PWM_Timer_ReadCounter, .-PWM_Timer_ReadCounter
+ 130              		.section	.text.PWM_Timer_ClearFIFO,"ax",%progbits
+ 131              		.align	1
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccvACxp2.s 			page 11
+
+
+ 132              		.global	PWM_Timer_ClearFIFO
+ 133              		.code	16
+ 134              		.thumb_func
+ 135              		.type	PWM_Timer_ClearFIFO, %function
+ 136              	PWM_Timer_ClearFIFO:
+ 137              	.LFB6:
+ 435:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 436:.\Generated_Source\PSoC4/PWM_Timer.c ****     #if (PWM_Timer_UseStatus)
+ 437:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 438:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 439:.\Generated_Source\PSoC4/PWM_Timer.c ****         /*******************************************************************************
+ 440:.\Generated_Source\PSoC4/PWM_Timer.c ****         * Function Name: PWM_Timer_ClearFIFO
+ 441:.\Generated_Source\PSoC4/PWM_Timer.c ****         ********************************************************************************
+ 442:.\Generated_Source\PSoC4/PWM_Timer.c ****         *
+ 443:.\Generated_Source\PSoC4/PWM_Timer.c ****         * Summary:
+ 444:.\Generated_Source\PSoC4/PWM_Timer.c ****         *  This function clears all capture data from the capture FIFO
+ 445:.\Generated_Source\PSoC4/PWM_Timer.c ****         *
+ 446:.\Generated_Source\PSoC4/PWM_Timer.c ****         * Parameters:
+ 447:.\Generated_Source\PSoC4/PWM_Timer.c ****         *  None
+ 448:.\Generated_Source\PSoC4/PWM_Timer.c ****         *
+ 449:.\Generated_Source\PSoC4/PWM_Timer.c ****         * Return:
+ 450:.\Generated_Source\PSoC4/PWM_Timer.c ****         *  None
+ 451:.\Generated_Source\PSoC4/PWM_Timer.c ****         *
+ 452:.\Generated_Source\PSoC4/PWM_Timer.c ****         *******************************************************************************/
+ 453:.\Generated_Source\PSoC4/PWM_Timer.c ****         void PWM_Timer_ClearFIFO(void) 
+ 454:.\Generated_Source\PSoC4/PWM_Timer.c ****         {
+ 138              		.loc 1 454 0
+ 139              		.cfi_startproc
+ 140              	.L14:
+ 141              	.LBB14:
+ 142              	.LBB15:
+ 455:.\Generated_Source\PSoC4/PWM_Timer.c ****             while(0u != (PWM_Timer_ReadStatusRegister() & PWM_Timer_STATUS_FIFONEMPTY))
+ 456:.\Generated_Source\PSoC4/PWM_Timer.c ****             {
+ 457:.\Generated_Source\PSoC4/PWM_Timer.c ****                 (void)PWM_Timer_ReadCapture();
+ 458:.\Generated_Source\PSoC4/PWM_Timer.c ****             }
+ 459:.\Generated_Source\PSoC4/PWM_Timer.c ****         }
+ 460:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 461:.\Generated_Source\PSoC4/PWM_Timer.c ****     #endif /* PWM_Timer_UseStatus */
+ 462:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 463:.\Generated_Source\PSoC4/PWM_Timer.c **** #endif /* !PWM_Timer_UsingFixedFunction */
+ 464:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 465:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 466:.\Generated_Source\PSoC4/PWM_Timer.c **** /*******************************************************************************
+ 467:.\Generated_Source\PSoC4/PWM_Timer.c **** * Function Name: PWM_Timer_WritePeriod
+ 468:.\Generated_Source\PSoC4/PWM_Timer.c **** ********************************************************************************
+ 469:.\Generated_Source\PSoC4/PWM_Timer.c **** *
+ 470:.\Generated_Source\PSoC4/PWM_Timer.c **** * Summary:
+ 471:.\Generated_Source\PSoC4/PWM_Timer.c **** *  This function is used to change the period of the counter.  The new period
+ 472:.\Generated_Source\PSoC4/PWM_Timer.c **** *  will be loaded the next time terminal count is detected.
+ 473:.\Generated_Source\PSoC4/PWM_Timer.c **** *
+ 474:.\Generated_Source\PSoC4/PWM_Timer.c **** * Parameters:
+ 475:.\Generated_Source\PSoC4/PWM_Timer.c **** *  period:  Period value. May be between 1 and (2^Resolution)-1.  A value of 0
+ 476:.\Generated_Source\PSoC4/PWM_Timer.c **** *           will result in the counter remaining at zero.
+ 477:.\Generated_Source\PSoC4/PWM_Timer.c **** *
+ 478:.\Generated_Source\PSoC4/PWM_Timer.c **** * Return:
+ 479:.\Generated_Source\PSoC4/PWM_Timer.c **** *  None
+ 480:.\Generated_Source\PSoC4/PWM_Timer.c **** *
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccvACxp2.s 			page 12
+
+
+ 481:.\Generated_Source\PSoC4/PWM_Timer.c **** *******************************************************************************/
+ 482:.\Generated_Source\PSoC4/PWM_Timer.c **** void PWM_Timer_WritePeriod(uint16 period) 
+ 483:.\Generated_Source\PSoC4/PWM_Timer.c **** {
+ 484:.\Generated_Source\PSoC4/PWM_Timer.c ****     #if(PWM_Timer_UsingFixedFunction)
+ 485:.\Generated_Source\PSoC4/PWM_Timer.c ****         CY_SET_REG16(PWM_Timer_PERIOD_LSB_PTR, (uint16)period);
+ 486:.\Generated_Source\PSoC4/PWM_Timer.c ****     #else
+ 487:.\Generated_Source\PSoC4/PWM_Timer.c ****         CY_SET_REG16(PWM_Timer_PERIOD_LSB_PTR, period);
+ 488:.\Generated_Source\PSoC4/PWM_Timer.c ****     #endif /* (PWM_Timer_UsingFixedFunction) */
+ 489:.\Generated_Source\PSoC4/PWM_Timer.c **** }
+ 490:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 491:.\Generated_Source\PSoC4/PWM_Timer.c **** #if (PWM_Timer_UseOneCompareMode)
+ 492:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 493:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 494:.\Generated_Source\PSoC4/PWM_Timer.c ****     /*******************************************************************************
+ 495:.\Generated_Source\PSoC4/PWM_Timer.c ****     * Function Name: PWM_Timer_WriteCompare
+ 496:.\Generated_Source\PSoC4/PWM_Timer.c ****     ********************************************************************************
+ 497:.\Generated_Source\PSoC4/PWM_Timer.c ****     *
+ 498:.\Generated_Source\PSoC4/PWM_Timer.c ****     * Summary:
+ 499:.\Generated_Source\PSoC4/PWM_Timer.c ****     *  This funtion is used to change the compare1 value when the PWM is in Dither
+ 500:.\Generated_Source\PSoC4/PWM_Timer.c ****     *  mode. The compare output will reflect the new value on the next UDB clock.
+ 501:.\Generated_Source\PSoC4/PWM_Timer.c ****     *  The compare output will be driven high when the present counter value is
+ 502:.\Generated_Source\PSoC4/PWM_Timer.c ****     *  compared to the compare value based on the compare mode defined in
+ 503:.\Generated_Source\PSoC4/PWM_Timer.c ****     *  Dither Mode.
+ 504:.\Generated_Source\PSoC4/PWM_Timer.c ****     *
+ 505:.\Generated_Source\PSoC4/PWM_Timer.c ****     * Parameters:
+ 506:.\Generated_Source\PSoC4/PWM_Timer.c ****     *  compare:  New compare value.
+ 507:.\Generated_Source\PSoC4/PWM_Timer.c ****     *
+ 508:.\Generated_Source\PSoC4/PWM_Timer.c ****     * Return:
+ 509:.\Generated_Source\PSoC4/PWM_Timer.c ****     *  None
+ 510:.\Generated_Source\PSoC4/PWM_Timer.c ****     *
+ 511:.\Generated_Source\PSoC4/PWM_Timer.c ****     * Side Effects:
+ 512:.\Generated_Source\PSoC4/PWM_Timer.c ****     *  This function is only available if the PWM mode parameter is set to
+ 513:.\Generated_Source\PSoC4/PWM_Timer.c ****     *  Dither Mode, Center Aligned Mode or One Output Mode
+ 514:.\Generated_Source\PSoC4/PWM_Timer.c ****     *
+ 515:.\Generated_Source\PSoC4/PWM_Timer.c ****     *******************************************************************************/
+ 516:.\Generated_Source\PSoC4/PWM_Timer.c ****     void PWM_Timer_WriteCompare(uint16 compare) \
+ 517:.\Generated_Source\PSoC4/PWM_Timer.c ****                                        
+ 518:.\Generated_Source\PSoC4/PWM_Timer.c ****     {
+ 519:.\Generated_Source\PSoC4/PWM_Timer.c ****         #if(PWM_Timer_UsingFixedFunction)
+ 520:.\Generated_Source\PSoC4/PWM_Timer.c ****             CY_SET_REG16(PWM_Timer_COMPARE1_LSB_PTR, (uint16)compare);
+ 521:.\Generated_Source\PSoC4/PWM_Timer.c ****         #else
+ 522:.\Generated_Source\PSoC4/PWM_Timer.c ****             CY_SET_REG16(PWM_Timer_COMPARE1_LSB_PTR, compare);
+ 523:.\Generated_Source\PSoC4/PWM_Timer.c ****         #endif /* (PWM_Timer_UsingFixedFunction) */
+ 524:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 525:.\Generated_Source\PSoC4/PWM_Timer.c ****         #if (PWM_Timer_PWMMode == PWM_Timer__B_PWM__DITHER)
+ 526:.\Generated_Source\PSoC4/PWM_Timer.c ****             #if(PWM_Timer_UsingFixedFunction)
+ 527:.\Generated_Source\PSoC4/PWM_Timer.c ****                 CY_SET_REG16(PWM_Timer_COMPARE2_LSB_PTR, (uint16)(compare + 1u));
+ 528:.\Generated_Source\PSoC4/PWM_Timer.c ****             #else
+ 529:.\Generated_Source\PSoC4/PWM_Timer.c ****                 CY_SET_REG16(PWM_Timer_COMPARE2_LSB_PTR, (compare + 1u));
+ 530:.\Generated_Source\PSoC4/PWM_Timer.c ****             #endif /* (PWM_Timer_UsingFixedFunction) */
+ 531:.\Generated_Source\PSoC4/PWM_Timer.c ****         #endif /* (PWM_Timer_PWMMode == PWM_Timer__B_PWM__DITHER) */
+ 532:.\Generated_Source\PSoC4/PWM_Timer.c ****     }
+ 533:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 534:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 535:.\Generated_Source\PSoC4/PWM_Timer.c **** #else
+ 536:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 537:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccvACxp2.s 			page 13
+
+
+ 538:.\Generated_Source\PSoC4/PWM_Timer.c ****     /*******************************************************************************
+ 539:.\Generated_Source\PSoC4/PWM_Timer.c ****     * Function Name: PWM_Timer_WriteCompare1
+ 540:.\Generated_Source\PSoC4/PWM_Timer.c ****     ********************************************************************************
+ 541:.\Generated_Source\PSoC4/PWM_Timer.c ****     *
+ 542:.\Generated_Source\PSoC4/PWM_Timer.c ****     * Summary:
+ 543:.\Generated_Source\PSoC4/PWM_Timer.c ****     *  This funtion is used to change the compare1 value.  The compare output will
+ 544:.\Generated_Source\PSoC4/PWM_Timer.c ****     *  reflect the new value on the next UDB clock.  The compare output will be
+ 545:.\Generated_Source\PSoC4/PWM_Timer.c ****     *  driven high when the present counter value is less than or less than or
+ 546:.\Generated_Source\PSoC4/PWM_Timer.c ****     *  equal to the compare register, depending on the mode.
+ 547:.\Generated_Source\PSoC4/PWM_Timer.c ****     *
+ 548:.\Generated_Source\PSoC4/PWM_Timer.c ****     * Parameters:
+ 549:.\Generated_Source\PSoC4/PWM_Timer.c ****     *  compare:  New compare value.
+ 550:.\Generated_Source\PSoC4/PWM_Timer.c ****     *
+ 551:.\Generated_Source\PSoC4/PWM_Timer.c ****     * Return:
+ 552:.\Generated_Source\PSoC4/PWM_Timer.c ****     *  None
+ 553:.\Generated_Source\PSoC4/PWM_Timer.c ****     *
+ 554:.\Generated_Source\PSoC4/PWM_Timer.c ****     *******************************************************************************/
+ 555:.\Generated_Source\PSoC4/PWM_Timer.c ****     void PWM_Timer_WriteCompare1(uint16 compare) \
+ 556:.\Generated_Source\PSoC4/PWM_Timer.c ****                                         
+ 557:.\Generated_Source\PSoC4/PWM_Timer.c ****     {
+ 558:.\Generated_Source\PSoC4/PWM_Timer.c ****         #if(PWM_Timer_UsingFixedFunction)
+ 559:.\Generated_Source\PSoC4/PWM_Timer.c ****             CY_SET_REG16(PWM_Timer_COMPARE1_LSB_PTR, (uint16)compare);
+ 560:.\Generated_Source\PSoC4/PWM_Timer.c ****         #else
+ 561:.\Generated_Source\PSoC4/PWM_Timer.c ****             CY_SET_REG16(PWM_Timer_COMPARE1_LSB_PTR, compare);
+ 562:.\Generated_Source\PSoC4/PWM_Timer.c ****         #endif /* (PWM_Timer_UsingFixedFunction) */
+ 563:.\Generated_Source\PSoC4/PWM_Timer.c ****     }
+ 564:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 565:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 566:.\Generated_Source\PSoC4/PWM_Timer.c ****     /*******************************************************************************
+ 567:.\Generated_Source\PSoC4/PWM_Timer.c ****     * Function Name: PWM_Timer_WriteCompare2
+ 568:.\Generated_Source\PSoC4/PWM_Timer.c ****     ********************************************************************************
+ 569:.\Generated_Source\PSoC4/PWM_Timer.c ****     *
+ 570:.\Generated_Source\PSoC4/PWM_Timer.c ****     * Summary:
+ 571:.\Generated_Source\PSoC4/PWM_Timer.c ****     *  This funtion is used to change the compare value, for compare1 output.
+ 572:.\Generated_Source\PSoC4/PWM_Timer.c ****     *  The compare output will reflect the new value on the next UDB clock.
+ 573:.\Generated_Source\PSoC4/PWM_Timer.c ****     *  The compare output will be driven high when the present counter value is
+ 574:.\Generated_Source\PSoC4/PWM_Timer.c ****     *  less than or less than or equal to the compare register, depending on the
+ 575:.\Generated_Source\PSoC4/PWM_Timer.c ****     *  mode.
+ 576:.\Generated_Source\PSoC4/PWM_Timer.c ****     *
+ 577:.\Generated_Source\PSoC4/PWM_Timer.c ****     * Parameters:
+ 578:.\Generated_Source\PSoC4/PWM_Timer.c ****     *  compare:  New compare value.
+ 579:.\Generated_Source\PSoC4/PWM_Timer.c ****     *
+ 580:.\Generated_Source\PSoC4/PWM_Timer.c ****     * Return:
+ 581:.\Generated_Source\PSoC4/PWM_Timer.c ****     *  None
+ 582:.\Generated_Source\PSoC4/PWM_Timer.c ****     *
+ 583:.\Generated_Source\PSoC4/PWM_Timer.c ****     *******************************************************************************/
+ 584:.\Generated_Source\PSoC4/PWM_Timer.c ****     void PWM_Timer_WriteCompare2(uint16 compare) \
+ 585:.\Generated_Source\PSoC4/PWM_Timer.c ****                                         
+ 586:.\Generated_Source\PSoC4/PWM_Timer.c ****     {
+ 587:.\Generated_Source\PSoC4/PWM_Timer.c ****         #if(PWM_Timer_UsingFixedFunction)
+ 588:.\Generated_Source\PSoC4/PWM_Timer.c ****             CY_SET_REG16(PWM_Timer_COMPARE2_LSB_PTR, compare);
+ 589:.\Generated_Source\PSoC4/PWM_Timer.c ****         #else
+ 590:.\Generated_Source\PSoC4/PWM_Timer.c ****             CY_SET_REG16(PWM_Timer_COMPARE2_LSB_PTR, compare);
+ 591:.\Generated_Source\PSoC4/PWM_Timer.c ****         #endif /* (PWM_Timer_UsingFixedFunction) */
+ 592:.\Generated_Source\PSoC4/PWM_Timer.c ****     }
+ 593:.\Generated_Source\PSoC4/PWM_Timer.c **** #endif /* UseOneCompareMode */
+ 594:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccvACxp2.s 			page 14
+
+
+ 595:.\Generated_Source\PSoC4/PWM_Timer.c **** #if (PWM_Timer_DeadBandUsed)
+ 596:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 597:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 598:.\Generated_Source\PSoC4/PWM_Timer.c ****     /*******************************************************************************
+ 599:.\Generated_Source\PSoC4/PWM_Timer.c ****     * Function Name: PWM_Timer_WriteDeadTime
+ 600:.\Generated_Source\PSoC4/PWM_Timer.c ****     ********************************************************************************
+ 601:.\Generated_Source\PSoC4/PWM_Timer.c ****     *
+ 602:.\Generated_Source\PSoC4/PWM_Timer.c ****     * Summary:
+ 603:.\Generated_Source\PSoC4/PWM_Timer.c ****     *  This function writes the dead-band counts to the corresponding register
+ 604:.\Generated_Source\PSoC4/PWM_Timer.c ****     *
+ 605:.\Generated_Source\PSoC4/PWM_Timer.c ****     * Parameters:
+ 606:.\Generated_Source\PSoC4/PWM_Timer.c ****     *  deadtime:  Number of counts for dead time
+ 607:.\Generated_Source\PSoC4/PWM_Timer.c ****     *
+ 608:.\Generated_Source\PSoC4/PWM_Timer.c ****     * Return:
+ 609:.\Generated_Source\PSoC4/PWM_Timer.c ****     *  None
+ 610:.\Generated_Source\PSoC4/PWM_Timer.c ****     *
+ 611:.\Generated_Source\PSoC4/PWM_Timer.c ****     *******************************************************************************/
+ 612:.\Generated_Source\PSoC4/PWM_Timer.c ****     void PWM_Timer_WriteDeadTime(uint8 deadtime) 
+ 613:.\Generated_Source\PSoC4/PWM_Timer.c ****     {
+ 614:.\Generated_Source\PSoC4/PWM_Timer.c ****         /* If using the Dead Band 1-255 mode then just write the register */
+ 615:.\Generated_Source\PSoC4/PWM_Timer.c ****         #if(!PWM_Timer_DeadBand2_4)
+ 616:.\Generated_Source\PSoC4/PWM_Timer.c ****             CY_SET_REG8(PWM_Timer_DEADBAND_COUNT_PTR, deadtime);
+ 617:.\Generated_Source\PSoC4/PWM_Timer.c ****         #else
+ 618:.\Generated_Source\PSoC4/PWM_Timer.c ****             /* Otherwise the data has to be masked and offset */
+ 619:.\Generated_Source\PSoC4/PWM_Timer.c ****             /* Clear existing data */
+ 620:.\Generated_Source\PSoC4/PWM_Timer.c ****             PWM_Timer_DEADBAND_COUNT &= ((uint8)(~PWM_Timer_DEADBAND_COUNT_MASK));
+ 621:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 622:.\Generated_Source\PSoC4/PWM_Timer.c ****             /* Set new dead time */
+ 623:.\Generated_Source\PSoC4/PWM_Timer.c ****             #if(PWM_Timer_DEADBAND_COUNT_SHIFT)
+ 624:.\Generated_Source\PSoC4/PWM_Timer.c ****                 PWM_Timer_DEADBAND_COUNT |= ((uint8)((uint8)deadtime << PWM_Timer_DEADBAND_COUNT_SH
+ 625:.\Generated_Source\PSoC4/PWM_Timer.c ****                                                     PWM_Timer_DEADBAND_COUNT_MASK;
+ 626:.\Generated_Source\PSoC4/PWM_Timer.c ****             #else
+ 627:.\Generated_Source\PSoC4/PWM_Timer.c ****                 PWM_Timer_DEADBAND_COUNT |= deadtime & PWM_Timer_DEADBAND_COUNT_MASK;
+ 628:.\Generated_Source\PSoC4/PWM_Timer.c ****             #endif /* (PWM_Timer_DEADBAND_COUNT_SHIFT) */
+ 629:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 630:.\Generated_Source\PSoC4/PWM_Timer.c ****         #endif /* (!PWM_Timer_DeadBand2_4) */
+ 631:.\Generated_Source\PSoC4/PWM_Timer.c ****     }
+ 632:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 633:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 634:.\Generated_Source\PSoC4/PWM_Timer.c ****     /*******************************************************************************
+ 635:.\Generated_Source\PSoC4/PWM_Timer.c ****     * Function Name: PWM_Timer_ReadDeadTime
+ 636:.\Generated_Source\PSoC4/PWM_Timer.c ****     ********************************************************************************
+ 637:.\Generated_Source\PSoC4/PWM_Timer.c ****     *
+ 638:.\Generated_Source\PSoC4/PWM_Timer.c ****     * Summary:
+ 639:.\Generated_Source\PSoC4/PWM_Timer.c ****     *  This function reads the dead-band counts from the corresponding register
+ 640:.\Generated_Source\PSoC4/PWM_Timer.c ****     *
+ 641:.\Generated_Source\PSoC4/PWM_Timer.c ****     * Parameters:
+ 642:.\Generated_Source\PSoC4/PWM_Timer.c ****     *  None
+ 643:.\Generated_Source\PSoC4/PWM_Timer.c ****     *
+ 644:.\Generated_Source\PSoC4/PWM_Timer.c ****     * Return:
+ 645:.\Generated_Source\PSoC4/PWM_Timer.c ****     *  Dead Band Counts
+ 646:.\Generated_Source\PSoC4/PWM_Timer.c ****     *
+ 647:.\Generated_Source\PSoC4/PWM_Timer.c ****     *******************************************************************************/
+ 648:.\Generated_Source\PSoC4/PWM_Timer.c ****     uint8 PWM_Timer_ReadDeadTime(void) 
+ 649:.\Generated_Source\PSoC4/PWM_Timer.c ****     {
+ 650:.\Generated_Source\PSoC4/PWM_Timer.c ****         /* If using the Dead Band 1-255 mode then just read the register */
+ 651:.\Generated_Source\PSoC4/PWM_Timer.c ****         #if(!PWM_Timer_DeadBand2_4)
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccvACxp2.s 			page 15
+
+
+ 652:.\Generated_Source\PSoC4/PWM_Timer.c ****             return (CY_GET_REG8(PWM_Timer_DEADBAND_COUNT_PTR));
+ 653:.\Generated_Source\PSoC4/PWM_Timer.c ****         #else
+ 654:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 655:.\Generated_Source\PSoC4/PWM_Timer.c ****             /* Otherwise the data has to be masked and offset */
+ 656:.\Generated_Source\PSoC4/PWM_Timer.c ****             #if(PWM_Timer_DEADBAND_COUNT_SHIFT)
+ 657:.\Generated_Source\PSoC4/PWM_Timer.c ****                 return ((uint8)(((uint8)(PWM_Timer_DEADBAND_COUNT & PWM_Timer_DEADBAND_COUNT_MASK))
+ 658:.\Generated_Source\PSoC4/PWM_Timer.c ****                                                                            PWM_Timer_DEADBAND_COUNT
+ 659:.\Generated_Source\PSoC4/PWM_Timer.c ****             #else
+ 660:.\Generated_Source\PSoC4/PWM_Timer.c ****                 return (PWM_Timer_DEADBAND_COUNT & PWM_Timer_DEADBAND_COUNT_MASK);
+ 661:.\Generated_Source\PSoC4/PWM_Timer.c ****             #endif /* (PWM_Timer_DEADBAND_COUNT_SHIFT) */
+ 662:.\Generated_Source\PSoC4/PWM_Timer.c ****         #endif /* (!PWM_Timer_DeadBand2_4) */
+ 663:.\Generated_Source\PSoC4/PWM_Timer.c ****     }
+ 664:.\Generated_Source\PSoC4/PWM_Timer.c **** #endif /* DeadBandUsed */
+ 665:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 666:.\Generated_Source\PSoC4/PWM_Timer.c **** #if (PWM_Timer_UseStatus || PWM_Timer_UsingFixedFunction)
+ 667:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 668:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 669:.\Generated_Source\PSoC4/PWM_Timer.c ****     /*******************************************************************************
+ 670:.\Generated_Source\PSoC4/PWM_Timer.c ****     * Function Name: PWM_Timer_SetInterruptMode
+ 671:.\Generated_Source\PSoC4/PWM_Timer.c ****     ********************************************************************************
+ 672:.\Generated_Source\PSoC4/PWM_Timer.c ****     *
+ 673:.\Generated_Source\PSoC4/PWM_Timer.c ****     * Summary:
+ 674:.\Generated_Source\PSoC4/PWM_Timer.c ****     *  This function configures the interrupts mask control of theinterrupt
+ 675:.\Generated_Source\PSoC4/PWM_Timer.c ****     *  source status register.
+ 676:.\Generated_Source\PSoC4/PWM_Timer.c ****     *
+ 677:.\Generated_Source\PSoC4/PWM_Timer.c ****     * Parameters:
+ 678:.\Generated_Source\PSoC4/PWM_Timer.c ****     *  uint8 interruptMode: Bit field containing the interrupt sources enabled
+ 679:.\Generated_Source\PSoC4/PWM_Timer.c ****     *
+ 680:.\Generated_Source\PSoC4/PWM_Timer.c ****     * Return:
+ 681:.\Generated_Source\PSoC4/PWM_Timer.c ****     *  None
+ 682:.\Generated_Source\PSoC4/PWM_Timer.c ****     *
+ 683:.\Generated_Source\PSoC4/PWM_Timer.c ****     *******************************************************************************/
+ 684:.\Generated_Source\PSoC4/PWM_Timer.c ****     void PWM_Timer_SetInterruptMode(uint8 interruptMode) 
+ 685:.\Generated_Source\PSoC4/PWM_Timer.c ****     {
+ 686:.\Generated_Source\PSoC4/PWM_Timer.c ****         CY_SET_REG8(PWM_Timer_STATUS_MASK_PTR, interruptMode);
+ 687:.\Generated_Source\PSoC4/PWM_Timer.c ****     }
+ 688:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 689:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 690:.\Generated_Source\PSoC4/PWM_Timer.c ****     /*******************************************************************************
+ 691:.\Generated_Source\PSoC4/PWM_Timer.c ****     * Function Name: PWM_Timer_ReadStatusRegister
+ 692:.\Generated_Source\PSoC4/PWM_Timer.c ****     ********************************************************************************
+ 693:.\Generated_Source\PSoC4/PWM_Timer.c ****     *
+ 694:.\Generated_Source\PSoC4/PWM_Timer.c ****     * Summary:
+ 695:.\Generated_Source\PSoC4/PWM_Timer.c ****     *  This function returns the current state of the status register.
+ 696:.\Generated_Source\PSoC4/PWM_Timer.c ****     *
+ 697:.\Generated_Source\PSoC4/PWM_Timer.c ****     * Parameters:
+ 698:.\Generated_Source\PSoC4/PWM_Timer.c ****     *  None
+ 699:.\Generated_Source\PSoC4/PWM_Timer.c ****     *
+ 700:.\Generated_Source\PSoC4/PWM_Timer.c ****     * Return:
+ 701:.\Generated_Source\PSoC4/PWM_Timer.c ****     *  uint8 : Current status register value. The status register bits are:
+ 702:.\Generated_Source\PSoC4/PWM_Timer.c ****     *  [7:6] : Unused(0)
+ 703:.\Generated_Source\PSoC4/PWM_Timer.c ****     *  [5]   : Kill event output
+ 704:.\Generated_Source\PSoC4/PWM_Timer.c ****     *  [4]   : FIFO not empty
+ 705:.\Generated_Source\PSoC4/PWM_Timer.c ****     *  [3]   : FIFO full
+ 706:.\Generated_Source\PSoC4/PWM_Timer.c ****     *  [2]   : Terminal count
+ 707:.\Generated_Source\PSoC4/PWM_Timer.c ****     *  [1]   : Compare output 2
+ 708:.\Generated_Source\PSoC4/PWM_Timer.c ****     *  [0]   : Compare output 1
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccvACxp2.s 			page 16
+
+
+ 709:.\Generated_Source\PSoC4/PWM_Timer.c ****     *
+ 710:.\Generated_Source\PSoC4/PWM_Timer.c ****     *******************************************************************************/
+ 711:.\Generated_Source\PSoC4/PWM_Timer.c ****     uint8 PWM_Timer_ReadStatusRegister(void) 
+ 712:.\Generated_Source\PSoC4/PWM_Timer.c ****     {
+ 713:.\Generated_Source\PSoC4/PWM_Timer.c ****         return (CY_GET_REG8(PWM_Timer_STATUS_PTR));
+ 143              		.loc 1 713 0 discriminator 1
+ 144 0000 034B     		ldr	r3, .L18
+ 145 0002 1B78     		ldrb	r3, [r3]
+ 146              	.LBE15:
+ 147              	.LBE14:
+ 455:.\Generated_Source\PSoC4/PWM_Timer.c ****             while(0u != (PWM_Timer_ReadStatusRegister() & PWM_Timer_STATUS_FIFONEMPTY))
+ 148              		.loc 1 455 0 discriminator 1
+ 149 0004 DA06     		lsl	r2, r3, #27
+ 150 0006 02D5     		bpl	.L17
+ 151              	.LBB16:
+ 152              	.LBB17:
+ 714:.\Generated_Source\PSoC4/PWM_Timer.c ****     }
+ 715:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 716:.\Generated_Source\PSoC4/PWM_Timer.c **** #endif /* (PWM_Timer_UseStatus || PWM_Timer_UsingFixedFunction) */
+ 717:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 718:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 719:.\Generated_Source\PSoC4/PWM_Timer.c **** #if (PWM_Timer_UseControl)
+ 720:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 721:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 722:.\Generated_Source\PSoC4/PWM_Timer.c ****     /*******************************************************************************
+ 723:.\Generated_Source\PSoC4/PWM_Timer.c ****     * Function Name: PWM_Timer_ReadControlRegister
+ 724:.\Generated_Source\PSoC4/PWM_Timer.c ****     ********************************************************************************
+ 725:.\Generated_Source\PSoC4/PWM_Timer.c ****     *
+ 726:.\Generated_Source\PSoC4/PWM_Timer.c ****     * Summary:
+ 727:.\Generated_Source\PSoC4/PWM_Timer.c ****     *  Returns the current state of the control register. This API is available
+ 728:.\Generated_Source\PSoC4/PWM_Timer.c ****     *  only if the control register is not removed.
+ 729:.\Generated_Source\PSoC4/PWM_Timer.c ****     *
+ 730:.\Generated_Source\PSoC4/PWM_Timer.c ****     * Parameters:
+ 731:.\Generated_Source\PSoC4/PWM_Timer.c ****     *  None
+ 732:.\Generated_Source\PSoC4/PWM_Timer.c ****     *
+ 733:.\Generated_Source\PSoC4/PWM_Timer.c ****     * Return:
+ 734:.\Generated_Source\PSoC4/PWM_Timer.c ****     *  uint8 : Current control register value
+ 735:.\Generated_Source\PSoC4/PWM_Timer.c ****     *
+ 736:.\Generated_Source\PSoC4/PWM_Timer.c ****     *******************************************************************************/
+ 737:.\Generated_Source\PSoC4/PWM_Timer.c ****     uint8 PWM_Timer_ReadControlRegister(void) 
+ 738:.\Generated_Source\PSoC4/PWM_Timer.c ****     {
+ 739:.\Generated_Source\PSoC4/PWM_Timer.c ****         uint8 result;
+ 740:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 741:.\Generated_Source\PSoC4/PWM_Timer.c ****         result = CY_GET_REG8(PWM_Timer_CONTROL_PTR);
+ 742:.\Generated_Source\PSoC4/PWM_Timer.c ****         return (result);
+ 743:.\Generated_Source\PSoC4/PWM_Timer.c ****     }
+ 744:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 745:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 746:.\Generated_Source\PSoC4/PWM_Timer.c ****     /*******************************************************************************
+ 747:.\Generated_Source\PSoC4/PWM_Timer.c ****     * Function Name: PWM_Timer_WriteControlRegister
+ 748:.\Generated_Source\PSoC4/PWM_Timer.c ****     ********************************************************************************
+ 749:.\Generated_Source\PSoC4/PWM_Timer.c ****     *
+ 750:.\Generated_Source\PSoC4/PWM_Timer.c ****     * Summary:
+ 751:.\Generated_Source\PSoC4/PWM_Timer.c ****     *  Sets the bit field of the control register. This API is available only if
+ 752:.\Generated_Source\PSoC4/PWM_Timer.c ****     *  the control register is not removed.
+ 753:.\Generated_Source\PSoC4/PWM_Timer.c ****     *
+ 754:.\Generated_Source\PSoC4/PWM_Timer.c ****     * Parameters:
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccvACxp2.s 			page 17
+
+
+ 755:.\Generated_Source\PSoC4/PWM_Timer.c ****     *  uint8 control: Control register bit field, The status register bits are:
+ 756:.\Generated_Source\PSoC4/PWM_Timer.c ****     *  [7]   : PWM Enable
+ 757:.\Generated_Source\PSoC4/PWM_Timer.c ****     *  [6]   : Reset
+ 758:.\Generated_Source\PSoC4/PWM_Timer.c ****     *  [5:3] : Compare Mode2
+ 759:.\Generated_Source\PSoC4/PWM_Timer.c ****     *  [2:0] : Compare Mode2
+ 760:.\Generated_Source\PSoC4/PWM_Timer.c ****     *
+ 761:.\Generated_Source\PSoC4/PWM_Timer.c ****     * Return:
+ 762:.\Generated_Source\PSoC4/PWM_Timer.c ****     *  None
+ 763:.\Generated_Source\PSoC4/PWM_Timer.c ****     *
+ 764:.\Generated_Source\PSoC4/PWM_Timer.c ****     *******************************************************************************/
+ 765:.\Generated_Source\PSoC4/PWM_Timer.c ****     void PWM_Timer_WriteControlRegister(uint8 control) 
+ 766:.\Generated_Source\PSoC4/PWM_Timer.c ****     {
+ 767:.\Generated_Source\PSoC4/PWM_Timer.c ****         CY_SET_REG8(PWM_Timer_CONTROL_PTR, control);
+ 768:.\Generated_Source\PSoC4/PWM_Timer.c ****     }
+ 769:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 770:.\Generated_Source\PSoC4/PWM_Timer.c **** #endif /* (PWM_Timer_UseControl) */
+ 771:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 772:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 773:.\Generated_Source\PSoC4/PWM_Timer.c **** #if (!PWM_Timer_UsingFixedFunction)
+ 774:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 775:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 776:.\Generated_Source\PSoC4/PWM_Timer.c ****     /*******************************************************************************
+ 777:.\Generated_Source\PSoC4/PWM_Timer.c ****     * Function Name: PWM_Timer_ReadCapture
+ 778:.\Generated_Source\PSoC4/PWM_Timer.c ****     ********************************************************************************
+ 779:.\Generated_Source\PSoC4/PWM_Timer.c ****     *
+ 780:.\Generated_Source\PSoC4/PWM_Timer.c ****     * Summary:
+ 781:.\Generated_Source\PSoC4/PWM_Timer.c ****     *  Reads the capture value from the capture FIFO.
+ 782:.\Generated_Source\PSoC4/PWM_Timer.c ****     *
+ 783:.\Generated_Source\PSoC4/PWM_Timer.c ****     * Parameters:
+ 784:.\Generated_Source\PSoC4/PWM_Timer.c ****     *  None
+ 785:.\Generated_Source\PSoC4/PWM_Timer.c ****     *
+ 786:.\Generated_Source\PSoC4/PWM_Timer.c ****     * Return:
+ 787:.\Generated_Source\PSoC4/PWM_Timer.c ****     *  uint8/uint16: The current capture value
+ 788:.\Generated_Source\PSoC4/PWM_Timer.c ****     *
+ 789:.\Generated_Source\PSoC4/PWM_Timer.c ****     *******************************************************************************/
+ 790:.\Generated_Source\PSoC4/PWM_Timer.c ****     uint16 PWM_Timer_ReadCapture(void) 
+ 791:.\Generated_Source\PSoC4/PWM_Timer.c ****     {
+ 792:.\Generated_Source\PSoC4/PWM_Timer.c ****         return (CY_GET_REG16(PWM_Timer_CAPTURE_LSB_PTR));
+ 153              		.loc 1 792 0
+ 154 0008 024B     		ldr	r3, .L18+4
+ 155 000a 1B88     		ldrh	r3, [r3]
+ 156 000c F8E7     		b	.L14
+ 157              	.L17:
+ 158              	.LBE17:
+ 159              	.LBE16:
+ 459:.\Generated_Source\PSoC4/PWM_Timer.c ****         }
+ 160              		.loc 1 459 0
+ 161              		@ sp needed
+ 162 000e 7047     		bx	lr
+ 163              	.L19:
+ 164              		.align	2
+ 165              	.L18:
+ 166 0010 63000F40 		.word	1074724963
+ 167 0014 A4100F40 		.word	1074729124
+ 168              		.cfi_endproc
+ 169              	.LFE6:
+ 170              		.size	PWM_Timer_ClearFIFO, .-PWM_Timer_ClearFIFO
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccvACxp2.s 			page 18
+
+
+ 171              		.section	.text.PWM_Timer_Init,"ax",%progbits
+ 172              		.align	1
+ 173              		.global	PWM_Timer_Init
+ 174              		.code	16
+ 175              		.thumb_func
+ 176              		.type	PWM_Timer_Init, %function
+ 177              	PWM_Timer_Init:
+ 178              	.LFB1:
+  85:.\Generated_Source\PSoC4/PWM_Timer.c **** {
+ 179              		.loc 1 85 0
+ 180              		.cfi_startproc
+ 181 0000 10B5     		push	{r4, lr}
+ 182              		.cfi_def_cfa_offset 8
+ 183              		.cfi_offset 4, -8
+ 184              		.cfi_offset 14, -4
+ 117:.\Generated_Source\PSoC4/PWM_Timer.c ****         ctrl = PWM_Timer_CONTROL & ((uint8)(~PWM_Timer_CTRL_CMPMODE2_MASK)) &
+ 185              		.loc 1 117 0
+ 186 0002 124B     		ldr	r3, .L21
+ 187 0004 3F21     		mov	r1, #63
+ 188 0006 1A78     		ldrb	r2, [r3]
+ 189              	.LVL1:
+ 130:.\Generated_Source\PSoC4/PWM_Timer.c ****             PWM_Timer_AUX_CONTROLDP1 |= (PWM_Timer_AUX_CTRL_FIFO0_CLR);
+ 190              		.loc 1 130 0
+ 191 0008 114C     		ldr	r4, .L21+4
+ 117:.\Generated_Source\PSoC4/PWM_Timer.c ****         ctrl = PWM_Timer_CONTROL & ((uint8)(~PWM_Timer_CTRL_CMPMODE2_MASK)) &
+ 192              		.loc 1 117 0
+ 193 000a 8A43     		bic	r2, r1
+ 194              	.LVL2:
+ 119:.\Generated_Source\PSoC4/PWM_Timer.c ****         PWM_Timer_CONTROL = ctrl | PWM_Timer_DEFAULT_COMPARE2_MODE |
+ 195              		.loc 1 119 0
+ 196 000c 0921     		mov	r1, #9
+ 197 000e 0A43     		orr	r2, r1
+ 198 0010 1A70     		strb	r2, [r3]
+ 129:.\Generated_Source\PSoC4/PWM_Timer.c ****             PWM_Timer_AUX_CONTROLDP0 |= (PWM_Timer_AUX_CTRL_FIFO0_CLR);
+ 199              		.loc 1 129 0
+ 200 0012 104A     		ldr	r2, .L21+8
+ 201 0014 0123     		mov	r3, #1
+ 202 0016 1178     		ldrb	r1, [r2]
+ 179:.\Generated_Source\PSoC4/PWM_Timer.c **** }
+ 203              		.loc 1 179 0
+ 204              		@ sp needed
+ 129:.\Generated_Source\PSoC4/PWM_Timer.c ****             PWM_Timer_AUX_CONTROLDP0 |= (PWM_Timer_AUX_CTRL_FIFO0_CLR);
+ 205              		.loc 1 129 0
+ 206 0018 1943     		orr	r1, r3
+ 207 001a 1170     		strb	r1, [r2]
+ 130:.\Generated_Source\PSoC4/PWM_Timer.c ****             PWM_Timer_AUX_CONTROLDP1 |= (PWM_Timer_AUX_CTRL_FIFO0_CLR);
+ 208              		.loc 1 130 0
+ 209 001c 2278     		ldrb	r2, [r4]
+ 210 001e 1343     		orr	r3, r2
+ 211 0020 2370     		strb	r3, [r4]
+ 212              	.LVL3:
+ 213              	.LBB18:
+ 214              	.LBB19:
+ 406:.\Generated_Source\PSoC4/PWM_Timer.c ****         CY_SET_REG16(PWM_Timer_COUNTER_LSB_PTR, counter);
+ 215              		.loc 1 406 0
+ 216 0022 0D4A     		ldr	r2, .L21+12
+ 217 0024 0D4B     		ldr	r3, .L21+16
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccvACxp2.s 			page 19
+
+
+ 218 0026 1380     		strh	r3, [r2]
+ 219              	.LVL4:
+ 220              	.LBE19:
+ 221              	.LBE18:
+ 222              	.LBB20:
+ 223              	.LBB21:
+ 487:.\Generated_Source\PSoC4/PWM_Timer.c ****         CY_SET_REG16(PWM_Timer_PERIOD_LSB_PTR, period);
+ 224              		.loc 1 487 0
+ 225 0028 0D4A     		ldr	r2, .L21+20
+ 226 002a 1380     		strh	r3, [r2]
+ 227              	.LVL5:
+ 228              	.LBE21:
+ 229              	.LBE20:
+ 230              	.LBB22:
+ 231              	.LBB23:
+ 522:.\Generated_Source\PSoC4/PWM_Timer.c ****             CY_SET_REG16(PWM_Timer_COMPARE1_LSB_PTR, compare);
+ 232              		.loc 1 522 0
+ 233 002c 0D4A     		ldr	r2, .L21+24
+ 234 002e 1380     		strh	r3, [r2]
+ 235              	.LVL6:
+ 236              	.LBE23:
+ 237              	.LBE22:
+ 238              	.LBB24:
+ 239              	.LBB25:
+ 686:.\Generated_Source\PSoC4/PWM_Timer.c ****         CY_SET_REG8(PWM_Timer_STATUS_MASK_PTR, interruptMode);
+ 240              		.loc 1 686 0
+ 241 0030 0D4B     		ldr	r3, .L21+28
+ 242 0032 0422     		mov	r2, #4
+ 243 0034 1A70     		strb	r2, [r3]
+ 244              	.LBE25:
+ 245              	.LBE24:
+ 167:.\Generated_Source\PSoC4/PWM_Timer.c ****             PWM_Timer_interruptState = CyEnterCriticalSection();
+ 246              		.loc 1 167 0
+ 247 0036 FFF7FEFF 		bl	CyEnterCriticalSection
+ 248              	.LVL7:
+ 169:.\Generated_Source\PSoC4/PWM_Timer.c ****             PWM_Timer_STATUS_AUX_CTRL |= PWM_Timer_STATUS_ACTL_INT_EN_MASK;
+ 249              		.loc 1 169 0
+ 250 003a 2378     		ldrb	r3, [r4]
+ 251 003c 1022     		mov	r2, #16
+ 252 003e 1343     		orr	r3, r2
+ 253 0040 2370     		strb	r3, [r4]
+ 172:.\Generated_Source\PSoC4/PWM_Timer.c ****             CyExitCriticalSection(PWM_Timer_interruptState);
+ 254              		.loc 1 172 0
+ 255 0042 FFF7FEFF 		bl	CyExitCriticalSection
+ 256              	.LVL8:
+ 176:.\Generated_Source\PSoC4/PWM_Timer.c ****             PWM_Timer_ClearFIFO();
+ 257              		.loc 1 176 0
+ 258 0046 FFF7FEFF 		bl	PWM_Timer_ClearFIFO
+ 259              	.LVL9:
+ 179:.\Generated_Source\PSoC4/PWM_Timer.c **** }
+ 260              		.loc 1 179 0
+ 261 004a 10BD     		pop	{r4, pc}
+ 262              	.L22:
+ 263              		.align	2
+ 264              	.L21:
+ 265 004c 72000F40 		.word	1074724978
+ 266 0050 93000F40 		.word	1074725011
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccvACxp2.s 			page 20
+
+
+ 267 0054 92000F40 		.word	1074725010
+ 268 0058 04100F40 		.word	1074728964
+ 269 005c 204E0000 		.word	20000
+ 270 0060 84100F40 		.word	1074729092
+ 271 0064 44100F40 		.word	1074729028
+ 272 0068 83000F40 		.word	1074724995
+ 273              		.cfi_endproc
+ 274              	.LFE1:
+ 275              		.size	PWM_Timer_Init, .-PWM_Timer_Init
+ 276              		.section	.text.PWM_Timer_Start,"ax",%progbits
+ 277              		.align	1
+ 278              		.global	PWM_Timer_Start
+ 279              		.code	16
+ 280              		.thumb_func
+ 281              		.type	PWM_Timer_Start, %function
+ 282              	PWM_Timer_Start:
+ 283              	.LFB0:
+  56:.\Generated_Source\PSoC4/PWM_Timer.c **** {
+ 284              		.loc 1 56 0
+ 285              		.cfi_startproc
+ 286 0000 10B5     		push	{r4, lr}
+ 287              		.cfi_def_cfa_offset 8
+ 288              		.cfi_offset 4, -8
+ 289              		.cfi_offset 14, -4
+  58:.\Generated_Source\PSoC4/PWM_Timer.c ****     if(PWM_Timer_initVar == 0u)
+ 290              		.loc 1 58 0
+ 291 0002 054C     		ldr	r4, .L25
+ 292 0004 2378     		ldrb	r3, [r4]
+ 293 0006 002B     		cmp	r3, #0
+ 294 0008 03D1     		bne	.L24
+  60:.\Generated_Source\PSoC4/PWM_Timer.c ****         PWM_Timer_Init();
+ 295              		.loc 1 60 0
+ 296 000a FFF7FEFF 		bl	PWM_Timer_Init
+ 297              	.LVL10:
+  61:.\Generated_Source\PSoC4/PWM_Timer.c ****         PWM_Timer_initVar = 1u;
+ 298              		.loc 1 61 0
+ 299 000e 0123     		mov	r3, #1
+ 300 0010 2370     		strb	r3, [r4]
+ 301              	.L24:
+  63:.\Generated_Source\PSoC4/PWM_Timer.c ****     PWM_Timer_Enable();
+ 302              		.loc 1 63 0
+ 303 0012 FFF7FEFF 		bl	PWM_Timer_Enable
+ 304              	.LVL11:
+  65:.\Generated_Source\PSoC4/PWM_Timer.c **** }
+ 305              		.loc 1 65 0
+ 306              		@ sp needed
+ 307 0016 10BD     		pop	{r4, pc}
+ 308              	.L26:
+ 309              		.align	2
+ 310              	.L25:
+ 311 0018 00000000 		.word	.LANCHOR0
+ 312              		.cfi_endproc
+ 313              	.LFE0:
+ 314              		.size	PWM_Timer_Start, .-PWM_Timer_Start
+ 315              		.section	.text.PWM_Timer_WritePeriod,"ax",%progbits
+ 316              		.align	1
+ 317              		.global	PWM_Timer_WritePeriod
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccvACxp2.s 			page 21
+
+
+ 318              		.code	16
+ 319              		.thumb_func
+ 320              		.type	PWM_Timer_WritePeriod, %function
+ 321              	PWM_Timer_WritePeriod:
+ 322              	.LFB7:
+ 483:.\Generated_Source\PSoC4/PWM_Timer.c **** {
+ 323              		.loc 1 483 0
+ 324              		.cfi_startproc
+ 325              	.LVL12:
+ 487:.\Generated_Source\PSoC4/PWM_Timer.c ****         CY_SET_REG16(PWM_Timer_PERIOD_LSB_PTR, period);
+ 326              		.loc 1 487 0
+ 327 0000 014B     		ldr	r3, .L28
+ 489:.\Generated_Source\PSoC4/PWM_Timer.c **** }
+ 328              		.loc 1 489 0
+ 329              		@ sp needed
+ 487:.\Generated_Source\PSoC4/PWM_Timer.c ****         CY_SET_REG16(PWM_Timer_PERIOD_LSB_PTR, period);
+ 330              		.loc 1 487 0
+ 331 0002 1880     		strh	r0, [r3]
+ 489:.\Generated_Source\PSoC4/PWM_Timer.c **** }
+ 332              		.loc 1 489 0
+ 333 0004 7047     		bx	lr
+ 334              	.L29:
+ 335 0006 C046     		.align	2
+ 336              	.L28:
+ 337 0008 84100F40 		.word	1074729092
+ 338              		.cfi_endproc
+ 339              	.LFE7:
+ 340              		.size	PWM_Timer_WritePeriod, .-PWM_Timer_WritePeriod
+ 341              		.section	.text.PWM_Timer_WriteCompare,"ax",%progbits
+ 342              		.align	1
+ 343              		.global	PWM_Timer_WriteCompare
+ 344              		.code	16
+ 345              		.thumb_func
+ 346              		.type	PWM_Timer_WriteCompare, %function
+ 347              	PWM_Timer_WriteCompare:
+ 348              	.LFB8:
+ 518:.\Generated_Source\PSoC4/PWM_Timer.c ****     {
+ 349              		.loc 1 518 0
+ 350              		.cfi_startproc
+ 351              	.LVL13:
+ 522:.\Generated_Source\PSoC4/PWM_Timer.c ****             CY_SET_REG16(PWM_Timer_COMPARE1_LSB_PTR, compare);
+ 352              		.loc 1 522 0
+ 353 0000 014B     		ldr	r3, .L31
+ 532:.\Generated_Source\PSoC4/PWM_Timer.c ****     }
+ 354              		.loc 1 532 0
+ 355              		@ sp needed
+ 522:.\Generated_Source\PSoC4/PWM_Timer.c ****             CY_SET_REG16(PWM_Timer_COMPARE1_LSB_PTR, compare);
+ 356              		.loc 1 522 0
+ 357 0002 1880     		strh	r0, [r3]
+ 532:.\Generated_Source\PSoC4/PWM_Timer.c ****     }
+ 358              		.loc 1 532 0
+ 359 0004 7047     		bx	lr
+ 360              	.L32:
+ 361 0006 C046     		.align	2
+ 362              	.L31:
+ 363 0008 44100F40 		.word	1074729028
+ 364              		.cfi_endproc
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccvACxp2.s 			page 22
+
+
+ 365              	.LFE8:
+ 366              		.size	PWM_Timer_WriteCompare, .-PWM_Timer_WriteCompare
+ 367              		.section	.text.PWM_Timer_SetInterruptMode,"ax",%progbits
+ 368              		.align	1
+ 369              		.global	PWM_Timer_SetInterruptMode
+ 370              		.code	16
+ 371              		.thumb_func
+ 372              		.type	PWM_Timer_SetInterruptMode, %function
+ 373              	PWM_Timer_SetInterruptMode:
+ 374              	.LFB9:
+ 685:.\Generated_Source\PSoC4/PWM_Timer.c ****     {
+ 375              		.loc 1 685 0
+ 376              		.cfi_startproc
+ 377              	.LVL14:
+ 686:.\Generated_Source\PSoC4/PWM_Timer.c ****         CY_SET_REG8(PWM_Timer_STATUS_MASK_PTR, interruptMode);
+ 378              		.loc 1 686 0
+ 379 0000 014B     		ldr	r3, .L34
+ 687:.\Generated_Source\PSoC4/PWM_Timer.c ****     }
+ 380              		.loc 1 687 0
+ 381              		@ sp needed
+ 686:.\Generated_Source\PSoC4/PWM_Timer.c ****         CY_SET_REG8(PWM_Timer_STATUS_MASK_PTR, interruptMode);
+ 382              		.loc 1 686 0
+ 383 0002 1870     		strb	r0, [r3]
+ 687:.\Generated_Source\PSoC4/PWM_Timer.c ****     }
+ 384              		.loc 1 687 0
+ 385 0004 7047     		bx	lr
+ 386              	.L35:
+ 387 0006 C046     		.align	2
+ 388              	.L34:
+ 389 0008 83000F40 		.word	1074724995
+ 390              		.cfi_endproc
+ 391              	.LFE9:
+ 392              		.size	PWM_Timer_SetInterruptMode, .-PWM_Timer_SetInterruptMode
+ 393              		.section	.text.PWM_Timer_ReadStatusRegister,"ax",%progbits
+ 394              		.align	1
+ 395              		.global	PWM_Timer_ReadStatusRegister
+ 396              		.code	16
+ 397              		.thumb_func
+ 398              		.type	PWM_Timer_ReadStatusRegister, %function
+ 399              	PWM_Timer_ReadStatusRegister:
+ 400              	.LFB10:
+ 712:.\Generated_Source\PSoC4/PWM_Timer.c ****     {
+ 401              		.loc 1 712 0
+ 402              		.cfi_startproc
+ 713:.\Generated_Source\PSoC4/PWM_Timer.c ****         return (CY_GET_REG8(PWM_Timer_STATUS_PTR));
+ 403              		.loc 1 713 0
+ 404 0000 014B     		ldr	r3, .L37
+ 714:.\Generated_Source\PSoC4/PWM_Timer.c ****     }
+ 405              		.loc 1 714 0
+ 406              		@ sp needed
+ 713:.\Generated_Source\PSoC4/PWM_Timer.c ****         return (CY_GET_REG8(PWM_Timer_STATUS_PTR));
+ 407              		.loc 1 713 0
+ 408 0002 1878     		ldrb	r0, [r3]
+ 409 0004 C0B2     		uxtb	r0, r0
+ 714:.\Generated_Source\PSoC4/PWM_Timer.c ****     }
+ 410              		.loc 1 714 0
+ 411 0006 7047     		bx	lr
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccvACxp2.s 			page 23
+
+
+ 412              	.L38:
+ 413              		.align	2
+ 414              	.L37:
+ 415 0008 63000F40 		.word	1074724963
+ 416              		.cfi_endproc
+ 417              	.LFE10:
+ 418              		.size	PWM_Timer_ReadStatusRegister, .-PWM_Timer_ReadStatusRegister
+ 419              		.section	.text.PWM_Timer_ReadControlRegister,"ax",%progbits
+ 420              		.align	1
+ 421              		.global	PWM_Timer_ReadControlRegister
+ 422              		.code	16
+ 423              		.thumb_func
+ 424              		.type	PWM_Timer_ReadControlRegister, %function
+ 425              	PWM_Timer_ReadControlRegister:
+ 426              	.LFB11:
+ 738:.\Generated_Source\PSoC4/PWM_Timer.c ****     {
+ 427              		.loc 1 738 0
+ 428              		.cfi_startproc
+ 741:.\Generated_Source\PSoC4/PWM_Timer.c ****         result = CY_GET_REG8(PWM_Timer_CONTROL_PTR);
+ 429              		.loc 1 741 0
+ 430 0000 014B     		ldr	r3, .L40
+ 743:.\Generated_Source\PSoC4/PWM_Timer.c ****     }
+ 431              		.loc 1 743 0
+ 432              		@ sp needed
+ 741:.\Generated_Source\PSoC4/PWM_Timer.c ****         result = CY_GET_REG8(PWM_Timer_CONTROL_PTR);
+ 433              		.loc 1 741 0
+ 434 0002 1878     		ldrb	r0, [r3]
+ 435 0004 C0B2     		uxtb	r0, r0
+ 436              	.LVL15:
+ 743:.\Generated_Source\PSoC4/PWM_Timer.c ****     }
+ 437              		.loc 1 743 0
+ 438 0006 7047     		bx	lr
+ 439              	.L41:
+ 440              		.align	2
+ 441              	.L40:
+ 442 0008 72000F40 		.word	1074724978
+ 443              		.cfi_endproc
+ 444              	.LFE11:
+ 445              		.size	PWM_Timer_ReadControlRegister, .-PWM_Timer_ReadControlRegister
+ 446              		.section	.text.PWM_Timer_WriteControlRegister,"ax",%progbits
+ 447              		.align	1
+ 448              		.global	PWM_Timer_WriteControlRegister
+ 449              		.code	16
+ 450              		.thumb_func
+ 451              		.type	PWM_Timer_WriteControlRegister, %function
+ 452              	PWM_Timer_WriteControlRegister:
+ 453              	.LFB12:
+ 766:.\Generated_Source\PSoC4/PWM_Timer.c ****     {
+ 454              		.loc 1 766 0
+ 455              		.cfi_startproc
+ 456              	.LVL16:
+ 767:.\Generated_Source\PSoC4/PWM_Timer.c ****         CY_SET_REG8(PWM_Timer_CONTROL_PTR, control);
+ 457              		.loc 1 767 0
+ 458 0000 014B     		ldr	r3, .L43
+ 768:.\Generated_Source\PSoC4/PWM_Timer.c ****     }
+ 459              		.loc 1 768 0
+ 460              		@ sp needed
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccvACxp2.s 			page 24
+
+
+ 767:.\Generated_Source\PSoC4/PWM_Timer.c ****         CY_SET_REG8(PWM_Timer_CONTROL_PTR, control);
+ 461              		.loc 1 767 0
+ 462 0002 1870     		strb	r0, [r3]
+ 768:.\Generated_Source\PSoC4/PWM_Timer.c ****     }
+ 463              		.loc 1 768 0
+ 464 0004 7047     		bx	lr
+ 465              	.L44:
+ 466 0006 C046     		.align	2
+ 467              	.L43:
+ 468 0008 72000F40 		.word	1074724978
+ 469              		.cfi_endproc
+ 470              	.LFE12:
+ 471              		.size	PWM_Timer_WriteControlRegister, .-PWM_Timer_WriteControlRegister
+ 472              		.section	.text.PWM_Timer_ReadCapture,"ax",%progbits
+ 473              		.align	1
+ 474              		.global	PWM_Timer_ReadCapture
+ 475              		.code	16
+ 476              		.thumb_func
+ 477              		.type	PWM_Timer_ReadCapture, %function
+ 478              	PWM_Timer_ReadCapture:
+ 479              	.LFB13:
+ 791:.\Generated_Source\PSoC4/PWM_Timer.c ****     {
+ 480              		.loc 1 791 0
+ 481              		.cfi_startproc
+ 482              		.loc 1 792 0
+ 483 0000 014B     		ldr	r3, .L46
+ 793:.\Generated_Source\PSoC4/PWM_Timer.c ****     }
+ 484              		.loc 1 793 0
+ 485              		@ sp needed
+ 792:.\Generated_Source\PSoC4/PWM_Timer.c ****         return (CY_GET_REG16(PWM_Timer_CAPTURE_LSB_PTR));
+ 486              		.loc 1 792 0
+ 487 0002 1888     		ldrh	r0, [r3]
+ 488 0004 80B2     		uxth	r0, r0
+ 489              		.loc 1 793 0
+ 490 0006 7047     		bx	lr
+ 491              	.L47:
+ 492              		.align	2
+ 493              	.L46:
+ 494 0008 A4100F40 		.word	1074729124
+ 495              		.cfi_endproc
+ 496              	.LFE13:
+ 497              		.size	PWM_Timer_ReadCapture, .-PWM_Timer_ReadCapture
+ 498              		.section	.text.PWM_Timer_ReadCompare,"ax",%progbits
+ 499              		.align	1
+ 500              		.global	PWM_Timer_ReadCompare
+ 501              		.code	16
+ 502              		.thumb_func
+ 503              		.type	PWM_Timer_ReadCompare, %function
+ 504              	PWM_Timer_ReadCompare:
+ 505              	.LFB14:
+ 794:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 795:.\Generated_Source\PSoC4/PWM_Timer.c **** #endif /* (!PWM_Timer_UsingFixedFunction) */
+ 796:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 797:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 798:.\Generated_Source\PSoC4/PWM_Timer.c **** #if (PWM_Timer_UseOneCompareMode)
+ 799:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 800:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccvACxp2.s 			page 25
+
+
+ 801:.\Generated_Source\PSoC4/PWM_Timer.c ****     /*******************************************************************************
+ 802:.\Generated_Source\PSoC4/PWM_Timer.c ****     * Function Name: PWM_Timer_ReadCompare
+ 803:.\Generated_Source\PSoC4/PWM_Timer.c ****     ********************************************************************************
+ 804:.\Generated_Source\PSoC4/PWM_Timer.c ****     *
+ 805:.\Generated_Source\PSoC4/PWM_Timer.c ****     * Summary:
+ 806:.\Generated_Source\PSoC4/PWM_Timer.c ****     *  Reads the compare value for the compare output when the PWM Mode parameter is
+ 807:.\Generated_Source\PSoC4/PWM_Timer.c ****     *  set to Dither mode, Center Aligned mode, or One Output mode.
+ 808:.\Generated_Source\PSoC4/PWM_Timer.c ****     *
+ 809:.\Generated_Source\PSoC4/PWM_Timer.c ****     * Parameters:
+ 810:.\Generated_Source\PSoC4/PWM_Timer.c ****     *  None
+ 811:.\Generated_Source\PSoC4/PWM_Timer.c ****     *
+ 812:.\Generated_Source\PSoC4/PWM_Timer.c ****     * Return:
+ 813:.\Generated_Source\PSoC4/PWM_Timer.c ****     *  uint8/uint16: Current compare value
+ 814:.\Generated_Source\PSoC4/PWM_Timer.c ****     *
+ 815:.\Generated_Source\PSoC4/PWM_Timer.c ****     *******************************************************************************/
+ 816:.\Generated_Source\PSoC4/PWM_Timer.c ****     uint16 PWM_Timer_ReadCompare(void) 
+ 817:.\Generated_Source\PSoC4/PWM_Timer.c ****     {
+ 506              		.loc 1 817 0
+ 507              		.cfi_startproc
+ 818:.\Generated_Source\PSoC4/PWM_Timer.c ****         #if(PWM_Timer_UsingFixedFunction)
+ 819:.\Generated_Source\PSoC4/PWM_Timer.c ****             return ((uint16)CY_GET_REG16(PWM_Timer_COMPARE1_LSB_PTR));
+ 820:.\Generated_Source\PSoC4/PWM_Timer.c ****         #else
+ 821:.\Generated_Source\PSoC4/PWM_Timer.c ****             return (CY_GET_REG16(PWM_Timer_COMPARE1_LSB_PTR));
+ 508              		.loc 1 821 0
+ 509 0000 014B     		ldr	r3, .L49
+ 822:.\Generated_Source\PSoC4/PWM_Timer.c ****         #endif /* (PWM_Timer_UsingFixedFunction) */
+ 823:.\Generated_Source\PSoC4/PWM_Timer.c ****     }
+ 510              		.loc 1 823 0
+ 511              		@ sp needed
+ 821:.\Generated_Source\PSoC4/PWM_Timer.c ****             return (CY_GET_REG16(PWM_Timer_COMPARE1_LSB_PTR));
+ 512              		.loc 1 821 0
+ 513 0002 1888     		ldrh	r0, [r3]
+ 514 0004 80B2     		uxth	r0, r0
+ 515              		.loc 1 823 0
+ 516 0006 7047     		bx	lr
+ 517              	.L50:
+ 518              		.align	2
+ 519              	.L49:
+ 520 0008 44100F40 		.word	1074729028
+ 521              		.cfi_endproc
+ 522              	.LFE14:
+ 523              		.size	PWM_Timer_ReadCompare, .-PWM_Timer_ReadCompare
+ 524              		.section	.text.PWM_Timer_ReadPeriod,"ax",%progbits
+ 525              		.align	1
+ 526              		.global	PWM_Timer_ReadPeriod
+ 527              		.code	16
+ 528              		.thumb_func
+ 529              		.type	PWM_Timer_ReadPeriod, %function
+ 530              	PWM_Timer_ReadPeriod:
+ 531              	.LFB15:
+ 824:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 825:.\Generated_Source\PSoC4/PWM_Timer.c **** #else
+ 826:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 827:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 828:.\Generated_Source\PSoC4/PWM_Timer.c ****     /*******************************************************************************
+ 829:.\Generated_Source\PSoC4/PWM_Timer.c ****     * Function Name: PWM_Timer_ReadCompare1
+ 830:.\Generated_Source\PSoC4/PWM_Timer.c ****     ********************************************************************************
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccvACxp2.s 			page 26
+
+
+ 831:.\Generated_Source\PSoC4/PWM_Timer.c ****     *
+ 832:.\Generated_Source\PSoC4/PWM_Timer.c ****     * Summary:
+ 833:.\Generated_Source\PSoC4/PWM_Timer.c ****     *  Reads the compare value for the compare1 output.
+ 834:.\Generated_Source\PSoC4/PWM_Timer.c ****     *
+ 835:.\Generated_Source\PSoC4/PWM_Timer.c ****     * Parameters:
+ 836:.\Generated_Source\PSoC4/PWM_Timer.c ****     *  None
+ 837:.\Generated_Source\PSoC4/PWM_Timer.c ****     *
+ 838:.\Generated_Source\PSoC4/PWM_Timer.c ****     * Return:
+ 839:.\Generated_Source\PSoC4/PWM_Timer.c ****     *  uint8/uint16: Current compare value.
+ 840:.\Generated_Source\PSoC4/PWM_Timer.c ****     *
+ 841:.\Generated_Source\PSoC4/PWM_Timer.c ****     *******************************************************************************/
+ 842:.\Generated_Source\PSoC4/PWM_Timer.c ****     uint16 PWM_Timer_ReadCompare1(void) 
+ 843:.\Generated_Source\PSoC4/PWM_Timer.c ****     {
+ 844:.\Generated_Source\PSoC4/PWM_Timer.c ****         return (CY_GET_REG16(PWM_Timer_COMPARE1_LSB_PTR));
+ 845:.\Generated_Source\PSoC4/PWM_Timer.c ****     }
+ 846:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 847:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 848:.\Generated_Source\PSoC4/PWM_Timer.c ****     /*******************************************************************************
+ 849:.\Generated_Source\PSoC4/PWM_Timer.c ****     * Function Name: PWM_Timer_ReadCompare2
+ 850:.\Generated_Source\PSoC4/PWM_Timer.c ****     ********************************************************************************
+ 851:.\Generated_Source\PSoC4/PWM_Timer.c ****     *
+ 852:.\Generated_Source\PSoC4/PWM_Timer.c ****     * Summary:
+ 853:.\Generated_Source\PSoC4/PWM_Timer.c ****     *  Reads the compare value for the compare2 output.
+ 854:.\Generated_Source\PSoC4/PWM_Timer.c ****     *
+ 855:.\Generated_Source\PSoC4/PWM_Timer.c ****     * Parameters:
+ 856:.\Generated_Source\PSoC4/PWM_Timer.c ****     *  None
+ 857:.\Generated_Source\PSoC4/PWM_Timer.c ****     *
+ 858:.\Generated_Source\PSoC4/PWM_Timer.c ****     * Return:
+ 859:.\Generated_Source\PSoC4/PWM_Timer.c ****     *  uint8/uint16: Current compare value.
+ 860:.\Generated_Source\PSoC4/PWM_Timer.c ****     *
+ 861:.\Generated_Source\PSoC4/PWM_Timer.c ****     *******************************************************************************/
+ 862:.\Generated_Source\PSoC4/PWM_Timer.c ****     uint16 PWM_Timer_ReadCompare2(void) 
+ 863:.\Generated_Source\PSoC4/PWM_Timer.c ****     {
+ 864:.\Generated_Source\PSoC4/PWM_Timer.c ****         return (CY_GET_REG16(PWM_Timer_COMPARE2_LSB_PTR));
+ 865:.\Generated_Source\PSoC4/PWM_Timer.c ****     }
+ 866:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 867:.\Generated_Source\PSoC4/PWM_Timer.c **** #endif /* (PWM_Timer_UseOneCompareMode) */
+ 868:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 869:.\Generated_Source\PSoC4/PWM_Timer.c **** 
+ 870:.\Generated_Source\PSoC4/PWM_Timer.c **** /*******************************************************************************
+ 871:.\Generated_Source\PSoC4/PWM_Timer.c **** * Function Name: PWM_Timer_ReadPeriod
+ 872:.\Generated_Source\PSoC4/PWM_Timer.c **** ********************************************************************************
+ 873:.\Generated_Source\PSoC4/PWM_Timer.c **** *
+ 874:.\Generated_Source\PSoC4/PWM_Timer.c **** * Summary:
+ 875:.\Generated_Source\PSoC4/PWM_Timer.c **** *  Reads the period value used by the PWM hardware.
+ 876:.\Generated_Source\PSoC4/PWM_Timer.c **** *
+ 877:.\Generated_Source\PSoC4/PWM_Timer.c **** * Parameters:
+ 878:.\Generated_Source\PSoC4/PWM_Timer.c **** *  None
+ 879:.\Generated_Source\PSoC4/PWM_Timer.c **** *
+ 880:.\Generated_Source\PSoC4/PWM_Timer.c **** * Return:
+ 881:.\Generated_Source\PSoC4/PWM_Timer.c **** *  uint8/16: Period value
+ 882:.\Generated_Source\PSoC4/PWM_Timer.c **** *
+ 883:.\Generated_Source\PSoC4/PWM_Timer.c **** *******************************************************************************/
+ 884:.\Generated_Source\PSoC4/PWM_Timer.c **** uint16 PWM_Timer_ReadPeriod(void) 
+ 885:.\Generated_Source\PSoC4/PWM_Timer.c **** {
+ 532              		.loc 1 885 0
+ 533              		.cfi_startproc
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccvACxp2.s 			page 27
+
+
+ 886:.\Generated_Source\PSoC4/PWM_Timer.c ****     #if(PWM_Timer_UsingFixedFunction)
+ 887:.\Generated_Source\PSoC4/PWM_Timer.c ****         return ((uint16)CY_GET_REG16(PWM_Timer_PERIOD_LSB_PTR));
+ 888:.\Generated_Source\PSoC4/PWM_Timer.c ****     #else
+ 889:.\Generated_Source\PSoC4/PWM_Timer.c ****         return (CY_GET_REG16(PWM_Timer_PERIOD_LSB_PTR));
+ 534              		.loc 1 889 0
+ 535 0000 014B     		ldr	r3, .L52
+ 890:.\Generated_Source\PSoC4/PWM_Timer.c ****     #endif /* (PWM_Timer_UsingFixedFunction) */
+ 891:.\Generated_Source\PSoC4/PWM_Timer.c **** }
+ 536              		.loc 1 891 0
+ 537              		@ sp needed
+ 889:.\Generated_Source\PSoC4/PWM_Timer.c ****         return (CY_GET_REG16(PWM_Timer_PERIOD_LSB_PTR));
+ 538              		.loc 1 889 0
+ 539 0002 1888     		ldrh	r0, [r3]
+ 540 0004 80B2     		uxth	r0, r0
+ 541              		.loc 1 891 0
+ 542 0006 7047     		bx	lr
+ 543              	.L53:
+ 544              		.align	2
+ 545              	.L52:
+ 546 0008 84100F40 		.word	1074729092
+ 547              		.cfi_endproc
+ 548              	.LFE15:
+ 549              		.size	PWM_Timer_ReadPeriod, .-PWM_Timer_ReadPeriod
+ 550              		.global	PWM_Timer_initVar
+ 551              		.bss
+ 552              		.set	.LANCHOR0,. + 0
+ 553              		.type	PWM_Timer_initVar, %object
+ 554              		.size	PWM_Timer_initVar, 1
+ 555              	PWM_Timer_initVar:
+ 556 0000 00       		.space	1
+ 557              		.text
+ 558              	.Letext0:
+ 559              		.file 2 ".\\Generated_Source\\PSoC4\\cytypes.h"
+ 560              		.file 3 ".\\Generated_Source\\PSoC4\\CyLib.h"
+ 561              		.section	.debug_info,"",%progbits
+ 562              	.Ldebug_info0:
+ 563 0000 BC030000 		.4byte	0x3bc
+ 564 0004 0400     		.2byte	0x4
+ 565 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 566 000a 04       		.byte	0x4
+ 567 000b 01       		.uleb128 0x1
+ 568 000c 06000000 		.4byte	.LASF40
+ 569 0010 01       		.byte	0x1
+ 570 0011 C3020000 		.4byte	.LASF41
+ 571 0015 D0000000 		.4byte	.LASF42
+ 572 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 573 001d 00000000 		.4byte	0
+ 574 0021 00000000 		.4byte	.Ldebug_line0
+ 575 0025 02       		.uleb128 0x2
+ 576 0026 01       		.byte	0x1
+ 577 0027 06       		.byte	0x6
+ 578 0028 16030000 		.4byte	.LASF0
+ 579 002c 02       		.uleb128 0x2
+ 580 002d 01       		.byte	0x1
+ 581 002e 08       		.byte	0x8
+ 582 002f 93010000 		.4byte	.LASF1
+ 583 0033 02       		.uleb128 0x2
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccvACxp2.s 			page 28
+
+
+ 584 0034 02       		.byte	0x2
+ 585 0035 05       		.byte	0x5
+ 586 0036 E8020000 		.4byte	.LASF2
+ 587 003a 02       		.uleb128 0x2
+ 588 003b 02       		.byte	0x2
+ 589 003c 07       		.byte	0x7
+ 590 003d 02010000 		.4byte	.LASF3
+ 591 0041 02       		.uleb128 0x2
+ 592 0042 04       		.byte	0x4
+ 593 0043 05       		.byte	0x5
+ 594 0044 08030000 		.4byte	.LASF4
+ 595 0048 02       		.uleb128 0x2
+ 596 0049 04       		.byte	0x4
+ 597 004a 07       		.byte	0x7
+ 598 004b A6010000 		.4byte	.LASF5
+ 599 004f 02       		.uleb128 0x2
+ 600 0050 08       		.byte	0x8
+ 601 0051 05       		.byte	0x5
+ 602 0052 A7020000 		.4byte	.LASF6
+ 603 0056 02       		.uleb128 0x2
+ 604 0057 08       		.byte	0x8
+ 605 0058 07       		.byte	0x7
+ 606 0059 7C010000 		.4byte	.LASF7
+ 607 005d 03       		.uleb128 0x3
+ 608 005e 04       		.byte	0x4
+ 609 005f 05       		.byte	0x5
+ 610 0060 696E7400 		.ascii	"int\000"
+ 611 0064 02       		.uleb128 0x2
+ 612 0065 04       		.byte	0x4
+ 613 0066 07       		.byte	0x7
+ 614 0067 28020000 		.4byte	.LASF8
+ 615 006b 04       		.uleb128 0x4
+ 616 006c B8010000 		.4byte	.LASF9
+ 617 0070 02       		.byte	0x2
+ 618 0071 A1       		.byte	0xa1
+ 619 0072 2C000000 		.4byte	0x2c
+ 620 0076 04       		.uleb128 0x4
+ 621 0077 ED010000 		.4byte	.LASF10
+ 622 007b 02       		.byte	0x2
+ 623 007c A2       		.byte	0xa2
+ 624 007d 3A000000 		.4byte	0x3a
+ 625 0081 02       		.uleb128 0x2
+ 626 0082 04       		.byte	0x4
+ 627 0083 04       		.byte	0x4
+ 628 0084 6E010000 		.4byte	.LASF11
+ 629 0088 02       		.uleb128 0x2
+ 630 0089 08       		.byte	0x8
+ 631 008a 04       		.byte	0x4
+ 632 008b D5010000 		.4byte	.LASF12
+ 633 008f 02       		.uleb128 0x2
+ 634 0090 01       		.byte	0x1
+ 635 0091 08       		.byte	0x8
+ 636 0092 11030000 		.4byte	.LASF13
+ 637 0096 05       		.uleb128 0x5
+ 638 0097 A1010000 		.4byte	.LASF14
+ 639 009b 02       		.byte	0x2
+ 640 009c 4B01     		.2byte	0x14b
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccvACxp2.s 			page 29
+
+
+ 641 009e A2000000 		.4byte	0xa2
+ 642 00a2 06       		.uleb128 0x6
+ 643 00a3 6B000000 		.4byte	0x6b
+ 644 00a7 05       		.uleb128 0x5
+ 645 00a8 00000000 		.4byte	.LASF15
+ 646 00ac 02       		.byte	0x2
+ 647 00ad 4C01     		.2byte	0x14c
+ 648 00af B3000000 		.4byte	0xb3
+ 649 00b3 06       		.uleb128 0x6
+ 650 00b4 76000000 		.4byte	0x76
+ 651 00b8 02       		.uleb128 0x2
+ 652 00b9 04       		.byte	0x4
+ 653 00ba 07       		.byte	0x7
+ 654 00bb 9E020000 		.4byte	.LASF16
+ 655 00bf 07       		.uleb128 0x7
+ 656 00c0 35020000 		.4byte	.LASF17
+ 657 00c4 01       		.byte	0x1
+ 658 00c5 1603     		.2byte	0x316
+ 659 00c7 76000000 		.4byte	0x76
+ 660 00cb 01       		.byte	0x1
+ 661 00cc 07       		.uleb128 0x7
+ 662 00cd F4010000 		.4byte	.LASF18
+ 663 00d1 01       		.byte	0x1
+ 664 00d2 C702     		.2byte	0x2c7
+ 665 00d4 6B000000 		.4byte	0x6b
+ 666 00d8 01       		.byte	0x1
+ 667 00d9 08       		.uleb128 0x8
+ 668 00da 57010000 		.4byte	.LASF19
+ 669 00de 01       		.byte	0x1
+ 670 00df 9301     		.2byte	0x193
+ 671 00e1 01       		.byte	0x1
+ 672 00e2 F3000000 		.4byte	0xf3
+ 673 00e6 09       		.uleb128 0x9
+ 674 00e7 74010000 		.4byte	.LASF21
+ 675 00eb 01       		.byte	0x1
+ 676 00ec 9301     		.2byte	0x193
+ 677 00ee 76000000 		.4byte	0x76
+ 678 00f2 00       		.byte	0
+ 679 00f3 08       		.uleb128 0x8
+ 680 00f4 15010000 		.4byte	.LASF20
+ 681 00f8 01       		.byte	0x1
+ 682 00f9 E201     		.2byte	0x1e2
+ 683 00fb 01       		.byte	0x1
+ 684 00fc 0D010000 		.4byte	0x10d
+ 685 0100 09       		.uleb128 0x9
+ 686 0101 C9000000 		.4byte	.LASF22
+ 687 0105 01       		.byte	0x1
+ 688 0106 E201     		.2byte	0x1e2
+ 689 0108 76000000 		.4byte	0x76
+ 690 010c 00       		.byte	0
+ 691 010d 08       		.uleb128 0x8
+ 692 010e 40010000 		.4byte	.LASF23
+ 693 0112 01       		.byte	0x1
+ 694 0113 0402     		.2byte	0x204
+ 695 0115 01       		.byte	0x1
+ 696 0116 27010000 		.4byte	0x127
+ 697 011a 09       		.uleb128 0x9
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccvACxp2.s 			page 30
+
+
+ 698 011b 22030000 		.4byte	.LASF24
+ 699 011f 01       		.byte	0x1
+ 700 0120 0402     		.2byte	0x204
+ 701 0122 76000000 		.4byte	0x76
+ 702 0126 00       		.byte	0
+ 703 0127 08       		.uleb128 0x8
+ 704 0128 7E020000 		.4byte	.LASF25
+ 705 012c 01       		.byte	0x1
+ 706 012d AC02     		.2byte	0x2ac
+ 707 012f 01       		.byte	0x1
+ 708 0130 41010000 		.4byte	0x141
+ 709 0134 09       		.uleb128 0x9
+ 710 0135 B5020000 		.4byte	.LASF26
+ 711 0139 01       		.byte	0x1
+ 712 013a AC02     		.2byte	0x2ac
+ 713 013c 6B000000 		.4byte	0x6b
+ 714 0140 00       		.byte	0
+ 715 0141 0A       		.uleb128 0xa
+ 716 0142 DC010000 		.4byte	.LASF27
+ 717 0146 01       		.byte	0x1
+ 718 0147 C7       		.byte	0xc7
+ 719 0148 00000000 		.4byte	.LFB2
+ 720 014c 10000000 		.4byte	.LFE2-.LFB2
+ 721 0150 01       		.uleb128 0x1
+ 722 0151 9C       		.byte	0x9c
+ 723 0152 0A       		.uleb128 0xa
+ 724 0153 C6010000 		.4byte	.LASF28
+ 725 0157 01       		.byte	0x1
+ 726 0158 E9       		.byte	0xe9
+ 727 0159 00000000 		.4byte	.LFB3
+ 728 015d 10000000 		.4byte	.LFE3-.LFB3
+ 729 0161 01       		.uleb128 0x1
+ 730 0162 9C       		.byte	0x9c
+ 731 0163 0B       		.uleb128 0xb
+ 732 0164 D9000000 		.4byte	0xd9
+ 733 0168 00000000 		.4byte	.LFB4
+ 734 016c 0C000000 		.4byte	.LFE4-.LFB4
+ 735 0170 01       		.uleb128 0x1
+ 736 0171 9C       		.byte	0x9c
+ 737 0172 7E010000 		.4byte	0x17e
+ 738 0176 0C       		.uleb128 0xc
+ 739 0177 E6000000 		.4byte	0xe6
+ 740 017b 01       		.uleb128 0x1
+ 741 017c 50       		.byte	0x50
+ 742 017d 00       		.byte	0
+ 743 017e 0D       		.uleb128 0xd
+ 744 017f F2020000 		.4byte	.LASF36
+ 745 0183 01       		.byte	0x1
+ 746 0184 A901     		.2byte	0x1a9
+ 747 0186 76000000 		.4byte	0x76
+ 748 018a 00000000 		.4byte	.LFB5
+ 749 018e 14000000 		.4byte	.LFE5-.LFB5
+ 750 0192 01       		.uleb128 0x1
+ 751 0193 9C       		.byte	0x9c
+ 752 0194 0E       		.uleb128 0xe
+ 753 0195 2A030000 		.4byte	.LASF29
+ 754 0199 01       		.byte	0x1
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccvACxp2.s 			page 31
+
+
+ 755 019a C501     		.2byte	0x1c5
+ 756 019c 00000000 		.4byte	.LFB6
+ 757 01a0 18000000 		.4byte	.LFE6-.LFB6
+ 758 01a4 01       		.uleb128 0x1
+ 759 01a5 9C       		.byte	0x9c
+ 760 01a6 CB010000 		.4byte	0x1cb
+ 761 01aa 0F       		.uleb128 0xf
+ 762 01ab CC000000 		.4byte	0xcc
+ 763 01af 00000000 		.4byte	.LBB14
+ 764 01b3 04000000 		.4byte	.LBE14-.LBB14
+ 765 01b7 01       		.byte	0x1
+ 766 01b8 C701     		.2byte	0x1c7
+ 767 01ba 0F       		.uleb128 0xf
+ 768 01bb BF000000 		.4byte	0xbf
+ 769 01bf 08000000 		.4byte	.LBB16
+ 770 01c3 06000000 		.4byte	.LBE16-.LBB16
+ 771 01c7 01       		.byte	0x1
+ 772 01c8 C901     		.2byte	0x1c9
+ 773 01ca 00       		.byte	0
+ 774 01cb 10       		.uleb128 0x10
+ 775 01cc 9B000000 		.4byte	.LASF30
+ 776 01d0 01       		.byte	0x1
+ 777 01d1 54       		.byte	0x54
+ 778 01d2 00000000 		.4byte	.LFB1
+ 779 01d6 6C000000 		.4byte	.LFE1-.LFB1
+ 780 01da 01       		.uleb128 0x1
+ 781 01db 9C       		.byte	0x9c
+ 782 01dc 85020000 		.4byte	0x285
+ 783 01e0 11       		.uleb128 0x11
+ 784 01e1 99020000 		.4byte	.LASF31
+ 785 01e5 01       		.byte	0x1
+ 786 01e6 57       		.byte	0x57
+ 787 01e7 6B000000 		.4byte	0x6b
+ 788 01eb 00000000 		.4byte	.LLST0
+ 789 01ef 11       		.uleb128 0x11
+ 790 01f0 82000000 		.4byte	.LASF32
+ 791 01f4 01       		.byte	0x1
+ 792 01f5 5D       		.byte	0x5d
+ 793 01f6 6B000000 		.4byte	0x6b
+ 794 01fa 18000000 		.4byte	.LLST1
+ 795 01fe 12       		.uleb128 0x12
+ 796 01ff D9000000 		.4byte	0xd9
+ 797 0203 22000000 		.4byte	.LBB18
+ 798 0207 06000000 		.4byte	.LBE18-.LBB18
+ 799 020b 01       		.byte	0x1
+ 800 020c 85       		.byte	0x85
+ 801 020d 19020000 		.4byte	0x219
+ 802 0211 13       		.uleb128 0x13
+ 803 0212 E6000000 		.4byte	0xe6
+ 804 0216 204E     		.2byte	0x4e20
+ 805 0218 00       		.byte	0
+ 806 0219 12       		.uleb128 0x12
+ 807 021a F3000000 		.4byte	0xf3
+ 808 021e 28000000 		.4byte	.LBB20
+ 809 0222 04000000 		.4byte	.LBE20-.LBB20
+ 810 0226 01       		.byte	0x1
+ 811 0227 88       		.byte	0x88
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccvACxp2.s 			page 32
+
+
+ 812 0228 34020000 		.4byte	0x234
+ 813 022c 13       		.uleb128 0x13
+ 814 022d 00010000 		.4byte	0x100
+ 815 0231 204E     		.2byte	0x4e20
+ 816 0233 00       		.byte	0
+ 817 0234 12       		.uleb128 0x12
+ 818 0235 0D010000 		.4byte	0x10d
+ 819 0239 2C000000 		.4byte	.LBB22
+ 820 023d 04000000 		.4byte	.LBE22-.LBB22
+ 821 0241 01       		.byte	0x1
+ 822 0242 8B       		.byte	0x8b
+ 823 0243 4F020000 		.4byte	0x24f
+ 824 0247 13       		.uleb128 0x13
+ 825 0248 1A010000 		.4byte	0x11a
+ 826 024c 204E     		.2byte	0x4e20
+ 827 024e 00       		.byte	0
+ 828 024f 12       		.uleb128 0x12
+ 829 0250 27010000 		.4byte	0x127
+ 830 0254 30000000 		.4byte	.LBB24
+ 831 0258 06000000 		.4byte	.LBE24-.LBB24
+ 832 025c 01       		.byte	0x1
+ 833 025d 9A       		.byte	0x9a
+ 834 025e 69020000 		.4byte	0x269
+ 835 0262 14       		.uleb128 0x14
+ 836 0263 34010000 		.4byte	0x134
+ 837 0267 04       		.byte	0x4
+ 838 0268 00       		.byte	0
+ 839 0269 15       		.uleb128 0x15
+ 840 026a 3A000000 		.4byte	.LVL7
+ 841 026e A7030000 		.4byte	0x3a7
+ 842 0272 15       		.uleb128 0x15
+ 843 0273 46000000 		.4byte	.LVL8
+ 844 0277 B2030000 		.4byte	0x3b2
+ 845 027b 15       		.uleb128 0x15
+ 846 027c 4A000000 		.4byte	.LVL9
+ 847 0280 94010000 		.4byte	0x194
+ 848 0284 00       		.byte	0
+ 849 0285 10       		.uleb128 0x10
+ 850 0286 6E030000 		.4byte	.LASF33
+ 851 028a 01       		.byte	0x1
+ 852 028b 37       		.byte	0x37
+ 853 028c 00000000 		.4byte	.LFB0
+ 854 0290 1C000000 		.4byte	.LFE0-.LFB0
+ 855 0294 01       		.uleb128 0x1
+ 856 0295 9C       		.byte	0x9c
+ 857 0296 AD020000 		.4byte	0x2ad
+ 858 029a 15       		.uleb128 0x15
+ 859 029b 0E000000 		.4byte	.LVL10
+ 860 029f CB010000 		.4byte	0x1cb
+ 861 02a3 15       		.uleb128 0x15
+ 862 02a4 16000000 		.4byte	.LVL11
+ 863 02a8 41010000 		.4byte	0x141
+ 864 02ac 00       		.byte	0
+ 865 02ad 0B       		.uleb128 0xb
+ 866 02ae F3000000 		.4byte	0xf3
+ 867 02b2 00000000 		.4byte	.LFB7
+ 868 02b6 0C000000 		.4byte	.LFE7-.LFB7
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccvACxp2.s 			page 33
+
+
+ 869 02ba 01       		.uleb128 0x1
+ 870 02bb 9C       		.byte	0x9c
+ 871 02bc C8020000 		.4byte	0x2c8
+ 872 02c0 0C       		.uleb128 0xc
+ 873 02c1 00010000 		.4byte	0x100
+ 874 02c5 01       		.uleb128 0x1
+ 875 02c6 50       		.byte	0x50
+ 876 02c7 00       		.byte	0
+ 877 02c8 0B       		.uleb128 0xb
+ 878 02c9 0D010000 		.4byte	0x10d
+ 879 02cd 00000000 		.4byte	.LFB8
+ 880 02d1 0C000000 		.4byte	.LFE8-.LFB8
+ 881 02d5 01       		.uleb128 0x1
+ 882 02d6 9C       		.byte	0x9c
+ 883 02d7 E3020000 		.4byte	0x2e3
+ 884 02db 0C       		.uleb128 0xc
+ 885 02dc 1A010000 		.4byte	0x11a
+ 886 02e0 01       		.uleb128 0x1
+ 887 02e1 50       		.byte	0x50
+ 888 02e2 00       		.byte	0
+ 889 02e3 0B       		.uleb128 0xb
+ 890 02e4 27010000 		.4byte	0x127
+ 891 02e8 00000000 		.4byte	.LFB9
+ 892 02ec 0C000000 		.4byte	.LFE9-.LFB9
+ 893 02f0 01       		.uleb128 0x1
+ 894 02f1 9C       		.byte	0x9c
+ 895 02f2 FE020000 		.4byte	0x2fe
+ 896 02f6 0C       		.uleb128 0xc
+ 897 02f7 34010000 		.4byte	0x134
+ 898 02fb 01       		.uleb128 0x1
+ 899 02fc 50       		.byte	0x50
+ 900 02fd 00       		.byte	0
+ 901 02fe 16       		.uleb128 0x16
+ 902 02ff CC000000 		.4byte	0xcc
+ 903 0303 00000000 		.4byte	.LFB10
+ 904 0307 0C000000 		.4byte	.LFE10-.LFB10
+ 905 030b 01       		.uleb128 0x1
+ 906 030c 9C       		.byte	0x9c
+ 907 030d 17       		.uleb128 0x17
+ 908 030e 50030000 		.4byte	.LASF43
+ 909 0312 01       		.byte	0x1
+ 910 0313 E102     		.2byte	0x2e1
+ 911 0315 6B000000 		.4byte	0x6b
+ 912 0319 00000000 		.4byte	.LFB11
+ 913 031d 0C000000 		.4byte	.LFE11-.LFB11
+ 914 0321 01       		.uleb128 0x1
+ 915 0322 9C       		.byte	0x9c
+ 916 0323 36030000 		.4byte	0x336
+ 917 0327 18       		.uleb128 0x18
+ 918 0328 77020000 		.4byte	.LASF34
+ 919 032c 01       		.byte	0x1
+ 920 032d E302     		.2byte	0x2e3
+ 921 032f 6B000000 		.4byte	0x6b
+ 922 0333 01       		.uleb128 0x1
+ 923 0334 50       		.byte	0x50
+ 924 0335 00       		.byte	0
+ 925 0336 0E       		.uleb128 0xe
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccvACxp2.s 			page 34
+
+
+ 926 0337 AA000000 		.4byte	.LASF35
+ 927 033b 01       		.byte	0x1
+ 928 033c FD02     		.2byte	0x2fd
+ 929 033e 00000000 		.4byte	.LFB12
+ 930 0342 0C000000 		.4byte	.LFE12-.LFB12
+ 931 0346 01       		.uleb128 0x1
+ 932 0347 9C       		.byte	0x9c
+ 933 0348 5B030000 		.4byte	0x35b
+ 934 034c 19       		.uleb128 0x19
+ 935 034d BE010000 		.4byte	.LASF44
+ 936 0351 01       		.byte	0x1
+ 937 0352 FD02     		.2byte	0x2fd
+ 938 0354 6B000000 		.4byte	0x6b
+ 939 0358 01       		.uleb128 0x1
+ 940 0359 50       		.byte	0x50
+ 941 035a 00       		.byte	0
+ 942 035b 16       		.uleb128 0x16
+ 943 035c BF000000 		.4byte	0xbf
+ 944 0360 00000000 		.4byte	.LFB13
+ 945 0364 0C000000 		.4byte	.LFE13-.LFB13
+ 946 0368 01       		.uleb128 0x1
+ 947 0369 9C       		.byte	0x9c
+ 948 036a 0D       		.uleb128 0xd
+ 949 036b 61020000 		.4byte	.LASF37
+ 950 036f 01       		.byte	0x1
+ 951 0370 3003     		.2byte	0x330
+ 952 0372 76000000 		.4byte	0x76
+ 953 0376 00000000 		.4byte	.LFB14
+ 954 037a 0C000000 		.4byte	.LFE14-.LFB14
+ 955 037e 01       		.uleb128 0x1
+ 956 037f 9C       		.byte	0x9c
+ 957 0380 0D       		.uleb128 0xd
+ 958 0381 2B010000 		.4byte	.LASF38
+ 959 0385 01       		.byte	0x1
+ 960 0386 7403     		.2byte	0x374
+ 961 0388 76000000 		.4byte	0x76
+ 962 038c 00000000 		.4byte	.LFB15
+ 963 0390 0C000000 		.4byte	.LFE15-.LFB15
+ 964 0394 01       		.uleb128 0x1
+ 965 0395 9C       		.byte	0x9c
+ 966 0396 1A       		.uleb128 0x1a
+ 967 0397 3E030000 		.4byte	.LASF45
+ 968 039b 01       		.byte	0x1
+ 969 039c 20       		.byte	0x20
+ 970 039d 6B000000 		.4byte	0x6b
+ 971 03a1 05       		.uleb128 0x5
+ 972 03a2 03       		.byte	0x3
+ 973 03a3 00000000 		.4byte	PWM_Timer_initVar
+ 974 03a7 1B       		.uleb128 0x1b
+ 975 03a8 11020000 		.4byte	.LASF39
+ 976 03ac 03       		.byte	0x3
+ 977 03ad 82       		.byte	0x82
+ 978 03ae 6B000000 		.4byte	0x6b
+ 979 03b2 1C       		.uleb128 0x1c
+ 980 03b3 4B020000 		.4byte	.LASF46
+ 981 03b7 03       		.byte	0x3
+ 982 03b8 83       		.byte	0x83
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccvACxp2.s 			page 35
+
+
+ 983 03b9 1D       		.uleb128 0x1d
+ 984 03ba 6B000000 		.4byte	0x6b
+ 985 03be 00       		.byte	0
+ 986 03bf 00       		.byte	0
+ 987              		.section	.debug_abbrev,"",%progbits
+ 988              	.Ldebug_abbrev0:
+ 989 0000 01       		.uleb128 0x1
+ 990 0001 11       		.uleb128 0x11
+ 991 0002 01       		.byte	0x1
+ 992 0003 25       		.uleb128 0x25
+ 993 0004 0E       		.uleb128 0xe
+ 994 0005 13       		.uleb128 0x13
+ 995 0006 0B       		.uleb128 0xb
+ 996 0007 03       		.uleb128 0x3
+ 997 0008 0E       		.uleb128 0xe
+ 998 0009 1B       		.uleb128 0x1b
+ 999 000a 0E       		.uleb128 0xe
+ 1000 000b 55       		.uleb128 0x55
+ 1001 000c 17       		.uleb128 0x17
+ 1002 000d 11       		.uleb128 0x11
+ 1003 000e 01       		.uleb128 0x1
+ 1004 000f 10       		.uleb128 0x10
+ 1005 0010 17       		.uleb128 0x17
+ 1006 0011 00       		.byte	0
+ 1007 0012 00       		.byte	0
+ 1008 0013 02       		.uleb128 0x2
+ 1009 0014 24       		.uleb128 0x24
+ 1010 0015 00       		.byte	0
+ 1011 0016 0B       		.uleb128 0xb
+ 1012 0017 0B       		.uleb128 0xb
+ 1013 0018 3E       		.uleb128 0x3e
+ 1014 0019 0B       		.uleb128 0xb
+ 1015 001a 03       		.uleb128 0x3
+ 1016 001b 0E       		.uleb128 0xe
+ 1017 001c 00       		.byte	0
+ 1018 001d 00       		.byte	0
+ 1019 001e 03       		.uleb128 0x3
+ 1020 001f 24       		.uleb128 0x24
+ 1021 0020 00       		.byte	0
+ 1022 0021 0B       		.uleb128 0xb
+ 1023 0022 0B       		.uleb128 0xb
+ 1024 0023 3E       		.uleb128 0x3e
+ 1025 0024 0B       		.uleb128 0xb
+ 1026 0025 03       		.uleb128 0x3
+ 1027 0026 08       		.uleb128 0x8
+ 1028 0027 00       		.byte	0
+ 1029 0028 00       		.byte	0
+ 1030 0029 04       		.uleb128 0x4
+ 1031 002a 16       		.uleb128 0x16
+ 1032 002b 00       		.byte	0
+ 1033 002c 03       		.uleb128 0x3
+ 1034 002d 0E       		.uleb128 0xe
+ 1035 002e 3A       		.uleb128 0x3a
+ 1036 002f 0B       		.uleb128 0xb
+ 1037 0030 3B       		.uleb128 0x3b
+ 1038 0031 0B       		.uleb128 0xb
+ 1039 0032 49       		.uleb128 0x49
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccvACxp2.s 			page 36
+
+
+ 1040 0033 13       		.uleb128 0x13
+ 1041 0034 00       		.byte	0
+ 1042 0035 00       		.byte	0
+ 1043 0036 05       		.uleb128 0x5
+ 1044 0037 16       		.uleb128 0x16
+ 1045 0038 00       		.byte	0
+ 1046 0039 03       		.uleb128 0x3
+ 1047 003a 0E       		.uleb128 0xe
+ 1048 003b 3A       		.uleb128 0x3a
+ 1049 003c 0B       		.uleb128 0xb
+ 1050 003d 3B       		.uleb128 0x3b
+ 1051 003e 05       		.uleb128 0x5
+ 1052 003f 49       		.uleb128 0x49
+ 1053 0040 13       		.uleb128 0x13
+ 1054 0041 00       		.byte	0
+ 1055 0042 00       		.byte	0
+ 1056 0043 06       		.uleb128 0x6
+ 1057 0044 35       		.uleb128 0x35
+ 1058 0045 00       		.byte	0
+ 1059 0046 49       		.uleb128 0x49
+ 1060 0047 13       		.uleb128 0x13
+ 1061 0048 00       		.byte	0
+ 1062 0049 00       		.byte	0
+ 1063 004a 07       		.uleb128 0x7
+ 1064 004b 2E       		.uleb128 0x2e
+ 1065 004c 00       		.byte	0
+ 1066 004d 3F       		.uleb128 0x3f
+ 1067 004e 19       		.uleb128 0x19
+ 1068 004f 03       		.uleb128 0x3
+ 1069 0050 0E       		.uleb128 0xe
+ 1070 0051 3A       		.uleb128 0x3a
+ 1071 0052 0B       		.uleb128 0xb
+ 1072 0053 3B       		.uleb128 0x3b
+ 1073 0054 05       		.uleb128 0x5
+ 1074 0055 27       		.uleb128 0x27
+ 1075 0056 19       		.uleb128 0x19
+ 1076 0057 49       		.uleb128 0x49
+ 1077 0058 13       		.uleb128 0x13
+ 1078 0059 20       		.uleb128 0x20
+ 1079 005a 0B       		.uleb128 0xb
+ 1080 005b 00       		.byte	0
+ 1081 005c 00       		.byte	0
+ 1082 005d 08       		.uleb128 0x8
+ 1083 005e 2E       		.uleb128 0x2e
+ 1084 005f 01       		.byte	0x1
+ 1085 0060 3F       		.uleb128 0x3f
+ 1086 0061 19       		.uleb128 0x19
+ 1087 0062 03       		.uleb128 0x3
+ 1088 0063 0E       		.uleb128 0xe
+ 1089 0064 3A       		.uleb128 0x3a
+ 1090 0065 0B       		.uleb128 0xb
+ 1091 0066 3B       		.uleb128 0x3b
+ 1092 0067 05       		.uleb128 0x5
+ 1093 0068 27       		.uleb128 0x27
+ 1094 0069 19       		.uleb128 0x19
+ 1095 006a 20       		.uleb128 0x20
+ 1096 006b 0B       		.uleb128 0xb
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccvACxp2.s 			page 37
+
+
+ 1097 006c 01       		.uleb128 0x1
+ 1098 006d 13       		.uleb128 0x13
+ 1099 006e 00       		.byte	0
+ 1100 006f 00       		.byte	0
+ 1101 0070 09       		.uleb128 0x9
+ 1102 0071 05       		.uleb128 0x5
+ 1103 0072 00       		.byte	0
+ 1104 0073 03       		.uleb128 0x3
+ 1105 0074 0E       		.uleb128 0xe
+ 1106 0075 3A       		.uleb128 0x3a
+ 1107 0076 0B       		.uleb128 0xb
+ 1108 0077 3B       		.uleb128 0x3b
+ 1109 0078 05       		.uleb128 0x5
+ 1110 0079 49       		.uleb128 0x49
+ 1111 007a 13       		.uleb128 0x13
+ 1112 007b 00       		.byte	0
+ 1113 007c 00       		.byte	0
+ 1114 007d 0A       		.uleb128 0xa
+ 1115 007e 2E       		.uleb128 0x2e
+ 1116 007f 00       		.byte	0
+ 1117 0080 3F       		.uleb128 0x3f
+ 1118 0081 19       		.uleb128 0x19
+ 1119 0082 03       		.uleb128 0x3
+ 1120 0083 0E       		.uleb128 0xe
+ 1121 0084 3A       		.uleb128 0x3a
+ 1122 0085 0B       		.uleb128 0xb
+ 1123 0086 3B       		.uleb128 0x3b
+ 1124 0087 0B       		.uleb128 0xb
+ 1125 0088 27       		.uleb128 0x27
+ 1126 0089 19       		.uleb128 0x19
+ 1127 008a 11       		.uleb128 0x11
+ 1128 008b 01       		.uleb128 0x1
+ 1129 008c 12       		.uleb128 0x12
+ 1130 008d 06       		.uleb128 0x6
+ 1131 008e 40       		.uleb128 0x40
+ 1132 008f 18       		.uleb128 0x18
+ 1133 0090 9742     		.uleb128 0x2117
+ 1134 0092 19       		.uleb128 0x19
+ 1135 0093 00       		.byte	0
+ 1136 0094 00       		.byte	0
+ 1137 0095 0B       		.uleb128 0xb
+ 1138 0096 2E       		.uleb128 0x2e
+ 1139 0097 01       		.byte	0x1
+ 1140 0098 31       		.uleb128 0x31
+ 1141 0099 13       		.uleb128 0x13
+ 1142 009a 11       		.uleb128 0x11
+ 1143 009b 01       		.uleb128 0x1
+ 1144 009c 12       		.uleb128 0x12
+ 1145 009d 06       		.uleb128 0x6
+ 1146 009e 40       		.uleb128 0x40
+ 1147 009f 18       		.uleb128 0x18
+ 1148 00a0 9742     		.uleb128 0x2117
+ 1149 00a2 19       		.uleb128 0x19
+ 1150 00a3 01       		.uleb128 0x1
+ 1151 00a4 13       		.uleb128 0x13
+ 1152 00a5 00       		.byte	0
+ 1153 00a6 00       		.byte	0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccvACxp2.s 			page 38
+
+
+ 1154 00a7 0C       		.uleb128 0xc
+ 1155 00a8 05       		.uleb128 0x5
+ 1156 00a9 00       		.byte	0
+ 1157 00aa 31       		.uleb128 0x31
+ 1158 00ab 13       		.uleb128 0x13
+ 1159 00ac 02       		.uleb128 0x2
+ 1160 00ad 18       		.uleb128 0x18
+ 1161 00ae 00       		.byte	0
+ 1162 00af 00       		.byte	0
+ 1163 00b0 0D       		.uleb128 0xd
+ 1164 00b1 2E       		.uleb128 0x2e
+ 1165 00b2 00       		.byte	0
+ 1166 00b3 3F       		.uleb128 0x3f
+ 1167 00b4 19       		.uleb128 0x19
+ 1168 00b5 03       		.uleb128 0x3
+ 1169 00b6 0E       		.uleb128 0xe
+ 1170 00b7 3A       		.uleb128 0x3a
+ 1171 00b8 0B       		.uleb128 0xb
+ 1172 00b9 3B       		.uleb128 0x3b
+ 1173 00ba 05       		.uleb128 0x5
+ 1174 00bb 27       		.uleb128 0x27
+ 1175 00bc 19       		.uleb128 0x19
+ 1176 00bd 49       		.uleb128 0x49
+ 1177 00be 13       		.uleb128 0x13
+ 1178 00bf 11       		.uleb128 0x11
+ 1179 00c0 01       		.uleb128 0x1
+ 1180 00c1 12       		.uleb128 0x12
+ 1181 00c2 06       		.uleb128 0x6
+ 1182 00c3 40       		.uleb128 0x40
+ 1183 00c4 18       		.uleb128 0x18
+ 1184 00c5 9742     		.uleb128 0x2117
+ 1185 00c7 19       		.uleb128 0x19
+ 1186 00c8 00       		.byte	0
+ 1187 00c9 00       		.byte	0
+ 1188 00ca 0E       		.uleb128 0xe
+ 1189 00cb 2E       		.uleb128 0x2e
+ 1190 00cc 01       		.byte	0x1
+ 1191 00cd 3F       		.uleb128 0x3f
+ 1192 00ce 19       		.uleb128 0x19
+ 1193 00cf 03       		.uleb128 0x3
+ 1194 00d0 0E       		.uleb128 0xe
+ 1195 00d1 3A       		.uleb128 0x3a
+ 1196 00d2 0B       		.uleb128 0xb
+ 1197 00d3 3B       		.uleb128 0x3b
+ 1198 00d4 05       		.uleb128 0x5
+ 1199 00d5 27       		.uleb128 0x27
+ 1200 00d6 19       		.uleb128 0x19
+ 1201 00d7 11       		.uleb128 0x11
+ 1202 00d8 01       		.uleb128 0x1
+ 1203 00d9 12       		.uleb128 0x12
+ 1204 00da 06       		.uleb128 0x6
+ 1205 00db 40       		.uleb128 0x40
+ 1206 00dc 18       		.uleb128 0x18
+ 1207 00dd 9742     		.uleb128 0x2117
+ 1208 00df 19       		.uleb128 0x19
+ 1209 00e0 01       		.uleb128 0x1
+ 1210 00e1 13       		.uleb128 0x13
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccvACxp2.s 			page 39
+
+
+ 1211 00e2 00       		.byte	0
+ 1212 00e3 00       		.byte	0
+ 1213 00e4 0F       		.uleb128 0xf
+ 1214 00e5 1D       		.uleb128 0x1d
+ 1215 00e6 00       		.byte	0
+ 1216 00e7 31       		.uleb128 0x31
+ 1217 00e8 13       		.uleb128 0x13
+ 1218 00e9 11       		.uleb128 0x11
+ 1219 00ea 01       		.uleb128 0x1
+ 1220 00eb 12       		.uleb128 0x12
+ 1221 00ec 06       		.uleb128 0x6
+ 1222 00ed 58       		.uleb128 0x58
+ 1223 00ee 0B       		.uleb128 0xb
+ 1224 00ef 59       		.uleb128 0x59
+ 1225 00f0 05       		.uleb128 0x5
+ 1226 00f1 00       		.byte	0
+ 1227 00f2 00       		.byte	0
+ 1228 00f3 10       		.uleb128 0x10
+ 1229 00f4 2E       		.uleb128 0x2e
+ 1230 00f5 01       		.byte	0x1
+ 1231 00f6 3F       		.uleb128 0x3f
+ 1232 00f7 19       		.uleb128 0x19
+ 1233 00f8 03       		.uleb128 0x3
+ 1234 00f9 0E       		.uleb128 0xe
+ 1235 00fa 3A       		.uleb128 0x3a
+ 1236 00fb 0B       		.uleb128 0xb
+ 1237 00fc 3B       		.uleb128 0x3b
+ 1238 00fd 0B       		.uleb128 0xb
+ 1239 00fe 27       		.uleb128 0x27
+ 1240 00ff 19       		.uleb128 0x19
+ 1241 0100 11       		.uleb128 0x11
+ 1242 0101 01       		.uleb128 0x1
+ 1243 0102 12       		.uleb128 0x12
+ 1244 0103 06       		.uleb128 0x6
+ 1245 0104 40       		.uleb128 0x40
+ 1246 0105 18       		.uleb128 0x18
+ 1247 0106 9742     		.uleb128 0x2117
+ 1248 0108 19       		.uleb128 0x19
+ 1249 0109 01       		.uleb128 0x1
+ 1250 010a 13       		.uleb128 0x13
+ 1251 010b 00       		.byte	0
+ 1252 010c 00       		.byte	0
+ 1253 010d 11       		.uleb128 0x11
+ 1254 010e 34       		.uleb128 0x34
+ 1255 010f 00       		.byte	0
+ 1256 0110 03       		.uleb128 0x3
+ 1257 0111 0E       		.uleb128 0xe
+ 1258 0112 3A       		.uleb128 0x3a
+ 1259 0113 0B       		.uleb128 0xb
+ 1260 0114 3B       		.uleb128 0x3b
+ 1261 0115 0B       		.uleb128 0xb
+ 1262 0116 49       		.uleb128 0x49
+ 1263 0117 13       		.uleb128 0x13
+ 1264 0118 02       		.uleb128 0x2
+ 1265 0119 17       		.uleb128 0x17
+ 1266 011a 00       		.byte	0
+ 1267 011b 00       		.byte	0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccvACxp2.s 			page 40
+
+
+ 1268 011c 12       		.uleb128 0x12
+ 1269 011d 1D       		.uleb128 0x1d
+ 1270 011e 01       		.byte	0x1
+ 1271 011f 31       		.uleb128 0x31
+ 1272 0120 13       		.uleb128 0x13
+ 1273 0121 11       		.uleb128 0x11
+ 1274 0122 01       		.uleb128 0x1
+ 1275 0123 12       		.uleb128 0x12
+ 1276 0124 06       		.uleb128 0x6
+ 1277 0125 58       		.uleb128 0x58
+ 1278 0126 0B       		.uleb128 0xb
+ 1279 0127 59       		.uleb128 0x59
+ 1280 0128 0B       		.uleb128 0xb
+ 1281 0129 01       		.uleb128 0x1
+ 1282 012a 13       		.uleb128 0x13
+ 1283 012b 00       		.byte	0
+ 1284 012c 00       		.byte	0
+ 1285 012d 13       		.uleb128 0x13
+ 1286 012e 05       		.uleb128 0x5
+ 1287 012f 00       		.byte	0
+ 1288 0130 31       		.uleb128 0x31
+ 1289 0131 13       		.uleb128 0x13
+ 1290 0132 1C       		.uleb128 0x1c
+ 1291 0133 05       		.uleb128 0x5
+ 1292 0134 00       		.byte	0
+ 1293 0135 00       		.byte	0
+ 1294 0136 14       		.uleb128 0x14
+ 1295 0137 05       		.uleb128 0x5
+ 1296 0138 00       		.byte	0
+ 1297 0139 31       		.uleb128 0x31
+ 1298 013a 13       		.uleb128 0x13
+ 1299 013b 1C       		.uleb128 0x1c
+ 1300 013c 0B       		.uleb128 0xb
+ 1301 013d 00       		.byte	0
+ 1302 013e 00       		.byte	0
+ 1303 013f 15       		.uleb128 0x15
+ 1304 0140 898201   		.uleb128 0x4109
+ 1305 0143 00       		.byte	0
+ 1306 0144 11       		.uleb128 0x11
+ 1307 0145 01       		.uleb128 0x1
+ 1308 0146 31       		.uleb128 0x31
+ 1309 0147 13       		.uleb128 0x13
+ 1310 0148 00       		.byte	0
+ 1311 0149 00       		.byte	0
+ 1312 014a 16       		.uleb128 0x16
+ 1313 014b 2E       		.uleb128 0x2e
+ 1314 014c 00       		.byte	0
+ 1315 014d 31       		.uleb128 0x31
+ 1316 014e 13       		.uleb128 0x13
+ 1317 014f 11       		.uleb128 0x11
+ 1318 0150 01       		.uleb128 0x1
+ 1319 0151 12       		.uleb128 0x12
+ 1320 0152 06       		.uleb128 0x6
+ 1321 0153 40       		.uleb128 0x40
+ 1322 0154 18       		.uleb128 0x18
+ 1323 0155 9742     		.uleb128 0x2117
+ 1324 0157 19       		.uleb128 0x19
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccvACxp2.s 			page 41
+
+
+ 1325 0158 00       		.byte	0
+ 1326 0159 00       		.byte	0
+ 1327 015a 17       		.uleb128 0x17
+ 1328 015b 2E       		.uleb128 0x2e
+ 1329 015c 01       		.byte	0x1
+ 1330 015d 3F       		.uleb128 0x3f
+ 1331 015e 19       		.uleb128 0x19
+ 1332 015f 03       		.uleb128 0x3
+ 1333 0160 0E       		.uleb128 0xe
+ 1334 0161 3A       		.uleb128 0x3a
+ 1335 0162 0B       		.uleb128 0xb
+ 1336 0163 3B       		.uleb128 0x3b
+ 1337 0164 05       		.uleb128 0x5
+ 1338 0165 27       		.uleb128 0x27
+ 1339 0166 19       		.uleb128 0x19
+ 1340 0167 49       		.uleb128 0x49
+ 1341 0168 13       		.uleb128 0x13
+ 1342 0169 11       		.uleb128 0x11
+ 1343 016a 01       		.uleb128 0x1
+ 1344 016b 12       		.uleb128 0x12
+ 1345 016c 06       		.uleb128 0x6
+ 1346 016d 40       		.uleb128 0x40
+ 1347 016e 18       		.uleb128 0x18
+ 1348 016f 9742     		.uleb128 0x2117
+ 1349 0171 19       		.uleb128 0x19
+ 1350 0172 01       		.uleb128 0x1
+ 1351 0173 13       		.uleb128 0x13
+ 1352 0174 00       		.byte	0
+ 1353 0175 00       		.byte	0
+ 1354 0176 18       		.uleb128 0x18
+ 1355 0177 34       		.uleb128 0x34
+ 1356 0178 00       		.byte	0
+ 1357 0179 03       		.uleb128 0x3
+ 1358 017a 0E       		.uleb128 0xe
+ 1359 017b 3A       		.uleb128 0x3a
+ 1360 017c 0B       		.uleb128 0xb
+ 1361 017d 3B       		.uleb128 0x3b
+ 1362 017e 05       		.uleb128 0x5
+ 1363 017f 49       		.uleb128 0x49
+ 1364 0180 13       		.uleb128 0x13
+ 1365 0181 02       		.uleb128 0x2
+ 1366 0182 18       		.uleb128 0x18
+ 1367 0183 00       		.byte	0
+ 1368 0184 00       		.byte	0
+ 1369 0185 19       		.uleb128 0x19
+ 1370 0186 05       		.uleb128 0x5
+ 1371 0187 00       		.byte	0
+ 1372 0188 03       		.uleb128 0x3
+ 1373 0189 0E       		.uleb128 0xe
+ 1374 018a 3A       		.uleb128 0x3a
+ 1375 018b 0B       		.uleb128 0xb
+ 1376 018c 3B       		.uleb128 0x3b
+ 1377 018d 05       		.uleb128 0x5
+ 1378 018e 49       		.uleb128 0x49
+ 1379 018f 13       		.uleb128 0x13
+ 1380 0190 02       		.uleb128 0x2
+ 1381 0191 18       		.uleb128 0x18
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccvACxp2.s 			page 42
+
+
+ 1382 0192 00       		.byte	0
+ 1383 0193 00       		.byte	0
+ 1384 0194 1A       		.uleb128 0x1a
+ 1385 0195 34       		.uleb128 0x34
+ 1386 0196 00       		.byte	0
+ 1387 0197 03       		.uleb128 0x3
+ 1388 0198 0E       		.uleb128 0xe
+ 1389 0199 3A       		.uleb128 0x3a
+ 1390 019a 0B       		.uleb128 0xb
+ 1391 019b 3B       		.uleb128 0x3b
+ 1392 019c 0B       		.uleb128 0xb
+ 1393 019d 49       		.uleb128 0x49
+ 1394 019e 13       		.uleb128 0x13
+ 1395 019f 3F       		.uleb128 0x3f
+ 1396 01a0 19       		.uleb128 0x19
+ 1397 01a1 02       		.uleb128 0x2
+ 1398 01a2 18       		.uleb128 0x18
+ 1399 01a3 00       		.byte	0
+ 1400 01a4 00       		.byte	0
+ 1401 01a5 1B       		.uleb128 0x1b
+ 1402 01a6 2E       		.uleb128 0x2e
+ 1403 01a7 00       		.byte	0
+ 1404 01a8 3F       		.uleb128 0x3f
+ 1405 01a9 19       		.uleb128 0x19
+ 1406 01aa 03       		.uleb128 0x3
+ 1407 01ab 0E       		.uleb128 0xe
+ 1408 01ac 3A       		.uleb128 0x3a
+ 1409 01ad 0B       		.uleb128 0xb
+ 1410 01ae 3B       		.uleb128 0x3b
+ 1411 01af 0B       		.uleb128 0xb
+ 1412 01b0 27       		.uleb128 0x27
+ 1413 01b1 19       		.uleb128 0x19
+ 1414 01b2 49       		.uleb128 0x49
+ 1415 01b3 13       		.uleb128 0x13
+ 1416 01b4 3C       		.uleb128 0x3c
+ 1417 01b5 19       		.uleb128 0x19
+ 1418 01b6 00       		.byte	0
+ 1419 01b7 00       		.byte	0
+ 1420 01b8 1C       		.uleb128 0x1c
+ 1421 01b9 2E       		.uleb128 0x2e
+ 1422 01ba 01       		.byte	0x1
+ 1423 01bb 3F       		.uleb128 0x3f
+ 1424 01bc 19       		.uleb128 0x19
+ 1425 01bd 03       		.uleb128 0x3
+ 1426 01be 0E       		.uleb128 0xe
+ 1427 01bf 3A       		.uleb128 0x3a
+ 1428 01c0 0B       		.uleb128 0xb
+ 1429 01c1 3B       		.uleb128 0x3b
+ 1430 01c2 0B       		.uleb128 0xb
+ 1431 01c3 27       		.uleb128 0x27
+ 1432 01c4 19       		.uleb128 0x19
+ 1433 01c5 3C       		.uleb128 0x3c
+ 1434 01c6 19       		.uleb128 0x19
+ 1435 01c7 00       		.byte	0
+ 1436 01c8 00       		.byte	0
+ 1437 01c9 1D       		.uleb128 0x1d
+ 1438 01ca 05       		.uleb128 0x5
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccvACxp2.s 			page 43
+
+
+ 1439 01cb 00       		.byte	0
+ 1440 01cc 49       		.uleb128 0x49
+ 1441 01cd 13       		.uleb128 0x13
+ 1442 01ce 00       		.byte	0
+ 1443 01cf 00       		.byte	0
+ 1444 01d0 00       		.byte	0
+ 1445              		.section	.debug_loc,"",%progbits
+ 1446              	.Ldebug_loc0:
+ 1447              	.LLST0:
+ 1448 0000 08000000 		.4byte	.LVL1
+ 1449 0004 0C000000 		.4byte	.LVL2
+ 1450 0008 0600     		.2byte	0x6
+ 1451 000a 72       		.byte	0x72
+ 1452 000b 00       		.sleb128 0
+ 1453 000c 09       		.byte	0x9
+ 1454 000d C0       		.byte	0xc0
+ 1455 000e 1A       		.byte	0x1a
+ 1456 000f 9F       		.byte	0x9f
+ 1457 0010 00000000 		.4byte	0
+ 1458 0014 00000000 		.4byte	0
+ 1459              	.LLST1:
+ 1460 0018 3A000000 		.4byte	.LVL7
+ 1461 001c 45000000 		.4byte	.LVL8-1
+ 1462 0020 0100     		.2byte	0x1
+ 1463 0022 50       		.byte	0x50
+ 1464 0023 00000000 		.4byte	0
+ 1465 0027 00000000 		.4byte	0
+ 1466              		.section	.debug_aranges,"",%progbits
+ 1467 0000 94000000 		.4byte	0x94
+ 1468 0004 0200     		.2byte	0x2
+ 1469 0006 00000000 		.4byte	.Ldebug_info0
+ 1470 000a 04       		.byte	0x4
+ 1471 000b 00       		.byte	0
+ 1472 000c 0000     		.2byte	0
+ 1473 000e 0000     		.2byte	0
+ 1474 0010 00000000 		.4byte	.LFB2
+ 1475 0014 10000000 		.4byte	.LFE2-.LFB2
+ 1476 0018 00000000 		.4byte	.LFB3
+ 1477 001c 10000000 		.4byte	.LFE3-.LFB3
+ 1478 0020 00000000 		.4byte	.LFB4
+ 1479 0024 0C000000 		.4byte	.LFE4-.LFB4
+ 1480 0028 00000000 		.4byte	.LFB5
+ 1481 002c 14000000 		.4byte	.LFE5-.LFB5
+ 1482 0030 00000000 		.4byte	.LFB6
+ 1483 0034 18000000 		.4byte	.LFE6-.LFB6
+ 1484 0038 00000000 		.4byte	.LFB1
+ 1485 003c 6C000000 		.4byte	.LFE1-.LFB1
+ 1486 0040 00000000 		.4byte	.LFB0
+ 1487 0044 1C000000 		.4byte	.LFE0-.LFB0
+ 1488 0048 00000000 		.4byte	.LFB7
+ 1489 004c 0C000000 		.4byte	.LFE7-.LFB7
+ 1490 0050 00000000 		.4byte	.LFB8
+ 1491 0054 0C000000 		.4byte	.LFE8-.LFB8
+ 1492 0058 00000000 		.4byte	.LFB9
+ 1493 005c 0C000000 		.4byte	.LFE9-.LFB9
+ 1494 0060 00000000 		.4byte	.LFB10
+ 1495 0064 0C000000 		.4byte	.LFE10-.LFB10
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccvACxp2.s 			page 44
+
+
+ 1496 0068 00000000 		.4byte	.LFB11
+ 1497 006c 0C000000 		.4byte	.LFE11-.LFB11
+ 1498 0070 00000000 		.4byte	.LFB12
+ 1499 0074 0C000000 		.4byte	.LFE12-.LFB12
+ 1500 0078 00000000 		.4byte	.LFB13
+ 1501 007c 0C000000 		.4byte	.LFE13-.LFB13
+ 1502 0080 00000000 		.4byte	.LFB14
+ 1503 0084 0C000000 		.4byte	.LFE14-.LFB14
+ 1504 0088 00000000 		.4byte	.LFB15
+ 1505 008c 0C000000 		.4byte	.LFE15-.LFB15
+ 1506 0090 00000000 		.4byte	0
+ 1507 0094 00000000 		.4byte	0
+ 1508              		.section	.debug_ranges,"",%progbits
+ 1509              	.Ldebug_ranges0:
+ 1510 0000 00000000 		.4byte	.LFB2
+ 1511 0004 10000000 		.4byte	.LFE2
+ 1512 0008 00000000 		.4byte	.LFB3
+ 1513 000c 10000000 		.4byte	.LFE3
+ 1514 0010 00000000 		.4byte	.LFB4
+ 1515 0014 0C000000 		.4byte	.LFE4
+ 1516 0018 00000000 		.4byte	.LFB5
+ 1517 001c 14000000 		.4byte	.LFE5
+ 1518 0020 00000000 		.4byte	.LFB6
+ 1519 0024 18000000 		.4byte	.LFE6
+ 1520 0028 00000000 		.4byte	.LFB1
+ 1521 002c 6C000000 		.4byte	.LFE1
+ 1522 0030 00000000 		.4byte	.LFB0
+ 1523 0034 1C000000 		.4byte	.LFE0
+ 1524 0038 00000000 		.4byte	.LFB7
+ 1525 003c 0C000000 		.4byte	.LFE7
+ 1526 0040 00000000 		.4byte	.LFB8
+ 1527 0044 0C000000 		.4byte	.LFE8
+ 1528 0048 00000000 		.4byte	.LFB9
+ 1529 004c 0C000000 		.4byte	.LFE9
+ 1530 0050 00000000 		.4byte	.LFB10
+ 1531 0054 0C000000 		.4byte	.LFE10
+ 1532 0058 00000000 		.4byte	.LFB11
+ 1533 005c 0C000000 		.4byte	.LFE11
+ 1534 0060 00000000 		.4byte	.LFB12
+ 1535 0064 0C000000 		.4byte	.LFE12
+ 1536 0068 00000000 		.4byte	.LFB13
+ 1537 006c 0C000000 		.4byte	.LFE13
+ 1538 0070 00000000 		.4byte	.LFB14
+ 1539 0074 0C000000 		.4byte	.LFE14
+ 1540 0078 00000000 		.4byte	.LFB15
+ 1541 007c 0C000000 		.4byte	.LFE15
+ 1542 0080 00000000 		.4byte	0
+ 1543 0084 00000000 		.4byte	0
+ 1544              		.section	.debug_line,"",%progbits
+ 1545              	.Ldebug_line0:
+ 1546 0000 DE010000 		.section	.debug_str,"MS",%progbits,1
+ 1546      02005300 
+ 1546      00000201 
+ 1546      FB0E0D00 
+ 1546      01010101 
+ 1547              	.LASF15:
+ 1548 0000 72656731 		.ascii	"reg16\000"
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccvACxp2.s 			page 45
+
+
+ 1548      3600
+ 1549              	.LASF40:
+ 1550 0006 474E5520 		.ascii	"GNU C 4.8.4 20140526 (release) [ARM/embedded-4_8-br"
+ 1550      4320342E 
+ 1550      382E3420 
+ 1550      32303134 
+ 1550      30353236 
+ 1551 0039 616E6368 		.ascii	"anch revision 211358] -mcpu=cortex-m0 -mthumb -g -O"
+ 1551      20726576 
+ 1551      6973696F 
+ 1551      6E203231 
+ 1551      31333538 
+ 1552 006c 73202D66 		.ascii	"s -ffunction-sections\000"
+ 1552      66756E63 
+ 1552      74696F6E 
+ 1552      2D736563 
+ 1552      74696F6E 
+ 1553              	.LASF32:
+ 1554 0082 50574D5F 		.ascii	"PWM_Timer_interruptState\000"
+ 1554      54696D65 
+ 1554      725F696E 
+ 1554      74657272 
+ 1554      75707453 
+ 1555              	.LASF30:
+ 1556 009b 50574D5F 		.ascii	"PWM_Timer_Init\000"
+ 1556      54696D65 
+ 1556      725F496E 
+ 1556      697400
+ 1557              	.LASF35:
+ 1558 00aa 50574D5F 		.ascii	"PWM_Timer_WriteControlRegister\000"
+ 1558      54696D65 
+ 1558      725F5772 
+ 1558      69746543 
+ 1558      6F6E7472 
+ 1559              	.LASF22:
+ 1560 00c9 70657269 		.ascii	"period\000"
+ 1560      6F6400
+ 1561              	.LASF42:
+ 1562 00d0 433A5C55 		.ascii	"C:\\Users\\Admin\\Desktop\\IR LCD\\IR_LCD\\IR_LCD.c"
+ 1562      73657273 
+ 1562      5C41646D 
+ 1562      696E5C44 
+ 1562      65736B74 
+ 1563 00fd 7964736E 		.ascii	"ydsn\000"
+ 1563      00
+ 1564              	.LASF3:
+ 1565 0102 73686F72 		.ascii	"short unsigned int\000"
+ 1565      7420756E 
+ 1565      7369676E 
+ 1565      65642069 
+ 1565      6E7400
+ 1566              	.LASF20:
+ 1567 0115 50574D5F 		.ascii	"PWM_Timer_WritePeriod\000"
+ 1567      54696D65 
+ 1567      725F5772 
+ 1567      69746550 
+ 1567      6572696F 
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccvACxp2.s 			page 46
+
+
+ 1568              	.LASF38:
+ 1569 012b 50574D5F 		.ascii	"PWM_Timer_ReadPeriod\000"
+ 1569      54696D65 
+ 1569      725F5265 
+ 1569      61645065 
+ 1569      72696F64 
+ 1570              	.LASF23:
+ 1571 0140 50574D5F 		.ascii	"PWM_Timer_WriteCompare\000"
+ 1571      54696D65 
+ 1571      725F5772 
+ 1571      69746543 
+ 1571      6F6D7061 
+ 1572              	.LASF19:
+ 1573 0157 50574D5F 		.ascii	"PWM_Timer_WriteCounter\000"
+ 1573      54696D65 
+ 1573      725F5772 
+ 1573      69746543 
+ 1573      6F756E74 
+ 1574              	.LASF11:
+ 1575 016e 666C6F61 		.ascii	"float\000"
+ 1575      7400
+ 1576              	.LASF21:
+ 1577 0174 636F756E 		.ascii	"counter\000"
+ 1577      74657200 
+ 1578              	.LASF7:
+ 1579 017c 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1579      206C6F6E 
+ 1579      6720756E 
+ 1579      7369676E 
+ 1579      65642069 
+ 1580              	.LASF1:
+ 1581 0193 756E7369 		.ascii	"unsigned char\000"
+ 1581      676E6564 
+ 1581      20636861 
+ 1581      7200
+ 1582              	.LASF14:
+ 1583 01a1 72656738 		.ascii	"reg8\000"
+ 1583      00
+ 1584              	.LASF5:
+ 1585 01a6 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1585      20756E73 
+ 1585      69676E65 
+ 1585      6420696E 
+ 1585      7400
+ 1586              	.LASF9:
+ 1587 01b8 75696E74 		.ascii	"uint8\000"
+ 1587      3800
+ 1588              	.LASF44:
+ 1589 01be 636F6E74 		.ascii	"control\000"
+ 1589      726F6C00 
+ 1590              	.LASF28:
+ 1591 01c6 50574D5F 		.ascii	"PWM_Timer_Stop\000"
+ 1591      54696D65 
+ 1591      725F5374 
+ 1591      6F7000
+ 1592              	.LASF12:
+ 1593 01d5 646F7562 		.ascii	"double\000"
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccvACxp2.s 			page 47
+
+
+ 1593      6C6500
+ 1594              	.LASF27:
+ 1595 01dc 50574D5F 		.ascii	"PWM_Timer_Enable\000"
+ 1595      54696D65 
+ 1595      725F456E 
+ 1595      61626C65 
+ 1595      00
+ 1596              	.LASF10:
+ 1597 01ed 75696E74 		.ascii	"uint16\000"
+ 1597      313600
+ 1598              	.LASF18:
+ 1599 01f4 50574D5F 		.ascii	"PWM_Timer_ReadStatusRegister\000"
+ 1599      54696D65 
+ 1599      725F5265 
+ 1599      61645374 
+ 1599      61747573 
+ 1600              	.LASF39:
+ 1601 0211 4379456E 		.ascii	"CyEnterCriticalSection\000"
+ 1601      74657243 
+ 1601      72697469 
+ 1601      63616C53 
+ 1601      65637469 
+ 1602              	.LASF8:
+ 1603 0228 756E7369 		.ascii	"unsigned int\000"
+ 1603      676E6564 
+ 1603      20696E74 
+ 1603      00
+ 1604              	.LASF17:
+ 1605 0235 50574D5F 		.ascii	"PWM_Timer_ReadCapture\000"
+ 1605      54696D65 
+ 1605      725F5265 
+ 1605      61644361 
+ 1605      70747572 
+ 1606              	.LASF46:
+ 1607 024b 43794578 		.ascii	"CyExitCriticalSection\000"
+ 1607      69744372 
+ 1607      69746963 
+ 1607      616C5365 
+ 1607      6374696F 
+ 1608              	.LASF37:
+ 1609 0261 50574D5F 		.ascii	"PWM_Timer_ReadCompare\000"
+ 1609      54696D65 
+ 1609      725F5265 
+ 1609      6164436F 
+ 1609      6D706172 
+ 1610              	.LASF34:
+ 1611 0277 72657375 		.ascii	"result\000"
+ 1611      6C7400
+ 1612              	.LASF25:
+ 1613 027e 50574D5F 		.ascii	"PWM_Timer_SetInterruptMode\000"
+ 1613      54696D65 
+ 1613      725F5365 
+ 1613      74496E74 
+ 1613      65727275 
+ 1614              	.LASF31:
+ 1615 0299 6374726C 		.ascii	"ctrl\000"
+ 1615      00
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccvACxp2.s 			page 48
+
+
+ 1616              	.LASF16:
+ 1617 029e 73697A65 		.ascii	"sizetype\000"
+ 1617      74797065 
+ 1617      00
+ 1618              	.LASF6:
+ 1619 02a7 6C6F6E67 		.ascii	"long long int\000"
+ 1619      206C6F6E 
+ 1619      6720696E 
+ 1619      7400
+ 1620              	.LASF26:
+ 1621 02b5 696E7465 		.ascii	"interruptMode\000"
+ 1621      72727570 
+ 1621      744D6F64 
+ 1621      6500
+ 1622              	.LASF41:
+ 1623 02c3 2E5C4765 		.ascii	".\\Generated_Source\\PSoC4\\PWM_Timer.c\000"
+ 1623      6E657261 
+ 1623      7465645F 
+ 1623      536F7572 
+ 1623      63655C50 
+ 1624              	.LASF2:
+ 1625 02e8 73686F72 		.ascii	"short int\000"
+ 1625      7420696E 
+ 1625      7400
+ 1626              	.LASF36:
+ 1627 02f2 50574D5F 		.ascii	"PWM_Timer_ReadCounter\000"
+ 1627      54696D65 
+ 1627      725F5265 
+ 1627      6164436F 
+ 1627      756E7465 
+ 1628              	.LASF4:
+ 1629 0308 6C6F6E67 		.ascii	"long int\000"
+ 1629      20696E74 
+ 1629      00
+ 1630              	.LASF13:
+ 1631 0311 63686172 		.ascii	"char\000"
+ 1631      00
+ 1632              	.LASF0:
+ 1633 0316 7369676E 		.ascii	"signed char\000"
+ 1633      65642063 
+ 1633      68617200 
+ 1634              	.LASF24:
+ 1635 0322 636F6D70 		.ascii	"compare\000"
+ 1635      61726500 
+ 1636              	.LASF29:
+ 1637 032a 50574D5F 		.ascii	"PWM_Timer_ClearFIFO\000"
+ 1637      54696D65 
+ 1637      725F436C 
+ 1637      65617246 
+ 1637      49464F00 
+ 1638              	.LASF45:
+ 1639 033e 50574D5F 		.ascii	"PWM_Timer_initVar\000"
+ 1639      54696D65 
+ 1639      725F696E 
+ 1639      69745661 
+ 1639      7200
+ 1640              	.LASF43:
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccvACxp2.s 			page 49
+
+
+ 1641 0350 50574D5F 		.ascii	"PWM_Timer_ReadControlRegister\000"
+ 1641      54696D65 
+ 1641      725F5265 
+ 1641      6164436F 
+ 1641      6E74726F 
+ 1642              	.LASF33:
+ 1643 036e 50574D5F 		.ascii	"PWM_Timer_Start\000"
+ 1643      54696D65 
+ 1643      725F5374 
+ 1643      61727400 
+ 1644              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.8.4 20140526 (release) [ARM/embedded-4_8-br

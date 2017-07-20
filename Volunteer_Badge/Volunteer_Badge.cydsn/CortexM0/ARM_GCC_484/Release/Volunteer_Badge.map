@@ -1,0 +1,1670 @@
+Archive member included because of file (symbol)
+
+.\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(cyfitter_cfg.o)
+                              .\CortexM0\ARM_GCC_484\Release\Cm0Start.o (cyfitter_cfg)
+.\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(Board_LED.o)
+                              .\CortexM0\ARM_GCC_484\Release\lightlib.o (Board_LED_Write)
+.\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(IR_LED.o)
+                              .\CortexM0\ARM_GCC_484\Release\lightlib.o (IR_LED_Write)
+.\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWL.o)
+                              .\CortexM0\ARM_GCC_484\Release\togglelib.o (SWL_ClearInterrupt)
+.\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWL_Int.o)
+                              .\CortexM0\ARM_GCC_484\Release\togglelib.o (SWL_Int_StartEx)
+.\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWR.o)
+                              .\CortexM0\ARM_GCC_484\Release\togglelib.o (SWR_ClearInterrupt)
+.\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWR_Int.o)
+                              .\CortexM0\ARM_GCC_484\Release\togglelib.o (SWR_Int_StartEx)
+.\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWB.o)
+                              .\CortexM0\ARM_GCC_484\Release\togglelib.o (SWB_ClearInterrupt)
+.\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWB_Int.o)
+                              .\CortexM0\ARM_GCC_484\Release\togglelib.o (SWB_Int_StartEx)
+.\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(Left_LED_Red.o)
+                              .\CortexM0\ARM_GCC_484\Release\lightlib.o (Left_LED_Red_Write)
+.\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(PWM_Right_LED_Green.o)
+                              .\CortexM0\ARM_GCC_484\Release\lightlib.o (PWM_Right_LED_Green_Stop)
+.\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(PWM_Left_LED_Green.o)
+                              .\CortexM0\ARM_GCC_484\Release\lightlib.o (PWM_Left_LED_Green_Stop)
+.\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(Right_LED_Red.o)
+                              .\CortexM0\ARM_GCC_484\Release\lightlib.o (Right_LED_Red_Write)
+.\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(Left_LED_Blue.o)
+                              .\CortexM0\ARM_GCC_484\Release\lightlib.o (Left_LED_Blue_Write)
+.\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(Right_LED_Blue.o)
+                              .\CortexM0\ARM_GCC_484\Release\lightlib.o (Right_LED_Blue_Write)
+.\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(CyBootAsmGnu.o)
+                              .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(cyfitter_cfg.o) (CyDelayCycles)
+.\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(CyLib.o)
+                              .\CortexM0\ARM_GCC_484\Release\togglelib.o (CyDelay)
+.\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(cyPm.o)
+                              .\CortexM0\ARM_GCC_484\Release\main.o (CySysPmSleep)
+.\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(ORG_Int.o)
+                              .\CortexM0\ARM_GCC_484\Release\togglelib.o (ORG_Int_StartEx)
+.\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(PWM_Organizer.o)
+                              .\CortexM0\ARM_GCC_484\Release\togglelib.o (PWM_Organizer_Stop)
+c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/armv6-m\libgcc.a(_thumb1_case_uqi.o)
+                              .\CortexM0\ARM_GCC_484\Release\lightlib.o (__gnu_thumb1_case_uqi)
+c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/armv6-m\libgcc.a(_thumb1_case_uhi.o)
+                              .\CortexM0\ARM_GCC_484\Release\binary.o (__gnu_thumb1_case_uhi)
+c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/armv6-m\libgcc.a(_udivsi3.o)
+                              .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(CyLib.o) (__aeabi_uidiv)
+c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/armv6-m\libgcc.a(_divsi3.o)
+                              .\CortexM0\ARM_GCC_484\Release\togglelib.o (__aeabi_idivmod)
+c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/armv6-m\libgcc.a(_dvmd_tls.o)
+                              c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/armv6-m\libgcc.a(_udivsi3.o) (__aeabi_idiv0)
+c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-errno.o)
+                              .\CortexM0\ARM_GCC_484\Release\Cm0Start.o (__errno)
+c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-exit.o)
+                              c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m/crt0.o (exit)
+c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-impure.o)
+                              c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-exit.o) (_global_impure_ptr)
+c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-init.o)
+                              c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m/crt0.o (__libc_init_array)
+c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-memcpy-stub.o)
+                              .\CortexM0\ARM_GCC_484\Release\main.o (memcpy)
+c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-memmove.o)
+                              .\CortexM0\ARM_GCC_484\Release\togglelib.o (memmove)
+c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-memset.o)
+                              c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m/crt0.o (memset)
+c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-rand.o)
+                              .\CortexM0\ARM_GCC_484\Release\togglelib.o (srand)
+c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-strlen.o)
+                              .\CortexM0\ARM_GCC_484\Release\togglelib.o (strlen)
+c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-time.o)
+                              .\CortexM0\ARM_GCC_484\Release\togglelib.o (time)
+c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-gettimeofdayr.o)
+                              c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-time.o) (_gettimeofday_r)
+c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-malloc.o)
+                              c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-rand.o) (malloc)
+c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-nano-freer.o)
+                              c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-malloc.o) (_free_r)
+c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-nano-mallocr.o)
+                              c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-malloc.o) (_malloc_r)
+c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-reent.o)
+                              c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-gettimeofdayr.o) (errno)
+c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-sbrkr.o)
+                              c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-nano-mallocr.o) (_sbrk_r)
+c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/armv6-m\libgcc.a(_muldi3.o)
+                              c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-rand.o) (__aeabi_lmul)
+c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libnosys.a(gettod.o)
+                              c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-gettimeofdayr.o) (_gettimeofday)
+
+Allocating common symbols
+Common symbol       size              file
+
+Board_LED_State     0x1               .\CortexM0\ARM_GCC_484\Release\lightlib.o
+errno               0x4               c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-reent.o)
+Volunteer_Sequence  0x15              .\CortexM0\ARM_GCC_484\Release\togglelib.o
+IR_LED_State        0x1               .\CortexM0\ARM_GCC_484\Release\lightlib.o
+Right_LED_State     0x2               .\CortexM0\ARM_GCC_484\Release\lightlib.o
+Left_LED_State      0x2               .\CortexM0\ARM_GCC_484\Release\lightlib.o
+Organizer_Sequence  0x15              .\CortexM0\ARM_GCC_484\Release\togglelib.o
+
+Discarded input sections
+
+ .text          0x00000000        0x0 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/armv6-m/crti.o
+ .data          0x00000000        0x0 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/armv6-m/crti.o
+ .bss           0x00000000        0x0 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/armv6-m/crti.o
+ .data          0x00000000        0x4 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/armv6-m/crtbegin.o
+ .text          0x00000000       0x78 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m/crt0.o
+ .data          0x00000000        0x0 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m/crt0.o
+ .bss           0x00000000        0x0 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m/crt0.o
+ .ARM.extab     0x00000000        0x0 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m/crt0.o
+ .ARM.exidx     0x00000000        0x8 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m/crt0.o
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_484\Release\main.o
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_484\Release\main.o
+ .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_484\Release\main.o
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_484\Release\lightlib.o
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_484\Release\lightlib.o
+ .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_484\Release\lightlib.o
+ .text.turn_on_all_led
+                0x00000000       0x1c .\CortexM0\ARM_GCC_484\Release\lightlib.o
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_484\Release\togglelib.o
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_484\Release\togglelib.o
+ .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_484\Release\togglelib.o
+ .text.get_magic_toggle_sequance
+                0x00000000       0x1c .\CortexM0\ARM_GCC_484\Release\togglelib.o
+ .text.get_magic_toggle_index
+                0x00000000       0x20 .\CortexM0\ARM_GCC_484\Release\togglelib.o
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_484\Release\state.o
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_484\Release\state.o
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_484\Release\binary.o
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_484\Release\binary.o
+ .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_484\Release\binary.o
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_484\Release\cybootloader.o
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_484\Release\cybootloader.o
+ .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_484\Release\cybootloader.o
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_484\Release\cymetadata.o
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_484\Release\cymetadata.o
+ .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_484\Release\cymetadata.o
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_484\Release\Cm0Start.o
+ .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_484\Release\Cm0Start.o
+ .text._exit    0x00000000        0x2 .\CortexM0\ARM_GCC_484\Release\Cm0Start.o
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(cyfitter_cfg.o)
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(cyfitter_cfg.o)
+ .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(cyfitter_cfg.o)
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(Board_LED.o)
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(Board_LED.o)
+ .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(Board_LED.o)
+ .text.Board_LED_SetDriveMode
+                0x00000000       0x1c .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(Board_LED.o)
+ .text.Board_LED_Read
+                0x00000000       0x10 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(Board_LED.o)
+ .text.Board_LED_ReadDataReg
+                0x00000000       0x10 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(Board_LED.o)
+ .text.Board_LED_ClearInterrupt
+                0x00000000       0x14 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(Board_LED.o)
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(IR_LED.o)
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(IR_LED.o)
+ .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(IR_LED.o)
+ .text.IR_LED_SetDriveMode
+                0x00000000       0x1c .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(IR_LED.o)
+ .text.IR_LED_Read
+                0x00000000       0x10 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(IR_LED.o)
+ .text.IR_LED_ReadDataReg
+                0x00000000       0x10 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(IR_LED.o)
+ .text.IR_LED_ClearInterrupt
+                0x00000000       0x14 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(IR_LED.o)
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWL.o)
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWL.o)
+ .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWL.o)
+ .text.SWL_Write
+                0x00000000       0x18 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWL.o)
+ .text.SWL_SetDriveMode
+                0x00000000       0x1c .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWL.o)
+ .text.SWL_Read
+                0x00000000       0x10 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWL.o)
+ .text.SWL_ReadDataReg
+                0x00000000       0x10 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWL.o)
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWL_Int.o)
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWL_Int.o)
+ .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWL_Int.o)
+ .text.SWL_Int_Interrupt
+                0x00000000        0x2 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWL_Int.o)
+ .text.SWL_Int_Stop
+                0x00000000       0x1c .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWL_Int.o)
+ .text.SWL_Int_SetVector
+                0x00000000        0xc .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWL_Int.o)
+ .text.SWL_Int_GetVector
+                0x00000000        0xc .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWL_Int.o)
+ .text.SWL_Int_Start
+                0x00000000       0x2c .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWL_Int.o)
+ .text.SWL_Int_GetPriority
+                0x00000000        0xc .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWL_Int.o)
+ .text.SWL_Int_Enable
+                0x00000000        0xc .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWL_Int.o)
+ .text.SWL_Int_GetState
+                0x00000000       0x10 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWL_Int.o)
+ .text.SWL_Int_Disable
+                0x00000000        0xc .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWL_Int.o)
+ .text.SWL_Int_SetPending
+                0x00000000        0xc .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWL_Int.o)
+ .text.SWL_Int_ClearPending
+                0x00000000        0xc .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWL_Int.o)
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWR.o)
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWR.o)
+ .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWR.o)
+ .text.SWR_Write
+                0x00000000       0x18 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWR.o)
+ .text.SWR_SetDriveMode
+                0x00000000       0x1c .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWR.o)
+ .text.SWR_Read
+                0x00000000       0x10 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWR.o)
+ .text.SWR_ReadDataReg
+                0x00000000       0x10 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWR.o)
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWR_Int.o)
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWR_Int.o)
+ .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWR_Int.o)
+ .text.SWR_Int_Interrupt
+                0x00000000        0x2 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWR_Int.o)
+ .text.SWR_Int_Stop
+                0x00000000       0x1c .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWR_Int.o)
+ .text.SWR_Int_SetVector
+                0x00000000        0xc .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWR_Int.o)
+ .text.SWR_Int_GetVector
+                0x00000000        0xc .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWR_Int.o)
+ .text.SWR_Int_Start
+                0x00000000       0x2c .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWR_Int.o)
+ .text.SWR_Int_GetPriority
+                0x00000000       0x10 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWR_Int.o)
+ .text.SWR_Int_Enable
+                0x00000000        0xc .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWR_Int.o)
+ .text.SWR_Int_GetState
+                0x00000000       0x10 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWR_Int.o)
+ .text.SWR_Int_Disable
+                0x00000000        0xc .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWR_Int.o)
+ .text.SWR_Int_SetPending
+                0x00000000        0xc .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWR_Int.o)
+ .text.SWR_Int_ClearPending
+                0x00000000        0xc .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWR_Int.o)
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWB.o)
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWB.o)
+ .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWB.o)
+ .text.SWB_Write
+                0x00000000       0x18 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWB.o)
+ .text.SWB_SetDriveMode
+                0x00000000       0x1c .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWB.o)
+ .text.SWB_Read
+                0x00000000       0x10 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWB.o)
+ .text.SWB_ReadDataReg
+                0x00000000       0x10 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWB.o)
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWB_Int.o)
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWB_Int.o)
+ .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWB_Int.o)
+ .text.SWB_Int_Interrupt
+                0x00000000        0x2 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWB_Int.o)
+ .text.SWB_Int_Stop
+                0x00000000       0x1c .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWB_Int.o)
+ .text.SWB_Int_SetVector
+                0x00000000        0xc .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWB_Int.o)
+ .text.SWB_Int_GetVector
+                0x00000000        0xc .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWB_Int.o)
+ .text.SWB_Int_Start
+                0x00000000       0x2c .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWB_Int.o)
+ .text.SWB_Int_GetPriority
+                0x00000000       0x10 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWB_Int.o)
+ .text.SWB_Int_Enable
+                0x00000000        0xc .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWB_Int.o)
+ .text.SWB_Int_GetState
+                0x00000000       0x10 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWB_Int.o)
+ .text.SWB_Int_Disable
+                0x00000000        0xc .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWB_Int.o)
+ .text.SWB_Int_SetPending
+                0x00000000        0xc .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWB_Int.o)
+ .text.SWB_Int_ClearPending
+                0x00000000        0xc .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWB_Int.o)
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(Left_LED_Red.o)
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(Left_LED_Red.o)
+ .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(Left_LED_Red.o)
+ .text.Left_LED_Red_SetDriveMode
+                0x00000000       0x1c .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(Left_LED_Red.o)
+ .text.Left_LED_Red_Read
+                0x00000000       0x10 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(Left_LED_Red.o)
+ .text.Left_LED_Red_ReadDataReg
+                0x00000000       0x10 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(Left_LED_Red.o)
+ .text.Left_LED_Red_ClearInterrupt
+                0x00000000       0x14 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(Left_LED_Red.o)
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(PWM_Right_LED_Green.o)
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(PWM_Right_LED_Green.o)
+ .text.PWM_Right_LED_Green_WriteCounter
+                0x00000000        0xc .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(PWM_Right_LED_Green.o)
+ .text.PWM_Right_LED_Green_ReadCounter
+                0x00000000       0x14 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(PWM_Right_LED_Green.o)
+ .text.PWM_Right_LED_Green_WritePeriod
+                0x00000000        0xc .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(PWM_Right_LED_Green.o)
+ .text.PWM_Right_LED_Green_WriteCompare
+                0x00000000        0xc .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(PWM_Right_LED_Green.o)
+ .text.PWM_Right_LED_Green_SetInterruptMode
+                0x00000000        0xc .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(PWM_Right_LED_Green.o)
+ .text.PWM_Right_LED_Green_ReadStatusRegister
+                0x00000000        0xc .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(PWM_Right_LED_Green.o)
+ .text.PWM_Right_LED_Green_ReadControlRegister
+                0x00000000        0xc .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(PWM_Right_LED_Green.o)
+ .text.PWM_Right_LED_Green_WriteControlRegister
+                0x00000000        0xc .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(PWM_Right_LED_Green.o)
+ .text.PWM_Right_LED_Green_ReadCapture
+                0x00000000        0xc .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(PWM_Right_LED_Green.o)
+ .text.PWM_Right_LED_Green_ReadCompare
+                0x00000000        0xc .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(PWM_Right_LED_Green.o)
+ .text.PWM_Right_LED_Green_ReadPeriod
+                0x00000000        0xc .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(PWM_Right_LED_Green.o)
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(PWM_Left_LED_Green.o)
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(PWM_Left_LED_Green.o)
+ .text.PWM_Left_LED_Green_WriteCounter
+                0x00000000        0xc .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(PWM_Left_LED_Green.o)
+ .text.PWM_Left_LED_Green_ReadCounter
+                0x00000000       0x14 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(PWM_Left_LED_Green.o)
+ .text.PWM_Left_LED_Green_WritePeriod
+                0x00000000        0xc .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(PWM_Left_LED_Green.o)
+ .text.PWM_Left_LED_Green_WriteCompare
+                0x00000000        0xc .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(PWM_Left_LED_Green.o)
+ .text.PWM_Left_LED_Green_SetInterruptMode
+                0x00000000        0xc .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(PWM_Left_LED_Green.o)
+ .text.PWM_Left_LED_Green_ReadStatusRegister
+                0x00000000        0xc .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(PWM_Left_LED_Green.o)
+ .text.PWM_Left_LED_Green_ReadControlRegister
+                0x00000000        0xc .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(PWM_Left_LED_Green.o)
+ .text.PWM_Left_LED_Green_WriteControlRegister
+                0x00000000        0xc .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(PWM_Left_LED_Green.o)
+ .text.PWM_Left_LED_Green_ReadCapture
+                0x00000000        0xc .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(PWM_Left_LED_Green.o)
+ .text.PWM_Left_LED_Green_ReadCompare
+                0x00000000        0xc .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(PWM_Left_LED_Green.o)
+ .text.PWM_Left_LED_Green_ReadPeriod
+                0x00000000        0xc .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(PWM_Left_LED_Green.o)
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(Right_LED_Red.o)
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(Right_LED_Red.o)
+ .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(Right_LED_Red.o)
+ .text.Right_LED_Red_SetDriveMode
+                0x00000000       0x18 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(Right_LED_Red.o)
+ .text.Right_LED_Red_Read
+                0x00000000       0x10 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(Right_LED_Red.o)
+ .text.Right_LED_Red_ReadDataReg
+                0x00000000       0x10 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(Right_LED_Red.o)
+ .text.Right_LED_Red_ClearInterrupt
+                0x00000000       0x14 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(Right_LED_Red.o)
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(Left_LED_Blue.o)
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(Left_LED_Blue.o)
+ .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(Left_LED_Blue.o)
+ .text.Left_LED_Blue_SetDriveMode
+                0x00000000       0x1c .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(Left_LED_Blue.o)
+ .text.Left_LED_Blue_Read
+                0x00000000       0x10 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(Left_LED_Blue.o)
+ .text.Left_LED_Blue_ReadDataReg
+                0x00000000       0x10 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(Left_LED_Blue.o)
+ .text.Left_LED_Blue_ClearInterrupt
+                0x00000000       0x14 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(Left_LED_Blue.o)
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(Right_LED_Blue.o)
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(Right_LED_Blue.o)
+ .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(Right_LED_Blue.o)
+ .text.Right_LED_Blue_SetDriveMode
+                0x00000000       0x14 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(Right_LED_Blue.o)
+ .text.Right_LED_Blue_Read
+                0x00000000       0x10 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(Right_LED_Blue.o)
+ .text.Right_LED_Blue_ReadDataReg
+                0x00000000       0x10 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(Right_LED_Blue.o)
+ .text.Right_LED_Blue_ClearInterrupt
+                0x00000000       0x10 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(Right_LED_Blue.o)
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(CyBootAsmGnu.o)
+ .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(CyBootAsmGnu.o)
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(CyLib.o)
+ .bss           0x00000000       0x24 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(CyLib.o)
+ .text.CySysClkImoStart
+                0x00000000       0x14 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(CyLib.o)
+ .text.CySysClkImoStop
+                0x00000000       0x10 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(CyLib.o)
+ .text.CySysClkIloStart
+                0x00000000       0x14 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(CyLib.o)
+ .text.CySysClkWriteHfclkDirect
+                0x00000000       0x24 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(CyLib.o)
+ .text.CySysClkWriteSysclkDiv
+                0x00000000       0x2c .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(CyLib.o)
+ .text.CySysWdtLock
+                0x00000000       0x1c .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(CyLib.o)
+ .text.CySysWdtUnlock
+                0x00000000       0x30 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(CyLib.o)
+ .text.CySysWdtReadEnabledStatus
+                0x00000000       0x18 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(CyLib.o)
+ .text.CySysWdtWriteMode
+                0x00000000       0x2c .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(CyLib.o)
+ .text.CySysWdtReadMode
+                0x00000000       0x14 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(CyLib.o)
+ .text.CySysWdtWriteClearOnMatch
+                0x00000000       0x2c .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(CyLib.o)
+ .text.CySysWdtReadClearOnMatch
+                0x00000000       0x18 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(CyLib.o)
+ .text.CySysWdtEnable
+                0x00000000       0x34 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(CyLib.o)
+ .text.CySysWdtDisable
+                0x00000000       0x2c .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(CyLib.o)
+ .text.CySysWdtWriteCascade
+                0x00000000       0x34 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(CyLib.o)
+ .text.CySysWdtReadCascade
+                0x00000000       0x14 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(CyLib.o)
+ .text.CySysWdtWriteToggleBit
+                0x00000000       0x28 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(CyLib.o)
+ .text.CySysWdtReadToggleBit
+                0x00000000       0x10 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(CyLib.o)
+ .text.CySysWdtReadMatch
+                0x00000000       0x10 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(CyLib.o)
+ .text.CySysWdtReadCount
+                0x00000000       0x30 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(CyLib.o)
+ .text.CySysClkIloStop
+                0x00000000       0xb4 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(CyLib.o)
+ .text.CySysWdtGetInterruptSource
+                0x00000000       0x14 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(CyLib.o)
+ .text.CySysWdtClearInterrupt
+                0x00000000       0x50 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(CyLib.o)
+ .text.CySysWdtResetCounters
+                0x00000000       0x18 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(CyLib.o)
+ .text.CySysLvdEnable
+                0x00000000       0x2c .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(CyLib.o)
+ .text.CySysLvdDisable
+                0x00000000       0x20 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(CyLib.o)
+ .text.CySysLvdGetInterruptSource
+                0x00000000       0x10 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(CyLib.o)
+ .text.CySysLvdClearInterrupt
+                0x00000000        0xc .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(CyLib.o)
+ .text.CySysGetResetReason
+                0x00000000       0x14 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(CyLib.o)
+ .text.CyDisableInts
+                0x00000000       0x10 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(CyLib.o)
+ .text.CyEnableInts
+                0x00000000        0xc .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(CyLib.o)
+ .text.CyIntSetSysVector
+                0x00000000        0xe .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(CyLib.o)
+ .text.CyIntGetSysVector
+                0x00000000        0xc .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(CyLib.o)
+ .text.CyIntSetVector
+                0x00000000       0x10 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(CyLib.o)
+ .text.CyIntGetVector
+                0x00000000       0x10 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(CyLib.o)
+ .text.CyIntSetPriority
+                0x00000000       0x34 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(CyLib.o)
+ .text.CyIntGetPriority
+                0x00000000       0x20 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(CyLib.o)
+ .text.CyIntEnable
+                0x00000000       0x14 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(CyLib.o)
+ .text.CyIntGetState
+                0x00000000       0x18 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(CyLib.o)
+ .text.CyIntDisable
+                0x00000000       0x14 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(CyLib.o)
+ .text.CyIntSetPending
+                0x00000000       0x14 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(CyLib.o)
+ .text.CyIntClearPending
+                0x00000000       0x14 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(CyLib.o)
+ .text.CyHalt   0x00000000        0x4 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(CyLib.o)
+ .text.CySoftwareReset
+                0x00000000       0x18 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(CyLib.o)
+ .text.CySysClkWriteImoFreq
+                0x00000000      0x120 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(CyLib.o)
+ .text.CySysWdtWriteMatch
+                0x00000000       0x30 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(CyLib.o)
+ .text.CyDelayFreq
+                0x00000000       0x48 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(CyLib.o)
+ .text.CySysTickInit
+                0x00000000       0x50 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(CyLib.o)
+ .text.CySysTickStop
+                0x00000000       0x10 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(CyLib.o)
+ .text.CySysTickEnableInterrupt
+                0x00000000       0x10 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(CyLib.o)
+ .text.CySysTickEnable
+                0x00000000       0x18 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(CyLib.o)
+ .text.CySysTickStart
+                0x00000000       0x1c .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(CyLib.o)
+ .text.CySysTickDisableInterrupt
+                0x00000000       0x10 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(CyLib.o)
+ .text.CySysTickSetReload
+                0x00000000       0x10 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(CyLib.o)
+ .text.CySysTickGetReload
+                0x00000000       0x10 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(CyLib.o)
+ .text.CySysTickGetValue
+                0x00000000       0x14 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(CyLib.o)
+ .text.CySysTickGetCountFlag
+                0x00000000       0x10 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(CyLib.o)
+ .text.CySysTickServiceCallbacks
+                0x00000000       0x24 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(CyLib.o)
+ .text.CySysTickClear
+                0x00000000        0xc .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(CyLib.o)
+ .text.CySysTickSetCallback
+                0x00000000       0x10 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(CyLib.o)
+ .text.CySysTickGetCallback
+                0x00000000       0x10 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(CyLib.o)
+ .rodata        0x00000000       0x2e .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(CyLib.o)
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(cyPm.o)
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(cyPm.o)
+ .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(cyPm.o)
+ .text.CySysPmDeepSleep
+                0x00000000       0x68 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(cyPm.o)
+ .text.CySysPmHibernate
+                0x00000000       0x50 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(cyPm.o)
+ .text.CySysPmSetWakeupPolarity
+                0x00000000       0x2c .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(cyPm.o)
+ .text.CySysPmGetResetReason
+                0x00000000       0x20 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(cyPm.o)
+ .text.CySysPmFreezeIo
+                0x00000000       0x34 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(cyPm.o)
+ .text.CySysPmStop
+                0x00000000       0x30 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(cyPm.o)
+ .text.CySysPmUnfreezeIo
+                0x00000000       0x30 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(cyPm.o)
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(ORG_Int.o)
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(ORG_Int.o)
+ .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(ORG_Int.o)
+ .text.ORG_Int_Interrupt
+                0x00000000        0x2 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(ORG_Int.o)
+ .text.ORG_Int_Stop
+                0x00000000       0x1c .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(ORG_Int.o)
+ .text.ORG_Int_SetVector
+                0x00000000        0xc .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(ORG_Int.o)
+ .text.ORG_Int_GetVector
+                0x00000000        0xc .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(ORG_Int.o)
+ .text.ORG_Int_Start
+                0x00000000       0x2c .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(ORG_Int.o)
+ .text.ORG_Int_GetPriority
+                0x00000000       0x10 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(ORG_Int.o)
+ .text.ORG_Int_Enable
+                0x00000000        0xc .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(ORG_Int.o)
+ .text.ORG_Int_GetState
+                0x00000000       0x10 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(ORG_Int.o)
+ .text.ORG_Int_Disable
+                0x00000000        0xc .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(ORG_Int.o)
+ .text.ORG_Int_SetPending
+                0x00000000        0xc .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(ORG_Int.o)
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(PWM_Organizer.o)
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(PWM_Organizer.o)
+ .text.PWM_Organizer_WriteCounter
+                0x00000000        0xc .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(PWM_Organizer.o)
+ .text.PWM_Organizer_ReadCounter
+                0x00000000       0x14 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(PWM_Organizer.o)
+ .text.PWM_Organizer_WritePeriod
+                0x00000000        0xc .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(PWM_Organizer.o)
+ .text.PWM_Organizer_WriteCompare
+                0x00000000        0xc .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(PWM_Organizer.o)
+ .text.PWM_Organizer_SetInterruptMode
+                0x00000000        0xc .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(PWM_Organizer.o)
+ .text.PWM_Organizer_ReadControlRegister
+                0x00000000        0xc .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(PWM_Organizer.o)
+ .text.PWM_Organizer_WriteControlRegister
+                0x00000000        0xc .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(PWM_Organizer.o)
+ .text.PWM_Organizer_ReadCapture
+                0x00000000        0xc .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(PWM_Organizer.o)
+ .text.PWM_Organizer_ReadCompare
+                0x00000000        0xc .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(PWM_Organizer.o)
+ .text.PWM_Organizer_ReadPeriod
+                0x00000000        0xc .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(PWM_Organizer.o)
+ .data          0x00000000        0x0 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/armv6-m\libgcc.a(_thumb1_case_uqi.o)
+ .bss           0x00000000        0x0 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/armv6-m\libgcc.a(_thumb1_case_uqi.o)
+ .data          0x00000000        0x0 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/armv6-m\libgcc.a(_thumb1_case_uhi.o)
+ .bss           0x00000000        0x0 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/armv6-m\libgcc.a(_thumb1_case_uhi.o)
+ .text          0x00000000       0x9c c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/armv6-m\libgcc.a(_udivsi3.o)
+ .data          0x00000000        0x0 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/armv6-m\libgcc.a(_udivsi3.o)
+ .bss           0x00000000        0x0 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/armv6-m\libgcc.a(_udivsi3.o)
+ .data          0x00000000        0x0 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/armv6-m\libgcc.a(_divsi3.o)
+ .bss           0x00000000        0x0 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/armv6-m\libgcc.a(_divsi3.o)
+ .data          0x00000000        0x0 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/armv6-m\libgcc.a(_dvmd_tls.o)
+ .bss           0x00000000        0x0 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/armv6-m\libgcc.a(_dvmd_tls.o)
+ .text          0x00000000        0x0 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-errno.o)
+ .data          0x00000000        0x0 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-errno.o)
+ .bss           0x00000000        0x0 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-errno.o)
+ .text          0x00000000        0x0 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-exit.o)
+ .data          0x00000000        0x0 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-exit.o)
+ .bss           0x00000000        0x0 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-exit.o)
+ .text.exit     0x00000000       0x2c c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-exit.o)
+ .text          0x00000000        0x0 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-impure.o)
+ .data          0x00000000        0x0 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-impure.o)
+ .bss           0x00000000        0x0 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-impure.o)
+ .rodata._global_impure_ptr
+                0x00000000        0x4 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-impure.o)
+ .text          0x00000000        0x0 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-init.o)
+ .data          0x00000000        0x0 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-init.o)
+ .bss           0x00000000        0x0 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-init.o)
+ .text          0x00000000        0x0 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-memcpy-stub.o)
+ .data          0x00000000        0x0 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-memcpy-stub.o)
+ .bss           0x00000000        0x0 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-memcpy-stub.o)
+ .text          0x00000000        0x0 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-memmove.o)
+ .data          0x00000000        0x0 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-memmove.o)
+ .bss           0x00000000        0x0 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-memmove.o)
+ .text          0x00000000        0x0 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-memset.o)
+ .data          0x00000000        0x0 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-memset.o)
+ .bss           0x00000000        0x0 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-memset.o)
+ .text          0x00000000        0x0 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-rand.o)
+ .data          0x00000000        0x0 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-rand.o)
+ .bss           0x00000000        0x0 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-rand.o)
+ .text          0x00000000        0x0 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-strlen.o)
+ .data          0x00000000        0x0 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-strlen.o)
+ .bss           0x00000000        0x0 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-strlen.o)
+ .text          0x00000000        0x0 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-time.o)
+ .data          0x00000000        0x0 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-time.o)
+ .bss           0x00000000        0x0 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-time.o)
+ .text          0x00000000        0x0 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-gettimeofdayr.o)
+ .data          0x00000000        0x0 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-gettimeofdayr.o)
+ .bss           0x00000000        0x0 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-gettimeofdayr.o)
+ .text          0x00000000        0x0 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-malloc.o)
+ .data          0x00000000        0x0 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-malloc.o)
+ .bss           0x00000000        0x0 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-malloc.o)
+ .text.free     0x00000000       0x14 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-malloc.o)
+ .text          0x00000000        0x0 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-nano-freer.o)
+ .data          0x00000000        0x0 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-nano-freer.o)
+ .bss           0x00000000        0x0 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-nano-freer.o)
+ .text._free_r  0x00000000       0x90 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-nano-freer.o)
+ .text          0x00000000        0x0 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-nano-mallocr.o)
+ .data          0x00000000        0x0 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-nano-mallocr.o)
+ .bss           0x00000000        0x0 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-nano-mallocr.o)
+ .text          0x00000000        0x0 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-reent.o)
+ .data          0x00000000        0x0 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-reent.o)
+ .bss           0x00000000        0x0 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-reent.o)
+ .text.cleanup_glue
+                0x00000000       0x1a c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-reent.o)
+ .text._reclaim_reent
+                0x00000000       0xcc c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-reent.o)
+ .text          0x00000000        0x0 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-sbrkr.o)
+ .data          0x00000000        0x0 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-sbrkr.o)
+ .bss           0x00000000        0x0 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-sbrkr.o)
+ .data          0x00000000        0x0 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/armv6-m\libgcc.a(_muldi3.o)
+ .bss           0x00000000        0x0 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/armv6-m\libgcc.a(_muldi3.o)
+ .text          0x00000000        0x0 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/armv6-m/crtend.o
+ .data          0x00000000        0x0 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/armv6-m/crtend.o
+ .bss           0x00000000        0x0 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/armv6-m/crtend.o
+ .text          0x00000000        0x0 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/armv6-m/crtn.o
+ .data          0x00000000        0x0 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/armv6-m/crtn.o
+ .bss           0x00000000        0x0 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/armv6-m/crtn.o
+ .text          0x00000000        0x0 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libnosys.a(gettod.o)
+ .data          0x00000000        0x0 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libnosys.a(gettod.o)
+ .bss           0x00000000        0x0 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libnosys.a(gettod.o)
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+rom              0x00000000         0x00008000         xr
+ram              0x20000000         0x00001000         xrw
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/armv6-m/crti.o
+LOAD c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/armv6-m/crtbegin.o
+LOAD c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m/crt0.o
+START GROUP
+LOAD .\CortexM0\ARM_GCC_484\Release\main.o
+LOAD .\CortexM0\ARM_GCC_484\Release\lightlib.o
+LOAD .\CortexM0\ARM_GCC_484\Release\togglelib.o
+LOAD .\CortexM0\ARM_GCC_484\Release\state.o
+LOAD .\CortexM0\ARM_GCC_484\Release\binary.o
+LOAD .\CortexM0\ARM_GCC_484\Release\cybootloader.o
+LOAD .\CortexM0\ARM_GCC_484\Release\cymetadata.o
+LOAD .\CortexM0\ARM_GCC_484\Release\Cm0Start.o
+LOAD .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a
+LOAD C:\Program Files\Cypress\PSoC Creator\3.1\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CortexM0\ARM_GCC_484\Release\CyComponentLibrary.a
+END GROUP
+START GROUP
+LOAD c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/armv6-m\libgcc.a
+LOAD c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a
+LOAD c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libc_s.a
+END GROUP
+START GROUP
+LOAD c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/armv6-m\libgcc.a
+LOAD c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libc_s.a
+END GROUP
+LOAD c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/armv6-m/crtend.o
+LOAD c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/armv6-m/crtn.o
+START GROUP
+LOAD c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/armv6-m\libgcc.a
+LOAD c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libc.a
+LOAD c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libnosys.a
+END GROUP
+                0x00000000                CY_APPL_ORIGIN = 0x0
+                0x00000080                CY_FLASH_ROW_SIZE = 0x80
+                0x00000001                CY_APPL_NUM = 0x1
+                0x00000040                CY_METADATA_SIZE = 0x40
+                0x200001b0                PROVIDE (__cy_heap_start, _end)
+                0x00000001                PROVIDE (__cy_region_num, ((__cy_regions_end - __cy_regions) / 0x10))
+                0x20001000                PROVIDE (__cy_stack, (ORIGIN (ram) + 0x1000))
+                0x20000c00                PROVIDE (__cy_heap_end, (__cy_stack - 0x400))
+
+.cybootloader   0x00000000     0x1080
+ *(.cybootloader)
+ .cybootloader  0x00000000     0x1080 .\CortexM0\ARM_GCC_484\Release\cybootloader.o
+                0x00000000                cy_bootloader
+                0x00001080                appl1_start = CY_APPL_ORIGIN?CY_APPL_ORIGIN:ALIGN (CY_FLASH_ROW_SIZE)
+                0x00004800                appl2_start = (appl1_start + ALIGN ((((0x8000 - appl1_start) - (0x2 * CY_FLASH_ROW_SIZE)) / 0x2), CY_FLASH_ROW_SIZE))
+                0x00001080                appl_start = (CY_APPL_NUM == 0x1)?appl1_start:appl2_start
+
+.text           0x00001080     0x15b4
+ CREATE_OBJECT_SYMBOLS
+                0x00001080                PROVIDE (__cy_interrupt_vector, RomVectors)
+ *(.romvectors)
+ .romvectors    0x00001080       0x10 .\CortexM0\ARM_GCC_484\Release\Cm0Start.o
+                0x00001080                RomVectors
+                0x00000001                ASSERT ((. != __cy_interrupt_vector), No interrupt vector)
+                0x00000001                ASSERT (CY_APPL_ORIGIN?(SIZEOF (.cybootloader) <= CY_APPL_ORIGIN):0x1, Wrong image location)
+                0x00001090                PROVIDE (__cy_reset, Reset)
+ *(.text.Reset)
+ .text.Reset    0x00001090       0x10 .\CortexM0\ARM_GCC_484\Release\Cm0Start.o
+                0x00001090                Reset
+                0x00000001                ASSERT ((. != __cy_reset), No reset code)
+ *(.psocinit)
+ .psocinit      0x000010a0      0x270 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(cyfitter_cfg.o)
+                0x000010a0                cyfitter_cfg
+                0x00001310                . = MAX (., 0x100)
+ *(.text .text.* .gnu.linkonce.t.*)
+ .text          0x00001310       0x60 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/armv6-m/crtbegin.o
+ .text.startup.main
+                0x00001370       0x6c .\CortexM0\ARM_GCC_484\Release\main.o
+                0x00001370                main
+ .text.set_color
+                0x000013dc       0x28 .\CortexM0\ARM_GCC_484\Release\lightlib.o
+                0x000013dc                set_color
+ .text.set_status
+                0x00001404       0x3c .\CortexM0\ARM_GCC_484\Release\lightlib.o
+                0x00001404                set_status
+ .text.get_color
+                0x00001440       0x20 .\CortexM0\ARM_GCC_484\Release\lightlib.o
+                0x00001440                get_color
+ .text.get_status
+                0x00001460       0x3c .\CortexM0\ARM_GCC_484\Release\lightlib.o
+                0x00001460                get_status
+ .text.turn_on  0x0000149c       0xcc .\CortexM0\ARM_GCC_484\Release\lightlib.o
+                0x0000149c                turn_on
+ .text.turn_off
+                0x00001568       0x5a .\CortexM0\ARM_GCC_484\Release\lightlib.o
+                0x00001568                turn_off
+ .text.turn_off_all_led
+                0x000015c2       0x1c .\CortexM0\ARM_GCC_484\Release\lightlib.o
+                0x000015c2                turn_off_all_led
+ .text.init_led
+                0x000015de       0x1a .\CortexM0\ARM_GCC_484\Release\lightlib.o
+                0x000015de                init_led
+ .text.SWB_Handler
+                0x000015f8       0x38 .\CortexM0\ARM_GCC_484\Release\togglelib.o
+                0x000015f8                SWB_Handler
+ .text.ORG_Handler
+                0x00001630       0x74 .\CortexM0\ARM_GCC_484\Release\togglelib.o
+                0x00001630                ORG_Handler
+ .text.SWL_Handler
+                0x000016a4       0x90 .\CortexM0\ARM_GCC_484\Release\togglelib.o
+                0x000016a4                SWL_Handler
+ .text.SWR_Handler
+                0x00001734       0x90 .\CortexM0\ARM_GCC_484\Release\togglelib.o
+                0x00001734                SWR_Handler
+ .text.set_magic_toggle_sequance
+                0x000017c4       0x20 .\CortexM0\ARM_GCC_484\Release\togglelib.o
+                0x000017c4                set_magic_toggle_sequance
+ .text.set_magic_toggle_index
+                0x000017e4       0x1c .\CortexM0\ARM_GCC_484\Release\togglelib.o
+                0x000017e4                set_magic_toggle_index
+ .text.init_magic_toggle_sequance
+                0x00001800       0x12 .\CortexM0\ARM_GCC_484\Release\togglelib.o
+                0x00001800                init_magic_toggle_sequance
+ *fill*         0x00001812        0x2 
+ .text.enable_toggle_interrupts
+                0x00001814       0x38 .\CortexM0\ARM_GCC_484\Release\togglelib.o
+                0x00001814                enable_toggle_interrupts
+ .text.verify_state
+                0x0000184c       0x14 .\CortexM0\ARM_GCC_484\Release\state.o
+                0x0000184c                verify_state
+ .text.blink_zero
+                0x00001860       0x2a .\CortexM0\ARM_GCC_484\Release\binary.o
+                0x00001860                blink_zero
+ .text.blink_one
+                0x0000188a       0x2a .\CortexM0\ARM_GCC_484\Release\binary.o
+                0x0000188a                blink_one
+ .text.new_message_binary
+                0x000018b4       0x46 .\CortexM0\ARM_GCC_484\Release\binary.o
+                0x000018b4                new_message_binary
+ .text.binary_encode
+                0x000018fa      0x38c .\CortexM0\ARM_GCC_484\Release\binary.o
+                0x000018fa                binary_encode
+ .text.binary_message
+                0x00001c86       0x2a .\CortexM0\ARM_GCC_484\Release\binary.o
+                0x00001c86                binary_message
+ .text.IntDefaultHandler
+                0x00001cb0        0x2 .\CortexM0\ARM_GCC_484\Release\Cm0Start.o
+                0x00001cb0                IntDefaultHandler
+ *fill*         0x00001cb2        0x2 
+ .text._sbrk    0x00001cb4       0x2c .\CortexM0\ARM_GCC_484\Release\Cm0Start.o
+                0x00001cb4                _sbrk
+ .text.Start_c  0x00001ce0       0x4c .\CortexM0\ARM_GCC_484\Release\Cm0Start.o
+                0x00001ce0                Start_c
+ .text.startup.initialize_psoc
+                0x00001d2c       0x54 .\CortexM0\ARM_GCC_484\Release\Cm0Start.o
+                0x00001d2c                initialize_psoc
+ .text.Board_LED_Write
+                0x00001d80       0x18 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(Board_LED.o)
+                0x00001d80                Board_LED_Write
+ .text.IR_LED_Write
+                0x00001d98       0x18 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(IR_LED.o)
+                0x00001d98                IR_LED_Write
+ .text.SWL_ClearInterrupt
+                0x00001db0       0x14 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWL.o)
+                0x00001db0                SWL_ClearInterrupt
+ .text.SWL_Int_SetPriority
+                0x00001dc4       0x20 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWL_Int.o)
+                0x00001dc4                SWL_Int_SetPriority
+ .text.SWL_Int_StartEx
+                0x00001de4       0x24 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWL_Int.o)
+                0x00001de4                SWL_Int_StartEx
+ .text.SWR_ClearInterrupt
+                0x00001e08       0x14 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWR.o)
+                0x00001e08                SWR_ClearInterrupt
+ .text.SWR_Int_SetPriority
+                0x00001e1c       0x28 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWR_Int.o)
+                0x00001e1c                SWR_Int_SetPriority
+ .text.SWR_Int_StartEx
+                0x00001e44       0x24 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWR_Int.o)
+                0x00001e44                SWR_Int_StartEx
+ .text.SWB_ClearInterrupt
+                0x00001e68       0x14 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWB.o)
+                0x00001e68                SWB_ClearInterrupt
+ .text.SWB_Int_SetPriority
+                0x00001e7c       0x24 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWB_Int.o)
+                0x00001e7c                SWB_Int_SetPriority
+ .text.SWB_Int_StartEx
+                0x00001ea0       0x24 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWB_Int.o)
+                0x00001ea0                SWB_Int_StartEx
+ .text.Left_LED_Red_Write
+                0x00001ec4       0x18 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(Left_LED_Red.o)
+                0x00001ec4                Left_LED_Red_Write
+ .text.PWM_Right_LED_Green_Enable
+                0x00001edc       0x10 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(PWM_Right_LED_Green.o)
+                0x00001edc                PWM_Right_LED_Green_Enable
+ .text.PWM_Right_LED_Green_Stop
+                0x00001eec       0x10 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(PWM_Right_LED_Green.o)
+                0x00001eec                PWM_Right_LED_Green_Stop
+ .text.PWM_Right_LED_Green_ClearFIFO
+                0x00001efc       0x18 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(PWM_Right_LED_Green.o)
+                0x00001efc                PWM_Right_LED_Green_ClearFIFO
+ .text.PWM_Right_LED_Green_Init
+                0x00001f14       0x60 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(PWM_Right_LED_Green.o)
+                0x00001f14                PWM_Right_LED_Green_Init
+ .text.PWM_Right_LED_Green_Start
+                0x00001f74       0x1c .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(PWM_Right_LED_Green.o)
+                0x00001f74                PWM_Right_LED_Green_Start
+ .text.PWM_Left_LED_Green_Enable
+                0x00001f90       0x10 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(PWM_Left_LED_Green.o)
+                0x00001f90                PWM_Left_LED_Green_Enable
+ .text.PWM_Left_LED_Green_Stop
+                0x00001fa0       0x10 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(PWM_Left_LED_Green.o)
+                0x00001fa0                PWM_Left_LED_Green_Stop
+ .text.PWM_Left_LED_Green_ClearFIFO
+                0x00001fb0       0x18 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(PWM_Left_LED_Green.o)
+                0x00001fb0                PWM_Left_LED_Green_ClearFIFO
+ .text.PWM_Left_LED_Green_Init
+                0x00001fc8       0x60 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(PWM_Left_LED_Green.o)
+                0x00001fc8                PWM_Left_LED_Green_Init
+ .text.PWM_Left_LED_Green_Start
+                0x00002028       0x1c .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(PWM_Left_LED_Green.o)
+                0x00002028                PWM_Left_LED_Green_Start
+ .text.Right_LED_Red_Write
+                0x00002044       0x18 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(Right_LED_Red.o)
+                0x00002044                Right_LED_Red_Write
+ .text.Left_LED_Blue_Write
+                0x0000205c       0x18 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(Left_LED_Blue.o)
+                0x0000205c                Left_LED_Blue_Write
+ .text.Right_LED_Blue_Write
+                0x00002074       0x18 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(Right_LED_Blue.o)
+                0x00002074                Right_LED_Blue_Write
+ *fill*         0x0000208c        0x4 
+ .text          0x00002090       0x28 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(CyBootAsmGnu.o)
+                0x00002090                CyDelayCycles
+                0x000020a4                CyEnterCriticalSection
+                0x000020ac                CyExitCriticalSection
+ .text.CyDelay  0x000020b8       0x2c .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(CyLib.o)
+                0x000020b8                CyDelay
+ .text.CyDelayUs
+                0x000020e4       0x14 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(CyLib.o)
+                0x000020e4                CyDelayUs
+ .text.CySysPmSleep
+                0x000020f8       0x1c .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(cyPm.o)
+                0x000020f8                CySysPmSleep
+ .text.ORG_Int_SetPriority
+                0x00002114       0x28 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(ORG_Int.o)
+                0x00002114                ORG_Int_SetPriority
+ .text.ORG_Int_StartEx
+                0x0000213c       0x24 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(ORG_Int.o)
+                0x0000213c                ORG_Int_StartEx
+ .text.ORG_Int_ClearPending
+                0x00002160        0xc .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(ORG_Int.o)
+                0x00002160                ORG_Int_ClearPending
+ .text.PWM_Organizer_Enable
+                0x0000216c       0x10 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(PWM_Organizer.o)
+                0x0000216c                PWM_Organizer_Enable
+ .text.PWM_Organizer_Stop
+                0x0000217c       0x10 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(PWM_Organizer.o)
+                0x0000217c                PWM_Organizer_Stop
+ .text.PWM_Organizer_ClearFIFO
+                0x0000218c       0x18 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(PWM_Organizer.o)
+                0x0000218c                PWM_Organizer_ClearFIFO
+ .text.PWM_Organizer_Init
+                0x000021a4       0x68 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(PWM_Organizer.o)
+                0x000021a4                PWM_Organizer_Init
+ .text.PWM_Organizer_Start
+                0x0000220c       0x1c .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(PWM_Organizer.o)
+                0x0000220c                PWM_Organizer_Start
+ .text.PWM_Organizer_ReadStatusRegister
+                0x00002228        0xc .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(PWM_Organizer.o)
+                0x00002228                PWM_Organizer_ReadStatusRegister
+ .text          0x00002234       0x14 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/armv6-m\libgcc.a(_thumb1_case_uqi.o)
+                0x00002234                __gnu_thumb1_case_uqi
+ .text          0x00002248       0x14 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/armv6-m\libgcc.a(_thumb1_case_uhi.o)
+                0x00002248                __gnu_thumb1_case_uhi
+ .text          0x0000225c       0xc0 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/armv6-m\libgcc.a(_divsi3.o)
+                0x0000225c                __divsi3
+                0x0000225c                __aeabi_idiv
+                0x00002308                __aeabi_idivmod
+ .text          0x0000231c        0x4 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/armv6-m\libgcc.a(_dvmd_tls.o)
+                0x0000231c                __aeabi_idiv0
+                0x0000231c                __aeabi_ldiv0
+ .text.__errno  0x00002320        0xc c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-errno.o)
+                0x00002320                __errno
+ .text.__libc_init_array
+                0x0000232c       0x4c c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-init.o)
+                0x0000232c                __libc_init_array
+ .text.memcpy   0x00002378       0x12 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-memcpy-stub.o)
+                0x00002378                memcpy
+ .text.memmove  0x0000238a       0x32 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-memmove.o)
+                0x0000238a                memmove
+ .text.memset   0x000023bc       0x10 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-memset.o)
+                0x000023bc                memset
+ .text.srand    0x000023cc       0x5c c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-rand.o)
+                0x000023cc                srand
+ .text.rand     0x00002428       0x78 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-rand.o)
+                0x00002428                rand
+ .text.strlen   0x000024a0        0xe c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-strlen.o)
+                0x000024a0                strlen
+ *fill*         0x000024ae        0x2 
+ .text.time     0x000024b0       0x2c c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-time.o)
+                0x000024b0                time
+ .text._gettimeofday_r
+                0x000024dc       0x24 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-gettimeofdayr.o)
+                0x000024dc                _gettimeofday_r
+ .text.malloc   0x00002500       0x14 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-malloc.o)
+                0x00002500                malloc
+ .text._malloc_r
+                0x00002514       0xa8 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-nano-mallocr.o)
+                0x00002514                _malloc_r
+ .text._sbrk_r  0x000025bc       0x24 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-sbrkr.o)
+                0x000025bc                _sbrk_r
+ .text          0x000025e0       0x44 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/armv6-m\libgcc.a(_muldi3.o)
+                0x000025e0                __muldi3
+                0x000025e0                __aeabi_lmul
+ .text._gettimeofday
+                0x00002624       0x10 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libnosys.a(gettod.o)
+                0x00002624                _gettimeofday
+ *(.plt)
+ *(.gnu.warning)
+ *(.glue_7t)
+ .glue_7t       0x00000000        0x0 linker stubs
+ *(.glue_7)
+ .glue_7        0x00000000        0x0 linker stubs
+ *(.vfp11_veneer)
+ .vfp11_veneer  0x00000000        0x0 linker stubs
+ *(.bootloader)
+ *(.ARM.extab* .gnu.linkonce.armextab.*)
+ *(.gcc_except_table)
+
+.v4_bx          0x00002634        0x0
+ .v4_bx         0x00000000        0x0 linker stubs
+
+.iplt           0x00002634        0x0
+ .iplt          0x00000000        0x0 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/armv6-m/crtbegin.o
+
+.eh_frame_hdr
+ *(.eh_frame_hdr)
+
+.eh_frame       0x00002634        0x4
+ *(.eh_frame)
+ .eh_frame      0x00002634        0x0 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/armv6-m/crtbegin.o
+ .eh_frame      0x00002634        0x4 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/armv6-m/crtend.o
+                0x00002638                PROVIDE (__exidx_start, .)
+
+.ARM.exidx
+ *(.ARM.exidx* .gnu.linkonce.armexidx.*)
+                0x00002638                __exidx_end = .
+
+.rodata         0x00002638      0x260
+ *(.rodata .rodata.* .gnu.linkonce.r.*)
+ .rodata        0x00002638       0x28 .\CortexM0\ARM_GCC_484\Release\main.o
+ .rodata.str1.1
+                0x00002660        0x9 .\CortexM0\ARM_GCC_484\Release\main.o
+ *fill*         0x00002669        0x3 
+ .rodata        0x0000266c      0x1f4 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(cyfitter_cfg.o)
+ .rodata.str1.1
+                0x00002860        0x2 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-impure.o)
+                0x00002864                . = ALIGN (0x4)
+ *fill*         0x00002862        0x2 
+ *(.init)
+ .init          0x00002864        0x4 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/armv6-m/crti.o
+                0x00002864                _init
+ .init          0x00002868        0x8 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/armv6-m/crtn.o
+                0x00002870                . = ALIGN (0x4)
+                0x00002870                __preinit_array_start = .
+ *(.preinit_array)
+                0x00002870                __preinit_array_end = .
+                0x00002870                . = ALIGN (0x4)
+                0x00002870                __init_array_start = .
+ *(SORT(.init_array.*))
+ *(.init_array)
+ .init_array    0x00002870        0x4 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/armv6-m/crtbegin.o
+ .init_array    0x00002874        0x4 .\CortexM0\ARM_GCC_484\Release\Cm0Start.o
+                0x00002878                __init_array_end = .
+                0x00002878                . = ALIGN (0x4)
+ *(.fini)
+ .fini          0x00002878        0x4 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/armv6-m/crti.o
+                0x00002878                _fini
+ .fini          0x0000287c        0x8 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/armv6-m/crtn.o
+                0x00002884                . = ALIGN (0x4)
+                0x00002884                __fini_array_start = .
+ *(.fini_array)
+ .fini_array    0x00002884        0x4 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/armv6-m/crtbegin.o
+ *(SORT(.fini_array.*))
+                0x00002888                __fini_array_end = .
+                0x00002888                . = ALIGN (0x4)
+ *crtbegin.o(.ctors)
+ *(EXCLUDE_FILE(*crtend.o) .ctors)
+ *(SORT(.ctors.*))
+ *crtend.o(.ctors)
+                0x00002888                . = ALIGN (0x4)
+ *crtbegin.o(.dtors)
+ *(EXCLUDE_FILE(*crtend.o) .dtors)
+ *(SORT(.dtors.*))
+ *crtend.o(.dtors)
+                0x00002888                . = ALIGN (0x4)
+                0x00002888                __cy_regions = .
+                0x00002888        0x4 LONG 0x2898 __cy_region_init_ram
+                0x0000288c        0x4 LONG 0x200000d0 __cy_region_start_data
+                0x00002890        0x4 LONG 0x80 __cy_region_init_size_ram
+                0x00002894        0x4 LONG 0x60 __cy_region_zero_size_ram
+                0x00002898                __cy_regions_end = .
+                0x00002898                . = ALIGN (0x8)
+                0x00002898                _etext = .
+
+.ramvectors     0x20000000       0xc0
+                0x20000000                __cy_region_start_ram = .
+ *(.ramvectors)
+ .ramvectors    0x20000000       0xc0 .\CortexM0\ARM_GCC_484\Release\Cm0Start.o
+                0x20000000                CyRamVectors
+
+.btldr_run      0x200000c0        0x4
+ *(.bootloaderruntype)
+ .bootloaderruntype
+                0x200000c0        0x4 .\CortexM0\ARM_GCC_484\Release\Cm0Start.o
+                0x200000c0                cyBtldrRunType
+
+.noinit         0x200000c8        0x4
+ *(.noinit)
+ .noinit        0x200000c8        0x4 .\CortexM0\ARM_GCC_484\Release\Cm0Start.o
+
+.data           0x200000d0       0x80 load address 0x00002898
+                0x200000d0                __cy_region_start_data = .
+ *(.jcr)
+ .jcr           0x200000d0        0x0 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/armv6-m/crtbegin.o
+ .jcr           0x200000d0        0x4 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/armv6-m/crtend.o
+ *(.got.plt)
+ *(.got)
+ *(.shdata)
+ *(.data .data.* .gnu.linkonce.d.*)
+ .data          0x200000d4        0x4 .\CortexM0\ARM_GCC_484\Release\Cm0Start.o
+ .data          0x200000d8       0x10 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(CyLib.o)
+                0x200000d8                cydelay32kMs
+                0x200000dc                cydelayFreqKhz
+                0x200000e0                cydelayFreqMhz
+                0x200000e4                cydelayFreqHz
+ .data.impure_data
+                0x200000e8       0x60 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-impure.o)
+ .data._impure_ptr
+                0x20000148        0x4 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-impure.o)
+                0x20000148                _impure_ptr
+                0x20000150                . = ALIGN (0x8)
+ *fill*         0x2000014c        0x4 
+ *(.ram)
+                0x20000150                _edata = .
+
+.igot.plt       0x20000150        0x0 load address 0x00002918
+ .igot.plt      0x00000000        0x0 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/armv6-m/crtbegin.o
+
+.bss            0x20000150       0x60 load address 0x00002918
+                0x20000150                PROVIDE (__bss_start__, .)
+ *(.shbss)
+ *(.bss .bss.* .gnu.linkonce.b.*)
+ .bss           0x20000150       0x1c c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/armv6-m/crtbegin.o
+ .bss           0x2000016c        0x1 .\CortexM0\ARM_GCC_484\Release\state.o
+                0x2000016c                badge_state
+ .bss           0x2000016d        0x1 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(PWM_Right_LED_Green.o)
+                0x2000016d                PWM_Right_LED_Green_initVar
+ .bss           0x2000016e        0x1 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(PWM_Left_LED_Green.o)
+                0x2000016e                PWM_Left_LED_Green_initVar
+ .bss           0x2000016f        0x1 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(PWM_Organizer.o)
+                0x2000016f                PWM_Organizer_initVar
+ .bss.__malloc_sbrk_start
+                0x20000170        0x4 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-nano-mallocr.o)
+                0x20000170                __malloc_sbrk_start
+ .bss.__malloc_free_list
+                0x20000174        0x4 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-nano-mallocr.o)
+                0x20000174                __malloc_free_list
+ *(COMMON)
+ COMMON         0x20000178        0x6 .\CortexM0\ARM_GCC_484\Release\lightlib.o
+                0x20000178                Board_LED_State
+                0x20000179                IR_LED_State
+                0x2000017a                Right_LED_State
+                0x2000017c                Left_LED_State
+ COMMON         0x2000017e       0x2a .\CortexM0\ARM_GCC_484\Release\togglelib.o
+                0x2000017e                Volunteer_Sequence
+                0x20000193                Organizer_Sequence
+ COMMON         0x200001a8        0x4 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-reent.o)
+                0x200001a8                errno
+                0x200001b0                . = ALIGN (0x8)
+ *fill*         0x200001ac        0x4 
+ *(.ram.b)
+                0x200001b0                _end = .
+                0x200001b0                __end = .
+                0x200001b0                PROVIDE (end, .)
+                0x200001b0                PROVIDE (__bss_end__, .)
+                0x00002898                __cy_region_init_ram = LOADADDR (.data)
+                0x00000080                __cy_region_init_size_ram = (_edata - ADDR (.data))
+                0x00000060                __cy_region_zero_size_ram = (_end - _edata)
+
+.heap           0x200001b0       0x80 load address 0x00002918
+                0x200001b0                . = _end
+                0x20000230                . = (. + 0x80)
+ *fill*         0x200001b0       0x80 
+                0x20000230                __cy_heap_limit = .
+
+.stack          0x20000c00      0x400
+                0x20000c00                __cy_stack_limit = .
+                0x20001000                . = (. + 0x400)
+ *fill*         0x20000c00      0x400 
+                0x00000001                ASSERT ((__cy_stack_limit >= __cy_heap_limit), region RAM overflowed with stack)
+
+.cyloadermeta   0xf0000000       0x40
+ *(.cyloadermeta)
+ .cyloadermeta  0xf0000000       0x40 .\CortexM0\ARM_GCC_484\Release\cybootloader.o
+                0xf0000000                cy_meta_loader
+
+.cyloadablemeta
+                0x00007fc0       0x40
+ *(.cyloadablemeta)
+ .cyloadablemeta
+                0x00007fc0       0x40 .\CortexM0\ARM_GCC_484\Release\cymetadata.o
+                0x00007fc0                cy_meta_loadable
+
+.cyflashprotect
+                0x90400000       0x20
+ *(.cyflashprotect)
+ .cyflashprotect
+                0x90400000       0x20 .\CortexM0\ARM_GCC_484\Release\cybootloader.o
+                0x90400000                cy_meta_flashprotect
+
+.cymeta         0x90500000        0xc
+ *(.cymeta)
+ .cymeta        0x90500000        0xc .\CortexM0\ARM_GCC_484\Release\cybootloader.o
+                0x90500000                cy_metadata
+
+.cychipprotect  0x90600000        0x1
+ *(.cychipprotect)
+ .cychipprotect
+                0x90600000        0x1 .\CortexM0\ARM_GCC_484\Release\cybootloader.o
+                0x90600000                cy_meta_chipprotect
+
+.rel.dyn        0x00008000        0x0 load address 0x90600004
+ .rel.iplt      0x00000000        0x0 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/armv6-m/crtbegin.o
+
+.stab           0x00000000       0x24
+ *(.stab)
+ .stab          0x00000000       0x24 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libnosys.a(gettod.o)
+
+.stabstr        0x00000000       0x4e
+ *(.stabstr)
+ .stabstr       0x00000000       0x4e c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libnosys.a(gettod.o)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges  0x00000000      0xa70
+ *(.debug_aranges)
+ .debug_aranges
+                0x00000000       0x20 .\CortexM0\ARM_GCC_484\Release\main.o
+ .debug_aranges
+                0x00000020       0x60 .\CortexM0\ARM_GCC_484\Release\lightlib.o
+ .debug_aranges
+                0x00000080       0x68 .\CortexM0\ARM_GCC_484\Release\togglelib.o
+ .debug_aranges
+                0x000000e8       0x20 .\CortexM0\ARM_GCC_484\Release\state.o
+ .debug_aranges
+                0x00000108       0x40 .\CortexM0\ARM_GCC_484\Release\binary.o
+ .debug_aranges
+                0x00000148       0x18 .\CortexM0\ARM_GCC_484\Release\cybootloader.o
+ .debug_aranges
+                0x00000160       0x18 .\CortexM0\ARM_GCC_484\Release\cymetadata.o
+ .debug_aranges
+                0x00000178       0x48 .\CortexM0\ARM_GCC_484\Release\Cm0Start.o
+ .debug_aranges
+                0x000001c0       0x20 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(cyfitter_cfg.o)
+ .debug_aranges
+                0x000001e0       0x40 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(Board_LED.o)
+ .debug_aranges
+                0x00000220       0x40 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(IR_LED.o)
+ .debug_aranges
+                0x00000260       0x40 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWL.o)
+ .debug_aranges
+                0x000002a0       0x80 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWL_Int.o)
+ .debug_aranges
+                0x00000320       0x40 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWR.o)
+ .debug_aranges
+                0x00000360       0x80 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWR_Int.o)
+ .debug_aranges
+                0x000003e0       0x40 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWB.o)
+ .debug_aranges
+                0x00000420       0x80 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWB_Int.o)
+ .debug_aranges
+                0x000004a0       0x40 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(Left_LED_Red.o)
+ .debug_aranges
+                0x000004e0       0x98 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(PWM_Right_LED_Green.o)
+ .debug_aranges
+                0x00000578       0x98 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(PWM_Left_LED_Green.o)
+ .debug_aranges
+                0x00000610       0x40 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(Right_LED_Red.o)
+ .debug_aranges
+                0x00000650       0x40 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(Left_LED_Blue.o)
+ .debug_aranges
+                0x00000690       0x40 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(Right_LED_Blue.o)
+ .debug_aranges
+                0x000006d0       0x20 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(CyBootAsmGnu.o)
+ .debug_aranges
+                0x000006f0      0x210 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(CyLib.o)
+ .debug_aranges
+                0x00000900       0x58 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(cyPm.o)
+ .debug_aranges
+                0x00000958       0x80 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(ORG_Int.o)
+ .debug_aranges
+                0x000009d8       0x98 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(PWM_Organizer.o)
+
+.debug_pubnames
+ *(.debug_pubnames)
+
+.debug_info     0x00000000     0x5e39
+ *(.debug_info .gnu.linkonce.wi.*)
+ .debug_info    0x00000000      0x21e .\CortexM0\ARM_GCC_484\Release\main.o
+ .debug_info    0x0000021e      0x62a .\CortexM0\ARM_GCC_484\Release\lightlib.o
+ .debug_info    0x00000848      0x879 .\CortexM0\ARM_GCC_484\Release\togglelib.o
+ .debug_info    0x000010c1       0xd2 .\CortexM0\ARM_GCC_484\Release\state.o
+ .debug_info    0x00001193      0x96f .\CortexM0\ARM_GCC_484\Release\binary.o
+ .debug_info    0x00001b02      0x14d .\CortexM0\ARM_GCC_484\Release\cybootloader.o
+ .debug_info    0x00001c4f       0xb1 .\CortexM0\ARM_GCC_484\Release\cymetadata.o
+ .debug_info    0x00001d00      0x375 .\CortexM0\ARM_GCC_484\Release\Cm0Start.o
+ .debug_info    0x00002075      0x4df .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(cyfitter_cfg.o)
+ .debug_info    0x00002554      0x14c .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(Board_LED.o)
+ .debug_info    0x000026a0      0x14c .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(IR_LED.o)
+ .debug_info    0x000027ec      0x14c .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWL.o)
+ .debug_info    0x00002938      0x34b .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWL_Int.o)
+ .debug_info    0x00002c83      0x14c .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWR.o)
+ .debug_info    0x00002dcf      0x34b .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWR_Int.o)
+ .debug_info    0x0000311a      0x150 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWB.o)
+ .debug_info    0x0000326a      0x34b .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWB_Int.o)
+ .debug_info    0x000035b5      0x14c .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(Left_LED_Red.o)
+ .debug_info    0x00003701      0x3a1 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(PWM_Right_LED_Green.o)
+ .debug_info    0x00003aa2      0x3a1 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(PWM_Left_LED_Green.o)
+ .debug_info    0x00003e43      0x14c .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(Right_LED_Red.o)
+ .debug_info    0x00003f8f      0x14c .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(Left_LED_Blue.o)
+ .debug_info    0x000040db      0x151 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(Right_LED_Blue.o)
+ .debug_info    0x0000422c       0x8d .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(CyBootAsmGnu.o)
+ .debug_info    0x000042b9     0x11a8 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(CyLib.o)
+ .debug_info    0x00005461      0x2d0 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(cyPm.o)
+ .debug_info    0x00005731      0x34b .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(ORG_Int.o)
+ .debug_info    0x00005a7c      0x3bd .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(PWM_Organizer.o)
+
+.debug_abbrev   0x00000000     0x266f
+ *(.debug_abbrev)
+ .debug_abbrev  0x00000000      0x133 .\CortexM0\ARM_GCC_484\Release\main.o
+ .debug_abbrev  0x00000133      0x178 .\CortexM0\ARM_GCC_484\Release\lightlib.o
+ .debug_abbrev  0x000002ab      0x245 .\CortexM0\ARM_GCC_484\Release\togglelib.o
+ .debug_abbrev  0x000004f0       0x7a .\CortexM0\ARM_GCC_484\Release\state.o
+ .debug_abbrev  0x0000056a      0x15a .\CortexM0\ARM_GCC_484\Release\binary.o
+ .debug_abbrev  0x000006c4       0x77 .\CortexM0\ARM_GCC_484\Release\cybootloader.o
+ .debug_abbrev  0x0000073b       0x5d .\CortexM0\ARM_GCC_484\Release\cymetadata.o
+ .debug_abbrev  0x00000798      0x1eb .\CortexM0\ARM_GCC_484\Release\Cm0Start.o
+ .debug_abbrev  0x00000983      0x274 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(cyfitter_cfg.o)
+ .debug_abbrev  0x00000bf7       0xc4 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(Board_LED.o)
+ .debug_abbrev  0x00000cbb       0xc4 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(IR_LED.o)
+ .debug_abbrev  0x00000d7f       0xc4 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWL.o)
+ .debug_abbrev  0x00000e43      0x23c .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWL_Int.o)
+ .debug_abbrev  0x0000107f       0xc4 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWR.o)
+ .debug_abbrev  0x00001143      0x23c .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWR_Int.o)
+ .debug_abbrev  0x0000137f       0xb7 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWB.o)
+ .debug_abbrev  0x00001436      0x23c .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWB_Int.o)
+ .debug_abbrev  0x00001672       0xc4 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(Left_LED_Red.o)
+ .debug_abbrev  0x00001736      0x1d9 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(PWM_Right_LED_Green.o)
+ .debug_abbrev  0x0000190f      0x1d9 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(PWM_Left_LED_Green.o)
+ .debug_abbrev  0x00001ae8       0xc4 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(Right_LED_Red.o)
+ .debug_abbrev  0x00001bac       0xc4 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(Left_LED_Blue.o)
+ .debug_abbrev  0x00001c70       0xc6 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(Right_LED_Blue.o)
+ .debug_abbrev  0x00001d36       0x14 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(CyBootAsmGnu.o)
+ .debug_abbrev  0x00001d4a      0x3cc .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(CyLib.o)
+ .debug_abbrev  0x00002116      0x144 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(cyPm.o)
+ .debug_abbrev  0x0000225a      0x23c .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(ORG_Int.o)
+ .debug_abbrev  0x00002496      0x1d9 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(PWM_Organizer.o)
+
+.debug_line     0x00000000     0x2908
+ *(.debug_line)
+ .debug_line    0x00000000       0xb4 .\CortexM0\ARM_GCC_484\Release\main.o
+ .debug_line    0x000000b4      0x1f7 .\CortexM0\ARM_GCC_484\Release\lightlib.o
+ .debug_line    0x000002ab      0x3b9 .\CortexM0\ARM_GCC_484\Release\togglelib.o
+ .debug_line    0x00000664       0x65 .\CortexM0\ARM_GCC_484\Release\state.o
+ .debug_line    0x000006c9      0x29e .\CortexM0\ARM_GCC_484\Release\binary.o
+ .debug_line    0x00000967       0x55 .\CortexM0\ARM_GCC_484\Release\cybootloader.o
+ .debug_line    0x000009bc       0x53 .\CortexM0\ARM_GCC_484\Release\cymetadata.o
+ .debug_line    0x00000a0f      0x204 .\CortexM0\ARM_GCC_484\Release\Cm0Start.o
+ .debug_line    0x00000c13      0x16c .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(cyfitter_cfg.o)
+ .debug_line    0x00000d7f       0xb9 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(Board_LED.o)
+ .debug_line    0x00000e38       0xb6 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(IR_LED.o)
+ .debug_line    0x00000eee       0xb3 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWL.o)
+ .debug_line    0x00000fa1      0x1ae .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWL_Int.o)
+ .debug_line    0x0000114f       0xb3 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWR.o)
+ .debug_line    0x00001202      0x1ac .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWR_Int.o)
+ .debug_line    0x000013ae       0xb3 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWB.o)
+ .debug_line    0x00001461      0x1ac .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWB_Int.o)
+ .debug_line    0x0000160d       0xbc .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(Left_LED_Red.o)
+ .debug_line    0x000016c9      0x1f4 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(PWM_Right_LED_Green.o)
+ .debug_line    0x000018bd      0x1f3 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(PWM_Left_LED_Green.o)
+ .debug_line    0x00001ab0       0xbb .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(Right_LED_Red.o)
+ .debug_line    0x00001b6b       0xbd .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(Left_LED_Blue.o)
+ .debug_line    0x00001c28       0xbd .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(Right_LED_Blue.o)
+ .debug_line    0x00001ce5       0x69 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(CyBootAsmGnu.o)
+ .debug_line    0x00001d4e      0x6db .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(CyLib.o)
+ .debug_line    0x00002429      0x144 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(cyPm.o)
+ .debug_line    0x0000256d      0x1ac .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(ORG_Int.o)
+ .debug_line    0x00002719      0x1ef .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(PWM_Organizer.o)
+
+.debug_frame    0x00000000     0x1884
+ *(.debug_frame)
+ .debug_frame   0x00000000       0x2c .\CortexM0\ARM_GCC_484\Release\main.o
+ .debug_frame   0x0000002c       0xfc .\CortexM0\ARM_GCC_484\Release\lightlib.o
+ .debug_frame   0x00000128      0x118 .\CortexM0\ARM_GCC_484\Release\togglelib.o
+ .debug_frame   0x00000240       0x20 .\CortexM0\ARM_GCC_484\Release\state.o
+ .debug_frame   0x00000260       0xa4 .\CortexM0\ARM_GCC_484\Release\binary.o
+ .debug_frame   0x00000304       0xa4 .\CortexM0\ARM_GCC_484\Release\Cm0Start.o
+ .debug_frame   0x000003a8       0x3c .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(cyfitter_cfg.o)
+ .debug_frame   0x000003e4       0x6c .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(Board_LED.o)
+ .debug_frame   0x00000450       0x6c .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(IR_LED.o)
+ .debug_frame   0x000004bc       0x6c .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWL.o)
+ .debug_frame   0x00000528      0x104 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWL_Int.o)
+ .debug_frame   0x0000062c       0x6c .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWR.o)
+ .debug_frame   0x00000698      0x108 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWR_Int.o)
+ .debug_frame   0x000007a0       0x6c .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWB.o)
+ .debug_frame   0x0000080c      0x104 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWB_Int.o)
+ .debug_frame   0x00000910       0x6c .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(Left_LED_Red.o)
+ .debug_frame   0x0000097c      0x128 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(PWM_Right_LED_Green.o)
+ .debug_frame   0x00000aa4      0x128 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(PWM_Left_LED_Green.o)
+ .debug_frame   0x00000bcc       0x60 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(Right_LED_Red.o)
+ .debug_frame   0x00000c2c       0x6c .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(Left_LED_Blue.o)
+ .debug_frame   0x00000c98       0x60 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(Right_LED_Blue.o)
+ .debug_frame   0x00000cf8      0x528 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(CyLib.o)
+ .debug_frame   0x00001220       0xf4 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(cyPm.o)
+ .debug_frame   0x00001314      0x108 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(ORG_Int.o)
+ .debug_frame   0x0000141c      0x128 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(PWM_Organizer.o)
+ .debug_frame   0x00001544       0x20 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/armv6-m\libgcc.a(_udivsi3.o)
+ .debug_frame   0x00001564       0x20 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/armv6-m\libgcc.a(_divsi3.o)
+ .debug_frame   0x00001584       0x20 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-errno.o)
+ .debug_frame   0x000015a4       0x28 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-exit.o)
+ .debug_frame   0x000015cc       0x2c c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-init.o)
+ .debug_frame   0x000015f8       0x28 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-memcpy-stub.o)
+ .debug_frame   0x00001620       0x2c c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-memmove.o)
+ .debug_frame   0x0000164c       0x20 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-memset.o)
+ .debug_frame   0x0000166c       0x44 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-rand.o)
+ .debug_frame   0x000016b0       0x20 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-strlen.o)
+ .debug_frame   0x000016d0       0x2c c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-time.o)
+ .debug_frame   0x000016fc       0x2c c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-gettimeofdayr.o)
+ .debug_frame   0x00001728       0x40 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-malloc.o)
+ .debug_frame   0x00001768       0x2c c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-nano-freer.o)
+ .debug_frame   0x00001794       0x2c c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-nano-mallocr.o)
+ .debug_frame   0x000017c0       0x48 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-reent.o)
+ .debug_frame   0x00001808       0x2c c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-sbrkr.o)
+ .debug_frame   0x00001834       0x30 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/armv6-m\libgcc.a(_muldi3.o)
+ .debug_frame   0x00001864       0x20 c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libnosys.a(gettod.o)
+
+.debug_str      0x00000000     0x1fc7
+ *(.debug_str)
+ .debug_str     0x00000000      0x1c5 .\CortexM0\ARM_GCC_484\Release\main.o
+                                0x1fe (size before relaxing)
+ .debug_str     0x000001c5      0x18d .\CortexM0\ARM_GCC_484\Release\lightlib.o
+                                0x30b (size before relaxing)
+ .debug_str     0x00000352      0x24b .\CortexM0\ARM_GCC_484\Release\togglelib.o
+                                0x42d (size before relaxing)
+ .debug_str     0x0000059d       0x17 .\CortexM0\ARM_GCC_484\Release\state.o
+                                0x187 (size before relaxing)
+ .debug_str     0x000005b4       0x50 .\CortexM0\ARM_GCC_484\Release\binary.o
+                                0x214 (size before relaxing)
+ .debug_str     0x00000604       0x7a .\CortexM0\ARM_GCC_484\Release\cybootloader.o
+                                0x1d8 (size before relaxing)
+ .debug_str     0x0000067e       0x37 .\CortexM0\ARM_GCC_484\Release\cymetadata.o
+                                0x195 (size before relaxing)
+ .debug_str     0x000006b5      0x150 .\CortexM0\ARM_GCC_484\Release\Cm0Start.o
+                                0x2e2 (size before relaxing)
+ .debug_str     0x00000805      0x191 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(cyfitter_cfg.o)
+                                0x345 (size before relaxing)
+ .debug_str     0x00000996       0x92 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(Board_LED.o)
+                                0x20a (size before relaxing)
+ .debug_str     0x00000a28       0x6b .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(IR_LED.o)
+                                0x1f8 (size before relaxing)
+ .debug_str     0x00000a93       0x53 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWL.o)
+                                0x1e6 (size before relaxing)
+ .debug_str     0x00000ae6      0x139 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWL_Int.o)
+                                0x2e5 (size before relaxing)
+ .debug_str     0x00000c1f       0x53 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWR.o)
+                                0x1e6 (size before relaxing)
+ .debug_str     0x00000c72       0xf4 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWR_Int.o)
+                                0x2e5 (size before relaxing)
+ .debug_str     0x00000d66       0x53 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWB.o)
+                                0x1e6 (size before relaxing)
+ .debug_str     0x00000db9       0xf4 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWB_Int.o)
+                                0x2e5 (size before relaxing)
+ .debug_str     0x00000ead       0x89 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(Left_LED_Red.o)
+                                0x21c (size before relaxing)
+ .debug_str     0x00000f36      0x277 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(PWM_Right_LED_Green.o)
+                                0x43a (size before relaxing)
+ .debug_str     0x000011ad      0x22d .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(PWM_Left_LED_Green.o)
+                                0x427 (size before relaxing)
+ .debug_str     0x000013da       0x8e .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(Right_LED_Red.o)
+                                0x222 (size before relaxing)
+ .debug_str     0x00001468       0x8e .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(Left_LED_Blue.o)
+                                0x222 (size before relaxing)
+ .debug_str     0x000014f6       0x93 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(Right_LED_Blue.o)
+                                0x228 (size before relaxing)
+ .debug_str     0x00001589      0x6f3 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(CyLib.o)
+                                0x8fb (size before relaxing)
+ .debug_str     0x00001c7c       0xb5 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(cyPm.o)
+                                0x294 (size before relaxing)
+ .debug_str     0x00001d31       0xdf .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(ORG_Int.o)
+                                0x2e5 (size before relaxing)
+ .debug_str     0x00001e10      0x1b7 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(PWM_Organizer.o)
+                                0x3d5 (size before relaxing)
+
+.debug_loc      0x00000000     0x1ad1
+ *(.debug_loc)
+ .debug_loc     0x00000000      0x197 .\CortexM0\ARM_GCC_484\Release\lightlib.o
+ .debug_loc     0x00000197      0x2ac .\CortexM0\ARM_GCC_484\Release\togglelib.o
+ .debug_loc     0x00000443       0x21 .\CortexM0\ARM_GCC_484\Release\state.o
+ .debug_loc     0x00000464       0xbc .\CortexM0\ARM_GCC_484\Release\binary.o
+ .debug_loc     0x00000520      0x1ca .\CortexM0\ARM_GCC_484\Release\Cm0Start.o
+ .debug_loc     0x000006ea      0x1be .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(cyfitter_cfg.o)
+ .debug_loc     0x000008a8       0x63 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(Board_LED.o)
+ .debug_loc     0x0000090b       0x63 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(IR_LED.o)
+ .debug_loc     0x0000096e       0x63 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWL.o)
+ .debug_loc     0x000009d1       0xac .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWL_Int.o)
+ .debug_loc     0x00000a7d       0x63 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWR.o)
+ .debug_loc     0x00000ae0       0xab .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWR_Int.o)
+ .debug_loc     0x00000b8b       0x7d .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWB.o)
+ .debug_loc     0x00000c08       0xaa .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWB_Int.o)
+ .debug_loc     0x00000cb2       0x63 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(Left_LED_Red.o)
+ .debug_loc     0x00000d15       0x2b .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(PWM_Right_LED_Green.o)
+ .debug_loc     0x00000d40       0x2b .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(PWM_Left_LED_Green.o)
+ .debug_loc     0x00000d6b       0x63 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(Right_LED_Red.o)
+ .debug_loc     0x00000dce       0x63 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(Left_LED_Blue.o)
+ .debug_loc     0x00000e31       0x21 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(Right_LED_Blue.o)
+ .debug_loc     0x00000e52      0xac9 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(CyLib.o)
+ .debug_loc     0x0000191b       0xe0 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(cyPm.o)
+ .debug_loc     0x000019fb       0xab .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(ORG_Int.o)
+ .debug_loc     0x00001aa6       0x2b .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(PWM_Organizer.o)
+
+.debug_macinfo
+ *(.debug_macinfo)
+
+.debug_ranges   0x00000000      0xd08
+ *(.debug_ranges)
+ .debug_ranges  0x00000000       0x10 .\CortexM0\ARM_GCC_484\Release\main.o
+ .debug_ranges  0x00000010       0x50 .\CortexM0\ARM_GCC_484\Release\lightlib.o
+ .debug_ranges  0x00000060       0xb8 .\CortexM0\ARM_GCC_484\Release\togglelib.o
+ .debug_ranges  0x00000118       0x10 .\CortexM0\ARM_GCC_484\Release\state.o
+ .debug_ranges  0x00000128       0x30 .\CortexM0\ARM_GCC_484\Release\binary.o
+ .debug_ranges  0x00000158       0x38 .\CortexM0\ARM_GCC_484\Release\Cm0Start.o
+ .debug_ranges  0x00000190       0x48 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(cyfitter_cfg.o)
+ .debug_ranges  0x000001d8       0x30 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(Board_LED.o)
+ .debug_ranges  0x00000208       0x30 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(IR_LED.o)
+ .debug_ranges  0x00000238       0x30 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWL.o)
+ .debug_ranges  0x00000268      0x100 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWL_Int.o)
+ .debug_ranges  0x00000368       0x30 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWR.o)
+ .debug_ranges  0x00000398      0x100 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWR_Int.o)
+ .debug_ranges  0x00000498       0x30 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWB.o)
+ .debug_ranges  0x000004c8      0x100 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWB_Int.o)
+ .debug_ranges  0x000005c8       0x30 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(Left_LED_Red.o)
+ .debug_ranges  0x000005f8       0xb8 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(PWM_Right_LED_Green.o)
+ .debug_ranges  0x000006b0       0xb8 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(PWM_Left_LED_Green.o)
+ .debug_ranges  0x00000768       0x30 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(Right_LED_Red.o)
+ .debug_ranges  0x00000798       0x30 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(Left_LED_Blue.o)
+ .debug_ranges  0x000007c8       0x30 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(Right_LED_Blue.o)
+ .debug_ranges  0x000007f8      0x328 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(CyLib.o)
+ .debug_ranges  0x00000b20       0x48 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(cyPm.o)
+ .debug_ranges  0x00000b68      0x100 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(ORG_Int.o)
+ .debug_ranges  0x00000c68       0xa0 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(PWM_Organizer.o)
+
+.comment        0x00000000       0x70
+ .comment       0x00000000       0x70 .\CortexM0\ARM_GCC_484\Release\main.o
+                                 0x71 (size before relaxing)
+ .comment       0x00000000       0x71 .\CortexM0\ARM_GCC_484\Release\lightlib.o
+ .comment       0x00000000       0x71 .\CortexM0\ARM_GCC_484\Release\togglelib.o
+ .comment       0x00000000       0x71 .\CortexM0\ARM_GCC_484\Release\state.o
+ .comment       0x00000000       0x71 .\CortexM0\ARM_GCC_484\Release\binary.o
+ .comment       0x00000000       0x71 .\CortexM0\ARM_GCC_484\Release\cybootloader.o
+ .comment       0x00000000       0x71 .\CortexM0\ARM_GCC_484\Release\cymetadata.o
+ .comment       0x00000000       0x71 .\CortexM0\ARM_GCC_484\Release\Cm0Start.o
+ .comment       0x00000000       0x71 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(cyfitter_cfg.o)
+ .comment       0x00000000       0x71 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(Board_LED.o)
+ .comment       0x00000000       0x71 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(IR_LED.o)
+ .comment       0x00000000       0x71 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWL.o)
+ .comment       0x00000000       0x71 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWL_Int.o)
+ .comment       0x00000000       0x71 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWR.o)
+ .comment       0x00000000       0x71 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWR_Int.o)
+ .comment       0x00000000       0x71 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWB.o)
+ .comment       0x00000000       0x71 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWB_Int.o)
+ .comment       0x00000000       0x71 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(Left_LED_Red.o)
+ .comment       0x00000000       0x71 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(PWM_Right_LED_Green.o)
+ .comment       0x00000000       0x71 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(PWM_Left_LED_Green.o)
+ .comment       0x00000000       0x71 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(Right_LED_Red.o)
+ .comment       0x00000000       0x71 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(Left_LED_Blue.o)
+ .comment       0x00000000       0x71 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(Right_LED_Blue.o)
+ .comment       0x00000000       0x71 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(CyLib.o)
+ .comment       0x00000000       0x71 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(cyPm.o)
+ .comment       0x00000000       0x71 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(ORG_Int.o)
+ .comment       0x00000000       0x71 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(PWM_Organizer.o)
+
+.debug_weaknames
+ *(.debug_weaknames)
+
+.debug_funcnames
+ *(.debug_funcnames)
+
+.debug_typenames
+ *(.debug_typenames)
+
+.debug_varnames
+ *(.debug_varnames)
+
+.note.gnu.arm.ident
+ *(.note.gnu.arm.ident)
+
+.ARM.attributes
+                0x00000000       0x28
+ *(.ARM.attributes)
+ .ARM.attributes
+                0x00000000       0x1e c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/armv6-m/crti.o
+ .ARM.attributes
+                0x0000001e       0x2c c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/armv6-m/crtbegin.o
+ .ARM.attributes
+                0x0000004a       0x1b c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m/crt0.o
+ .ARM.attributes
+                0x00000065       0x31 .\CortexM0\ARM_GCC_484\Release\main.o
+ .ARM.attributes
+                0x00000096       0x31 .\CortexM0\ARM_GCC_484\Release\lightlib.o
+ .ARM.attributes
+                0x000000c7       0x31 .\CortexM0\ARM_GCC_484\Release\togglelib.o
+ .ARM.attributes
+                0x000000f8       0x31 .\CortexM0\ARM_GCC_484\Release\state.o
+ .ARM.attributes
+                0x00000129       0x31 .\CortexM0\ARM_GCC_484\Release\binary.o
+ .ARM.attributes
+                0x0000015a       0x31 .\CortexM0\ARM_GCC_484\Release\cybootloader.o
+ .ARM.attributes
+                0x0000018b       0x31 .\CortexM0\ARM_GCC_484\Release\cymetadata.o
+ .ARM.attributes
+                0x000001bc       0x31 .\CortexM0\ARM_GCC_484\Release\Cm0Start.o
+ .ARM.attributes
+                0x000001ed       0x31 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(cyfitter_cfg.o)
+ .ARM.attributes
+                0x0000021e       0x31 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(Board_LED.o)
+ .ARM.attributes
+                0x0000024f       0x31 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(IR_LED.o)
+ .ARM.attributes
+                0x00000280       0x31 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWL.o)
+ .ARM.attributes
+                0x000002b1       0x31 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWL_Int.o)
+ .ARM.attributes
+                0x000002e2       0x31 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWR.o)
+ .ARM.attributes
+                0x00000313       0x31 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWR_Int.o)
+ .ARM.attributes
+                0x00000344       0x31 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWB.o)
+ .ARM.attributes
+                0x00000375       0x31 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(SWB_Int.o)
+ .ARM.attributes
+                0x000003a6       0x31 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(Left_LED_Red.o)
+ .ARM.attributes
+                0x000003d7       0x31 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(PWM_Right_LED_Green.o)
+ .ARM.attributes
+                0x00000408       0x31 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(PWM_Left_LED_Green.o)
+ .ARM.attributes
+                0x00000439       0x31 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(Right_LED_Red.o)
+ .ARM.attributes
+                0x0000046a       0x31 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(Left_LED_Blue.o)
+ .ARM.attributes
+                0x0000049b       0x31 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(Right_LED_Blue.o)
+ .ARM.attributes
+                0x000004cc       0x21 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(CyBootAsmGnu.o)
+ .ARM.attributes
+                0x000004ed       0x31 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(CyLib.o)
+ .ARM.attributes
+                0x0000051e       0x31 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(cyPm.o)
+ .ARM.attributes
+                0x0000054f       0x31 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(ORG_Int.o)
+ .ARM.attributes
+                0x00000580       0x31 .\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.a(PWM_Organizer.o)
+ .ARM.attributes
+                0x000005b1       0x1e c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/armv6-m\libgcc.a(_thumb1_case_uqi.o)
+ .ARM.attributes
+                0x000005cf       0x1e c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/armv6-m\libgcc.a(_thumb1_case_uhi.o)
+ .ARM.attributes
+                0x000005ed       0x1e c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/armv6-m\libgcc.a(_udivsi3.o)
+ .ARM.attributes
+                0x0000060b       0x1e c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/armv6-m\libgcc.a(_divsi3.o)
+ .ARM.attributes
+                0x00000629       0x1e c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/armv6-m\libgcc.a(_dvmd_tls.o)
+ .ARM.attributes
+                0x00000647       0x2c c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-errno.o)
+ .ARM.attributes
+                0x00000673       0x2c c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-exit.o)
+ .ARM.attributes
+                0x0000069f       0x2c c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-impure.o)
+ .ARM.attributes
+                0x000006cb       0x2c c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-init.o)
+ .ARM.attributes
+                0x000006f7       0x2c c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-memcpy-stub.o)
+ .ARM.attributes
+                0x00000723       0x2c c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-memmove.o)
+ .ARM.attributes
+                0x0000074f       0x2c c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-memset.o)
+ .ARM.attributes
+                0x0000077b       0x2c c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-rand.o)
+ .ARM.attributes
+                0x000007a7       0x2c c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-strlen.o)
+ .ARM.attributes
+                0x000007d3       0x2c c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-time.o)
+ .ARM.attributes
+                0x000007ff       0x2c c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-gettimeofdayr.o)
+ .ARM.attributes
+                0x0000082b       0x2c c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-malloc.o)
+ .ARM.attributes
+                0x00000857       0x2c c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-nano-freer.o)
+ .ARM.attributes
+                0x00000883       0x2c c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-nano-mallocr.o)
+ .ARM.attributes
+                0x000008af       0x2c c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-reent.o)
+ .ARM.attributes
+                0x000008db       0x2c c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libg_s.a(lib_a-sbrkr.o)
+ .ARM.attributes
+                0x00000907       0x2c c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/armv6-m\libgcc.a(_muldi3.o)
+ .ARM.attributes
+                0x00000933       0x2c c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/armv6-m/crtend.o
+ .ARM.attributes
+                0x0000095f       0x1e c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/armv6-m/crtn.o
+ .ARM.attributes
+                0x0000097d       0x2c c:/program files/cypress/psoc creator/3.1/psoc creator/import/gnu_cs/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv6-m\libnosys.a(gettod.o)
+
+/DISCARD/
+ *(.note.GNU-stack)
+OUTPUT(.\CortexM0\ARM_GCC_484\Release\Volunteer_Badge.elf elf32-littlearm)

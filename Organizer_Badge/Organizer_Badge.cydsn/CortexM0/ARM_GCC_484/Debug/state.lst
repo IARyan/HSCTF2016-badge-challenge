@@ -1,0 +1,495 @@
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cckbZmwQ.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 6
+  10              		.eabi_attribute 34, 0
+  11              		.eabi_attribute 18, 4
+  12              		.code	16
+  13              		.file	"state.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.global	badge_state
+  18              		.bss
+  19              		.type	badge_state, %object
+  20              		.size	badge_state, 1
+  21              	badge_state:
+  22 0000 00       		.space	1
+  23              		.section	.text.verify_state,"ax",%progbits
+  24              		.align	2
+  25              		.global	verify_state
+  26              		.code	16
+  27              		.thumb_func
+  28              		.type	verify_state, %function
+  29              	verify_state:
+  30              	.LFB33:
+  31              		.file 1 ".\\state.c"
+   1:.\state.c     **** /* ========================================
+   2:.\state.c     ****  *
+   3:.\state.c     ****  * Red Badge source code. The volunteer badge
+   4:.\state.c     ****  * is used to send encoded morse code message.
+   5:.\state.c     ****  *
+   6:.\state.c     ****  * Author(s): Ryan Grandgenett <rmgrandgenett@unomaha.edu>
+   7:.\state.c     ****  *
+   8:.\state.c     ****  * Eye Color: Red
+   9:.\state.c     ****  *
+  10:.\state.c     ****  * Copyright Nullify, 2016
+  11:.\state.c     ****  * All Rights Reserved
+  12:.\state.c     ****  * UNPUBLISHED, LICENSED SOFTWARE.
+  13:.\state.c     ****  *
+  14:.\state.c     ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+  15:.\state.c     ****  * WHICH IS THE PROPERTY OF NULLIY.
+  16:.\state.c     ****  *
+  17:.\state.c     ****  * ========================================
+  18:.\state.c     **** */
+  19:.\state.c     **** #include <project.h>
+  20:.\state.c     **** #include <string.h>
+  21:.\state.c     **** #include <stdio.h>
+  22:.\state.c     **** #include "state.h"
+  23:.\state.c     **** 
+  24:.\state.c     **** /* Global variable used to keep track of badge state */
+  25:.\state.c     **** 
+  26:.\state.c     **** volatile uint8 badge_state = 0;
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cckbZmwQ.s 			page 2
+
+
+  27:.\state.c     **** 
+  28:.\state.c     **** uint8 verify_state(uint8 state) {
+  32              		.loc 1 28 0
+  33              		.cfi_startproc
+  34 0000 80B5     		push	{r7, lr}
+  35              		.cfi_def_cfa_offset 8
+  36              		.cfi_offset 7, -8
+  37              		.cfi_offset 14, -4
+  38 0002 82B0     		sub	sp, sp, #8
+  39              		.cfi_def_cfa_offset 16
+  40 0004 00AF     		add	r7, sp, #0
+  41              		.cfi_def_cfa_register 7
+  42 0006 021C     		mov	r2, r0
+  43 0008 FB1D     		add	r3, r7, #7
+  44 000a 1A70     		strb	r2, [r3]
+  29:.\state.c     ****     if (badge_state == state) {
+  45              		.loc 1 29 0
+  46 000c 064B     		ldr	r3, .L4
+  47 000e 1B78     		ldrb	r3, [r3]
+  48 0010 DBB2     		uxtb	r3, r3
+  49 0012 FA1D     		add	r2, r7, #7
+  50 0014 1278     		ldrb	r2, [r2]
+  51 0016 9A42     		cmp	r2, r3
+  52 0018 01D1     		bne	.L2
+  30:.\state.c     ****         return 1;   
+  53              		.loc 1 30 0
+  54 001a 0123     		mov	r3, #1
+  55 001c 00E0     		b	.L3
+  56              	.L2:
+  31:.\state.c     ****     }
+  32:.\state.c     ****     else {
+  33:.\state.c     ****         return 0;
+  57              		.loc 1 33 0
+  58 001e 0023     		mov	r3, #0
+  59              	.L3:
+  34:.\state.c     ****     }
+  35:.\state.c     **** }
+  60              		.loc 1 35 0
+  61 0020 181C     		mov	r0, r3
+  62 0022 BD46     		mov	sp, r7
+  63 0024 02B0     		add	sp, sp, #8
+  64              		@ sp needed
+  65 0026 80BD     		pop	{r7, pc}
+  66              	.L5:
+  67              		.align	2
+  68              	.L4:
+  69 0028 00000000 		.word	badge_state
+  70              		.cfi_endproc
+  71              	.LFE33:
+  72              		.size	verify_state, .-verify_state
+  73              		.text
+  74              	.Letext0:
+  75              		.file 2 ".\\Generated_Source\\PSoC4/cytypes.h"
+  76              		.section	.debug_info,"",%progbits
+  77              	.Ldebug_info0:
+  78 0000 CD000000 		.4byte	0xcd
+  79 0004 0400     		.2byte	0x4
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cckbZmwQ.s 			page 3
+
+
+  80 0006 00000000 		.4byte	.Ldebug_abbrev0
+  81 000a 04       		.byte	0x4
+  82 000b 01       		.uleb128 0x1
+  83 000c B6000000 		.4byte	.LASF13
+  84 0010 01       		.byte	0x1
+  85 0011 8D010000 		.4byte	.LASF14
+  86 0015 63000000 		.4byte	.LASF15
+  87 0019 00000000 		.4byte	.Ldebug_ranges0+0
+  88 001d 00000000 		.4byte	0
+  89 0021 00000000 		.4byte	.Ldebug_line0
+  90 0025 02       		.uleb128 0x2
+  91 0026 01       		.byte	0x1
+  92 0027 06       		.byte	0x6
+  93 0028 68010000 		.4byte	.LASF0
+  94 002c 02       		.uleb128 0x2
+  95 002d 01       		.byte	0x1
+  96 002e 08       		.byte	0x8
+  97 002f 32010000 		.4byte	.LASF1
+  98 0033 02       		.uleb128 0x2
+  99 0034 02       		.byte	0x2
+ 100 0035 05       		.byte	0x5
+ 101 0036 83010000 		.4byte	.LASF2
+ 102 003a 02       		.uleb128 0x2
+ 103 003b 02       		.byte	0x2
+ 104 003c 07       		.byte	0x7
+ 105 003d 55010000 		.4byte	.LASF3
+ 106 0041 02       		.uleb128 0x2
+ 107 0042 04       		.byte	0x4
+ 108 0043 05       		.byte	0x5
+ 109 0044 45010000 		.4byte	.LASF4
+ 110 0048 02       		.uleb128 0x2
+ 111 0049 04       		.byte	0x4
+ 112 004a 07       		.byte	0x7
+ 113 004b 3A000000 		.4byte	.LASF5
+ 114 004f 02       		.uleb128 0x2
+ 115 0050 08       		.byte	0x8
+ 116 0051 05       		.byte	0x5
+ 117 0052 00000000 		.4byte	.LASF6
+ 118 0056 02       		.uleb128 0x2
+ 119 0057 08       		.byte	0x8
+ 120 0058 07       		.byte	0x7
+ 121 0059 4C000000 		.4byte	.LASF7
+ 122 005d 03       		.uleb128 0x3
+ 123 005e 04       		.byte	0x4
+ 124 005f 05       		.byte	0x5
+ 125 0060 696E7400 		.ascii	"int\000"
+ 126 0064 02       		.uleb128 0x2
+ 127 0065 04       		.byte	0x4
+ 128 0066 07       		.byte	0x7
+ 129 0067 1B000000 		.4byte	.LASF8
+ 130 006b 04       		.uleb128 0x4
+ 131 006c 34000000 		.4byte	.LASF16
+ 132 0070 02       		.byte	0x2
+ 133 0071 A1       		.byte	0xa1
+ 134 0072 2C000000 		.4byte	0x2c
+ 135 0076 02       		.uleb128 0x2
+ 136 0077 04       		.byte	0x4
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cckbZmwQ.s 			page 4
+
+
+ 137 0078 04       		.byte	0x4
+ 138 0079 B0000000 		.4byte	.LASF9
+ 139 007d 02       		.uleb128 0x2
+ 140 007e 08       		.byte	0x8
+ 141 007f 04       		.byte	0x4
+ 142 0080 4E010000 		.4byte	.LASF10
+ 143 0084 02       		.uleb128 0x2
+ 144 0085 01       		.byte	0x1
+ 145 0086 08       		.byte	0x8
+ 146 0087 40010000 		.4byte	.LASF11
+ 147 008b 05       		.uleb128 0x5
+ 148 008c 6B000000 		.4byte	0x6b
+ 149 0090 02       		.uleb128 0x2
+ 150 0091 04       		.byte	0x4
+ 151 0092 07       		.byte	0x7
+ 152 0093 7A010000 		.4byte	.LASF12
+ 153 0097 06       		.uleb128 0x6
+ 154 0098 0E000000 		.4byte	.LASF17
+ 155 009c 01       		.byte	0x1
+ 156 009d 1C       		.byte	0x1c
+ 157 009e 6B000000 		.4byte	0x6b
+ 158 00a2 00000000 		.4byte	.LFB33
+ 159 00a6 2C000000 		.4byte	.LFE33-.LFB33
+ 160 00aa 01       		.uleb128 0x1
+ 161 00ab 9C       		.byte	0x9c
+ 162 00ac BF000000 		.4byte	0xbf
+ 163 00b0 07       		.uleb128 0x7
+ 164 00b1 74010000 		.4byte	.LASF18
+ 165 00b5 01       		.byte	0x1
+ 166 00b6 1C       		.byte	0x1c
+ 167 00b7 6B000000 		.4byte	0x6b
+ 168 00bb 02       		.uleb128 0x2
+ 169 00bc 91       		.byte	0x91
+ 170 00bd 77       		.sleb128 -9
+ 171 00be 00       		.byte	0
+ 172 00bf 08       		.uleb128 0x8
+ 173 00c0 28000000 		.4byte	.LASF19
+ 174 00c4 01       		.byte	0x1
+ 175 00c5 1A       		.byte	0x1a
+ 176 00c6 8B000000 		.4byte	0x8b
+ 177 00ca 05       		.uleb128 0x5
+ 178 00cb 03       		.byte	0x3
+ 179 00cc 00000000 		.4byte	badge_state
+ 180 00d0 00       		.byte	0
+ 181              		.section	.debug_abbrev,"",%progbits
+ 182              	.Ldebug_abbrev0:
+ 183 0000 01       		.uleb128 0x1
+ 184 0001 11       		.uleb128 0x11
+ 185 0002 01       		.byte	0x1
+ 186 0003 25       		.uleb128 0x25
+ 187 0004 0E       		.uleb128 0xe
+ 188 0005 13       		.uleb128 0x13
+ 189 0006 0B       		.uleb128 0xb
+ 190 0007 03       		.uleb128 0x3
+ 191 0008 0E       		.uleb128 0xe
+ 192 0009 1B       		.uleb128 0x1b
+ 193 000a 0E       		.uleb128 0xe
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cckbZmwQ.s 			page 5
+
+
+ 194 000b 55       		.uleb128 0x55
+ 195 000c 17       		.uleb128 0x17
+ 196 000d 11       		.uleb128 0x11
+ 197 000e 01       		.uleb128 0x1
+ 198 000f 10       		.uleb128 0x10
+ 199 0010 17       		.uleb128 0x17
+ 200 0011 00       		.byte	0
+ 201 0012 00       		.byte	0
+ 202 0013 02       		.uleb128 0x2
+ 203 0014 24       		.uleb128 0x24
+ 204 0015 00       		.byte	0
+ 205 0016 0B       		.uleb128 0xb
+ 206 0017 0B       		.uleb128 0xb
+ 207 0018 3E       		.uleb128 0x3e
+ 208 0019 0B       		.uleb128 0xb
+ 209 001a 03       		.uleb128 0x3
+ 210 001b 0E       		.uleb128 0xe
+ 211 001c 00       		.byte	0
+ 212 001d 00       		.byte	0
+ 213 001e 03       		.uleb128 0x3
+ 214 001f 24       		.uleb128 0x24
+ 215 0020 00       		.byte	0
+ 216 0021 0B       		.uleb128 0xb
+ 217 0022 0B       		.uleb128 0xb
+ 218 0023 3E       		.uleb128 0x3e
+ 219 0024 0B       		.uleb128 0xb
+ 220 0025 03       		.uleb128 0x3
+ 221 0026 08       		.uleb128 0x8
+ 222 0027 00       		.byte	0
+ 223 0028 00       		.byte	0
+ 224 0029 04       		.uleb128 0x4
+ 225 002a 16       		.uleb128 0x16
+ 226 002b 00       		.byte	0
+ 227 002c 03       		.uleb128 0x3
+ 228 002d 0E       		.uleb128 0xe
+ 229 002e 3A       		.uleb128 0x3a
+ 230 002f 0B       		.uleb128 0xb
+ 231 0030 3B       		.uleb128 0x3b
+ 232 0031 0B       		.uleb128 0xb
+ 233 0032 49       		.uleb128 0x49
+ 234 0033 13       		.uleb128 0x13
+ 235 0034 00       		.byte	0
+ 236 0035 00       		.byte	0
+ 237 0036 05       		.uleb128 0x5
+ 238 0037 35       		.uleb128 0x35
+ 239 0038 00       		.byte	0
+ 240 0039 49       		.uleb128 0x49
+ 241 003a 13       		.uleb128 0x13
+ 242 003b 00       		.byte	0
+ 243 003c 00       		.byte	0
+ 244 003d 06       		.uleb128 0x6
+ 245 003e 2E       		.uleb128 0x2e
+ 246 003f 01       		.byte	0x1
+ 247 0040 3F       		.uleb128 0x3f
+ 248 0041 19       		.uleb128 0x19
+ 249 0042 03       		.uleb128 0x3
+ 250 0043 0E       		.uleb128 0xe
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cckbZmwQ.s 			page 6
+
+
+ 251 0044 3A       		.uleb128 0x3a
+ 252 0045 0B       		.uleb128 0xb
+ 253 0046 3B       		.uleb128 0x3b
+ 254 0047 0B       		.uleb128 0xb
+ 255 0048 27       		.uleb128 0x27
+ 256 0049 19       		.uleb128 0x19
+ 257 004a 49       		.uleb128 0x49
+ 258 004b 13       		.uleb128 0x13
+ 259 004c 11       		.uleb128 0x11
+ 260 004d 01       		.uleb128 0x1
+ 261 004e 12       		.uleb128 0x12
+ 262 004f 06       		.uleb128 0x6
+ 263 0050 40       		.uleb128 0x40
+ 264 0051 18       		.uleb128 0x18
+ 265 0052 9742     		.uleb128 0x2117
+ 266 0054 19       		.uleb128 0x19
+ 267 0055 01       		.uleb128 0x1
+ 268 0056 13       		.uleb128 0x13
+ 269 0057 00       		.byte	0
+ 270 0058 00       		.byte	0
+ 271 0059 07       		.uleb128 0x7
+ 272 005a 05       		.uleb128 0x5
+ 273 005b 00       		.byte	0
+ 274 005c 03       		.uleb128 0x3
+ 275 005d 0E       		.uleb128 0xe
+ 276 005e 3A       		.uleb128 0x3a
+ 277 005f 0B       		.uleb128 0xb
+ 278 0060 3B       		.uleb128 0x3b
+ 279 0061 0B       		.uleb128 0xb
+ 280 0062 49       		.uleb128 0x49
+ 281 0063 13       		.uleb128 0x13
+ 282 0064 02       		.uleb128 0x2
+ 283 0065 18       		.uleb128 0x18
+ 284 0066 00       		.byte	0
+ 285 0067 00       		.byte	0
+ 286 0068 08       		.uleb128 0x8
+ 287 0069 34       		.uleb128 0x34
+ 288 006a 00       		.byte	0
+ 289 006b 03       		.uleb128 0x3
+ 290 006c 0E       		.uleb128 0xe
+ 291 006d 3A       		.uleb128 0x3a
+ 292 006e 0B       		.uleb128 0xb
+ 293 006f 3B       		.uleb128 0x3b
+ 294 0070 0B       		.uleb128 0xb
+ 295 0071 49       		.uleb128 0x49
+ 296 0072 13       		.uleb128 0x13
+ 297 0073 3F       		.uleb128 0x3f
+ 298 0074 19       		.uleb128 0x19
+ 299 0075 02       		.uleb128 0x2
+ 300 0076 18       		.uleb128 0x18
+ 301 0077 00       		.byte	0
+ 302 0078 00       		.byte	0
+ 303 0079 00       		.byte	0
+ 304              		.section	.debug_aranges,"",%progbits
+ 305 0000 1C000000 		.4byte	0x1c
+ 306 0004 0200     		.2byte	0x2
+ 307 0006 00000000 		.4byte	.Ldebug_info0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cckbZmwQ.s 			page 7
+
+
+ 308 000a 04       		.byte	0x4
+ 309 000b 00       		.byte	0
+ 310 000c 0000     		.2byte	0
+ 311 000e 0000     		.2byte	0
+ 312 0010 00000000 		.4byte	.LFB33
+ 313 0014 2C000000 		.4byte	.LFE33-.LFB33
+ 314 0018 00000000 		.4byte	0
+ 315 001c 00000000 		.4byte	0
+ 316              		.section	.debug_ranges,"",%progbits
+ 317              	.Ldebug_ranges0:
+ 318 0000 00000000 		.4byte	.LFB33
+ 319 0004 2C000000 		.4byte	.LFE33
+ 320 0008 00000000 		.4byte	0
+ 321 000c 00000000 		.4byte	0
+ 322              		.section	.debug_line,"",%progbits
+ 323              	.Ldebug_line0:
+ 324 0000 5F000000 		.section	.debug_str,"MS",%progbits,1
+ 324      02004600 
+ 324      00000201 
+ 324      FB0E0D00 
+ 324      01010101 
+ 325              	.LASF6:
+ 326 0000 6C6F6E67 		.ascii	"long long int\000"
+ 326      206C6F6E 
+ 326      6720696E 
+ 326      7400
+ 327              	.LASF17:
+ 328 000e 76657269 		.ascii	"verify_state\000"
+ 328      66795F73 
+ 328      74617465 
+ 328      00
+ 329              	.LASF8:
+ 330 001b 756E7369 		.ascii	"unsigned int\000"
+ 330      676E6564 
+ 330      20696E74 
+ 330      00
+ 331              	.LASF19:
+ 332 0028 62616467 		.ascii	"badge_state\000"
+ 332      655F7374 
+ 332      61746500 
+ 333              	.LASF16:
+ 334 0034 75696E74 		.ascii	"uint8\000"
+ 334      3800
+ 335              	.LASF5:
+ 336 003a 6C6F6E67 		.ascii	"long unsigned int\000"
+ 336      20756E73 
+ 336      69676E65 
+ 336      6420696E 
+ 336      7400
+ 337              	.LASF7:
+ 338 004c 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 338      206C6F6E 
+ 338      6720756E 
+ 338      7369676E 
+ 338      65642069 
+ 339              	.LASF15:
+ 340 0063 433A5C55 		.ascii	"C:\\Users\\Admin\\Desktop\\Organizer Badge\\Organiz"
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cckbZmwQ.s 			page 8
+
+
+ 340      73657273 
+ 340      5C41646D 
+ 340      696E5C44 
+ 340      65736B74 
+ 341 0091 65725F42 		.ascii	"er_Badge\\Organizer_Badge.cydsn\000"
+ 341      61646765 
+ 341      5C4F7267 
+ 341      616E697A 
+ 341      65725F42 
+ 342              	.LASF9:
+ 343 00b0 666C6F61 		.ascii	"float\000"
+ 343      7400
+ 344              	.LASF13:
+ 345 00b6 474E5520 		.ascii	"GNU C 4.8.4 20140526 (release) [ARM/embedded-4_8-br"
+ 345      4320342E 
+ 345      382E3420 
+ 345      32303134 
+ 345      30353236 
+ 346 00e9 616E6368 		.ascii	"anch revision 211358] -mcpu=cortex-m0 -mthumb -g -O"
+ 346      20726576 
+ 346      6973696F 
+ 346      6E203231 
+ 346      31333538 
+ 347 011c 30202D66 		.ascii	"0 -ffunction-sections\000"
+ 347      66756E63 
+ 347      74696F6E 
+ 347      2D736563 
+ 347      74696F6E 
+ 348              	.LASF1:
+ 349 0132 756E7369 		.ascii	"unsigned char\000"
+ 349      676E6564 
+ 349      20636861 
+ 349      7200
+ 350              	.LASF11:
+ 351 0140 63686172 		.ascii	"char\000"
+ 351      00
+ 352              	.LASF4:
+ 353 0145 6C6F6E67 		.ascii	"long int\000"
+ 353      20696E74 
+ 353      00
+ 354              	.LASF10:
+ 355 014e 646F7562 		.ascii	"double\000"
+ 355      6C6500
+ 356              	.LASF3:
+ 357 0155 73686F72 		.ascii	"short unsigned int\000"
+ 357      7420756E 
+ 357      7369676E 
+ 357      65642069 
+ 357      6E7400
+ 358              	.LASF0:
+ 359 0168 7369676E 		.ascii	"signed char\000"
+ 359      65642063 
+ 359      68617200 
+ 360              	.LASF18:
+ 361 0174 73746174 		.ascii	"state\000"
+ 361      6500
+ 362              	.LASF12:
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cckbZmwQ.s 			page 9
+
+
+ 363 017a 73697A65 		.ascii	"sizetype\000"
+ 363      74797065 
+ 363      00
+ 364              	.LASF2:
+ 365 0183 73686F72 		.ascii	"short int\000"
+ 365      7420696E 
+ 365      7400
+ 366              	.LASF14:
+ 367 018d 2E5C7374 		.ascii	".\\state.c\000"
+ 367      6174652E 
+ 367      6300
+ 368              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.8.4 20140526 (release) [ARM/embedded-4_8-br

@@ -1,0 +1,812 @@
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccYFKPSd.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 6
+  10              		.eabi_attribute 34, 0
+  11              		.eabi_attribute 18, 4
+  12              		.code	16
+  13              		.file	"main.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.rodata
+  18              		.align	2
+  19              	.LC1:
+  20 0000 534F530A 		.ascii	"SOS\012\000"
+  20      00
+  21 0005 000000   		.section	.text.main,"ax",%progbits
+  22              		.align	2
+  23              		.global	main
+  24              		.code	16
+  25              		.thumb_func
+  26              		.type	main, %function
+  27              	main:
+  28              	.LFB33:
+  29              		.file 1 ".\\main.c"
+   1:.\main.c      **** /* ========================================
+   2:.\main.c      ****  *
+   3:.\main.c      ****  * Red Badge source code. The volunteer badge
+   4:.\main.c      ****  * is used to send encoded morse code message.
+   5:.\main.c      ****  *
+   6:.\main.c      ****  * Author(s): Ryan Grandgenett <rmgrandgenett@unomaha.edu>
+   7:.\main.c      ****  *
+   8:.\main.c      ****  * Eye Color: Red
+   9:.\main.c      ****  * Stage1: Morse Code
+  10:.\main.c      ****  * Stage2: Binary
+  11:.\main.c      ****  * Stage3: Substitution
+  12:.\main.c      ****  * Stage4: Serial
+  13:.\main.c      ****  * Stage5: Organizer
+  14:.\main.c      ****  *
+  15:.\main.c      ****  * Serial: Print the morse code output
+  16:.\main.c      ****  *
+  17:.\main.c      ****  * Copyright Nullify, 2016
+  18:.\main.c      ****  * All Rights Reserved
+  19:.\main.c      ****  * UNPUBLISHED, LICENSED SOFTWARE.
+  20:.\main.c      ****  *
+  21:.\main.c      ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+  22:.\main.c      ****  * WHICH IS THE PROPERTY OF NULLIY.
+  23:.\main.c      ****  *
+  24:.\main.c      ****  * ========================================
+  25:.\main.c      **** */
+  26:.\main.c      **** #include <project.h>
+  27:.\main.c      **** #include <string.h>
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccYFKPSd.s 			page 2
+
+
+  28:.\main.c      **** #include <stdio.h>
+  29:.\main.c      **** #include "lightlib.h"
+  30:.\main.c      **** #include "togglelib.h"
+  31:.\main.c      **** #include "state.h"
+  32:.\main.c      **** #include "morse.h"
+  33:.\main.c      **** #include "binary.h"
+  34:.\main.c      **** #include "substitution.h"
+  35:.\main.c      **** 
+  36:.\main.c      **** int main()
+  37:.\main.c      **** {
+  30              		.loc 1 37 0
+  31              		.cfi_startproc
+  32 0000 80B5     		push	{r7, lr}
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 7, -8
+  35              		.cfi_offset 14, -4
+  36 0002 94B0     		sub	sp, sp, #80
+  37              		.cfi_def_cfa_offset 88
+  38 0004 00AF     		add	r7, sp, #0
+  39              		.cfi_def_cfa_register 7
+  38:.\main.c      ****     uint8 morse_sequance[MAX_SEQUENCE_SIZE] = {LEFT_TOGGLE, LEFT_TOGGLE, LEFT_TOGGLE, LEFT_TOGGLE, 
+  40              		.loc 1 38 0
+  41 0006 3B1C     		mov	r3, r7
+  42 0008 3C33     		add	r3, r3, #60
+  43 000a 0022     		mov	r2, #0
+  44 000c 1A60     		str	r2, [r3]
+  45 000e 0022     		mov	r2, #0
+  46 0010 5A60     		str	r2, [r3, #4]
+  47 0012 0022     		mov	r2, #0
+  48 0014 9A60     		str	r2, [r3, #8]
+  49 0016 0022     		mov	r2, #0
+  50 0018 DA60     		str	r2, [r3, #12]
+  51 001a 0022     		mov	r2, #0
+  52 001c 1A61     		str	r2, [r3, #16]
+  53 001e 3B1C     		mov	r3, r7
+  54 0020 3C33     		add	r3, r3, #60
+  55 0022 0122     		mov	r2, #1
+  56 0024 1A70     		strb	r2, [r3]
+  57 0026 3B1C     		mov	r3, r7
+  58 0028 3C33     		add	r3, r3, #60
+  59 002a 0122     		mov	r2, #1
+  60 002c 5A70     		strb	r2, [r3, #1]
+  61 002e 3B1C     		mov	r3, r7
+  62 0030 3C33     		add	r3, r3, #60
+  63 0032 0122     		mov	r2, #1
+  64 0034 9A70     		strb	r2, [r3, #2]
+  65 0036 3B1C     		mov	r3, r7
+  66 0038 3C33     		add	r3, r3, #60
+  67 003a 0122     		mov	r2, #1
+  68 003c DA70     		strb	r2, [r3, #3]
+  39:.\main.c      ****     uint8 binary_sequance[MAX_SEQUENCE_SIZE] = {RIGHT_TOGGLE, RIGHT_TOGGLE, RIGHT_TOGGLE, RIGHT_TOG
+  69              		.loc 1 39 0
+  70 003e 3B1C     		mov	r3, r7
+  71 0040 2833     		add	r3, r3, #40
+  72 0042 0022     		mov	r2, #0
+  73 0044 1A60     		str	r2, [r3]
+  74 0046 0022     		mov	r2, #0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccYFKPSd.s 			page 3
+
+
+  75 0048 5A60     		str	r2, [r3, #4]
+  76 004a 0022     		mov	r2, #0
+  77 004c 9A60     		str	r2, [r3, #8]
+  78 004e 0022     		mov	r2, #0
+  79 0050 DA60     		str	r2, [r3, #12]
+  80 0052 0022     		mov	r2, #0
+  81 0054 1A61     		str	r2, [r3, #16]
+  82 0056 3B1C     		mov	r3, r7
+  83 0058 2833     		add	r3, r3, #40
+  84 005a 0222     		mov	r2, #2
+  85 005c 1A70     		strb	r2, [r3]
+  86 005e 3B1C     		mov	r3, r7
+  87 0060 2833     		add	r3, r3, #40
+  88 0062 0222     		mov	r2, #2
+  89 0064 5A70     		strb	r2, [r3, #1]
+  90 0066 3B1C     		mov	r3, r7
+  91 0068 2833     		add	r3, r3, #40
+  92 006a 0222     		mov	r2, #2
+  93 006c 9A70     		strb	r2, [r3, #2]
+  94 006e 3B1C     		mov	r3, r7
+  95 0070 2833     		add	r3, r3, #40
+  96 0072 0222     		mov	r2, #2
+  97 0074 DA70     		strb	r2, [r3, #3]
+  40:.\main.c      ****     uint8 substitution_sequance[MAX_SEQUENCE_SIZE] = {LEFT_TOGGLE, LEFT_TOGGLE, LEFT_TOGGLE, LEFT_T
+  98              		.loc 1 40 0
+  99 0076 3B1C     		mov	r3, r7
+ 100 0078 1433     		add	r3, r3, #20
+ 101 007a 0022     		mov	r2, #0
+ 102 007c 1A60     		str	r2, [r3]
+ 103 007e 0022     		mov	r2, #0
+ 104 0080 5A60     		str	r2, [r3, #4]
+ 105 0082 0022     		mov	r2, #0
+ 106 0084 9A60     		str	r2, [r3, #8]
+ 107 0086 0022     		mov	r2, #0
+ 108 0088 DA60     		str	r2, [r3, #12]
+ 109 008a 0022     		mov	r2, #0
+ 110 008c 1A61     		str	r2, [r3, #16]
+ 111 008e 3B1C     		mov	r3, r7
+ 112 0090 1433     		add	r3, r3, #20
+ 113 0092 0122     		mov	r2, #1
+ 114 0094 1A70     		strb	r2, [r3]
+ 115 0096 3B1C     		mov	r3, r7
+ 116 0098 1433     		add	r3, r3, #20
+ 117 009a 0122     		mov	r2, #1
+ 118 009c 5A70     		strb	r2, [r3, #1]
+ 119 009e 3B1C     		mov	r3, r7
+ 120 00a0 1433     		add	r3, r3, #20
+ 121 00a2 0122     		mov	r2, #1
+ 122 00a4 9A70     		strb	r2, [r3, #2]
+ 123 00a6 3B1C     		mov	r3, r7
+ 124 00a8 1433     		add	r3, r3, #20
+ 125 00aa 0122     		mov	r2, #1
+ 126 00ac DA70     		strb	r2, [r3, #3]
+  41:.\main.c      ****     uint8 organizer_sequance[MAX_SEQUENCE_SIZE] = {RIGHT_TOGGLE, RIGHT_TOGGLE, RIGHT_TOGGLE, RIGHT_
+ 127              		.loc 1 41 0
+ 128 00ae 3B1C     		mov	r3, r7
+ 129 00b0 0022     		mov	r2, #0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccYFKPSd.s 			page 4
+
+
+ 130 00b2 1A60     		str	r2, [r3]
+ 131 00b4 0022     		mov	r2, #0
+ 132 00b6 5A60     		str	r2, [r3, #4]
+ 133 00b8 0022     		mov	r2, #0
+ 134 00ba 9A60     		str	r2, [r3, #8]
+ 135 00bc 0022     		mov	r2, #0
+ 136 00be DA60     		str	r2, [r3, #12]
+ 137 00c0 0022     		mov	r2, #0
+ 138 00c2 1A61     		str	r2, [r3, #16]
+ 139 00c4 3B1C     		mov	r3, r7
+ 140 00c6 0222     		mov	r2, #2
+ 141 00c8 1A70     		strb	r2, [r3]
+ 142 00ca 3B1C     		mov	r3, r7
+ 143 00cc 0222     		mov	r2, #2
+ 144 00ce 5A70     		strb	r2, [r3, #1]
+ 145 00d0 3B1C     		mov	r3, r7
+ 146 00d2 0222     		mov	r2, #2
+ 147 00d4 9A70     		strb	r2, [r3, #2]
+ 148 00d6 3B1C     		mov	r3, r7
+ 149 00d8 0222     		mov	r2, #2
+ 150 00da DA70     		strb	r2, [r3, #3]
+  42:.\main.c      **** 
+  43:.\main.c      ****     /* Enable interrupts (needed for toggles and organizer PWRM) */
+  44:.\main.c      ****     CyGlobalIntEnable;
+ 151              		.loc 1 44 0
+ 152              	@ 44 ".\main.c" 1
+ 153 00dc 62B6     		CPSIE   i
+ 154              	@ 0 "" 2
+  45:.\main.c      **** 
+  46:.\main.c      ****     /* Enable toggle buttons */
+  47:.\main.c      ****     enable_toggle_interrupts();
+ 155              		.loc 1 47 0
+ 156              		.code	16
+ 157 00de FFF7FEFF 		bl	enable_toggle_interrupts
+  48:.\main.c      **** 
+  49:.\main.c      ****     /* Initialize LEDs to off and default color value */
+  50:.\main.c      ****     init_led(RED);
+ 158              		.loc 1 50 0
+ 159 00e2 0120     		mov	r0, #1
+ 160 00e4 FFF7FEFF 		bl	init_led
+  51:.\main.c      ****       
+  52:.\main.c      ****     /* Set the toggle button magic sequences */
+  53:.\main.c      ****     init_magic_toggle_sequance(MORSE, morse_sequance);
+ 161              		.loc 1 53 0
+ 162 00e8 3B1C     		mov	r3, r7
+ 163 00ea 3C33     		add	r3, r3, #60
+ 164 00ec 0120     		mov	r0, #1
+ 165 00ee 191C     		mov	r1, r3
+ 166 00f0 FFF7FEFF 		bl	init_magic_toggle_sequance
+  54:.\main.c      ****     init_magic_toggle_sequance(BINARY, binary_sequance);
+ 167              		.loc 1 54 0
+ 168 00f4 3B1C     		mov	r3, r7
+ 169 00f6 2833     		add	r3, r3, #40
+ 170 00f8 0220     		mov	r0, #2
+ 171 00fa 191C     		mov	r1, r3
+ 172 00fc FFF7FEFF 		bl	init_magic_toggle_sequance
+  55:.\main.c      ****     init_magic_toggle_sequance(SUBSTITUTION, substitution_sequance);
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccYFKPSd.s 			page 5
+
+
+ 173              		.loc 1 55 0
+ 174 0100 3B1C     		mov	r3, r7
+ 175 0102 1433     		add	r3, r3, #20
+ 176 0104 0320     		mov	r0, #3
+ 177 0106 191C     		mov	r1, r3
+ 178 0108 FFF7FEFF 		bl	init_magic_toggle_sequance
+  56:.\main.c      ****     init_magic_toggle_sequance(ORGANIZER, organizer_sequance);
+ 179              		.loc 1 56 0
+ 180 010c 3B1C     		mov	r3, r7
+ 181 010e 0420     		mov	r0, #4
+ 182 0110 191C     		mov	r1, r3
+ 183 0112 FFF7FEFF 		bl	init_magic_toggle_sequance
+  57:.\main.c      ****     
+  58:.\main.c      ****     /* Set the default state to volunteer badge settings */
+  59:.\main.c      ****      badge_state = MORSE;
+ 184              		.loc 1 59 0
+ 185 0116 174B     		ldr	r3, .L9
+ 186 0118 0122     		mov	r2, #1
+ 187 011a 1A70     		strb	r2, [r3]
+ 188              	.L8:
+  60:.\main.c      ****     
+  61:.\main.c      ****     for(;;)
+  62:.\main.c      ****     {   switch(badge_state) {
+ 189              		.loc 1 62 0
+ 190 011c 154B     		ldr	r3, .L9
+ 191 011e 1B78     		ldrb	r3, [r3]
+ 192 0120 DBB2     		uxtb	r3, r3
+ 193 0122 022B     		cmp	r3, #2
+ 194 0124 11D0     		beq	.L3
+ 195 0126 02DC     		bgt	.L4
+ 196 0128 012B     		cmp	r3, #1
+ 197 012a 05D0     		beq	.L5
+  63:.\main.c      ****         case MORSE:
+  64:.\main.c      ****             init_led(RED);
+  65:.\main.c      ****             morse_message(LEFT_RIGHT_LED, "SOS\n");
+  66:.\main.c      ****         break;
+  67:.\main.c      ****         case BINARY:
+  68:.\main.c      ****             init_led(MAGENTA);
+  69:.\main.c      ****             binary_message("SOS\n");
+  70:.\main.c      ****         break;
+  71:.\main.c      ****         case SUBSTITUTION:
+  72:.\main.c      ****             init_led(YELLOW);
+  73:.\main.c      ****             substitution_message("SOS\n");
+  74:.\main.c      ****         break;
+  75:.\main.c      ****         case ORGANIZER:
+  76:.\main.c      ****             CySysPmSleep();
+  77:.\main.c      ****         break;
+  78:.\main.c      ****         /* Else we are in the ORGANIZER state so let the PWM do all the work  */
+  79:.\main.c      ****         }      
+  80:.\main.c      ****     }
+ 198              		.loc 1 80 0
+ 199 012c F6E7     		b	.L8
+ 200              	.L4:
+  62:.\main.c      ****     {   switch(badge_state) {
+ 201              		.loc 1 62 0
+ 202 012e 032B     		cmp	r3, #3
+ 203 0130 13D0     		beq	.L6
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccYFKPSd.s 			page 6
+
+
+ 204 0132 042B     		cmp	r3, #4
+ 205 0134 19D0     		beq	.L7
+ 206              		.loc 1 80 0
+ 207 0136 F1E7     		b	.L8
+ 208              	.L5:
+  64:.\main.c      ****             init_led(RED);
+ 209              		.loc 1 64 0
+ 210 0138 0120     		mov	r0, #1
+ 211 013a FFF7FEFF 		bl	init_led
+  65:.\main.c      ****             morse_message(LEFT_RIGHT_LED, "SOS\n");
+ 212              		.loc 1 65 0
+ 213 013e 0E4B     		ldr	r3, .L9+4
+ 214 0140 0320     		mov	r0, #3
+ 215 0142 191C     		mov	r1, r3
+ 216 0144 FFF7FEFF 		bl	morse_message
+  66:.\main.c      ****         break;
+ 217              		.loc 1 66 0
+ 218 0148 12E0     		b	.L2
+ 219              	.L3:
+  68:.\main.c      ****             init_led(MAGENTA);
+ 220              		.loc 1 68 0
+ 221 014a 0320     		mov	r0, #3
+ 222 014c FFF7FEFF 		bl	init_led
+  69:.\main.c      ****             binary_message("SOS\n");
+ 223              		.loc 1 69 0
+ 224 0150 094B     		ldr	r3, .L9+4
+ 225 0152 181C     		mov	r0, r3
+ 226 0154 FFF7FEFF 		bl	binary_message
+  70:.\main.c      ****         break;
+ 227              		.loc 1 70 0
+ 228 0158 0AE0     		b	.L2
+ 229              	.L6:
+  72:.\main.c      ****             init_led(YELLOW);
+ 230              		.loc 1 72 0
+ 231 015a 0520     		mov	r0, #5
+ 232 015c FFF7FEFF 		bl	init_led
+  73:.\main.c      ****             substitution_message("SOS\n");
+ 233              		.loc 1 73 0
+ 234 0160 054B     		ldr	r3, .L9+4
+ 235 0162 181C     		mov	r0, r3
+ 236 0164 FFF7FEFF 		bl	substitution_message
+  74:.\main.c      ****         break;
+ 237              		.loc 1 74 0
+ 238 0168 02E0     		b	.L2
+ 239              	.L7:
+  76:.\main.c      ****             CySysPmSleep();
+ 240              		.loc 1 76 0
+ 241 016a FFF7FEFF 		bl	CySysPmSleep
+  77:.\main.c      ****         break;
+ 242              		.loc 1 77 0
+ 243 016e C046     		mov	r8, r8
+ 244              	.L2:
+ 245              		.loc 1 80 0
+ 246 0170 D4E7     		b	.L8
+ 247              	.L10:
+ 248 0172 C046     		.align	2
+ 249              	.L9:
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccYFKPSd.s 			page 7
+
+
+ 250 0174 00000000 		.word	badge_state
+ 251 0178 00000000 		.word	.LC1
+ 252              		.cfi_endproc
+ 253              	.LFE33:
+ 254              		.size	main, .-main
+ 255              		.text
+ 256              	.Letext0:
+ 257              		.file 2 ".\\Generated_Source\\PSoC4/cytypes.h"
+ 258              		.file 3 ".\\state.h"
+ 259              		.section	.debug_info,"",%progbits
+ 260              	.Ldebug_info0:
+ 261 0000 03010000 		.4byte	0x103
+ 262 0004 0400     		.2byte	0x4
+ 263 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 264 000a 04       		.byte	0x4
+ 265 000b 01       		.uleb128 0x1
+ 266 000c BC000000 		.4byte	.LASF17
+ 267 0010 01       		.byte	0x1
+ 268 0011 B8010000 		.4byte	.LASF18
+ 269 0015 30000000 		.4byte	.LASF19
+ 270 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 271 001d 00000000 		.4byte	0
+ 272 0021 00000000 		.4byte	.Ldebug_line0
+ 273 0025 02       		.uleb128 0x2
+ 274 0026 01       		.byte	0x1
+ 275 0027 06       		.byte	0x6
+ 276 0028 93010000 		.4byte	.LASF0
+ 277 002c 02       		.uleb128 0x2
+ 278 002d 01       		.byte	0x1
+ 279 002e 08       		.byte	0x8
+ 280 002f 38010000 		.4byte	.LASF1
+ 281 0033 02       		.uleb128 0x2
+ 282 0034 02       		.byte	0x2
+ 283 0035 05       		.byte	0x5
+ 284 0036 8F000000 		.4byte	.LASF2
+ 285 003a 02       		.uleb128 0x2
+ 286 003b 02       		.byte	0x2
+ 287 003c 07       		.byte	0x7
+ 288 003d 80010000 		.4byte	.LASF3
+ 289 0041 02       		.uleb128 0x2
+ 290 0042 04       		.byte	0x4
+ 291 0043 05       		.byte	0x5
+ 292 0044 4B010000 		.4byte	.LASF4
+ 293 0048 02       		.uleb128 0x2
+ 294 0049 04       		.byte	0x4
+ 295 004a 07       		.byte	0x7
+ 296 004b 7D000000 		.4byte	.LASF5
+ 297 004f 02       		.uleb128 0x2
+ 298 0050 08       		.byte	0x8
+ 299 0051 05       		.byte	0x5
+ 300 0052 00000000 		.4byte	.LASF6
+ 301 0056 02       		.uleb128 0x2
+ 302 0057 08       		.byte	0x8
+ 303 0058 07       		.byte	0x7
+ 304 0059 99000000 		.4byte	.LASF7
+ 305 005d 03       		.uleb128 0x3
+ 306 005e 04       		.byte	0x4
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccYFKPSd.s 			page 8
+
+
+ 307 005f 05       		.byte	0x5
+ 308 0060 696E7400 		.ascii	"int\000"
+ 309 0064 02       		.uleb128 0x2
+ 310 0065 04       		.byte	0x4
+ 311 0066 07       		.byte	0x7
+ 312 0067 1E000000 		.4byte	.LASF8
+ 313 006b 04       		.uleb128 0x4
+ 314 006c 77000000 		.4byte	.LASF20
+ 315 0070 02       		.byte	0x2
+ 316 0071 A1       		.byte	0xa1
+ 317 0072 2C000000 		.4byte	0x2c
+ 318 0076 02       		.uleb128 0x2
+ 319 0077 04       		.byte	0x4
+ 320 0078 04       		.byte	0x4
+ 321 0079 B2010000 		.4byte	.LASF9
+ 322 007d 02       		.uleb128 0x2
+ 323 007e 08       		.byte	0x8
+ 324 007f 04       		.byte	0x4
+ 325 0080 79010000 		.4byte	.LASF10
+ 326 0084 02       		.uleb128 0x2
+ 327 0085 01       		.byte	0x1
+ 328 0086 08       		.byte	0x8
+ 329 0087 46010000 		.4byte	.LASF11
+ 330 008b 05       		.uleb128 0x5
+ 331 008c 6B000000 		.4byte	0x6b
+ 332 0090 02       		.uleb128 0x2
+ 333 0091 04       		.byte	0x4
+ 334 0092 07       		.byte	0x7
+ 335 0093 C1010000 		.4byte	.LASF12
+ 336 0097 06       		.uleb128 0x6
+ 337 0098 6B000000 		.4byte	0x6b
+ 338 009c A7000000 		.4byte	0xa7
+ 339 00a0 07       		.uleb128 0x7
+ 340 00a1 90000000 		.4byte	0x90
+ 341 00a5 13       		.byte	0x13
+ 342 00a6 00       		.byte	0
+ 343 00a7 08       		.uleb128 0x8
+ 344 00a8 2B000000 		.4byte	.LASF21
+ 345 00ac 01       		.byte	0x1
+ 346 00ad 24       		.byte	0x24
+ 347 00ae 5D000000 		.4byte	0x5d
+ 348 00b2 00000000 		.4byte	.LFB33
+ 349 00b6 7C010000 		.4byte	.LFE33-.LFB33
+ 350 00ba 01       		.uleb128 0x1
+ 351 00bb 9C       		.byte	0x9c
+ 352 00bc FB000000 		.4byte	0xfb
+ 353 00c0 09       		.uleb128 0x9
+ 354 00c1 6A010000 		.4byte	.LASF13
+ 355 00c5 01       		.byte	0x1
+ 356 00c6 26       		.byte	0x26
+ 357 00c7 97000000 		.4byte	0x97
+ 358 00cb 02       		.uleb128 0x2
+ 359 00cc 91       		.byte	0x91
+ 360 00cd 64       		.sleb128 -28
+ 361 00ce 09       		.uleb128 0x9
+ 362 00cf 0E000000 		.4byte	.LASF14
+ 363 00d3 01       		.byte	0x1
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccYFKPSd.s 			page 9
+
+
+ 364 00d4 27       		.byte	0x27
+ 365 00d5 97000000 		.4byte	0x97
+ 366 00d9 02       		.uleb128 0x2
+ 367 00da 91       		.byte	0x91
+ 368 00db 50       		.sleb128 -48
+ 369 00dc 09       		.uleb128 0x9
+ 370 00dd 54010000 		.4byte	.LASF15
+ 371 00e1 01       		.byte	0x1
+ 372 00e2 28       		.byte	0x28
+ 373 00e3 97000000 		.4byte	0x97
+ 374 00e7 03       		.uleb128 0x3
+ 375 00e8 91       		.byte	0x91
+ 376 00e9 BC7F     		.sleb128 -68
+ 377 00eb 09       		.uleb128 0x9
+ 378 00ec 9F010000 		.4byte	.LASF16
+ 379 00f0 01       		.byte	0x1
+ 380 00f1 29       		.byte	0x29
+ 381 00f2 97000000 		.4byte	0x97
+ 382 00f6 03       		.uleb128 0x3
+ 383 00f7 91       		.byte	0x91
+ 384 00f8 A87F     		.sleb128 -88
+ 385 00fa 00       		.byte	0
+ 386 00fb 0A       		.uleb128 0xa
+ 387 00fc B0000000 		.4byte	.LASF22
+ 388 0100 03       		.byte	0x3
+ 389 0101 17       		.byte	0x17
+ 390 0102 8B000000 		.4byte	0x8b
+ 391 0106 00       		.byte	0
+ 392              		.section	.debug_abbrev,"",%progbits
+ 393              	.Ldebug_abbrev0:
+ 394 0000 01       		.uleb128 0x1
+ 395 0001 11       		.uleb128 0x11
+ 396 0002 01       		.byte	0x1
+ 397 0003 25       		.uleb128 0x25
+ 398 0004 0E       		.uleb128 0xe
+ 399 0005 13       		.uleb128 0x13
+ 400 0006 0B       		.uleb128 0xb
+ 401 0007 03       		.uleb128 0x3
+ 402 0008 0E       		.uleb128 0xe
+ 403 0009 1B       		.uleb128 0x1b
+ 404 000a 0E       		.uleb128 0xe
+ 405 000b 55       		.uleb128 0x55
+ 406 000c 17       		.uleb128 0x17
+ 407 000d 11       		.uleb128 0x11
+ 408 000e 01       		.uleb128 0x1
+ 409 000f 10       		.uleb128 0x10
+ 410 0010 17       		.uleb128 0x17
+ 411 0011 00       		.byte	0
+ 412 0012 00       		.byte	0
+ 413 0013 02       		.uleb128 0x2
+ 414 0014 24       		.uleb128 0x24
+ 415 0015 00       		.byte	0
+ 416 0016 0B       		.uleb128 0xb
+ 417 0017 0B       		.uleb128 0xb
+ 418 0018 3E       		.uleb128 0x3e
+ 419 0019 0B       		.uleb128 0xb
+ 420 001a 03       		.uleb128 0x3
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccYFKPSd.s 			page 10
+
+
+ 421 001b 0E       		.uleb128 0xe
+ 422 001c 00       		.byte	0
+ 423 001d 00       		.byte	0
+ 424 001e 03       		.uleb128 0x3
+ 425 001f 24       		.uleb128 0x24
+ 426 0020 00       		.byte	0
+ 427 0021 0B       		.uleb128 0xb
+ 428 0022 0B       		.uleb128 0xb
+ 429 0023 3E       		.uleb128 0x3e
+ 430 0024 0B       		.uleb128 0xb
+ 431 0025 03       		.uleb128 0x3
+ 432 0026 08       		.uleb128 0x8
+ 433 0027 00       		.byte	0
+ 434 0028 00       		.byte	0
+ 435 0029 04       		.uleb128 0x4
+ 436 002a 16       		.uleb128 0x16
+ 437 002b 00       		.byte	0
+ 438 002c 03       		.uleb128 0x3
+ 439 002d 0E       		.uleb128 0xe
+ 440 002e 3A       		.uleb128 0x3a
+ 441 002f 0B       		.uleb128 0xb
+ 442 0030 3B       		.uleb128 0x3b
+ 443 0031 0B       		.uleb128 0xb
+ 444 0032 49       		.uleb128 0x49
+ 445 0033 13       		.uleb128 0x13
+ 446 0034 00       		.byte	0
+ 447 0035 00       		.byte	0
+ 448 0036 05       		.uleb128 0x5
+ 449 0037 35       		.uleb128 0x35
+ 450 0038 00       		.byte	0
+ 451 0039 49       		.uleb128 0x49
+ 452 003a 13       		.uleb128 0x13
+ 453 003b 00       		.byte	0
+ 454 003c 00       		.byte	0
+ 455 003d 06       		.uleb128 0x6
+ 456 003e 01       		.uleb128 0x1
+ 457 003f 01       		.byte	0x1
+ 458 0040 49       		.uleb128 0x49
+ 459 0041 13       		.uleb128 0x13
+ 460 0042 01       		.uleb128 0x1
+ 461 0043 13       		.uleb128 0x13
+ 462 0044 00       		.byte	0
+ 463 0045 00       		.byte	0
+ 464 0046 07       		.uleb128 0x7
+ 465 0047 21       		.uleb128 0x21
+ 466 0048 00       		.byte	0
+ 467 0049 49       		.uleb128 0x49
+ 468 004a 13       		.uleb128 0x13
+ 469 004b 2F       		.uleb128 0x2f
+ 470 004c 0B       		.uleb128 0xb
+ 471 004d 00       		.byte	0
+ 472 004e 00       		.byte	0
+ 473 004f 08       		.uleb128 0x8
+ 474 0050 2E       		.uleb128 0x2e
+ 475 0051 01       		.byte	0x1
+ 476 0052 3F       		.uleb128 0x3f
+ 477 0053 19       		.uleb128 0x19
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccYFKPSd.s 			page 11
+
+
+ 478 0054 03       		.uleb128 0x3
+ 479 0055 0E       		.uleb128 0xe
+ 480 0056 3A       		.uleb128 0x3a
+ 481 0057 0B       		.uleb128 0xb
+ 482 0058 3B       		.uleb128 0x3b
+ 483 0059 0B       		.uleb128 0xb
+ 484 005a 49       		.uleb128 0x49
+ 485 005b 13       		.uleb128 0x13
+ 486 005c 11       		.uleb128 0x11
+ 487 005d 01       		.uleb128 0x1
+ 488 005e 12       		.uleb128 0x12
+ 489 005f 06       		.uleb128 0x6
+ 490 0060 40       		.uleb128 0x40
+ 491 0061 18       		.uleb128 0x18
+ 492 0062 9642     		.uleb128 0x2116
+ 493 0064 19       		.uleb128 0x19
+ 494 0065 01       		.uleb128 0x1
+ 495 0066 13       		.uleb128 0x13
+ 496 0067 00       		.byte	0
+ 497 0068 00       		.byte	0
+ 498 0069 09       		.uleb128 0x9
+ 499 006a 34       		.uleb128 0x34
+ 500 006b 00       		.byte	0
+ 501 006c 03       		.uleb128 0x3
+ 502 006d 0E       		.uleb128 0xe
+ 503 006e 3A       		.uleb128 0x3a
+ 504 006f 0B       		.uleb128 0xb
+ 505 0070 3B       		.uleb128 0x3b
+ 506 0071 0B       		.uleb128 0xb
+ 507 0072 49       		.uleb128 0x49
+ 508 0073 13       		.uleb128 0x13
+ 509 0074 02       		.uleb128 0x2
+ 510 0075 18       		.uleb128 0x18
+ 511 0076 00       		.byte	0
+ 512 0077 00       		.byte	0
+ 513 0078 0A       		.uleb128 0xa
+ 514 0079 34       		.uleb128 0x34
+ 515 007a 00       		.byte	0
+ 516 007b 03       		.uleb128 0x3
+ 517 007c 0E       		.uleb128 0xe
+ 518 007d 3A       		.uleb128 0x3a
+ 519 007e 0B       		.uleb128 0xb
+ 520 007f 3B       		.uleb128 0x3b
+ 521 0080 0B       		.uleb128 0xb
+ 522 0081 49       		.uleb128 0x49
+ 523 0082 13       		.uleb128 0x13
+ 524 0083 3F       		.uleb128 0x3f
+ 525 0084 19       		.uleb128 0x19
+ 526 0085 3C       		.uleb128 0x3c
+ 527 0086 19       		.uleb128 0x19
+ 528 0087 00       		.byte	0
+ 529 0088 00       		.byte	0
+ 530 0089 00       		.byte	0
+ 531              		.section	.debug_aranges,"",%progbits
+ 532 0000 1C000000 		.4byte	0x1c
+ 533 0004 0200     		.2byte	0x2
+ 534 0006 00000000 		.4byte	.Ldebug_info0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccYFKPSd.s 			page 12
+
+
+ 535 000a 04       		.byte	0x4
+ 536 000b 00       		.byte	0
+ 537 000c 0000     		.2byte	0
+ 538 000e 0000     		.2byte	0
+ 539 0010 00000000 		.4byte	.LFB33
+ 540 0014 7C010000 		.4byte	.LFE33-.LFB33
+ 541 0018 00000000 		.4byte	0
+ 542 001c 00000000 		.4byte	0
+ 543              		.section	.debug_ranges,"",%progbits
+ 544              	.Ldebug_ranges0:
+ 545 0000 00000000 		.4byte	.LFB33
+ 546 0004 7C010000 		.4byte	.LFE33
+ 547 0008 00000000 		.4byte	0
+ 548 000c 00000000 		.4byte	0
+ 549              		.section	.debug_line,"",%progbits
+ 550              	.Ldebug_line0:
+ 551 0000 8F000000 		.section	.debug_str,"MS",%progbits,1
+ 551      02005200 
+ 551      00000201 
+ 551      FB0E0D00 
+ 551      01010101 
+ 552              	.LASF6:
+ 553 0000 6C6F6E67 		.ascii	"long long int\000"
+ 553      206C6F6E 
+ 553      6720696E 
+ 553      7400
+ 554              	.LASF14:
+ 555 000e 62696E61 		.ascii	"binary_sequance\000"
+ 555      72795F73 
+ 555      65717561 
+ 555      6E636500 
+ 556              	.LASF8:
+ 557 001e 756E7369 		.ascii	"unsigned int\000"
+ 557      676E6564 
+ 557      20696E74 
+ 557      00
+ 558              	.LASF21:
+ 559 002b 6D61696E 		.ascii	"main\000"
+ 559      00
+ 560              	.LASF19:
+ 561 0030 433A5C55 		.ascii	"C:\\Users\\Admin\\Desktop\\Student Badge\\Student_B"
+ 561      73657273 
+ 561      5C41646D 
+ 561      696E5C44 
+ 561      65736B74 
+ 562 005e 61646765 		.ascii	"adge\\Student_Badge.cydsn\000"
+ 562      5C537475 
+ 562      64656E74 
+ 562      5F426164 
+ 562      67652E63 
+ 563              	.LASF20:
+ 564 0077 75696E74 		.ascii	"uint8\000"
+ 564      3800
+ 565              	.LASF5:
+ 566 007d 6C6F6E67 		.ascii	"long unsigned int\000"
+ 566      20756E73 
+ 566      69676E65 
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccYFKPSd.s 			page 13
+
+
+ 566      6420696E 
+ 566      7400
+ 567              	.LASF2:
+ 568 008f 73686F72 		.ascii	"short int\000"
+ 568      7420696E 
+ 568      7400
+ 569              	.LASF7:
+ 570 0099 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 570      206C6F6E 
+ 570      6720756E 
+ 570      7369676E 
+ 570      65642069 
+ 571              	.LASF22:
+ 572 00b0 62616467 		.ascii	"badge_state\000"
+ 572      655F7374 
+ 572      61746500 
+ 573              	.LASF17:
+ 574 00bc 474E5520 		.ascii	"GNU C 4.8.4 20140526 (release) [ARM/embedded-4_8-br"
+ 574      4320342E 
+ 574      382E3420 
+ 574      32303134 
+ 574      30353236 
+ 575 00ef 616E6368 		.ascii	"anch revision 211358] -mcpu=cortex-m0 -mthumb -g -O"
+ 575      20726576 
+ 575      6973696F 
+ 575      6E203231 
+ 575      31333538 
+ 576 0122 30202D66 		.ascii	"0 -ffunction-sections\000"
+ 576      66756E63 
+ 576      74696F6E 
+ 576      2D736563 
+ 576      74696F6E 
+ 577              	.LASF1:
+ 578 0138 756E7369 		.ascii	"unsigned char\000"
+ 578      676E6564 
+ 578      20636861 
+ 578      7200
+ 579              	.LASF11:
+ 580 0146 63686172 		.ascii	"char\000"
+ 580      00
+ 581              	.LASF4:
+ 582 014b 6C6F6E67 		.ascii	"long int\000"
+ 582      20696E74 
+ 582      00
+ 583              	.LASF15:
+ 584 0154 73756273 		.ascii	"substitution_sequance\000"
+ 584      74697475 
+ 584      74696F6E 
+ 584      5F736571 
+ 584      75616E63 
+ 585              	.LASF13:
+ 586 016a 6D6F7273 		.ascii	"morse_sequance\000"
+ 586      655F7365 
+ 586      7175616E 
+ 586      636500
+ 587              	.LASF10:
+ 588 0179 646F7562 		.ascii	"double\000"
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccYFKPSd.s 			page 14
+
+
+ 588      6C6500
+ 589              	.LASF3:
+ 590 0180 73686F72 		.ascii	"short unsigned int\000"
+ 590      7420756E 
+ 590      7369676E 
+ 590      65642069 
+ 590      6E7400
+ 591              	.LASF0:
+ 592 0193 7369676E 		.ascii	"signed char\000"
+ 592      65642063 
+ 592      68617200 
+ 593              	.LASF16:
+ 594 019f 6F726761 		.ascii	"organizer_sequance\000"
+ 594      6E697A65 
+ 594      725F7365 
+ 594      7175616E 
+ 594      636500
+ 595              	.LASF9:
+ 596 01b2 666C6F61 		.ascii	"float\000"
+ 596      7400
+ 597              	.LASF18:
+ 598 01b8 2E5C6D61 		.ascii	".\\main.c\000"
+ 598      696E2E63 
+ 598      00
+ 599              	.LASF12:
+ 600 01c1 73697A65 		.ascii	"sizetype\000"
+ 600      74797065 
+ 600      00
+ 601              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.8.4 20140526 (release) [ARM/embedded-4_8-br

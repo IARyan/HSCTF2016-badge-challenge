@@ -1,0 +1,1880 @@
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccM5e7NB.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 6
+  10              		.eabi_attribute 34, 0
+  11              		.eabi_attribute 18, 4
+  12              		.code	16
+  13              		.file	"lightlib.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.comm	Left_LED_State,2,4
+  18              		.comm	Right_LED_State,2,4
+  19              		.comm	IR_LED_State,1,4
+  20              		.comm	Board_LED_State,1,4
+  21              		.section	.text.set_color,"ax",%progbits
+  22              		.align	2
+  23              		.global	set_color
+  24              		.code	16
+  25              		.thumb_func
+  26              		.type	set_color, %function
+  27              	set_color:
+  28              	.LFB33:
+  29              		.file 1 ".\\lightlib.c"
+   1:.\lightlib.c  **** /* ========================================
+   2:.\lightlib.c  ****  *
+   3:.\lightlib.c  ****  * Copyright Nullify, 2016
+   4:.\lightlib.c  ****  * All Rights Reserved
+   5:.\lightlib.c  ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:.\lightlib.c  ****  *
+   7:.\lightlib.c  ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:.\lightlib.c  ****  * WHICH IS THE PROPERTY OF NULLIY.
+   9:.\lightlib.c  ****  *
+  10:.\lightlib.c  ****  * ========================================
+  11:.\lightlib.c  **** */
+  12:.\lightlib.c  **** #include <project.h>
+  13:.\lightlib.c  **** #include "lightlib.h"
+  14:.\lightlib.c  **** 
+  15:.\lightlib.c  **** 
+  16:.\lightlib.c  **** /* Allocate a structure for each led in the project */
+  17:.\lightlib.c  **** volatile struct RGB_LED_State Left_LED_State;
+  18:.\lightlib.c  **** volatile struct RGB_LED_State Right_LED_State;
+  19:.\lightlib.c  **** volatile struct LED_State IR_LED_State;
+  20:.\lightlib.c  **** volatile struct LED_State Board_LED_State;
+  21:.\lightlib.c  **** 
+  22:.\lightlib.c  **** /*
+  23:.\lightlib.c  ****  * Sets the color of the of the passed in led_flag.
+  24:.\lightlib.c  ****  */
+  25:.\lightlib.c  **** void set_color(uint8 led_flag, uint8 color) {
+  30              		.loc 1 25 0
+  31              		.cfi_startproc
+  32 0000 80B5     		push	{r7, lr}
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccM5e7NB.s 			page 2
+
+
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 7, -8
+  35              		.cfi_offset 14, -4
+  36 0002 82B0     		sub	sp, sp, #8
+  37              		.cfi_def_cfa_offset 16
+  38 0004 00AF     		add	r7, sp, #0
+  39              		.cfi_def_cfa_register 7
+  40 0006 0A1C     		mov	r2, r1
+  41 0008 FB1D     		add	r3, r7, #7
+  42 000a 011C     		add	r1, r0, #0
+  43 000c 1970     		strb	r1, [r3]
+  44 000e BB1D     		add	r3, r7, #6
+  45 0010 1A70     		strb	r2, [r3]
+  26:.\lightlib.c  ****     switch(led_flag) {
+  46              		.loc 1 26 0
+  47 0012 FB1D     		add	r3, r7, #7
+  48 0014 1B78     		ldrb	r3, [r3]
+  49 0016 022B     		cmp	r3, #2
+  50 0018 08D0     		beq	.L3
+  51 001a 032B     		cmp	r3, #3
+  52 001c 0BD0     		beq	.L4
+  53 001e 012B     		cmp	r3, #1
+  54 0020 16D1     		bne	.L1
+  27:.\lightlib.c  ****         case LEFT_LED:
+  28:.\lightlib.c  ****             Left_LED_State.color = color;
+  55              		.loc 1 28 0
+  56 0022 0D4B     		ldr	r3, .L6
+  57 0024 BA1D     		add	r2, r7, #6
+  58 0026 1278     		ldrb	r2, [r2]
+  59 0028 5A70     		strb	r2, [r3, #1]
+  29:.\lightlib.c  ****         break;
+  60              		.loc 1 29 0
+  61 002a 11E0     		b	.L1
+  62              	.L3:
+  30:.\lightlib.c  ****         case RIGHT_LED:
+  31:.\lightlib.c  ****             Right_LED_State.color = color;
+  63              		.loc 1 31 0
+  64 002c 0B4B     		ldr	r3, .L6+4
+  65 002e BA1D     		add	r2, r7, #6
+  66 0030 1278     		ldrb	r2, [r2]
+  67 0032 5A70     		strb	r2, [r3, #1]
+  32:.\lightlib.c  ****         break;
+  68              		.loc 1 32 0
+  69 0034 0CE0     		b	.L1
+  70              	.L4:
+  33:.\lightlib.c  ****         case LEFT_RIGHT_LED:
+  34:.\lightlib.c  ****             set_color(LEFT_LED, color);
+  71              		.loc 1 34 0
+  72 0036 BB1D     		add	r3, r7, #6
+  73 0038 1B78     		ldrb	r3, [r3]
+  74 003a 0120     		mov	r0, #1
+  75 003c 191C     		mov	r1, r3
+  76 003e FFF7FEFF 		bl	set_color
+  35:.\lightlib.c  ****             set_color(RIGHT_LED, color);
+  77              		.loc 1 35 0
+  78 0042 BB1D     		add	r3, r7, #6
+  79 0044 1B78     		ldrb	r3, [r3]
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccM5e7NB.s 			page 3
+
+
+  80 0046 0220     		mov	r0, #2
+  81 0048 191C     		mov	r1, r3
+  82 004a FFF7FEFF 		bl	set_color
+  36:.\lightlib.c  ****         break;
+  83              		.loc 1 36 0
+  84 004e C046     		mov	r8, r8
+  85              	.L1:
+  37:.\lightlib.c  ****     }    
+  38:.\lightlib.c  **** }
+  86              		.loc 1 38 0
+  87 0050 BD46     		mov	sp, r7
+  88 0052 02B0     		add	sp, sp, #8
+  89              		@ sp needed
+  90 0054 80BD     		pop	{r7, pc}
+  91              	.L7:
+  92 0056 C046     		.align	2
+  93              	.L6:
+  94 0058 00000000 		.word	Left_LED_State
+  95 005c 00000000 		.word	Right_LED_State
+  96              		.cfi_endproc
+  97              	.LFE33:
+  98              		.size	set_color, .-set_color
+  99              		.section	.text.set_status,"ax",%progbits
+ 100              		.align	2
+ 101              		.global	set_status
+ 102              		.code	16
+ 103              		.thumb_func
+ 104              		.type	set_status, %function
+ 105              	set_status:
+ 106              	.LFB34:
+  39:.\lightlib.c  **** 
+  40:.\lightlib.c  **** void set_status(uint8 led_flag, uint8 status) {
+ 107              		.loc 1 40 0
+ 108              		.cfi_startproc
+ 109 0000 80B5     		push	{r7, lr}
+ 110              		.cfi_def_cfa_offset 8
+ 111              		.cfi_offset 7, -8
+ 112              		.cfi_offset 14, -4
+ 113 0002 82B0     		sub	sp, sp, #8
+ 114              		.cfi_def_cfa_offset 16
+ 115 0004 00AF     		add	r7, sp, #0
+ 116              		.cfi_def_cfa_register 7
+ 117 0006 0A1C     		mov	r2, r1
+ 118 0008 FB1D     		add	r3, r7, #7
+ 119 000a 011C     		add	r1, r0, #0
+ 120 000c 1970     		strb	r1, [r3]
+ 121 000e BB1D     		add	r3, r7, #6
+ 122 0010 1A70     		strb	r2, [r3]
+  41:.\lightlib.c  ****     switch(led_flag) {
+ 123              		.loc 1 41 0
+ 124 0012 FB1D     		add	r3, r7, #7
+ 125 0014 1B78     		ldrb	r3, [r3]
+ 126 0016 052B     		cmp	r3, #5
+ 127 0018 25D8     		bhi	.L8
+ 128 001a 9A00     		lsl	r2, r3, #2
+ 129 001c 134B     		ldr	r3, .L16
+ 130 001e D318     		add	r3, r2, r3
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccM5e7NB.s 			page 4
+
+
+ 131 0020 1B68     		ldr	r3, [r3]
+ 132 0022 9F46     		mov	pc, r3
+ 133              		.section	.rodata
+ 134              		.align	2
+ 135              	.L11:
+ 136 0000 66000000 		.word	.L8
+ 137 0004 24000000 		.word	.L10
+ 138 0008 2E000000 		.word	.L12
+ 139 000c 38000000 		.word	.L13
+ 140 0010 52000000 		.word	.L14
+ 141 0014 5C000000 		.word	.L15
+ 142              		.section	.text.set_status
+ 143              	.L10:
+  42:.\lightlib.c  ****         case LEFT_LED:
+  43:.\lightlib.c  ****             Left_LED_State.status = status;
+ 144              		.loc 1 43 0
+ 145 0024 124B     		ldr	r3, .L16+4
+ 146 0026 BA1D     		add	r2, r7, #6
+ 147 0028 1278     		ldrb	r2, [r2]
+ 148 002a 1A70     		strb	r2, [r3]
+  44:.\lightlib.c  ****         break;
+ 149              		.loc 1 44 0
+ 150 002c 1BE0     		b	.L8
+ 151              	.L12:
+  45:.\lightlib.c  ****         case RIGHT_LED:
+  46:.\lightlib.c  ****             Right_LED_State.status = status;
+ 152              		.loc 1 46 0
+ 153 002e 114B     		ldr	r3, .L16+8
+ 154 0030 BA1D     		add	r2, r7, #6
+ 155 0032 1278     		ldrb	r2, [r2]
+ 156 0034 1A70     		strb	r2, [r3]
+  47:.\lightlib.c  ****         break;
+ 157              		.loc 1 47 0
+ 158 0036 16E0     		b	.L8
+ 159              	.L13:
+  48:.\lightlib.c  ****         case LEFT_RIGHT_LED:
+  49:.\lightlib.c  ****             set_status(LEFT_LED, status);
+ 160              		.loc 1 49 0
+ 161 0038 BB1D     		add	r3, r7, #6
+ 162 003a 1B78     		ldrb	r3, [r3]
+ 163 003c 0120     		mov	r0, #1
+ 164 003e 191C     		mov	r1, r3
+ 165 0040 FFF7FEFF 		bl	set_status
+  50:.\lightlib.c  ****             set_status(RIGHT_LED, status);
+ 166              		.loc 1 50 0
+ 167 0044 BB1D     		add	r3, r7, #6
+ 168 0046 1B78     		ldrb	r3, [r3]
+ 169 0048 0220     		mov	r0, #2
+ 170 004a 191C     		mov	r1, r3
+ 171 004c FFF7FEFF 		bl	set_status
+  51:.\lightlib.c  ****         break;
+ 172              		.loc 1 51 0
+ 173 0050 09E0     		b	.L8
+ 174              	.L14:
+  52:.\lightlib.c  ****         case IR_LED:
+  53:.\lightlib.c  ****             IR_LED_State.status = status;
+ 175              		.loc 1 53 0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccM5e7NB.s 			page 5
+
+
+ 176 0052 094B     		ldr	r3, .L16+12
+ 177 0054 BA1D     		add	r2, r7, #6
+ 178 0056 1278     		ldrb	r2, [r2]
+ 179 0058 1A70     		strb	r2, [r3]
+  54:.\lightlib.c  ****         break;
+ 180              		.loc 1 54 0
+ 181 005a 04E0     		b	.L8
+ 182              	.L15:
+  55:.\lightlib.c  ****         case BOARD_LED:
+  56:.\lightlib.c  ****            Board_LED_State.status = status;
+ 183              		.loc 1 56 0
+ 184 005c 074B     		ldr	r3, .L16+16
+ 185 005e BA1D     		add	r2, r7, #6
+ 186 0060 1278     		ldrb	r2, [r2]
+ 187 0062 1A70     		strb	r2, [r3]
+  57:.\lightlib.c  ****         break;
+ 188              		.loc 1 57 0
+ 189 0064 C046     		mov	r8, r8
+ 190              	.L8:
+  58:.\lightlib.c  ****     }    
+  59:.\lightlib.c  **** }
+ 191              		.loc 1 59 0
+ 192 0066 BD46     		mov	sp, r7
+ 193 0068 02B0     		add	sp, sp, #8
+ 194              		@ sp needed
+ 195 006a 80BD     		pop	{r7, pc}
+ 196              	.L17:
+ 197              		.align	2
+ 198              	.L16:
+ 199 006c 00000000 		.word	.L11
+ 200 0070 00000000 		.word	Left_LED_State
+ 201 0074 00000000 		.word	Right_LED_State
+ 202 0078 00000000 		.word	IR_LED_State
+ 203 007c 00000000 		.word	Board_LED_State
+ 204              		.cfi_endproc
+ 205              	.LFE34:
+ 206              		.size	set_status, .-set_status
+ 207              		.section	.text.get_color,"ax",%progbits
+ 208              		.align	2
+ 209              		.global	get_color
+ 210              		.code	16
+ 211              		.thumb_func
+ 212              		.type	get_color, %function
+ 213              	get_color:
+ 214              	.LFB35:
+  60:.\lightlib.c  **** 
+  61:.\lightlib.c  **** uint8 get_color(uint8 led_flag) {
+ 215              		.loc 1 61 0
+ 216              		.cfi_startproc
+ 217 0000 80B5     		push	{r7, lr}
+ 218              		.cfi_def_cfa_offset 8
+ 219              		.cfi_offset 7, -8
+ 220              		.cfi_offset 14, -4
+ 221 0002 82B0     		sub	sp, sp, #8
+ 222              		.cfi_def_cfa_offset 16
+ 223 0004 00AF     		add	r7, sp, #0
+ 224              		.cfi_def_cfa_register 7
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccM5e7NB.s 			page 6
+
+
+ 225 0006 021C     		mov	r2, r0
+ 226 0008 FB1D     		add	r3, r7, #7
+ 227 000a 1A70     		strb	r2, [r3]
+  62:.\lightlib.c  ****     switch(led_flag) {
+ 228              		.loc 1 62 0
+ 229 000c FB1D     		add	r3, r7, #7
+ 230 000e 1B78     		ldrb	r3, [r3]
+ 231 0010 012B     		cmp	r3, #1
+ 232 0012 02D0     		beq	.L20
+ 233 0014 022B     		cmp	r3, #2
+ 234 0016 04D0     		beq	.L21
+ 235 0018 07E0     		b	.L23
+ 236              	.L20:
+  63:.\lightlib.c  ****         case LEFT_LED:
+  64:.\lightlib.c  ****             return Left_LED_State.color;
+ 237              		.loc 1 64 0
+ 238 001a 064B     		ldr	r3, .L24
+ 239 001c 5B78     		ldrb	r3, [r3, #1]
+ 240 001e DBB2     		uxtb	r3, r3
+ 241 0020 04E0     		b	.L22
+ 242              	.L21:
+  65:.\lightlib.c  ****         break;
+  66:.\lightlib.c  ****         case RIGHT_LED:
+  67:.\lightlib.c  ****             return Right_LED_State.color;
+ 243              		.loc 1 67 0
+ 244 0022 054B     		ldr	r3, .L24+4
+ 245 0024 5B78     		ldrb	r3, [r3, #1]
+ 246 0026 DBB2     		uxtb	r3, r3
+ 247 0028 00E0     		b	.L22
+ 248              	.L23:
+  68:.\lightlib.c  ****         break;
+  69:.\lightlib.c  ****     }
+  70:.\lightlib.c  ****     return -1;
+ 249              		.loc 1 70 0
+ 250 002a FF23     		mov	r3, #255
+ 251              	.L22:
+  71:.\lightlib.c  **** }
+ 252              		.loc 1 71 0
+ 253 002c 181C     		mov	r0, r3
+ 254 002e BD46     		mov	sp, r7
+ 255 0030 02B0     		add	sp, sp, #8
+ 256              		@ sp needed
+ 257 0032 80BD     		pop	{r7, pc}
+ 258              	.L25:
+ 259              		.align	2
+ 260              	.L24:
+ 261 0034 00000000 		.word	Left_LED_State
+ 262 0038 00000000 		.word	Right_LED_State
+ 263              		.cfi_endproc
+ 264              	.LFE35:
+ 265              		.size	get_color, .-get_color
+ 266              		.section	.text.get_status,"ax",%progbits
+ 267              		.align	2
+ 268              		.global	get_status
+ 269              		.code	16
+ 270              		.thumb_func
+ 271              		.type	get_status, %function
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccM5e7NB.s 			page 7
+
+
+ 272              	get_status:
+ 273              	.LFB36:
+  72:.\lightlib.c  **** 
+  73:.\lightlib.c  **** uint8 get_status(uint8 led_flag) {
+ 274              		.loc 1 73 0
+ 275              		.cfi_startproc
+ 276 0000 80B5     		push	{r7, lr}
+ 277              		.cfi_def_cfa_offset 8
+ 278              		.cfi_offset 7, -8
+ 279              		.cfi_offset 14, -4
+ 280 0002 82B0     		sub	sp, sp, #8
+ 281              		.cfi_def_cfa_offset 16
+ 282 0004 00AF     		add	r7, sp, #0
+ 283              		.cfi_def_cfa_register 7
+ 284 0006 021C     		mov	r2, r0
+ 285 0008 FB1D     		add	r3, r7, #7
+ 286 000a 1A70     		strb	r2, [r3]
+  74:.\lightlib.c  ****     switch(led_flag) {
+ 287              		.loc 1 74 0
+ 288 000c FB1D     		add	r3, r7, #7
+ 289 000e 1B78     		ldrb	r3, [r3]
+ 290 0010 022B     		cmp	r3, #2
+ 291 0012 0CD0     		beq	.L28
+ 292 0014 02DC     		bgt	.L29
+ 293 0016 012B     		cmp	r3, #1
+ 294 0018 05D0     		beq	.L30
+ 295 001a 14E0     		b	.L27
+ 296              	.L29:
+ 297 001c 042B     		cmp	r3, #4
+ 298 001e 0AD0     		beq	.L31
+ 299 0020 052B     		cmp	r3, #5
+ 300 0022 0CD0     		beq	.L32
+ 301 0024 0FE0     		b	.L27
+ 302              	.L30:
+  75:.\lightlib.c  ****         case LEFT_LED:
+  76:.\lightlib.c  ****             return Left_LED_State.status;
+ 303              		.loc 1 76 0
+ 304 0026 0A4B     		ldr	r3, .L34
+ 305 0028 1B78     		ldrb	r3, [r3]
+ 306 002a DBB2     		uxtb	r3, r3
+ 307 002c 0CE0     		b	.L33
+ 308              	.L28:
+  77:.\lightlib.c  ****         break;
+  78:.\lightlib.c  ****         case RIGHT_LED:
+  79:.\lightlib.c  ****             return Right_LED_State.status;
+ 309              		.loc 1 79 0
+ 310 002e 094B     		ldr	r3, .L34+4
+ 311 0030 1B78     		ldrb	r3, [r3]
+ 312 0032 DBB2     		uxtb	r3, r3
+ 313 0034 08E0     		b	.L33
+ 314              	.L31:
+  80:.\lightlib.c  ****         break;
+  81:.\lightlib.c  ****         case IR_LED:
+  82:.\lightlib.c  ****             return IR_LED_State.status;
+ 315              		.loc 1 82 0
+ 316 0036 084B     		ldr	r3, .L34+8
+ 317 0038 1B78     		ldrb	r3, [r3]
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccM5e7NB.s 			page 8
+
+
+ 318 003a DBB2     		uxtb	r3, r3
+ 319 003c 04E0     		b	.L33
+ 320              	.L32:
+  83:.\lightlib.c  ****         break;
+  84:.\lightlib.c  ****         case BOARD_LED:
+  85:.\lightlib.c  ****            return Board_LED_State.status;
+ 321              		.loc 1 85 0
+ 322 003e 074B     		ldr	r3, .L34+12
+ 323 0040 1B78     		ldrb	r3, [r3]
+ 324 0042 DBB2     		uxtb	r3, r3
+ 325 0044 00E0     		b	.L33
+ 326              	.L27:
+  86:.\lightlib.c  ****         break;
+  87:.\lightlib.c  ****     }  
+  88:.\lightlib.c  ****     return -1;
+ 327              		.loc 1 88 0
+ 328 0046 FF23     		mov	r3, #255
+ 329              	.L33:
+  89:.\lightlib.c  **** }
+ 330              		.loc 1 89 0
+ 331 0048 181C     		mov	r0, r3
+ 332 004a BD46     		mov	sp, r7
+ 333 004c 02B0     		add	sp, sp, #8
+ 334              		@ sp needed
+ 335 004e 80BD     		pop	{r7, pc}
+ 336              	.L35:
+ 337              		.align	2
+ 338              	.L34:
+ 339 0050 00000000 		.word	Left_LED_State
+ 340 0054 00000000 		.word	Right_LED_State
+ 341 0058 00000000 		.word	IR_LED_State
+ 342 005c 00000000 		.word	Board_LED_State
+ 343              		.cfi_endproc
+ 344              	.LFE36:
+ 345              		.size	get_status, .-get_status
+ 346              		.section	.text.turn_on,"ax",%progbits
+ 347              		.align	2
+ 348              		.global	turn_on
+ 349              		.code	16
+ 350              		.thumb_func
+ 351              		.type	turn_on, %function
+ 352              	turn_on:
+ 353              	.LFB37:
+  90:.\lightlib.c  **** 
+  91:.\lightlib.c  **** void turn_on(uint8 led_flag) {
+ 354              		.loc 1 91 0
+ 355              		.cfi_startproc
+ 356 0000 80B5     		push	{r7, lr}
+ 357              		.cfi_def_cfa_offset 8
+ 358              		.cfi_offset 7, -8
+ 359              		.cfi_offset 14, -4
+ 360 0002 82B0     		sub	sp, sp, #8
+ 361              		.cfi_def_cfa_offset 16
+ 362 0004 00AF     		add	r7, sp, #0
+ 363              		.cfi_def_cfa_register 7
+ 364 0006 021C     		mov	r2, r0
+ 365 0008 FB1D     		add	r3, r7, #7
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccM5e7NB.s 			page 9
+
+
+ 366 000a 1A70     		strb	r2, [r3]
+  92:.\lightlib.c  ****     switch(led_flag) {
+ 367              		.loc 1 92 0
+ 368 000c FB1D     		add	r3, r7, #7
+ 369 000e 1B78     		ldrb	r3, [r3]
+ 370 0010 052B     		cmp	r3, #5
+ 371 0012 00D9     		bls	.LCB334
+ 372 0014 89E0     		b	.L36	@long jump
+ 373              	.LCB334:
+ 374 0016 9A00     		lsl	r2, r3, #2
+ 375 0018 454B     		ldr	r3, .L62
+ 376 001a D318     		add	r3, r2, r3
+ 377 001c 1B68     		ldr	r3, [r3]
+ 378 001e 9F46     		mov	pc, r3
+ 379              		.section	.rodata
+ 380              		.align	2
+ 381              	.L39:
+ 382 0018 2A010000 		.word	.L36
+ 383 001c 20000000 		.word	.L38
+ 384 0020 8E000000 		.word	.L40
+ 385 0024 FC000000 		.word	.L41
+ 386 0028 0A010000 		.word	.L42
+ 387 002c 1A010000 		.word	.L43
+ 388              		.section	.text.turn_on
+ 389              	.L38:
+  93:.\lightlib.c  ****         case LEFT_LED:
+  94:.\lightlib.c  ****             switch(get_color(LEFT_LED)) {
+ 390              		.loc 1 94 0
+ 391 0020 0120     		mov	r0, #1
+ 392 0022 FFF7FEFF 		bl	get_color
+ 393 0026 031C     		mov	r3, r0
+ 394 0028 072B     		cmp	r3, #7
+ 395 002a 2BD8     		bhi	.L44
+ 396 002c 9A00     		lsl	r2, r3, #2
+ 397 002e 414B     		ldr	r3, .L62+4
+ 398 0030 D318     		add	r3, r2, r3
+ 399 0032 1B68     		ldr	r3, [r3]
+ 400 0034 9F46     		mov	pc, r3
+ 401              		.section	.rodata
+ 402              		.align	2
+ 403              	.L46:
+ 404 0030 84000000 		.word	.L44
+ 405 0034 36000000 		.word	.L45
+ 406 0038 3C000000 		.word	.L47
+ 407 003c 44000000 		.word	.L48
+ 408 0040 50000000 		.word	.L49
+ 409 0044 58000000 		.word	.L50
+ 410 0048 64000000 		.word	.L51
+ 411 004c 72000000 		.word	.L52
+ 412              		.section	.text.turn_on
+ 413              	.L45:
+  95:.\lightlib.c  ****                 case RED:
+  96:.\lightlib.c  ****                     PWM_Left_LED_Red_Start();
+ 414              		.loc 1 96 0
+ 415 0036 FFF7FEFF 		bl	PWM_Left_LED_Red_Start
+  97:.\lightlib.c  ****                 break;
+ 416              		.loc 1 97 0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccM5e7NB.s 			page 10
+
+
+ 417 003a 23E0     		b	.L44
+ 418              	.L47:
+  98:.\lightlib.c  ****                 case BLUE:
+  99:.\lightlib.c  ****                     Left_LED_Blue_Write(1);
+ 419              		.loc 1 99 0
+ 420 003c 0120     		mov	r0, #1
+ 421 003e FFF7FEFF 		bl	Left_LED_Blue_Write
+ 100:.\lightlib.c  ****                 break;
+ 422              		.loc 1 100 0
+ 423 0042 1FE0     		b	.L44
+ 424              	.L48:
+ 101:.\lightlib.c  ****                 case MAGENTA:
+ 102:.\lightlib.c  ****                     PWM_Left_LED_Red_Start();
+ 425              		.loc 1 102 0
+ 426 0044 FFF7FEFF 		bl	PWM_Left_LED_Red_Start
+ 103:.\lightlib.c  ****                     Left_LED_Blue_Write(1);
+ 427              		.loc 1 103 0
+ 428 0048 0120     		mov	r0, #1
+ 429 004a FFF7FEFF 		bl	Left_LED_Blue_Write
+ 104:.\lightlib.c  ****                 break;
+ 430              		.loc 1 104 0
+ 431 004e 19E0     		b	.L44
+ 432              	.L49:
+ 105:.\lightlib.c  ****                 case GREEN:
+ 106:.\lightlib.c  ****                     Left_LED_Green_Write(1);
+ 433              		.loc 1 106 0
+ 434 0050 0120     		mov	r0, #1
+ 435 0052 FFF7FEFF 		bl	Left_LED_Green_Write
+ 107:.\lightlib.c  ****                 break;
+ 436              		.loc 1 107 0
+ 437 0056 15E0     		b	.L44
+ 438              	.L50:
+ 108:.\lightlib.c  ****                 case YELLOW:
+ 109:.\lightlib.c  ****                     PWM_Left_LED_Red_Start();
+ 439              		.loc 1 109 0
+ 440 0058 FFF7FEFF 		bl	PWM_Left_LED_Red_Start
+ 110:.\lightlib.c  ****                     Left_LED_Green_Write(1);
+ 441              		.loc 1 110 0
+ 442 005c 0120     		mov	r0, #1
+ 443 005e FFF7FEFF 		bl	Left_LED_Green_Write
+ 111:.\lightlib.c  ****                 break;
+ 444              		.loc 1 111 0
+ 445 0062 0FE0     		b	.L44
+ 446              	.L51:
+ 112:.\lightlib.c  ****                 case CYAN:
+ 113:.\lightlib.c  ****                     Left_LED_Blue_Write(1);
+ 447              		.loc 1 113 0
+ 448 0064 0120     		mov	r0, #1
+ 449 0066 FFF7FEFF 		bl	Left_LED_Blue_Write
+ 114:.\lightlib.c  ****                     Left_LED_Green_Write(1);
+ 450              		.loc 1 114 0
+ 451 006a 0120     		mov	r0, #1
+ 452 006c FFF7FEFF 		bl	Left_LED_Green_Write
+ 115:.\lightlib.c  ****                 break;
+ 453              		.loc 1 115 0
+ 454 0070 08E0     		b	.L44
+ 455              	.L52:
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccM5e7NB.s 			page 11
+
+
+ 116:.\lightlib.c  ****                 case WHITE:
+ 117:.\lightlib.c  ****                     PWM_Left_LED_Red_Start();
+ 456              		.loc 1 117 0
+ 457 0072 FFF7FEFF 		bl	PWM_Left_LED_Red_Start
+ 118:.\lightlib.c  ****                     Left_LED_Blue_Write(1);
+ 458              		.loc 1 118 0
+ 459 0076 0120     		mov	r0, #1
+ 460 0078 FFF7FEFF 		bl	Left_LED_Blue_Write
+ 119:.\lightlib.c  ****                     Left_LED_Green_Write(1);
+ 461              		.loc 1 119 0
+ 462 007c 0120     		mov	r0, #1
+ 463 007e FFF7FEFF 		bl	Left_LED_Green_Write
+ 120:.\lightlib.c  ****                 break;
+ 464              		.loc 1 120 0
+ 465 0082 C046     		mov	r8, r8
+ 466              	.L44:
+ 121:.\lightlib.c  ****             }
+ 122:.\lightlib.c  ****         set_status(LEFT_LED, ON);
+ 467              		.loc 1 122 0
+ 468 0084 0120     		mov	r0, #1
+ 469 0086 0121     		mov	r1, #1
+ 470 0088 FFF7FEFF 		bl	set_status
+ 123:.\lightlib.c  ****         break;
+ 471              		.loc 1 123 0
+ 472 008c 4DE0     		b	.L36
+ 473              	.L40:
+ 124:.\lightlib.c  ****         case RIGHT_LED:
+ 125:.\lightlib.c  ****             switch(get_color(RIGHT_LED)) {
+ 474              		.loc 1 125 0
+ 475 008e 0220     		mov	r0, #2
+ 476 0090 FFF7FEFF 		bl	get_color
+ 477 0094 031C     		mov	r3, r0
+ 478 0096 072B     		cmp	r3, #7
+ 479 0098 2BD8     		bhi	.L53
+ 480 009a 9A00     		lsl	r2, r3, #2
+ 481 009c 264B     		ldr	r3, .L62+8
+ 482 009e D318     		add	r3, r2, r3
+ 483 00a0 1B68     		ldr	r3, [r3]
+ 484 00a2 9F46     		mov	pc, r3
+ 485              		.section	.rodata
+ 486              		.align	2
+ 487              	.L55:
+ 488 0050 F2000000 		.word	.L53
+ 489 0054 A4000000 		.word	.L54
+ 490 0058 AA000000 		.word	.L56
+ 491 005c B2000000 		.word	.L57
+ 492 0060 BE000000 		.word	.L58
+ 493 0064 C6000000 		.word	.L59
+ 494 0068 D2000000 		.word	.L60
+ 495 006c E0000000 		.word	.L61
+ 496              		.section	.text.turn_on
+ 497              	.L54:
+ 126:.\lightlib.c  ****                 case RED:
+ 127:.\lightlib.c  ****                     PWM_Right_LED_Red_Start();
+ 498              		.loc 1 127 0
+ 499 00a4 FFF7FEFF 		bl	PWM_Right_LED_Red_Start
+ 128:.\lightlib.c  ****                 break;
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccM5e7NB.s 			page 12
+
+
+ 500              		.loc 1 128 0
+ 501 00a8 23E0     		b	.L53
+ 502              	.L56:
+ 129:.\lightlib.c  ****                 case BLUE:
+ 130:.\lightlib.c  ****                     Right_LED_Blue_Write(1);
+ 503              		.loc 1 130 0
+ 504 00aa 0120     		mov	r0, #1
+ 505 00ac FFF7FEFF 		bl	Right_LED_Blue_Write
+ 131:.\lightlib.c  ****                 break;
+ 506              		.loc 1 131 0
+ 507 00b0 1FE0     		b	.L53
+ 508              	.L57:
+ 132:.\lightlib.c  ****                 case MAGENTA:
+ 133:.\lightlib.c  ****                     PWM_Right_LED_Red_Start();
+ 509              		.loc 1 133 0
+ 510 00b2 FFF7FEFF 		bl	PWM_Right_LED_Red_Start
+ 134:.\lightlib.c  ****                     Right_LED_Blue_Write(1);
+ 511              		.loc 1 134 0
+ 512 00b6 0120     		mov	r0, #1
+ 513 00b8 FFF7FEFF 		bl	Right_LED_Blue_Write
+ 135:.\lightlib.c  ****                 break;
+ 514              		.loc 1 135 0
+ 515 00bc 19E0     		b	.L53
+ 516              	.L58:
+ 136:.\lightlib.c  ****                 case GREEN:
+ 137:.\lightlib.c  ****                     Right_LED_Green_Write(1);
+ 517              		.loc 1 137 0
+ 518 00be 0120     		mov	r0, #1
+ 519 00c0 FFF7FEFF 		bl	Right_LED_Green_Write
+ 138:.\lightlib.c  ****                 break;
+ 520              		.loc 1 138 0
+ 521 00c4 15E0     		b	.L53
+ 522              	.L59:
+ 139:.\lightlib.c  ****                 case YELLOW:
+ 140:.\lightlib.c  ****                     PWM_Right_LED_Red_Start();
+ 523              		.loc 1 140 0
+ 524 00c6 FFF7FEFF 		bl	PWM_Right_LED_Red_Start
+ 141:.\lightlib.c  ****                     Right_LED_Green_Write(1);
+ 525              		.loc 1 141 0
+ 526 00ca 0120     		mov	r0, #1
+ 527 00cc FFF7FEFF 		bl	Right_LED_Green_Write
+ 142:.\lightlib.c  ****                 break;
+ 528              		.loc 1 142 0
+ 529 00d0 0FE0     		b	.L53
+ 530              	.L60:
+ 143:.\lightlib.c  ****                 case CYAN:
+ 144:.\lightlib.c  ****                     Right_LED_Blue_Write(1);
+ 531              		.loc 1 144 0
+ 532 00d2 0120     		mov	r0, #1
+ 533 00d4 FFF7FEFF 		bl	Right_LED_Blue_Write
+ 145:.\lightlib.c  ****                     Right_LED_Green_Write(1);
+ 534              		.loc 1 145 0
+ 535 00d8 0120     		mov	r0, #1
+ 536 00da FFF7FEFF 		bl	Right_LED_Green_Write
+ 146:.\lightlib.c  ****                 break;
+ 537              		.loc 1 146 0
+ 538 00de 08E0     		b	.L53
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccM5e7NB.s 			page 13
+
+
+ 539              	.L61:
+ 147:.\lightlib.c  ****                 case WHITE:
+ 148:.\lightlib.c  ****                     PWM_Right_LED_Red_Start();
+ 540              		.loc 1 148 0
+ 541 00e0 FFF7FEFF 		bl	PWM_Right_LED_Red_Start
+ 149:.\lightlib.c  ****                     Right_LED_Blue_Write(1);
+ 542              		.loc 1 149 0
+ 543 00e4 0120     		mov	r0, #1
+ 544 00e6 FFF7FEFF 		bl	Right_LED_Blue_Write
+ 150:.\lightlib.c  ****                     Right_LED_Green_Write(1);
+ 545              		.loc 1 150 0
+ 546 00ea 0120     		mov	r0, #1
+ 547 00ec FFF7FEFF 		bl	Right_LED_Green_Write
+ 151:.\lightlib.c  ****                 break;
+ 548              		.loc 1 151 0
+ 549 00f0 C046     		mov	r8, r8
+ 550              	.L53:
+ 152:.\lightlib.c  ****             }
+ 153:.\lightlib.c  ****         set_status(RIGHT_LED, ON);
+ 551              		.loc 1 153 0
+ 552 00f2 0220     		mov	r0, #2
+ 553 00f4 0121     		mov	r1, #1
+ 554 00f6 FFF7FEFF 		bl	set_status
+ 154:.\lightlib.c  ****         break;
+ 555              		.loc 1 154 0
+ 556 00fa 16E0     		b	.L36
+ 557              	.L41:
+ 155:.\lightlib.c  ****         case LEFT_RIGHT_LED:
+ 156:.\lightlib.c  ****             turn_on(LEFT_LED);
+ 558              		.loc 1 156 0
+ 559 00fc 0120     		mov	r0, #1
+ 560 00fe FFF7FEFF 		bl	turn_on
+ 157:.\lightlib.c  ****             turn_on(RIGHT_LED);
+ 561              		.loc 1 157 0
+ 562 0102 0220     		mov	r0, #2
+ 563 0104 FFF7FEFF 		bl	turn_on
+ 158:.\lightlib.c  ****         break;
+ 564              		.loc 1 158 0
+ 565 0108 0FE0     		b	.L36
+ 566              	.L42:
+ 159:.\lightlib.c  ****         case IR_LED:
+ 160:.\lightlib.c  ****             IR_LED_Write(1);
+ 567              		.loc 1 160 0
+ 568 010a 0120     		mov	r0, #1
+ 569 010c FFF7FEFF 		bl	IR_LED_Write
+ 161:.\lightlib.c  ****             set_status(IR_LED, ON);
+ 570              		.loc 1 161 0
+ 571 0110 0420     		mov	r0, #4
+ 572 0112 0121     		mov	r1, #1
+ 573 0114 FFF7FEFF 		bl	set_status
+ 162:.\lightlib.c  ****         break;
+ 574              		.loc 1 162 0
+ 575 0118 07E0     		b	.L36
+ 576              	.L43:
+ 163:.\lightlib.c  ****         case BOARD_LED:
+ 164:.\lightlib.c  ****             Board_LED_Write(1);
+ 577              		.loc 1 164 0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccM5e7NB.s 			page 14
+
+
+ 578 011a 0120     		mov	r0, #1
+ 579 011c FFF7FEFF 		bl	Board_LED_Write
+ 165:.\lightlib.c  ****             set_status(BOARD_LED, ON);
+ 580              		.loc 1 165 0
+ 581 0120 0520     		mov	r0, #5
+ 582 0122 0121     		mov	r1, #1
+ 583 0124 FFF7FEFF 		bl	set_status
+ 166:.\lightlib.c  **** 
+ 167:.\lightlib.c  ****         break;
+ 584              		.loc 1 167 0
+ 585 0128 C046     		mov	r8, r8
+ 586              	.L36:
+ 168:.\lightlib.c  ****     }    
+ 169:.\lightlib.c  **** }
+ 587              		.loc 1 169 0
+ 588 012a BD46     		mov	sp, r7
+ 589 012c 02B0     		add	sp, sp, #8
+ 590              		@ sp needed
+ 591 012e 80BD     		pop	{r7, pc}
+ 592              	.L63:
+ 593              		.align	2
+ 594              	.L62:
+ 595 0130 18000000 		.word	.L39
+ 596 0134 30000000 		.word	.L46
+ 597 0138 50000000 		.word	.L55
+ 598              		.cfi_endproc
+ 599              	.LFE37:
+ 600              		.size	turn_on, .-turn_on
+ 601              		.section	.text.turn_off,"ax",%progbits
+ 602              		.align	2
+ 603              		.global	turn_off
+ 604              		.code	16
+ 605              		.thumb_func
+ 606              		.type	turn_off, %function
+ 607              	turn_off:
+ 608              	.LFB38:
+ 170:.\lightlib.c  **** 
+ 171:.\lightlib.c  **** void turn_off(uint8 led_flag) {
+ 609              		.loc 1 171 0
+ 610              		.cfi_startproc
+ 611 0000 80B5     		push	{r7, lr}
+ 612              		.cfi_def_cfa_offset 8
+ 613              		.cfi_offset 7, -8
+ 614              		.cfi_offset 14, -4
+ 615 0002 82B0     		sub	sp, sp, #8
+ 616              		.cfi_def_cfa_offset 16
+ 617 0004 00AF     		add	r7, sp, #0
+ 618              		.cfi_def_cfa_register 7
+ 619 0006 021C     		mov	r2, r0
+ 620 0008 FB1D     		add	r3, r7, #7
+ 621 000a 1A70     		strb	r2, [r3]
+ 172:.\lightlib.c  ****     switch(led_flag) {
+ 622              		.loc 1 172 0
+ 623 000c FB1D     		add	r3, r7, #7
+ 624 000e 1B78     		ldrb	r3, [r3]
+ 625 0010 052B     		cmp	r3, #5
+ 626 0012 35D8     		bhi	.L64
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccM5e7NB.s 			page 15
+
+
+ 627 0014 9A00     		lsl	r2, r3, #2
+ 628 0016 1C4B     		ldr	r3, .L72
+ 629 0018 D318     		add	r3, r2, r3
+ 630 001a 1B68     		ldr	r3, [r3]
+ 631 001c 9F46     		mov	pc, r3
+ 632              		.section	.rodata
+ 633              		.align	2
+ 634              	.L67:
+ 635 0070 80000000 		.word	.L64
+ 636 0074 1E000000 		.word	.L66
+ 637 0078 38000000 		.word	.L68
+ 638 007c 52000000 		.word	.L69
+ 639 0080 60000000 		.word	.L70
+ 640 0084 70000000 		.word	.L71
+ 641              		.section	.text.turn_off
+ 642              	.L66:
+ 173:.\lightlib.c  ****         case LEFT_LED:
+ 174:.\lightlib.c  ****             PWM_Left_LED_Red_Stop();
+ 643              		.loc 1 174 0
+ 644 001e FFF7FEFF 		bl	PWM_Left_LED_Red_Stop
+ 175:.\lightlib.c  ****             Left_LED_Blue_Write(0);
+ 645              		.loc 1 175 0
+ 646 0022 0020     		mov	r0, #0
+ 647 0024 FFF7FEFF 		bl	Left_LED_Blue_Write
+ 176:.\lightlib.c  ****             Left_LED_Green_Write(0);
+ 648              		.loc 1 176 0
+ 649 0028 0020     		mov	r0, #0
+ 650 002a FFF7FEFF 		bl	Left_LED_Green_Write
+ 177:.\lightlib.c  ****             set_status(LEFT_LED, OFF);
+ 651              		.loc 1 177 0
+ 652 002e 0120     		mov	r0, #1
+ 653 0030 0021     		mov	r1, #0
+ 654 0032 FFF7FEFF 		bl	set_status
+ 178:.\lightlib.c  ****         break;
+ 655              		.loc 1 178 0
+ 656 0036 23E0     		b	.L64
+ 657              	.L68:
+ 179:.\lightlib.c  ****         case RIGHT_LED:
+ 180:.\lightlib.c  ****             PWM_Right_LED_Red_Stop();
+ 658              		.loc 1 180 0
+ 659 0038 FFF7FEFF 		bl	PWM_Right_LED_Red_Stop
+ 181:.\lightlib.c  ****             Right_LED_Blue_Write(0);
+ 660              		.loc 1 181 0
+ 661 003c 0020     		mov	r0, #0
+ 662 003e FFF7FEFF 		bl	Right_LED_Blue_Write
+ 182:.\lightlib.c  ****             Right_LED_Green_Write(0);
+ 663              		.loc 1 182 0
+ 664 0042 0020     		mov	r0, #0
+ 665 0044 FFF7FEFF 		bl	Right_LED_Green_Write
+ 183:.\lightlib.c  ****             set_status(RIGHT_LED, OFF);
+ 666              		.loc 1 183 0
+ 667 0048 0220     		mov	r0, #2
+ 668 004a 0021     		mov	r1, #0
+ 669 004c FFF7FEFF 		bl	set_status
+ 184:.\lightlib.c  ****         break;
+ 670              		.loc 1 184 0
+ 671 0050 16E0     		b	.L64
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccM5e7NB.s 			page 16
+
+
+ 672              	.L69:
+ 185:.\lightlib.c  ****         case LEFT_RIGHT_LED:
+ 186:.\lightlib.c  ****             turn_off(LEFT_LED);
+ 673              		.loc 1 186 0
+ 674 0052 0120     		mov	r0, #1
+ 675 0054 FFF7FEFF 		bl	turn_off
+ 187:.\lightlib.c  ****             turn_off(RIGHT_LED);
+ 676              		.loc 1 187 0
+ 677 0058 0220     		mov	r0, #2
+ 678 005a FFF7FEFF 		bl	turn_off
+ 188:.\lightlib.c  ****         break;
+ 679              		.loc 1 188 0
+ 680 005e 0FE0     		b	.L64
+ 681              	.L70:
+ 189:.\lightlib.c  ****         case IR_LED:
+ 190:.\lightlib.c  ****             IR_LED_Write(0);
+ 682              		.loc 1 190 0
+ 683 0060 0020     		mov	r0, #0
+ 684 0062 FFF7FEFF 		bl	IR_LED_Write
+ 191:.\lightlib.c  ****             set_status(IR_LED, OFF);
+ 685              		.loc 1 191 0
+ 686 0066 0420     		mov	r0, #4
+ 687 0068 0021     		mov	r1, #0
+ 688 006a FFF7FEFF 		bl	set_status
+ 192:.\lightlib.c  ****         break;
+ 689              		.loc 1 192 0
+ 690 006e 07E0     		b	.L64
+ 691              	.L71:
+ 193:.\lightlib.c  ****         case BOARD_LED:
+ 194:.\lightlib.c  ****             Board_LED_Write(0);
+ 692              		.loc 1 194 0
+ 693 0070 0020     		mov	r0, #0
+ 694 0072 FFF7FEFF 		bl	Board_LED_Write
+ 195:.\lightlib.c  ****            set_status(BOARD_LED, OFF);
+ 695              		.loc 1 195 0
+ 696 0076 0520     		mov	r0, #5
+ 697 0078 0021     		mov	r1, #0
+ 698 007a FFF7FEFF 		bl	set_status
+ 196:.\lightlib.c  ****         break;
+ 699              		.loc 1 196 0
+ 700 007e C046     		mov	r8, r8
+ 701              	.L64:
+ 197:.\lightlib.c  ****     }    
+ 198:.\lightlib.c  **** }
+ 702              		.loc 1 198 0
+ 703 0080 BD46     		mov	sp, r7
+ 704 0082 02B0     		add	sp, sp, #8
+ 705              		@ sp needed
+ 706 0084 80BD     		pop	{r7, pc}
+ 707              	.L73:
+ 708 0086 C046     		.align	2
+ 709              	.L72:
+ 710 0088 70000000 		.word	.L67
+ 711              		.cfi_endproc
+ 712              	.LFE38:
+ 713              		.size	turn_off, .-turn_off
+ 714              		.section	.text.turn_on_all_led,"ax",%progbits
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccM5e7NB.s 			page 17
+
+
+ 715              		.align	2
+ 716              		.global	turn_on_all_led
+ 717              		.code	16
+ 718              		.thumb_func
+ 719              		.type	turn_on_all_led, %function
+ 720              	turn_on_all_led:
+ 721              	.LFB39:
+ 199:.\lightlib.c  **** 
+ 200:.\lightlib.c  **** void turn_on_all_led(void) {
+ 722              		.loc 1 200 0
+ 723              		.cfi_startproc
+ 724 0000 80B5     		push	{r7, lr}
+ 725              		.cfi_def_cfa_offset 8
+ 726              		.cfi_offset 7, -8
+ 727              		.cfi_offset 14, -4
+ 728 0002 00AF     		add	r7, sp, #0
+ 729              		.cfi_def_cfa_register 7
+ 201:.\lightlib.c  ****     turn_on(LEFT_LED);
+ 730              		.loc 1 201 0
+ 731 0004 0120     		mov	r0, #1
+ 732 0006 FFF7FEFF 		bl	turn_on
+ 202:.\lightlib.c  ****     turn_on(RIGHT_LED); 
+ 733              		.loc 1 202 0
+ 734 000a 0220     		mov	r0, #2
+ 735 000c FFF7FEFF 		bl	turn_on
+ 203:.\lightlib.c  ****     turn_on(IR_LED); 
+ 736              		.loc 1 203 0
+ 737 0010 0420     		mov	r0, #4
+ 738 0012 FFF7FEFF 		bl	turn_on
+ 204:.\lightlib.c  ****     turn_on(BOARD_LED); 
+ 739              		.loc 1 204 0
+ 740 0016 0520     		mov	r0, #5
+ 741 0018 FFF7FEFF 		bl	turn_on
+ 205:.\lightlib.c  **** }
+ 742              		.loc 1 205 0
+ 743 001c BD46     		mov	sp, r7
+ 744              		@ sp needed
+ 745 001e 80BD     		pop	{r7, pc}
+ 746              		.cfi_endproc
+ 747              	.LFE39:
+ 748              		.size	turn_on_all_led, .-turn_on_all_led
+ 749              		.section	.text.turn_off_all_led,"ax",%progbits
+ 750              		.align	2
+ 751              		.global	turn_off_all_led
+ 752              		.code	16
+ 753              		.thumb_func
+ 754              		.type	turn_off_all_led, %function
+ 755              	turn_off_all_led:
+ 756              	.LFB40:
+ 206:.\lightlib.c  **** 
+ 207:.\lightlib.c  **** void turn_off_all_led(void) {
+ 757              		.loc 1 207 0
+ 758              		.cfi_startproc
+ 759 0000 80B5     		push	{r7, lr}
+ 760              		.cfi_def_cfa_offset 8
+ 761              		.cfi_offset 7, -8
+ 762              		.cfi_offset 14, -4
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccM5e7NB.s 			page 18
+
+
+ 763 0002 00AF     		add	r7, sp, #0
+ 764              		.cfi_def_cfa_register 7
+ 208:.\lightlib.c  ****     turn_off(LEFT_LED);
+ 765              		.loc 1 208 0
+ 766 0004 0120     		mov	r0, #1
+ 767 0006 FFF7FEFF 		bl	turn_off
+ 209:.\lightlib.c  ****     turn_off(RIGHT_LED); 
+ 768              		.loc 1 209 0
+ 769 000a 0220     		mov	r0, #2
+ 770 000c FFF7FEFF 		bl	turn_off
+ 210:.\lightlib.c  ****     turn_off(IR_LED); 
+ 771              		.loc 1 210 0
+ 772 0010 0420     		mov	r0, #4
+ 773 0012 FFF7FEFF 		bl	turn_off
+ 211:.\lightlib.c  ****     turn_off(BOARD_LED); 
+ 774              		.loc 1 211 0
+ 775 0016 0520     		mov	r0, #5
+ 776 0018 FFF7FEFF 		bl	turn_off
+ 212:.\lightlib.c  **** }
+ 777              		.loc 1 212 0
+ 778 001c BD46     		mov	sp, r7
+ 779              		@ sp needed
+ 780 001e 80BD     		pop	{r7, pc}
+ 781              		.cfi_endproc
+ 782              	.LFE40:
+ 783              		.size	turn_off_all_led, .-turn_off_all_led
+ 784              		.section	.text.init_led,"ax",%progbits
+ 785              		.align	2
+ 786              		.global	init_led
+ 787              		.code	16
+ 788              		.thumb_func
+ 789              		.type	init_led, %function
+ 790              	init_led:
+ 791              	.LFB41:
+ 213:.\lightlib.c  **** 
+ 214:.\lightlib.c  **** void init_led(uint8 color) {
+ 792              		.loc 1 214 0
+ 793              		.cfi_startproc
+ 794 0000 80B5     		push	{r7, lr}
+ 795              		.cfi_def_cfa_offset 8
+ 796              		.cfi_offset 7, -8
+ 797              		.cfi_offset 14, -4
+ 798 0002 82B0     		sub	sp, sp, #8
+ 799              		.cfi_def_cfa_offset 16
+ 800 0004 00AF     		add	r7, sp, #0
+ 801              		.cfi_def_cfa_register 7
+ 802 0006 021C     		mov	r2, r0
+ 803 0008 FB1D     		add	r3, r7, #7
+ 804 000a 1A70     		strb	r2, [r3]
+ 215:.\lightlib.c  ****     /* Turn off all leds */
+ 216:.\lightlib.c  ****     turn_off_all_led();
+ 805              		.loc 1 216 0
+ 806 000c FFF7FEFF 		bl	turn_off_all_led
+ 217:.\lightlib.c  ****     
+ 218:.\lightlib.c  ****     /* Set default led color */
+ 219:.\lightlib.c  ****     set_color(LEFT_LED, color);
+ 807              		.loc 1 219 0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccM5e7NB.s 			page 19
+
+
+ 808 0010 FB1D     		add	r3, r7, #7
+ 809 0012 1B78     		ldrb	r3, [r3]
+ 810 0014 0120     		mov	r0, #1
+ 811 0016 191C     		mov	r1, r3
+ 812 0018 FFF7FEFF 		bl	set_color
+ 220:.\lightlib.c  ****     set_color(RIGHT_LED, color);
+ 813              		.loc 1 220 0
+ 814 001c FB1D     		add	r3, r7, #7
+ 815 001e 1B78     		ldrb	r3, [r3]
+ 816 0020 0220     		mov	r0, #2
+ 817 0022 191C     		mov	r1, r3
+ 818 0024 FFF7FEFF 		bl	set_color
+ 221:.\lightlib.c  **** }...
+ 819              		.loc 1 221 0
+ 820 0028 BD46     		mov	sp, r7
+ 821 002a 02B0     		add	sp, sp, #8
+ 822              		@ sp needed
+ 823 002c 80BD     		pop	{r7, pc}
+ 824              		.cfi_endproc
+ 825              	.LFE41:
+ 826              		.size	init_led, .-init_led
+ 827 002e C046     		.text
+ 828              	.Letext0:
+ 829              		.file 2 ".\\lightlib.h"
+ 830              		.file 3 ".\\Generated_Source\\PSoC4/cytypes.h"
+ 831              		.section	.debug_info,"",%progbits
+ 832              	.Ldebug_info0:
+ 833 0000 5D020000 		.4byte	0x25d
+ 834 0004 0400     		.2byte	0x4
+ 835 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 836 000a 04       		.byte	0x4
+ 837 000b 01       		.uleb128 0x1
+ 838 000c 78000000 		.4byte	.LASF31
+ 839 0010 01       		.byte	0x1
+ 840 0011 3D020000 		.4byte	.LASF32
+ 841 0015 3B010000 		.4byte	.LASF33
+ 842 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 843 001d 00000000 		.4byte	0
+ 844 0021 00000000 		.4byte	.Ldebug_line0
+ 845 0025 02       		.uleb128 0x2
+ 846 0026 01       		.byte	0x1
+ 847 0027 06       		.byte	0x6
+ 848 0028 31020000 		.4byte	.LASF0
+ 849 002c 02       		.uleb128 0x2
+ 850 002d 01       		.byte	0x1
+ 851 002e 08       		.byte	0x8
+ 852 002f F4000000 		.4byte	.LASF1
+ 853 0033 02       		.uleb128 0x2
+ 854 0034 02       		.byte	0x2
+ 855 0035 05       		.byte	0x5
+ 856 0036 FD010000 		.4byte	.LASF2
+ 857 003a 02       		.uleb128 0x2
+ 858 003b 02       		.byte	0x2
+ 859 003c 07       		.byte	0x7
+ 860 003d 3D000000 		.4byte	.LASF3
+ 861 0041 02       		.uleb128 0x2
+ 862 0042 04       		.byte	0x4
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccM5e7NB.s 			page 20
+
+
+ 863 0043 05       		.byte	0x5
+ 864 0044 1A020000 		.4byte	.LASF4
+ 865 0048 02       		.uleb128 0x2
+ 866 0049 04       		.byte	0x4
+ 867 004a 07       		.byte	0x7
+ 868 004b 02010000 		.4byte	.LASF5
+ 869 004f 02       		.uleb128 0x2
+ 870 0050 08       		.byte	0x8
+ 871 0051 05       		.byte	0x5
+ 872 0052 E5010000 		.4byte	.LASF6
+ 873 0056 02       		.uleb128 0x2
+ 874 0057 08       		.byte	0x8
+ 875 0058 07       		.byte	0x7
+ 876 0059 B5010000 		.4byte	.LASF7
+ 877 005d 03       		.uleb128 0x3
+ 878 005e 04       		.byte	0x4
+ 879 005f 05       		.byte	0x5
+ 880 0060 696E7400 		.ascii	"int\000"
+ 881 0064 02       		.uleb128 0x2
+ 882 0065 04       		.byte	0x4
+ 883 0066 07       		.byte	0x7
+ 884 0067 97010000 		.4byte	.LASF8
+ 885 006b 04       		.uleb128 0x4
+ 886 006c 14010000 		.4byte	.LASF34
+ 887 0070 03       		.byte	0x3
+ 888 0071 A1       		.byte	0xa1
+ 889 0072 2C000000 		.4byte	0x2c
+ 890 0076 02       		.uleb128 0x2
+ 891 0077 04       		.byte	0x4
+ 892 0078 04       		.byte	0x4
+ 893 0079 72000000 		.4byte	.LASF9
+ 894 007d 02       		.uleb128 0x2
+ 895 007e 08       		.byte	0x8
+ 896 007f 04       		.byte	0x4
+ 897 0080 34010000 		.4byte	.LASF10
+ 898 0084 02       		.uleb128 0x2
+ 899 0085 01       		.byte	0x1
+ 900 0086 08       		.byte	0x8
+ 901 0087 23020000 		.4byte	.LASF11
+ 902 008b 02       		.uleb128 0x2
+ 903 008c 04       		.byte	0x4
+ 904 008d 07       		.byte	0x7
+ 905 008e DC010000 		.4byte	.LASF12
+ 906 0092 05       		.uleb128 0x5
+ 907 0093 26000000 		.4byte	.LASF15
+ 908 0097 02       		.byte	0x2
+ 909 0098 02       		.byte	0x2
+ 910 0099 26       		.byte	0x26
+ 911 009a B7000000 		.4byte	0xb7
+ 912 009e 06       		.uleb128 0x6
+ 913 009f 5B000000 		.4byte	.LASF13
+ 914 00a3 02       		.byte	0x2
+ 915 00a4 27       		.byte	0x27
+ 916 00a5 6B000000 		.4byte	0x6b
+ 917 00a9 00       		.byte	0
+ 918 00aa 06       		.uleb128 0x6
+ 919 00ab 88010000 		.4byte	.LASF14
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccM5e7NB.s 			page 21
+
+
+ 920 00af 02       		.byte	0x2
+ 921 00b0 28       		.byte	0x28
+ 922 00b1 6B000000 		.4byte	0x6b
+ 923 00b5 01       		.byte	0x1
+ 924 00b6 00       		.byte	0
+ 925 00b7 05       		.uleb128 0x5
+ 926 00b8 F3010000 		.4byte	.LASF16
+ 927 00bc 01       		.byte	0x1
+ 928 00bd 02       		.byte	0x2
+ 929 00be 2C       		.byte	0x2c
+ 930 00bf D0000000 		.4byte	0xd0
+ 931 00c3 06       		.uleb128 0x6
+ 932 00c4 5B000000 		.4byte	.LASF13
+ 933 00c8 02       		.byte	0x2
+ 934 00c9 2D       		.byte	0x2d
+ 935 00ca 6B000000 		.4byte	0x6b
+ 936 00ce 00       		.byte	0
+ 937 00cf 00       		.byte	0
+ 938 00d0 07       		.uleb128 0x7
+ 939 00d1 0F000000 		.4byte	.LASF18
+ 940 00d5 01       		.byte	0x1
+ 941 00d6 19       		.byte	0x19
+ 942 00d7 00000000 		.4byte	.LFB33
+ 943 00db 60000000 		.4byte	.LFE33-.LFB33
+ 944 00df 01       		.uleb128 0x1
+ 945 00e0 9C       		.byte	0x9c
+ 946 00e1 02010000 		.4byte	0x102
+ 947 00e5 08       		.uleb128 0x8
+ 948 00e6 28020000 		.4byte	.LASF17
+ 949 00ea 01       		.byte	0x1
+ 950 00eb 19       		.byte	0x19
+ 951 00ec 6B000000 		.4byte	0x6b
+ 952 00f0 02       		.uleb128 0x2
+ 953 00f1 91       		.byte	0x91
+ 954 00f2 77       		.sleb128 -9
+ 955 00f3 08       		.uleb128 0x8
+ 956 00f4 88010000 		.4byte	.LASF14
+ 957 00f8 01       		.byte	0x1
+ 958 00f9 19       		.byte	0x19
+ 959 00fa 6B000000 		.4byte	0x6b
+ 960 00fe 02       		.uleb128 0x2
+ 961 00ff 91       		.byte	0x91
+ 962 0100 76       		.sleb128 -10
+ 963 0101 00       		.byte	0
+ 964 0102 07       		.uleb128 0x7
+ 965 0103 50000000 		.4byte	.LASF19
+ 966 0107 01       		.byte	0x1
+ 967 0108 28       		.byte	0x28
+ 968 0109 00000000 		.4byte	.LFB34
+ 969 010d 80000000 		.4byte	.LFE34-.LFB34
+ 970 0111 01       		.uleb128 0x1
+ 971 0112 9C       		.byte	0x9c
+ 972 0113 34010000 		.4byte	0x134
+ 973 0117 08       		.uleb128 0x8
+ 974 0118 28020000 		.4byte	.LASF17
+ 975 011c 01       		.byte	0x1
+ 976 011d 28       		.byte	0x28
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccM5e7NB.s 			page 22
+
+
+ 977 011e 6B000000 		.4byte	0x6b
+ 978 0122 02       		.uleb128 0x2
+ 979 0123 91       		.byte	0x91
+ 980 0124 77       		.sleb128 -9
+ 981 0125 08       		.uleb128 0x8
+ 982 0126 5B000000 		.4byte	.LASF13
+ 983 012a 01       		.byte	0x1
+ 984 012b 28       		.byte	0x28
+ 985 012c 6B000000 		.4byte	0x6b
+ 986 0130 02       		.uleb128 0x2
+ 987 0131 91       		.byte	0x91
+ 988 0132 76       		.sleb128 -10
+ 989 0133 00       		.byte	0
+ 990 0134 09       		.uleb128 0x9
+ 991 0135 1A010000 		.4byte	.LASF20
+ 992 0139 01       		.byte	0x1
+ 993 013a 3D       		.byte	0x3d
+ 994 013b 6B000000 		.4byte	0x6b
+ 995 013f 00000000 		.4byte	.LFB35
+ 996 0143 3C000000 		.4byte	.LFE35-.LFB35
+ 997 0147 01       		.uleb128 0x1
+ 998 0148 9C       		.byte	0x9c
+ 999 0149 5C010000 		.4byte	0x15c
+ 1000 014d 08       		.uleb128 0x8
+ 1001 014e 28020000 		.4byte	.LASF17
+ 1002 0152 01       		.byte	0x1
+ 1003 0153 3D       		.byte	0x3d
+ 1004 0154 6B000000 		.4byte	0x6b
+ 1005 0158 02       		.uleb128 0x2
+ 1006 0159 91       		.byte	0x91
+ 1007 015a 77       		.sleb128 -9
+ 1008 015b 00       		.byte	0
+ 1009 015c 09       		.uleb128 0x9
+ 1010 015d 07020000 		.4byte	.LASF21
+ 1011 0161 01       		.byte	0x1
+ 1012 0162 49       		.byte	0x49
+ 1013 0163 6B000000 		.4byte	0x6b
+ 1014 0167 00000000 		.4byte	.LFB36
+ 1015 016b 60000000 		.4byte	.LFE36-.LFB36
+ 1016 016f 01       		.uleb128 0x1
+ 1017 0170 9C       		.byte	0x9c
+ 1018 0171 84010000 		.4byte	0x184
+ 1019 0175 08       		.uleb128 0x8
+ 1020 0176 28020000 		.4byte	.LASF17
+ 1021 017a 01       		.byte	0x1
+ 1022 017b 49       		.byte	0x49
+ 1023 017c 6B000000 		.4byte	0x6b
+ 1024 0180 02       		.uleb128 0x2
+ 1025 0181 91       		.byte	0x91
+ 1026 0182 77       		.sleb128 -9
+ 1027 0183 00       		.byte	0
+ 1028 0184 07       		.uleb128 0x7
+ 1029 0185 12020000 		.4byte	.LASF22
+ 1030 0189 01       		.byte	0x1
+ 1031 018a 5B       		.byte	0x5b
+ 1032 018b 00000000 		.4byte	.LFB37
+ 1033 018f 3C010000 		.4byte	.LFE37-.LFB37
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccM5e7NB.s 			page 23
+
+
+ 1034 0193 01       		.uleb128 0x1
+ 1035 0194 9C       		.byte	0x9c
+ 1036 0195 A8010000 		.4byte	0x1a8
+ 1037 0199 08       		.uleb128 0x8
+ 1038 019a 28020000 		.4byte	.LASF17
+ 1039 019e 01       		.byte	0x1
+ 1040 019f 5B       		.byte	0x5b
+ 1041 01a0 6B000000 		.4byte	0x6b
+ 1042 01a4 02       		.uleb128 0x2
+ 1043 01a5 91       		.byte	0x91
+ 1044 01a6 77       		.sleb128 -9
+ 1045 01a7 00       		.byte	0
+ 1046 01a8 07       		.uleb128 0x7
+ 1047 01a9 34000000 		.4byte	.LASF23
+ 1048 01ad 01       		.byte	0x1
+ 1049 01ae AB       		.byte	0xab
+ 1050 01af 00000000 		.4byte	.LFB38
+ 1051 01b3 8C000000 		.4byte	.LFE38-.LFB38
+ 1052 01b7 01       		.uleb128 0x1
+ 1053 01b8 9C       		.byte	0x9c
+ 1054 01b9 CC010000 		.4byte	0x1cc
+ 1055 01bd 08       		.uleb128 0x8
+ 1056 01be 28020000 		.4byte	.LASF17
+ 1057 01c2 01       		.byte	0x1
+ 1058 01c3 AB       		.byte	0xab
+ 1059 01c4 6B000000 		.4byte	0x6b
+ 1060 01c8 02       		.uleb128 0x2
+ 1061 01c9 91       		.byte	0x91
+ 1062 01ca 77       		.sleb128 -9
+ 1063 01cb 00       		.byte	0
+ 1064 01cc 0A       		.uleb128 0xa
+ 1065 01cd 24010000 		.4byte	.LASF24
+ 1066 01d1 01       		.byte	0x1
+ 1067 01d2 C8       		.byte	0xc8
+ 1068 01d3 00000000 		.4byte	.LFB39
+ 1069 01d7 20000000 		.4byte	.LFE39-.LFB39
+ 1070 01db 01       		.uleb128 0x1
+ 1071 01dc 9C       		.byte	0x9c
+ 1072 01dd 0A       		.uleb128 0xa
+ 1073 01de A4010000 		.4byte	.LASF25
+ 1074 01e2 01       		.byte	0x1
+ 1075 01e3 CF       		.byte	0xcf
+ 1076 01e4 00000000 		.4byte	.LFB40
+ 1077 01e8 20000000 		.4byte	.LFE40-.LFB40
+ 1078 01ec 01       		.uleb128 0x1
+ 1079 01ed 9C       		.byte	0x9c
+ 1080 01ee 07       		.uleb128 0x7
+ 1081 01ef 8E010000 		.4byte	.LASF26
+ 1082 01f3 01       		.byte	0x1
+ 1083 01f4 D6       		.byte	0xd6
+ 1084 01f5 00000000 		.4byte	.LFB41
+ 1085 01f9 2E000000 		.4byte	.LFE41-.LFB41
+ 1086 01fd 01       		.uleb128 0x1
+ 1087 01fe 9C       		.byte	0x9c
+ 1088 01ff 12020000 		.4byte	0x212
+ 1089 0203 08       		.uleb128 0x8
+ 1090 0204 88010000 		.4byte	.LASF14
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccM5e7NB.s 			page 24
+
+
+ 1091 0208 01       		.byte	0x1
+ 1092 0209 D6       		.byte	0xd6
+ 1093 020a 6B000000 		.4byte	0x6b
+ 1094 020e 02       		.uleb128 0x2
+ 1095 020f 91       		.byte	0x91
+ 1096 0210 77       		.sleb128 -9
+ 1097 0211 00       		.byte	0
+ 1098 0212 0B       		.uleb128 0xb
+ 1099 0213 00000000 		.4byte	.LASF27
+ 1100 0217 01       		.byte	0x1
+ 1101 0218 11       		.byte	0x11
+ 1102 0219 23020000 		.4byte	0x223
+ 1103 021d 05       		.uleb128 0x5
+ 1104 021e 03       		.byte	0x3
+ 1105 021f 00000000 		.4byte	Left_LED_State
+ 1106 0223 0C       		.uleb128 0xc
+ 1107 0224 92000000 		.4byte	0x92
+ 1108 0228 0B       		.uleb128 0xb
+ 1109 0229 62000000 		.4byte	.LASF28
+ 1110 022d 01       		.byte	0x1
+ 1111 022e 12       		.byte	0x12
+ 1112 022f 23020000 		.4byte	0x223
+ 1113 0233 05       		.uleb128 0x5
+ 1114 0234 03       		.byte	0x3
+ 1115 0235 00000000 		.4byte	Right_LED_State
+ 1116 0239 0B       		.uleb128 0xb
+ 1117 023a 19000000 		.4byte	.LASF29
+ 1118 023e 01       		.byte	0x1
+ 1119 023f 13       		.byte	0x13
+ 1120 0240 4A020000 		.4byte	0x24a
+ 1121 0244 05       		.uleb128 0x5
+ 1122 0245 03       		.byte	0x3
+ 1123 0246 00000000 		.4byte	IR_LED_State
+ 1124 024a 0C       		.uleb128 0xc
+ 1125 024b B7000000 		.4byte	0xb7
+ 1126 024f 0B       		.uleb128 0xb
+ 1127 0250 CC010000 		.4byte	.LASF30
+ 1128 0254 01       		.byte	0x1
+ 1129 0255 14       		.byte	0x14
+ 1130 0256 4A020000 		.4byte	0x24a
+ 1131 025a 05       		.uleb128 0x5
+ 1132 025b 03       		.byte	0x3
+ 1133 025c 00000000 		.4byte	Board_LED_State
+ 1134 0260 00       		.byte	0
+ 1135              		.section	.debug_abbrev,"",%progbits
+ 1136              	.Ldebug_abbrev0:
+ 1137 0000 01       		.uleb128 0x1
+ 1138 0001 11       		.uleb128 0x11
+ 1139 0002 01       		.byte	0x1
+ 1140 0003 25       		.uleb128 0x25
+ 1141 0004 0E       		.uleb128 0xe
+ 1142 0005 13       		.uleb128 0x13
+ 1143 0006 0B       		.uleb128 0xb
+ 1144 0007 03       		.uleb128 0x3
+ 1145 0008 0E       		.uleb128 0xe
+ 1146 0009 1B       		.uleb128 0x1b
+ 1147 000a 0E       		.uleb128 0xe
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccM5e7NB.s 			page 25
+
+
+ 1148 000b 55       		.uleb128 0x55
+ 1149 000c 17       		.uleb128 0x17
+ 1150 000d 11       		.uleb128 0x11
+ 1151 000e 01       		.uleb128 0x1
+ 1152 000f 10       		.uleb128 0x10
+ 1153 0010 17       		.uleb128 0x17
+ 1154 0011 00       		.byte	0
+ 1155 0012 00       		.byte	0
+ 1156 0013 02       		.uleb128 0x2
+ 1157 0014 24       		.uleb128 0x24
+ 1158 0015 00       		.byte	0
+ 1159 0016 0B       		.uleb128 0xb
+ 1160 0017 0B       		.uleb128 0xb
+ 1161 0018 3E       		.uleb128 0x3e
+ 1162 0019 0B       		.uleb128 0xb
+ 1163 001a 03       		.uleb128 0x3
+ 1164 001b 0E       		.uleb128 0xe
+ 1165 001c 00       		.byte	0
+ 1166 001d 00       		.byte	0
+ 1167 001e 03       		.uleb128 0x3
+ 1168 001f 24       		.uleb128 0x24
+ 1169 0020 00       		.byte	0
+ 1170 0021 0B       		.uleb128 0xb
+ 1171 0022 0B       		.uleb128 0xb
+ 1172 0023 3E       		.uleb128 0x3e
+ 1173 0024 0B       		.uleb128 0xb
+ 1174 0025 03       		.uleb128 0x3
+ 1175 0026 08       		.uleb128 0x8
+ 1176 0027 00       		.byte	0
+ 1177 0028 00       		.byte	0
+ 1178 0029 04       		.uleb128 0x4
+ 1179 002a 16       		.uleb128 0x16
+ 1180 002b 00       		.byte	0
+ 1181 002c 03       		.uleb128 0x3
+ 1182 002d 0E       		.uleb128 0xe
+ 1183 002e 3A       		.uleb128 0x3a
+ 1184 002f 0B       		.uleb128 0xb
+ 1185 0030 3B       		.uleb128 0x3b
+ 1186 0031 0B       		.uleb128 0xb
+ 1187 0032 49       		.uleb128 0x49
+ 1188 0033 13       		.uleb128 0x13
+ 1189 0034 00       		.byte	0
+ 1190 0035 00       		.byte	0
+ 1191 0036 05       		.uleb128 0x5
+ 1192 0037 13       		.uleb128 0x13
+ 1193 0038 01       		.byte	0x1
+ 1194 0039 03       		.uleb128 0x3
+ 1195 003a 0E       		.uleb128 0xe
+ 1196 003b 0B       		.uleb128 0xb
+ 1197 003c 0B       		.uleb128 0xb
+ 1198 003d 3A       		.uleb128 0x3a
+ 1199 003e 0B       		.uleb128 0xb
+ 1200 003f 3B       		.uleb128 0x3b
+ 1201 0040 0B       		.uleb128 0xb
+ 1202 0041 01       		.uleb128 0x1
+ 1203 0042 13       		.uleb128 0x13
+ 1204 0043 00       		.byte	0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccM5e7NB.s 			page 26
+
+
+ 1205 0044 00       		.byte	0
+ 1206 0045 06       		.uleb128 0x6
+ 1207 0046 0D       		.uleb128 0xd
+ 1208 0047 00       		.byte	0
+ 1209 0048 03       		.uleb128 0x3
+ 1210 0049 0E       		.uleb128 0xe
+ 1211 004a 3A       		.uleb128 0x3a
+ 1212 004b 0B       		.uleb128 0xb
+ 1213 004c 3B       		.uleb128 0x3b
+ 1214 004d 0B       		.uleb128 0xb
+ 1215 004e 49       		.uleb128 0x49
+ 1216 004f 13       		.uleb128 0x13
+ 1217 0050 38       		.uleb128 0x38
+ 1218 0051 0B       		.uleb128 0xb
+ 1219 0052 00       		.byte	0
+ 1220 0053 00       		.byte	0
+ 1221 0054 07       		.uleb128 0x7
+ 1222 0055 2E       		.uleb128 0x2e
+ 1223 0056 01       		.byte	0x1
+ 1224 0057 3F       		.uleb128 0x3f
+ 1225 0058 19       		.uleb128 0x19
+ 1226 0059 03       		.uleb128 0x3
+ 1227 005a 0E       		.uleb128 0xe
+ 1228 005b 3A       		.uleb128 0x3a
+ 1229 005c 0B       		.uleb128 0xb
+ 1230 005d 3B       		.uleb128 0x3b
+ 1231 005e 0B       		.uleb128 0xb
+ 1232 005f 27       		.uleb128 0x27
+ 1233 0060 19       		.uleb128 0x19
+ 1234 0061 11       		.uleb128 0x11
+ 1235 0062 01       		.uleb128 0x1
+ 1236 0063 12       		.uleb128 0x12
+ 1237 0064 06       		.uleb128 0x6
+ 1238 0065 40       		.uleb128 0x40
+ 1239 0066 18       		.uleb128 0x18
+ 1240 0067 9642     		.uleb128 0x2116
+ 1241 0069 19       		.uleb128 0x19
+ 1242 006a 01       		.uleb128 0x1
+ 1243 006b 13       		.uleb128 0x13
+ 1244 006c 00       		.byte	0
+ 1245 006d 00       		.byte	0
+ 1246 006e 08       		.uleb128 0x8
+ 1247 006f 05       		.uleb128 0x5
+ 1248 0070 00       		.byte	0
+ 1249 0071 03       		.uleb128 0x3
+ 1250 0072 0E       		.uleb128 0xe
+ 1251 0073 3A       		.uleb128 0x3a
+ 1252 0074 0B       		.uleb128 0xb
+ 1253 0075 3B       		.uleb128 0x3b
+ 1254 0076 0B       		.uleb128 0xb
+ 1255 0077 49       		.uleb128 0x49
+ 1256 0078 13       		.uleb128 0x13
+ 1257 0079 02       		.uleb128 0x2
+ 1258 007a 18       		.uleb128 0x18
+ 1259 007b 00       		.byte	0
+ 1260 007c 00       		.byte	0
+ 1261 007d 09       		.uleb128 0x9
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccM5e7NB.s 			page 27
+
+
+ 1262 007e 2E       		.uleb128 0x2e
+ 1263 007f 01       		.byte	0x1
+ 1264 0080 3F       		.uleb128 0x3f
+ 1265 0081 19       		.uleb128 0x19
+ 1266 0082 03       		.uleb128 0x3
+ 1267 0083 0E       		.uleb128 0xe
+ 1268 0084 3A       		.uleb128 0x3a
+ 1269 0085 0B       		.uleb128 0xb
+ 1270 0086 3B       		.uleb128 0x3b
+ 1271 0087 0B       		.uleb128 0xb
+ 1272 0088 27       		.uleb128 0x27
+ 1273 0089 19       		.uleb128 0x19
+ 1274 008a 49       		.uleb128 0x49
+ 1275 008b 13       		.uleb128 0x13
+ 1276 008c 11       		.uleb128 0x11
+ 1277 008d 01       		.uleb128 0x1
+ 1278 008e 12       		.uleb128 0x12
+ 1279 008f 06       		.uleb128 0x6
+ 1280 0090 40       		.uleb128 0x40
+ 1281 0091 18       		.uleb128 0x18
+ 1282 0092 9742     		.uleb128 0x2117
+ 1283 0094 19       		.uleb128 0x19
+ 1284 0095 01       		.uleb128 0x1
+ 1285 0096 13       		.uleb128 0x13
+ 1286 0097 00       		.byte	0
+ 1287 0098 00       		.byte	0
+ 1288 0099 0A       		.uleb128 0xa
+ 1289 009a 2E       		.uleb128 0x2e
+ 1290 009b 00       		.byte	0
+ 1291 009c 3F       		.uleb128 0x3f
+ 1292 009d 19       		.uleb128 0x19
+ 1293 009e 03       		.uleb128 0x3
+ 1294 009f 0E       		.uleb128 0xe
+ 1295 00a0 3A       		.uleb128 0x3a
+ 1296 00a1 0B       		.uleb128 0xb
+ 1297 00a2 3B       		.uleb128 0x3b
+ 1298 00a3 0B       		.uleb128 0xb
+ 1299 00a4 27       		.uleb128 0x27
+ 1300 00a5 19       		.uleb128 0x19
+ 1301 00a6 11       		.uleb128 0x11
+ 1302 00a7 01       		.uleb128 0x1
+ 1303 00a8 12       		.uleb128 0x12
+ 1304 00a9 06       		.uleb128 0x6
+ 1305 00aa 40       		.uleb128 0x40
+ 1306 00ab 18       		.uleb128 0x18
+ 1307 00ac 9642     		.uleb128 0x2116
+ 1308 00ae 19       		.uleb128 0x19
+ 1309 00af 00       		.byte	0
+ 1310 00b0 00       		.byte	0
+ 1311 00b1 0B       		.uleb128 0xb
+ 1312 00b2 34       		.uleb128 0x34
+ 1313 00b3 00       		.byte	0
+ 1314 00b4 03       		.uleb128 0x3
+ 1315 00b5 0E       		.uleb128 0xe
+ 1316 00b6 3A       		.uleb128 0x3a
+ 1317 00b7 0B       		.uleb128 0xb
+ 1318 00b8 3B       		.uleb128 0x3b
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccM5e7NB.s 			page 28
+
+
+ 1319 00b9 0B       		.uleb128 0xb
+ 1320 00ba 49       		.uleb128 0x49
+ 1321 00bb 13       		.uleb128 0x13
+ 1322 00bc 3F       		.uleb128 0x3f
+ 1323 00bd 19       		.uleb128 0x19
+ 1324 00be 02       		.uleb128 0x2
+ 1325 00bf 18       		.uleb128 0x18
+ 1326 00c0 00       		.byte	0
+ 1327 00c1 00       		.byte	0
+ 1328 00c2 0C       		.uleb128 0xc
+ 1329 00c3 35       		.uleb128 0x35
+ 1330 00c4 00       		.byte	0
+ 1331 00c5 49       		.uleb128 0x49
+ 1332 00c6 13       		.uleb128 0x13
+ 1333 00c7 00       		.byte	0
+ 1334 00c8 00       		.byte	0
+ 1335 00c9 00       		.byte	0
+ 1336              		.section	.debug_aranges,"",%progbits
+ 1337 0000 5C000000 		.4byte	0x5c
+ 1338 0004 0200     		.2byte	0x2
+ 1339 0006 00000000 		.4byte	.Ldebug_info0
+ 1340 000a 04       		.byte	0x4
+ 1341 000b 00       		.byte	0
+ 1342 000c 0000     		.2byte	0
+ 1343 000e 0000     		.2byte	0
+ 1344 0010 00000000 		.4byte	.LFB33
+ 1345 0014 60000000 		.4byte	.LFE33-.LFB33
+ 1346 0018 00000000 		.4byte	.LFB34
+ 1347 001c 80000000 		.4byte	.LFE34-.LFB34
+ 1348 0020 00000000 		.4byte	.LFB35
+ 1349 0024 3C000000 		.4byte	.LFE35-.LFB35
+ 1350 0028 00000000 		.4byte	.LFB36
+ 1351 002c 60000000 		.4byte	.LFE36-.LFB36
+ 1352 0030 00000000 		.4byte	.LFB37
+ 1353 0034 3C010000 		.4byte	.LFE37-.LFB37
+ 1354 0038 00000000 		.4byte	.LFB38
+ 1355 003c 8C000000 		.4byte	.LFE38-.LFB38
+ 1356 0040 00000000 		.4byte	.LFB39
+ 1357 0044 20000000 		.4byte	.LFE39-.LFB39
+ 1358 0048 00000000 		.4byte	.LFB40
+ 1359 004c 20000000 		.4byte	.LFE40-.LFB40
+ 1360 0050 00000000 		.4byte	.LFB41
+ 1361 0054 2E000000 		.4byte	.LFE41-.LFB41
+ 1362 0058 00000000 		.4byte	0
+ 1363 005c 00000000 		.4byte	0
+ 1364              		.section	.debug_ranges,"",%progbits
+ 1365              	.Ldebug_ranges0:
+ 1366 0000 00000000 		.4byte	.LFB33
+ 1367 0004 60000000 		.4byte	.LFE33
+ 1368 0008 00000000 		.4byte	.LFB34
+ 1369 000c 80000000 		.4byte	.LFE34
+ 1370 0010 00000000 		.4byte	.LFB35
+ 1371 0014 3C000000 		.4byte	.LFE35
+ 1372 0018 00000000 		.4byte	.LFB36
+ 1373 001c 60000000 		.4byte	.LFE36
+ 1374 0020 00000000 		.4byte	.LFB37
+ 1375 0024 3C010000 		.4byte	.LFE37
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccM5e7NB.s 			page 29
+
+
+ 1376 0028 00000000 		.4byte	.LFB38
+ 1377 002c 8C000000 		.4byte	.LFE38
+ 1378 0030 00000000 		.4byte	.LFB39
+ 1379 0034 20000000 		.4byte	.LFE39
+ 1380 0038 00000000 		.4byte	.LFB40
+ 1381 003c 20000000 		.4byte	.LFE40
+ 1382 0040 00000000 		.4byte	.LFB41
+ 1383 0044 2E000000 		.4byte	.LFE41
+ 1384 0048 00000000 		.4byte	0
+ 1385 004c 00000000 		.4byte	0
+ 1386              		.section	.debug_line,"",%progbits
+ 1387              	.Ldebug_line0:
+ 1388 0000 68010000 		.section	.debug_str,"MS",%progbits,1
+ 1388      02005900 
+ 1388      00000201 
+ 1388      FB0E0D00 
+ 1388      01010101 
+ 1389              	.LASF27:
+ 1390 0000 4C656674 		.ascii	"Left_LED_State\000"
+ 1390      5F4C4544 
+ 1390      5F537461 
+ 1390      746500
+ 1391              	.LASF18:
+ 1392 000f 7365745F 		.ascii	"set_color\000"
+ 1392      636F6C6F 
+ 1392      7200
+ 1393              	.LASF29:
+ 1394 0019 49525F4C 		.ascii	"IR_LED_State\000"
+ 1394      45445F53 
+ 1394      74617465 
+ 1394      00
+ 1395              	.LASF15:
+ 1396 0026 5247425F 		.ascii	"RGB_LED_State\000"
+ 1396      4C45445F 
+ 1396      53746174 
+ 1396      6500
+ 1397              	.LASF23:
+ 1398 0034 7475726E 		.ascii	"turn_off\000"
+ 1398      5F6F6666 
+ 1398      00
+ 1399              	.LASF3:
+ 1400 003d 73686F72 		.ascii	"short unsigned int\000"
+ 1400      7420756E 
+ 1400      7369676E 
+ 1400      65642069 
+ 1400      6E7400
+ 1401              	.LASF19:
+ 1402 0050 7365745F 		.ascii	"set_status\000"
+ 1402      73746174 
+ 1402      757300
+ 1403              	.LASF13:
+ 1404 005b 73746174 		.ascii	"status\000"
+ 1404      757300
+ 1405              	.LASF28:
+ 1406 0062 52696768 		.ascii	"Right_LED_State\000"
+ 1406      745F4C45 
+ 1406      445F5374 
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccM5e7NB.s 			page 30
+
+
+ 1406      61746500 
+ 1407              	.LASF9:
+ 1408 0072 666C6F61 		.ascii	"float\000"
+ 1408      7400
+ 1409              	.LASF31:
+ 1410 0078 474E5520 		.ascii	"GNU C 4.8.4 20140526 (release) [ARM/embedded-4_8-br"
+ 1410      4320342E 
+ 1410      382E3420 
+ 1410      32303134 
+ 1410      30353236 
+ 1411 00ab 616E6368 		.ascii	"anch revision 211358] -mcpu=cortex-m0 -mthumb -g -O"
+ 1411      20726576 
+ 1411      6973696F 
+ 1411      6E203231 
+ 1411      31333538 
+ 1412 00de 30202D66 		.ascii	"0 -ffunction-sections\000"
+ 1412      66756E63 
+ 1412      74696F6E 
+ 1412      2D736563 
+ 1412      74696F6E 
+ 1413              	.LASF1:
+ 1414 00f4 756E7369 		.ascii	"unsigned char\000"
+ 1414      676E6564 
+ 1414      20636861 
+ 1414      7200
+ 1415              	.LASF5:
+ 1416 0102 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1416      20756E73 
+ 1416      69676E65 
+ 1416      6420696E 
+ 1416      7400
+ 1417              	.LASF34:
+ 1418 0114 75696E74 		.ascii	"uint8\000"
+ 1418      3800
+ 1419              	.LASF20:
+ 1420 011a 6765745F 		.ascii	"get_color\000"
+ 1420      636F6C6F 
+ 1420      7200
+ 1421              	.LASF24:
+ 1422 0124 7475726E 		.ascii	"turn_on_all_led\000"
+ 1422      5F6F6E5F 
+ 1422      616C6C5F 
+ 1422      6C656400 
+ 1423              	.LASF10:
+ 1424 0134 646F7562 		.ascii	"double\000"
+ 1424      6C6500
+ 1425              	.LASF33:
+ 1426 013b 433A5C55 		.ascii	"C:\\Users\\Admin\\Desktop\\Organizer Badge\\Organiz"
+ 1426      73657273 
+ 1426      5C41646D 
+ 1426      696E5C44 
+ 1426      65736B74 
+ 1427 0169 65725F42 		.ascii	"er_Badge\\Organizer_Badge.cydsn\000"
+ 1427      61646765 
+ 1427      5C4F7267 
+ 1427      616E697A 
+ 1427      65725F42 
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccM5e7NB.s 			page 31
+
+
+ 1428              	.LASF14:
+ 1429 0188 636F6C6F 		.ascii	"color\000"
+ 1429      7200
+ 1430              	.LASF26:
+ 1431 018e 696E6974 		.ascii	"init_led\000"
+ 1431      5F6C6564 
+ 1431      00
+ 1432              	.LASF8:
+ 1433 0197 756E7369 		.ascii	"unsigned int\000"
+ 1433      676E6564 
+ 1433      20696E74 
+ 1433      00
+ 1434              	.LASF25:
+ 1435 01a4 7475726E 		.ascii	"turn_off_all_led\000"
+ 1435      5F6F6666 
+ 1435      5F616C6C 
+ 1435      5F6C6564 
+ 1435      00
+ 1436              	.LASF7:
+ 1437 01b5 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1437      206C6F6E 
+ 1437      6720756E 
+ 1437      7369676E 
+ 1437      65642069 
+ 1438              	.LASF30:
+ 1439 01cc 426F6172 		.ascii	"Board_LED_State\000"
+ 1439      645F4C45 
+ 1439      445F5374 
+ 1439      61746500 
+ 1440              	.LASF12:
+ 1441 01dc 73697A65 		.ascii	"sizetype\000"
+ 1441      74797065 
+ 1441      00
+ 1442              	.LASF6:
+ 1443 01e5 6C6F6E67 		.ascii	"long long int\000"
+ 1443      206C6F6E 
+ 1443      6720696E 
+ 1443      7400
+ 1444              	.LASF16:
+ 1445 01f3 4C45445F 		.ascii	"LED_State\000"
+ 1445      53746174 
+ 1445      6500
+ 1446              	.LASF2:
+ 1447 01fd 73686F72 		.ascii	"short int\000"
+ 1447      7420696E 
+ 1447      7400
+ 1448              	.LASF21:
+ 1449 0207 6765745F 		.ascii	"get_status\000"
+ 1449      73746174 
+ 1449      757300
+ 1450              	.LASF22:
+ 1451 0212 7475726E 		.ascii	"turn_on\000"
+ 1451      5F6F6E00 
+ 1452              	.LASF4:
+ 1453 021a 6C6F6E67 		.ascii	"long int\000"
+ 1453      20696E74 
+ 1453      00
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccM5e7NB.s 			page 32
+
+
+ 1454              	.LASF11:
+ 1455 0223 63686172 		.ascii	"char\000"
+ 1455      00
+ 1456              	.LASF17:
+ 1457 0228 6C65645F 		.ascii	"led_flag\000"
+ 1457      666C6167 
+ 1457      00
+ 1458              	.LASF0:
+ 1459 0231 7369676E 		.ascii	"signed char\000"
+ 1459      65642063 
+ 1459      68617200 
+ 1460              	.LASF32:
+ 1461 023d 2E5C6C69 		.ascii	".\\lightlib.c\000"
+ 1461      6768746C 
+ 1461      69622E63 
+ 1461      00
+ 1462              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.8.4 20140526 (release) [ARM/embedded-4_8-br

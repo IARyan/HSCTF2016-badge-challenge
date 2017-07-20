@@ -1,0 +1,5 @@
+C:\Users\Admin\Desktop\IR LCD\IR_LCD\IR_LCD.cydsn\IR_LCD.cyprj|cb885501-96d1-4efe-be0b-7508b8fa3259
+C:\Program Files\Cypress\PSoC Creator\3.1\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|e6f7ec22-3728-4e8e-a137-310b6cd66908
+C:\Program Files\Cypress\PSoC Creator\3.1\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|ae9b784a-df04-44da-94b7-474d6e7f819b
+C:\Program Files\Cypress\PSoC Creator\3.1\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|c5040cdf-2617-44d6-b71f-d3dc091b1d8e
+C:\Program Files\Cypress\PSoC Creator\3.1\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|9834289c-3aa6-46d0-bd2e-fa6a8dd6cf48

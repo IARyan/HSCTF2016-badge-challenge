@@ -1,0 +1,186 @@
+C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/CortexM0/ARM_GCC_484/Release/Board_LED.o : C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/Board_LED.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/Board_LED_aliases.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cydevice_trm.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cyfitter.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cypins.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cytypes.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/Board_LED.c 
+
+C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/Board_LED.h : 
+
+C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/Board_LED_aliases.h : 
+
+C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cydevice_trm.h : 
+
+C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cyfitter.h : 
+
+C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cypins.h : 
+
+C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cytypes.h : 
+
+C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/Board_LED.c : 
+
+C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/CortexM0/ARM_GCC_484/Release/Bootloadable.o : C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/Bootloadable.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/CyFlash.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/CyLib.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cydevice_trm.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cyfitter.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cytypes.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/Bootloadable.c 
+
+C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/Bootloadable.h : 
+
+C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/CyFlash.h : 
+
+C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/CyLib.h : 
+
+C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/Bootloadable.c : 
+
+C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/CortexM0/ARM_GCC_484/Release/Cm0Start.o : C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/CyLib.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cydevice_trm.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cyfitter.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cyfitter_cfg.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cytypes.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/Cm0Start.c 
+
+C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cyfitter_cfg.h : 
+
+C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/Cm0Start.c : 
+
+C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/CortexM0/ARM_GCC_484/Release/CyFlash.o : C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/CyFlash.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/CyLib.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cydevice_trm.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cyfitter.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cytypes.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/CyFlash.c 
+
+C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/CyFlash.c : 
+
+C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/CortexM0/ARM_GCC_484/Release/CyLib.o : C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/CyLib.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cydevice_trm.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cyfitter.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cytypes.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/CyLib.c 
+
+C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/CyLib.c : 
+
+C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/CortexM0/ARM_GCC_484/Release/IR_LED.o : C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/IR_LED.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/IR_LED_aliases.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cydevice_trm.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cyfitter.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cypins.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cytypes.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/IR_LED.c 
+
+C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/IR_LED.h : 
+
+C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/IR_LED_aliases.h : 
+
+C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/IR_LED.c : 
+
+C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/CortexM0/ARM_GCC_484/Release/Left_LED_Blue.o : C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/Left_LED_Blue.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/Left_LED_Blue_aliases.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cydevice_trm.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cyfitter.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cypins.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cytypes.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/Left_LED_Blue.c 
+
+C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/Left_LED_Blue.h : 
+
+C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/Left_LED_Blue_aliases.h : 
+
+C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/Left_LED_Blue.c : 
+
+C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/CortexM0/ARM_GCC_484/Release/Left_LED_Green.o : C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/Left_LED_Green.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/Left_LED_Green_aliases.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cydevice_trm.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cyfitter.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cypins.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cytypes.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/Left_LED_Green.c 
+
+C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/Left_LED_Green.h : 
+
+C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/Left_LED_Green_aliases.h : 
+
+C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/Left_LED_Green.c : 
+
+C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/CortexM0/ARM_GCC_484/Release/Left_LED_Red.o : C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/Left_LED_Red.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/Left_LED_Red_aliases.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cydevice_trm.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cyfitter.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cypins.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cytypes.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/Left_LED_Red.c 
+
+C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/Left_LED_Red.h : 
+
+C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/Left_LED_Red_aliases.h : 
+
+C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/Left_LED_Red.c : 
+
+C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/CortexM0/ARM_GCC_484/Release/PWM_Left_LED_Blue.o : C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/CyLib.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/PWM_Left_LED_Blue.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cydevice_trm.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cyfitter.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cytypes.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/PWM_Left_LED_Blue.c 
+
+C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/PWM_Left_LED_Blue.h : 
+
+C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/PWM_Left_LED_Blue.c : 
+
+C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/CortexM0/ARM_GCC_484/Release/PWM_Left_LED_Blue_PM.o : C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/CyLib.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/PWM_Left_LED_Blue.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cydevice_trm.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cyfitter.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cytypes.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/PWM_Left_LED_Blue_PM.c 
+
+C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/PWM_Left_LED_Blue_PM.c : 
+
+C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/CortexM0/ARM_GCC_484/Release/PWM_Right_LED_Blue.o : C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/CyLib.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/PWM_Right_LED_Blue.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cydevice_trm.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cyfitter.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cytypes.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/PWM_Right_LED_Blue.c 
+
+C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/PWM_Right_LED_Blue.h : 
+
+C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/PWM_Right_LED_Blue.c : 
+
+C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/CortexM0/ARM_GCC_484/Release/PWM_Right_LED_Blue_PM.o : C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/CyLib.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/PWM_Right_LED_Blue.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cydevice_trm.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cyfitter.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cytypes.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/PWM_Right_LED_Blue_PM.c 
+
+C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/PWM_Right_LED_Blue_PM.c : 
+
+C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/CortexM0/ARM_GCC_484/Release/Right_LED_Blue.o : C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/Right_LED_Blue.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/Right_LED_Blue_aliases.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cydevice_trm.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cyfitter.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cypins.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cytypes.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/Right_LED_Blue.c 
+
+C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/Right_LED_Blue.h : 
+
+C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/Right_LED_Blue_aliases.h : 
+
+C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/Right_LED_Blue.c : 
+
+C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/CortexM0/ARM_GCC_484/Release/Right_LED_Green.o : C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/Right_LED_Green.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/Right_LED_Green_aliases.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cydevice_trm.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cyfitter.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cypins.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cytypes.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/Right_LED_Green.c 
+
+C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/Right_LED_Green.h : 
+
+C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/Right_LED_Green_aliases.h : 
+
+C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/Right_LED_Green.c : 
+
+C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/CortexM0/ARM_GCC_484/Release/Right_LED_Red.o : C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/Right_LED_Red.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/Right_LED_Red_aliases.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cydevice_trm.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cyfitter.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cypins.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cytypes.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/Right_LED_Red.c 
+
+C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/Right_LED_Red.h : 
+
+C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/Right_LED_Red_aliases.h : 
+
+C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/Right_LED_Red.c : 
+
+C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/CortexM0/ARM_GCC_484/Release/SWB.o : C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/SWB.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/SWB_aliases.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cydevice_trm.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cyfitter.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cypins.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cytypes.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/SWB.c 
+
+C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/SWB.h : 
+
+C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/SWB_aliases.h : 
+
+C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/SWB.c : 
+
+C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/CortexM0/ARM_GCC_484/Release/SWB_Int.o : C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/CyLib.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/SWB_Int.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cydevice_trm.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cyfitter.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cytypes.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/SWB_Int.c 
+
+C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/SWB_Int.h : 
+
+C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/SWB_Int.c : 
+
+C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/CortexM0/ARM_GCC_484/Release/SWL.o : C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/SWL.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/SWL_aliases.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cydevice_trm.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cyfitter.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cypins.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cytypes.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/SWL.c 
+
+C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/SWL.h : 
+
+C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/SWL_aliases.h : 
+
+C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/SWL.c : 
+
+C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/CortexM0/ARM_GCC_484/Release/SWL_Int.o : C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/CyLib.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/SWL_Int.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cydevice_trm.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cyfitter.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cytypes.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/SWL_Int.c 
+
+C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/SWL_Int.h : 
+
+C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/SWL_Int.c : 
+
+C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/CortexM0/ARM_GCC_484/Release/SWR.o : C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/SWR.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/SWR_aliases.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cydevice_trm.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cyfitter.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cypins.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cytypes.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/SWR.c 
+
+C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/SWR.h : 
+
+C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/SWR_aliases.h : 
+
+C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/SWR.c : 
+
+C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/CortexM0/ARM_GCC_484/Release/SWR_Int.o : C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/CyLib.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/SWR_Int.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cydevice_trm.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cyfitter.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cytypes.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/SWR_Int.c 
+
+C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/SWR_Int.h : 
+
+C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/SWR_Int.c : 
+
+C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/CortexM0/ARM_GCC_484/Release/clk_4kHz.o : C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/clk_4kHz.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cydevice_trm.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cyfitter.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cytypes.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/clk_4kHz.c 
+
+C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/clk_4kHz.h : 
+
+C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/clk_4kHz.c : 
+
+C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/CortexM0/ARM_GCC_484/Release/cyPm.o : C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/CyLib.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cyPm.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cydevice_trm.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cyfitter.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cytypes.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cyPm.c 
+
+C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cyPm.h : 
+
+C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cyPm.c : 
+
+C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/CortexM0/ARM_GCC_484/Release/cybootloader.o : C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cydevice_trm.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cyfitter.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cytypes.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cybootloader.c 
+
+C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cybootloader.c : 
+
+C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/CortexM0/ARM_GCC_484/Release/cyfitter_cfg.o : C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/CyLib.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cydevice_trm.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cyfitter.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cyfitter_cfg.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cytypes.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cyfitter_cfg.c 
+
+C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cyfitter_cfg.c : 
+
+C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/CortexM0/ARM_GCC_484/Release/cymetadata.o : C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cydevice_trm.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cyfitter.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cytypes.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cymetadata.c 
+
+C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cymetadata.c : 
+
+C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/CortexM0/ARM_GCC_484/Release/cyutils.o : C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cydevice_trm.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cyfitter.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cytypes.h C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cyutils.c 
+
+C:/Users/Admin/Desktop/Teacher\ Badge/Teacher_Badge/Teacher_Badge.cydsn/Generated_Source/PSoC4/cyutils.c : 
+

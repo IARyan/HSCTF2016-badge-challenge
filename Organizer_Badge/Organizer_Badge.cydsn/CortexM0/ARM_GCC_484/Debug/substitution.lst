@@ -1,0 +1,1936 @@
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccGiu0v1.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 6
+  10              		.eabi_attribute 34, 0
+  11              		.eabi_attribute 18, 4
+  12              		.code	16
+  13              		.file	"substitution.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.blink_char,"ax",%progbits
+  18              		.align	2
+  19              		.global	blink_char
+  20              		.code	16
+  21              		.thumb_func
+  22              		.type	blink_char, %function
+  23              	blink_char:
+  24              	.LFB33:
+  25              		.file 1 ".\\substitution.c"
+   1:.\substitution.c **** /* ========================================
+   2:.\substitution.c ****  *
+   3:.\substitution.c ****  * Copyright Nullify, 2016
+   4:.\substitution.c ****  * All Rights Reserved
+   5:.\substitution.c ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:.\substitution.c ****  *
+   7:.\substitution.c ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:.\substitution.c ****  * WHICH IS THE PROPERTY OF NULLIY.
+   9:.\substitution.c ****  *
+  10:.\substitution.c ****  * ========================================
+  11:.\substitution.c **** */
+  12:.\substitution.c **** #include <project.h>
+  13:.\substitution.c **** #include <string.h>
+  14:.\substitution.c **** #include "lightlib.h"
+  15:.\substitution.c **** #include "substitution.h"
+  16:.\substitution.c **** #include "state.h"
+  17:.\substitution.c **** 
+  18:.\substitution.c **** 
+  19:.\substitution.c **** void blink_char(void) {
+  26              		.loc 1 19 0
+  27              		.cfi_startproc
+  28 0000 80B5     		push	{r7, lr}
+  29              		.cfi_def_cfa_offset 8
+  30              		.cfi_offset 7, -8
+  31              		.cfi_offset 14, -4
+  32 0002 00AF     		add	r7, sp, #0
+  33              		.cfi_def_cfa_register 7
+  20:.\substitution.c ****     /* Verify state */
+  21:.\substitution.c ****     if(!verify_state(SUBSTITUTION)) {
+  34              		.loc 1 21 0
+  35 0004 0320     		mov	r0, #3
+  36 0006 FFF7FEFF 		bl	verify_state
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccGiu0v1.s 			page 2
+
+
+  37 000a 031C     		mov	r3, r0
+  38 000c 002B     		cmp	r3, #0
+  39 000e 00D1     		bne	.L2
+  22:.\substitution.c ****         return;
+  40              		.loc 1 22 0
+  41 0010 0DE0     		b	.L1
+  42              	.L2:
+  23:.\substitution.c ****     }
+  24:.\substitution.c ****     turn_on(LEFT_LED);
+  43              		.loc 1 24 0
+  44 0012 0120     		mov	r0, #1
+  45 0014 FFF7FEFF 		bl	turn_on
+  25:.\substitution.c ****     CyDelay(CHAR_ON_TIME);
+  46              		.loc 1 25 0
+  47 0018 FA23     		mov	r3, #250
+  48 001a 5B00     		lsl	r3, r3, #1
+  49 001c 181C     		mov	r0, r3
+  50 001e FFF7FEFF 		bl	CyDelay
+  26:.\substitution.c ****     turn_off(LEFT_LED);
+  51              		.loc 1 26 0
+  52 0022 0120     		mov	r0, #1
+  53 0024 FFF7FEFF 		bl	turn_off
+  27:.\substitution.c ****     CyDelay(CHAR_OFF_TIME);
+  54              		.loc 1 27 0
+  55 0028 FA20     		mov	r0, #250
+  56 002a FFF7FEFF 		bl	CyDelay
+  57              	.L1:
+  28:.\substitution.c **** }
+  58              		.loc 1 28 0
+  59 002e BD46     		mov	sp, r7
+  60              		@ sp needed
+  61 0030 80BD     		pop	{r7, pc}
+  62              		.cfi_endproc
+  63              	.LFE33:
+  64              		.size	blink_char, .-blink_char
+  65 0032 C046     		.section	.text.new_char,"ax",%progbits
+  66              		.align	2
+  67              		.global	new_char
+  68              		.code	16
+  69              		.thumb_func
+  70              		.type	new_char, %function
+  71              	new_char:
+  72              	.LFB34:
+  29:.\substitution.c **** 
+  30:.\substitution.c **** void new_char(void) {
+  73              		.loc 1 30 0
+  74              		.cfi_startproc
+  75 0000 80B5     		push	{r7, lr}
+  76              		.cfi_def_cfa_offset 8
+  77              		.cfi_offset 7, -8
+  78              		.cfi_offset 14, -4
+  79 0002 00AF     		add	r7, sp, #0
+  80              		.cfi_def_cfa_register 7
+  31:.\substitution.c ****     /* Verify state */
+  32:.\substitution.c ****     if(!verify_state(SUBSTITUTION)) {
+  81              		.loc 1 32 0
+  82 0004 0320     		mov	r0, #3
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccGiu0v1.s 			page 3
+
+
+  83 0006 FFF7FEFF 		bl	verify_state
+  84 000a 031C     		mov	r3, r0
+  85 000c 002B     		cmp	r3, #0
+  86 000e 00D1     		bne	.L5
+  33:.\substitution.c ****         return;
+  87              		.loc 1 33 0
+  88 0010 0DE0     		b	.L4
+  89              	.L5:
+  34:.\substitution.c ****     }
+  35:.\substitution.c ****     turn_on(RIGHT_LED);
+  90              		.loc 1 35 0
+  91 0012 0220     		mov	r0, #2
+  92 0014 FFF7FEFF 		bl	turn_on
+  36:.\substitution.c ****     CyDelay(CHAR_ON_TIME);
+  93              		.loc 1 36 0
+  94 0018 FA23     		mov	r3, #250
+  95 001a 5B00     		lsl	r3, r3, #1
+  96 001c 181C     		mov	r0, r3
+  97 001e FFF7FEFF 		bl	CyDelay
+  37:.\substitution.c ****     turn_off(RIGHT_LED);
+  98              		.loc 1 37 0
+  99 0022 0220     		mov	r0, #2
+ 100 0024 FFF7FEFF 		bl	turn_off
+  38:.\substitution.c ****     CyDelay(CHAR_OFF_TIME);
+ 101              		.loc 1 38 0
+ 102 0028 FA20     		mov	r0, #250
+ 103 002a FFF7FEFF 		bl	CyDelay
+ 104              	.L4:
+  39:.\substitution.c **** }
+ 105              		.loc 1 39 0
+ 106 002e BD46     		mov	sp, r7
+ 107              		@ sp needed
+ 108 0030 80BD     		pop	{r7, pc}
+ 109              		.cfi_endproc
+ 110              	.LFE34:
+ 111              		.size	new_char, .-new_char
+ 112 0032 C046     		.section	.text.new_message_substitution,"ax",%progbits
+ 113              		.align	2
+ 114              		.global	new_message_substitution
+ 115              		.code	16
+ 116              		.thumb_func
+ 117              		.type	new_message_substitution, %function
+ 118              	new_message_substitution:
+ 119              	.LFB35:
+  40:.\substitution.c **** 
+  41:.\substitution.c **** void new_message_substitution(void) {
+ 120              		.loc 1 41 0
+ 121              		.cfi_startproc
+ 122 0000 90B5     		push	{r4, r7, lr}
+ 123              		.cfi_def_cfa_offset 12
+ 124              		.cfi_offset 4, -12
+ 125              		.cfi_offset 7, -8
+ 126              		.cfi_offset 14, -4
+ 127 0002 83B0     		sub	sp, sp, #12
+ 128              		.cfi_def_cfa_offset 24
+ 129 0004 00AF     		add	r7, sp, #0
+ 130              		.cfi_def_cfa_register 7
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccGiu0v1.s 			page 4
+
+
+  42:.\substitution.c ****     unsigned int i;
+  43:.\substitution.c ****     uint8 original_color;
+  44:.\substitution.c ****     original_color = get_color(LEFT_LED);
+ 131              		.loc 1 44 0
+ 132 0006 FC1C     		add	r4, r7, #3
+ 133 0008 0120     		mov	r0, #1
+ 134 000a FFF7FEFF 		bl	get_color
+ 135 000e 031C     		mov	r3, r0
+ 136 0010 2370     		strb	r3, [r4]
+  45:.\substitution.c ****     set_color(LEFT_RIGHT_LED, WHITE);
+ 137              		.loc 1 45 0
+ 138 0012 0320     		mov	r0, #3
+ 139 0014 0721     		mov	r1, #7
+ 140 0016 FFF7FEFF 		bl	set_color
+  46:.\substitution.c ****     for (i=0; i<NEW_MESSAGE_NUMBER; i++) {
+ 141              		.loc 1 46 0
+ 142 001a 0023     		mov	r3, #0
+ 143 001c 7B60     		str	r3, [r7, #4]
+ 144 001e 15E0     		b	.L8
+ 145              	.L11:
+  47:.\substitution.c ****         /* Verify state */
+  48:.\substitution.c ****         if(!verify_state(SUBSTITUTION)) {
+ 146              		.loc 1 48 0
+ 147 0020 0320     		mov	r0, #3
+ 148 0022 FFF7FEFF 		bl	verify_state
+ 149 0026 031C     		mov	r3, r0
+ 150 0028 002B     		cmp	r3, #0
+ 151 002a 00D1     		bne	.L9
+  49:.\substitution.c ****             return;
+ 152              		.loc 1 49 0
+ 153 002c 17E0     		b	.L7
+ 154              	.L9:
+  50:.\substitution.c ****         }
+  51:.\substitution.c ****        turn_on(LEFT_RIGHT_LED);
+ 155              		.loc 1 51 0
+ 156 002e 0320     		mov	r0, #3
+ 157 0030 FFF7FEFF 		bl	turn_on
+  52:.\substitution.c ****        CyDelay(RESET_DELAY);
+ 158              		.loc 1 52 0
+ 159 0034 FA20     		mov	r0, #250
+ 160 0036 FFF7FEFF 		bl	CyDelay
+  53:.\substitution.c ****        turn_off(LEFT_RIGHT_LED);
+ 161              		.loc 1 53 0
+ 162 003a 0320     		mov	r0, #3
+ 163 003c FFF7FEFF 		bl	turn_off
+  54:.\substitution.c ****        CyDelay(RESET_DELAY);
+ 164              		.loc 1 54 0
+ 165 0040 FA20     		mov	r0, #250
+ 166 0042 FFF7FEFF 		bl	CyDelay
+  46:.\substitution.c ****     for (i=0; i<NEW_MESSAGE_NUMBER; i++) {
+ 167              		.loc 1 46 0
+ 168 0046 7B68     		ldr	r3, [r7, #4]
+ 169 0048 0133     		add	r3, r3, #1
+ 170 004a 7B60     		str	r3, [r7, #4]
+ 171              	.L8:
+  46:.\substitution.c ****     for (i=0; i<NEW_MESSAGE_NUMBER; i++) {
+ 172              		.loc 1 46 0 is_stmt 0 discriminator 1
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccGiu0v1.s 			page 5
+
+
+ 173 004c 7B68     		ldr	r3, [r7, #4]
+ 174 004e 042B     		cmp	r3, #4
+ 175 0050 E6D9     		bls	.L11
+  55:.\substitution.c ****     }
+  56:.\substitution.c ****     set_color(LEFT_RIGHT_LED, original_color);
+ 176              		.loc 1 56 0 is_stmt 1
+ 177 0052 FB1C     		add	r3, r7, #3
+ 178 0054 1B78     		ldrb	r3, [r3]
+ 179 0056 0320     		mov	r0, #3
+ 180 0058 191C     		mov	r1, r3
+ 181 005a FFF7FEFF 		bl	set_color
+ 182              	.L7:
+  57:.\substitution.c **** }
+ 183              		.loc 1 57 0
+ 184 005e BD46     		mov	sp, r7
+ 185 0060 03B0     		add	sp, sp, #12
+ 186              		@ sp needed
+ 187 0062 90BD     		pop	{r4, r7, pc}
+ 188              		.cfi_endproc
+ 189              	.LFE35:
+ 190              		.size	new_message_substitution, .-new_message_substitution
+ 191              		.section	.text.substitution_encode,"ax",%progbits
+ 192              		.align	2
+ 193              		.global	substitution_encode
+ 194              		.code	16
+ 195              		.thumb_func
+ 196              		.type	substitution_encode, %function
+ 197              	substitution_encode:
+ 198              	.LFB36:
+  58:.\substitution.c **** 
+  59:.\substitution.c **** 
+  60:.\substitution.c **** void substitution_encode(char c){
+ 199              		.loc 1 60 0
+ 200              		.cfi_startproc
+ 201 0000 80B5     		push	{r7, lr}
+ 202              		.cfi_def_cfa_offset 8
+ 203              		.cfi_offset 7, -8
+ 204              		.cfi_offset 14, -4
+ 205 0002 84B0     		sub	sp, sp, #16
+ 206              		.cfi_def_cfa_offset 24
+ 207 0004 00AF     		add	r7, sp, #0
+ 208              		.cfi_def_cfa_register 7
+ 209 0006 021C     		mov	r2, r0
+ 210 0008 FB1D     		add	r3, r7, #7
+ 211 000a 1A70     		strb	r2, [r3]
+  61:.\substitution.c ****     int i;
+  62:.\substitution.c ****     /* Verify state */
+  63:.\substitution.c ****     if(!verify_state(SUBSTITUTION)) {
+ 212              		.loc 1 63 0
+ 213 000c 0320     		mov	r0, #3
+ 214 000e FFF7FEFF 		bl	verify_state
+ 215 0012 031C     		mov	r3, r0
+ 216 0014 002B     		cmp	r3, #0
+ 217 0016 00D1     		bne	.L13
+  64:.\substitution.c ****         return;
+ 218              		.loc 1 64 0
+ 219 0018 76E1     		b	.L12
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccGiu0v1.s 			page 6
+
+
+ 220              	.L13:
+  65:.\substitution.c ****     }
+  66:.\substitution.c ****     switch(c) {
+ 221              		.loc 1 66 0
+ 222 001a FB1D     		add	r3, r7, #7
+ 223 001c 1B78     		ldrb	r3, [r3]
+ 224 001e 0A3B     		sub	r3, r3, #10
+ 225 0020 702B     		cmp	r3, #112
+ 226 0022 00D9     		bls	.LCB173
+ 227 0024 70E1     		b	.L12	@long jump
+ 228              	.LCB173:
+ 229 0026 9A00     		lsl	r2, r3, #2
+ 230 0028 B94B     		ldr	r3, .L95
+ 231 002a D318     		add	r3, r2, r3
+ 232 002c 1B68     		ldr	r3, [r3]
+ 233 002e 9F46     		mov	pc, r3
+ 234              		.section	.rodata
+ 235              		.align	2
+ 236              	.L16:
+ 237 0000 08030000 		.word	.L12
+ 238 0004 08030000 		.word	.L12
+ 239 0008 08030000 		.word	.L12
+ 240 000c 08030000 		.word	.L12
+ 241 0010 08030000 		.word	.L12
+ 242 0014 08030000 		.word	.L12
+ 243 0018 08030000 		.word	.L12
+ 244 001c 08030000 		.word	.L12
+ 245 0020 08030000 		.word	.L12
+ 246 0024 08030000 		.word	.L12
+ 247 0028 08030000 		.word	.L12
+ 248 002c 08030000 		.word	.L12
+ 249 0030 08030000 		.word	.L12
+ 250 0034 08030000 		.word	.L12
+ 251 0038 08030000 		.word	.L12
+ 252 003c 08030000 		.word	.L12
+ 253 0040 08030000 		.word	.L12
+ 254 0044 08030000 		.word	.L12
+ 255 0048 08030000 		.word	.L12
+ 256 004c 08030000 		.word	.L12
+ 257 0050 08030000 		.word	.L12
+ 258 0054 08030000 		.word	.L12
+ 259 0058 08030000 		.word	.L12
+ 260 005c 08030000 		.word	.L12
+ 261 0060 08030000 		.word	.L12
+ 262 0064 08030000 		.word	.L12
+ 263 0068 08030000 		.word	.L12
+ 264 006c 08030000 		.word	.L12
+ 265 0070 08030000 		.word	.L12
+ 266 0074 08030000 		.word	.L12
+ 267 0078 08030000 		.word	.L12
+ 268 007c 08030000 		.word	.L12
+ 269 0080 08030000 		.word	.L12
+ 270 0084 08030000 		.word	.L12
+ 271 0088 08030000 		.word	.L12
+ 272 008c 08030000 		.word	.L12
+ 273 0090 08030000 		.word	.L12
+ 274 0094 08030000 		.word	.L12
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccGiu0v1.s 			page 7
+
+
+ 275 0098 08030000 		.word	.L12
+ 276 009c 08030000 		.word	.L12
+ 277 00a0 08030000 		.word	.L12
+ 278 00a4 08030000 		.word	.L12
+ 279 00a8 08030000 		.word	.L12
+ 280 00ac 08030000 		.word	.L12
+ 281 00b0 08030000 		.word	.L12
+ 282 00b4 08030000 		.word	.L12
+ 283 00b8 08030000 		.word	.L12
+ 284 00bc 08030000 		.word	.L12
+ 285 00c0 08030000 		.word	.L12
+ 286 00c4 08030000 		.word	.L12
+ 287 00c8 08030000 		.word	.L12
+ 288 00cc 08030000 		.word	.L12
+ 289 00d0 08030000 		.word	.L12
+ 290 00d4 08030000 		.word	.L12
+ 291 00d8 08030000 		.word	.L12
+ 292 00dc 30000000 		.word	.L17
+ 293 00e0 4C000000 		.word	.L18
+ 294 00e4 68000000 		.word	.L19
+ 295 00e8 84000000 		.word	.L20
+ 296 00ec A0000000 		.word	.L21
+ 297 00f0 BC000000 		.word	.L22
+ 298 00f4 D8000000 		.word	.L23
+ 299 00f8 F4000000 		.word	.L24
+ 300 00fc 10010000 		.word	.L25
+ 301 0100 2C010000 		.word	.L26
+ 302 0104 48010000 		.word	.L27
+ 303 0108 64010000 		.word	.L28
+ 304 010c 80010000 		.word	.L29
+ 305 0110 9C010000 		.word	.L30
+ 306 0114 B8010000 		.word	.L31
+ 307 0118 D4010000 		.word	.L32
+ 308 011c F0010000 		.word	.L33
+ 309 0120 0C020000 		.word	.L34
+ 310 0124 28020000 		.word	.L35
+ 311 0128 44020000 		.word	.L36
+ 312 012c 60020000 		.word	.L37
+ 313 0130 7C020000 		.word	.L38
+ 314 0134 98020000 		.word	.L39
+ 315 0138 B4020000 		.word	.L40
+ 316 013c D0020000 		.word	.L41
+ 317 0140 EC020000 		.word	.L42
+ 318 0144 08030000 		.word	.L12
+ 319 0148 08030000 		.word	.L12
+ 320 014c 08030000 		.word	.L12
+ 321 0150 08030000 		.word	.L12
+ 322 0154 08030000 		.word	.L12
+ 323 0158 08030000 		.word	.L12
+ 324 015c 30000000 		.word	.L17
+ 325 0160 4C000000 		.word	.L18
+ 326 0164 68000000 		.word	.L19
+ 327 0168 84000000 		.word	.L20
+ 328 016c A0000000 		.word	.L21
+ 329 0170 BC000000 		.word	.L22
+ 330 0174 D8000000 		.word	.L23
+ 331 0178 F4000000 		.word	.L24
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccGiu0v1.s 			page 8
+
+
+ 332 017c 10010000 		.word	.L25
+ 333 0180 2C010000 		.word	.L26
+ 334 0184 48010000 		.word	.L27
+ 335 0188 64010000 		.word	.L28
+ 336 018c 80010000 		.word	.L29
+ 337 0190 9C010000 		.word	.L30
+ 338 0194 B8010000 		.word	.L31
+ 339 0198 D4010000 		.word	.L32
+ 340 019c F0010000 		.word	.L33
+ 341 01a0 0C020000 		.word	.L34
+ 342 01a4 28020000 		.word	.L35
+ 343 01a8 44020000 		.word	.L36
+ 344 01ac 60020000 		.word	.L37
+ 345 01b0 7C020000 		.word	.L38
+ 346 01b4 98020000 		.word	.L39
+ 347 01b8 B4020000 		.word	.L40
+ 348 01bc D0020000 		.word	.L41
+ 349 01c0 EC020000 		.word	.L42
+ 350              		.section	.text.substitution_encode
+ 351              	.L17:
+  67:.\substitution.c ****       case 'A':
+  68:.\substitution.c ****       case 'a':
+  69:.\substitution.c ****         for (i=0; i<1; i++) {
+ 352              		.loc 1 69 0
+ 353 0030 0023     		mov	r3, #0
+ 354 0032 FB60     		str	r3, [r7, #12]
+ 355 0034 04E0     		b	.L43
+ 356              	.L44:
+  70:.\substitution.c ****          blink_char();   
+ 357              		.loc 1 70 0 discriminator 2
+ 358 0036 FFF7FEFF 		bl	blink_char
+  69:.\substitution.c ****         for (i=0; i<1; i++) {
+ 359              		.loc 1 69 0 discriminator 2
+ 360 003a FB68     		ldr	r3, [r7, #12]
+ 361 003c 0133     		add	r3, r3, #1
+ 362 003e FB60     		str	r3, [r7, #12]
+ 363              	.L43:
+  69:.\substitution.c ****         for (i=0; i<1; i++) {
+ 364              		.loc 1 69 0 is_stmt 0 discriminator 1
+ 365 0040 FB68     		ldr	r3, [r7, #12]
+ 366 0042 002B     		cmp	r3, #0
+ 367 0044 F7DD     		ble	.L44
+  71:.\substitution.c ****         }
+  72:.\substitution.c ****         new_char();
+ 368              		.loc 1 72 0 is_stmt 1
+ 369 0046 FFF7FEFF 		bl	new_char
+  73:.\substitution.c ****         break;
+ 370              		.loc 1 73 0
+ 371 004a 5DE1     		b	.L12
+ 372              	.L18:
+  74:.\substitution.c ****       case 'B':
+  75:.\substitution.c ****       case 'b':
+  76:.\substitution.c ****         for (i=0; i<2; i++) {
+ 373              		.loc 1 76 0
+ 374 004c 0023     		mov	r3, #0
+ 375 004e FB60     		str	r3, [r7, #12]
+ 376 0050 04E0     		b	.L45
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccGiu0v1.s 			page 9
+
+
+ 377              	.L46:
+  77:.\substitution.c ****          blink_char();   
+ 378              		.loc 1 77 0 discriminator 2
+ 379 0052 FFF7FEFF 		bl	blink_char
+  76:.\substitution.c ****         for (i=0; i<2; i++) {
+ 380              		.loc 1 76 0 discriminator 2
+ 381 0056 FB68     		ldr	r3, [r7, #12]
+ 382 0058 0133     		add	r3, r3, #1
+ 383 005a FB60     		str	r3, [r7, #12]
+ 384              	.L45:
+  76:.\substitution.c ****         for (i=0; i<2; i++) {
+ 385              		.loc 1 76 0 is_stmt 0 discriminator 1
+ 386 005c FB68     		ldr	r3, [r7, #12]
+ 387 005e 012B     		cmp	r3, #1
+ 388 0060 F7DD     		ble	.L46
+  78:.\substitution.c ****         }
+  79:.\substitution.c ****         new_char();
+ 389              		.loc 1 79 0 is_stmt 1
+ 390 0062 FFF7FEFF 		bl	new_char
+  80:.\substitution.c ****         break;
+ 391              		.loc 1 80 0
+ 392 0066 4FE1     		b	.L12
+ 393              	.L19:
+  81:.\substitution.c ****       case 'C':
+  82:.\substitution.c ****       case 'c':
+  83:.\substitution.c ****         for (i=0; i<3; i++) {
+ 394              		.loc 1 83 0
+ 395 0068 0023     		mov	r3, #0
+ 396 006a FB60     		str	r3, [r7, #12]
+ 397 006c 04E0     		b	.L47
+ 398              	.L48:
+  84:.\substitution.c ****          blink_char();   
+ 399              		.loc 1 84 0 discriminator 2
+ 400 006e FFF7FEFF 		bl	blink_char
+  83:.\substitution.c ****         for (i=0; i<3; i++) {
+ 401              		.loc 1 83 0 discriminator 2
+ 402 0072 FB68     		ldr	r3, [r7, #12]
+ 403 0074 0133     		add	r3, r3, #1
+ 404 0076 FB60     		str	r3, [r7, #12]
+ 405              	.L47:
+  83:.\substitution.c ****         for (i=0; i<3; i++) {
+ 406              		.loc 1 83 0 is_stmt 0 discriminator 1
+ 407 0078 FB68     		ldr	r3, [r7, #12]
+ 408 007a 022B     		cmp	r3, #2
+ 409 007c F7DD     		ble	.L48
+  85:.\substitution.c ****         }
+  86:.\substitution.c ****         new_char();
+ 410              		.loc 1 86 0 is_stmt 1
+ 411 007e FFF7FEFF 		bl	new_char
+  87:.\substitution.c ****         break;
+ 412              		.loc 1 87 0
+ 413 0082 41E1     		b	.L12
+ 414              	.L20:
+  88:.\substitution.c ****       case 'D':
+  89:.\substitution.c ****       case 'd':
+  90:.\substitution.c ****         for (i=0; i<4; i++) {
+ 415              		.loc 1 90 0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccGiu0v1.s 			page 10
+
+
+ 416 0084 0023     		mov	r3, #0
+ 417 0086 FB60     		str	r3, [r7, #12]
+ 418 0088 04E0     		b	.L49
+ 419              	.L50:
+  91:.\substitution.c ****          blink_char();   
+ 420              		.loc 1 91 0 discriminator 2
+ 421 008a FFF7FEFF 		bl	blink_char
+  90:.\substitution.c ****         for (i=0; i<4; i++) {
+ 422              		.loc 1 90 0 discriminator 2
+ 423 008e FB68     		ldr	r3, [r7, #12]
+ 424 0090 0133     		add	r3, r3, #1
+ 425 0092 FB60     		str	r3, [r7, #12]
+ 426              	.L49:
+  90:.\substitution.c ****         for (i=0; i<4; i++) {
+ 427              		.loc 1 90 0 is_stmt 0 discriminator 1
+ 428 0094 FB68     		ldr	r3, [r7, #12]
+ 429 0096 032B     		cmp	r3, #3
+ 430 0098 F7DD     		ble	.L50
+  92:.\substitution.c ****         }
+  93:.\substitution.c ****         new_char();
+ 431              		.loc 1 93 0 is_stmt 1
+ 432 009a FFF7FEFF 		bl	new_char
+  94:.\substitution.c ****         break;
+ 433              		.loc 1 94 0
+ 434 009e 33E1     		b	.L12
+ 435              	.L21:
+  95:.\substitution.c ****        case 'E':
+  96:.\substitution.c ****        case 'e':
+  97:.\substitution.c ****         for (i=0; i<5; i++) {
+ 436              		.loc 1 97 0
+ 437 00a0 0023     		mov	r3, #0
+ 438 00a2 FB60     		str	r3, [r7, #12]
+ 439 00a4 04E0     		b	.L51
+ 440              	.L52:
+  98:.\substitution.c ****          blink_char();   
+ 441              		.loc 1 98 0 discriminator 2
+ 442 00a6 FFF7FEFF 		bl	blink_char
+  97:.\substitution.c ****         for (i=0; i<5; i++) {
+ 443              		.loc 1 97 0 discriminator 2
+ 444 00aa FB68     		ldr	r3, [r7, #12]
+ 445 00ac 0133     		add	r3, r3, #1
+ 446 00ae FB60     		str	r3, [r7, #12]
+ 447              	.L51:
+  97:.\substitution.c ****         for (i=0; i<5; i++) {
+ 448              		.loc 1 97 0 is_stmt 0 discriminator 1
+ 449 00b0 FB68     		ldr	r3, [r7, #12]
+ 450 00b2 042B     		cmp	r3, #4
+ 451 00b4 F7DD     		ble	.L52
+  99:.\substitution.c ****         }
+ 100:.\substitution.c ****         new_char();
+ 452              		.loc 1 100 0 is_stmt 1
+ 453 00b6 FFF7FEFF 		bl	new_char
+ 101:.\substitution.c ****         break;
+ 454              		.loc 1 101 0
+ 455 00ba 25E1     		b	.L12
+ 456              	.L22:
+ 102:.\substitution.c ****        case 'F':
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccGiu0v1.s 			page 11
+
+
+ 103:.\substitution.c ****        case 'f':
+ 104:.\substitution.c ****         for (i=0; i<6; i++) {
+ 457              		.loc 1 104 0
+ 458 00bc 0023     		mov	r3, #0
+ 459 00be FB60     		str	r3, [r7, #12]
+ 460 00c0 04E0     		b	.L53
+ 461              	.L54:
+ 105:.\substitution.c ****          blink_char();   
+ 462              		.loc 1 105 0 discriminator 2
+ 463 00c2 FFF7FEFF 		bl	blink_char
+ 104:.\substitution.c ****         for (i=0; i<6; i++) {
+ 464              		.loc 1 104 0 discriminator 2
+ 465 00c6 FB68     		ldr	r3, [r7, #12]
+ 466 00c8 0133     		add	r3, r3, #1
+ 467 00ca FB60     		str	r3, [r7, #12]
+ 468              	.L53:
+ 104:.\substitution.c ****         for (i=0; i<6; i++) {
+ 469              		.loc 1 104 0 is_stmt 0 discriminator 1
+ 470 00cc FB68     		ldr	r3, [r7, #12]
+ 471 00ce 052B     		cmp	r3, #5
+ 472 00d0 F7DD     		ble	.L54
+ 106:.\substitution.c ****         }
+ 107:.\substitution.c ****         new_char();
+ 473              		.loc 1 107 0 is_stmt 1
+ 474 00d2 FFF7FEFF 		bl	new_char
+ 108:.\substitution.c ****         break;
+ 475              		.loc 1 108 0
+ 476 00d6 17E1     		b	.L12
+ 477              	.L23:
+ 109:.\substitution.c ****        case 'G':
+ 110:.\substitution.c ****        case 'g':
+ 111:.\substitution.c ****         for (i=0; i<7; i++) {
+ 478              		.loc 1 111 0
+ 479 00d8 0023     		mov	r3, #0
+ 480 00da FB60     		str	r3, [r7, #12]
+ 481 00dc 04E0     		b	.L55
+ 482              	.L56:
+ 112:.\substitution.c ****          blink_char();   
+ 483              		.loc 1 112 0 discriminator 2
+ 484 00de FFF7FEFF 		bl	blink_char
+ 111:.\substitution.c ****         for (i=0; i<7; i++) {
+ 485              		.loc 1 111 0 discriminator 2
+ 486 00e2 FB68     		ldr	r3, [r7, #12]
+ 487 00e4 0133     		add	r3, r3, #1
+ 488 00e6 FB60     		str	r3, [r7, #12]
+ 489              	.L55:
+ 111:.\substitution.c ****         for (i=0; i<7; i++) {
+ 490              		.loc 1 111 0 is_stmt 0 discriminator 1
+ 491 00e8 FB68     		ldr	r3, [r7, #12]
+ 492 00ea 062B     		cmp	r3, #6
+ 493 00ec F7DD     		ble	.L56
+ 113:.\substitution.c ****         }
+ 114:.\substitution.c ****         new_char();
+ 494              		.loc 1 114 0 is_stmt 1
+ 495 00ee FFF7FEFF 		bl	new_char
+ 115:.\substitution.c ****         break;
+ 496              		.loc 1 115 0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccGiu0v1.s 			page 12
+
+
+ 497 00f2 09E1     		b	.L12
+ 498              	.L24:
+ 116:.\substitution.c ****        case 'H':
+ 117:.\substitution.c ****        case 'h':
+ 118:.\substitution.c ****         for (i=0; i<8; i++) {
+ 499              		.loc 1 118 0
+ 500 00f4 0023     		mov	r3, #0
+ 501 00f6 FB60     		str	r3, [r7, #12]
+ 502 00f8 04E0     		b	.L57
+ 503              	.L58:
+ 119:.\substitution.c ****          blink_char();   
+ 504              		.loc 1 119 0 discriminator 2
+ 505 00fa FFF7FEFF 		bl	blink_char
+ 118:.\substitution.c ****         for (i=0; i<8; i++) {
+ 506              		.loc 1 118 0 discriminator 2
+ 507 00fe FB68     		ldr	r3, [r7, #12]
+ 508 0100 0133     		add	r3, r3, #1
+ 509 0102 FB60     		str	r3, [r7, #12]
+ 510              	.L57:
+ 118:.\substitution.c ****         for (i=0; i<8; i++) {
+ 511              		.loc 1 118 0 is_stmt 0 discriminator 1
+ 512 0104 FB68     		ldr	r3, [r7, #12]
+ 513 0106 072B     		cmp	r3, #7
+ 514 0108 F7DD     		ble	.L58
+ 120:.\substitution.c ****         }
+ 121:.\substitution.c ****         new_char();
+ 515              		.loc 1 121 0 is_stmt 1
+ 516 010a FFF7FEFF 		bl	new_char
+ 122:.\substitution.c ****         break;
+ 517              		.loc 1 122 0
+ 518 010e FBE0     		b	.L12
+ 519              	.L25:
+ 123:.\substitution.c ****        case 'I':
+ 124:.\substitution.c ****        case 'i':
+ 125:.\substitution.c ****         for (i=0; i<9; i++) {
+ 520              		.loc 1 125 0
+ 521 0110 0023     		mov	r3, #0
+ 522 0112 FB60     		str	r3, [r7, #12]
+ 523 0114 04E0     		b	.L59
+ 524              	.L60:
+ 126:.\substitution.c ****          blink_char();   
+ 525              		.loc 1 126 0 discriminator 2
+ 526 0116 FFF7FEFF 		bl	blink_char
+ 125:.\substitution.c ****         for (i=0; i<9; i++) {
+ 527              		.loc 1 125 0 discriminator 2
+ 528 011a FB68     		ldr	r3, [r7, #12]
+ 529 011c 0133     		add	r3, r3, #1
+ 530 011e FB60     		str	r3, [r7, #12]
+ 531              	.L59:
+ 125:.\substitution.c ****         for (i=0; i<9; i++) {
+ 532              		.loc 1 125 0 is_stmt 0 discriminator 1
+ 533 0120 FB68     		ldr	r3, [r7, #12]
+ 534 0122 082B     		cmp	r3, #8
+ 535 0124 F7DD     		ble	.L60
+ 127:.\substitution.c ****         }
+ 128:.\substitution.c ****         new_char();
+ 536              		.loc 1 128 0 is_stmt 1
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccGiu0v1.s 			page 13
+
+
+ 537 0126 FFF7FEFF 		bl	new_char
+ 129:.\substitution.c ****         break;
+ 538              		.loc 1 129 0
+ 539 012a EDE0     		b	.L12
+ 540              	.L26:
+ 130:.\substitution.c ****        case 'J':
+ 131:.\substitution.c ****        case 'j':
+ 132:.\substitution.c ****         for (i=0; i<10; i++) {
+ 541              		.loc 1 132 0
+ 542 012c 0023     		mov	r3, #0
+ 543 012e FB60     		str	r3, [r7, #12]
+ 544 0130 04E0     		b	.L61
+ 545              	.L62:
+ 133:.\substitution.c ****          blink_char();   
+ 546              		.loc 1 133 0 discriminator 2
+ 547 0132 FFF7FEFF 		bl	blink_char
+ 132:.\substitution.c ****         for (i=0; i<10; i++) {
+ 548              		.loc 1 132 0 discriminator 2
+ 549 0136 FB68     		ldr	r3, [r7, #12]
+ 550 0138 0133     		add	r3, r3, #1
+ 551 013a FB60     		str	r3, [r7, #12]
+ 552              	.L61:
+ 132:.\substitution.c ****         for (i=0; i<10; i++) {
+ 553              		.loc 1 132 0 is_stmt 0 discriminator 1
+ 554 013c FB68     		ldr	r3, [r7, #12]
+ 555 013e 092B     		cmp	r3, #9
+ 556 0140 F7DD     		ble	.L62
+ 134:.\substitution.c ****         }
+ 135:.\substitution.c ****         new_char();
+ 557              		.loc 1 135 0 is_stmt 1
+ 558 0142 FFF7FEFF 		bl	new_char
+ 136:.\substitution.c ****         break;
+ 559              		.loc 1 136 0
+ 560 0146 DFE0     		b	.L12
+ 561              	.L27:
+ 137:.\substitution.c ****        case 'K':
+ 138:.\substitution.c ****        case 'k':
+ 139:.\substitution.c ****         for (i=0; i<11; i++) {
+ 562              		.loc 1 139 0
+ 563 0148 0023     		mov	r3, #0
+ 564 014a FB60     		str	r3, [r7, #12]
+ 565 014c 04E0     		b	.L63
+ 566              	.L64:
+ 140:.\substitution.c ****          blink_char();   
+ 567              		.loc 1 140 0 discriminator 2
+ 568 014e FFF7FEFF 		bl	blink_char
+ 139:.\substitution.c ****         for (i=0; i<11; i++) {
+ 569              		.loc 1 139 0 discriminator 2
+ 570 0152 FB68     		ldr	r3, [r7, #12]
+ 571 0154 0133     		add	r3, r3, #1
+ 572 0156 FB60     		str	r3, [r7, #12]
+ 573              	.L63:
+ 139:.\substitution.c ****         for (i=0; i<11; i++) {
+ 574              		.loc 1 139 0 is_stmt 0 discriminator 1
+ 575 0158 FB68     		ldr	r3, [r7, #12]
+ 576 015a 0A2B     		cmp	r3, #10
+ 577 015c F7DD     		ble	.L64
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccGiu0v1.s 			page 14
+
+
+ 141:.\substitution.c ****         }
+ 142:.\substitution.c ****         new_char();
+ 578              		.loc 1 142 0 is_stmt 1
+ 579 015e FFF7FEFF 		bl	new_char
+ 143:.\substitution.c ****         break;
+ 580              		.loc 1 143 0
+ 581 0162 D1E0     		b	.L12
+ 582              	.L28:
+ 144:.\substitution.c ****        case 'L':
+ 145:.\substitution.c ****        case 'l':
+ 146:.\substitution.c ****         for (i=0; i<12; i++) {
+ 583              		.loc 1 146 0
+ 584 0164 0023     		mov	r3, #0
+ 585 0166 FB60     		str	r3, [r7, #12]
+ 586 0168 04E0     		b	.L65
+ 587              	.L66:
+ 147:.\substitution.c ****          blink_char();   
+ 588              		.loc 1 147 0 discriminator 2
+ 589 016a FFF7FEFF 		bl	blink_char
+ 146:.\substitution.c ****         for (i=0; i<12; i++) {
+ 590              		.loc 1 146 0 discriminator 2
+ 591 016e FB68     		ldr	r3, [r7, #12]
+ 592 0170 0133     		add	r3, r3, #1
+ 593 0172 FB60     		str	r3, [r7, #12]
+ 594              	.L65:
+ 146:.\substitution.c ****         for (i=0; i<12; i++) {
+ 595              		.loc 1 146 0 is_stmt 0 discriminator 1
+ 596 0174 FB68     		ldr	r3, [r7, #12]
+ 597 0176 0B2B     		cmp	r3, #11
+ 598 0178 F7DD     		ble	.L66
+ 148:.\substitution.c ****         }
+ 149:.\substitution.c ****         new_char();
+ 599              		.loc 1 149 0 is_stmt 1
+ 600 017a FFF7FEFF 		bl	new_char
+ 150:.\substitution.c ****         break;
+ 601              		.loc 1 150 0
+ 602 017e C3E0     		b	.L12
+ 603              	.L29:
+ 151:.\substitution.c ****        case 'M':
+ 152:.\substitution.c ****        case 'm':
+ 153:.\substitution.c ****         for (i=0; i<13; i++) {
+ 604              		.loc 1 153 0
+ 605 0180 0023     		mov	r3, #0
+ 606 0182 FB60     		str	r3, [r7, #12]
+ 607 0184 04E0     		b	.L67
+ 608              	.L68:
+ 154:.\substitution.c ****          blink_char();   
+ 609              		.loc 1 154 0 discriminator 2
+ 610 0186 FFF7FEFF 		bl	blink_char
+ 153:.\substitution.c ****         for (i=0; i<13; i++) {
+ 611              		.loc 1 153 0 discriminator 2
+ 612 018a FB68     		ldr	r3, [r7, #12]
+ 613 018c 0133     		add	r3, r3, #1
+ 614 018e FB60     		str	r3, [r7, #12]
+ 615              	.L67:
+ 153:.\substitution.c ****         for (i=0; i<13; i++) {
+ 616              		.loc 1 153 0 is_stmt 0 discriminator 1
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccGiu0v1.s 			page 15
+
+
+ 617 0190 FB68     		ldr	r3, [r7, #12]
+ 618 0192 0C2B     		cmp	r3, #12
+ 619 0194 F7DD     		ble	.L68
+ 155:.\substitution.c ****         }
+ 156:.\substitution.c ****         new_char();
+ 620              		.loc 1 156 0 is_stmt 1
+ 621 0196 FFF7FEFF 		bl	new_char
+ 157:.\substitution.c ****         break;
+ 622              		.loc 1 157 0
+ 623 019a B5E0     		b	.L12
+ 624              	.L30:
+ 158:.\substitution.c ****        case 'N':
+ 159:.\substitution.c ****        case 'n':
+ 160:.\substitution.c ****         for (i=0; i<14; i++) {
+ 625              		.loc 1 160 0
+ 626 019c 0023     		mov	r3, #0
+ 627 019e FB60     		str	r3, [r7, #12]
+ 628 01a0 04E0     		b	.L69
+ 629              	.L70:
+ 161:.\substitution.c ****          blink_char();   
+ 630              		.loc 1 161 0 discriminator 2
+ 631 01a2 FFF7FEFF 		bl	blink_char
+ 160:.\substitution.c ****         for (i=0; i<14; i++) {
+ 632              		.loc 1 160 0 discriminator 2
+ 633 01a6 FB68     		ldr	r3, [r7, #12]
+ 634 01a8 0133     		add	r3, r3, #1
+ 635 01aa FB60     		str	r3, [r7, #12]
+ 636              	.L69:
+ 160:.\substitution.c ****         for (i=0; i<14; i++) {
+ 637              		.loc 1 160 0 is_stmt 0 discriminator 1
+ 638 01ac FB68     		ldr	r3, [r7, #12]
+ 639 01ae 0D2B     		cmp	r3, #13
+ 640 01b0 F7DD     		ble	.L70
+ 162:.\substitution.c ****         }
+ 163:.\substitution.c ****         new_char();
+ 641              		.loc 1 163 0 is_stmt 1
+ 642 01b2 FFF7FEFF 		bl	new_char
+ 164:.\substitution.c ****         break;
+ 643              		.loc 1 164 0
+ 644 01b6 A7E0     		b	.L12
+ 645              	.L31:
+ 165:.\substitution.c ****        case 'O':
+ 166:.\substitution.c ****        case 'o':
+ 167:.\substitution.c ****         for (i=0; i<15; i++) {
+ 646              		.loc 1 167 0
+ 647 01b8 0023     		mov	r3, #0
+ 648 01ba FB60     		str	r3, [r7, #12]
+ 649 01bc 04E0     		b	.L71
+ 650              	.L72:
+ 168:.\substitution.c ****          blink_char();   
+ 651              		.loc 1 168 0 discriminator 2
+ 652 01be FFF7FEFF 		bl	blink_char
+ 167:.\substitution.c ****         for (i=0; i<15; i++) {
+ 653              		.loc 1 167 0 discriminator 2
+ 654 01c2 FB68     		ldr	r3, [r7, #12]
+ 655 01c4 0133     		add	r3, r3, #1
+ 656 01c6 FB60     		str	r3, [r7, #12]
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccGiu0v1.s 			page 16
+
+
+ 657              	.L71:
+ 167:.\substitution.c ****         for (i=0; i<15; i++) {
+ 658              		.loc 1 167 0 is_stmt 0 discriminator 1
+ 659 01c8 FB68     		ldr	r3, [r7, #12]
+ 660 01ca 0E2B     		cmp	r3, #14
+ 661 01cc F7DD     		ble	.L72
+ 169:.\substitution.c ****         }
+ 170:.\substitution.c ****         new_char();
+ 662              		.loc 1 170 0 is_stmt 1
+ 663 01ce FFF7FEFF 		bl	new_char
+ 171:.\substitution.c ****         break;
+ 664              		.loc 1 171 0
+ 665 01d2 99E0     		b	.L12
+ 666              	.L32:
+ 172:.\substitution.c ****        case 'P':
+ 173:.\substitution.c ****        case 'p':
+ 174:.\substitution.c ****         for (i=0; i<16; i++) {
+ 667              		.loc 1 174 0
+ 668 01d4 0023     		mov	r3, #0
+ 669 01d6 FB60     		str	r3, [r7, #12]
+ 670 01d8 04E0     		b	.L73
+ 671              	.L74:
+ 175:.\substitution.c ****          blink_char();   
+ 672              		.loc 1 175 0 discriminator 2
+ 673 01da FFF7FEFF 		bl	blink_char
+ 174:.\substitution.c ****         for (i=0; i<16; i++) {
+ 674              		.loc 1 174 0 discriminator 2
+ 675 01de FB68     		ldr	r3, [r7, #12]
+ 676 01e0 0133     		add	r3, r3, #1
+ 677 01e2 FB60     		str	r3, [r7, #12]
+ 678              	.L73:
+ 174:.\substitution.c ****         for (i=0; i<16; i++) {
+ 679              		.loc 1 174 0 is_stmt 0 discriminator 1
+ 680 01e4 FB68     		ldr	r3, [r7, #12]
+ 681 01e6 0F2B     		cmp	r3, #15
+ 682 01e8 F7DD     		ble	.L74
+ 176:.\substitution.c ****         }
+ 177:.\substitution.c ****         new_char();
+ 683              		.loc 1 177 0 is_stmt 1
+ 684 01ea FFF7FEFF 		bl	new_char
+ 178:.\substitution.c ****         break;
+ 685              		.loc 1 178 0
+ 686 01ee 8BE0     		b	.L12
+ 687              	.L33:
+ 179:.\substitution.c ****        case 'Q':
+ 180:.\substitution.c ****        case 'q':
+ 181:.\substitution.c ****         for (i=0; i<17; i++) {
+ 688              		.loc 1 181 0
+ 689 01f0 0023     		mov	r3, #0
+ 690 01f2 FB60     		str	r3, [r7, #12]
+ 691 01f4 04E0     		b	.L75
+ 692              	.L76:
+ 182:.\substitution.c ****          blink_char();   
+ 693              		.loc 1 182 0 discriminator 2
+ 694 01f6 FFF7FEFF 		bl	blink_char
+ 181:.\substitution.c ****         for (i=0; i<17; i++) {
+ 695              		.loc 1 181 0 discriminator 2
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccGiu0v1.s 			page 17
+
+
+ 696 01fa FB68     		ldr	r3, [r7, #12]
+ 697 01fc 0133     		add	r3, r3, #1
+ 698 01fe FB60     		str	r3, [r7, #12]
+ 699              	.L75:
+ 181:.\substitution.c ****         for (i=0; i<17; i++) {
+ 700              		.loc 1 181 0 is_stmt 0 discriminator 1
+ 701 0200 FB68     		ldr	r3, [r7, #12]
+ 702 0202 102B     		cmp	r3, #16
+ 703 0204 F7DD     		ble	.L76
+ 183:.\substitution.c ****         }
+ 184:.\substitution.c ****         new_char();
+ 704              		.loc 1 184 0 is_stmt 1
+ 705 0206 FFF7FEFF 		bl	new_char
+ 185:.\substitution.c ****         break;
+ 706              		.loc 1 185 0
+ 707 020a 7DE0     		b	.L12
+ 708              	.L34:
+ 186:.\substitution.c ****        case 'R':
+ 187:.\substitution.c ****        case 'r':
+ 188:.\substitution.c ****         for (i=0; i<18; i++) {
+ 709              		.loc 1 188 0
+ 710 020c 0023     		mov	r3, #0
+ 711 020e FB60     		str	r3, [r7, #12]
+ 712 0210 04E0     		b	.L77
+ 713              	.L78:
+ 189:.\substitution.c ****          blink_char();   
+ 714              		.loc 1 189 0 discriminator 2
+ 715 0212 FFF7FEFF 		bl	blink_char
+ 188:.\substitution.c ****         for (i=0; i<18; i++) {
+ 716              		.loc 1 188 0 discriminator 2
+ 717 0216 FB68     		ldr	r3, [r7, #12]
+ 718 0218 0133     		add	r3, r3, #1
+ 719 021a FB60     		str	r3, [r7, #12]
+ 720              	.L77:
+ 188:.\substitution.c ****         for (i=0; i<18; i++) {
+ 721              		.loc 1 188 0 is_stmt 0 discriminator 1
+ 722 021c FB68     		ldr	r3, [r7, #12]
+ 723 021e 112B     		cmp	r3, #17
+ 724 0220 F7DD     		ble	.L78
+ 190:.\substitution.c ****         }
+ 191:.\substitution.c ****         new_char();
+ 725              		.loc 1 191 0 is_stmt 1
+ 726 0222 FFF7FEFF 		bl	new_char
+ 192:.\substitution.c ****         break;
+ 727              		.loc 1 192 0
+ 728 0226 6FE0     		b	.L12
+ 729              	.L35:
+ 193:.\substitution.c ****        case 'S':
+ 194:.\substitution.c ****        case 's':
+ 195:.\substitution.c ****         for (i=0; i<19; i++) {
+ 730              		.loc 1 195 0
+ 731 0228 0023     		mov	r3, #0
+ 732 022a FB60     		str	r3, [r7, #12]
+ 733 022c 04E0     		b	.L79
+ 734              	.L80:
+ 196:.\substitution.c ****          blink_char();   
+ 735              		.loc 1 196 0 discriminator 2
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccGiu0v1.s 			page 18
+
+
+ 736 022e FFF7FEFF 		bl	blink_char
+ 195:.\substitution.c ****         for (i=0; i<19; i++) {
+ 737              		.loc 1 195 0 discriminator 2
+ 738 0232 FB68     		ldr	r3, [r7, #12]
+ 739 0234 0133     		add	r3, r3, #1
+ 740 0236 FB60     		str	r3, [r7, #12]
+ 741              	.L79:
+ 195:.\substitution.c ****         for (i=0; i<19; i++) {
+ 742              		.loc 1 195 0 is_stmt 0 discriminator 1
+ 743 0238 FB68     		ldr	r3, [r7, #12]
+ 744 023a 122B     		cmp	r3, #18
+ 745 023c F7DD     		ble	.L80
+ 197:.\substitution.c ****         }
+ 198:.\substitution.c ****         new_char();
+ 746              		.loc 1 198 0 is_stmt 1
+ 747 023e FFF7FEFF 		bl	new_char
+ 199:.\substitution.c ****         break;
+ 748              		.loc 1 199 0
+ 749 0242 61E0     		b	.L12
+ 750              	.L36:
+ 200:.\substitution.c ****        case 'T':
+ 201:.\substitution.c ****        case 't':
+ 202:.\substitution.c ****         for (i=0; i<20; i++) {
+ 751              		.loc 1 202 0
+ 752 0244 0023     		mov	r3, #0
+ 753 0246 FB60     		str	r3, [r7, #12]
+ 754 0248 04E0     		b	.L81
+ 755              	.L82:
+ 203:.\substitution.c ****          blink_char();   
+ 756              		.loc 1 203 0 discriminator 2
+ 757 024a FFF7FEFF 		bl	blink_char
+ 202:.\substitution.c ****         for (i=0; i<20; i++) {
+ 758              		.loc 1 202 0 discriminator 2
+ 759 024e FB68     		ldr	r3, [r7, #12]
+ 760 0250 0133     		add	r3, r3, #1
+ 761 0252 FB60     		str	r3, [r7, #12]
+ 762              	.L81:
+ 202:.\substitution.c ****         for (i=0; i<20; i++) {
+ 763              		.loc 1 202 0 is_stmt 0 discriminator 1
+ 764 0254 FB68     		ldr	r3, [r7, #12]
+ 765 0256 132B     		cmp	r3, #19
+ 766 0258 F7DD     		ble	.L82
+ 204:.\substitution.c ****         }
+ 205:.\substitution.c ****         new_char();
+ 767              		.loc 1 205 0 is_stmt 1
+ 768 025a FFF7FEFF 		bl	new_char
+ 206:.\substitution.c ****         break;
+ 769              		.loc 1 206 0
+ 770 025e 53E0     		b	.L12
+ 771              	.L37:
+ 207:.\substitution.c ****        case 'U':
+ 208:.\substitution.c ****        case 'u':
+ 209:.\substitution.c ****         for (i=0; i<21; i++) {
+ 772              		.loc 1 209 0
+ 773 0260 0023     		mov	r3, #0
+ 774 0262 FB60     		str	r3, [r7, #12]
+ 775 0264 04E0     		b	.L83
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccGiu0v1.s 			page 19
+
+
+ 776              	.L84:
+ 210:.\substitution.c ****          blink_char();   
+ 777              		.loc 1 210 0 discriminator 2
+ 778 0266 FFF7FEFF 		bl	blink_char
+ 209:.\substitution.c ****         for (i=0; i<21; i++) {
+ 779              		.loc 1 209 0 discriminator 2
+ 780 026a FB68     		ldr	r3, [r7, #12]
+ 781 026c 0133     		add	r3, r3, #1
+ 782 026e FB60     		str	r3, [r7, #12]
+ 783              	.L83:
+ 209:.\substitution.c ****         for (i=0; i<21; i++) {
+ 784              		.loc 1 209 0 is_stmt 0 discriminator 1
+ 785 0270 FB68     		ldr	r3, [r7, #12]
+ 786 0272 142B     		cmp	r3, #20
+ 787 0274 F7DD     		ble	.L84
+ 211:.\substitution.c ****         }
+ 212:.\substitution.c ****         new_char();
+ 788              		.loc 1 212 0 is_stmt 1
+ 789 0276 FFF7FEFF 		bl	new_char
+ 213:.\substitution.c ****         break;
+ 790              		.loc 1 213 0
+ 791 027a 45E0     		b	.L12
+ 792              	.L38:
+ 214:.\substitution.c ****        case 'V':
+ 215:.\substitution.c ****        case 'v':
+ 216:.\substitution.c ****         for (i=0; i<22; i++) {
+ 793              		.loc 1 216 0
+ 794 027c 0023     		mov	r3, #0
+ 795 027e FB60     		str	r3, [r7, #12]
+ 796 0280 04E0     		b	.L85
+ 797              	.L86:
+ 217:.\substitution.c ****          blink_char();   
+ 798              		.loc 1 217 0 discriminator 2
+ 799 0282 FFF7FEFF 		bl	blink_char
+ 216:.\substitution.c ****         for (i=0; i<22; i++) {
+ 800              		.loc 1 216 0 discriminator 2
+ 801 0286 FB68     		ldr	r3, [r7, #12]
+ 802 0288 0133     		add	r3, r3, #1
+ 803 028a FB60     		str	r3, [r7, #12]
+ 804              	.L85:
+ 216:.\substitution.c ****         for (i=0; i<22; i++) {
+ 805              		.loc 1 216 0 is_stmt 0 discriminator 1
+ 806 028c FB68     		ldr	r3, [r7, #12]
+ 807 028e 152B     		cmp	r3, #21
+ 808 0290 F7DD     		ble	.L86
+ 218:.\substitution.c ****         }
+ 219:.\substitution.c ****         new_char();
+ 809              		.loc 1 219 0 is_stmt 1
+ 810 0292 FFF7FEFF 		bl	new_char
+ 220:.\substitution.c ****         break;
+ 811              		.loc 1 220 0
+ 812 0296 37E0     		b	.L12
+ 813              	.L39:
+ 221:.\substitution.c ****        case 'W':
+ 222:.\substitution.c ****        case 'w':
+ 223:.\substitution.c ****         for (i=0; i<23; i++) {
+ 814              		.loc 1 223 0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccGiu0v1.s 			page 20
+
+
+ 815 0298 0023     		mov	r3, #0
+ 816 029a FB60     		str	r3, [r7, #12]
+ 817 029c 04E0     		b	.L87
+ 818              	.L88:
+ 224:.\substitution.c ****          blink_char();   
+ 819              		.loc 1 224 0 discriminator 2
+ 820 029e FFF7FEFF 		bl	blink_char
+ 223:.\substitution.c ****         for (i=0; i<23; i++) {
+ 821              		.loc 1 223 0 discriminator 2
+ 822 02a2 FB68     		ldr	r3, [r7, #12]
+ 823 02a4 0133     		add	r3, r3, #1
+ 824 02a6 FB60     		str	r3, [r7, #12]
+ 825              	.L87:
+ 223:.\substitution.c ****         for (i=0; i<23; i++) {
+ 826              		.loc 1 223 0 is_stmt 0 discriminator 1
+ 827 02a8 FB68     		ldr	r3, [r7, #12]
+ 828 02aa 162B     		cmp	r3, #22
+ 829 02ac F7DD     		ble	.L88
+ 225:.\substitution.c ****         }
+ 226:.\substitution.c ****         new_char();
+ 830              		.loc 1 226 0 is_stmt 1
+ 831 02ae FFF7FEFF 		bl	new_char
+ 227:.\substitution.c ****         break;
+ 832              		.loc 1 227 0
+ 833 02b2 29E0     		b	.L12
+ 834              	.L40:
+ 228:.\substitution.c ****        case 'X':
+ 229:.\substitution.c ****        case 'x':
+ 230:.\substitution.c ****         for (i=0; i<24; i++) {
+ 835              		.loc 1 230 0
+ 836 02b4 0023     		mov	r3, #0
+ 837 02b6 FB60     		str	r3, [r7, #12]
+ 838 02b8 04E0     		b	.L89
+ 839              	.L90:
+ 231:.\substitution.c ****          blink_char();   
+ 840              		.loc 1 231 0 discriminator 2
+ 841 02ba FFF7FEFF 		bl	blink_char
+ 230:.\substitution.c ****         for (i=0; i<24; i++) {
+ 842              		.loc 1 230 0 discriminator 2
+ 843 02be FB68     		ldr	r3, [r7, #12]
+ 844 02c0 0133     		add	r3, r3, #1
+ 845 02c2 FB60     		str	r3, [r7, #12]
+ 846              	.L89:
+ 230:.\substitution.c ****         for (i=0; i<24; i++) {
+ 847              		.loc 1 230 0 is_stmt 0 discriminator 1
+ 848 02c4 FB68     		ldr	r3, [r7, #12]
+ 849 02c6 172B     		cmp	r3, #23
+ 850 02c8 F7DD     		ble	.L90
+ 232:.\substitution.c ****         }
+ 233:.\substitution.c ****         new_char();
+ 851              		.loc 1 233 0 is_stmt 1
+ 852 02ca FFF7FEFF 		bl	new_char
+ 234:.\substitution.c ****         break;
+ 853              		.loc 1 234 0
+ 854 02ce 1BE0     		b	.L12
+ 855              	.L41:
+ 235:.\substitution.c ****        case 'Y':
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccGiu0v1.s 			page 21
+
+
+ 236:.\substitution.c ****        case 'y':
+ 237:.\substitution.c ****         for (i=0; i<25; i++) {
+ 856              		.loc 1 237 0
+ 857 02d0 0023     		mov	r3, #0
+ 858 02d2 FB60     		str	r3, [r7, #12]
+ 859 02d4 04E0     		b	.L91
+ 860              	.L92:
+ 238:.\substitution.c ****          blink_char();   
+ 861              		.loc 1 238 0 discriminator 2
+ 862 02d6 FFF7FEFF 		bl	blink_char
+ 237:.\substitution.c ****         for (i=0; i<25; i++) {
+ 863              		.loc 1 237 0 discriminator 2
+ 864 02da FB68     		ldr	r3, [r7, #12]
+ 865 02dc 0133     		add	r3, r3, #1
+ 866 02de FB60     		str	r3, [r7, #12]
+ 867              	.L91:
+ 237:.\substitution.c ****         for (i=0; i<25; i++) {
+ 868              		.loc 1 237 0 is_stmt 0 discriminator 1
+ 869 02e0 FB68     		ldr	r3, [r7, #12]
+ 870 02e2 182B     		cmp	r3, #24
+ 871 02e4 F7DD     		ble	.L92
+ 239:.\substitution.c ****         }
+ 240:.\substitution.c ****         new_char();
+ 872              		.loc 1 240 0 is_stmt 1
+ 873 02e6 FFF7FEFF 		bl	new_char
+ 241:.\substitution.c ****         break;
+ 874              		.loc 1 241 0
+ 875 02ea 0DE0     		b	.L12
+ 876              	.L42:
+ 242:.\substitution.c ****        case 'Z':
+ 243:.\substitution.c ****        case 'z':
+ 244:.\substitution.c ****         for (i=0; i<26; i++) {
+ 877              		.loc 1 244 0
+ 878 02ec 0023     		mov	r3, #0
+ 879 02ee FB60     		str	r3, [r7, #12]
+ 880 02f0 04E0     		b	.L93
+ 881              	.L94:
+ 245:.\substitution.c ****          blink_char();   
+ 882              		.loc 1 245 0 discriminator 2
+ 883 02f2 FFF7FEFF 		bl	blink_char
+ 244:.\substitution.c ****         for (i=0; i<26; i++) {
+ 884              		.loc 1 244 0 discriminator 2
+ 885 02f6 FB68     		ldr	r3, [r7, #12]
+ 886 02f8 0133     		add	r3, r3, #1
+ 887 02fa FB60     		str	r3, [r7, #12]
+ 888              	.L93:
+ 244:.\substitution.c ****         for (i=0; i<26; i++) {
+ 889              		.loc 1 244 0 is_stmt 0 discriminator 1
+ 890 02fc FB68     		ldr	r3, [r7, #12]
+ 891 02fe 192B     		cmp	r3, #25
+ 892 0300 F7DD     		ble	.L94
+ 246:.\substitution.c ****         }
+ 247:.\substitution.c ****         new_char();
+ 893              		.loc 1 247 0 is_stmt 1
+ 894 0302 FFF7FEFF 		bl	new_char
+ 248:.\substitution.c ****         break;
+ 895              		.loc 1 248 0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccGiu0v1.s 			page 22
+
+
+ 896 0306 C046     		mov	r8, r8
+ 897              	.L12:
+ 249:.\substitution.c ****        case '\n':
+ 250:.\substitution.c ****         break;
+ 251:.\substitution.c ****    }
+ 252:.\substitution.c **** }
+ 898              		.loc 1 252 0
+ 899 0308 BD46     		mov	sp, r7
+ 900 030a 04B0     		add	sp, sp, #16
+ 901              		@ sp needed
+ 902 030c 80BD     		pop	{r7, pc}
+ 903              	.L96:
+ 904 030e C046     		.align	2
+ 905              	.L95:
+ 906 0310 00000000 		.word	.L16
+ 907              		.cfi_endproc
+ 908              	.LFE36:
+ 909              		.size	substitution_encode, .-substitution_encode
+ 910              		.section	.text.substitution_message,"ax",%progbits
+ 911              		.align	2
+ 912              		.global	substitution_message
+ 913              		.code	16
+ 914              		.thumb_func
+ 915              		.type	substitution_message, %function
+ 916              	substitution_message:
+ 917              	.LFB37:
+ 253:.\substitution.c **** 
+ 254:.\substitution.c **** void substitution_message(char* message) {
+ 918              		.loc 1 254 0
+ 919              		.cfi_startproc
+ 920 0000 80B5     		push	{r7, lr}
+ 921              		.cfi_def_cfa_offset 8
+ 922              		.cfi_offset 7, -8
+ 923              		.cfi_offset 14, -4
+ 924 0002 84B0     		sub	sp, sp, #16
+ 925              		.cfi_def_cfa_offset 24
+ 926 0004 00AF     		add	r7, sp, #0
+ 927              		.cfi_def_cfa_register 7
+ 928 0006 7860     		str	r0, [r7, #4]
+ 255:.\substitution.c ****     unsigned int i;
+ 256:.\substitution.c ****     
+ 257:.\substitution.c ****     new_message_substitution();
+ 929              		.loc 1 257 0
+ 930 0008 FFF7FEFF 		bl	new_message_substitution
+ 258:.\substitution.c ****     
+ 259:.\substitution.c ****     for (i=0; i < strlen(message); i++) {
+ 931              		.loc 1 259 0
+ 932 000c 0023     		mov	r3, #0
+ 933 000e FB60     		str	r3, [r7, #12]
+ 934 0010 10E0     		b	.L98
+ 935              	.L101:
+ 260:.\substitution.c ****         /* Verify state */
+ 261:.\substitution.c ****         if(!verify_state(SUBSTITUTION)) {
+ 936              		.loc 1 261 0
+ 937 0012 0320     		mov	r0, #3
+ 938 0014 FFF7FEFF 		bl	verify_state
+ 939 0018 031C     		mov	r3, r0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccGiu0v1.s 			page 23
+
+
+ 940 001a 002B     		cmp	r3, #0
+ 941 001c 00D1     		bne	.L99
+ 262:.\substitution.c ****             return;
+ 942              		.loc 1 262 0
+ 943 001e 11E0     		b	.L97
+ 944              	.L99:
+ 263:.\substitution.c ****         }
+ 264:.\substitution.c ****         substitution_encode(message[i]);
+ 945              		.loc 1 264 0
+ 946 0020 7A68     		ldr	r2, [r7, #4]
+ 947 0022 FB68     		ldr	r3, [r7, #12]
+ 948 0024 D318     		add	r3, r2, r3
+ 949 0026 1B78     		ldrb	r3, [r3]
+ 950 0028 181C     		mov	r0, r3
+ 951 002a FFF7FEFF 		bl	substitution_encode
+ 259:.\substitution.c ****     for (i=0; i < strlen(message); i++) {
+ 952              		.loc 1 259 0
+ 953 002e FB68     		ldr	r3, [r7, #12]
+ 954 0030 0133     		add	r3, r3, #1
+ 955 0032 FB60     		str	r3, [r7, #12]
+ 956              	.L98:
+ 259:.\substitution.c ****     for (i=0; i < strlen(message); i++) {
+ 957              		.loc 1 259 0 is_stmt 0 discriminator 1
+ 958 0034 7B68     		ldr	r3, [r7, #4]
+ 959 0036 181C     		mov	r0, r3
+ 960 0038 FFF7FEFF 		bl	strlen
+ 961 003c 021C     		mov	r2, r0
+ 962 003e FB68     		ldr	r3, [r7, #12]
+ 963 0040 9A42     		cmp	r2, r3
+ 964 0042 E6D8     		bhi	.L101
+ 965              	.L97:
+ 265:.\substitution.c ****     }
+ 266:.\substitution.c **** }
+ 966              		.loc 1 266 0 is_stmt 1
+ 967 0044 BD46     		mov	sp, r7
+ 968 0046 04B0     		add	sp, sp, #16
+ 969              		@ sp needed
+ 970 0048 80BD     		pop	{r7, pc}
+ 971              		.cfi_endproc
+ 972              	.LFE37:
+ 973              		.size	substitution_message, .-substitution_message
+ 974 004a C046     		.text
+ 975              	.Letext0:
+ 976              		.file 2 ".\\Generated_Source\\PSoC4/cytypes.h"
+ 977              		.section	.debug_info,"",%progbits
+ 978              	.Ldebug_info0:
+ 979 0000 41010000 		.4byte	0x141
+ 980 0004 0400     		.2byte	0x4
+ 981 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 982 000a 04       		.byte	0x4
+ 983 000b 01       		.uleb128 0x1
+ 984 000c 88000000 		.4byte	.LASF19
+ 985 0010 01       		.byte	0x1
+ 986 0011 04010000 		.4byte	.LASF20
+ 987 0015 3C010000 		.4byte	.LASF21
+ 988 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 989 001d 00000000 		.4byte	0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccGiu0v1.s 			page 24
+
+
+ 990 0021 00000000 		.4byte	.Ldebug_line0
+ 991 0025 02       		.uleb128 0x2
+ 992 0026 01       		.byte	0x1
+ 993 0027 06       		.byte	0x6
+ 994 0028 B2010000 		.4byte	.LASF0
+ 995 002c 02       		.uleb128 0x2
+ 996 002d 01       		.byte	0x1
+ 997 002e 08       		.byte	0x8
+ 998 002f 26000000 		.4byte	.LASF1
+ 999 0033 02       		.uleb128 0x2
+ 1000 0034 02       		.byte	0x2
+ 1001 0035 05       		.byte	0x5
+ 1002 0036 C4010000 		.4byte	.LASF2
+ 1003 003a 02       		.uleb128 0x2
+ 1004 003b 02       		.byte	0x2
+ 1005 003c 07       		.byte	0x7
+ 1006 003d 9F010000 		.4byte	.LASF3
+ 1007 0041 02       		.uleb128 0x2
+ 1008 0042 04       		.byte	0x4
+ 1009 0043 05       		.byte	0x5
+ 1010 0044 1A010000 		.4byte	.LASF4
+ 1011 0048 02       		.uleb128 0x2
+ 1012 0049 04       		.byte	0x4
+ 1013 004a 07       		.byte	0x7
+ 1014 004b 42000000 		.4byte	.LASF5
+ 1015 004f 02       		.uleb128 0x2
+ 1016 0050 08       		.byte	0x8
+ 1017 0051 05       		.byte	0x5
+ 1018 0052 00000000 		.4byte	.LASF6
+ 1019 0056 02       		.uleb128 0x2
+ 1020 0057 08       		.byte	0x8
+ 1021 0058 07       		.byte	0x7
+ 1022 0059 54000000 		.4byte	.LASF7
+ 1023 005d 03       		.uleb128 0x3
+ 1024 005e 04       		.byte	0x4
+ 1025 005f 05       		.byte	0x5
+ 1026 0060 696E7400 		.ascii	"int\000"
+ 1027 0064 02       		.uleb128 0x2
+ 1028 0065 04       		.byte	0x4
+ 1029 0066 07       		.byte	0x7
+ 1030 0067 0E000000 		.4byte	.LASF8
+ 1031 006b 04       		.uleb128 0x4
+ 1032 006c 3C000000 		.4byte	.LASF22
+ 1033 0070 02       		.byte	0x2
+ 1034 0071 A1       		.byte	0xa1
+ 1035 0072 2C000000 		.4byte	0x2c
+ 1036 0076 02       		.uleb128 0x2
+ 1037 0077 04       		.byte	0x4
+ 1038 0078 04       		.byte	0x4
+ 1039 0079 BE010000 		.4byte	.LASF9
+ 1040 007d 02       		.uleb128 0x2
+ 1041 007e 08       		.byte	0x8
+ 1042 007f 04       		.byte	0x4
+ 1043 0080 98010000 		.4byte	.LASF10
+ 1044 0084 02       		.uleb128 0x2
+ 1045 0085 01       		.byte	0x1
+ 1046 0086 08       		.byte	0x8
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccGiu0v1.s 			page 25
+
+
+ 1047 0087 15010000 		.4byte	.LASF11
+ 1048 008b 02       		.uleb128 0x2
+ 1049 008c 04       		.byte	0x4
+ 1050 008d 07       		.byte	0x7
+ 1051 008e E3010000 		.4byte	.LASF12
+ 1052 0092 05       		.uleb128 0x5
+ 1053 0093 04       		.byte	0x4
+ 1054 0094 84000000 		.4byte	0x84
+ 1055 0098 06       		.uleb128 0x6
+ 1056 0099 1B000000 		.4byte	.LASF13
+ 1057 009d 01       		.byte	0x1
+ 1058 009e 13       		.byte	0x13
+ 1059 009f 00000000 		.4byte	.LFB33
+ 1060 00a3 32000000 		.4byte	.LFE33-.LFB33
+ 1061 00a7 01       		.uleb128 0x1
+ 1062 00a8 9C       		.byte	0x9c
+ 1063 00a9 06       		.uleb128 0x6
+ 1064 00aa 6B000000 		.4byte	.LASF14
+ 1065 00ae 01       		.byte	0x1
+ 1066 00af 1E       		.byte	0x1e
+ 1067 00b0 00000000 		.4byte	.LFB34
+ 1068 00b4 32000000 		.4byte	.LFE34-.LFB34
+ 1069 00b8 01       		.uleb128 0x1
+ 1070 00b9 9C       		.byte	0x9c
+ 1071 00ba 07       		.uleb128 0x7
+ 1072 00bb 23010000 		.4byte	.LASF16
+ 1073 00bf 01       		.byte	0x1
+ 1074 00c0 29       		.byte	0x29
+ 1075 00c1 00000000 		.4byte	.LFB35
+ 1076 00c5 64000000 		.4byte	.LFE35-.LFB35
+ 1077 00c9 01       		.uleb128 0x1
+ 1078 00ca 9C       		.byte	0x9c
+ 1079 00cb EA000000 		.4byte	0xea
+ 1080 00cf 08       		.uleb128 0x8
+ 1081 00d0 6900     		.ascii	"i\000"
+ 1082 00d2 01       		.byte	0x1
+ 1083 00d3 2A       		.byte	0x2a
+ 1084 00d4 64000000 		.4byte	0x64
+ 1085 00d8 02       		.uleb128 0x2
+ 1086 00d9 91       		.byte	0x91
+ 1087 00da 6C       		.sleb128 -20
+ 1088 00db 09       		.uleb128 0x9
+ 1089 00dc 89010000 		.4byte	.LASF15
+ 1090 00e0 01       		.byte	0x1
+ 1091 00e1 2B       		.byte	0x2b
+ 1092 00e2 6B000000 		.4byte	0x6b
+ 1093 00e6 02       		.uleb128 0x2
+ 1094 00e7 91       		.byte	0x91
+ 1095 00e8 6B       		.sleb128 -21
+ 1096 00e9 00       		.byte	0
+ 1097 00ea 07       		.uleb128 0x7
+ 1098 00eb 74000000 		.4byte	.LASF17
+ 1099 00ef 01       		.byte	0x1
+ 1100 00f0 3C       		.byte	0x3c
+ 1101 00f1 00000000 		.4byte	.LFB36
+ 1102 00f5 14030000 		.4byte	.LFE36-.LFB36
+ 1103 00f9 01       		.uleb128 0x1
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccGiu0v1.s 			page 26
+
+
+ 1104 00fa 9C       		.byte	0x9c
+ 1105 00fb 18010000 		.4byte	0x118
+ 1106 00ff 0A       		.uleb128 0xa
+ 1107 0100 6300     		.ascii	"c\000"
+ 1108 0102 01       		.byte	0x1
+ 1109 0103 3C       		.byte	0x3c
+ 1110 0104 84000000 		.4byte	0x84
+ 1111 0108 02       		.uleb128 0x2
+ 1112 0109 91       		.byte	0x91
+ 1113 010a 6F       		.sleb128 -17
+ 1114 010b 08       		.uleb128 0x8
+ 1115 010c 6900     		.ascii	"i\000"
+ 1116 010e 01       		.byte	0x1
+ 1117 010f 3D       		.byte	0x3d
+ 1118 0110 5D000000 		.4byte	0x5d
+ 1119 0114 02       		.uleb128 0x2
+ 1120 0115 91       		.byte	0x91
+ 1121 0116 74       		.sleb128 -12
+ 1122 0117 00       		.byte	0
+ 1123 0118 0B       		.uleb128 0xb
+ 1124 0119 CE010000 		.4byte	.LASF23
+ 1125 011d 01       		.byte	0x1
+ 1126 011e FE       		.byte	0xfe
+ 1127 011f 00000000 		.4byte	.LFB37
+ 1128 0123 4A000000 		.4byte	.LFE37-.LFB37
+ 1129 0127 01       		.uleb128 0x1
+ 1130 0128 9C       		.byte	0x9c
+ 1131 0129 0C       		.uleb128 0xc
+ 1132 012a 34000000 		.4byte	.LASF18
+ 1133 012e 01       		.byte	0x1
+ 1134 012f FE       		.byte	0xfe
+ 1135 0130 92000000 		.4byte	0x92
+ 1136 0134 02       		.uleb128 0x2
+ 1137 0135 91       		.byte	0x91
+ 1138 0136 6C       		.sleb128 -20
+ 1139 0137 08       		.uleb128 0x8
+ 1140 0138 6900     		.ascii	"i\000"
+ 1141 013a 01       		.byte	0x1
+ 1142 013b FF       		.byte	0xff
+ 1143 013c 64000000 		.4byte	0x64
+ 1144 0140 02       		.uleb128 0x2
+ 1145 0141 91       		.byte	0x91
+ 1146 0142 74       		.sleb128 -12
+ 1147 0143 00       		.byte	0
+ 1148 0144 00       		.byte	0
+ 1149              		.section	.debug_abbrev,"",%progbits
+ 1150              	.Ldebug_abbrev0:
+ 1151 0000 01       		.uleb128 0x1
+ 1152 0001 11       		.uleb128 0x11
+ 1153 0002 01       		.byte	0x1
+ 1154 0003 25       		.uleb128 0x25
+ 1155 0004 0E       		.uleb128 0xe
+ 1156 0005 13       		.uleb128 0x13
+ 1157 0006 0B       		.uleb128 0xb
+ 1158 0007 03       		.uleb128 0x3
+ 1159 0008 0E       		.uleb128 0xe
+ 1160 0009 1B       		.uleb128 0x1b
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccGiu0v1.s 			page 27
+
+
+ 1161 000a 0E       		.uleb128 0xe
+ 1162 000b 55       		.uleb128 0x55
+ 1163 000c 17       		.uleb128 0x17
+ 1164 000d 11       		.uleb128 0x11
+ 1165 000e 01       		.uleb128 0x1
+ 1166 000f 10       		.uleb128 0x10
+ 1167 0010 17       		.uleb128 0x17
+ 1168 0011 00       		.byte	0
+ 1169 0012 00       		.byte	0
+ 1170 0013 02       		.uleb128 0x2
+ 1171 0014 24       		.uleb128 0x24
+ 1172 0015 00       		.byte	0
+ 1173 0016 0B       		.uleb128 0xb
+ 1174 0017 0B       		.uleb128 0xb
+ 1175 0018 3E       		.uleb128 0x3e
+ 1176 0019 0B       		.uleb128 0xb
+ 1177 001a 03       		.uleb128 0x3
+ 1178 001b 0E       		.uleb128 0xe
+ 1179 001c 00       		.byte	0
+ 1180 001d 00       		.byte	0
+ 1181 001e 03       		.uleb128 0x3
+ 1182 001f 24       		.uleb128 0x24
+ 1183 0020 00       		.byte	0
+ 1184 0021 0B       		.uleb128 0xb
+ 1185 0022 0B       		.uleb128 0xb
+ 1186 0023 3E       		.uleb128 0x3e
+ 1187 0024 0B       		.uleb128 0xb
+ 1188 0025 03       		.uleb128 0x3
+ 1189 0026 08       		.uleb128 0x8
+ 1190 0027 00       		.byte	0
+ 1191 0028 00       		.byte	0
+ 1192 0029 04       		.uleb128 0x4
+ 1193 002a 16       		.uleb128 0x16
+ 1194 002b 00       		.byte	0
+ 1195 002c 03       		.uleb128 0x3
+ 1196 002d 0E       		.uleb128 0xe
+ 1197 002e 3A       		.uleb128 0x3a
+ 1198 002f 0B       		.uleb128 0xb
+ 1199 0030 3B       		.uleb128 0x3b
+ 1200 0031 0B       		.uleb128 0xb
+ 1201 0032 49       		.uleb128 0x49
+ 1202 0033 13       		.uleb128 0x13
+ 1203 0034 00       		.byte	0
+ 1204 0035 00       		.byte	0
+ 1205 0036 05       		.uleb128 0x5
+ 1206 0037 0F       		.uleb128 0xf
+ 1207 0038 00       		.byte	0
+ 1208 0039 0B       		.uleb128 0xb
+ 1209 003a 0B       		.uleb128 0xb
+ 1210 003b 49       		.uleb128 0x49
+ 1211 003c 13       		.uleb128 0x13
+ 1212 003d 00       		.byte	0
+ 1213 003e 00       		.byte	0
+ 1214 003f 06       		.uleb128 0x6
+ 1215 0040 2E       		.uleb128 0x2e
+ 1216 0041 00       		.byte	0
+ 1217 0042 3F       		.uleb128 0x3f
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccGiu0v1.s 			page 28
+
+
+ 1218 0043 19       		.uleb128 0x19
+ 1219 0044 03       		.uleb128 0x3
+ 1220 0045 0E       		.uleb128 0xe
+ 1221 0046 3A       		.uleb128 0x3a
+ 1222 0047 0B       		.uleb128 0xb
+ 1223 0048 3B       		.uleb128 0x3b
+ 1224 0049 0B       		.uleb128 0xb
+ 1225 004a 27       		.uleb128 0x27
+ 1226 004b 19       		.uleb128 0x19
+ 1227 004c 11       		.uleb128 0x11
+ 1228 004d 01       		.uleb128 0x1
+ 1229 004e 12       		.uleb128 0x12
+ 1230 004f 06       		.uleb128 0x6
+ 1231 0050 40       		.uleb128 0x40
+ 1232 0051 18       		.uleb128 0x18
+ 1233 0052 9642     		.uleb128 0x2116
+ 1234 0054 19       		.uleb128 0x19
+ 1235 0055 00       		.byte	0
+ 1236 0056 00       		.byte	0
+ 1237 0057 07       		.uleb128 0x7
+ 1238 0058 2E       		.uleb128 0x2e
+ 1239 0059 01       		.byte	0x1
+ 1240 005a 3F       		.uleb128 0x3f
+ 1241 005b 19       		.uleb128 0x19
+ 1242 005c 03       		.uleb128 0x3
+ 1243 005d 0E       		.uleb128 0xe
+ 1244 005e 3A       		.uleb128 0x3a
+ 1245 005f 0B       		.uleb128 0xb
+ 1246 0060 3B       		.uleb128 0x3b
+ 1247 0061 0B       		.uleb128 0xb
+ 1248 0062 27       		.uleb128 0x27
+ 1249 0063 19       		.uleb128 0x19
+ 1250 0064 11       		.uleb128 0x11
+ 1251 0065 01       		.uleb128 0x1
+ 1252 0066 12       		.uleb128 0x12
+ 1253 0067 06       		.uleb128 0x6
+ 1254 0068 40       		.uleb128 0x40
+ 1255 0069 18       		.uleb128 0x18
+ 1256 006a 9642     		.uleb128 0x2116
+ 1257 006c 19       		.uleb128 0x19
+ 1258 006d 01       		.uleb128 0x1
+ 1259 006e 13       		.uleb128 0x13
+ 1260 006f 00       		.byte	0
+ 1261 0070 00       		.byte	0
+ 1262 0071 08       		.uleb128 0x8
+ 1263 0072 34       		.uleb128 0x34
+ 1264 0073 00       		.byte	0
+ 1265 0074 03       		.uleb128 0x3
+ 1266 0075 08       		.uleb128 0x8
+ 1267 0076 3A       		.uleb128 0x3a
+ 1268 0077 0B       		.uleb128 0xb
+ 1269 0078 3B       		.uleb128 0x3b
+ 1270 0079 0B       		.uleb128 0xb
+ 1271 007a 49       		.uleb128 0x49
+ 1272 007b 13       		.uleb128 0x13
+ 1273 007c 02       		.uleb128 0x2
+ 1274 007d 18       		.uleb128 0x18
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccGiu0v1.s 			page 29
+
+
+ 1275 007e 00       		.byte	0
+ 1276 007f 00       		.byte	0
+ 1277 0080 09       		.uleb128 0x9
+ 1278 0081 34       		.uleb128 0x34
+ 1279 0082 00       		.byte	0
+ 1280 0083 03       		.uleb128 0x3
+ 1281 0084 0E       		.uleb128 0xe
+ 1282 0085 3A       		.uleb128 0x3a
+ 1283 0086 0B       		.uleb128 0xb
+ 1284 0087 3B       		.uleb128 0x3b
+ 1285 0088 0B       		.uleb128 0xb
+ 1286 0089 49       		.uleb128 0x49
+ 1287 008a 13       		.uleb128 0x13
+ 1288 008b 02       		.uleb128 0x2
+ 1289 008c 18       		.uleb128 0x18
+ 1290 008d 00       		.byte	0
+ 1291 008e 00       		.byte	0
+ 1292 008f 0A       		.uleb128 0xa
+ 1293 0090 05       		.uleb128 0x5
+ 1294 0091 00       		.byte	0
+ 1295 0092 03       		.uleb128 0x3
+ 1296 0093 08       		.uleb128 0x8
+ 1297 0094 3A       		.uleb128 0x3a
+ 1298 0095 0B       		.uleb128 0xb
+ 1299 0096 3B       		.uleb128 0x3b
+ 1300 0097 0B       		.uleb128 0xb
+ 1301 0098 49       		.uleb128 0x49
+ 1302 0099 13       		.uleb128 0x13
+ 1303 009a 02       		.uleb128 0x2
+ 1304 009b 18       		.uleb128 0x18
+ 1305 009c 00       		.byte	0
+ 1306 009d 00       		.byte	0
+ 1307 009e 0B       		.uleb128 0xb
+ 1308 009f 2E       		.uleb128 0x2e
+ 1309 00a0 01       		.byte	0x1
+ 1310 00a1 3F       		.uleb128 0x3f
+ 1311 00a2 19       		.uleb128 0x19
+ 1312 00a3 03       		.uleb128 0x3
+ 1313 00a4 0E       		.uleb128 0xe
+ 1314 00a5 3A       		.uleb128 0x3a
+ 1315 00a6 0B       		.uleb128 0xb
+ 1316 00a7 3B       		.uleb128 0x3b
+ 1317 00a8 0B       		.uleb128 0xb
+ 1318 00a9 27       		.uleb128 0x27
+ 1319 00aa 19       		.uleb128 0x19
+ 1320 00ab 11       		.uleb128 0x11
+ 1321 00ac 01       		.uleb128 0x1
+ 1322 00ad 12       		.uleb128 0x12
+ 1323 00ae 06       		.uleb128 0x6
+ 1324 00af 40       		.uleb128 0x40
+ 1325 00b0 18       		.uleb128 0x18
+ 1326 00b1 9642     		.uleb128 0x2116
+ 1327 00b3 19       		.uleb128 0x19
+ 1328 00b4 00       		.byte	0
+ 1329 00b5 00       		.byte	0
+ 1330 00b6 0C       		.uleb128 0xc
+ 1331 00b7 05       		.uleb128 0x5
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccGiu0v1.s 			page 30
+
+
+ 1332 00b8 00       		.byte	0
+ 1333 00b9 03       		.uleb128 0x3
+ 1334 00ba 0E       		.uleb128 0xe
+ 1335 00bb 3A       		.uleb128 0x3a
+ 1336 00bc 0B       		.uleb128 0xb
+ 1337 00bd 3B       		.uleb128 0x3b
+ 1338 00be 0B       		.uleb128 0xb
+ 1339 00bf 49       		.uleb128 0x49
+ 1340 00c0 13       		.uleb128 0x13
+ 1341 00c1 02       		.uleb128 0x2
+ 1342 00c2 18       		.uleb128 0x18
+ 1343 00c3 00       		.byte	0
+ 1344 00c4 00       		.byte	0
+ 1345 00c5 00       		.byte	0
+ 1346              		.section	.debug_aranges,"",%progbits
+ 1347 0000 3C000000 		.4byte	0x3c
+ 1348 0004 0200     		.2byte	0x2
+ 1349 0006 00000000 		.4byte	.Ldebug_info0
+ 1350 000a 04       		.byte	0x4
+ 1351 000b 00       		.byte	0
+ 1352 000c 0000     		.2byte	0
+ 1353 000e 0000     		.2byte	0
+ 1354 0010 00000000 		.4byte	.LFB33
+ 1355 0014 32000000 		.4byte	.LFE33-.LFB33
+ 1356 0018 00000000 		.4byte	.LFB34
+ 1357 001c 32000000 		.4byte	.LFE34-.LFB34
+ 1358 0020 00000000 		.4byte	.LFB35
+ 1359 0024 64000000 		.4byte	.LFE35-.LFB35
+ 1360 0028 00000000 		.4byte	.LFB36
+ 1361 002c 14030000 		.4byte	.LFE36-.LFB36
+ 1362 0030 00000000 		.4byte	.LFB37
+ 1363 0034 4A000000 		.4byte	.LFE37-.LFB37
+ 1364 0038 00000000 		.4byte	0
+ 1365 003c 00000000 		.4byte	0
+ 1366              		.section	.debug_ranges,"",%progbits
+ 1367              	.Ldebug_ranges0:
+ 1368 0000 00000000 		.4byte	.LFB33
+ 1369 0004 32000000 		.4byte	.LFE33
+ 1370 0008 00000000 		.4byte	.LFB34
+ 1371 000c 32000000 		.4byte	.LFE34
+ 1372 0010 00000000 		.4byte	.LFB35
+ 1373 0014 64000000 		.4byte	.LFE35
+ 1374 0018 00000000 		.4byte	.LFB36
+ 1375 001c 14030000 		.4byte	.LFE36
+ 1376 0020 00000000 		.4byte	.LFB37
+ 1377 0024 4A000000 		.4byte	.LFE37
+ 1378 0028 00000000 		.4byte	0
+ 1379 002c 00000000 		.4byte	0
+ 1380              		.section	.debug_line,"",%progbits
+ 1381              	.Ldebug_line0:
+ 1382 0000 DE020000 		.section	.debug_str,"MS",%progbits,1
+ 1382      02004D00 
+ 1382      00000201 
+ 1382      FB0E0D00 
+ 1382      01010101 
+ 1383              	.LASF6:
+ 1384 0000 6C6F6E67 		.ascii	"long long int\000"
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccGiu0v1.s 			page 31
+
+
+ 1384      206C6F6E 
+ 1384      6720696E 
+ 1384      7400
+ 1385              	.LASF8:
+ 1386 000e 756E7369 		.ascii	"unsigned int\000"
+ 1386      676E6564 
+ 1386      20696E74 
+ 1386      00
+ 1387              	.LASF13:
+ 1388 001b 626C696E 		.ascii	"blink_char\000"
+ 1388      6B5F6368 
+ 1388      617200
+ 1389              	.LASF1:
+ 1390 0026 756E7369 		.ascii	"unsigned char\000"
+ 1390      676E6564 
+ 1390      20636861 
+ 1390      7200
+ 1391              	.LASF18:
+ 1392 0034 6D657373 		.ascii	"message\000"
+ 1392      61676500 
+ 1393              	.LASF22:
+ 1394 003c 75696E74 		.ascii	"uint8\000"
+ 1394      3800
+ 1395              	.LASF5:
+ 1396 0042 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1396      20756E73 
+ 1396      69676E65 
+ 1396      6420696E 
+ 1396      7400
+ 1397              	.LASF7:
+ 1398 0054 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1398      206C6F6E 
+ 1398      6720756E 
+ 1398      7369676E 
+ 1398      65642069 
+ 1399              	.LASF14:
+ 1400 006b 6E65775F 		.ascii	"new_char\000"
+ 1400      63686172 
+ 1400      00
+ 1401              	.LASF17:
+ 1402 0074 73756273 		.ascii	"substitution_encode\000"
+ 1402      74697475 
+ 1402      74696F6E 
+ 1402      5F656E63 
+ 1402      6F646500 
+ 1403              	.LASF19:
+ 1404 0088 474E5520 		.ascii	"GNU C 4.8.4 20140526 (release) [ARM/embedded-4_8-br"
+ 1404      4320342E 
+ 1404      382E3420 
+ 1404      32303134 
+ 1404      30353236 
+ 1405 00bb 616E6368 		.ascii	"anch revision 211358] -mcpu=cortex-m0 -mthumb -g -O"
+ 1405      20726576 
+ 1405      6973696F 
+ 1405      6E203231 
+ 1405      31333538 
+ 1406 00ee 30202D66 		.ascii	"0 -ffunction-sections\000"
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccGiu0v1.s 			page 32
+
+
+ 1406      66756E63 
+ 1406      74696F6E 
+ 1406      2D736563 
+ 1406      74696F6E 
+ 1407              	.LASF20:
+ 1408 0104 2E5C7375 		.ascii	".\\substitution.c\000"
+ 1408      62737469 
+ 1408      74757469 
+ 1408      6F6E2E63 
+ 1408      00
+ 1409              	.LASF11:
+ 1410 0115 63686172 		.ascii	"char\000"
+ 1410      00
+ 1411              	.LASF4:
+ 1412 011a 6C6F6E67 		.ascii	"long int\000"
+ 1412      20696E74 
+ 1412      00
+ 1413              	.LASF16:
+ 1414 0123 6E65775F 		.ascii	"new_message_substitution\000"
+ 1414      6D657373 
+ 1414      6167655F 
+ 1414      73756273 
+ 1414      74697475 
+ 1415              	.LASF21:
+ 1416 013c 433A5C55 		.ascii	"C:\\Users\\Admin\\Desktop\\Organizer Badge\\Organiz"
+ 1416      73657273 
+ 1416      5C41646D 
+ 1416      696E5C44 
+ 1416      65736B74 
+ 1417 016a 65725F42 		.ascii	"er_Badge\\Organizer_Badge.cydsn\000"
+ 1417      61646765 
+ 1417      5C4F7267 
+ 1417      616E697A 
+ 1417      65725F42 
+ 1418              	.LASF15:
+ 1419 0189 6F726967 		.ascii	"original_color\000"
+ 1419      696E616C 
+ 1419      5F636F6C 
+ 1419      6F7200
+ 1420              	.LASF10:
+ 1421 0198 646F7562 		.ascii	"double\000"
+ 1421      6C6500
+ 1422              	.LASF3:
+ 1423 019f 73686F72 		.ascii	"short unsigned int\000"
+ 1423      7420756E 
+ 1423      7369676E 
+ 1423      65642069 
+ 1423      6E7400
+ 1424              	.LASF0:
+ 1425 01b2 7369676E 		.ascii	"signed char\000"
+ 1425      65642063 
+ 1425      68617200 
+ 1426              	.LASF9:
+ 1427 01be 666C6F61 		.ascii	"float\000"
+ 1427      7400
+ 1428              	.LASF2:
+ 1429 01c4 73686F72 		.ascii	"short int\000"
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccGiu0v1.s 			page 33
+
+
+ 1429      7420696E 
+ 1429      7400
+ 1430              	.LASF23:
+ 1431 01ce 73756273 		.ascii	"substitution_message\000"
+ 1431      74697475 
+ 1431      74696F6E 
+ 1431      5F6D6573 
+ 1431      73616765 
+ 1432              	.LASF12:
+ 1433 01e3 73697A65 		.ascii	"sizetype\000"
+ 1433      74797065 
+ 1433      00
+ 1434              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.8.4 20140526 (release) [ARM/embedded-4_8-br

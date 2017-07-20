@@ -1,0 +1,5 @@
+C:\Users\Admin\Desktop\Student Badge\Student_Badge\Student_Badge.cydsn\Student_Badge.cyprj|6285cb50-9b2e-441a-8598-6d6131aef5b1
+C:\Program Files\Cypress\PSoC Creator\3.1\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|d57da1ad-7784-442e-bf7f-8f11cc81e8b3
+C:\Program Files\Cypress\PSoC Creator\3.1\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|38a59d32-d143-4f37-9ac3-c6690b54f9d5
+C:\Program Files\Cypress\PSoC Creator\3.1\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|4421a56e-40a1-4d3d-924a-f2ba5e43c7a8
+C:\Program Files\Cypress\PSoC Creator\3.1\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|245e8efe-e08d-4564-83ae-0f95f1cae481
