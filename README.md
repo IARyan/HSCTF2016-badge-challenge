@@ -1,4 +1,4 @@
-# Badge-Challenge HSCTF History 2016
+# Badge-Challenge HSCTF 2016
 
 ## Volunteer Badge 
 #### Challenge: Binary Code (Left LED = 0; Right LED = 1)
